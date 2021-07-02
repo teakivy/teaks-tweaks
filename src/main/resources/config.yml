@@ -1,0 +1,267 @@
+# ██╗░░░██╗░█████╗░███╗░░██╗██╗██╗░░░░░██╗░░░░░░█████╗░    ████████╗░██╗░░░░░░░██╗███████╗░█████╗░██╗░░██╗░██████╗
+# ██║░░░██║██╔══██╗████╗░██║██║██║░░░░░██║░░░░░██╔══██╗    ╚══██╔══╝░██║░░██╗░░██║██╔════╝██╔══██╗██║░██╔╝██╔════╝
+# ╚██╗░██╔╝███████║██╔██╗██║██║██║░░░░░██║░░░░░███████║    ░░░██║░░░░╚██╗████╗██╔╝█████╗░░███████║█████═╝░╚█████╗░
+# ░╚████╔╝░██╔══██║██║╚████║██║██║░░░░░██║░░░░░██╔══██║    ░░░██║░░░░░████╔═████║░██╔══╝░░██╔══██║██╔═██╗░░╚═══██╗
+# ░░╚██╔╝░░██║░░██║██║░╚███║██║███████╗███████╗██║░░██║    ░░░██║░░░░░╚██╔╝░╚██╔╝░███████╗██║░░██║██║░╚██╗██████╔╝
+# ░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚══╝╚═╝╚══════╝╚══════╝╚═╝░░╚═╝    ░░░╚═╝░░░░░░╚═╝░░░╚═╝░░╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░
+
+reload:
+  message: "&7[&6&lVT&7] &aReloaded Vanilla Tweaks Config!"
+
+
+packs:
+  # Enable a pack by marking "enabled" as "true"
+  # If a pack is not enabled, none of its effects will happen.
+
+  # Player Head Drops
+  # A player will drop their head when killed by another player. The item displays who the killer is.
+  player-head-drops:
+    enabled: false
+    display-killer: true
+
+  # Double Shulker Shells
+  # Makes all shulkers drop 2 shells.
+  double-shulker-shells:
+    enabled: false
+
+  # Dragon Drops
+  # Makes the Ender Dragon drop a dragon egg and elytra on death.
+  dragon-drops:
+    enabled: false
+
+  # Silence Mobs
+  # Adds the ability to silence mobs using a name tag. 'Silence Me'; 'Silence me'; 'silence me'; 'silence_me'; are all acceptable names.
+  silence-mobs:
+    enabled: false
+
+  # Anti Creeper Grief
+  # Prevents creepers from blowing up, blocks and players do not take damage.
+  anti-creeper-grief:
+    enabled: false
+
+  # Anti Enderman Grief
+  # Prevents endermen from picking up blocks.
+  anti-enderman-grief:
+    enabled: false
+
+  # Anti Creeper Grief
+  # Prevents ghasts from blowing up blocks.
+  anti-ghast-grief:
+    enabled: false
+
+  # Nether Portal Coords
+  # Adds a command that calculates where a nether portal must be placed in the other dimension. Useful for syncing up nether portals.
+  # Command: /portal
+  nether-portal-coords:
+    enabled: false
+
+  # Coords HUD
+  # Adds information to your actionbar. XYZ Coords and a 24hr clock.
+  # Command: /ch toggle
+  coords-hud:
+    enabled: false
+
+  # Spectator Night Vision
+  # Easily toggle night vision when in spectator.
+  # Command: /nv
+  spectator-night-vision:
+    enabled: false
+
+  # Spectator Conduit Power
+  # Easily toggle conduit power when in spectator.
+  # Command: /cp
+  spectator-conduit-power:
+    enabled: false
+
+  # Kill Empty Boats
+  # Adds an admin command to kill all boats without passengers.
+  # Command: /killboats
+  kill-boats:
+    enabled: false
+
+  # More Mob Heads
+  # Adds a chance to receive a mob head upon killing it.
+  more-mob-heads:
+    enabled: false
+
+  multiplayer-sleep:
+    enabled: false
+    # Announce Type
+    # Where to announce that a player is sleeping
+    # Types: hidden, bossbar, actionbar, chat (default: chat)
+    announce-type: chat
+    # Immediate Chat Display
+    # Whether to display when a player sleeps immediately
+    immediate-chat-display: false
+    # Sleeping Percentage
+    # Percent of online players that need to sleep in order to skip the night
+    # Use 0 to only need 1 player
+    sleeping-percentage: 0
+    # Boss Bar Color
+    # What color to use for the bossbar display type
+    # Accepts blue, green, pink, purple, red, white, yellow (default: white)
+    boss-bar-color: blue
+    # Always Reset Weather Cycle
+    # When enabled the weather cycle will reset to clear upon sleeping, whether or not the weather is clear already
+    # When sleeping occurs, this may cause rain to briefly appear, and the weather will not rain for a while afterward.
+    # This setting is incompatible with gamerule doWeatherCycle false
+    # When disabled, the weather cycle will only reset to clear upon sleeping if its already raining, just like in vanilla.
+    always-reset-weather-cycle: false
+
+  # Concrete Convertor
+  # Drop concrete powder into a cauldron filled with water to instantly harden all of it.
+  concrete-convertor:
+    enabled: false
+
+  # Unlock All Recipes
+  # Automatically unlock all recipes as soon as you start playing.
+  unlock-all-recipes:
+    enabled: false
+
+  # Real Time Clock
+  # Adds a command that allows you to view how long a world has been running in real time minutes and hours.
+  real-time-clock:
+    enabled: false
+
+crafting-tweaks:
+
+  # Back to Blocks
+  # Allows you to craft full blocks from stairs and slabs.
+  back-to-blocks:
+    enabled: false
+
+  # Double Slabs
+  # Allows you to craft 2 slabs from a single block.
+  double-slabs:
+    enabled: false
+
+  # Dropper to Dispenser
+  # Allows you to convert a Dropper to a Dispenser using a Bow, or by using String and Sticks.
+  dropper-to-dispenser:
+    enabled: false
+
+  # Rotten Flesh to Leather
+  # Allows you to smelt Rotten Flesh into Leather.
+  rotten-flesh-to-leather:
+    enabled: false
+
+  # Charcoal to Black Dye
+  # Allows you to craft Charcoal into Black Dye.
+  charcoal-to-black-dye:
+    enabled: false
+
+  # Coal to Black Dye
+  # Allows you to craft Coal into Black Dye.
+  coal-to-black-dye:
+    enabled: false
+
+  # Sandstone Dyeing
+  # Allows you to craft Sandstone with Red Dye to get Red Sandstone
+  sandstone-dyeing:
+    enabled: false
+
+  # Universal Dyeing
+  # Allows you to dye any dyeable block to another color, no matter what color it is (does not include Wool and Concrete).
+  universal-dyeing:
+    enabled: false
+
+  # Straight to Shapeless
+  # Craft items such as Paper, Bread, and Shulker Boxes directly in your 2x2.
+  straight-to-shapeless:
+    enabled: false
+
+  # Blackstone Cobblestone
+  # Craft all items that require Cobblestone, using Blackstone.
+  blackstone-cobblestone:
+    enabled: false
+
+  # Powder to Glass
+  # Smelt all colors of Concrete Powder into their respective Stained Glass color.
+  powder-to-glass:
+    enabled: false
+
+  # More Trapdoors
+  # Created 12 Trapdoors instead of 3.
+  more-trapdoors:
+    enabled: false
+
+  # More Bark
+  # Created 4 Bark instead of 3.
+  more-bark:
+    enabled: false
+
+  # More Stairs
+  # Creates 8 Stairs instead of 4.
+  more-stairs:
+    enabled: false
+
+  # More Bricks
+  # Creates 4 Bricks instead of 1.
+  more-bricks:
+    enabled: false
+
+  # Craftable Gravel
+  # Allows you to craft Gravel from Flint.
+  craftable-gravel:
+    enabled: false
+
+  # Craftable Horse Armor
+  # Allows you to craft Horse Armor.
+  craftable-horse-armor:
+    enabled: false
+
+  # Craftable Coral Blocks (2x2)
+  # Allows you to craft Coral Blocks from their Coral Plant in a 2x2. Both Tubes and Fans may be used interchangably.
+  craftable-coral-blocks-2x2:
+    enabled: false
+
+  # Craftable Coral Blocks (3x3)
+  # Allows you to craft Coral Blocks from their Coral Plant in a 3x3. Both Tubes and Fans may be used interchangably.
+  craftable-coral-blocks-3x3:
+    enabled: false
+
+  # Craftable Enchanted Golden Apples
+  # Allows you to craft Enchanted Golden Apples.
+  craftable-enchanted-golden-apples:
+    enabled: false
+
+  # Craftable Name Tags
+  # Allows you to craft Name Tags.
+  craftable-name-tags:
+    enabled: false
+
+  # Craftable Bundles (Rabbit Hide)
+  # Allows you to craft 1.18's Bundles in 1.17.
+  craftable-bundles-rabbit-hide:
+    enabled: false
+
+  # Craftable Bundles (Leather)
+  # Allows you to craft 1.18's Bundles in 1.17, using Leather instead of Rabbit Hide.
+  craftable-bundles-leather:
+    enabled: false
+
+  # Craftable Blackstone
+  # Allows you to craft Blackstone or Polished Blackstone using Basalt & Coal/Charcoal
+  craftable-blackstone:
+    enabled: false
+
+  # Unpackable Ice
+  # Allows you to break down Ice into 9 pieces. 1 Blue Ice to 9 Packed Ice to 81 Ice.
+  unpackable-ice:
+    enabled: false
+
+  # Unpackable Nether Wart
+  # Allows you to break down nether Wart Blocks into 9 Nether Wart.
+  unpackable-nether-wart:
+    enabled: false
+
+  # Unpackable Wool
+  # Allows you to break down Wool into 4 String.
+  unpackable-wool:
+    enabled: false
+
+
+
+
+config:
+  version: 1

@@ -1,0 +1,38 @@
+name: VanillaTweaks
+version: ${project.version}
+main: me.teakivy.vanillatweaks.Main
+api-version: 1.17
+prefix: VT
+authors: [ TeakIvy ]
+description: A Plugin recreation of the Vanilla Tweaks datapacks!
+website: https://vanillatweaks.net/
+permissions:
+  vt.reload:
+    description: Allows vt reload command
+    default: op
+  vt.killboat:
+    description: Allows the killing of boats
+commands:
+  vt:
+    description: Vanilla Tweaks Main Command
+    aliases: [vanillatweaks]
+  portal:
+    description: Calculate where a portal would link to
+  ch:
+    description: Coords Hud Main Command
+    aliases: [coordshud]
+  nv:
+    description: Toggle Night Vision as a spectator
+    aliases: [nightvision]
+  cp:
+    description: Toggle Conduit Power as a spectator
+    aliases: [conduitpower]
+  killboat:
+    description: Kill all empty boats
+    aliases: [killboats]
+  test:
+    description: Test Command
+  rtc:
+    description: View a world's Real Time
+    aliases: [realtime, realtimeclock]
+
