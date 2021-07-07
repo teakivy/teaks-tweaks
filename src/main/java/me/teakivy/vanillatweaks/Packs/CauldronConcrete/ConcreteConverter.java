@@ -15,7 +15,7 @@ public class ConcreteConverter implements Listener {
 
     @EventHandler
     public void onDrop(EntityDropItemEvent event) {
-        if (!main.getConfig().getBoolean("packs.concrete-convertor.enabled")) return;
+        if (!main.getConfig().getBoolean("packs.cauldron-concrete.enabled")) return;
         ItemStack item = event.getItemDrop().getItemStack();
         Material material = item.getType();
         if (material == Material.WHITE_CONCRETE_POWDER) concreteConverter(Material.WHITE_CONCRETE, event);
@@ -39,7 +39,7 @@ public class ConcreteConverter implements Listener {
 
     @EventHandler
     public void blockDrop(ItemSpawnEvent event) {
-        if (!main.getConfig().getBoolean("packs.concrete-convertor.enabled")) return;
+        if (!main.getConfig().getBoolean("packs.cauldron-concrete.enabled")) return;
         ItemStack item = event.getEntity().getItemStack();
         Material material = item.getType();
         if (material == Material.WHITE_CONCRETE_POWDER) concreteConverter(Material.WHITE_CONCRETE, event);

@@ -8,80 +8,19 @@
 reload:
   message: "&7[&6&lVT&7] &aReloaded Vanilla Tweaks Config!"
 
-
+# Data Packs
+# https://vanillatweaks.net/picker/datapacks/
 packs:
   # Enable a pack by marking "enabled" as "true"
   # If a pack is not enabled, none of its effects will happen.
+  # You can reload these settings by running "/vt reload" in game.
 
-  # Player Head Drops
-  # A player will drop their head when killed by another player. The item displays who the killer is.
-  player-head-drops:
-    enabled: false
-    display-killer: true
 
-  # Double Shulker Shells
-  # Makes all shulkers drop 2 shells.
-  double-shulker-shells:
-    enabled: false
+  # Survival:
 
-  # Dragon Drops
-  # Makes the Ender Dragon drop a dragon egg and elytra on death.
-  dragon-drops:
-    enabled: false
-
-  # Silence Mobs
-  # Adds the ability to silence mobs using a name tag. 'Silence Me'; 'Silence me'; 'silence me'; 'silence_me'; are all acceptable names.
-  silence-mobs:
-    enabled: false
-
-  # Anti Creeper Grief
-  # Prevents creepers from blowing up, blocks and players do not take damage.
-  anti-creeper-grief:
-    enabled: false
-
-  # Anti Enderman Grief
-  # Prevents endermen from picking up blocks.
-  anti-enderman-grief:
-    enabled: false
-
-  # Anti Creeper Grief
-  # Prevents ghasts from blowing up blocks.
-  anti-ghast-grief:
-    enabled: false
-
-  # Nether Portal Coords
-  # Adds a command that calculates where a nether portal must be placed in the other dimension. Useful for syncing up nether portals.
-  # Command: /portal
-  nether-portal-coords:
-    enabled: false
-
-  # Coords HUD
-  # Adds information to your actionbar. XYZ Coords and a 24hr clock.
-  # Command: /ch toggle
-  coords-hud:
-    enabled: false
-
-  # Spectator Night Vision
-  # Easily toggle night vision when in spectator.
-  # Command: /nv
-  spectator-night-vision:
-    enabled: false
-
-  # Spectator Conduit Power
-  # Easily toggle conduit power when in spectator.
-  # Command: /cp
-  spectator-conduit-power:
-    enabled: false
-
-  # Kill Empty Boats
-  # Adds an admin command to kill all boats without passengers.
-  # Command: /killboats
-  kill-boats:
-    enabled: false
-
-  # More Mob Heads
-  # Adds a chance to receive a mob head upon killing it.
-  more-mob-heads:
+  # Unlock All Recipes
+  # Automatically unlock all recipes as soon as you start playing.
+  unlock-all-recipes:
     enabled: false
 
   multiplayer-sleep:
@@ -108,14 +47,21 @@ packs:
     # When disabled, the weather cycle will only reset to clear upon sleeping if its already raining, just like in vanilla.
     always-reset-weather-cycle: false
 
-  # Concrete Convertor
+  # Cauldron Concrete
   # Drop concrete powder into a cauldron filled with water to instantly harden all of it.
-  concrete-convertor:
+  cauldron-concrete:
     enabled: false
 
-  # Unlock All Recipes
-  # Automatically unlock all recipes as soon as you start playing.
-  unlock-all-recipes:
+  # Nether Portal Coords
+  # Adds a command that calculates where a nether portal must be placed in the other dimension. Useful for syncing up nether portals.
+  # Command: /portal
+  nether-portal-coords:
+    enabled: false
+
+  # Coords HUD
+  # Adds information to your actionbar. XYZ Coords and a 24hr clock.
+  # Command: /ch toggle
+  coords-hud:
     enabled: false
 
   # Real Time Clock
@@ -123,7 +69,91 @@ packs:
   real-time-clock:
     enabled: false
 
+
+  # Items:
+
+  # Player Head Drops
+  # A player will drop their head when killed by another player. The item displays who the killer is.
+  player-head-drops:
+    enabled: false
+    display-killer: true
+
+
+  # Mobs:
+
+  # Anti Creeper Grief
+  # Prevents creepers from blowing up, blocks and players do not take damage.
+  anti-creeper-grief:
+    enabled: false
+
+  # Anti Enderman Grief
+  # Prevents endermen from picking up blocks.
+  anti-enderman-grief:
+    enabled: false
+
+  # Anti Ghast Grief
+  # Prevents ghasts from blowing up blocks.
+  anti-ghast-grief:
+    enabled: false
+
+  # Double Shulker Shells
+  # Makes all shulkers drop 2 shells.
+  double-shulker-shells:
+    enabled: false
+
+  # Dragon Drops
+  # Makes the Ender Dragon drop a dragon egg and elytra on death.
+  dragon-drops:
+    enabled: false
+
+  # More Mob Heads
+  # Adds a chance to receive a mob head upon killing it.
+  more-mob-heads:
+    enabled: false
+
+  # Silence Mobs
+  # Adds the ability to silence mobs using a name tag. 'Silence Me'; 'Silence me'; 'silence me'; 'silence_me'; are all acceptable names.
+  silence-mobs:
+    enabled: false
+
+  # Villager Death Messages
+  # Notifies the server in chat when a villager dies. Displayes Coordinates and Dimension that it died in.
+  villager-death-messages:
+    enabled: false
+    # Whether or not to announce the death in chat, or only in console.
+    show-in-chat: true
+
+
+  # Utilities:
+
+  # Spectator Night Vision
+  # Easily toggle night vision when in spectator.
+  # Command: /nv
+  spectator-night-vision:
+    enabled: false
+
+  # Spectator Conduit Power
+  # Easily toggle conduit power when in spectator.
+  # Command: /cp
+  spectator-conduit-power:
+    enabled: false
+
+  # Kill Empty Boats
+  # Adds an admin command to kill all boats without passengers.
+  # Command: /killboats
+  kill-boats:
+    enabled: false
+
+
+
+
+
+# Crafting Tweaks
+# https://vanillatweaks.net/picker/crafting-tweaks/
 crafting-tweaks:
+  # Select which Crafting Tweaks are enabled.
+  # This will NOT be reloaded upon /vt reload, changing Crafting Tweaks requires a full server restart.
+  # If tweaks are disabled after being previously enabled, you may have an error in the server console saying a recipe cannot be found. Disregard this message.
 
   # Back to Blocks
   # Allows you to craft full blocks from stairs and slabs.
@@ -161,7 +191,7 @@ crafting-tweaks:
     enabled: false
 
   # Universal Dyeing
-  # Allows you to dye any dyeable block to another color, no matter what color it is (does not include Wool and Concrete).
+  # Allows you to dye any dyeable block to another color, no matter what color it is (does not include Concrete).
   universal-dyeing:
     enabled: false
 
@@ -262,6 +292,9 @@ crafting-tweaks:
 
 
 
-
+# Leave these options alone unless you know what you're doing!
+# Changing these values may cause unexpected issues.
 config:
+  plugin-version: 1.0
   version: 1
+  dev-mode: false

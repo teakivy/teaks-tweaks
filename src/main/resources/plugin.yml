@@ -35,4 +35,6 @@ commands:
   rtc:
     description: View a world's Real Time
     aliases: [realtime, realtimeclock]
+  armorstand:
+    description: Armor Statues main command
 

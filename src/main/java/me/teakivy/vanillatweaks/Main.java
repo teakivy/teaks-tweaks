@@ -16,20 +16,21 @@ import me.teakivy.vanillatweaks.Commands.TabCompleter.chTab;
 import me.teakivy.vanillatweaks.Commands.TabCompleter.vtTab;
 import me.teakivy.vanillatweaks.Packs.SpectatorConduitPower.ConduitPower;
 import me.teakivy.vanillatweaks.Packs.SpectatorNightVision.NightVision;
+import me.teakivy.vanillatweaks.Packs.VillagerDeathMessages.VillagerDeath;
+import me.teakivy.vanillatweaks.Utils.ConfigUpdater.ConfigUpdater;
 import me.teakivy.vanillatweaks.Utils.DataManager.DataManager;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public final class Main extends JavaPlugin implements Listener {
 
-    String[] packList = {"player-head-drops", "double-shulker-shells", "dragon-drops", "silence-mobs", "anti-creeper-grief", "anti-enderman-grief", "anti-ghast-grief", "nether-portal-coords", "coords-hud", "spectator-night-vision", "spectator-conduit-power", "kill-boats", "more-mob-heads", "multiplayer-sleep", "unlock-all-recipes", "cauldron-concrete", "real-time-clock"};
+    String[] packList = {"player-head-drops", "double-shulker-shells", "dragon-drops", "silence-mobs", "anti-creeper-grief", "anti-enderman-grief", "anti-ghast-grief", "nether-portal-coords", "coords-hud", "spectator-night-vision", "spectator-conduit-power", "kill-boats", "more-mob-heads", "multiplayer-sleep", "unlock-all-recipes", "cauldron-concrete", "real-time-clock", "villager-death-messages"};
 
     public static ArrayList<UUID> chEnabled = new ArrayList<>();
 
@@ -37,6 +38,18 @@ public final class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+
+        // Update Config.yml
+        if (this.getConfig().getInt("config.version") < this.getConfig().getDefaults().getInt("config.version")) {
+            try {
+                ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList());
+                this.reloadConfig();
+                System.out.println("[VT] Updated Config to Version: " + this.getConfig().getInt("config.version"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
 
         // Crafting Tweaks
         CraftingRegister.register();
@@ -61,6 +74,7 @@ public final class Main extends JavaPlugin implements Listener {
         this.getCommand("killboat").setExecutor(new KillBoatsCommand());
         this.getCommand("test").setExecutor(new testCommand());
         this.getCommand("rtc").setExecutor(new rtcCommand());
+//        this.getCommand("armorstand").setExecutor(new ArmorstandCommand());
 
         // Tab Completer
         this.getCommand("vt").setTabCompleter(new vtTab());
@@ -94,6 +108,8 @@ public final class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new MobHeads(), this);
         getServer().getPluginManager().registerEvents(new MultiplayerSleep(), this);
         getServer().getPluginManager().registerEvents(new ConcreteConverter(), this);
+        getServer().getPluginManager().registerEvents(new VillagerDeath(), this);
+//        getServer().getPluginManager().registerEvents(new DuraPing(), this);
 
 
 
@@ -189,7 +205,9 @@ public final class Main extends JavaPlugin implements Listener {
         if (pack.equals("real-time-clock")) {
             return "Real Time CLock";
         }
-
+        if (pack.equals("villager-death-messages")) {
+            return "Villager Death Messages";
+        }
         return pack;
     }
 }
