@@ -18,6 +18,7 @@ import me.teakivy.vanillatweaks.Packs.SpectatorConduitPower.ConduitPower;
 import me.teakivy.vanillatweaks.Packs.SpectatorNightVision.NightVision;
 import me.teakivy.vanillatweaks.Packs.VillagerDeathMessages.VillagerDeath;
 import me.teakivy.vanillatweaks.Packs.WanderingTrades.Trades;
+import me.teakivy.vanillatweaks.Packs.XPManagement.XPManagement;
 import me.teakivy.vanillatweaks.Utils.ConfigUpdater.ConfigUpdater;
 import me.teakivy.vanillatweaks.Utils.DataManager.DataManager;
 import me.teakivy.vanillatweaks.Utils.Logger.Logger;
@@ -128,6 +129,7 @@ public final class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new ConcreteConverter(), this);
         getServer().getPluginManager().registerEvents(new VillagerDeath(), this);
         getServer().getPluginManager().registerEvents(new Trades(), this);
+        getServer().getPluginManager().registerEvents(new XPManagement(), this);
 
 
 
