@@ -19,6 +19,7 @@
     <url>https://vanillatweaks.net/</url>
 
     <build>
+        <finalName>Vanilla Tweaks - ${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
