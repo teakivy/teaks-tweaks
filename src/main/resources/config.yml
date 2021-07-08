@@ -187,6 +187,16 @@ packs:
         - ZombieCleo
 
 
+  # Experimental
+
+  # XP Management
+  # Right-Click an enchanting table with an empty bottle to fill it with some of your XP.
+  xp-management:
+    enabled: true
+    # How much XP is taken when bottling XP
+    take-xp-amount: 8
+
+
 
 
 
