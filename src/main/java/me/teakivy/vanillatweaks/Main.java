@@ -20,7 +20,10 @@ import me.teakivy.vanillatweaks.Packs.VillagerDeathMessages.VillagerDeath;
 import me.teakivy.vanillatweaks.Packs.WanderingTrades.Trades;
 import me.teakivy.vanillatweaks.Utils.ConfigUpdater.ConfigUpdater;
 import me.teakivy.vanillatweaks.Utils.DataManager.DataManager;
+import me.teakivy.vanillatweaks.Utils.Logger.Logger;
+import me.teakivy.vanillatweaks.Utils.UpdateChecker.UpdateChecker;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.GameRule;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -36,7 +39,7 @@ import java.util.UUID;
 
 public final class Main extends JavaPlugin implements Listener {
 
-    String[] packList = {"player-head-drops", "double-shulker-shells", "dragon-drops", "silence-mobs", "anti-creeper-grief", "anti-enderman-grief", "anti-ghast-grief", "nether-portal-coords", "coords-hud", "spectator-night-vision", "spectator-conduit-power", "kill-boats", "more-mob-heads", "multiplayer-sleep", "unlock-all-recipes", "cauldron-concrete", "real-time-clock", "villager-death-messages"};
+    String[] packList = {"player-head-drops", "double-shulker-shells", "dragon-drops", "silence-mobs", "anti-creeper-grief", "anti-enderman-grief", "anti-ghast-grief", "nether-portal-coords", "coords-hud", "spectator-night-vision", "spectator-conduit-power", "kill-boats", "more-mob-heads", "multiplayer-sleep", "unlock-all-recipes", "cauldron-concrete", "real-time-clock", "villager-death-messages", "wandering-trades"};
 
     public static ArrayList<UUID> chEnabled = new ArrayList<>();
 
@@ -55,6 +58,13 @@ public final class Main extends JavaPlugin implements Listener {
                 e.printStackTrace();
             }
         }
+
+        // Update Checker
+        new UpdateChecker(this, 94021).getLatestVersion(version -> {
+            if (!this.getDescription().getVersion().equalsIgnoreCase(version)) {
+                Logger.log(Logger.LogLevel.WARNING, "[VT] Vanilla Tweaks has an update!\nPlease update to the latest version (" + version + ")\n" + ChatColor.YELLOW + "https://www.spigotmc.org/resources/vanilla-tweaks.94021/");
+            }
+        });
 
 
         // Crafting Tweaks
@@ -215,6 +225,9 @@ public final class Main extends JavaPlugin implements Listener {
         }
         if (pack.equals("villager-death-messages")) {
             return "Villager Death Messages";
+        }
+        if (pack.equals("wandering-trades")) {
+            return "Wandering Trades";
         }
         return pack;
     }
