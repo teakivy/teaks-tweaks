@@ -1,10 +1,6 @@
 package me.teakivy.vanillatweaks.Packs.MoreMobHeads.Mobs;
 
-import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.MoreMobHeads.MobHeads;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 
@@ -13,9 +9,11 @@ public class Axolotl implements Listener {
     public static void onDeath(EntityDeathEvent event) {
         org.bukkit.entity.Axolotl axolotl = (org.bukkit.entity.Axolotl) event.getEntity();
 
-        if (axolotl.getVariant() == org.bukkit.entity.Axolotl.Variant.BLUE)
+        if (axolotl.getVariant() == org.bukkit.entity.Axolotl.Variant.BLUE) {
             if (!MobHeads.dropChance(event.getEntity().getKiller(), 1, 0)) return;
-        else if (!MobHeads.dropChance(event.getEntity().getKiller(), .1, .01)) return;
+        } else {
+            if (!MobHeads.dropChance(event.getEntity().getKiller(), .1, .01)) return;
+        }
 
         if (axolotl.getVariant() == org.bukkit.entity.Axolotl.Variant.LUCY)
             event.getDrops().add(MobHeads.getHead("Lucy Axolotl", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjY3ZTE1ZWFiNzMwNjRiNjY4MGQxZGI5OGJhNDQ1ZWQwOTE0YmEzNWE3OTk5OTdjMGRhMmIwM2ZmYzNhODgyNiJ9fX0"));
