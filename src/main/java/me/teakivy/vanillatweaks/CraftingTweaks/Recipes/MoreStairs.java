@@ -63,7 +63,6 @@ public class MoreStairs {
     }
 
     public static void newStairsRecipe(Material input, Material output) {
-        System.out.println(output.name().toLowerCase());
         NamespacedKey key = new NamespacedKey(main, output.name().toLowerCase() + "_vt_stairs");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(output, 8));

@@ -52,7 +52,7 @@ public class BlackstoneCobblestone {
         observerRecipe.shape("bbb", "aaq", "bbb");
         observerRecipe.setIngredient('b', blackstone);
         observerRecipe.setIngredient('q', Material.QUARTZ);
-        observerRecipe.setIngredient('v', Material.REDSTONE);
+        observerRecipe.setIngredient('a', Material.REDSTONE);
 
         Bukkit.addRecipe(observerRecipe);
 
@@ -61,7 +61,7 @@ public class BlackstoneCobblestone {
 
         dropperRecipe.shape("bbb", "b b", "bab");
         dropperRecipe.setIngredient('b', blackstone);
-        dropperRecipe.setIngredient('v', Material.REDSTONE);
+        dropperRecipe.setIngredient('a', Material.REDSTONE);
 
         Bukkit.addRecipe(dropperRecipe);
 
@@ -70,12 +70,12 @@ public class BlackstoneCobblestone {
 
         dispenserRecipe.shape("bbb", "b=b", "bab");
         dispenserRecipe.setIngredient('b', blackstone);
-        dispenserRecipe.setIngredient('v', Material.REDSTONE);
+        dispenserRecipe.setIngredient('a', Material.REDSTONE);
         dispenserRecipe.setIngredient('=', Material.BOW);
 
         Bukkit.addRecipe(dispenserRecipe);
 
-        NamespacedKey brewingStandKey = new NamespacedKey(main, "dispenser_vt_blackstone");
+        NamespacedKey brewingStandKey = new NamespacedKey(main, "brewing_stand_vt_blackstone");
         ShapedRecipe brewingStandRecipe = new ShapedRecipe(brewingStandKey, new ItemStack(Material.BREWING_STAND));
 
         brewingStandRecipe.shape(" | ", "bbb");

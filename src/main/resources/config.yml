@@ -76,6 +76,7 @@ packs:
   # A player will drop their head when killed by another player. The item displays who the killer is.
   player-head-drops:
     enabled: false
+    # Whether to display who killed the player in the items lore (default: true)
     display-killer: true
 
 
@@ -143,6 +144,47 @@ packs:
   # Command: /killboats
   kill-boats:
     enabled: false
+
+  # Hermitcraft:
+
+  # Wandering Trades / Wandering Trades (Hermit Edition)
+  # Adds Mini Blocks to the Wandering Trader's trades.
+  wandering-trades:
+    enabled: false
+    # Player heads section of Wandering Trades (Hermit Edition)
+    player-heads:
+      # Whether it has player heads or not (Hermit Edition)
+      has-player-heads: false
+      # What Players will be avaliable in the Wandering Trader shop. (Default: hermitcraft heads
+      # To add your own set of heads, just make a list using ` - ` and put the ign of the players you want.
+      players:
+        - PythonGB
+        - Xisuma
+        - Docm77
+        - Jessassin
+        - xBCrafted
+        - Etho
+        - Mumbo
+        - iJevin
+        - impulseSV
+        - Renthedog
+        - Tinfoilchef
+        - Biffa2001
+        - Stressmonster101
+        - GoodTimeWithScar
+        - Zedaph
+        - joehillssays
+        - cubfan135
+        - Welsknight
+        - Keralis
+        - falsesymmetry
+        - hypnotizd
+        - VintageBeef
+        - BdoubleO100
+        - Tango
+        - Grian
+        - iskall85
+        - ZombieCleo
 
 
 
@@ -296,5 +338,5 @@ crafting-tweaks:
 # Changing these values may cause unexpected issues.
 config:
   plugin-version: 1.0
-  version: 1
+  version: 2
   dev-mode: false
