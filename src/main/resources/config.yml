@@ -136,6 +136,11 @@ packs:
     # Enter the number of seconds required to wait between uses of the spawn command
     teleport-cooldown: 0
 
+  # TPA
+  # Enter '/tpa <player> to request to teleport to another player.
+  tpa:
+    enabled: false
+
 
   # Utilities:
 

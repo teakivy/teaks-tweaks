@@ -39,4 +39,6 @@ commands:
     description: Armor Statues main command
   spawn:
     description: Teleport back to spawn
+  tpa:
+    description: Teleport to someone else (With Permission!)
 

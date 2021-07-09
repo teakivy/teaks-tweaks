@@ -101,6 +101,8 @@ public final class Main extends JavaPlugin implements Listener {
         this.getCommand("test").setExecutor(new testCommand());
         this.getCommand("rtc").setExecutor(new rtcCommand());
         this.getCommand("spawn").setExecutor(new SpawnCommand());
+        this.getCommand("tpa").setExecutor(new tpaCommand());
+
 //        this.getCommand("armorstand").setExecutor(new ArmorstandCommand());
 
         // Tab Completer
