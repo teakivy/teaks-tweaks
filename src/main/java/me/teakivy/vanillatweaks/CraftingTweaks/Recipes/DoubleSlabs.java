@@ -23,6 +23,7 @@ public class DoubleSlabs {
         newShapelessRecipe("mossy_stone_bricks", Material.MOSSY_STONE_BRICKS, Material.MOSSY_STONE_BRICK_SLAB);
         newShapelessRecipe("nether_bricks", Material.NETHER_BRICKS, Material.NETHER_BRICK_SLAB);
         newShapelessRecipe("polished_andesite", Material.POLISHED_ANDESITE, Material.POLISHED_ANDESITE_SLAB);
+        newShapelessRecipe("andesite", Material.ANDESITE, Material.ANDESITE_SLAB);
         newShapelessRecipe("polished_blackstone_bricks", Material.POLISHED_BLACKSTONE_BRICKS, Material.POLISHED_BLACKSTONE_BRICK_SLAB);
         newShapelessRecipe("prismarine_bricks", Material.PRISMARINE_BRICKS, Material.PRISMARINE_BRICK_SLAB);
         newShapelessRecipe("prismarine", Material.PRISMARINE, Material.PRISMARINE_SLAB);
