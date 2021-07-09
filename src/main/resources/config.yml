@@ -125,6 +125,18 @@ packs:
     show-in-chat: true
 
 
+  # Teleportation:
+
+  # Spawn
+  # Enter '/spawn' to teleport to the world spawn point.
+  spawn:
+    enabled: false
+    # Enter the number of seconds required to stand still after running the spawn command
+    teleport-delay: 0
+    # Enter the number of seconds required to wait between uses of the spawn command
+    teleport-cooldown: 0
+
+
   # Utilities:
 
   # Spectator Night Vision
@@ -348,5 +360,5 @@ crafting-tweaks:
 # Changing these values may cause unexpected issues.
 config:
   plugin-version: 1.0
-  version: 2
+  version: 4
   dev-mode: false
