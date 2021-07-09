@@ -4,7 +4,6 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.MoreMobHeads.Mobs.*;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
@@ -30,6 +29,7 @@ public class MobHeads implements Listener {
         if (!main.getConfig().getBoolean("packs.more-mob-heads.enabled")) return;
 
         Entity entity = event.getEntity();
+
 
         if (entity.getType().equals(EntityType.AXOLOTL)) Axolotl.onDeath(event);
         if (entity.getType().equals(EntityType.BAT)) Bat.onDeath(event);
