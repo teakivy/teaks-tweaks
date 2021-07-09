@@ -360,5 +360,5 @@ crafting-tweaks:
 # Changing these values may cause unexpected issues.
 config:
   plugin-version: 1.0
-  version: 4
+  version: 5
   dev-mode: false
