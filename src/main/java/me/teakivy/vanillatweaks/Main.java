@@ -30,6 +30,7 @@ import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.json.simple.parser.ParseException;
 
 import java.io.File;
 import java.io.IOException;
@@ -61,11 +62,17 @@ public final class Main extends JavaPlugin implements Listener {
         }
 
         // Update Checker
-        new UpdateChecker(this, 94021).getLatestVersion(version -> {
-            if (!this.getDescription().getVersion().equalsIgnoreCase(version)) {
-                Logger.log(Logger.LogLevel.WARNING, "[VT] Vanilla Tweaks has an update!\nPlease update to the latest version (" + version + ")\n" + ChatColor.YELLOW + "https://www.spigotmc.org/resources/vanilla-tweaks.94021/");
-            }
-        });
+        String latestVersion = null;
+        try {
+            latestVersion = new UpdateChecker(this, 94021).getLatestVersion();
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+            Logger.log(Logger.LogLevel.ERROR, ChatColor.RED + "Could not get latest version!");
+        }
+        String thisVersion = this.getDescription().getVersion();
+        if (!thisVersion.equalsIgnoreCase(latestVersion)) {
+            Logger.log(Logger.LogLevel.WARNING, "[VT] Vanilla Tweaks has an update!\nPlease update to the latest version (" + latestVersion + ")\n" + ChatColor.YELLOW + "https://www.spigotmc.org/resources/vanilla-tweaks.94021/");
+        }
 
 
         // Crafting Tweaks
@@ -93,6 +100,7 @@ public final class Main extends JavaPlugin implements Listener {
         this.getCommand("killboat").setExecutor(new KillBoatsCommand());
         this.getCommand("test").setExecutor(new testCommand());
         this.getCommand("rtc").setExecutor(new rtcCommand());
+        this.getCommand("spawn").setExecutor(new SpawnCommand());
 //        this.getCommand("armorstand").setExecutor(new ArmorstandCommand());
 
         // Tab Completer
