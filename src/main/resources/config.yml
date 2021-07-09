@@ -137,7 +137,7 @@ packs:
     teleport-cooldown: 0
 
   # TPA
-  # Enter '/tpa <player> to request to teleport to another player.
+  # Enter '/tpa <player>' to request to teleport to another player.
   tpa:
     enabled: false
 
