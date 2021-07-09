@@ -37,4 +37,6 @@ commands:
     aliases: [realtime, realtimeclock]
   armorstand:
     description: Armor Statues main command
+  spawn:
+    description: Teleport back to spawn
 
