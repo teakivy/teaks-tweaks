@@ -41,4 +41,6 @@ commands:
     description: Teleport back to spawn
   tpa:
     description: Teleport to someone else (With Permission!)
+  home:
+    description: Set a home to teleport to at a later date
 

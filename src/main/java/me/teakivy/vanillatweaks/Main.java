@@ -10,6 +10,7 @@ import me.teakivy.vanillatweaks.Packs.AntiGhastGrief.AntiGhast;
 import me.teakivy.vanillatweaks.Packs.CauldronConcrete.ConcreteConverter;
 import me.teakivy.vanillatweaks.Packs.CoordsHud.DisplayHud;
 import me.teakivy.vanillatweaks.Packs.DoubleShulkerShells.DoubleShulkers;
+import me.teakivy.vanillatweaks.Packs.DragonDrops.DragonDrops;
 import me.teakivy.vanillatweaks.Packs.MoreMobHeads.MobHeads;
 import me.teakivy.vanillatweaks.Packs.MultiplayerSleep.MultiplayerSleep;
 import me.teakivy.vanillatweaks.Packs.PlayerHeadDrops.HeadDrop;
@@ -102,6 +103,7 @@ public final class Main extends JavaPlugin implements Listener {
         this.getCommand("rtc").setExecutor(new rtcCommand());
         this.getCommand("spawn").setExecutor(new SpawnCommand());
         this.getCommand("tpa").setExecutor(new tpaCommand());
+        this.getCommand("home").setExecutor(new HomeCommand());
 
 //        this.getCommand("armorstand").setExecutor(new ArmorstandCommand());
 
@@ -127,6 +129,7 @@ public final class Main extends JavaPlugin implements Listener {
         // Packs
         getServer().getPluginManager().registerEvents(new HeadDrop(), this);
         getServer().getPluginManager().registerEvents(new DoubleShulkers(), this);
+        getServer().getPluginManager().registerEvents(new DragonDrops(), this);
         getServer().getPluginManager().registerEvents(new Silencer(), this);
         getServer().getPluginManager().registerEvents(new AntiCreeper(), this);
         getServer().getPluginManager().registerEvents(new AntiGhast(), this);
