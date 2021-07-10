@@ -23,6 +23,7 @@ import me.teakivy.vanillatweaks.Packs.XPManagement.XPManagement;
 import me.teakivy.vanillatweaks.Utils.ConfigUpdater.ConfigUpdater;
 import me.teakivy.vanillatweaks.Utils.DataManager.DataManager;
 import me.teakivy.vanillatweaks.Utils.Logger.Logger;
+import me.teakivy.vanillatweaks.Utils.Metrics;
 import me.teakivy.vanillatweaks.Utils.UpdateChecker.UpdateChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -50,6 +51,10 @@ public final class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+
+        // Metrics
+
+        Metrics metrics = new Metrics(this, 12001);
 
         // Update Config.yml
         if (this.getConfig().getInt("config.version") < this.getConfig().getDefaults().getInt("config.version")) {
