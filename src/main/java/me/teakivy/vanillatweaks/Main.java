@@ -5,6 +5,7 @@ import me.teakivy.vanillatweaks.Commands.TabCompleter.chTab;
 import me.teakivy.vanillatweaks.Commands.TabCompleter.homeTab;
 import me.teakivy.vanillatweaks.Commands.TabCompleter.vtTab;
 import me.teakivy.vanillatweaks.CraftingTweaks.CraftingRegister;
+import me.teakivy.vanillatweaks.Events.UpdateJoinAlert;
 import me.teakivy.vanillatweaks.Packs.AntiCreeperGreif.AntiCreeper;
 import me.teakivy.vanillatweaks.Packs.AntiEndermanGrief.AntiEnderman;
 import me.teakivy.vanillatweaks.Packs.AntiGhastGrief.AntiGhast;
@@ -47,6 +48,8 @@ public final class Main extends JavaPlugin implements Listener {
     String[] packList = {"player-head-drops", "double-shulker-shells", "dragon-drops", "silence-mobs", "anti-creeper-grief", "anti-enderman-grief", "anti-ghast-grief", "nether-portal-coords", "coords-hud", "spectator-night-vision", "spectator-conduit-power", "kill-boats", "more-mob-heads", "multiplayer-sleep", "unlock-all-recipes", "cauldron-concrete", "real-time-clock", "villager-death-messages", "wandering-trades"};
 
     public static ArrayList<UUID> chEnabled = new ArrayList<>();
+    public Boolean newVersionAvaliable = false;
+    public String latestVTVersion;
 
     public DataManager data;
 
@@ -79,6 +82,8 @@ public final class Main extends JavaPlugin implements Listener {
         String thisVersion = this.getDescription().getVersion();
         if (!thisVersion.equalsIgnoreCase(latestVersion)) {
             Logger.log(Logger.LogLevel.WARNING, "[VT] Vanilla Tweaks has an update!\nPlease update to the latest version (" + latestVersion + ")\n" + ChatColor.YELLOW + "https://www.spigotmc.org/resources/vanilla-tweaks.94021/");
+            newVersionAvaliable = true;
+            latestVTVersion = latestVersion;
         }
 
 
@@ -150,6 +155,7 @@ public final class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new VillagerDeath(), this);
         getServer().getPluginManager().registerEvents(new Trades(), this);
         getServer().getPluginManager().registerEvents(new XPManagement(), this);
+        getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
 
 
 
