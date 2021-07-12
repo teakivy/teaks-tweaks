@@ -45,7 +45,7 @@ import java.util.UUID;
 
 public final class Main extends JavaPlugin implements Listener {
 
-    String[] packList = {"player-head-drops", "double-shulker-shells", "dragon-drops", "silence-mobs", "anti-creeper-grief", "anti-enderman-grief", "anti-ghast-grief", "nether-portal-coords", "coords-hud", "spectator-night-vision", "spectator-conduit-power", "kill-boats", "more-mob-heads", "multiplayer-sleep", "unlock-all-recipes", "cauldron-concrete", "real-time-clock", "villager-death-messages", "wandering-trades"};
+    String[] packList = {"player-head-drops", "double-shulker-shells", "dragon-drops", "silence-mobs", "anti-creeper-grief", "anti-enderman-grief", "anti-ghast-grief", "nether-portal-coords", "coords-hud", "spectator-night-vision", "spectator-conduit-power", "kill-boats", "more-mob-heads", "multiplayer-sleep", "unlock-all-recipes", "cauldron-concrete", "real-time-clock", "villager-death-messages", "wandering-trades", "tpa", "spawn", "homes"};
 
     public static ArrayList<UUID> chEnabled = new ArrayList<>();
     public Boolean newVersionAvaliable = false;
@@ -72,6 +72,8 @@ public final class Main extends JavaPlugin implements Listener {
         }
 
         // Update Checker
+        getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
+
         String latestVersion = null;
         try {
             latestVersion = new UpdateChecker(this, 94021).getLatestVersion();
@@ -256,6 +258,15 @@ public final class Main extends JavaPlugin implements Listener {
         }
         if (pack.equals("wandering-trades")) {
             return "Wandering Trades";
+        }
+        if (pack.equals("tpa")) {
+            return "TPA";
+        }
+        if (pack.equals("homes")) {
+            return "Homes";
+        }
+        if (pack.equals("spawn")) {
+            return "Spawn";
         }
         return pack;
     }
