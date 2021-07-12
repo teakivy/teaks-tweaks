@@ -14,6 +14,7 @@ import me.teakivy.vanillatweaks.Packs.CoordsHud.DisplayHud;
 import me.teakivy.vanillatweaks.Packs.CountMobDeaths.CountDeaths;
 import me.teakivy.vanillatweaks.Packs.DoubleShulkerShells.DoubleShulkers;
 import me.teakivy.vanillatweaks.Packs.DragonDrops.DragonDrops;
+import me.teakivy.vanillatweaks.Packs.DurabilityPing.DuraPing;
 import me.teakivy.vanillatweaks.Packs.MoreMobHeads.MobHeads;
 import me.teakivy.vanillatweaks.Packs.MultiplayerSleep.MultiplayerSleep;
 import me.teakivy.vanillatweaks.Packs.PlayerHeadDrops.HeadDrop;
@@ -108,6 +109,7 @@ public final class Main extends JavaPlugin implements Listener {
         this.getCommand("spawn").setExecutor(new SpawnCommand());
         this.getCommand("tpa").setExecutor(new tpaCommand());
         this.getCommand("home").setExecutor(new HomeCommand());
+        this.getCommand("duraping").setExecutor(new duraPingCommand());
 
 //        this.getCommand("armorstand").setExecutor(new ArmorstandCommand());
 
@@ -151,6 +153,8 @@ public final class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
         getServer().getPluginManager().registerEvents(new UnlockRecipes(), this);
         getServer().getPluginManager().registerEvents(new CountDeaths(), this);
+
+        getServer().getPluginManager().registerEvents(new DuraPing(), this);
 
 
 
