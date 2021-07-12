@@ -11,6 +11,7 @@ import me.teakivy.vanillatweaks.Packs.AntiEndermanGrief.AntiEnderman;
 import me.teakivy.vanillatweaks.Packs.AntiGhastGrief.AntiGhast;
 import me.teakivy.vanillatweaks.Packs.CauldronConcrete.ConcreteConverter;
 import me.teakivy.vanillatweaks.Packs.CoordsHud.DisplayHud;
+import me.teakivy.vanillatweaks.Packs.CountMobDeaths.CountDeaths;
 import me.teakivy.vanillatweaks.Packs.DoubleShulkerShells.DoubleShulkers;
 import me.teakivy.vanillatweaks.Packs.DragonDrops.DragonDrops;
 import me.teakivy.vanillatweaks.Packs.MoreMobHeads.MobHeads;
@@ -19,6 +20,7 @@ import me.teakivy.vanillatweaks.Packs.PlayerHeadDrops.HeadDrop;
 import me.teakivy.vanillatweaks.Packs.SilenceMobs.Silencer;
 import me.teakivy.vanillatweaks.Packs.SpectatorConduitPower.ConduitPower;
 import me.teakivy.vanillatweaks.Packs.SpectatorNightVision.NightVision;
+import me.teakivy.vanillatweaks.Packs.UnlockAllRecipes.UnlockRecipes;
 import me.teakivy.vanillatweaks.Packs.VillagerDeathMessages.VillagerDeath;
 import me.teakivy.vanillatweaks.Packs.WanderingTrades.Trades;
 import me.teakivy.vanillatweaks.Packs.XPManagement.XPManagement;
@@ -29,8 +31,6 @@ import me.teakivy.vanillatweaks.Utils.Metrics;
 import me.teakivy.vanillatweaks.Utils.UpdateChecker.UpdateChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.GameRule;
-import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -92,15 +92,6 @@ public final class Main extends JavaPlugin implements Listener {
         // Crafting Tweaks
         CraftingRegister.register();
 
-        // Unlock All Recipes Pack
-
-
-        if (this.getConfig().getBoolean("packs.unlock-all-recipes.enabled")) {
-            for (World world : getServer().getWorlds()) {
-                world.setGameRule(GameRule.DO_LIMITED_CRAFTING, false);
-            }
-        }
-
         // Data Manager
         this.data = new DataManager(this);
         data.saveDefaultConfig();
@@ -158,6 +149,8 @@ public final class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new Trades(), this);
         getServer().getPluginManager().registerEvents(new XPManagement(), this);
         getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
+        getServer().getPluginManager().registerEvents(new UnlockRecipes(), this);
+        getServer().getPluginManager().registerEvents(new CountDeaths(), this);
 
 
 
