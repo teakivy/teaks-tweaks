@@ -43,4 +43,6 @@ commands:
     description: Teleport to someone else (With Permission!)
   home:
     description: Set a home to teleport to at a later date
+  duraping:
+    description: Get pinged when your tools drop below 10% Durability!
 
