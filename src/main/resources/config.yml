@@ -117,6 +117,11 @@ packs:
   silence-mobs:
     enabled: false
 
+  # Count Mob Deaths
+  # Adds the ability to count the mob deaths during the time the system has started.
+  count-mob-deaths:
+    enabled: false
+
   # Villager Death Messages
   # Notifies the server in chat when a villager dies. Displayes Coordinates and Dimension that it died in.
   villager-death-messages:
@@ -377,5 +382,5 @@ crafting-tweaks:
 config:
   plugin-version: 1.2.0-beta
   alert-op-on-new-version: true
-  version: 6
+  version: 7
   dev-mode: false
