@@ -27,6 +27,7 @@ public class DuraPing implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
+        if (!main.getConfig().getBoolean("packs.durability-ping.enabled")) return;
         Player player = event.getPlayer();
 
         if (player.getScoreboardTags().contains("dp_customized")) return;
@@ -66,6 +67,7 @@ public class DuraPing implements Listener {
 
     @EventHandler
     public void onItemUse(PlayerItemDamageEvent event) {
+        if (!main.getConfig().getBoolean("packs.durability-ping.enabled")) return;
         ItemStack item = event.getItem();
         Player player = event.getPlayer();
 
