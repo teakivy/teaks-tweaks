@@ -401,7 +401,7 @@ crafting-tweaks:
 # Leave these options alone unless you know what you're doing!
 # Changing these values may cause unexpected issues.-
 config:
-  plugin-version: 1.2.0-beta
+  plugin-version: 1.2.2-beta
   alert-op-on-new-version: true
-  version: 7
+  version: 8
   dev-mode: false
