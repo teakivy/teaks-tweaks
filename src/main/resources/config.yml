@@ -47,6 +47,27 @@ packs:
     # When disabled, the weather cycle will only reset to clear upon sleeping if its already raining, just like in vanilla.
     always-reset-weather-cycle: false
 
+  # Durability Ping
+  # Get notified when you damage an item with 10% less durability.
+  # Fully Customizable per-player with '/duraping config'
+  durability-ping:
+    enabled: false
+    # What percent to start pinging the player
+    ping-at-percent: 10
+    # How many seconds to wait between pings
+    ping-cooldown: 45
+    # Default settings for everyone (customizable per-player)
+    default-settings:
+      # Ping for items held in your inventory
+      ping-for-hand-items: true
+      # Ping for armor items
+      ping-for-armor-items: true
+      # Whether or not to play a sound when pinging
+      ping-with-sound: true
+      # Where to display durability pings (default: subtitle) [hidden, subtitle, title, chat, actionbar]
+      display: subtitle
+
+
   # Cauldron Concrete
   # Drop concrete powder into a cauldron filled with water to instantly harden all of it.
   cauldron-concrete:
