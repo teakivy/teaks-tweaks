@@ -2,6 +2,7 @@ package me.teakivy.vanillatweaks;
 
 import me.teakivy.vanillatweaks.Commands.*;
 import me.teakivy.vanillatweaks.Commands.TabCompleter.chTab;
+import me.teakivy.vanillatweaks.Commands.TabCompleter.duraPingTab;
 import me.teakivy.vanillatweaks.Commands.TabCompleter.homeTab;
 import me.teakivy.vanillatweaks.Commands.TabCompleter.vtTab;
 import me.teakivy.vanillatweaks.CraftingTweaks.CraftingRegister;
@@ -117,6 +118,7 @@ public final class Main extends JavaPlugin implements Listener {
         this.getCommand("vt").setTabCompleter(new vtTab());
         this.getCommand("ch").setTabCompleter(new chTab());
         this.getCommand("home").setTabCompleter(new homeTab());
+        this.getCommand("duraping").setTabCompleter(new duraPingTab());
 
         // Config
         this.saveDefaultConfig();
