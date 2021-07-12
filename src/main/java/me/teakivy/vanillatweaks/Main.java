@@ -47,7 +47,7 @@ import java.util.UUID;
 
 public final class Main extends JavaPlugin implements Listener {
 
-    String[] packList = {"player-head-drops", "double-shulker-shells", "dragon-drops", "silence-mobs", "anti-creeper-grief", "anti-enderman-grief", "anti-ghast-grief", "nether-portal-coords", "coords-hud", "spectator-night-vision", "spectator-conduit-power", "kill-boats", "more-mob-heads", "multiplayer-sleep", "unlock-all-recipes", "cauldron-concrete", "real-time-clock", "villager-death-messages", "wandering-trades", "tpa", "spawn", "homes"};
+    String[] packList = {"player-head-drops", "double-shulker-shells", "dragon-drops", "silence-mobs", "anti-creeper-grief", "anti-enderman-grief", "anti-ghast-grief", "nether-portal-coords", "coords-hud", "spectator-night-vision", "spectator-conduit-power", "kill-boats", "more-mob-heads", "multiplayer-sleep", "unlock-all-recipes", "cauldron-concrete", "real-time-clock", "villager-death-messages", "wandering-trades", "tpa", "spawn", "homes", "durability-ping"};
 
     public static ArrayList<UUID> chEnabled = new ArrayList<>();
     public Boolean newVersionAvaliable = false;
@@ -266,6 +266,9 @@ public final class Main extends JavaPlugin implements Listener {
         }
         if (pack.equals("spawn")) {
             return "Spawn";
+        }
+        if (pack.equals("durability-ping")) {
+            return "Durability Ping";
         }
         return pack;
     }
