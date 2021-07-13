@@ -1,20 +1,12 @@
 package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
-import me.teakivy.vanillatweaks.Packs.ArmorStatues.Book.BookItem;
-import me.teakivy.vanillatweaks.Packs.MoreMobHeads.MobHeads;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Wolf;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.Random;
 
 public class testCommand implements CommandExecutor {
 
@@ -26,10 +18,13 @@ public class testCommand implements CommandExecutor {
         if (command.getName().equalsIgnoreCase("test")) {
             Player player = (Player) sender;
             World world = player.getWorld();
-            if (main.getConfig().getBoolean("config.dev-mode"))
-                BookItem.giveBook(player);
-            else {
-                player.sendMessage(vt + ChatColor.YELLOW + "Nothing to see here... move along");
+            if (main.getConfig().getBoolean("config.dev-mode")) {
+                player.sendMessage(vt + ChatColor.YELLOW + "No New features yet! Check back in a future update for secrets!");
+            } else {
+                player.sendMessage(vt + ChatColor.YELLOW + "Hey! Looks like you found my test command!");
+                if (player.isOp()) {
+                    player.sendMessage(ChatColor.YELLOW + "This command is used to test new features! Enable it marking " + ChatColor.GRAY + "config.dev-mode: true" + ChatColor.YELLOW + "!");
+                }
             }
         }
         return false;
