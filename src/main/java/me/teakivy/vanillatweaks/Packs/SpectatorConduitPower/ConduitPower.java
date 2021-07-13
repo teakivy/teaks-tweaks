@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import org.bukkit.potion.PotionEffectType;
@@ -23,5 +24,9 @@ public class ConduitPower implements Listener {
                 player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] " + ChatColor.RED + "Conduit Power removed because of Game Mode change");
             }
         }
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
     }
 }

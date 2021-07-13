@@ -3,6 +3,7 @@ package me.teakivy.vanillatweaks.Packs.CauldronConcrete;
 import me.teakivy.vanillatweaks.Main;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDropItemEvent;
 import org.bukkit.event.entity.ItemSpawnEvent;
@@ -87,6 +88,10 @@ public class ConcreteConverter implements Listener {
                 if (event.getEntity().isDead()) this.cancel();
             }
         }.runTaskTimer(main, 0, 20L);
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
     }
 
 

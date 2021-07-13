@@ -3,6 +3,7 @@ package me.teakivy.vanillatweaks.Packs.UnlockAllRecipes;
 import me.teakivy.vanillatweaks.Main;
 import org.bukkit.Keyed;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Recipe;
@@ -23,6 +24,10 @@ public class UnlockRecipes implements Listener {
                 event.getPlayer().discoverRecipe(((Keyed) rec).getKey());
             }
         }
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
     }
 
 }

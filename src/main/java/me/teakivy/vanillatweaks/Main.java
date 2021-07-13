@@ -7,30 +7,13 @@ import me.teakivy.vanillatweaks.Commands.TabCompleter.homeTab;
 import me.teakivy.vanillatweaks.Commands.TabCompleter.vtTab;
 import me.teakivy.vanillatweaks.CraftingTweaks.CraftingRegister;
 import me.teakivy.vanillatweaks.Events.UpdateJoinAlert;
-import me.teakivy.vanillatweaks.Packs.AntiCreeperGreif.AntiCreeper;
-import me.teakivy.vanillatweaks.Packs.AntiEndermanGrief.AntiEnderman;
-import me.teakivy.vanillatweaks.Packs.AntiGhastGrief.AntiGhast;
-import me.teakivy.vanillatweaks.Packs.CauldronConcrete.ConcreteConverter;
 import me.teakivy.vanillatweaks.Packs.CoordsHud.DisplayHud;
-import me.teakivy.vanillatweaks.Packs.CountMobDeaths.CountDeaths;
-import me.teakivy.vanillatweaks.Packs.DoubleShulkerShells.DoubleShulkers;
-import me.teakivy.vanillatweaks.Packs.DragonDrops.DragonDrops;
-import me.teakivy.vanillatweaks.Packs.DurabilityPing.DuraPing;
-import me.teakivy.vanillatweaks.Packs.MoreMobHeads.MobHeads;
-import me.teakivy.vanillatweaks.Packs.MultiplayerSleep.MultiplayerSleep;
-import me.teakivy.vanillatweaks.Packs.PlayerHeadDrops.HeadDrop;
-import me.teakivy.vanillatweaks.Packs.SilenceMobs.Silencer;
-import me.teakivy.vanillatweaks.Packs.SpectatorConduitPower.ConduitPower;
-import me.teakivy.vanillatweaks.Packs.SpectatorNightVision.NightVision;
 import me.teakivy.vanillatweaks.Packs.Tag.Tag;
-import me.teakivy.vanillatweaks.Packs.UnlockAllRecipes.UnlockRecipes;
-import me.teakivy.vanillatweaks.Packs.VillagerDeathMessages.VillagerDeath;
-import me.teakivy.vanillatweaks.Packs.WanderingTrades.Trades;
-import me.teakivy.vanillatweaks.Packs.XPManagement.XPManagement;
 import me.teakivy.vanillatweaks.Utils.ConfigUpdater.ConfigUpdater;
 import me.teakivy.vanillatweaks.Utils.DataManager.DataManager;
 import me.teakivy.vanillatweaks.Utils.Logger.Logger;
 import me.teakivy.vanillatweaks.Utils.Metrics;
+import me.teakivy.vanillatweaks.Utils.Register.Register;
 import me.teakivy.vanillatweaks.Utils.UpdateChecker.UpdateChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -48,7 +31,7 @@ import java.util.UUID;
 
 public final class Main extends JavaPlugin implements Listener {
 
-    String[] packList = {"player-head-drops", "double-shulker-shells", "dragon-drops", "silence-mobs", "anti-creeper-grief", "anti-enderman-grief", "anti-ghast-grief", "nether-portal-coords", "coords-hud", "spectator-night-vision", "spectator-conduit-power", "kill-boats", "more-mob-heads", "multiplayer-sleep", "unlock-all-recipes", "cauldron-concrete", "real-time-clock", "villager-death-messages", "wandering-trades", "tpa", "spawn", "homes", "durability-ping"};
+    public String[] packList = {"player-head-drops", "double-shulker-shells", "dragon-drops", "silence-mobs", "anti-creeper-grief", "anti-enderman-grief", "anti-ghast-grief", "nether-portal-coords", "coords-hud", "spectator-night-vision", "spectator-conduit-power", "kill-boats", "more-mob-heads", "multiplayer-sleep", "unlock-all-recipes", "cauldron-concrete", "real-time-clock", "villager-death-messages", "wandering-trades", "tpa", "spawn", "homes", "durability-ping", "tag"};
 
     public static ArrayList<UUID> chEnabled = new ArrayList<>();
     public Boolean newVersionAvaliable = false;
@@ -128,7 +111,8 @@ public final class Main extends JavaPlugin implements Listener {
         this.saveDefaultConfig();
 
         boolean displayedFirstSpace = false;
-        for (String pack : packList) {
+
+        for (String pack : this.getConfig().getConfigurationSection("packs").getKeys(false)) {
             if (this.getConfig().getBoolean("packs." + pack + ".enabled")) {
                 if (!displayedFirstSpace) System.out.println("");
                 displayedFirstSpace = true;
@@ -141,28 +125,8 @@ public final class Main extends JavaPlugin implements Listener {
         tagListener = new Tag();
 
         // Packs
-        getServer().getPluginManager().registerEvents(new HeadDrop(), this);
-        getServer().getPluginManager().registerEvents(new DoubleShulkers(), this);
-        getServer().getPluginManager().registerEvents(new DragonDrops(), this);
-        getServer().getPluginManager().registerEvents(new Silencer(), this);
-        getServer().getPluginManager().registerEvents(new AntiCreeper(), this);
-        getServer().getPluginManager().registerEvents(new AntiGhast(), this);
-        getServer().getPluginManager().registerEvents(new DisplayHud(), this);
-        getServer().getPluginManager().registerEvents(new AntiEnderman(), this);
-        getServer().getPluginManager().registerEvents(new NightVision(), this);
-        getServer().getPluginManager().registerEvents(new ConduitPower(), this);
-        getServer().getPluginManager().registerEvents(new MobHeads(), this);
-        getServer().getPluginManager().registerEvents(new MultiplayerSleep(), this);
-        getServer().getPluginManager().registerEvents(new ConcreteConverter(), this);
-        getServer().getPluginManager().registerEvents(new VillagerDeath(), this);
-        getServer().getPluginManager().registerEvents(new Trades(), this);
-        getServer().getPluginManager().registerEvents(new XPManagement(), this);
-        getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
-        getServer().getPluginManager().registerEvents(new UnlockRecipes(), this);
-        getServer().getPluginManager().registerEvents(new CountDeaths(), this);
-        getServer().getPluginManager().registerEvents(new DuraPing(), this);
 
-        getServer().getPluginManager().registerEvents(tagListener, this);
+        Register.registerAll();
 
 
 
@@ -277,6 +241,9 @@ public final class Main extends JavaPlugin implements Listener {
         }
         if (pack.equals("durability-ping")) {
             return "Durability Ping";
+        }
+        if (pack.equals("tag")) {
+            return "Tag";
         }
         return pack;
     }

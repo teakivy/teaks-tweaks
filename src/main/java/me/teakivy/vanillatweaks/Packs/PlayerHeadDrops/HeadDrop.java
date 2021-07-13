@@ -4,6 +4,7 @@ import me.teakivy.vanillatweaks.Main;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
@@ -37,5 +38,9 @@ public class HeadDrop implements Listener {
         skull.setOwner(player.getName());
         item.setItemMeta(skull);
         return item;
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
     }
 }

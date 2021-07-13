@@ -5,6 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.WanderingTrader;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.inventory.ItemStack;
@@ -82,6 +83,10 @@ public class Trades implements Listener {
         skull.setOwner(playerName);
         item.setItemMeta(skull);
         return item;
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
     }
 
 }

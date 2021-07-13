@@ -8,6 +8,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.event.player.PlayerBedLeaveEvent;
@@ -120,6 +121,10 @@ public class MultiplayerSleep implements Listener {
                 sleptNight = false;
             }, 10L);
         }
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
     }
 
 }

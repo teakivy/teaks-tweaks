@@ -5,6 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
@@ -21,6 +22,10 @@ public class DoubleShulkers implements Listener {
             event.getDrops().clear();
             event.getDrops().add(new ItemStack(Material.SHULKER_SHELL, 2));
         }
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
     }
 
 }

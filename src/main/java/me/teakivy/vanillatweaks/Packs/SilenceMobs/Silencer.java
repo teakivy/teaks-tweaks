@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 
@@ -43,6 +44,10 @@ public class Silencer implements Listener {
         }
 
         return null;
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
     }
 }
 

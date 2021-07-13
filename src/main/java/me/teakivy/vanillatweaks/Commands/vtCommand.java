@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Utils.Register.Register;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -26,6 +27,9 @@ public class vtCommand implements CommandExecutor {
                 Main.getPlugin(Main.class).reloadConfig();
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(Main.getPlugin(Main.class).getConfig().getString("reload.message"))));
             }
+
+            Register.unregisterAll();
+            Register.registerAll();
 
         }
         return false;

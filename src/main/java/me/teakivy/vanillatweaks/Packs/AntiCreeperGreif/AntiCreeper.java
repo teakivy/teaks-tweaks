@@ -4,6 +4,7 @@ import me.teakivy.vanillatweaks.Main;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -32,6 +33,10 @@ public class AntiCreeper implements Listener {
                 event.setCancelled(true);
             }
         }
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
     }
 
 }

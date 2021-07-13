@@ -4,6 +4,7 @@ import me.teakivy.vanillatweaks.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.scoreboard.Objective;
@@ -34,6 +35,10 @@ public class CountDeaths implements Listener {
 
         String name = ChatColor.YELLOW + event.getEntity().getName();
         objective.getScore(name).setScore(objective.getScore(name).getScore() + 1);
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
     }
 
 }

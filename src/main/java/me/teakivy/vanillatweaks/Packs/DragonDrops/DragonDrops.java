@@ -5,6 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
@@ -26,5 +27,9 @@ public class DragonDrops implements Listener {
                 event.getDrops().add(new ItemStack(Material.ELYTRA));
             }
         }
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
     }
 }

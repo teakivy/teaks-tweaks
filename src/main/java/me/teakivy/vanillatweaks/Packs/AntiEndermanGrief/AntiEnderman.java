@@ -4,6 +4,7 @@ import me.teakivy.vanillatweaks.Main;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 
@@ -18,6 +19,10 @@ public class AntiEnderman implements Listener {
         if (entity.getType() == EntityType.ENDERMAN) {
             event.setCancelled(true);
         }
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
     }
 
 }

@@ -28,6 +28,7 @@ import java.util.Objects;
 public class Tag implements Listener {
 
     Main main = Main.getPlugin(Main.class);
+    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     @EventHandler
     public void tagPlayer(EntityDamageByEntityEvent event) {
@@ -69,6 +70,9 @@ public class Tag implements Listener {
             player.getInventory().addItem(tag);
         } else {
             tagFullInventory(player);
+        }
+        if (main.getConfig().getBoolean("packs.tag.enabled")) {
+            Bukkit.broadcastMessage(vt + ChatColor.GOLD + damager.getName() + ChatColor.YELLOW + " tagged " + ChatColor.RED + player.getName());
         }
         event.setDamage(0);
     }
@@ -156,8 +160,11 @@ public class Tag implements Listener {
         }
     }
 
-    public void uninstall() {
+    public void unregister() {
         HandlerList.unregisterAll(this);
+    }
+
+    public void uninstall() {
         Scoreboard sb = Bukkit.getScoreboardManager().getMainScoreboard();
         for (String i : Objects.requireNonNull(sb.getTeam("TaggedTeam")).getEntries()) {
             for (OfflinePlayer oPlayer : Bukkit.getOfflinePlayers()) {

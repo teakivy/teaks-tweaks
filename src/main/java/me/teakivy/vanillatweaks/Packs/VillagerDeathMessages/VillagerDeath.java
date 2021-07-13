@@ -7,6 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 
@@ -33,6 +34,10 @@ public class VillagerDeath implements Listener {
         if (world.getName().equalsIgnoreCase("world_nether")) return ChatColor.YELLOW + " in " + ChatColor.RED + "The Nether";
         if (world.getName().equalsIgnoreCase("world_the_end")) return ChatColor.YELLOW + " in " + ChatColor.LIGHT_PURPLE + "The End";
         return "";
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
     }
 
 

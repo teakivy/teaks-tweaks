@@ -5,6 +5,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
@@ -41,6 +42,10 @@ public class Loader implements Listener {
                 System.out.println("loaded: " + loaded);
             }
         }
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
     }
 
 }
