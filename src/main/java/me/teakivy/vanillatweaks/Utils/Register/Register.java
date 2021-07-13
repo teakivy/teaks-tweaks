@@ -26,26 +26,26 @@ public class Register {
 
     static Main main = Main.getPlugin(Main.class);
 
-    static AntiCreeper antiCreeper = new AntiCreeper();
-    static AntiEnderman antiEnderman = new AntiEnderman();
-    static AntiGhast antiGhast = new AntiGhast();
-    static ConcreteConverter concreteConverter = new ConcreteConverter();
-    static DisplayHud displayHud = new DisplayHud();
-    static CountDeaths countDeaths = new CountDeaths();
-    static DoubleShulkers doubleShulkers = new DoubleShulkers();
-    static DragonDrops dragonDrops = new DragonDrops();
-    static DuraPing duraPing = new DuraPing();
-    static MobHeads mobHeads = new MobHeads();
-    static MultiplayerSleep multiplayerSleep = new MultiplayerSleep();
-    static HeadDrop headDrop = new HeadDrop();
-    static Silencer silencer = new Silencer();
-    static ConduitPower conduitPower = new ConduitPower();
-    static NightVision nightVision = new NightVision();
-    static Tag tag = new Tag();
-    static UnlockRecipes unlockRecipes = new UnlockRecipes();
-    static VillagerDeath villagerDeath = new VillagerDeath();
-    static Trades trades = new Trades();
-    static XPManagement xpManagement = new XPManagement();
+    public static AntiCreeper antiCreeper = new AntiCreeper();
+    public static AntiEnderman antiEnderman = new AntiEnderman();
+    public static AntiGhast antiGhast = new AntiGhast();
+    public static ConcreteConverter concreteConverter = new ConcreteConverter();
+    public static DisplayHud displayHud = new DisplayHud();
+    public static CountDeaths countDeaths = new CountDeaths();
+    public static DoubleShulkers doubleShulkers = new DoubleShulkers();
+    public static DragonDrops dragonDrops = new DragonDrops();
+    public static DuraPing duraPing = new DuraPing();
+    public static MobHeads mobHeads = new MobHeads();
+    public static MultiplayerSleep multiplayerSleep = new MultiplayerSleep();
+    public static HeadDrop headDrop = new HeadDrop();
+    public static Silencer silencer = new Silencer();
+    public static ConduitPower conduitPower = new ConduitPower();
+    public static NightVision nightVision = new NightVision();
+    public static Tag tag = new Tag();
+    public static UnlockRecipes unlockRecipes = new UnlockRecipes();
+    public static VillagerDeath villagerDeath = new VillagerDeath();
+    public static Trades trades = new Trades();
+    public static XPManagement xpManagement = new XPManagement();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
