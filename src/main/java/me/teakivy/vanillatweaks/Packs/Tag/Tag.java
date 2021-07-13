@@ -72,7 +72,7 @@ public class Tag implements Listener {
             tagFullInventory(player);
         }
         if (main.getConfig().getBoolean("packs.tag.enabled")) {
-            Bukkit.broadcastMessage(vt + ChatColor.GOLD + damager.getName() + ChatColor.YELLOW + " tagged " + ChatColor.RED + player.getName());
+            Bukkit.broadcastMessage(vt + ChatColor.RED + player.getName() + ChatColor.YELLOW + " was tagged by " + ChatColor.GOLD + damager.getName());
         }
         event.setDamage(0);
     }
@@ -166,6 +166,7 @@ public class Tag implements Listener {
 
     public void uninstall() {
         Scoreboard sb = Bukkit.getScoreboardManager().getMainScoreboard();
+        if (sb.getTeam("TaggedTeam") == null) return;
         for (String i : Objects.requireNonNull(sb.getTeam("TaggedTeam")).getEntries()) {
             for (OfflinePlayer oPlayer : Bukkit.getOfflinePlayers()) {
                 if (Objects.requireNonNull(oPlayer.getName()).equalsIgnoreCase(i)) {
