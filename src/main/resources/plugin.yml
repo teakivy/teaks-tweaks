@@ -46,4 +46,6 @@ commands:
   duraping:
     description: Get pinged when your tools drop below 10% Durability!
     aliases: [dp]
+  tag:
+    description: The classic game of Tag!
 
