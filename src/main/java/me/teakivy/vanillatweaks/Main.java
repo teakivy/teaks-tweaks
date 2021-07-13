@@ -22,6 +22,7 @@ import me.teakivy.vanillatweaks.Packs.PlayerHeadDrops.HeadDrop;
 import me.teakivy.vanillatweaks.Packs.SilenceMobs.Silencer;
 import me.teakivy.vanillatweaks.Packs.SpectatorConduitPower.ConduitPower;
 import me.teakivy.vanillatweaks.Packs.SpectatorNightVision.NightVision;
+import me.teakivy.vanillatweaks.Packs.Tag.Tag;
 import me.teakivy.vanillatweaks.Packs.UnlockAllRecipes.UnlockRecipes;
 import me.teakivy.vanillatweaks.Packs.VillagerDeathMessages.VillagerDeath;
 import me.teakivy.vanillatweaks.Packs.WanderingTrades.Trades;
@@ -54,6 +55,9 @@ public final class Main extends JavaPlugin implements Listener {
     public String latestVTVersion;
 
     public DataManager data;
+
+
+    public Tag tagListener;
 
     @Override
     public void onEnable() {
@@ -134,6 +138,7 @@ public final class Main extends JavaPlugin implements Listener {
         }
         if (displayedFirstSpace) System.out.println("");
 
+        tagListener = new Tag();
 
         // Packs
         getServer().getPluginManager().registerEvents(new HeadDrop(), this);
@@ -155,8 +160,11 @@ public final class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
         getServer().getPluginManager().registerEvents(new UnlockRecipes(), this);
         getServer().getPluginManager().registerEvents(new CountDeaths(), this);
-
         getServer().getPluginManager().registerEvents(new DuraPing(), this);
+
+        getServer().getPluginManager().registerEvents(tagListener, this);
+
+
 
 
 
