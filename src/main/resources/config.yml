@@ -127,6 +127,8 @@ packs:
   # Makes the Ender Dragon drop a dragon egg and elytra on death.
   dragon-drops:
     enabled: false
+    drop-elytra: true
+    drop-egg: true
 
   # More Mob Heads
   # Adds a chance to receive a mob head upon killing it.
@@ -239,6 +241,13 @@ packs:
         - Grian
         - iskall85
         - ZombieCleo
+
+  # Tag
+  # Adds the Hermitcraft Tag game directly into your world!
+  tag:
+    enabled: false
+    # Display in chat when someone is tagged.
+    display-when-tagged: true
 
 
   # Experimental
