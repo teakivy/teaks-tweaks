@@ -48,4 +48,3 @@ commands:
     aliases: [dp]
   tag:
     description: The classic game of Tag!
-
