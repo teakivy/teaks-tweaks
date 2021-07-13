@@ -1,10 +1,7 @@
 package me.teakivy.vanillatweaks;
 
 import me.teakivy.vanillatweaks.Commands.*;
-import me.teakivy.vanillatweaks.Commands.TabCompleter.chTab;
-import me.teakivy.vanillatweaks.Commands.TabCompleter.duraPingTab;
-import me.teakivy.vanillatweaks.Commands.TabCompleter.homeTab;
-import me.teakivy.vanillatweaks.Commands.TabCompleter.vtTab;
+import me.teakivy.vanillatweaks.Commands.TabCompleter.*;
 import me.teakivy.vanillatweaks.CraftingTweaks.CraftingRegister;
 import me.teakivy.vanillatweaks.Events.UpdateJoinAlert;
 import me.teakivy.vanillatweaks.Packs.CoordsHud.DisplayHud;
@@ -98,6 +95,7 @@ public final class Main extends JavaPlugin implements Listener {
         this.getCommand("tpa").setExecutor(new tpaCommand());
         this.getCommand("home").setExecutor(new HomeCommand());
         this.getCommand("duraping").setExecutor(new duraPingCommand());
+        this.getCommand("tag").setExecutor(new TagCommand());
 
 //        this.getCommand("armorstand").setExecutor(new ArmorstandCommand());
 
@@ -106,6 +104,7 @@ public final class Main extends JavaPlugin implements Listener {
         this.getCommand("ch").setTabCompleter(new chTab());
         this.getCommand("home").setTabCompleter(new homeTab());
         this.getCommand("duraping").setTabCompleter(new duraPingTab());
+        this.getCommand("tag").setTabCompleter(new TagTab());
 
         // Config
         this.saveDefaultConfig();
