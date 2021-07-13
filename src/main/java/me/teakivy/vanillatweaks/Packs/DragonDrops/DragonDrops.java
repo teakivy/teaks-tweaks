@@ -19,8 +19,12 @@ public class DragonDrops implements Listener {
         Entity entity = event.getEntity();
         if (entity.getType() == EntityType.ENDER_DRAGON) {
             event.getDrops().clear();
-            event.getDrops().add(new ItemStack(Material.DRAGON_EGG));
-            event.getDrops().add(new ItemStack(Material.ELYTRA));
+            if (main.getConfig().getBoolean("packs.dragon-drops.drop-egg")) {
+                event.getDrops().add(new ItemStack(Material.DRAGON_EGG));
+            }
+            if (main.getConfig().getBoolean("packs.dragon-drops.drop-elytra")) {
+                event.getDrops().add(new ItemStack(Material.ELYTRA));
+            }
         }
     }
 }
