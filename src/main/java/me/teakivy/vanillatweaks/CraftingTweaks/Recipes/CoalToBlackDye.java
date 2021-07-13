@@ -12,7 +12,7 @@ public class CoalToBlackDye {
     static Main main = Main.getPlugin(Main.class);
 
     public static void registerRecipes() {
-        NamespacedKey key = new NamespacedKey(main, "black_dye_vt_charcoal");
+        NamespacedKey key = new NamespacedKey(main, "black_dye_vt_coal");
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.BLACK_DYE));
         recipe.addIngredient(Material.COAL);
 
