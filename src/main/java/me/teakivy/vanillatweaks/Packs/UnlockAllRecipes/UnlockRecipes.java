@@ -15,6 +15,7 @@ public class UnlockRecipes implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
+        if (!main.getConfig().getBoolean("packs.unlock-all-recipes.enabled")) return;
         Iterator<Recipe> it = main.getServer().recipeIterator();
         while (it.hasNext()) {
             Recipe rec = it.next();
