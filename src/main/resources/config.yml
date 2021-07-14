@@ -255,9 +255,20 @@ packs:
   # XP Management
   # Right-Click an enchanting table with an empty bottle to fill it with some of your XP.
   xp-management:
-    enabled: true
+    enabled: false
     # How much XP is taken when bottling XP
     take-xp-amount: 8
+
+  # Confetti Creepers
+  # There is a chance each creeper will explode into confetti and do no damage to blocks.
+  confett-creepers:
+    enabled: true
+    # The % Chance a creeper will be a confetti creeper
+    confetti-chance: 100
+    # The % of damage to reduce from explosion damage on entities (players, mobs, etc)
+    entity-damage-reduction: 50
+    # Whether or not to do damage to blocks nearby
+    do-block-damage: false
 
 
 
