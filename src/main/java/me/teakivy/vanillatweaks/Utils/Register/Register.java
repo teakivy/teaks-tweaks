@@ -4,6 +4,7 @@ import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.AntiCreeperGreif.AntiCreeper;
 import me.teakivy.vanillatweaks.Packs.AntiEndermanGrief.AntiEnderman;
 import me.teakivy.vanillatweaks.Packs.AntiGhastGrief.AntiGhast;
+import me.teakivy.vanillatweaks.Packs.Back.Back;
 import me.teakivy.vanillatweaks.Packs.CauldronConcrete.ConcreteConverter;
 import me.teakivy.vanillatweaks.Packs.ConfettiCreepers.ConfettiCreeper;
 import me.teakivy.vanillatweaks.Packs.CoordsHud.DisplayHud;
@@ -48,6 +49,7 @@ public class Register {
     public static Trades trades = new Trades();
     public static XPManagement xpManagement = new XPManagement();
     public static ConfettiCreeper confettiCreeper = new ConfettiCreeper();
+    public static Back back = new Back();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -151,6 +153,10 @@ public class Register {
             confettiCreeper.unregister();
         }
 
+        if (pack.equalsIgnoreCase("back")) {
+            back.unregister();
+        }
+
     }
 
     public static void registerPack(String pack) {
@@ -236,6 +242,10 @@ public class Register {
 
         if (pack.equalsIgnoreCase("confetti-creepers")) {
             main.getServer().getPluginManager().registerEvents(confettiCreeper, main);
+        }
+
+        if (pack.equalsIgnoreCase("back")) {
+            main.getServer().getPluginManager().registerEvents(back, main);
         }
     }
 
