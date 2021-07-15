@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Packs.Back.Back;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -64,6 +65,8 @@ public class SpawnCommand implements CommandExecutor {
 
     private void teleportToSpawn(Player player) {
         World world = player.getWorld();
+
+        Back.backLoc.put(player.getUniqueId(), player.getLocation());
         player.teleport(world.getSpawnLocation());
     }
 }

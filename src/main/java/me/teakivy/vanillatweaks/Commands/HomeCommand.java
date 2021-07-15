@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Packs.Back.Back;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -114,12 +115,12 @@ public class HomeCommand implements CommandExecutor {
             if (main.getConfig().getInt("packs.spawn.teleport-delay") == 0) {
                 if (data.contains("homes." + player.getUniqueId() + "." + args[0].toLowerCase())) {
                     player.sendMessage(vt + ChatColor.YELLOW + "Teleporting to home " + args[0].toLowerCase() + "...");
+                    Back.backLoc.put(player.getUniqueId(), player.getLocation());
                     player.teleport(new Location(Bukkit.getWorld(data.getString("homes." + player.getUniqueId() + "." + args[0].toLowerCase() + ".world")), data.getDouble("homes." + player.getUniqueId() + "." + args[0].toLowerCase() + ".x"), data.getDouble("homes." + player.getUniqueId() + "." + args[0].toLowerCase() + ".y"), data.getDouble("homes." + player.getUniqueId() + "." + args[0].toLowerCase() + ".z")));
-                    return true;
                 } else {
                     player.sendMessage(vt + ChatColor.RED + "The home " + args[0].toLowerCase() + " doesn't exist!");
-                    return true;
                 }
+                return true;
             } else if (main.getConfig().getInt("packs.spawn.teleport-delay") > 0) {
                 Location loc = player.getLocation();
 
@@ -127,16 +128,16 @@ public class HomeCommand implements CommandExecutor {
                     player.sendMessage(vt + ChatColor.YELLOW + "Teleporting to home " + args[0].toLowerCase() + "...");
                     Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
                         if (player.getLocation().getX() == loc.getX() && player.getLocation().getY() == loc.getY() && player.getLocation().getZ() == loc.getZ()) {
+                            Back.backLoc.put(player.getUniqueId(), player.getLocation());
                             player.teleport(new Location(Bukkit.getWorld(data.getString("homes." + player.getUniqueId() + "." + args[0].toLowerCase() + ".world")), data.getDouble("homes." + player.getUniqueId() + "." + args[0].toLowerCase() + ".x"), data.getDouble("homes." + player.getUniqueId() + "." + args[0].toLowerCase() + ".y"), data.getDouble("homes." + player.getUniqueId() + "." + args[0].toLowerCase() + ".z")));
                         } else {
                             player.sendMessage(vt + ChatColor.RED + "You must stand still to teleport!");
                         }
                     }, main.getConfig().getInt("packs.spawn.teleport-delay") * 20L);
-                    return true;
                 } else {
                     player.sendMessage(vt + ChatColor.RED + "The home " + args[0].toLowerCase() + " doesn't exist!");
-                    return true;
                 }
+                return true;
 
 
             }

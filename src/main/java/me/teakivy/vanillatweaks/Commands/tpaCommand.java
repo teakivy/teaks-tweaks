@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Packs.Back.Back;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -51,6 +52,7 @@ public class tpaCommand implements CommandExecutor {
                 }
                 if (!requests.containsKey(player)) return true;
                 if (requests.get(player).getName().equals(confirmant.getName())) {
+                    Back.backLoc.put(confirmant.getUniqueId(), confirmant.getLocation());
                     confirmant.teleport(player.getLocation());
                     requests.remove(player);
                     confirmant.sendMessage(vt + ChatColor.YELLOW + "Teleporting to " + player.getName() + "...");
