@@ -23,6 +23,32 @@ packs:
   unlock-all-recipes:
     enabled: false
 
+  # AFK Display
+  # Gray out a players name that is not moving for 5 minutes.
+  afk-display:
+    enabled: false
+    # Whether or not to display [AFK] before an AFK players name
+    display-afk-badge: true
+    # Badge to show when afk
+    afk-badge: '&7[AFK]'
+    # How long a player needs to be still before getting AFK'd
+    afk-after: 5
+    # How long (in minutes) a player needs to be AFK before they get kicked from the server
+    # Use '-1' to never kick, use '0' to kick immediately, use '60' to kick after 1 hour, etc.
+    kick-after: -1
+    # Message to show when AFK Kicked
+    kick-message: You have been kicked for AFK!
+    # Whether or not users can run '/afk' to mark themselves as AFK
+    allow-afk-command: true
+    # Message settings
+    message:
+      # Whether or not to display the AFK message to the player afk
+      display-to-self: true
+      # Whether or not to display the AFK message to everyone other than the afk player
+      display-to-everyone: false
+      # Whether or not to display the AFK message to Server Console
+      display-to-console: true
+
   multiplayer-sleep:
     enabled: false
     # Announce Type
@@ -260,6 +286,8 @@ packs:
     enabled: false
     # Display in chat when someone is tagged.
     display-when-tagged: true
+    # Whether or not you can tag afk players (using afk-display pack)
+    allow-tagging-afk: false
 
 
   # Experimental
@@ -433,7 +461,7 @@ crafting-tweaks:
 # Leave these options alone unless you know what you're doing!
 # Changing these values may cause unexpected issues.-
 config:
-  plugin-version: 1.2.4-beta
+  plugin-version: 1.3.0-beta
   alert-op-on-new-version: true
-  version: 9
+  version: 10
   dev-mode: false
