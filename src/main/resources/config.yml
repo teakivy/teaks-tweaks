@@ -180,6 +180,18 @@ packs:
   tpa:
     enabled: false
 
+  # Back
+  # Enter '/back' to go back to the last location you teleported from. (using Homes, Spawn, or TPA)
+  # You can also allow players to teleport back to their death location if thats enabled.
+  back:
+    enabled: false
+    # Whether or not death locations should be saved in the back command
+    save-death-location: false
+    # Enter the number of seconds required to stand still after running the back command
+    teleport-delay: 0
+    # Enter the number of seconds required to wait between uses of the back command
+    teleport-cooldown: 0
+
 
   # Utilities:
 
