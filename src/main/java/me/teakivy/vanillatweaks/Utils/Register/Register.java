@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Utils.Register;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Packs.AFKDisplay.AFK;
 import me.teakivy.vanillatweaks.Packs.AntiCreeperGreif.AntiCreeper;
 import me.teakivy.vanillatweaks.Packs.AntiEndermanGrief.AntiEnderman;
 import me.teakivy.vanillatweaks.Packs.AntiGhastGrief.AntiGhast;
@@ -50,6 +51,7 @@ public class Register {
     public static XPManagement xpManagement = new XPManagement();
     public static ConfettiCreeper confettiCreeper = new ConfettiCreeper();
     public static Back back = new Back();
+    public static AFK afk = new AFK();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -157,6 +159,10 @@ public class Register {
             back.unregister();
         }
 
+        if (pack.equalsIgnoreCase("afk-display")) {
+            afk.unregister();
+        }
+
     }
 
     public static void registerPack(String pack) {
@@ -246,6 +252,11 @@ public class Register {
 
         if (pack.equalsIgnoreCase("back")) {
             main.getServer().getPluginManager().registerEvents(back, main);
+        }
+
+        if (pack.equalsIgnoreCase("afk-display")) {
+            main.getServer().getPluginManager().registerEvents(afk, main);
+            AFK.register();
         }
     }
 
