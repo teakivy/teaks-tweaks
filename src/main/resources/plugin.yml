@@ -48,3 +48,5 @@ commands:
     aliases: [dp]
   tag:
     description: The classic game of Tag!
+  back:
+    description: Teleport back to your last location!
