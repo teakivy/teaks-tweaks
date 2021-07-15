@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Tag;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Packs.AFKDisplay.AFK;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -41,6 +42,15 @@ public class Tag implements Listener {
         if (damager.getItemInHand().getItemMeta() == null) return;
         if (!damager.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.YELLOW + "Tag!") || !damager.getItemInHand().getItemMeta().isUnbreakable()) return;
         if (!damager.getScoreboardTags().contains("vt_tag_it")) return;
+
+        if (AFK.afk.get(player.getUniqueId())) {
+            if (!main.getConfig().getBoolean("packs.tag.allow-tagging-afk")) {
+                damager.sendMessage(vt + ChatColor.YELLOW + "You cannot Tag an AFK player!");
+                event.setCancelled(true);
+                return;
+            }
+        }
+
         damager.removeScoreboardTag("vt_tag_it");
         player.addScoreboardTag("vt_tag_it");
 
