@@ -261,8 +261,8 @@ packs:
 
   # Confetti Creepers
   # There is a chance each creeper will explode into confetti and do no damage to blocks.
-  confett-creepers:
-    enabled: true
+  confetti-creepers:
+    enabled: false
     # The % Chance a creeper will be a confetti creeper
     confetti-chance: 100
     # The % of damage to reduce from explosion damage on entities (players, mobs, etc)
