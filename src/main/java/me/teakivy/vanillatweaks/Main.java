@@ -95,6 +95,7 @@ public final class Main extends JavaPlugin implements Listener {
         this.getCommand("duraping").setExecutor(new duraPingCommand());
         this.getCommand("tag").setExecutor(new TagCommand());
         this.getCommand("back").setExecutor(new BackCommand());
+        this.getCommand("afk").setExecutor(new afkCommand());
 
 //        this.getCommand("armorstand").setExecutor(new ArmorstandCommand());
 
@@ -104,6 +105,7 @@ public final class Main extends JavaPlugin implements Listener {
         this.getCommand("home").setTabCompleter(new homeTab());
         this.getCommand("duraping").setTabCompleter(new duraPingTab());
         this.getCommand("tag").setTabCompleter(new TagTab());
+        this.getCommand("afk").setTabCompleter(new afkTab());
 
         // Config
         this.saveDefaultConfig();
@@ -248,6 +250,12 @@ public final class Main extends JavaPlugin implements Listener {
         }
         if (pack.equals("back")) {
             return "Back";
+        }
+        if (pack.equals("confetti-creepers")) {
+            return "Confetti Creepers";
+        }
+        if (pack.equals("afk-display")) {
+            return "AFK Display";
         }
         return pack;
     }
