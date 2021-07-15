@@ -28,8 +28,6 @@ import java.util.UUID;
 
 public final class Main extends JavaPlugin implements Listener {
 
-    public String[] packList = {"player-head-drops", "double-shulker-shells", "dragon-drops", "silence-mobs", "anti-creeper-grief", "anti-enderman-grief", "anti-ghast-grief", "nether-portal-coords", "coords-hud", "spectator-night-vision", "spectator-conduit-power", "kill-boats", "more-mob-heads", "multiplayer-sleep", "unlock-all-recipes", "cauldron-concrete", "real-time-clock", "villager-death-messages", "wandering-trades", "tpa", "spawn", "homes", "durability-ping", "tag"};
-
     public static ArrayList<UUID> chEnabled = new ArrayList<>();
     public Boolean newVersionAvaliable = false;
     public String latestVTVersion;
@@ -96,6 +94,7 @@ public final class Main extends JavaPlugin implements Listener {
         this.getCommand("home").setExecutor(new HomeCommand());
         this.getCommand("duraping").setExecutor(new duraPingCommand());
         this.getCommand("tag").setExecutor(new TagCommand());
+        this.getCommand("back").setExecutor(new BackCommand());
 
 //        this.getCommand("armorstand").setExecutor(new ArmorstandCommand());
 
@@ -243,6 +242,12 @@ public final class Main extends JavaPlugin implements Listener {
         }
         if (pack.equals("tag")) {
             return "Tag";
+        }
+        if (pack.equals("xp-management")) {
+            return "XP Management";
+        }
+        if (pack.equals("back")) {
+            return "Back";
         }
         return pack;
     }
