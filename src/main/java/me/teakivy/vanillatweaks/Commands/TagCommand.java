@@ -23,6 +23,25 @@ public class TagCommand implements CommandExecutor {
 
         if (command.getName().equalsIgnoreCase("tag")) {
 
+            if (args.length == 1) {
+                if (!(sender instanceof Player)) {
+                    sender.sendMessage(ChatColor.RED + "[VT] You must be a player to use this command!");
+                    return true;
+                }
+                Player player = (Player) sender;
+
+                if (!player.isOp()) {
+                    player.sendMessage(vt + ChatColor.RED + "You must be an OP to use this command!");
+                    return true;
+                }
+
+                if (args[0].equalsIgnoreCase("uninstall")) {
+                    player.sendMessage(vt + ChatColor.RED + "Tag Uninstalled!");
+                    Register.tag.uninstall();
+                    return true;
+                }
+            }
+
             if (!main.getConfig().getBoolean("packs.tag.enabled")) {
                 sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] " + ChatColor.RED + "This pack is not enabled!");
                 return true;
@@ -59,12 +78,6 @@ public class TagCommand implements CommandExecutor {
                 Team taggedTeam = sb.getTeam("TaggedTeam");
                 taggedTeam.addEntry(player.getName());
                 player.sendMessage(vt + ChatColor.YELLOW + "Let the games begin!");
-                return true;
-            }
-
-            if (args[0].equalsIgnoreCase("uninstall")) {
-                player.sendMessage(vt + ChatColor.RED + "Tag Uninstalled!");
-                Register.tag.uninstall();
                 return true;
             }
         }
