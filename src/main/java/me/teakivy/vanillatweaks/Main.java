@@ -7,7 +7,7 @@ import me.teakivy.vanillatweaks.Packs.Tag.Tag;
 import me.teakivy.vanillatweaks.Utils.ConfigUpdater.ConfigUpdater;
 import me.teakivy.vanillatweaks.Utils.DataManager.DataManager;
 import me.teakivy.vanillatweaks.Utils.Logger.Logger;
-import me.teakivy.vanillatweaks.Utils.Metrics;
+import me.teakivy.vanillatweaks.Utils.Metrics.Metrics;
 import me.teakivy.vanillatweaks.Utils.Register.Register;
 import me.teakivy.vanillatweaks.Utils.UpdateChecker.UpdateChecker;
 import org.bukkit.Bukkit;
@@ -19,10 +19,9 @@ import org.json.simple.parser.ParseException;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
+
+import static me.teakivy.vanillatweaks.Utils.Metrics.CustomMetrics.registerCustomMetrics;
 
 public final class Main extends JavaPlugin implements Listener {
 
@@ -41,9 +40,10 @@ public final class Main extends JavaPlugin implements Listener {
         // Metrics
 
         Metrics metrics = new Metrics(this, 12001);
+        registerCustomMetrics(metrics);
 
         // Update Config.yml
-        if (this.getConfig().getInt("config.version") < this.getConfig().getDefaults().getInt("config.version")) {
+        if (this.getConfig().getInt("config.version") < Objects.requireNonNull(this.getConfig().getDefaults()).getInt("config.version")) {
             try {
                 ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList());
                 this.reloadConfig();
