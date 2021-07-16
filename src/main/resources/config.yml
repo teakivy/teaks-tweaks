@@ -458,6 +458,86 @@ crafting-tweaks:
 
 
 
+
+
+# Commands
+# Modify each command individually
+commands:
+  # Select which commands will be registered
+  # This will NOT be reloaded upon /vt reload, changing Commands requires a full server restart.
+
+
+  # /test
+  # Vanilla Tweaks Test Command
+  test:
+    enabled: false
+
+  # /portal
+  # Calculate where a portal would link to
+  portal:
+    enabled: true
+
+  # /coordshud /ch
+  # Coords HUD Main Command
+  coordshud:
+    enabled: true
+
+  # /nightvision /nv
+  # Toggle Night Vision as a spectator
+  nightvision:
+    enabled: true
+
+  # /conduitpower /cp
+  # Toggle Conduit Power as a spectator
+  conduitpower:
+    enabled: true
+
+  # /killboat /killboats
+  # Kill all empty boats
+  killboat:
+    enabled: true
+
+  # /realtime /realtimeclock /rtc
+  # View a world's Real Time
+  realtime:
+    enabled: true
+
+  # /spawn
+  # Teleport back to spawn
+  spawn:
+    enabled: true
+
+  # /tpa
+  # Teleport to someone else (With Permission!)
+  tpa:
+    enabled: true
+
+  # /home
+  # Set a home to teleport to at a later date
+  home:
+    enabled: true
+
+  # /duraping /dp
+  # Get pinged when your tools drop below 10% Durability!
+  duraping:
+    enabled: true
+
+  # /tag
+  # The classic game of Tag!
+  tag:
+    enabled: true
+
+  # /back
+  # Teleport back to your last location!
+  back:
+    enabled: true
+
+  # /afk
+  # Get away from your keyboard!
+  afk:
+    enabled: true
+
+
 # Leave these options alone unless you know what you're doing!
 # Changing these values may cause unexpected issues.-
 config:
