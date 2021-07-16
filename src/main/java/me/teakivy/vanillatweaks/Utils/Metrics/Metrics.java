@@ -1,4 +1,4 @@
-package me.teakivy.vanillatweaks.Utils;
+package me.teakivy.vanillatweaks.Utils.Metrics;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
