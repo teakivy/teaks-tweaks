@@ -19,7 +19,7 @@ commands:
   portal:
     description: Calculate where a portal would link to
   ch:
-    description: Coords Hud Main Command
+    description: Coords HUD Main Command
     aliases: [coordshud]
   nv:
     description: Toggle Night Vision as a spectator
@@ -35,8 +35,6 @@ commands:
   rtc:
     description: View a world's Real Time
     aliases: [realtime, realtimeclock]
-  armorstand:
-    description: Armor Statues main command
   spawn:
     description: Teleport back to spawn
   tpa:
