@@ -109,7 +109,7 @@ public class CustomMetrics {
     }
 
     public static void registerCommandMetrics(Metrics metrics) {
-        metrics.addCustomChart(new Metrics.AdvancedPie("crafting_tweaks", new Callable<Map<String, Integer>>() {
+        metrics.addCustomChart(new Metrics.AdvancedPie("commands", new Callable<Map<String, Integer>>() {
             @Override
             public Map<String, Integer> call() throws Exception {
                 Map<String, Integer> valueMap = new HashMap<>();
