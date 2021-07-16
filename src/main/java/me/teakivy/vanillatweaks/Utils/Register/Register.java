@@ -1,5 +1,7 @@
 package me.teakivy.vanillatweaks.Utils.Register;
 
+import me.teakivy.vanillatweaks.Commands.*;
+import me.teakivy.vanillatweaks.Commands.TabCompleter.*;
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.AFKDisplay.AFK;
 import me.teakivy.vanillatweaks.Packs.AntiCreeperGreif.AntiCreeper;
@@ -258,6 +260,75 @@ public class Register {
             main.getServer().getPluginManager().registerEvents(afk, main);
             AFK.register();
         }
+    }
+
+    public static void registerCommands() {
+
+        main.getCommand("vt").setExecutor(new vtCommand());
+        main.getCommand("vt").setTabCompleter(new vtTab());
+
+        if (main.getConfig().getBoolean("commands.portal.enabled")) {
+            main.getCommand("portal").setExecutor(new portalCommand());
+        }
+
+        if (main.getConfig().getBoolean("commands.coordshud.enabled")) {
+            main.getCommand("ch").setExecutor(new chCommand());
+            main.getCommand("ch").setTabCompleter(new chTab());
+        }
+
+        if (main.getConfig().getBoolean("commands.nightvision.enabled")) {
+            main.getCommand("nv").setExecutor(new nvCommand());
+        }
+
+        if (main.getConfig().getBoolean("commands.conduitpower.enabled")) {
+            main.getCommand("cp").setExecutor(new cpCommand());
+        }
+
+        if (main.getConfig().getBoolean("commands.killboat.enabled")) {
+            main.getCommand("killboat").setExecutor(new KillBoatsCommand());
+        }
+
+        if (main.getConfig().getBoolean("commands.test.enabled")) {
+            main.getCommand("test").setExecutor(new testCommand());
+        }
+
+        if (main.getConfig().getBoolean("commands.rtc.enabled")) {
+            main.getCommand("rtc").setExecutor(new rtcCommand());
+        }
+
+        if (main.getConfig().getBoolean("commands.spawn.enabled")) {
+            main.getCommand("spawn").setExecutor(new SpawnCommand());
+        }
+
+        if (main.getConfig().getBoolean("commands.tpa.enabled")) {
+            main.getCommand("tpa").setExecutor(new tpaCommand());
+        }
+
+        if (main.getConfig().getBoolean("commands.home.enabled")) {
+            main.getCommand("home").setExecutor(new HomeCommand());
+            main.getCommand("home").setTabCompleter(new homeTab());
+        }
+
+        if (main.getConfig().getBoolean("commands.duraping.enabled")) {
+            main.getCommand("duraping").setExecutor(new duraPingCommand());
+            main.getCommand("duraping").setTabCompleter(new duraPingTab());
+        }
+
+        if (main.getConfig().getBoolean("commands.tag.enabled")) {
+            main.getCommand("tag").setExecutor(new TagCommand());
+            main.getCommand("tag").setTabCompleter(new TagTab());
+        }
+
+        if (main.getConfig().getBoolean("commands.back.enabled")) {
+            main.getCommand("back").setExecutor(new BackCommand());
+        }
+
+        if (main.getConfig().getBoolean("commands.afk.enabled")) {
+            main.getCommand("afk").setExecutor(new afkCommand());
+            main.getCommand("afk").setTabCompleter(new afkTab());
+        }
+
+
     }
 
 }

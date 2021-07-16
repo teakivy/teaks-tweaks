@@ -1,7 +1,5 @@
 package me.teakivy.vanillatweaks;
 
-import me.teakivy.vanillatweaks.Commands.*;
-import me.teakivy.vanillatweaks.Commands.TabCompleter.*;
 import me.teakivy.vanillatweaks.CraftingTweaks.CraftingRegister;
 import me.teakivy.vanillatweaks.Events.UpdateJoinAlert;
 import me.teakivy.vanillatweaks.Packs.CoordsHud.DisplayHud;
@@ -81,31 +79,7 @@ public final class Main extends JavaPlugin implements Listener {
         data.saveDefaultConfig();
 
         // Commands
-        this.getCommand("vt").setExecutor(new vtCommand());
-        this.getCommand("portal").setExecutor(new portalCommand());
-        this.getCommand("ch").setExecutor(new chCommand());
-        this.getCommand("nv").setExecutor(new nvCommand());
-        this.getCommand("cp").setExecutor(new cpCommand());
-        this.getCommand("killboat").setExecutor(new KillBoatsCommand());
-        this.getCommand("test").setExecutor(new testCommand());
-        this.getCommand("rtc").setExecutor(new rtcCommand());
-        this.getCommand("spawn").setExecutor(new SpawnCommand());
-        this.getCommand("tpa").setExecutor(new tpaCommand());
-        this.getCommand("home").setExecutor(new HomeCommand());
-        this.getCommand("duraping").setExecutor(new duraPingCommand());
-        this.getCommand("tag").setExecutor(new TagCommand());
-        this.getCommand("back").setExecutor(new BackCommand());
-        this.getCommand("afk").setExecutor(new afkCommand());
-
-//        this.getCommand("armorstand").setExecutor(new ArmorstandCommand());
-
-        // Tab Completer
-        this.getCommand("vt").setTabCompleter(new vtTab());
-        this.getCommand("ch").setTabCompleter(new chTab());
-        this.getCommand("home").setTabCompleter(new homeTab());
-        this.getCommand("duraping").setTabCompleter(new duraPingTab());
-        this.getCommand("tag").setTabCompleter(new TagTab());
-        this.getCommand("afk").setTabCompleter(new afkTab());
+        Register.registerCommands();
 
         // Config
         this.saveDefaultConfig();
