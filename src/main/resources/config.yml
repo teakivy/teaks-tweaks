@@ -156,6 +156,11 @@ packs:
     drop-elytra: true
     drop-egg: true
 
+  # Larger Phantoms
+  # Makes the naturally spawning phantoms larger the longer you do not sleep.
+  larger-phantoms:
+    enabled: false
+
   # More Mob Heads
   # Adds a chance to receive a mob head upon killing it.
   more-mob-heads:

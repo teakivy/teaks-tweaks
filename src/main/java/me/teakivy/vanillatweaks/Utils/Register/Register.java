@@ -15,6 +15,7 @@ import me.teakivy.vanillatweaks.Packs.CountMobDeaths.CountDeaths;
 import me.teakivy.vanillatweaks.Packs.DoubleShulkerShells.DoubleShulkers;
 import me.teakivy.vanillatweaks.Packs.DragonDrops.DragonDrops;
 import me.teakivy.vanillatweaks.Packs.DurabilityPing.DuraPing;
+import me.teakivy.vanillatweaks.Packs.LargerPhantoms.Phantoms;
 import me.teakivy.vanillatweaks.Packs.MoreMobHeads.MobHeads;
 import me.teakivy.vanillatweaks.Packs.MultiplayerSleep.MultiplayerSleep;
 import me.teakivy.vanillatweaks.Packs.PlayerHeadDrops.HeadDrop;
@@ -56,6 +57,7 @@ public class Register {
     public static Back back = new Back();
     public static AFK afk = new AFK();
     public static Shrine shrine = new Shrine();
+    public static Phantoms phantoms = new Phantoms();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -171,6 +173,10 @@ public class Register {
             shrine.unregister();
         }
 
+        if (pack.equalsIgnoreCase("larger-phantoms")) {
+            phantoms.unregister();
+        }
+
     }
 
     public static void registerPack(String pack) {
@@ -270,6 +276,10 @@ public class Register {
         if (pack.equalsIgnoreCase("thunder-shrine")) {
             main.getServer().getPluginManager().registerEvents(shrine, main);
             shrine.register();
+        }
+
+        if (pack.equalsIgnoreCase("larger-phantoms")) {
+            main.getServer().getPluginManager().registerEvents(phantoms, main);
         }
     }
 

@@ -41,6 +41,7 @@ public class CustomMetrics {
                 valueMap.put("Silence Mobs", getPack("silence-mobs"));
                 valueMap.put("Count Mob Deaths", getPack("count-mob-deaths"));
                 valueMap.put("Villager Death Messages", getPack("villager-death-messages"));
+                valueMap.put("Larger Phantoms", getPack("larger-phantoms"));
 
                 valueMap.put("Spawn", getPack("spawn"));
                 valueMap.put("Homes", getPack("homes"));
@@ -53,6 +54,7 @@ public class CustomMetrics {
 
                 valueMap.put("Wandering Trades", getPack("wandering-trades"));
                 valueMap.put("Tag", getPack("tag"));
+                valueMap.put("Thunder Shrine", getPack("thunder-shrine"));
 
                 valueMap.put("XP Management", getPack("xp-management"));
                 valueMap.put("Confetti Creepers", getPack("confetti-creepers"));
@@ -127,6 +129,7 @@ public class CustomMetrics {
                 valueMap.put("Tag", getCommand("tag"));
                 valueMap.put("Back", getCommand("back"));
                 valueMap.put("AFK", getCommand("afk"));
+                valueMap.put("Shrine", getCommand("shrine"));
                 return valueMap;
             }
         }));
