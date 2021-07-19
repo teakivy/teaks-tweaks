@@ -28,6 +28,11 @@ public class ShrineCommand implements CommandExecutor {
                 sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
                 return true;
             }
+            if (!sender.isOp()) {
+                sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] " + ChatColor.RED + "You must be OP to use this command!");
+                return true;
+            }
+
             if (!(sender instanceof Player)) {
                 sender.sendMessage(vt + "This command can only be ran by a Player!");
                 return true;
