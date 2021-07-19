@@ -52,3 +52,5 @@ commands:
     description: Get away from your keyboard!
   shrine:
     description: Thunder Shrines!
+  workstation:
+    description: Villager Workstations!
