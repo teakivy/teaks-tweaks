@@ -27,6 +27,7 @@ import me.teakivy.vanillatweaks.Packs.ThunderShrine.Shrine;
 import me.teakivy.vanillatweaks.Packs.UnlockAllRecipes.UnlockRecipes;
 import me.teakivy.vanillatweaks.Packs.VillagerDeathMessages.VillagerDeath;
 import me.teakivy.vanillatweaks.Packs.WanderingTrades.Trades;
+import me.teakivy.vanillatweaks.Packs.WorkstationHighlights.Highlighter;
 import me.teakivy.vanillatweaks.Packs.XPManagement.XPManagement;
 
 public class Register {
@@ -58,6 +59,7 @@ public class Register {
     public static AFK afk = new AFK();
     public static Shrine shrine = new Shrine();
     public static Phantoms phantoms = new Phantoms();
+    public static Highlighter highlighter = new Highlighter();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -177,6 +179,10 @@ public class Register {
             phantoms.unregister();
         }
 
+        if (pack.equalsIgnoreCase("workstation-highlights")) {
+            highlighter.unregister();
+        }
+
     }
 
     public static void registerPack(String pack) {
@@ -281,6 +287,10 @@ public class Register {
         if (pack.equalsIgnoreCase("larger-phantoms")) {
             main.getServer().getPluginManager().registerEvents(phantoms, main);
         }
+
+        if (pack.equalsIgnoreCase("workstation-highlights")) {
+            main.getServer().getPluginManager().registerEvents(highlighter, main);
+        }
     }
 
     public static void registerCommands() {
@@ -352,6 +362,10 @@ public class Register {
         if (main.getConfig().getBoolean("commands.shrine.enabled")) {
             main.getCommand("shrine").setExecutor(new ShrineCommand());
             main.getCommand("shrine").setTabCompleter(new ShrineTab());
+        }
+
+        if (main.getConfig().getBoolean("commands.workstation.enabled")) {
+            main.getCommand("workstation").setExecutor(new WorkstationHighlightCommand());
         }
 
 

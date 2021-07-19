@@ -116,6 +116,9 @@ packs:
   real-time-clock:
     enabled: false
 
+  workstation-highlights:
+    enabled: false
+
 
   # Items:
 
@@ -562,6 +565,11 @@ commands:
   # /shrine
   # Thunder Shrines!
   shrine:
+    enabled: true
+
+  # /workstation
+  # Villager Workstations!
+  workstation:
     enabled: true
 
 
