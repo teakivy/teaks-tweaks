@@ -289,6 +289,23 @@ packs:
     # Whether or not you can tag afk players (using afk-display pack)
     allow-tagging-afk: false
 
+  # Thunder Shrine
+  #
+  thunder-shrine:
+    enabled: false
+    # Whether or not to show particles where shrines are
+    idle-particles: true
+    # Settings for summoning
+    summoning:
+      # What material is needed to summon a storm. Changing this may cause issues if you don't know what you are doing.
+      summoning-item: NETHER_STAR
+      # Whether or not to strike lightning when summoning a storm
+      strike-lightning: true
+      # Whether or not to show particles when summoning a storm
+      show-particles: true
+      # Whether or not to broadcast a message when a storm begins
+      brodcast-message: true
+
 
   # Experimental
 
@@ -535,6 +552,11 @@ commands:
   # /afk
   # Get away from your keyboard!
   afk:
+    enabled: true
+
+  # /shrine
+  # Thunder Shrines!
+  shrine:
     enabled: true
 
 
