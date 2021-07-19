@@ -50,3 +50,5 @@ commands:
     description: Teleport back to your last location!
   afk:
     description: Get away from your keyboard!
+  shrine:
+    description: Thunder Shrines!
