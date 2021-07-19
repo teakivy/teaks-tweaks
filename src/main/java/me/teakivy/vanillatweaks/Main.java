@@ -43,7 +43,17 @@ public final class Main extends JavaPlugin implements Listener {
         registerCustomMetrics(metrics);
 
         // Update Config.yml
-        if (this.getConfig().getInt("config.version") < Objects.requireNonNull(this.getConfig().getDefaults()).getInt("config.version")) {
+        if (!getConfig().getBoolean("config.dev-mode")) {
+            if (this.getConfig().getInt("config.version") < Objects.requireNonNull(this.getConfig().getDefaults()).getInt("config.version")) {
+                try {
+                    ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList());
+                    this.reloadConfig();
+                    System.out.println("[VT] Updated Config to Version: " + this.getConfig().getInt("config.version"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else {
             try {
                 ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList());
                 this.reloadConfig();
