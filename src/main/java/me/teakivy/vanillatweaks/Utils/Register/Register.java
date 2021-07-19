@@ -22,6 +22,7 @@ import me.teakivy.vanillatweaks.Packs.SilenceMobs.Silencer;
 import me.teakivy.vanillatweaks.Packs.SpectatorConduitPower.ConduitPower;
 import me.teakivy.vanillatweaks.Packs.SpectatorNightVision.NightVision;
 import me.teakivy.vanillatweaks.Packs.Tag.Tag;
+import me.teakivy.vanillatweaks.Packs.ThunderShrine.Shrine;
 import me.teakivy.vanillatweaks.Packs.UnlockAllRecipes.UnlockRecipes;
 import me.teakivy.vanillatweaks.Packs.VillagerDeathMessages.VillagerDeath;
 import me.teakivy.vanillatweaks.Packs.WanderingTrades.Trades;
@@ -54,6 +55,7 @@ public class Register {
     public static ConfettiCreeper confettiCreeper = new ConfettiCreeper();
     public static Back back = new Back();
     public static AFK afk = new AFK();
+    public static Shrine shrine = new Shrine();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -165,6 +167,10 @@ public class Register {
             afk.unregister();
         }
 
+        if (pack.equalsIgnoreCase("thunder-shrine")) {
+            shrine.unregister();
+        }
+
     }
 
     public static void registerPack(String pack) {
@@ -260,6 +266,11 @@ public class Register {
             main.getServer().getPluginManager().registerEvents(afk, main);
             AFK.register();
         }
+
+        if (pack.equalsIgnoreCase("thunder-shrine")) {
+            main.getServer().getPluginManager().registerEvents(shrine, main);
+            shrine.register();
+        }
     }
 
     public static void registerCommands() {
@@ -326,6 +337,11 @@ public class Register {
         if (main.getConfig().getBoolean("commands.afk.enabled")) {
             main.getCommand("afk").setExecutor(new afkCommand());
             main.getCommand("afk").setTabCompleter(new afkTab());
+        }
+
+        if (main.getConfig().getBoolean("commands.shrine.enabled")) {
+            main.getCommand("shrine").setExecutor(new ShrineCommand());
+            main.getCommand("shrine").setTabCompleter(new ShrineTab());
         }
 
 
