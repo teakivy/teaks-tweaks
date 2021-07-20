@@ -346,8 +346,8 @@ public class Register {
         }
 
         if (main.getConfig().getBoolean("commands.tag.enabled")) {
-            main.getCommand("tag").setExecutor(new TagCommand());
-            main.getCommand("tag").setTabCompleter(new TagTab());
+            main.getCommand("taggame").setExecutor(new TagCommand());
+            main.getCommand("taggame").setTabCompleter(new TagTab());
         }
 
         if (main.getConfig().getBoolean("commands.back.enabled")) {
