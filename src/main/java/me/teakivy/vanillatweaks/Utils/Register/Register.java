@@ -16,6 +16,7 @@ import me.teakivy.vanillatweaks.Packs.CountMobDeaths.CountDeaths;
 import me.teakivy.vanillatweaks.Packs.DoubleShulkerShells.DoubleShulkers;
 import me.teakivy.vanillatweaks.Packs.DragonDrops.DragonDrops;
 import me.teakivy.vanillatweaks.Packs.DurabilityPing.DuraPing;
+import me.teakivy.vanillatweaks.Packs.FastLeafDecay.Decay;
 import me.teakivy.vanillatweaks.Packs.LargerPhantoms.Phantoms;
 import me.teakivy.vanillatweaks.Packs.MoreMobHeads.MobHeads;
 import me.teakivy.vanillatweaks.Packs.MultiplayerSleep.MultiplayerSleep;
@@ -62,6 +63,7 @@ public class Register {
     public static Phantoms phantoms = new Phantoms();
     public static Highlighter highlighter = new Highlighter();
     public static Loader loader = new Loader();
+    public static Decay decay = new Decay();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -189,6 +191,10 @@ public class Register {
             loader.unregister();
         }
 
+        if (pack.equalsIgnoreCase("fast-leaf-decay")) {
+            decay.unregister();
+        }
+
     }
 
     public static void registerPack(String pack) {
@@ -300,6 +306,10 @@ public class Register {
 
         if (pack.equalsIgnoreCase("chunk-loaders")) {
             main.getServer().getPluginManager().registerEvents(loader, main);
+        }
+
+        if (pack.equalsIgnoreCase("fast-leaf-decay")) {
+            main.getServer().getPluginManager().registerEvents(decay, main);
         }
     }
 

@@ -22,6 +22,7 @@ public class CustomMetrics {
             public Map<String, Integer> call() throws Exception {
                 Map<String, Integer> valueMap = new HashMap<>();
                 valueMap.put("Unlock All Recipes", getPack("unlock-all-recipes"));
+                valueMap.put("Fast Leaf Decay", getPack("fast-leaf-decay"));
                 valueMap.put("AFK Display", getPack("afk-display"));
                 valueMap.put("Multiplayer Sleep", getPack("multiplayer-sleep"));
                 valueMap.put("Durability Ping", getPack("durability-ping"));
