@@ -116,6 +116,8 @@ packs:
   real-time-clock:
     enabled: false
 
+  # Workstation Highlights
+  # Allows you to find the workstation of any villager.
   workstation-highlights:
     enabled: false
 
