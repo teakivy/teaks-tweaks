@@ -9,6 +9,7 @@ import me.teakivy.vanillatweaks.Packs.AntiEndermanGrief.AntiEnderman;
 import me.teakivy.vanillatweaks.Packs.AntiGhastGrief.AntiGhast;
 import me.teakivy.vanillatweaks.Packs.Back.Back;
 import me.teakivy.vanillatweaks.Packs.CauldronConcrete.ConcreteConverter;
+import me.teakivy.vanillatweaks.Packs.ChunkLoaders.Loader;
 import me.teakivy.vanillatweaks.Packs.ConfettiCreepers.ConfettiCreeper;
 import me.teakivy.vanillatweaks.Packs.CoordsHud.DisplayHud;
 import me.teakivy.vanillatweaks.Packs.CountMobDeaths.CountDeaths;
@@ -60,6 +61,7 @@ public class Register {
     public static Shrine shrine = new Shrine();
     public static Phantoms phantoms = new Phantoms();
     public static Highlighter highlighter = new Highlighter();
+    public static Loader loader = new Loader();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -183,6 +185,10 @@ public class Register {
             highlighter.unregister();
         }
 
+        if (pack.equalsIgnoreCase("chunk-loaders")) {
+            loader.unregister();
+        }
+
     }
 
     public static void registerPack(String pack) {
@@ -290,6 +296,10 @@ public class Register {
 
         if (pack.equalsIgnoreCase("workstation-highlights")) {
             main.getServer().getPluginManager().registerEvents(highlighter, main);
+        }
+
+        if (pack.equalsIgnoreCase("chunk-loaders")) {
+            main.getServer().getPluginManager().registerEvents(loader, main);
         }
     }
 
