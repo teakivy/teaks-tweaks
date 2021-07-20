@@ -18,7 +18,7 @@ public class WorkstationHighlightCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if (command.getName().equalsIgnoreCase("workstation")) {
+        if (command.getName().equalsIgnoreCase("workstation") || command.getName().equalsIgnoreCase("workstationhighlight") || command.getName().equalsIgnoreCase("wh")) {
 
             if (!main.getConfig().getBoolean("packs.workstation-highlights.enabled")) {
                 sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] " + ChatColor.RED + "This pack is not enabled!");
@@ -57,6 +57,7 @@ public class WorkstationHighlightCommand implements CommandExecutor {
 
             Highlighter.glowingBlock(jobSite, 200);
             createParticles(jobSite.add(.5, 1, .5), 200);
+            player.sendMessage(vt + ChatColor.YELLOW + "The workstation is located at " + ChatColor.GOLD + "[XYZ]: " + jobSite.getX() + " " + jobSite.getY() + " " + jobSite.getZ());
         }
         return false;
     }
