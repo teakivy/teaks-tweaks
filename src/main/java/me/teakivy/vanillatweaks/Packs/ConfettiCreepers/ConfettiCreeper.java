@@ -35,7 +35,10 @@ public class ConfettiCreeper implements Listener {
             return;
         }
         entity.addScoreboardTag("vt_confetti_true");
-        event.setRadius(0);
+        if (!main.getConfig().getBoolean("packs.confetti-creepers.do-block-damage")) {
+            event.setRadius(0);
+            System.out.println("hi 2");
+        }
 
         FireworkEffect fwEffect = FireworkEffect.builder()
                 .trail(false)
@@ -68,11 +71,6 @@ public class ConfettiCreeper implements Listener {
         boolean confetti = entity.getScoreboardTags().contains("vt_confetti_true");
 
         if (!confetti) return;
-
-        if (!main.getConfig().getBoolean("packs.confetti-creepers.do-block-damage")) {
-            event.blockList().clear();
-        }
-        event.setYield(0);
     }
 
     @EventHandler public void onExplosionDamage(EntityDamageByEntityEvent event) {
