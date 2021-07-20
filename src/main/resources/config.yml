@@ -324,6 +324,12 @@ packs:
     # How much XP is taken when bottling XP
     take-xp-amount: 8
 
+  # Chunk Loaders
+  # Drop a Nether Star above a Lodestone to create a chunk loader (AKA a Loadstone) which keeps the chunk it's in loaded until it is broken.
+  chunk-loaders:
+    enabled: false
+    show-particles: true
+
   # Confetti Creepers
   # There is a chance each creeper will explode into confetti and do no damage to blocks.
   confetti-creepers:
