@@ -14,25 +14,24 @@ public class homeTab implements TabCompleter {
 
     Main main = Main.getPlugin(Main.class);
 
-    List<String> arguments1 = new ArrayList<String>();
-    List<String> arguments2 = new ArrayList<String>();
-
     FileConfiguration data = main.data.getConfig();
 
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
 
         if (!(sender instanceof Player)) return null;
 
+        List<String> arguments1 = new ArrayList<String>();
+        List<String> arguments2 = new ArrayList<String>();
+
         Player player = (Player) sender;
 
-        if (arguments1.isEmpty()) {
-            arguments1.add("set");
-            arguments1.add("delete");
-
+        arguments1.add("set");
+        arguments1.add("delete");
+        if (data.getConfigurationSection("homes." + player.getUniqueId()) != null) {
             arguments1.addAll(data.getConfigurationSection("homes." + player.getUniqueId()).getKeys(false));
         }
 
-        if (arguments2.isEmpty()) {
+        if (data.getConfigurationSection("homes." + player.getUniqueId()) != null) {
             arguments2.addAll(data.getConfigurationSection("homes." + player.getUniqueId()).getKeys(false));
         }
 
