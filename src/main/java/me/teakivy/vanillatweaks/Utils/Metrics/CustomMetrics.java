@@ -29,6 +29,7 @@ public class CustomMetrics {
                 valueMap.put("Nether Portal Coords", getPack("nether-portal-coords"));
                 valueMap.put("Coords HUD", getPack("coords-hud"));
                 valueMap.put("Real Time Clock", getPack("real-time-clock"));
+                valueMap.put("Workstation Highlights", getPack("workstation-highlights"));
 
                 valueMap.put("Player Head Drops", getPack("player-head-drops"));
 
@@ -58,6 +59,7 @@ public class CustomMetrics {
 
                 valueMap.put("XP Management", getPack("xp-management"));
                 valueMap.put("Confetti Creepers", getPack("confetti-creepers"));
+                valueMap.put("Chunk Loaders", getPack("chunk-loaders"));
                 return valueMap;
             }
         }));
@@ -126,10 +128,11 @@ public class CustomMetrics {
                 valueMap.put("TPA", getCommand("tpa"));
                 valueMap.put("Home", getCommand("home"));
                 valueMap.put("DuraPing", getCommand("duraping"));
-                valueMap.put("Tag", getCommand("tag"));
+                valueMap.put("Tag", getCommand("taggame"));
                 valueMap.put("Back", getCommand("back"));
                 valueMap.put("AFK", getCommand("afk"));
                 valueMap.put("Shrine", getCommand("shrine"));
+                valueMap.put("Workstation", getCommand("workstation"));
                 return valueMap;
             }
         }));
