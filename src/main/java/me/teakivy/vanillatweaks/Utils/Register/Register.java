@@ -20,6 +20,7 @@ import me.teakivy.vanillatweaks.Packs.FastLeafDecay.Decay;
 import me.teakivy.vanillatweaks.Packs.LargerPhantoms.Phantoms;
 import me.teakivy.vanillatweaks.Packs.MoreMobHeads.MobHeads;
 import me.teakivy.vanillatweaks.Packs.MultiplayerSleep.MultiplayerSleep;
+import me.teakivy.vanillatweaks.Packs.PillagerTools.PillagerSpawning;
 import me.teakivy.vanillatweaks.Packs.PlayerHeadDrops.HeadDrop;
 import me.teakivy.vanillatweaks.Packs.SilenceMobs.Silencer;
 import me.teakivy.vanillatweaks.Packs.SpectatorConduitPower.ConduitPower;
@@ -64,6 +65,7 @@ public class Register {
     public static Highlighter highlighter = new Highlighter();
     public static Loader loader = new Loader();
     public static Decay decay = new Decay();
+    public static PillagerSpawning pillagerSpawning = new PillagerSpawning();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -195,6 +197,10 @@ public class Register {
             decay.unregister();
         }
 
+        if (pack.equalsIgnoreCase("pillager-tools")) {
+            pillagerSpawning.unregister();
+        }
+
     }
 
     public static void registerPack(String pack) {
@@ -310,6 +316,10 @@ public class Register {
 
         if (pack.equalsIgnoreCase("fast-leaf-decay")) {
             main.getServer().getPluginManager().registerEvents(decay, main);
+        }
+
+        if (pack.equalsIgnoreCase("pillager-tools")) {
+            main.getServer().getPluginManager().registerEvents(pillagerSpawning, main);
         }
     }
 

@@ -31,6 +31,7 @@ public class CustomMetrics {
                 valueMap.put("Coords HUD", getPack("coords-hud"));
                 valueMap.put("Real Time Clock", getPack("real-time-clock"));
                 valueMap.put("Workstation Highlights", getPack("workstation-highlights"));
+                valueMap.put("Pillager Tools", getPack("pillager-tools"));
 
                 valueMap.put("Player Head Drops", getPack("player-head-drops"));
 
