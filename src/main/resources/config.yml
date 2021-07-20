@@ -23,6 +23,22 @@ packs:
   unlock-all-recipes:
     enabled: false
 
+  # Fast Leaf Decay
+  # Leaves Decay much faster when trees are mined in survival mode.
+  fast-leaf-decay:
+    enabled: false
+    # How long it takes for a tree to start decaying
+    break-delay: 5
+    # How long it takes between decays
+    decay-delay: 2
+    # Whether or not to decay leaves one by one, or all at once
+    one-by-one: true
+    # Whether or not to spawn breaking particles
+    spawn-particles: true
+    # Whether or not to play breaking sounds
+    play-sounds: true
+
+
   # AFK Display
   # Gray out a players name that is not moving for 5 minutes.
   afk-display:
