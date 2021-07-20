@@ -137,6 +137,17 @@ packs:
   workstation-highlights:
     enabled: false
 
+  # Pillager Patrols
+  # Allows you do disable bad omen, patrols, or patrol leaders separately
+  pillager-tools:
+    enabled: false
+    # Whether or not to disable getting Bad Omen from Pillager Captains
+    disable-bad-omen: true
+    # Whether or not to disable Pillager Patrol spawning
+    disable-patrols: true
+    # Whether or not to disable Pillager Leader spawning
+    disable-leaders: true
+
 
   # Items:
 
