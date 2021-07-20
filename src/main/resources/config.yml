@@ -547,7 +547,7 @@ commands:
   duraping:
     enabled: true
 
-  # /tag
+  # /taggame (Changed from /tag to not conflict with vanilla commands)
   # The classic game of Tag!
   tag:
     enabled: true

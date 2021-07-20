@@ -44,7 +44,7 @@ commands:
   duraping:
     description: Get pinged when your tools drop below 10% Durability!
     aliases: [dp]
-  tag:
+  taggame:
     description: The classic game of Tag!
   back:
     description: Teleport back to your last location!
@@ -54,3 +54,4 @@ commands:
     description: Thunder Shrines!
   workstation:
     description: Villager Workstations!
+    aliases: [workstationhighlight, wh]

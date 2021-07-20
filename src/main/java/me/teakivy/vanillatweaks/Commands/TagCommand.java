@@ -21,7 +21,7 @@ public class TagCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if (command.getName().equalsIgnoreCase("tag")) {
+        if (command.getName().equalsIgnoreCase("taggame")) {
 
             if (args.length == 1) {
                 if (!(sender instanceof Player)) {
