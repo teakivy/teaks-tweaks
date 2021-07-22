@@ -62,6 +62,7 @@ public class CustomMetrics {
                 valueMap.put("XP Management", getPack("xp-management"));
                 valueMap.put("Confetti Creepers", getPack("confetti-creepers"));
                 valueMap.put("Chunk Loaders", getPack("chunk-loaders"));
+                valueMap.put("Elevators", getPack("elevators"));
                 return valueMap;
             }
         }));
