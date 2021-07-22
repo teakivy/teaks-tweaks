@@ -331,6 +331,7 @@ public class Register {
 
         if (pack.equalsIgnoreCase("elevators")) {
             main.getServer().getPluginManager().registerEvents(elevator, main);
+            Elevator.register();
         }
     }
 
