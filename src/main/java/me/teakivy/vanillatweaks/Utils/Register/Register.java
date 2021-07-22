@@ -282,6 +282,7 @@ public class Register {
 
         if (pack.equalsIgnoreCase("xp-management")) {
             main.getServer().getPluginManager().registerEvents(xpManagement, main);
+            xpManagement.registerRecipe();
         }
 
         if (pack.equalsIgnoreCase("confetti-creepers")) {
