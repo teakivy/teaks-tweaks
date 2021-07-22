@@ -36,11 +36,11 @@ commands:
     description: View a world's Real Time
     aliases: [realtime, realtimeclock]
   spawn:
-    description: Teleport back to spawn
+    description: Teleport back to spawn.
   tpa:
     description: Teleport to someone else (With Permission!)
   home:
-    description: Set a home to teleport to at a later date
+    description: Teleport, Set, or Delete your Homes!
   duraping:
     description: Get pinged when your tools drop below 10% Durability!
     aliases: [dp]
@@ -55,3 +55,5 @@ commands:
   workstation:
     description: Villager Workstations!
     aliases: [workstationhighlight, wh]
+  sethome:
+    description: Set a home to teleport to at a later date.

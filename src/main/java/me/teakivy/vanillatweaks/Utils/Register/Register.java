@@ -409,6 +409,10 @@ public class Register {
             main.getCommand("workstation").setExecutor(new WorkstationHighlightCommand());
         }
 
+        if (main.getConfig().getBoolean("commands.sethome.enabled")) {
+            main.getCommand("sethome").setExecutor(new setHomeCommand());
+        }
+
 
     }
 

@@ -640,6 +640,9 @@ commands:
   workstation:
     enabled: true
 
+  sethome:
+    enabled: true
+
 
 # Leave these options alone unless you know what you're doing!
 # Changing these values may cause unexpected issues.
