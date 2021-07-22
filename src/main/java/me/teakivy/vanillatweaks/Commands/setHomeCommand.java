@@ -19,7 +19,7 @@ public class setHomeCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if (command.getName().equalsIgnoreCase("home")) {
+        if (command.getName().equalsIgnoreCase("sethome")) {
             if (!main.getConfig().getBoolean("packs.homes.enabled")) {
                 sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
                 return true;
