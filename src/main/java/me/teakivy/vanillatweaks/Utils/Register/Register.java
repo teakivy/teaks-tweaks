@@ -16,6 +16,7 @@ import me.teakivy.vanillatweaks.Packs.CountMobDeaths.CountDeaths;
 import me.teakivy.vanillatweaks.Packs.DoubleShulkerShells.DoubleShulkers;
 import me.teakivy.vanillatweaks.Packs.DragonDrops.DragonDrops;
 import me.teakivy.vanillatweaks.Packs.DurabilityPing.DuraPing;
+import me.teakivy.vanillatweaks.Packs.Elevators.Elevator;
 import me.teakivy.vanillatweaks.Packs.FastLeafDecay.Decay;
 import me.teakivy.vanillatweaks.Packs.LargerPhantoms.Phantoms;
 import me.teakivy.vanillatweaks.Packs.MoreMobHeads.MobHeads;
@@ -66,6 +67,7 @@ public class Register {
     public static Loader loader = new Loader();
     public static Decay decay = new Decay();
     public static PillagerSpawning pillagerSpawning = new PillagerSpawning();
+    public static Elevator elevator = new Elevator();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -201,6 +203,10 @@ public class Register {
             pillagerSpawning.unregister();
         }
 
+        if (pack.equalsIgnoreCase("elevators")) {
+            elevator.unregister();
+        }
+
     }
 
     public static void registerPack(String pack) {
@@ -321,6 +327,10 @@ public class Register {
 
         if (pack.equalsIgnoreCase("pillager-tools")) {
             main.getServer().getPluginManager().registerEvents(pillagerSpawning, main);
+        }
+
+        if (pack.equalsIgnoreCase("elevators")) {
+            main.getServer().getPluginManager().registerEvents(elevator, main);
         }
     }
 
