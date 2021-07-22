@@ -37,6 +37,10 @@ public final class Main extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
 
+        if (getConfig().getBoolean("config.dev-mode")) {
+            System.out.println("[VT] Dev Mode Enabled!");
+        }
+
         // Metrics
 
         Metrics metrics = new Metrics(this, 12001);
@@ -240,6 +244,27 @@ public final class Main extends JavaPlugin implements Listener {
         }
         if (pack.equals("afk-display")) {
             return "AFK Display";
+        }
+        if (pack.equals("thunder-shrine")) {
+            return "Thunder Shrine";
+        }
+        if (pack.equals("larger-phantoms")) {
+            return "Larger Phantoms";
+        }
+        if (pack.equals("chunk-loaders")) {
+            return "Chunk Loaders";
+        }
+        if (pack.equals("workstation-highlights")) {
+            return "Workstation Highlights";
+        }
+        if (pack.equals("fast-leaf-decay")) {
+            return "Fast Leaf Decay";
+        }
+        if (pack.equals("pillager-tools")) {
+            return "Pillager Tools";
+        }
+        if (pack.equals("elevators")) {
+            return "Elevators";
         }
         return pack;
     }
