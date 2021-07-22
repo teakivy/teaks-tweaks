@@ -606,7 +606,7 @@ commands:
     enabled: true
 
   # /home
-  # Set a home to teleport to at a later date
+  # Teleport, Set, or Delete your Homes!
   home:
     enabled: true
 
@@ -640,6 +640,8 @@ commands:
   workstation:
     enabled: true
 
+  # /sethome
+  # Set a home to teleport to at a later date.
   sethome:
     enabled: true
 
