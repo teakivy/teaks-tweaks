@@ -33,6 +33,7 @@ public class CustomMetrics {
                 valueMap.put("Workstation Highlights", getPack("workstation-highlights"));
                 valueMap.put("Pillager Tools", getPack("pillager-tools"));
 
+                valueMap.put("Rotation Wrench", getPack("rotation-wrench"));
                 valueMap.put("Player Head Drops", getPack("player-head-drops"));
 
                 valueMap.put("Anti Creeper Grief", getPack("anti-creeper-grief"));
