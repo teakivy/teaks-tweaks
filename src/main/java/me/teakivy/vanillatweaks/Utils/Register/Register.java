@@ -23,6 +23,7 @@ import me.teakivy.vanillatweaks.Packs.MoreMobHeads.MobHeads;
 import me.teakivy.vanillatweaks.Packs.MultiplayerSleep.MultiplayerSleep;
 import me.teakivy.vanillatweaks.Packs.PillagerTools.PillagerSpawning;
 import me.teakivy.vanillatweaks.Packs.PlayerHeadDrops.HeadDrop;
+import me.teakivy.vanillatweaks.Packs.RotationWrench.Wrench;
 import me.teakivy.vanillatweaks.Packs.SilenceMobs.Silencer;
 import me.teakivy.vanillatweaks.Packs.SpectatorConduitPower.ConduitPower;
 import me.teakivy.vanillatweaks.Packs.SpectatorNightVision.NightVision;
@@ -68,6 +69,7 @@ public class Register {
     public static Decay decay = new Decay();
     public static PillagerSpawning pillagerSpawning = new PillagerSpawning();
     public static Elevator elevator = new Elevator();
+    public static Wrench wrench = new Wrench();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -207,6 +209,10 @@ public class Register {
             elevator.unregister();
         }
 
+        if (pack.equalsIgnoreCase("rotation-wrench")) {
+            wrench.unregister();
+        }
+
     }
 
     public static void registerPack(String pack) {
@@ -332,6 +338,11 @@ public class Register {
         if (pack.equalsIgnoreCase("elevators")) {
             main.getServer().getPluginManager().registerEvents(elevator, main);
             Elevator.register();
+        }
+
+        if (pack.equalsIgnoreCase("rotation-wrench")) {
+            main.getServer().getPluginManager().registerEvents(wrench, main);
+            Wrench.register();
         }
     }
 

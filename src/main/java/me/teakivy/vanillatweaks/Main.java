@@ -266,6 +266,9 @@ public final class Main extends JavaPlugin implements Listener {
         if (pack.equals("elevators")) {
             return "Elevators";
         }
+        if (pack.equals("rotation-wrench")) {
+            return "Rotation Wrench";
+        }
         return pack;
     }
 }
