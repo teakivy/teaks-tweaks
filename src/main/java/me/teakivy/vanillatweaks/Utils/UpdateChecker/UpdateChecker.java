@@ -2,7 +2,6 @@ package me.teakivy.vanillatweaks.Utils.UpdateChecker;
 
 import me.teakivy.vanillatweaks.Main;
 import org.apache.commons.io.IOUtils;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
@@ -23,12 +22,14 @@ public class UpdateChecker {
 
 
     public String getLatestVersion() throws IOException, ParseException {
-        String url = "https://api.spiget.org/v2/resources/" + resourceId + "/versions";
+        String url = "https://api.spiget.org/v2/resources/" + resourceId + "/versions/latest";
+
         try {
             @SuppressWarnings("deprecation")
             String nameJson = IOUtils.toString(new URL(url));
-            JSONArray list = (JSONArray) JSONValue.parseWithException(nameJson);
-            JSONObject latest = (JSONObject) list.get(list.size()-1);
+            JSONObject latest = (JSONObject) JSONValue.parseWithException(nameJson);
+            System.out.println(latest);
+            System.out.println(latest.get("name").toString());
             return latest.get("name").toString();
         } catch (IOException | ParseException e) {
             e.printStackTrace();
