@@ -151,6 +151,15 @@ packs:
 
   # Items:
 
+  # Rotation Wrench (Redstone/Glazed Terracotta)
+  # Adds a custom wrench in-game that allows you to rotate redstone components, & glazed terracotta when right-clicking.
+  rotation-wrench:
+    enabled: false
+    # Whether or not to rotate redstone components
+    rotate-redstone: true
+    # Whether or not to rotate glazed terracotta
+    rotate-terracotta: true
+
   # Player Head Drops
   # A player will drop their head when killed by another player. The item displays who the killer is.
   player-head-drops:
