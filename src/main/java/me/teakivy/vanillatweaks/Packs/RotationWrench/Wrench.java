@@ -52,10 +52,11 @@ public class Wrench implements Listener {
         if (!item.hasItemMeta()) return;
         if (!Objects.requireNonNull(item.getItemMeta()).getDisplayName().equalsIgnoreCase(ChatColor.GOLD + "Wrench")) return;
         if (item.getType() != Material.CARROT_ON_A_STICK) return;
-        event.setCancelled(true);
         if (!item.getItemMeta().isUnbreakable()) return;
+        if (event.getPlayer().getVehicle() != null) event.setCancelled(true);
         if (event.getClickedBlock() == null) return;
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+        if (!isRedstone(event.getClickedBlock().getType()) && !isTerracotta(event.getClickedBlock().getType())) return;
         if (event.getItem() == null) return;
         Block block = event.getClickedBlock();
 
@@ -73,6 +74,7 @@ public class Wrench implements Listener {
                 facing = faces.indexOf(nextFace);
                 i++;
             }
+            event.setCancelled(true);
             data.setFacing(nextFace);
             block.setBlockData(data);
             return;
@@ -88,6 +90,7 @@ public class Wrench implements Listener {
                 facing = faces.indexOf(nextFace);
                 i++;
             }
+            event.setCancelled(true);
             data.setFacing(nextFace);
             block.setBlockData(data);
         }
