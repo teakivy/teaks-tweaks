@@ -28,8 +28,6 @@ public class UpdateChecker {
             @SuppressWarnings("deprecation")
             String nameJson = IOUtils.toString(new URL(url));
             JSONObject latest = (JSONObject) JSONValue.parseWithException(nameJson);
-            System.out.println(latest);
-            System.out.println(latest.get("name").toString());
             return latest.get("name").toString();
         } catch (IOException | ParseException e) {
             e.printStackTrace();
