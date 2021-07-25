@@ -6,6 +6,7 @@ import me.teakivy.vanillatweaks.Packs.CoordsHud.DisplayHud;
 import me.teakivy.vanillatweaks.Packs.Tag.Tag;
 import me.teakivy.vanillatweaks.Utils.ConfigUpdater.ConfigUpdater;
 import me.teakivy.vanillatweaks.Utils.DataManager.DataManager;
+import me.teakivy.vanillatweaks.Utils.DataManager.MessageManager;
 import me.teakivy.vanillatweaks.Utils.Logger.Logger;
 import me.teakivy.vanillatweaks.Utils.Metrics.Metrics;
 import me.teakivy.vanillatweaks.Utils.Register.Register;
@@ -30,6 +31,7 @@ public final class Main extends JavaPlugin implements Listener {
     public String latestVTVersion;
 
     public DataManager data;
+    public MessageManager messages;
 
 
     public Tag tagListener;
@@ -91,6 +93,10 @@ public final class Main extends JavaPlugin implements Listener {
         // Data Manager
         this.data = new DataManager(this);
         data.saveDefaultConfig();
+
+        // Message Manager
+        this.messages = new MessageManager(this);
+        messages.saveDefaultConfig();
 
         // Commands
         Register.registerCommands();
