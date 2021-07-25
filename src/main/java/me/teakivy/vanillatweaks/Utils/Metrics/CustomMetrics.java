@@ -56,6 +56,7 @@ public class CustomMetrics {
                 valueMap.put("Spectator Conduit Power", getPack("spectator-conduit-power"));
                 valueMap.put("Kill Boats", getPack("kill-boats"));
 
+                valueMap.put("Treasure Gems", getPack("treasure-gems"));
                 valueMap.put("Wandering Trades", getPack("wandering-trades"));
                 valueMap.put("Tag", getPack("tag"));
                 valueMap.put("Thunder Shrine", getPack("thunder-shrine"));
