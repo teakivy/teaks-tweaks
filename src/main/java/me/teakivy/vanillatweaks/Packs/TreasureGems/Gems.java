@@ -20,7 +20,8 @@ import java.util.stream.Stream;
 
 public class Gems implements Listener {
 
-    final static List<String> chests = Stream.of("minecraft:chests/desert_pyramid",
+    final static List<String> chests = Stream.of(
+            "minecraft:chests/desert_pyramid",
             "minecraft:chests/abandoned_mineshaft",
             "minecraft:chests/end_city_treasure",
             "minecraft:chests/igloo_chest",
