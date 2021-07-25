@@ -5,6 +5,7 @@ import com.mojang.authlib.properties.Property;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.world.LootGenerateEvent;
 import org.bukkit.inventory.Inventory;
@@ -134,6 +135,10 @@ public class Gems implements Listener {
 
         head.setItemMeta(headMeta);
         return head;
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
     }
 
 }

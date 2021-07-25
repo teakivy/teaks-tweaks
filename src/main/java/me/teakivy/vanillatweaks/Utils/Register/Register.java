@@ -29,6 +29,7 @@ import me.teakivy.vanillatweaks.Packs.SpectatorConduitPower.ConduitPower;
 import me.teakivy.vanillatweaks.Packs.SpectatorNightVision.NightVision;
 import me.teakivy.vanillatweaks.Packs.Tag.Tag;
 import me.teakivy.vanillatweaks.Packs.ThunderShrine.Shrine;
+import me.teakivy.vanillatweaks.Packs.TreasureGems.Gems;
 import me.teakivy.vanillatweaks.Packs.UnlockAllRecipes.UnlockRecipes;
 import me.teakivy.vanillatweaks.Packs.VillagerDeathMessages.VillagerDeath;
 import me.teakivy.vanillatweaks.Packs.WanderingTrades.Trades;
@@ -70,6 +71,7 @@ public class Register {
     public static PillagerSpawning pillagerSpawning = new PillagerSpawning();
     public static Elevator elevator = new Elevator();
     public static Wrench wrench = new Wrench();
+    public static Gems gems = new Gems();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -213,6 +215,10 @@ public class Register {
             wrench.unregister();
         }
 
+        if (pack.equalsIgnoreCase("treasure-gems")) {
+            gems.unregister();
+        }
+
     }
 
     public static void registerPack(String pack) {
@@ -343,6 +349,10 @@ public class Register {
         if (pack.equalsIgnoreCase("rotation-wrench")) {
             main.getServer().getPluginManager().registerEvents(wrench, main);
             Wrench.register();
+        }
+
+        if (pack.equalsIgnoreCase("treasure-gems")) {
+            main.getServer().getPluginManager().registerEvents(gems, main);
         }
     }
 
