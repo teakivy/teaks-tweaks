@@ -127,6 +127,11 @@ packs:
   coords-hud:
     enabled: false
 
+  # Classic Fishing Loot
+  # Reverts the fishing loot back to its pre-1.16 loot table.
+  classic-fishing-loot:
+    enabled: false
+
   # Real Time Clock
   # Adds a command that allows you to view how long a world has been running in real time minutes and hours.
   real-time-clock:
