@@ -5,6 +5,10 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.potion.PotionData;
+import org.bukkit.potion.PotionType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -189,7 +193,13 @@ public class FishingLootTable {
             return new ItemStack(Material.STRING);
         }
         if (fish <= lilyPad + bowl + fishingRod + leather + leatherBoots + rottenFlesh + stick + waterBottls) {
-            return new ItemStack(Material.POTION, 1, (byte) 0);
+            ItemStack bottle = new ItemStack(Material.POTION, 1);
+            ItemMeta meta = bottle.getItemMeta();
+            PotionMeta pmeta = (PotionMeta) meta;
+            PotionData pdata = new PotionData(PotionType.WATER);
+            pmeta.setBasePotionData(pdata);
+            bottle.setItemMeta(meta);
+            return bottle;
         }
         if (fish <= lilyPad + bowl + fishingRod + leather + leatherBoots + rottenFlesh + stick + waterBottls + bone) {
             return new ItemStack(Material.BONE);
