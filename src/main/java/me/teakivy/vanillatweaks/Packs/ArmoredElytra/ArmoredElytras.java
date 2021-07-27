@@ -12,6 +12,7 @@ import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
@@ -20,6 +21,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -29,6 +31,8 @@ import java.util.stream.Stream;
 public class ArmoredElytras implements Listener {
 
     Main main = Main.getPlugin(Main.class);
+
+    static List<UUID> broken = new ArrayList<>();
 
     private final List<String> combinable = Stream.of(
             "NETHERITE_CHESTPLATE",
@@ -118,6 +122,20 @@ public class ArmoredElytras implements Listener {
                 if (event.getItemDrop().isDead()) this.cancel();
             }
         }.runTaskTimer(main, 0, 20L);
+    }
+
+    @EventHandler
+    public void onBurn(EntityDamageEvent event) {
+        if (!(event.getEntity() instanceof Item)) return;
+        Item item = (Item) event.getEntity();
+        ItemStack itemStack = item.getItemStack();
+        if (itemStack.getType() != Material.ELYTRA) return;
+        if (!itemStack.hasItemMeta()) return;
+        if (itemStack.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(main, "armored_elytra"), PersistentDataType.STRING)) {
+            item.getWorld().dropItem(item.getLocation(), getChestplateFromArmoredElytra(itemStack)).setVelocity(new Vector(0, 0, 0));
+            item.getWorld().dropItem(item.getLocation(), getElytraFromArmoredElytra(itemStack)).setVelocity(new Vector(0, 0, 0));
+            item.remove();
+        }
     }
 
     private ItemStack createArmoredElytra(ItemStack elytra, ItemStack chestplate) {
@@ -221,7 +239,7 @@ public class ArmoredElytras implements Listener {
         return ItemStackSerializer.deserialize(oldElytra);
     }
 
-    public void uninstall() {
+    public void unregister() {
         HandlerList.unregisterAll(this);
     }
 
