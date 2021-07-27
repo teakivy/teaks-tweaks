@@ -302,7 +302,7 @@ packs:
   # Treasure Gems
   # Adds the chance for treasure gems to spawn inside loot chests. Used to trade with Gem Villagers.
   treasure-gems:
-    enabled: true
+    enabled: false
 
   # Wandering Trades / Wandering Trades (Hermit Edition)
   # Adds Mini Blocks to the Wandering Trader's trades.
