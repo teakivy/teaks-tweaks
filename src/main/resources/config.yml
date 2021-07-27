@@ -160,6 +160,12 @@ packs:
     # Whether or not to rotate glazed terracotta
     rotate-terracotta: true
 
+  # Armored Elytra
+  # Drop an elytra and a chestplate above an anvil to merge them into one item. Drop the item above a grindstone to separate them again.
+  # Enchantments are kept safely between merging and separating. Burning netherite armored elytra will separate the items.
+  armored-elytra:
+    enabled: false
+
   # Player Head Drops
   # A player will drop their head when killed by another player. The item displays who the killer is.
   player-head-drops:
