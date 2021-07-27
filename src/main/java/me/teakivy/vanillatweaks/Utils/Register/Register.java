@@ -11,6 +11,7 @@ import me.teakivy.vanillatweaks.Packs.ArmoredElytra.ArmoredElytras;
 import me.teakivy.vanillatweaks.Packs.Back.Back;
 import me.teakivy.vanillatweaks.Packs.CauldronConcrete.ConcreteConverter;
 import me.teakivy.vanillatweaks.Packs.ChunkLoaders.Loader;
+import me.teakivy.vanillatweaks.Packs.ClassicFishingLoot.Fishing;
 import me.teakivy.vanillatweaks.Packs.ConfettiCreepers.ConfettiCreeper;
 import me.teakivy.vanillatweaks.Packs.CoordsHud.DisplayHud;
 import me.teakivy.vanillatweaks.Packs.CountMobDeaths.CountDeaths;
@@ -74,6 +75,7 @@ public class Register {
     public static Wrench wrench = new Wrench();
     public static Gems gems = new Gems();
     public static ArmoredElytras armoredElytras = new ArmoredElytras();
+    public static Fishing classicFishing = new Fishing();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -225,6 +227,10 @@ public class Register {
             armoredElytras.unregister();
         }
 
+        if (pack.equalsIgnoreCase("classic-fishing-loot")) {
+            classicFishing.unregister();
+        }
+
     }
 
     public static void registerPack(String pack) {
@@ -363,6 +369,10 @@ public class Register {
 
         if (pack.equalsIgnoreCase("armored-elytra")) {
             main.getServer().getPluginManager().registerEvents(armoredElytras, main);
+        }
+
+        if (pack.equalsIgnoreCase("classic-fishing-loot")) {
+            main.getServer().getPluginManager().registerEvents(classicFishing, main);
         }
     }
 
