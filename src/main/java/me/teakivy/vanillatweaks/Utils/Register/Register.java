@@ -7,6 +7,7 @@ import me.teakivy.vanillatweaks.Packs.AFKDisplay.AFK;
 import me.teakivy.vanillatweaks.Packs.AntiCreeperGreif.AntiCreeper;
 import me.teakivy.vanillatweaks.Packs.AntiEndermanGrief.AntiEnderman;
 import me.teakivy.vanillatweaks.Packs.AntiGhastGrief.AntiGhast;
+import me.teakivy.vanillatweaks.Packs.ArmoredElytra.ArmoredElytras;
 import me.teakivy.vanillatweaks.Packs.Back.Back;
 import me.teakivy.vanillatweaks.Packs.CauldronConcrete.ConcreteConverter;
 import me.teakivy.vanillatweaks.Packs.ChunkLoaders.Loader;
@@ -72,6 +73,7 @@ public class Register {
     public static Elevator elevator = new Elevator();
     public static Wrench wrench = new Wrench();
     public static Gems gems = new Gems();
+    public static ArmoredElytras armoredElytras = new ArmoredElytras();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -219,6 +221,10 @@ public class Register {
             gems.unregister();
         }
 
+        if (pack.equalsIgnoreCase("armored-elytra")) {
+            armoredElytras.unregister();
+        }
+
     }
 
     public static void registerPack(String pack) {
@@ -353,6 +359,10 @@ public class Register {
 
         if (pack.equalsIgnoreCase("treasure-gems")) {
             main.getServer().getPluginManager().registerEvents(gems, main);
+        }
+
+        if (pack.equalsIgnoreCase("armored-elytra")) {
+            main.getServer().getPluginManager().registerEvents(armoredElytras, main);
         }
     }
 
