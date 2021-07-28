@@ -89,6 +89,19 @@ packs:
     # When disabled, the weather cycle will only reset to clear upon sleeping if its already raining, just like in vanilla.
     always-reset-weather-cycle: false
 
+  custom-nether-portals:
+    enabled: false
+    # Whether or not to allow crying obsidian to be used in portal making
+    allow-crying-obsidian: false
+    # How big a portal has to be to be created (Default: 6 - 2x3)
+    minimum-portal-size: 6
+    # How wide a portal can be (Default: 23)
+    # WARNING: Creating Larger portals may cause messy breaking patterns due to the base Minecraft Game's Limitations
+    max-portal-width: 23
+    # How tall a portal can be (Default: 23)
+    # WARNING: Creating Larger portals may cause messy breaking patterns due to the base Minecraft Game's Limitations
+    max-portal-height: 23
+
   # Durability Ping
   # Get notified when you damage an item with 10% less durability.
   # Fully Customizable per-player with '/duraping config'
