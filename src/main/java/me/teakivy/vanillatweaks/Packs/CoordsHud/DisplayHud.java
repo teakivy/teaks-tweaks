@@ -2,13 +2,12 @@ package me.teakivy.vanillatweaks.Packs.CoordsHud;
 
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 
-public class DisplayHud implements Listener {
+public class DisplayHud{
 
 
     public static void showHud(Player player) {
@@ -30,15 +29,11 @@ public class DisplayHud implements Listener {
     }
 
     public static String getWorldTime(Player player) {
-        World world = player.getWorld();
+        World world = Bukkit.getWorlds().get(0);
         long ticks = world.getTime();
         int hours = (int) Math.floor((ticks / 1000) + 6) % 24;
         int minutes = (int) Math.floor((ticks % 1000 / 10) * 0.6);
         return String.format("%02d:%02d", hours, minutes);
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }
