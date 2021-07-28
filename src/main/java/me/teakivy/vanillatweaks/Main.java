@@ -2,7 +2,6 @@ package me.teakivy.vanillatweaks;
 
 import me.teakivy.vanillatweaks.CraftingTweaks.CraftingRegister;
 import me.teakivy.vanillatweaks.Events.UpdateJoinAlert;
-import me.teakivy.vanillatweaks.Packs.CoordsHud.DisplayHud;
 import me.teakivy.vanillatweaks.Packs.Tag.Tag;
 import me.teakivy.vanillatweaks.Utils.ConfigUpdater.ConfigUpdater;
 import me.teakivy.vanillatweaks.Utils.DataManager.DataManager;
@@ -11,9 +10,7 @@ import me.teakivy.vanillatweaks.Utils.Logger.Logger;
 import me.teakivy.vanillatweaks.Utils.Metrics.Metrics;
 import me.teakivy.vanillatweaks.Utils.Register.Register;
 import me.teakivy.vanillatweaks.Utils.UpdateChecker.UpdateChecker;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.json.simple.parser.ParseException;
@@ -118,34 +115,16 @@ public final class Main extends JavaPlugin implements Listener {
 
         tagListener = new Tag();
 
-        // Packs
-
-        Register.registerAll();
-
-
-
-
-
-
         // Coords HUD
         for (String uuid : data.getConfig().getStringList("chEnabled")) {
             chEnabled.add(UUID.fromString(uuid));
         }
 
-        getServer().getScheduler().runTaskTimer(this, () -> {
-            if (this.getConfig().getBoolean("packs.coords-hud.enabled")) {
-                for (UUID uuid : chEnabled) {
-                    Player player = Bukkit.getPlayer(uuid);
-                    if (player == null) continue;
-                    if (player.isOnline())
-                        DisplayHud.showHud(player);
-                }
-            }
-        }, 0L, 1L);
-
-
         // Plugin startup logic
         System.out.println("[VT] Vanilla Tweaks Started!");
+
+        // Packs
+        Register.registerAll();
     }
 
     @Override
