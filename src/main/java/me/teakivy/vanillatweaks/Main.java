@@ -3,7 +3,6 @@ package me.teakivy.vanillatweaks;
 import me.teakivy.vanillatweaks.CraftingTweaks.CraftingRegister;
 import me.teakivy.vanillatweaks.Events.UpdateJoinAlert;
 import me.teakivy.vanillatweaks.Packs.CoordsHud.DisplayHud;
-import me.teakivy.vanillatweaks.Packs.CustomNetherPortals.NetherPortal;
 import me.teakivy.vanillatweaks.Packs.Tag.Tag;
 import me.teakivy.vanillatweaks.Utils.ConfigUpdater.ConfigUpdater;
 import me.teakivy.vanillatweaks.Utils.DataManager.DataManager;
@@ -42,11 +41,6 @@ public final class Main extends JavaPlugin implements Listener {
 
         if (getConfig().getBoolean("config.dev-mode")) {
             System.out.println("[VT] Dev Mode Enabled!");
-            NetherPortal portal = new NetherPortal();
-            portal.ArbitraryPortals();
-            portal.registerThis();
-
-            getServer().getPluginManager().registerEvents(portal, this);
         }
 
         // Metrics
