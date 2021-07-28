@@ -15,6 +15,7 @@ import me.teakivy.vanillatweaks.Packs.ClassicFishingLoot.Fishing;
 import me.teakivy.vanillatweaks.Packs.ConfettiCreepers.ConfettiCreeper;
 import me.teakivy.vanillatweaks.Packs.CoordsHud.DisplayHud;
 import me.teakivy.vanillatweaks.Packs.CountMobDeaths.CountDeaths;
+import me.teakivy.vanillatweaks.Packs.CustomNetherPortals.NetherPortal;
 import me.teakivy.vanillatweaks.Packs.DoubleShulkerShells.DoubleShulkers;
 import me.teakivy.vanillatweaks.Packs.DragonDrops.DragonDrops;
 import me.teakivy.vanillatweaks.Packs.DurabilityPing.DuraPing;
@@ -76,6 +77,7 @@ public class Register {
     public static Gems gems = new Gems();
     public static ArmoredElytras armoredElytras = new ArmoredElytras();
     public static Fishing classicFishing = new Fishing();
+    public static NetherPortal portal = new NetherPortal();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -231,6 +233,10 @@ public class Register {
             classicFishing.unregister();
         }
 
+        if (pack.equalsIgnoreCase("custom-nether-portals")) {
+            portal.unregister();
+        }
+
     }
 
     public static void registerPack(String pack) {
@@ -373,6 +379,11 @@ public class Register {
 
         if (pack.equalsIgnoreCase("classic-fishing-loot")) {
             main.getServer().getPluginManager().registerEvents(classicFishing, main);
+        }
+
+        if (pack.equalsIgnoreCase("custom-nether-portals")) {
+            portal.registerThis();
+            main.getServer().getPluginManager().registerEvents(portal, main);
         }
     }
 
