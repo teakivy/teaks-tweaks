@@ -14,6 +14,7 @@ import me.teakivy.vanillatweaks.Packs.ChunkLoaders.Loader;
 import me.teakivy.vanillatweaks.Packs.ClassicFishingLoot.Fishing;
 import me.teakivy.vanillatweaks.Packs.ConfettiCreepers.ConfettiCreeper;
 import me.teakivy.vanillatweaks.Packs.CoordsHud.DisplayHud;
+import me.teakivy.vanillatweaks.Packs.CoordsHud.HUD;
 import me.teakivy.vanillatweaks.Packs.CountMobDeaths.CountDeaths;
 import me.teakivy.vanillatweaks.Packs.CustomNetherPortals.NetherPortal;
 import me.teakivy.vanillatweaks.Packs.DoubleShulkerShells.DoubleShulkers;
@@ -113,8 +114,8 @@ public class Register {
             concreteConverter.unregister();
         }
 
-        if (pack.equalsIgnoreCase("coordinates-hud")) {
-            displayHud.unregister();
+        if (pack.equalsIgnoreCase("coords-hud")) {
+            HUD.stopHUD();
         }
 
         if (pack.equalsIgnoreCase("count-mob-deaths")) {
@@ -256,8 +257,8 @@ public class Register {
             main.getServer().getPluginManager().registerEvents(concreteConverter, main);
         }
 
-        if (pack.equalsIgnoreCase("coordinates-hud")) {
-            main.getServer().getPluginManager().registerEvents(displayHud, main);
+        if (pack.equalsIgnoreCase("coords-hud")) {
+            HUD.startHUD();
         }
 
         if (pack.equalsIgnoreCase("count-mob-deaths")) {
