@@ -37,6 +37,7 @@ import me.teakivy.vanillatweaks.Packs.Survival.PillagerTools.PillagerSpawning;
 import me.teakivy.vanillatweaks.Packs.Survival.UnlockAllRecipes.UnlockRecipes;
 import me.teakivy.vanillatweaks.Packs.Survival.WorkstationHighlights.Highlighter;
 import me.teakivy.vanillatweaks.Packs.Teleportation.Back.Back;
+import me.teakivy.vanillatweaks.Packs.TrackStatistics.StatTracker;
 import me.teakivy.vanillatweaks.Packs.Utilities.ItemAverages.ItemTracker;
 import me.teakivy.vanillatweaks.Packs.Utilities.SpectatorConduitPower.ConduitPower;
 import me.teakivy.vanillatweaks.Packs.Utilities.SpectatorNightVision.NightVision;
@@ -81,6 +82,7 @@ public class Register {
     public static Fishing classicFishing = new Fishing();
     public static NetherPortal portal = new NetherPortal();
     public static ItemTracker itemTracker = new ItemTracker();
+    public static StatTracker statTracker = new StatTracker();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -244,6 +246,10 @@ public class Register {
             itemTracker.unregister();
         }
 
+        if (pack.equalsIgnoreCase("track-statistics")) {
+            statTracker.unregister();
+        }
+
     }
 
     public static void registerPack(String pack) {
@@ -395,6 +401,11 @@ public class Register {
 
         if (pack.equalsIgnoreCase("item-averages")) {
             main.getServer().getPluginManager().registerEvents(itemTracker, main);
+        }
+
+        if (pack.equalsIgnoreCase("track-statistics")) {
+            statTracker.register();
+            main.getServer().getPluginManager().registerEvents(statTracker, main);
         }
     }
 
