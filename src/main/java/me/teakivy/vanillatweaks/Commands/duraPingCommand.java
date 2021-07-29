@@ -1,7 +1,7 @@
 package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
-import me.teakivy.vanillatweaks.Packs.DurabilityPing.DuraPing;
+import me.teakivy.vanillatweaks.Packs.Survival.DurabilityPing.DuraPing;
 import net.md_5.bungee.api.chat.*;
 import net.md_5.bungee.api.chat.hover.content.Text;
 import org.bukkit.ChatColor;

@@ -1,7 +1,7 @@
 package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
-import me.teakivy.vanillatweaks.Packs.Back.Back;
+import me.teakivy.vanillatweaks.Packs.Teleportation.Back.Back;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;

@@ -1,7 +1,7 @@
 package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
-import me.teakivy.vanillatweaks.Packs.Back.Back;
+import me.teakivy.vanillatweaks.Packs.Teleportation.Back.Back;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;

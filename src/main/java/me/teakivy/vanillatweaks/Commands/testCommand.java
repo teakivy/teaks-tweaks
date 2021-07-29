@@ -1,7 +1,7 @@
 package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
-import me.teakivy.vanillatweaks.Packs.ClassicFishingLoot.FishingLootTable;
+import me.teakivy.vanillatweaks.Packs.Survival.ClassicFishingLoot.FishingLootTable;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.Command;

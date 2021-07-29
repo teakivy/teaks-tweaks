@@ -1,7 +1,7 @@
 package me.teakivy.vanillatweaks.Commands.ArmorStands;
 
 import me.teakivy.vanillatweaks.Main;
-import me.teakivy.vanillatweaks.Packs.CoordsHud.DisplayHud;
+import me.teakivy.vanillatweaks.Packs.Survival.CoordsHud.DisplayHud;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;

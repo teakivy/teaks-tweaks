@@ -2,7 +2,7 @@ package me.teakivy.vanillatweaks;
 
 import me.teakivy.vanillatweaks.CraftingTweaks.CraftingRegister;
 import me.teakivy.vanillatweaks.Events.UpdateJoinAlert;
-import me.teakivy.vanillatweaks.Packs.Tag.Tag;
+import me.teakivy.vanillatweaks.Packs.Hermitcraft.Tag.Tag;
 import me.teakivy.vanillatweaks.Utils.ConfigUpdater.ConfigUpdater;
 import me.teakivy.vanillatweaks.Utils.DataManager.DataManager;
 import me.teakivy.vanillatweaks.Utils.DataManager.MessageManager;

@@ -1,7 +1,7 @@
 package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
-import me.teakivy.vanillatweaks.Packs.WorkstationHighlights.Highlighter;
+import me.teakivy.vanillatweaks.Packs.Survival.WorkstationHighlights.Highlighter;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Particle;
