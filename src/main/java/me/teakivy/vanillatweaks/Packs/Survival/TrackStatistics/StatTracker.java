@@ -1,4 +1,4 @@
-package me.teakivy.vanillatweaks.Packs.TrackStatistics;
+package me.teakivy.vanillatweaks.Packs.Survival.TrackStatistics;
 
 import me.teakivy.vanillatweaks.Main;
 import org.bukkit.Bukkit;
