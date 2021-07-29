@@ -27,17 +27,17 @@ import me.teakivy.vanillatweaks.Packs.Mobs.VillagerDeathMessages.VillagerDeath;
 import me.teakivy.vanillatweaks.Packs.Survival.AFKDisplay.AFK;
 import me.teakivy.vanillatweaks.Packs.Survival.CauldronConcrete.ConcreteConverter;
 import me.teakivy.vanillatweaks.Packs.Survival.ClassicFishingLoot.Fishing;
-import me.teakivy.vanillatweaks.Packs.Survival.CoordsHud.DisplayHud;
 import me.teakivy.vanillatweaks.Packs.Survival.CoordsHud.HUD;
 import me.teakivy.vanillatweaks.Packs.Survival.CustomNetherPortals.NetherPortal;
 import me.teakivy.vanillatweaks.Packs.Survival.DurabilityPing.DuraPing;
 import me.teakivy.vanillatweaks.Packs.Survival.FastLeafDecay.Decay;
 import me.teakivy.vanillatweaks.Packs.Survival.MultiplayerSleep.MultiplayerSleep;
 import me.teakivy.vanillatweaks.Packs.Survival.PillagerTools.PillagerSpawning;
+import me.teakivy.vanillatweaks.Packs.Survival.TrackRawStatistics.RawStats;
+import me.teakivy.vanillatweaks.Packs.Survival.TrackStatistics.StatTracker;
 import me.teakivy.vanillatweaks.Packs.Survival.UnlockAllRecipes.UnlockRecipes;
 import me.teakivy.vanillatweaks.Packs.Survival.WorkstationHighlights.Highlighter;
 import me.teakivy.vanillatweaks.Packs.Teleportation.Back.Back;
-import me.teakivy.vanillatweaks.Packs.TrackStatistics.StatTracker;
 import me.teakivy.vanillatweaks.Packs.Utilities.ItemAverages.ItemTracker;
 import me.teakivy.vanillatweaks.Packs.Utilities.SpectatorConduitPower.ConduitPower;
 import me.teakivy.vanillatweaks.Packs.Utilities.SpectatorNightVision.NightVision;
@@ -50,7 +50,6 @@ public class Register {
     public static AntiEnderman antiEnderman = new AntiEnderman();
     public static AntiGhast antiGhast = new AntiGhast();
     public static ConcreteConverter concreteConverter = new ConcreteConverter();
-    public static DisplayHud displayHud = new DisplayHud();
     public static CountDeaths countDeaths = new CountDeaths();
     public static DoubleShulkers doubleShulkers = new DoubleShulkers();
     public static DragonDrops dragonDrops = new DragonDrops();
@@ -83,6 +82,7 @@ public class Register {
     public static NetherPortal portal = new NetherPortal();
     public static ItemTracker itemTracker = new ItemTracker();
     public static StatTracker statTracker = new StatTracker();
+    public static RawStats rawStats = new RawStats();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -406,6 +406,10 @@ public class Register {
         if (pack.equalsIgnoreCase("track-statistics")) {
             statTracker.register();
             main.getServer().getPluginManager().registerEvents(statTracker, main);
+        }
+
+        if (pack.equalsIgnoreCase("track-raw-statistics")) {
+            rawStats.register();
         }
     }
 
