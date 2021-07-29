@@ -7,6 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -124,4 +125,7 @@ public class ItemTracker implements Listener {
         }, glowLength);
     }
 
+    public void unregister() {
+        HandlerList.unregisterAll(this);
+    }
 }

@@ -37,6 +37,7 @@ import me.teakivy.vanillatweaks.Packs.Survival.PillagerTools.PillagerSpawning;
 import me.teakivy.vanillatweaks.Packs.Survival.UnlockAllRecipes.UnlockRecipes;
 import me.teakivy.vanillatweaks.Packs.Survival.WorkstationHighlights.Highlighter;
 import me.teakivy.vanillatweaks.Packs.Teleportation.Back.Back;
+import me.teakivy.vanillatweaks.Packs.Utilities.ItemAverages.ItemTracker;
 import me.teakivy.vanillatweaks.Packs.Utilities.SpectatorConduitPower.ConduitPower;
 import me.teakivy.vanillatweaks.Packs.Utilities.SpectatorNightVision.NightVision;
 
@@ -79,6 +80,7 @@ public class Register {
     public static ArmoredElytras armoredElytras = new ArmoredElytras();
     public static Fishing classicFishing = new Fishing();
     public static NetherPortal portal = new NetherPortal();
+    public static ItemTracker itemTracker = new ItemTracker();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -238,6 +240,10 @@ public class Register {
             portal.unregister();
         }
 
+        if (pack.equalsIgnoreCase("item-averages")) {
+            itemTracker.unregister();
+        }
+
     }
 
     public static void registerPack(String pack) {
@@ -385,6 +391,10 @@ public class Register {
         if (pack.equalsIgnoreCase("custom-nether-portals")) {
             portal.registerThis();
             main.getServer().getPluginManager().registerEvents(portal, main);
+        }
+
+        if (pack.equalsIgnoreCase("item-averages")) {
+            main.getServer().getPluginManager().registerEvents(itemTracker, main);
         }
     }
 
