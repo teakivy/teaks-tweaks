@@ -57,3 +57,6 @@ commands:
     aliases: [workstationhighlight, wh]
   sethome:
     description: Set a home to teleport to at a later date.
+  itemaverage:
+    description: Check how many items flow through a spot in 2 minutes!
+    aliases: [ia, itemaverages]
