@@ -128,6 +128,11 @@ packs:
   cauldron-concrete:
     enabled: false
 
+  # Track Raw Stats
+  # Adds 100+ scoreboards that track many different statistics. Especially useful for multiplayer.
+  track-raw-statistics:
+    enabled: false
+
   # Track Statistics
   # Adds statistics that are processed before-hand. E.g. Km swam, Km flown, etc.
   track-statistics:
