@@ -128,6 +128,11 @@ packs:
   cauldron-concrete:
     enabled: false
 
+  # Track Statistics
+  # Adds statistics that are processed before-hand. E.g. Km swam, Km flown, etc.
+  track-statistics:
+    enabled: false
+
   # Nether Portal Coords
   # Adds a command that calculates where a nether portal must be placed in the other dimension. Useful for syncing up nether portals.
   # Command: /portal
