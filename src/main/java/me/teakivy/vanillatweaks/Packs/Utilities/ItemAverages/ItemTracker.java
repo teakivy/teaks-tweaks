@@ -30,7 +30,7 @@ public class ItemTracker implements Listener {
     static HashMap<Material, Integer> items = new HashMap<>();
 
     public static void spawnTracker(Location loc, Player player) {
-        glowingBlock(loc, 10*20);
+        glowingBlock(loc, 2*60*20);
         startTracker(player);
     }
 
