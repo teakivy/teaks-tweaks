@@ -303,6 +303,15 @@ packs:
   spectator-conduit-power:
     enabled: false
 
+  # Item Averages
+  # Adds a marker that tracks items flowing past it for 2 minutes, then calculates how many of each item will run through per hour
+  # Command /itemaverage
+  # Do not reload/restart the server while a tracker is in the world! In this case use /itemaverage remove to remove existing trackers.
+  item-averages:
+    enabled: false
+    # Whether or not creating an item average tracker requires OP
+    require-op: false
+
   # Kill Empty Boats
   # Adds an admin command to kill all boats without passengers.
   # Command: /killboats
