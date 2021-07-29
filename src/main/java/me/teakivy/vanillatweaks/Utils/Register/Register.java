@@ -477,6 +477,11 @@ public class Register {
             main.getCommand("sethome").setExecutor(new setHomeCommand());
         }
 
+        if (main.getConfig().getBoolean("commands.itemaverages.enabled")) {
+            main.getCommand("itemaverages").setExecutor(new ItemAveragesCommand());
+            main.getCommand("itemaverages").setTabCompleter(new ItemAveragesTab());
+        }
+
 
     }
 

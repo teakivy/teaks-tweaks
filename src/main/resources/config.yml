@@ -695,6 +695,11 @@ commands:
   sethome:
     enabled: true
 
+  # /itemaverages (Aliases: /ia, /itemaverage)
+  # Check how many items flow through a source in 2 minutes!
+  itemaverages:
+    enabled: true
+
 
 # Leave these options alone unless you know what you're doing!
 # Changing these values may cause unexpected issues.
