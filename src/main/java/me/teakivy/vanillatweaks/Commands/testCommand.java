@@ -1,7 +1,7 @@
 package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
-import me.teakivy.vanillatweaks.Packs.Survival.ClassicFishingLoot.FishingLootTable;
+import me.teakivy.vanillatweaks.Packs.Utilities.ItemAverages.ItemTracker;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -20,10 +20,15 @@ public class testCommand implements CommandExecutor {
             Player player = (Player) sender;
             World world = player.getWorld();
             if (main.getConfig().getBoolean("config.dev-mode")) {
-                player.sendMessage(vt + ChatColor.YELLOW + "Did I even need a fishing rod?");
-                player.getInventory().addItem(FishingLootTable.generateFishingLoot(0, false));
+                if (!ItemTracker.inUse) {
+                    player.sendMessage(vt + ChatColor.YELLOW + "Did you just track me?");
+                    player.sendMessage(vt + ChatColor.YELLOW + "Created a tracker source at XYZ: " + (int) Math.floor(player.getLocation().getX()) + " " + (int) Math.floor(player.getLocation().getY()) + " " + (int) Math.floor(player.getLocation().getZ()));
+                    ItemTracker.spawnTracker(player.getLocation().getBlock().getLocation(), player);
+                } else {
+                    player.sendMessage(ChatColor.RED + "A tracker is already in use!");
+                }
             } else {
-                player.sendMessage(vt + ChatColor.YELLOW + "Hey! Looks like you found my test command!");
+                player.sendMessage(vt + ChatColor.YELLOW + "Hey! Looks like you found my test command! :D");
                 if (player.isOp()) {
                     player.sendMessage(ChatColor.YELLOW + "This command is used to test new features! Enable it marking " + ChatColor.GRAY + "config.dev-mode: true" + ChatColor.YELLOW + "!");
                 }
