@@ -25,8 +25,11 @@ public class CustomMetrics {
                 valueMap.put("Fast Leaf Decay", getPack("fast-leaf-decay"));
                 valueMap.put("AFK Display", getPack("afk-display"));
                 valueMap.put("Multiplayer Sleep", getPack("multiplayer-sleep"));
+                valueMap.put("Custom Nether Portals", getPack("custom-nether-portals"));
                 valueMap.put("Durability Ping", getPack("durability-ping"));
                 valueMap.put("Cauldron Concrete", getPack("cauldron-concrete"));
+                valueMap.put("Track Raw Statistics", getPack("track-raw-statistics"));
+                valueMap.put("Track Statistics", getPack("track-statistics"));
                 valueMap.put("Nether Portal Coords", getPack("nether-portal-coords"));
                 valueMap.put("Coords HUD", getPack("coords-hud"));
                 valueMap.put("Real Time Clock", getPack("real-time-clock"));
@@ -55,6 +58,7 @@ public class CustomMetrics {
 
                 valueMap.put("Spectator Night Vision", getPack("spectator-night-vision"));
                 valueMap.put("Spectator Conduit Power", getPack("spectator-conduit-power"));
+                valueMap.put("Item Averages", getPack("item-averages"));
                 valueMap.put("Kill Boats", getPack("kill-boats"));
 
                 valueMap.put("Treasure Gems", getPack("treasure-gems"));
