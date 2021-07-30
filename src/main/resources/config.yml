@@ -89,6 +89,20 @@ packs:
     # When disabled, the weather cycle will only reset to clear upon sleeping if its already raining, just like in vanilla.
     always-reset-weather-cycle: false
 
+  # Graves
+  # When a player dies, a grave is made at their location containing all their items. Right-click the grave to receive your items,
+  # and crouch to make it so only you can pick them up.
+  # Get a grave key to unlock any grave: `/grave key`
+  # Locate your last grave (if locatable is on): `/grave locate` or `/grave`
+  graves:
+    enabled: true
+    # Whether or not graves hold the players xp
+    hold-xp: true
+    # Whether or not it sends a message to the player telling the location of their grave
+    locatable: true
+    # Whether or not all players can take from a players grave
+    allow-robbing: false
+
   custom-nether-portals:
     enabled: false
     # Whether or not to allow crying obsidian to be used in portal making
