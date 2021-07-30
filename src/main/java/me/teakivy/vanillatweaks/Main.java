@@ -2,7 +2,6 @@ package me.teakivy.vanillatweaks;
 
 import me.teakivy.vanillatweaks.CraftingTweaks.CraftingRegister;
 import me.teakivy.vanillatweaks.Events.UpdateJoinAlert;
-import me.teakivy.vanillatweaks.Packs.Graves.GraveEvents;
 import me.teakivy.vanillatweaks.Packs.Hermitcraft.Tag.Tag;
 import me.teakivy.vanillatweaks.Utils.ConfigUpdater.ConfigUpdater;
 import me.teakivy.vanillatweaks.Utils.DataManager.DataManager;
@@ -39,7 +38,6 @@ public final class Main extends JavaPlugin implements Listener {
 
         if (getConfig().getBoolean("config.dev-mode")) {
             System.out.println("[VT] Dev Mode Enabled!");
-            this.getServer().getPluginManager().registerEvents(new GraveEvents(), this);
         }
 
         // Metrics

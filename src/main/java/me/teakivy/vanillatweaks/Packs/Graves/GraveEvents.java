@@ -1,20 +1,27 @@
 package me.teakivy.vanillatweaks.Packs.Graves;
 
 import me.teakivy.vanillatweaks.Main;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.NamespacedKey;
+import org.bukkit.*;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Vector;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class GraveEvents implements Listener {
@@ -51,8 +58,41 @@ public class GraveEvents implements Listener {
             event.setCancelled(true);
             entity.remove();
             return;
+        } else {
+            if (main.getConfig().getBoolean("packs.graves.allow-robbing") || holdingKey(event.getPlayer())) {
+                if (holdingKey(event.getPlayer()) && !main.getConfig().getBoolean("packs.graves.allow-robbing") && event.getPlayer().getGameMode() != GameMode.CREATIVE) {
+                    event.getPlayer().getInventory().remove(getGraveKey());
+                }
+                PersistentDataContainer data = entity.getPersistentDataContainer();
+                if (data.has(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_items"), PersistentDataType.STRING)) {
+                    String ownerItems = data.get(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_items"), PersistentDataType.STRING);
+                    if (ownerItems != null) {
+                        for (ItemStack item : new GraveCreator().deserializeItems(ownerItems)) {
+                            Item itemE = entity.getWorld().dropItem(entity.getLocation().add(0, 2, 0), item);
+                            itemE.setPickupDelay(0);
+                            itemE.setVelocity(new Vector(0, 0, 0));
+                        }
+                    }
+                }
+                if (data.has(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_xp"), PersistentDataType.INTEGER)) {
+                    if (data.get(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_xp"), PersistentDataType.INTEGER) > 0) {
+                        ExperienceOrb orb = (ExperienceOrb) entity.getWorld().spawnEntity(entity.getLocation().add(0, 2, 0), EntityType.EXPERIENCE_ORB);
+                        orb.setExperience(data.get(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_xp"), PersistentDataType.INTEGER));
+                    }
+                }
+                event.setCancelled(true);
+                entity.remove();
+                return;
+            } else {
+                event.getPlayer().sendMessage(ChatColor.RED + "You are not allowed to rob graves!");
+            }
         }
         event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onDamage(EntityDamageEvent event) {
+        if (event.getEntity().getScoreboardTags().contains("vt_grave")) event.setCancelled(true);
     }
 
     @EventHandler
@@ -97,6 +137,33 @@ public class GraveEvents implements Listener {
         } else {
             return false;
         }
+    }
+
+    public boolean holdingKey(Player player) {
+        ItemStack graveKey = getGraveKey();
+        return player.getInventory().getItem(EquipmentSlot.HAND).isSimilar(graveKey);
+    }
+
+    public static ItemStack getGraveKey() {
+        ItemStack graveKey = new ItemStack(Material.TRIPWIRE_HOOK);
+        ItemMeta keyMeta = graveKey.getItemMeta();
+        keyMeta.setDisplayName(ChatColor.GOLD + "Grave Key");
+        graveKey.addUnsafeEnchantment(Enchantment.CHANNELING, 1);
+        keyMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.YELLOW + "Right-click any grave with this key to open it.");
+        keyMeta.setLore(lore);
+        graveKey.setItemMeta(keyMeta);
+        return graveKey;
+    }
+
+    @EventHandler
+    public void onPlace(BlockPlaceEvent event) {
+        if (holdingKey(event.getPlayer())) event.setCancelled(true);
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
     }
 
 }

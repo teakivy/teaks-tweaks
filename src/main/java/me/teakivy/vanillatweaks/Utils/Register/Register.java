@@ -7,6 +7,7 @@ import me.teakivy.vanillatweaks.Packs.Experimental.ChunkLoaders.Loader;
 import me.teakivy.vanillatweaks.Packs.Experimental.ConfettiCreepers.ConfettiCreeper;
 import me.teakivy.vanillatweaks.Packs.Experimental.Elevators.Elevator;
 import me.teakivy.vanillatweaks.Packs.Experimental.XPManagement.XPManagement;
+import me.teakivy.vanillatweaks.Packs.Graves.GraveEvents;
 import me.teakivy.vanillatweaks.Packs.Hermitcraft.Tag.Tag;
 import me.teakivy.vanillatweaks.Packs.Hermitcraft.ThunderShrine.Shrine;
 import me.teakivy.vanillatweaks.Packs.Hermitcraft.TreasureGems.Gems;
@@ -83,6 +84,7 @@ public class Register {
     public static ItemTracker itemTracker = new ItemTracker();
     public static StatTracker statTracker = new StatTracker();
     public static RawStats rawStats = new RawStats();
+    public static GraveEvents graves = new GraveEvents();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -250,6 +252,10 @@ public class Register {
             statTracker.unregister();
         }
 
+        if (pack.equalsIgnoreCase("graves")) {
+            graves.unregister();
+        }
+
     }
 
     public static void registerPack(String pack) {
@@ -411,6 +417,10 @@ public class Register {
         if (pack.equalsIgnoreCase("track-raw-statistics")) {
             rawStats.register();
         }
+
+        if (pack.equalsIgnoreCase("graves")) {
+            main.getServer().getPluginManager().registerEvents(graves, main);
+        }
     }
 
     public static void registerCommands() {
@@ -495,6 +505,11 @@ public class Register {
         if (main.getConfig().getBoolean("commands.itemaverages.enabled")) {
             main.getCommand("itemaverages").setExecutor(new ItemAveragesCommand());
             main.getCommand("itemaverages").setTabCompleter(new ItemAveragesTab());
+        }
+
+        if (main.getConfig().getBoolean("commands.grave.enabled")) {
+            main.getCommand("grave").setExecutor(new GraveCommand());
+            main.getCommand("grave").setTabCompleter(new GraveTab());
         }
 
 
