@@ -724,6 +724,11 @@ commands:
   itemaverages:
     enabled: true
 
+  # /grave
+  # Keep Inventory stands no chance!
+  grave:
+    enabled: true
+
 
 # Leave these options alone unless you know what you're doing!
 # Changing these values may cause unexpected issues.
