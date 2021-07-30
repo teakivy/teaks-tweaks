@@ -1,8 +1,9 @@
 package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
-import me.teakivy.vanillatweaks.Packs.Utilities.ItemAverages.ItemTracker;
+import me.teakivy.vanillatweaks.Packs.Graves.GraveCreator;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -20,13 +21,11 @@ public class testCommand implements CommandExecutor {
             Player player = (Player) sender;
             World world = player.getWorld();
             if (main.getConfig().getBoolean("config.dev-mode")) {
-                if (!ItemTracker.inUse) {
-                    player.sendMessage(vt + ChatColor.YELLOW + "Did you just track me?");
-                    player.sendMessage(vt + ChatColor.YELLOW + "Created a tracker source at XYZ: " + (int) Math.floor(player.getLocation().getX()) + " " + (int) Math.floor(player.getLocation().getY()) + " " + (int) Math.floor(player.getLocation().getZ()));
-                    ItemTracker.spawnTracker(player.getLocation().getBlock().getLocation(), player);
-                } else {
-                    player.sendMessage(ChatColor.RED + "A tracker is already in use!");
-                }
+                player.sendMessage("Finding best grave location...");
+                GraveCreator gc = new GraveCreator();
+                Location loc = gc.findGraveLocation(player.getLocation());
+                gc.createGrave(loc, player, 5);
+                player.sendMessage("Best location: Here at Y: " + loc.getY());
             } else {
                 player.sendMessage(vt + ChatColor.YELLOW + "Hey! Looks like you found my test command! :D");
                 if (player.isOp()) {
