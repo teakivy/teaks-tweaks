@@ -60,3 +60,5 @@ commands:
   itemaverages:
     description: Check how many items flow through a source in 2 minutes!
     aliases: [ia, itemaverage]
+  grave:
+    description: Keep Inventory stands no chance!
