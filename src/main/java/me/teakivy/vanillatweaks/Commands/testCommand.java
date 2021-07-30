@@ -1,9 +1,8 @@
 package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
-import me.teakivy.vanillatweaks.Packs.Graves.GraveCreator;
+import me.teakivy.vanillatweaks.Packs.Graves.GraveEvents;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -21,11 +20,8 @@ public class testCommand implements CommandExecutor {
             Player player = (Player) sender;
             World world = player.getWorld();
             if (main.getConfig().getBoolean("config.dev-mode")) {
-                player.sendMessage("Finding best grave location...");
-                GraveCreator gc = new GraveCreator();
-                Location loc = gc.findGraveLocation(player.getLocation());
-                gc.createGrave(loc, player, 5);
-                player.sendMessage("Best location: Here at Y: " + loc.getY());
+                player.sendMessage(vt + ChatColor.GREEN + "You have been given a grave key!");
+                player.getInventory().addItem(GraveEvents.getGraveKey());
             } else {
                 player.sendMessage(vt + ChatColor.YELLOW + "Hey! Looks like you found my test command! :D");
                 if (player.isOp()) {
