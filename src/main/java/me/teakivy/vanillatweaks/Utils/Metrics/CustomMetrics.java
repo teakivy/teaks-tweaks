@@ -25,6 +25,7 @@ public class CustomMetrics {
                 valueMap.put("Fast Leaf Decay", getPack("fast-leaf-decay"));
                 valueMap.put("AFK Display", getPack("afk-display"));
                 valueMap.put("Multiplayer Sleep", getPack("multiplayer-sleep"));
+                valueMap.put("Graves", getPack("graves"));
                 valueMap.put("Custom Nether Portals", getPack("custom-nether-portals"));
                 valueMap.put("Durability Ping", getPack("durability-ping"));
                 valueMap.put("Cauldron Concrete", getPack("cauldron-concrete"));
@@ -143,6 +144,9 @@ public class CustomMetrics {
                 valueMap.put("AFK", getCommand("afk"));
                 valueMap.put("Shrine", getCommand("shrine"));
                 valueMap.put("Workstation", getCommand("workstation"));
+                valueMap.put("Set Home", getCommand("sethome"));
+                valueMap.put("Item Averages", getCommand("itemaverages"));
+                valueMap.put("Grave", getCommand("grave"));
                 return valueMap;
             }
         }));
