@@ -4,6 +4,7 @@ import me.teakivy.vanillatweaks.CraftingTweaks.CraftingRegister;
 import me.teakivy.vanillatweaks.Events.UpdateJoinAlert;
 import me.teakivy.vanillatweaks.Packs.Hermitcraft.Tag.Tag;
 import me.teakivy.vanillatweaks.Utils.ConfigUpdater.ConfigUpdater;
+import me.teakivy.vanillatweaks.Utils.Credits;
 import me.teakivy.vanillatweaks.Utils.DataManager.DataManager;
 import me.teakivy.vanillatweaks.Utils.DataManager.MessageManager;
 import me.teakivy.vanillatweaks.Utils.Logger.Logger;
@@ -40,8 +41,14 @@ public final class Main extends JavaPlugin implements Listener {
             System.out.println("[VT] Dev Mode Enabled!");
         }
 
-        // Metrics
+        // Credits
+        try {
+            new Credits().createCredits();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        // Metrics
         Metrics metrics = new Metrics(this, 12001);
         registerCustomMetrics(metrics);
 
