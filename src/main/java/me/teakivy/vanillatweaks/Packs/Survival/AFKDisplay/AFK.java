@@ -92,12 +92,8 @@ public class AFK implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        if (!afk.containsKey(player.getUniqueId())) {
-            afk.put(player.getUniqueId(), false);
-        }
-        if (!lastMove.containsKey(player.getUniqueId())) {
-            lastMove.put(player.getUniqueId(), System.currentTimeMillis());
-        }
+        afk.put(player.getUniqueId(), false);
+        lastMove.put(player.getUniqueId(), System.currentTimeMillis());
     }
 
     @EventHandler
