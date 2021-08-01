@@ -65,41 +65,51 @@ public class XPManagement implements Listener {
 
     @EventHandler
     public void bottleXP(PlayerInteractEvent event) {
-        if (!main.getConfig().getBoolean("packs.xp-management.enabled")) return;
         Player player = event.getPlayer();
-        if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            if (event.getClickedBlock() == null) return;
-            if (event.getClickedBlock().getType() == Material.ENCHANTING_TABLE) {
-                if (event.getItem() == null) return;
-                if (event.getItem().getType() == Material.GLASS_BOTTLE) {
-                    event.setCancelled(true);
-                    if (player.getTotalExperience() >= main.getConfig().getInt("packs.xp-management.take-xp-amount")) {
-                        player.giveExp(-main.getConfig().getInt("packs.xp-management.take-xp-amount"));
-                        player.getInventory().removeItem(new ItemStack(Material.GLASS_BOTTLE));
+        ItemStack item = event.getItem();
 
-                        ItemStack xpBottle = new ItemStack(Material.EXPERIENCE_BOTTLE);
-                        ItemMeta xpMeta = xpBottle.getItemMeta();
-                        if (main.getConfig().getBoolean("packs.xp-management.display-amount")) {
-                            List<String> lore = new ArrayList<>();
-                            lore.add(ChatColor.GOLD + "Contains " + main.getConfig().getInt("packs.xp-management.return-xp-amount") + " XP");
-                            if (main.getConfig().getBoolean("packs.xp-management.allow-smelting")) {
-                                lore.add(ChatColor.DARK_GRAY + "Smelt for " + main.getConfig().getInt("packs.xp-management.take-xp-amount") + " XP");
-                            }
-                            xpMeta.setLore(lore);
-                        }
-                        PersistentDataContainer data = xpMeta.getPersistentDataContainer();
-                        data.set(new NamespacedKey(main, "vt_xp_amount"), PersistentDataType.INTEGER, main.getConfig().getInt("packs.xp-management.return-xp-amount"));
-                        xpBottle.setItemMeta(xpMeta);
+        if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+        if (event.getClickedBlock() == null) return;
+        if (event.getClickedBlock().getType() != Material.ENCHANTING_TABLE) return;
+        if (item == null) return;
+        if (item.getType() != Material.GLASS_BOTTLE) return;
+        if (player.getTotalExperience() <= main.getConfig().getInt("packs.xp-management.take-xp-amount")) return;
 
-                        data.set(new NamespacedKey(main, "vt_xp_smelt_amount"), PersistentDataType.INTEGER, main.getConfig().getInt("packs.xp-management.take-xp-amount"));
-                        xpBottle.setItemMeta(xpMeta);
+        event.setCancelled(true);
+        int itemAmount = item.getAmount();
+        int newAmount = itemAmount - 1;
+        if (main.getConfig().getBoolean("packs.xp-management.sneak-to-bottle-all") && player.isSneaking()) newAmount = 0;
+        item.setAmount(newAmount);
+        player.giveExp(-main.getConfig().getInt("packs.xp-management.take-xp-amount"));
 
-                        player.getInventory().addItem(xpBottle);
-                    }
-                }
+        ItemStack xpBottle = new ItemStack(Material.EXPERIENCE_BOTTLE, 1);
+        ItemMeta xpMeta = xpBottle.getItemMeta();
+
+        if (main.getConfig().getBoolean("packs.xp-management.display-amount")) {
+            List<String> lore = new ArrayList<>();
+            lore.add(ChatColor.GOLD + "Contains " + main.getConfig().getInt("packs.xp-management.return-xp-amount") + " XP");
+            if (main.getConfig().getBoolean("packs.xp-management.allow-smelting")) {
+                lore.add(ChatColor.DARK_GRAY + "Smelt for " + main.getConfig().getInt("packs.xp-management.take-xp-amount") + " XP");
             }
+            xpMeta.setLore(lore);
+        }
+
+        PersistentDataContainer data = xpMeta.getPersistentDataContainer();
+        data.set(new NamespacedKey(main, "vt_xp_amount"), PersistentDataType.INTEGER, main.getConfig().getInt("packs.xp-management.return-xp-amount"));
+        xpBottle.setItemMeta(xpMeta);
+
+        data.set(new NamespacedKey(main, "vt_xp_smelt_amount"), PersistentDataType.INTEGER, main.getConfig().getInt("packs.xp-management.take-xp-amount"));
+        xpBottle.setItemMeta(xpMeta);
+
+        if (main.getConfig().getBoolean("packs.xp-management.sneak-to-bottle-all") && player.isSneaking()) {
+            for (int i = 0; i < itemAmount; i++) {
+                player.getInventory().addItem(xpBottle);
+            }
+        } else {
+            player.getInventory().addItem(xpBottle);
         }
     }
+
 
     @EventHandler
     public void onThrow(ExpBottleEvent event) {

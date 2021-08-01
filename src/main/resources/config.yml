@@ -432,6 +432,8 @@ packs:
     display-amount: true
     # Whether or not to allow players to smelt the bottle for 100% xp back
     allow-smelting: true
+    # Whether or not players can sneak to use all bottles in their hand
+    sneak-to-bottle-all: true
 
   # Chunk Loaders
   # Drop a Nether Star above a Lodestone to create a chunk loader (AKA a Loadstone) which keeps the chunk it's in loaded until it is broken.
