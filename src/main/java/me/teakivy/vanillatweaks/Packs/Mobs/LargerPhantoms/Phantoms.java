@@ -13,6 +13,8 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 
+import java.util.Objects;
+
 public class Phantoms implements Listener {
 
     Main main = Main.getPlugin(Main.class);
@@ -25,6 +27,7 @@ public class Phantoms implements Listener {
         Player player = null;
         double distance = Integer.MAX_VALUE;
         for (Player p : Bukkit.getOnlinePlayers()) {
+            if (p.getWorld().getUID() != Objects.requireNonNull(event.getLocation().getWorld()).getUID()) continue;
             if (p.getLocation().distanceSquared(event.getLocation()) < distance) {
                 player = p;
                 distance = p.getLocation().distanceSquared(event.getLocation());
