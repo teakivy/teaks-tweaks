@@ -1,6 +1,5 @@
 package me.teakivy.vanillatweaks.Utils.Register;
 
-import me.teakivy.vanillatweaks.Commands.ArmorStands.ArmorstandCommand;
 import me.teakivy.vanillatweaks.Commands.*;
 import me.teakivy.vanillatweaks.Commands.TabCompleter.*;
 import me.teakivy.vanillatweaks.Main;
@@ -511,10 +510,6 @@ public class Register {
         if (main.getConfig().getBoolean("commands.grave.enabled")) {
             main.getCommand("grave").setExecutor(new GraveCommand());
             main.getCommand("grave").setTabCompleter(new GraveTab());
-        }
-
-        if (main.getConfig().getBoolean("commands.armorstand.enabled")) {
-            main.getCommand("armorstand").setExecutor(new ArmorstandCommand());
         }
 
 

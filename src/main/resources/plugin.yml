@@ -62,5 +62,3 @@ commands:
     aliases: [ia, itemaverage]
   grave:
     description: Keep Inventory stands no chance!
-  armorstand:
-    description: Statues!

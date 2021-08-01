@@ -147,7 +147,6 @@ public class CustomMetrics {
                 valueMap.put("Set Home", getCommand("sethome"));
                 valueMap.put("Item Averages", getCommand("itemaverages"));
                 valueMap.put("Grave", getCommand("grave"));
-                valueMap.put("Armorstand", getCommand("armorstand"));
                 return valueMap;
             }
         }));
