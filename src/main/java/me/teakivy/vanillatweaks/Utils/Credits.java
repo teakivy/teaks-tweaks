@@ -18,9 +18,4 @@ public class Credits {
             writer.close();
         }
     }
-
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/master
