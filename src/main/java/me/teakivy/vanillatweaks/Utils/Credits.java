@@ -19,4 +19,8 @@ public class Credits {
         }
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/master
