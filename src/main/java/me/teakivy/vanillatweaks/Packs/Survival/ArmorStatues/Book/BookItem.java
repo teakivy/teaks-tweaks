@@ -172,6 +172,9 @@ public class BookItem {
         TextComponent infoPopup = new TextComponent(newInfoPopup("The angle step (default 15\u00b0) is used for both the stand rotation and the pose adjustments.\n\nToward and Away turn the armor stand to face toward or away from you."));
         TextComponent newLine = new TextComponent("\n");
 
+        TextComponent github = new TextComponent(ChatColor.DARK_GRAY + "</>");
+        github.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/teakivy/vanilla-tweaks"));
+        github.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatColor.GOLD + "Pointing Positions is not yet avaliable.\n\nIf you would like these features sooner, Please contribute\nto the project's GitHub (click here)")));
 
         BaseComponent[] page = new ComponentBuilder(mainPageLink)
                 .append(title)
@@ -197,36 +200,51 @@ public class BookItem {
                 .append(newPageLink(ChatColor.DARK_BLUE + "Pointing", "4"))
                 .append(newPageLink("       ", "4"))
                 .append(newInfoPopup("Points selected appendage at head or feet."))
-                .append(newPageLink("\n\nHead:", "4"))
-                .append(newPageLink(ChatColor.WHITE + "    .", "4"))
-                .append(newPageLink(ChatColor.DARK_GREEN + "Head", "4"))
+                .append("\n\n\n\n\n\n\n")
+                .append(newPageLink("                       ", "3"))
+                .append(github)
+                .create();
+        return page;
+    }
+
+    private static BaseComponent[] getPageFive() {
+
+        TextComponent mainPageLink = newPageLink(ChatColor.LIGHT_PURPLE + "\u00ab", "1");
+        TextComponent title = newPageLink(ChatColor.WHITE + "   " + ChatColor.DARK_BLUE + "Adjust Rotation" + ChatColor.WHITE + " ", "4");
+        TextComponent infoPopup = new TextComponent(newInfoPopup("The angle step (default 15\u00b0) is used for both the stand rotation and the pose adjustments.\n\nToward and Away turn the armor stand to face toward or away from you."));
+        TextComponent newLine = new TextComponent("\n");
+
+        TextComponent github = new TextComponent(ChatColor.DARK_GRAY + "</>");
+        github.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/teakivy/vanilla-tweaks"));
+        github.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatColor.GOLD + "Pointing Positions is not yet avaliable.\n\nIf you would like these features sooner, Please contribute\nto the project's GitHub (click here)")));
+
+        BaseComponent[] page = new ComponentBuilder(mainPageLink)
+                .append(title)
+                .append(infoPopup)
+                .append("\n\n")
+                .append(newPageLink("  ", "4"))
+                .append(newCommandLink(ChatColor.DARK_GREEN + "<<", "/armorstand rotate counterclockwise"))
+                .append(newPageLink("  ", "4"))
+                .append(newCommandLink(ChatColor.DARK_GREEN + "45\u00b0", "/armorstand set_rotation_number 45"))
+                .append(newPageLink(" ", "4"))
+                .append(newCommandLink(ChatColor.DARK_GREEN + "15\u00b0", "/armorstand set_rotation_number 15"))
+                .append(newPageLink(" ", "4"))
+                .append(newCommandLink(ChatColor.DARK_GREEN + "5\u00b0", "/armorstand set_rotation_number 5"))
+                .append(newPageLink(" ", "4"))
+                .append(newCommandLink(ChatColor.DARK_GREEN + "1\u00b0", "/armorstand set_rotation_number 1"))
+                .append(newPageLink("  ", "4"))
+                .append(newCommandLink(ChatColor.DARK_GREEN + ">>", "/armorstand rotate clockwise"))
+                .append(newPageLink("\n\n     ", "4"))
+                .append(newPageLink(ChatColor.DARK_GREEN + "Toward", "4"))
                 .append(newPageLink("   ", "4"))
-                .append(newPageLink(ChatColor.DARK_GREEN + "Feet", "4"))
-                .append(newPageLink("\nBody:", "4"))
-                .append(newPageLink(ChatColor.WHITE + "    .", "4"))
-                .append(newPageLink(ChatColor.DARK_GREEN + "Head", "4"))
-                .append(newPageLink("   ", "4"))
-                .append(newPageLink(ChatColor.DARK_GREEN + "Feet", "4"))
-                .append(newPageLink("\nR.Arm:", "1"))
-                .append(newPageLink(ChatColor.WHITE + "    ", "4"))
-                .append(newPageLink(ChatColor.DARK_GREEN + "Head", "4"))
-                .append(newPageLink("   ", "4"))
-                .append(newPageLink(ChatColor.DARK_GREEN + "Feet", "4"))
-                .append(newPageLink("\nL.Arm:", "4"))
-                .append(newPageLink(ChatColor.WHITE + "    ", "4"))
-                .append(newPageLink(ChatColor.DARK_GREEN + "Head", "4"))
-                .append(newPageLink("   ", "4"))
-                .append(newPageLink(ChatColor.DARK_GREEN + "Feet", "4"))
-                .append(newPageLink("\nR.Leg:", "4"))
-                .append(newPageLink(ChatColor.WHITE + "    ", "4"))
-                .append(newPageLink(ChatColor.DARK_GREEN + "Head", "4"))
-                .append(newPageLink("   ", "4"))
-                .append(newPageLink(ChatColor.DARK_GREEN + "Feet", "4"))
-                .append(newPageLink("\nL.Leg:", "4"))
-                .append(newPageLink(ChatColor.WHITE + "    ", "4"))
-                .append(newPageLink(ChatColor.DARK_GREEN + "Head", "4"))
-                .append(newPageLink("   ", "4"))
-                .append(newPageLink(ChatColor.DARK_GREEN + "Feet", "4"))
+                .append(newPageLink(ChatColor.DARK_GREEN + "Away", "4"))
+                .append(newPageLink("\n\n         ", "4"))
+                .append(newPageLink(ChatColor.DARK_BLUE + "Pointing", "4"))
+                .append(newPageLink("       ", "4"))
+                .append(newInfoPopup("Points selected appendage at head or feet."))
+                .append("\n\n\n\n\n\n\n")
+                .append(newPageLink("                       ", "3"))
+                .append(github)
                 .create();
         return page;
     }

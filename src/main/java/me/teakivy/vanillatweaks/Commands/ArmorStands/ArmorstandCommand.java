@@ -241,6 +241,15 @@ public class ArmorstandCommand implements CommandExecutor {
                 }
             }
 
+//            if (args[0].equalsIgnoreCase("point")) {
+//                if (args.length < 3) return true;
+//                ArmorStand stand = (ArmorStand) nearest;
+//
+//                if (args[1].equalsIgnoreCase("head")) {
+//                    if (args[1])
+//                }
+//            }
+
         }
         return false;
     }

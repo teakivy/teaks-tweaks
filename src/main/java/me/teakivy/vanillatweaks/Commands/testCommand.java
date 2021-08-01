@@ -1,7 +1,7 @@
 package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
-import me.teakivy.vanillatweaks.Packs.Graves.GraveEvents;
+import me.teakivy.vanillatweaks.Packs.Survival.ArmorStatues.Book.BookItem;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -20,8 +20,8 @@ public class testCommand implements CommandExecutor {
             Player player = (Player) sender;
             World world = player.getWorld();
             if (main.getConfig().getBoolean("config.dev-mode")) {
-                player.sendMessage(vt + ChatColor.GREEN + "You have been given a grave key!");
-                player.getInventory().addItem(GraveEvents.getGraveKey());
+                player.sendMessage(vt + ChatColor.GREEN + "You have been given a statues book!");
+                BookItem.giveBook(player);
             } else {
                 player.sendMessage(vt + ChatColor.YELLOW + "Hey! Looks like you found my test command! :D");
                 if (player.isOp()) {
