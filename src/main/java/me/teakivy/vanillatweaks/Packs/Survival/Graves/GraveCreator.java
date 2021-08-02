@@ -1,4 +1,4 @@
-package me.teakivy.vanillatweaks.Packs.Graves;
+package me.teakivy.vanillatweaks.Packs.Survival.Graves;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Utils.ItemStackSerializer;
@@ -44,7 +44,7 @@ public class GraveCreator {
                 }
             }
         } else {
-            for (int i = (int) loc.getY(); i > loc.getWorld().getMinHeight(); i--) {
+            for (int i = (int) loc.getY(); i > Objects.requireNonNull(loc.getWorld()).getMinHeight(); i--) {
                 Block current = loc.getWorld().getBlockAt((int) loc.getX(), i, (int) loc.getZ());
                 if (!getAirTypes().contains(current.getType())) {
                     return current.getLocation().add(0, 1, 0);
@@ -66,6 +66,10 @@ public class GraveCreator {
             for (Location block : avaliableBlocks) {
                 if (bestGraveLocation == null) {
                     bestGraveLocation = new Location(loc.getWorld(), loc.getX(), block.getY(), loc.getZ());
+                    if (bestGraveLocation.getY() <= loc.getWorld().getMinHeight()) {
+                        bestGraveLocation.getBlock().setType(Material.GRASS_BLOCK);
+                        bestGraveLocation.add(0, 1, 0);
+                    }
                 }
             }
         }
