@@ -73,14 +73,37 @@ public class XPManagement implements Listener {
         if (event.getClickedBlock().getType() != Material.ENCHANTING_TABLE) return;
         if (item == null) return;
         if (item.getType() != Material.GLASS_BOTTLE) return;
+
         if (player.getTotalExperience() <= main.getConfig().getInt("packs.xp-management.take-xp-amount")) return;
+
+        final int takeXPAmount = main.getConfig().getInt("packs.xp-management.take-xp-amount");
+        int finalXPAmount = takeXPAmount;
+        int timesToBottle = 1;
+        if (player.isSneaking() && main.getConfig().getBoolean("packs.xp-management.sneak-to-bottle-all")) {
+            if (player.getTotalExperience() >= item.getAmount() * takeXPAmount) {
+                timesToBottle = item.getAmount();
+                finalXPAmount = item.getAmount() * takeXPAmount;
+            } else {
+                int bottles = item.getAmount();
+                int xpTimes = (int) Math.floor(player.getTotalExperience() / takeXPAmount);
+                if (xpTimes > bottles) {
+                    timesToBottle = item.getAmount();
+                    finalXPAmount = takeXPAmount * item.getAmount();
+                }
+                if (bottles > xpTimes) {
+                    timesToBottle = xpTimes;
+                    finalXPAmount = xpTimes * takeXPAmount;
+                }
+            }
+        }
 
         event.setCancelled(true);
         int itemAmount = item.getAmount();
-        int newAmount = itemAmount - 1;
-        if (main.getConfig().getBoolean("packs.xp-management.sneak-to-bottle-all") && player.isSneaking()) newAmount = 0;
+        int newAmount = itemAmount - timesToBottle;
+        if (newAmount < 0) newAmount = 0;
+        if (newAmount > 64) newAmount = 64;
         item.setAmount(newAmount);
-        player.giveExp(-main.getConfig().getInt("packs.xp-management.take-xp-amount"));
+        player.giveExp(-finalXPAmount);
 
         ItemStack xpBottle = new ItemStack(Material.EXPERIENCE_BOTTLE, 1);
         ItemMeta xpMeta = xpBottle.getItemMeta();
@@ -102,7 +125,7 @@ public class XPManagement implements Listener {
         xpBottle.setItemMeta(xpMeta);
 
         if (main.getConfig().getBoolean("packs.xp-management.sneak-to-bottle-all") && player.isSneaking()) {
-            for (int i = 0; i < itemAmount; i++) {
+            for (int i = 0; i < timesToBottle; i++) {
                 player.getInventory().addItem(xpBottle);
             }
         } else {
