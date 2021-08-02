@@ -1,5 +1,6 @@
 package me.teakivy.vanillatweaks.Packs.Utilities.CustomVillagerShops;
 
+import me.teakivy.vanillatweaks.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.block.Block;
@@ -20,6 +21,7 @@ import java.util.List;
 
 public class CustomVillager implements Listener {
 
+    Main main = Main.getPlugin(Main.class);
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     @EventHandler
@@ -27,6 +29,7 @@ public class CustomVillager implements Listener {
         Player player = event.getPlayer();
         if (!event.isSneaking()) return;
         if (player.getGameMode() != GameMode.CREATIVE) return;
+        if (main.getConfig().getBoolean("packs.custom-villager-shops.require-op") && !player.isOp()) return;
 
         Entity nearest = getNearestVillager(player);
         if (nearest == null) return;
