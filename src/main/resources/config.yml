@@ -163,6 +163,10 @@ packs:
   # Command: /ch toggle
   coords-hud:
     enabled: false
+    # Whether or not Coordinates Hud will be automatically enabled on join
+    auto-enable: false
+    # Whether or not to force users to use Coords HUD
+    force-enable: false
 
   # Classic Fishing Loot
   # Reverts the fishing loot back to its pre-1.16 loot table.
@@ -735,7 +739,7 @@ commands:
 # Leave these options alone unless you know what you're doing!
 # Changing these values may cause unexpected issues.
 config:
-  plugin-version: 1.4.0-beta
+  plugin-version: 1.4.1-beta
   alert-op-on-new-version: true
   version: 13
   dev-mode: false
