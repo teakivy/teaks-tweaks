@@ -57,6 +57,7 @@ public class CustomMetrics {
                 valueMap.put("TPA", getPack("tpa"));
                 valueMap.put("Back", getPack("back"));
 
+                valueMap.put("Custom Villager Shops", getPack("custom-villager-shops"));
                 valueMap.put("Spectator Night Vision", getPack("spectator-night-vision"));
                 valueMap.put("Spectator Conduit Power", getPack("spectator-conduit-power"));
                 valueMap.put("Item Averages", getPack("item-averages"));
