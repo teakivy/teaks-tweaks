@@ -39,6 +39,7 @@ import me.teakivy.vanillatweaks.Packs.Survival.TrackStatistics.StatTracker;
 import me.teakivy.vanillatweaks.Packs.Survival.UnlockAllRecipes.UnlockRecipes;
 import me.teakivy.vanillatweaks.Packs.Survival.WorkstationHighlights.Highlighter;
 import me.teakivy.vanillatweaks.Packs.Teleportation.Back.Back;
+import me.teakivy.vanillatweaks.Packs.Utilities.CustomVillagerShops.CustomVillager;
 import me.teakivy.vanillatweaks.Packs.Utilities.ItemAverages.ItemTracker;
 import me.teakivy.vanillatweaks.Packs.Utilities.SpectatorConduitPower.ConduitPower;
 import me.teakivy.vanillatweaks.Packs.Utilities.SpectatorNightVision.NightVision;
@@ -86,6 +87,7 @@ public class Register {
     public static RawStats rawStats = new RawStats();
     public static GraveEvents graves = new GraveEvents();
     public static HUD hud = new HUD();
+    public static CustomVillager customVillager = new CustomVillager();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -257,6 +259,10 @@ public class Register {
         if (pack.equalsIgnoreCase("graves")) {
             graves.unregister();
         }
+
+        if (pack.equalsIgnoreCase("custom-villager-shops")) {
+            customVillager.unregister();
+        }
     }
 
     public static void registerPack(String pack) {
@@ -422,6 +428,10 @@ public class Register {
 
         if (pack.equalsIgnoreCase("graves")) {
             main.getServer().getPluginManager().registerEvents(graves, main);
+        }
+
+        if (pack.equalsIgnoreCase("custom-villager-shops")) {
+            main.getServer().getPluginManager().registerEvents(customVillager, main);
         }
     }
 

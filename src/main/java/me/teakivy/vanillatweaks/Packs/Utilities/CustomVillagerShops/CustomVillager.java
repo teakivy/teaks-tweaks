@@ -10,6 +10,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.Inventory;
@@ -85,6 +86,10 @@ public class CustomVillager implements Listener {
         recipe.addIngredient(item1);
         if (item2 != null) recipe.addIngredient(item2);
         return recipe;
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
     }
 
 }
