@@ -95,7 +95,7 @@ packs:
   # Get a grave key to unlock any grave: `/grave key`
   # Locate your last grave (if locatable is on): `/grave locate` or `/grave`
   graves:
-    enabled: true
+    enabled: false
     # Whether or not graves hold the players xp
     hold-xp: true
     # Whether or not it sends a message to the player telling the location of their grave
