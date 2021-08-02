@@ -27,7 +27,6 @@ public class GraveCreator {
         Location bestGraveLocation = null;
         ArrayList<Location> avaliableBlocks = new ArrayList<>();
         if (location.getY() < Objects.requireNonNull(loc.getWorld()).getMinHeight()) {
-            ArrayList<Block> fullBlocks = new ArrayList<>();
             for (int i = loc.getWorld().getMinHeight(); i < loc.getWorld().getMaxHeight(); i++) {
                 Block current = loc.getWorld().getBlockAt((int) loc.getX(), i, (int) loc.getZ());
                 if (!getAirTypes().contains(current.getType())) {
