@@ -1,4 +1,4 @@
-package me.teakivy.vanillatweaks.Packs.Graves;
+package me.teakivy.vanillatweaks.Packs.Survival.Graves;
 
 import me.teakivy.vanillatweaks.Main;
 import org.bukkit.*;
