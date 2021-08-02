@@ -24,7 +24,6 @@ public class GraveCreator {
     public Location findGraveLocation(Location location) {
         Location loc = location.getBlock().getLocation();
 
-
         Location bestGraveLocation = null;
         ArrayList<Location> avaliableBlocks = new ArrayList<>();
         if (location.getY() < Objects.requireNonNull(loc.getWorld()).getMinHeight()) {
