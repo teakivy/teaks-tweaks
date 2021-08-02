@@ -741,5 +741,5 @@ commands:
 config:
   plugin-version: 1.4.1-beta
   alert-op-on-new-version: true
-  version: 13
+  version: 14
   dev-mode: false
