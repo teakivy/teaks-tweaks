@@ -319,6 +319,13 @@ packs:
 
   # Utilities:
 
+  # Custom Villager Shops
+  # Allows you to easily setup Villager Trades in creative using chests.
+  custom-villager-shops:
+    enabled: false
+    # Whether or not creating villager shops requires op
+    require-op: true
+
   # Spectator Night Vision
   # Easily toggle night vision when in spectator.
   # Command: /nv
