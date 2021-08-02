@@ -97,6 +97,7 @@ public class GraveEvents implements Listener {
 
     @EventHandler
     public void onPickUp(InventoryPickupItemEvent event) {
+        if (!(event.getInventory().getHolder() instanceof Player)) return;
         Player player = (Player) event.getInventory().getHolder();
         if (event.getItem().getPersistentDataContainer().has(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_item_owner_uuid"), PersistentDataType.STRING)) {
             UUID playerUUID = player.getUniqueId();
