@@ -7,7 +7,6 @@ import me.teakivy.vanillatweaks.Packs.Experimental.ChunkLoaders.Loader;
 import me.teakivy.vanillatweaks.Packs.Experimental.ConfettiCreepers.ConfettiCreeper;
 import me.teakivy.vanillatweaks.Packs.Experimental.Elevators.Elevator;
 import me.teakivy.vanillatweaks.Packs.Experimental.XPManagement.XPManagement;
-import me.teakivy.vanillatweaks.Packs.Graves.GraveEvents;
 import me.teakivy.vanillatweaks.Packs.Hermitcraft.Tag.Tag;
 import me.teakivy.vanillatweaks.Packs.Hermitcraft.ThunderShrine.Shrine;
 import me.teakivy.vanillatweaks.Packs.Hermitcraft.TreasureGems.Gems;
@@ -32,6 +31,7 @@ import me.teakivy.vanillatweaks.Packs.Survival.CoordsHud.HUD;
 import me.teakivy.vanillatweaks.Packs.Survival.CustomNetherPortals.NetherPortal;
 import me.teakivy.vanillatweaks.Packs.Survival.DurabilityPing.DuraPing;
 import me.teakivy.vanillatweaks.Packs.Survival.FastLeafDecay.Decay;
+import me.teakivy.vanillatweaks.Packs.Survival.Graves.GraveEvents;
 import me.teakivy.vanillatweaks.Packs.Survival.MultiplayerSleep.MultiplayerSleep;
 import me.teakivy.vanillatweaks.Packs.Survival.PillagerTools.PillagerSpawning;
 import me.teakivy.vanillatweaks.Packs.Survival.TrackRawStatistics.RawStats;
@@ -85,6 +85,7 @@ public class Register {
     public static StatTracker statTracker = new StatTracker();
     public static RawStats rawStats = new RawStats();
     public static GraveEvents graves = new GraveEvents();
+    public static HUD hud = new HUD();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -122,6 +123,7 @@ public class Register {
 
         if (pack.equalsIgnoreCase("coords-hud")) {
             HUD.stopHUD();
+            hud.unregister();
         }
 
         if (pack.equalsIgnoreCase("count-mob-deaths")) {
@@ -255,7 +257,6 @@ public class Register {
         if (pack.equalsIgnoreCase("graves")) {
             graves.unregister();
         }
-
     }
 
     public static void registerPack(String pack) {
@@ -277,6 +278,7 @@ public class Register {
 
         if (pack.equalsIgnoreCase("coords-hud")) {
             HUD.startHUD();
+            main.getServer().getPluginManager().registerEvents(hud, main);
         }
 
         if (pack.equalsIgnoreCase("count-mob-deaths")) {
