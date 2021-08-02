@@ -18,7 +18,6 @@ public class HUD {
 
     public static void doHUD() {
         Bukkit.getScheduler().runTaskLater(main, () -> {
-            System.out.println(Main.chEnabled);
             for (UUID uuid : Main.chEnabled) {
                 Player player = Bukkit.getPlayer(uuid);
                 if (player == null) continue;
