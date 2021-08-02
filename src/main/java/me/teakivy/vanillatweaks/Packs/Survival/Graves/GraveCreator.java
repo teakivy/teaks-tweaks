@@ -1,7 +1,8 @@
 package me.teakivy.vanillatweaks.Packs.Survival.Graves;
 
 import me.teakivy.vanillatweaks.Main;
-import me.teakivy.vanillatweaks.Utils.ItemStackSerializer;
+import me.teakivy.vanillatweaks.Utils.Serializer.Base64Serializer;
+import me.teakivy.vanillatweaks.Utils.Serializer.ItemStackSerializer;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -13,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
@@ -25,7 +27,18 @@ public class GraveCreator {
 
         Location bestGraveLocation = null;
         ArrayList<Location> avaliableBlocks = new ArrayList<>();
-        if (!getAirTypes().contains(loc.add(0, -1, 0).getBlock().getType())) {
+        if (location.getY() < Objects.requireNonNull(loc.getWorld()).getMinHeight()) {
+            ArrayList<Block> fullBlocks = new ArrayList<>();
+            for (int i = loc.getWorld().getMinHeight(); i < loc.getWorld().getMaxHeight(); i++) {
+                Block current = loc.getWorld().getBlockAt((int) loc.getX(), i, (int) loc.getZ());
+                if (!getAirTypes().contains(current.getType())) {
+                    bestGraveLocation = new Location(loc.getWorld(), loc.getX(), loc.getWorld().getMaxHeight() + 1, loc.getZ());
+                    return bestGraveLocation;
+                }
+            }
+            loc.getWorld().getBlockAt((int) Math.floor(loc.getX()), loc.getWorld().getMinHeight(), (int) Math.floor(loc.getZ())).setType(Material.GRASS_BLOCK);
+            return loc.getWorld().getBlockAt((int) Math.floor(loc.getX()), loc.getWorld().getMinHeight() + 1, (int) Math.floor(loc.getZ())).getLocation();
+        } else if  (!getAirTypes().contains(loc.add(0, -1, 0).getBlock().getType())) {
             for (int i = (int) loc.getY(); i < loc.getWorld().getMaxHeight(); i++) {
                 Block current = loc.getWorld().getBlockAt((int) loc.getX(), i, (int) loc.getZ());
                 if (getAirTypes().contains(current.getType())) {
@@ -85,6 +98,7 @@ public class GraveCreator {
         as.setInvulnerable(true);
         as.setCustomName(player.getName());
         as.addScoreboardTag("vt_grave");
+        as.addScoreboardTag("vt_base64");
         as.setCustomNameVisible(true);
 
         PersistentDataContainer data = as.getPersistentDataContainer();
@@ -149,23 +163,26 @@ public class GraveCreator {
         StringBuilder serialized = new StringBuilder();
         for (ItemStack item : items) {
             if (item == null) continue;
-            String serItem = ItemStackSerializer.serialize(item);
-            System.out.println(serItem);
-            serialized.append(serItem);
+            String newSerItem = Base64Serializer.itemStackArrayToBase64(new ItemStack[]{item});
+//            String serItem = ItemStackSerializer.serialize(item);
+            serialized.append(newSerItem);
             serialized.append(" :%-=-%: ");
         }
         if (serialized.length() > " :%-=-%: ".length()) {
-            System.out.println(removeLastChars(serialized.toString(), " :%-=-%: ".length()));
             return removeLastChars(serialized.toString(), " :%-=-%: ".length());
         }
         return serialized.toString();
     }
 
-    public ArrayList<ItemStack> deserializeItems(String serialized) {
+    public ArrayList<ItemStack> deserializeItems(String serialized, boolean base64) throws IOException {
         ArrayList<ItemStack> items = new ArrayList<>();
         if (serialized.length() < 1) return items;
         for (String s : serialized.split(" :%-=-%: ", -1)) {
-            items.add(ItemStackSerializer.deserialize(s));
+            if (!base64) {
+                items.add(ItemStackSerializer.deserialize(s));
+            } else {
+                items.add(Base64Serializer.itemStackArrayFromBase64(s)[0]);
+            }
         }
         return items;
     }

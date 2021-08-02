@@ -20,6 +20,7 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Vector;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -29,7 +30,7 @@ public class GraveEvents implements Listener {
     Main main = Main.getPlugin(Main.class);
 
     @EventHandler
-    public void onInteract(PlayerInteractAtEntityEvent event) {
+    public void onInteract(PlayerInteractAtEntityEvent event) throws IOException {
         Entity entity = event.getRightClicked();
         if (!entity.getScoreboardTags().contains("vt_grave")) return;
 
@@ -38,7 +39,7 @@ public class GraveEvents implements Listener {
             if (data.has(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_items"), PersistentDataType.STRING)) {
                 String ownerItems = data.get(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_items"), PersistentDataType.STRING);
                 if (ownerItems != null) {
-                    for (ItemStack item : new GraveCreator().deserializeItems(ownerItems)) {
+                    for (ItemStack item : new GraveCreator().deserializeItems(ownerItems, entity.getScoreboardTags().contains("vt_base64"))) {
                         Item itemE = entity.getWorld().dropItem(entity.getLocation().add(0, 2, 0), item);
                         if (event.getPlayer().isSneaking()) {
                             PersistentDataContainer iData = itemE.getPersistentDataContainer();
@@ -67,7 +68,7 @@ public class GraveEvents implements Listener {
                 if (data.has(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_items"), PersistentDataType.STRING)) {
                     String ownerItems = data.get(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_items"), PersistentDataType.STRING);
                     if (ownerItems != null) {
-                        for (ItemStack item : new GraveCreator().deserializeItems(ownerItems)) {
+                        for (ItemStack item : new GraveCreator().deserializeItems(ownerItems, entity.getScoreboardTags().contains("vt_base64"))) {
                             Item itemE = entity.getWorld().dropItem(entity.getLocation().add(0, 2, 0), item);
                             itemE.setPickupDelay(0);
                             itemE.setVelocity(new Vector(0, 0, 0));
