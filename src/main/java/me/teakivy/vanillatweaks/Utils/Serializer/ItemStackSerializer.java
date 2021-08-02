@@ -1,4 +1,4 @@
-package me.teakivy.vanillatweaks.Utils;
+package me.teakivy.vanillatweaks.Utils.Serializer;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

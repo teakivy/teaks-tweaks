@@ -1,7 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Items.ArmoredElytra;
 
 import me.teakivy.vanillatweaks.Main;
-import me.teakivy.vanillatweaks.Utils.ItemStackSerializer;
+import me.teakivy.vanillatweaks.Utils.Serializer.ItemStackSerializer;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
