@@ -26,7 +26,9 @@ public class Trades implements Listener {
             WanderingTrader trader = (WanderingTrader) event.getEntity();
             List<MerchantRecipe> recipes = new ArrayList<>();
 
-            recipes.addAll(getHeadTrades());
+            if (main.getConfig().getBoolean("packs.wandering-trades.player-heads.has-player-heads")) {
+                recipes.addAll(getHeadTrades());
+            }
             recipes.addAll(MiniBlocks.getBlockTrades());
 
             recipes.addAll(trader.getRecipes());
