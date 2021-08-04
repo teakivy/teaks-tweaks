@@ -64,4 +64,4 @@ commands:
     description: Keep Inventory stands no chance!
   spawningspheres:
     description: Spawn a sphere to help with mob spawining!
-    aliases: [ss, spawningspheres]
+    aliases: [ss, spawningspheres, sphere, spheres]

@@ -24,7 +24,7 @@ public class SpawningSpheresCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if (command.getName().equalsIgnoreCase("ss") || command.getName().equalsIgnoreCase("spawningspheres") || command.getName().equalsIgnoreCase("spawningsphere")) {
+        if (command.getName().equalsIgnoreCase("ss") || command.getName().equalsIgnoreCase("spawningspheres") || command.getName().equalsIgnoreCase("spawningsphere") || command.getName().equalsIgnoreCase("spheres") || command.getName().equalsIgnoreCase("sphere")) {
             if (!main.getConfig().getBoolean("packs.spawning-spheres.enabled")) {
                 sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
                 return true;
@@ -41,6 +41,11 @@ public class SpawningSpheresCommand implements CommandExecutor {
             }
 
             SphereData sData = new SphereData();
+
+            if (!player.isOp() && main.getConfig().getBoolean("packs.spawning-spheres.require-op")) {
+                player.sendMessage(vt + ChatColor.RED + "You don't have permission to use this command!");
+                return true;
+            }
 
             if (args[0].equalsIgnoreCase("create")) {
                 if (args.length < 2) {
