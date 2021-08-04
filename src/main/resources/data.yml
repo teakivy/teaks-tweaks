@@ -2,3 +2,14 @@ chEnabled:
 
 multiplayer-sleep:
   percent-to-sleep:
+
+spheres:
+  red:
+    in-use: false
+    location: null
+  blue:
+    in-use: false
+    location: null
+  green:
+    in-use: false
+    location: null

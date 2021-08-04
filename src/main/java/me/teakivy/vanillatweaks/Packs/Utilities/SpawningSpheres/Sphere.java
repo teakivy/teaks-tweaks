@@ -4,6 +4,10 @@ import me.teakivy.vanillatweaks.Main;
 import org.bukkit.*;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -12,18 +16,31 @@ import org.bukkit.scoreboard.Team;
 
 import java.util.Objects;
 
-public class Sphere {
+public class Sphere implements Listener {
 
     Main main = Main.getPlugin(Main.class);
+
+    @EventHandler
+    public void onMove(PlayerMoveEvent event) {
+        if (event.getPlayer().getScoreboardTags().contains("vt_despawning_sphere")) event.setCancelled(true);
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
+    }
 
     public static void spawnSphere(Location loc, Color color) {
         ItemStack colorStack = new ItemStack(Material.AIR);
         if (color == Color.RED) colorStack = new ItemStack(Material.RED_CONCRETE);
         if (color == Color.BLUE) colorStack = new ItemStack(Material.CYAN_CONCRETE);
         if (color == Color.GREEN) colorStack = new ItemStack(Material.GREEN_CONCRETE);
+        String sColor = "";
+        if (color == Color.RED) sColor = "red";
+        if (color == Color.BLUE) sColor = "blue";
+        if (color == Color.GREEN) sColor = "green";
 
         Team team = getTeam(color);
-        summonStand(loc, colorStack, true, team, true);
+        summonStand(loc, colorStack, true, team, true, sColor);
 
         int radius = 24;
         for (double i = 0; i <= Math.PI; i += Math.PI / 10) {
@@ -33,7 +50,7 @@ public class Sphere {
                 double x = Math.cos(a) * curRadius * radius;
                 double z = Math.sin(a) * curRadius * radius;
                 loc.add(x, y, z);
-                summonStand(loc, colorStack, true, team, false);
+                summonStand(loc, colorStack, true, team, false, sColor);
                 loc.subtract(x, y, z);
             }
         }
@@ -50,13 +67,13 @@ public class Sphere {
                 double x = Math.cos(a) * curRadius * radius;
                 double z = Math.sin(a) * curRadius * radius;
                 loc.add(x, y, z);
-                summonStand(loc, colorStack, true, team, false);
+                summonStand(loc, colorStack, true, team, false, sColor);
                 loc.subtract(x, y, z);
             }
         }
     }
 
-    private static void summonStand(Location loc, ItemStack head, boolean glowing, Team team, boolean center) {
+    private static void summonStand(Location loc, ItemStack head, boolean glowing, Team team, boolean center, String color) {
         ArmorStand stand = (ArmorStand) Objects.requireNonNull(loc.getWorld()).spawnEntity(new Location(loc.getWorld(), loc.getX(), loc.getY(), loc.getZ(), 0, 0), EntityType.ARMOR_STAND);
         stand.setGravity(false);
         stand.setVisible(false);
@@ -69,7 +86,7 @@ public class Sphere {
             stand.setCustomNameVisible(true);
         }
         stand.setMarker(true);
-        stand.addScoreboardTag("vt_red_sphere");
+        stand.addScoreboardTag("vt_" + color + "_sphere");
         stand.addScoreboardTag("vt_spawning_sphere");
         Objects.requireNonNull(stand.getEquipment()).setHelmet(head);
 
