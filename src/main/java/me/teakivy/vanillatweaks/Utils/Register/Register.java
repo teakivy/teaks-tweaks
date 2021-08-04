@@ -41,6 +41,7 @@ import me.teakivy.vanillatweaks.Packs.Survival.WorkstationHighlights.Highlighter
 import me.teakivy.vanillatweaks.Packs.Teleportation.Back.Back;
 import me.teakivy.vanillatweaks.Packs.Utilities.CustomVillagerShops.CustomVillager;
 import me.teakivy.vanillatweaks.Packs.Utilities.ItemAverages.ItemTracker;
+import me.teakivy.vanillatweaks.Packs.Utilities.SpawningSpheres.Sphere;
 import me.teakivy.vanillatweaks.Packs.Utilities.SpectatorConduitPower.ConduitPower;
 import me.teakivy.vanillatweaks.Packs.Utilities.SpectatorNightVision.NightVision;
 
@@ -88,6 +89,7 @@ public class Register {
     public static GraveEvents graves = new GraveEvents();
     public static HUD hud = new HUD();
     public static CustomVillager customVillager = new CustomVillager();
+    public static Sphere sphere = new Sphere();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -263,6 +265,10 @@ public class Register {
         if (pack.equalsIgnoreCase("custom-villager-shops")) {
             customVillager.unregister();
         }
+
+        if (pack.equalsIgnoreCase("spawning-spheres")) {
+            sphere.unregister();
+        }
     }
 
     public static void registerPack(String pack) {
@@ -433,6 +439,10 @@ public class Register {
         if (pack.equalsIgnoreCase("custom-villager-shops")) {
             main.getServer().getPluginManager().registerEvents(customVillager, main);
         }
+
+        if (pack.equalsIgnoreCase("spawning-spheres")) {
+            main.getServer().getPluginManager().registerEvents(sphere, main);
+        }
     }
 
     public static void registerCommands() {
@@ -522,6 +532,11 @@ public class Register {
         if (main.getConfig().getBoolean("commands.grave.enabled")) {
             main.getCommand("grave").setExecutor(new GraveCommand());
             main.getCommand("grave").setTabCompleter(new GraveTab());
+        }
+
+        if (main.getConfig().getBoolean("commands.sphere.enabled")) {
+            main.getCommand("spawningspheres").setExecutor(new SpawningSpheresCommand());
+            main.getCommand("spawningspheres").setTabCompleter(new SpawningSpheresTab());
         }
 
 
