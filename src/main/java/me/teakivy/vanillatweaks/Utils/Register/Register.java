@@ -534,9 +534,14 @@ public class Register {
             main.getCommand("grave").setTabCompleter(new GraveTab());
         }
 
-        if (main.getConfig().getBoolean("commands.sphere.enabled")) {
+        if (main.getConfig().getBoolean("commands.spawningspheres.enabled")) {
             main.getCommand("spawningspheres").setExecutor(new SpawningSpheresCommand());
             main.getCommand("spawningspheres").setTabCompleter(new SpawningSpheresTab());
+        }
+
+        if (main.getConfig().getBoolean("commands.gem.enabled")) {
+            main.getCommand("gem").setExecutor(new GemVillagersCommand());
+            main.getCommand("gem").setTabCompleter(new GemVillagersTab());
         }
 
 
