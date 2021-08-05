@@ -58,6 +58,7 @@ public class CustomMetrics {
                 valueMap.put("Back", getPack("back"));
 
                 valueMap.put("Custom Villager Shops", getPack("custom-villager-shops"));
+                valueMap.put("Spawning Spheres", getPack("spawning-spheres"));
                 valueMap.put("Spectator Night Vision", getPack("spectator-night-vision"));
                 valueMap.put("Spectator Conduit Power", getPack("spectator-conduit-power"));
                 valueMap.put("Item Averages", getPack("item-averages"));
@@ -148,6 +149,7 @@ public class CustomMetrics {
                 valueMap.put("Set Home", getCommand("sethome"));
                 valueMap.put("Item Averages", getCommand("itemaverages"));
                 valueMap.put("Grave", getCommand("grave"));
+                valueMap.put("Gem", getCommand("gem"));
                 return valueMap;
             }
         }));
