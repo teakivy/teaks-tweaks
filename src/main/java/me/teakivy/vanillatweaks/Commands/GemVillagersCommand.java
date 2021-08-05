@@ -52,73 +52,73 @@ public class GemVillagersCommand implements CommandExecutor {
                 }
 
                 if (args[1].equalsIgnoreCase("concrete")) {
-                    gems.summonAquaticVillager(player.getLocation());
+                    gems.summonConcreteVillager(player.getLocation());
                     player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.AQUA + "Concrete" + ChatColor.GREEN + " villager!");
                     return true;
                 }
 
                 if (args[1].equalsIgnoreCase("gem_trading")) {
-                    gems.summonAquaticVillager(player.getLocation());
+                    gems.summonGemTraderVillager(player.getLocation());
                     player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.AQUA + "Gem Trader" + ChatColor.GREEN + " villager!");
                     return true;
                 }
 
                 if (args[1].equalsIgnoreCase("functional")) {
-                    gems.summonAquaticVillager(player.getLocation());
+                    gems.summonFunctionalVillager(player.getLocation());
                     player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.AQUA + "Functional" + ChatColor.GREEN + " villager!");
                     return true;
                 }
 
                 if (args[1].equalsIgnoreCase("gem_collector")) {
-                    gems.summonAquaticVillager(player.getLocation());
+                    gems.summonGemCollectorVillager(player.getLocation());
                     player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.GOLD + "Gem Collector" + ChatColor.GREEN + " villager!");
                     return true;
                 }
 
                 if (args[1].equalsIgnoreCase("more_blocks")) {
-                    gems.summonAquaticVillager(player.getLocation());
+                    gems.summonMoreBlocksVillager(player.getLocation());
                     player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.BLUE + "More Blocks" + ChatColor.GREEN + " villager!");
                     return true;
                 }
 
                 if (args[1].equalsIgnoreCase("natural")) {
-                    gems.summonAquaticVillager(player.getLocation());
+                    gems.summonNaturalVillager(player.getLocation());
                     player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.BLUE + "Natural" + ChatColor.GREEN + " villager!");
                     return true;
                 }
 
                 if (args[1].equalsIgnoreCase("nether")) {
-                    gems.summonAquaticVillager(player.getLocation());
+                    gems.summonNetherVillager(player.getLocation());
                     player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.DARK_PURPLE + "Nether" + ChatColor.GREEN + " villager!");
                     return true;
                 }
 
                 if (args[1].equalsIgnoreCase("ores")) {
-                    gems.summonAquaticVillager(player.getLocation());
+                    gems.summonOresVillager(player.getLocation());
                     player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.DARK_PURPLE + "Ores" + ChatColor.GREEN + " villager!");
                     return true;
                 }
 
                 if (args[1].equalsIgnoreCase("precious")) {
-                    gems.summonAquaticVillager(player.getLocation());
+                    gems.summonPreciousVillager(player.getLocation());
                     player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.RED + "Precious" + ChatColor.GREEN + " villager!");
                     return true;
                 }
 
                 if (args[1].equalsIgnoreCase("redstone")) {
-                    gems.summonAquaticVillager(player.getLocation());
+                    gems.summonRedstoneVillager(player.getLocation());
                     player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.RED + "Redstone" + ChatColor.GREEN + " villager!");
                     return true;
                 }
 
                 if (args[1].equalsIgnoreCase("stones")) {
-                    gems.summonAquaticVillager(player.getLocation());
+                    gems.summonStonesVillager(player.getLocation());
                     player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.YELLOW + "Stones" + ChatColor.GREEN + " villager!");
                     return true;
                 }
 
                 if (args[1].equalsIgnoreCase("wood")) {
-                    gems.summonAquaticVillager(player.getLocation());
+                    gems.summonWoodVillager(player.getLocation());
                     player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.YELLOW + "Wood" + ChatColor.GREEN + " villager!");
                     return true;
                 }
