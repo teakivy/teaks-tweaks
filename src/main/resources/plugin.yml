@@ -65,3 +65,5 @@ commands:
   spawningspheres:
     description: Spawn a sphere to help with mob spawining!
     aliases: [ss, spawningspheres, sphere, spheres]
+  gem:
+    description: Gems, Villagers, & Gem Villagers!
