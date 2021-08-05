@@ -29,6 +29,7 @@ public class GemVllagers {
         villager.setCanPickupItems(false);
         villager.setInvulnerable(true);
         villager.setCustomNameVisible(true);
+        villager.setAI(false);
         villager.setCustomName(ChatColor.AQUA + "Functional");
 
         villager.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(1);
@@ -81,6 +82,7 @@ public class GemVllagers {
         villager.setCanPickupItems(false);
         villager.setInvulnerable(true);
         villager.setCustomNameVisible(true);
+        villager.setAI(false);
         villager.setCustomName(ChatColor.AQUA + "Aquatic");
 
         villager.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(1);
@@ -125,6 +127,7 @@ public class GemVllagers {
         villager.setCanPickupItems(false);
         villager.setInvulnerable(true);
         villager.setCustomNameVisible(true);
+        villager.setAI(false);
         villager.setCustomName(ChatColor.AQUA + "Concrete");
 
         villager.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(1);
@@ -181,6 +184,7 @@ public class GemVllagers {
         villager.setCanPickupItems(false);
         villager.setInvulnerable(true);
         villager.setCustomNameVisible(true);
+        villager.setAI(false);
         villager.setCustomName(ChatColor.AQUA + "Gem Trader");
 
         villager.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(1);
@@ -221,6 +225,7 @@ public class GemVllagers {
         villager.setCanPickupItems(false);
         villager.setInvulnerable(true);
         villager.setCustomNameVisible(true);
+        villager.setAI(false);
         villager.setCustomName(ChatColor.GOLD + "Gem Collector");
 
         villager.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(1);
@@ -261,6 +266,7 @@ public class GemVllagers {
         villager.setCanPickupItems(false);
         villager.setInvulnerable(true);
         villager.setCustomNameVisible(true);
+        villager.setAI(false);
         villager.setCustomName(ChatColor.BLUE + "More Blocks");
 
         villager.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(1);
@@ -311,6 +317,7 @@ public class GemVllagers {
         villager.setCanPickupItems(false);
         villager.setInvulnerable(true);
         villager.setCustomNameVisible(true);
+        villager.setAI(false);
         villager.setCustomName(ChatColor.BLUE + "Natural");
 
         villager.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(1);
@@ -360,6 +367,7 @@ public class GemVllagers {
         villager.setCanPickupItems(false);
         villager.setInvulnerable(true);
         villager.setCustomNameVisible(true);
+        villager.setAI(false);
         villager.setCustomName(ChatColor.DARK_PURPLE + "Nether");
 
         villager.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(1);
@@ -415,6 +423,7 @@ public class GemVllagers {
         villager.setCanPickupItems(false);
         villager.setInvulnerable(true);
         villager.setCustomNameVisible(true);
+        villager.setAI(false);
         villager.setCustomName(ChatColor.DARK_PURPLE + "Ores");
 
         villager.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(1);
@@ -460,6 +469,7 @@ public class GemVllagers {
         villager.setCanPickupItems(false);
         villager.setInvulnerable(true);
         villager.setCustomNameVisible(true);
+        villager.setAI(false);
         villager.setCustomName(ChatColor.RED + "Precious");
 
         villager.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(1);
@@ -503,6 +513,7 @@ public class GemVllagers {
         villager.setCanPickupItems(false);
         villager.setInvulnerable(true);
         villager.setCustomNameVisible(true);
+        villager.setAI(false);
         villager.setCustomName(ChatColor.RED + "Redstone");
 
         villager.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(1);
@@ -546,6 +557,7 @@ public class GemVllagers {
         villager.setCanPickupItems(false);
         villager.setInvulnerable(true);
         villager.setCustomNameVisible(true);
+        villager.setAI(false);
         villager.setCustomName(ChatColor.YELLOW + "Stones");
 
         villager.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(1);
@@ -595,6 +607,7 @@ public class GemVllagers {
         villager.setCanPickupItems(false);
         villager.setInvulnerable(true);
         villager.setCustomNameVisible(true);
+        villager.setAI(false);
         villager.setCustomName(ChatColor.YELLOW + "Wood");
 
         villager.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(1);
