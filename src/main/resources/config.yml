@@ -365,6 +365,7 @@ packs:
 
   # Treasure Gems
   # Adds the chance for treasure gems to spawn inside loot chests. Used to trade with Gem Villagers.
+  # /gem villager <type>
   treasure-gems:
     enabled: false
 
@@ -752,6 +753,11 @@ commands:
   # /spawningspheres
   # Spawn a sphere to help with mob spawining!
   spawningspheres:
+    enabled: true
+
+  # /gem
+  # Gems, Villagers, & Gem Villagers!
+  gem:
     enabled: true
 
 
