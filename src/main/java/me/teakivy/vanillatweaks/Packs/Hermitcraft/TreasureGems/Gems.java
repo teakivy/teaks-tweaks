@@ -97,24 +97,24 @@ public class Gems implements Listener {
         return new ItemStack(Material.AIR);
     }
 
-    private ItemStack getRubyGem() {
-        return getGem(ChatColor.YELLOW + "Ruby Gem", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjkyNGUyNzI2YTg1NDE4M2FhMTE5NWM0ZTk1NzQ4NzdiOGFlZTM1NWI1NzViNWMwYmJlMGQ0MDc1Y2ZlOThjOCJ9fX0");
+    public static ItemStack getRubyGem() {
+        return getGem(ChatColor.RED + "Ruby Gem", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjkyNGUyNzI2YTg1NDE4M2FhMTE5NWM0ZTk1NzQ4NzdiOGFlZTM1NWI1NzViNWMwYmJlMGQ0MDc1Y2ZlOThjOCJ9fX0");
     }
 
-    private ItemStack getSapphireGem() {
-        return getGem(ChatColor.YELLOW + "Sapphire Gem", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWVlNDY5MzBmNDg2NTkyZGJlMzVjMjEzNDc5ODE0MDNlMTQ3MGVjMGYwODUwY2M5MzM1YTQ4OTA5ODJjOTEzMCJ9fX0");
+    public static ItemStack getSapphireGem() {
+        return getGem(ChatColor.BLUE + "Sapphire Gem", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWVlNDY5MzBmNDg2NTkyZGJlMzVjMjEzNDc5ODE0MDNlMTQ3MGVjMGYwODUwY2M5MzM1YTQ4OTA5ODJjOTEzMCJ9fX0");
     }
 
-    private ItemStack getTopazGem() {
+    public static ItemStack getTopazGem() {
         return getGem(ChatColor.YELLOW + "Topaz Gem", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGQzYTI0MmRhM2FkYjE2MzE1Y2UyOWUxOWY3OWNjMjJmMzQwNTEwNTNhYmRhZDU2NjhlYWNhYWMxZWEwYjIyMiJ9fX0");
     }
 
-    private ItemStack getAmethystGem() {
-        return getGem(ChatColor.YELLOW + "Amethyst Gem", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDJjYmZmMDZhZDJlMzg3ZDM0ZjZiOGE5YjkxYzI4MTcyMTViNzgxYWZlNjgzODk1ZjNkNmViNGUzZGE0MTgifX19");
+    public static ItemStack getAmethystGem() {
+        return getGem(ChatColor.DARK_PURPLE + "Amethyst Gem", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDJjYmZmMDZhZDJlMzg3ZDM0ZjZiOGE5YjkxYzI4MTcyMTViNzgxYWZlNjgzODk1ZjNkNmViNGUzZGE0MTgifX19");
     }
 
-    private ItemStack getAquamarineGem() {
-        return getGem(ChatColor.YELLOW + "Aquamarine Gem", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmE5ZTI4ZmFiN2QzZDAxMWJjODRiZjE2ZGFmMmY5NThhOGI4OGIwNmUwZDVlNTBjMjU0NDdiNWRmNGM2MGI3YyJ9fX0");
+    public static ItemStack getAquamarineGem() {
+        return getGem(ChatColor.AQUA + "Aquamarine Gem", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmE5ZTI4ZmFiN2QzZDAxMWJjODRiZjE2ZGFmMmY5NThhOGI4OGIwNmUwZDVlNTBjMjU0NDdiNWRmNGM2MGI3YyJ9fX0");
     }
 
     public static ItemStack getGem(String name, String texture) {
@@ -132,6 +132,8 @@ public class Gems implements Listener {
         } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException x) {
             x.printStackTrace();
         }
+
+        headMeta.setDisplayName(name);
 
         head.setItemMeta(headMeta);
         return head;
