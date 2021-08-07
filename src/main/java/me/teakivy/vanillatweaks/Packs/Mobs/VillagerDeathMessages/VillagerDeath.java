@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Mobs.VillagerDeathMessages;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Utils.Logger.Log;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -23,7 +24,7 @@ public class VillagerDeath implements Listener {
             String deathMessage = ChatColor.YELLOW + "A villager has died! " + ChatColor.RESET + "(" + ChatColor.GOLD + "XYZ: " + Math.floor(loc.getX()) + " " + Math.floor(loc.getY()) + " " + Math.floor(loc.getZ()) + ChatColor.YELLOW + getWorldName(loc) + ChatColor.RESET + ")";
 
             if (main.getConfig().getBoolean("packs.villager-death-messages.show-in-chat")) Bukkit.broadcastMessage(deathMessage);
-            else System.out.println(deathMessage);
+            else Log.message(deathMessage);
         }
     }
 

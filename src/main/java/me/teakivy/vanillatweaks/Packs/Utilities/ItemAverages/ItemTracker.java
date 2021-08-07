@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Utilities.ItemAverages;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Utils.Logger.Log;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -120,7 +121,7 @@ public class ItemTracker implements Listener {
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
             entity.remove();
-            System.out.println("[VT] Finished Tracking");
+            Log.message("[VT] Finished Tracking");
             shouldStop = true;
         }, glowLength);
     }

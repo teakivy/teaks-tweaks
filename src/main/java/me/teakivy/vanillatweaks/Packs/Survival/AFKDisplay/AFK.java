@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Survival.AFKDisplay;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Utils.Logger.Log;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -133,7 +134,7 @@ public class AFK implements Listener {
                 }
             }
             if (main.getConfig().getBoolean("packs.afk-display.message.display-to-console")) {
-                System.out.println("[VT]" + player.getName() + " is now AFK!");
+                Log.message("[VT]" + player.getName() + " is now AFK!");
             }
         } else {
             if (main.getConfig().getBoolean("packs.afk-display.message.display-to-self")) {
@@ -147,7 +148,7 @@ public class AFK implements Listener {
                 }
             }
             if (main.getConfig().getBoolean("packs.afk-display.message.display-to-console")) {
-                System.out.println("[VT] " + player.getName() + " is no longer AFK!");
+                Log.message("[VT] " + player.getName() + " is no longer AFK!");
             }
         }
     }

@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Experimental.ConfettiCreepers;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Utils.Logger.Log;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.entity.Entity;
@@ -37,7 +38,7 @@ public class ConfettiCreeper implements Listener {
         entity.addScoreboardTag("vt_confetti_true");
         if (!main.getConfig().getBoolean("packs.confetti-creepers.do-block-damage")) {
             event.setRadius(0);
-            System.out.println("hi 2");
+            Log.message("hi 2");
         }
 
         FireworkEffect fwEffect = FireworkEffect.builder()

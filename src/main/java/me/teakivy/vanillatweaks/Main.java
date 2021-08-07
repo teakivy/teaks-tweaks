@@ -7,6 +7,7 @@ import me.teakivy.vanillatweaks.Utils.ConfigUpdater.ConfigUpdater;
 import me.teakivy.vanillatweaks.Utils.Credits;
 import me.teakivy.vanillatweaks.Utils.DataManager.DataManager;
 import me.teakivy.vanillatweaks.Utils.DataManager.MessageManager;
+import me.teakivy.vanillatweaks.Utils.Logger.Log;
 import me.teakivy.vanillatweaks.Utils.Logger.Logger;
 import me.teakivy.vanillatweaks.Utils.Metrics.Metrics;
 import me.teakivy.vanillatweaks.Utils.Register.Register;
@@ -38,7 +39,7 @@ public final class Main extends JavaPlugin implements Listener {
     public void onEnable() {
 
         if (getConfig().getBoolean("config.dev-mode")) {
-            System.out.println("[VT] Dev Mode Enabled!");
+            Log.message("[VT] Dev Mode Enabled!");
         }
 
         // Credits
@@ -58,7 +59,7 @@ public final class Main extends JavaPlugin implements Listener {
                 try {
                     ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList());
                     this.reloadConfig();
-                    System.out.println("[VT] Updated Config to Version: " + this.getConfig().getInt("config.version"));
+                    Log.message("[VT] Updated Config to Version: " + this.getConfig().getInt("config.version"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -67,7 +68,7 @@ public final class Main extends JavaPlugin implements Listener {
             try {
                 ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList());
                 this.reloadConfig();
-                System.out.println("[VT] Updated Config to Version: " + this.getConfig().getInt("config.version"));
+                Log.message("[VT] Updated Config to Version: " + this.getConfig().getInt("config.version"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -112,13 +113,13 @@ public final class Main extends JavaPlugin implements Listener {
 
         for (String pack : this.getConfig().getConfigurationSection("packs").getKeys(false)) {
             if (this.getConfig().getBoolean("packs." + pack + ".enabled")) {
-                if (!displayedFirstSpace) System.out.println("");
+                if (!displayedFirstSpace) Log.message("");
                 displayedFirstSpace = true;
 
-                System.out.println("[VT] " + getPackName(pack) + " Enabled!");
+                Log.message("[VT] " + getPackName(pack) + " Enabled!");
             }
         }
-        if (displayedFirstSpace) System.out.println("");
+        if (displayedFirstSpace) Log.message("");
 
         tagListener = new Tag();
 
@@ -128,7 +129,7 @@ public final class Main extends JavaPlugin implements Listener {
         }
 
         // Plugin startup logic
-        System.out.println("[VT] Vanilla Tweaks Started!");
+        Log.message("[VT] Vanilla Tweaks Started!");
 
         // Packs
         Register.registerAll();
@@ -137,7 +138,7 @@ public final class Main extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        System.out.println("[VT] Vanilla Tweaks Shutting Down...");
+        Log.message("[VT] Vanilla Tweaks Shutting Down...");
 
         List<String> list = new ArrayList<>();
         for (UUID uuid : chEnabled) {
