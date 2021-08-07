@@ -14,6 +14,7 @@ public class HUD implements Listener {
     static Main main = Main.getPlugin(Main.class);
 
     static boolean running = false;
+    static int taskID = -1;
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
@@ -30,23 +31,24 @@ public class HUD implements Listener {
     }
 
     public static void startHUD() {
+        if (taskID != -1) return;
         running = true;
-        doHUD();
-    }
-
-    public static void doHUD() {
-        Bukkit.getScheduler().runTaskLater(main, () -> {
+        taskID = Bukkit.getScheduler().runTaskTimer(main, () -> {
             for (UUID uuid : Main.chEnabled) {
                 Player player = Bukkit.getPlayer(uuid);
                 if (player == null) continue;
                 if (player.isOnline()) DisplayHud.showHud(player);
             }
-            if (running) doHUD();
-        }, 1L);
+            if (!running) {
+                Bukkit.getScheduler().cancelTask(taskID);
+                taskID = -1;
+            }
+        }, 1, 1).getTaskId();
     }
 
     public static void stopHUD() {
         running = false;
+        taskID = -1;
     }
 
     public void unregister() {
