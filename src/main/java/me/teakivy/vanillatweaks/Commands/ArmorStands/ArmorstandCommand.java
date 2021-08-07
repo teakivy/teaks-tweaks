@@ -18,7 +18,7 @@ public class ArmorstandCommand implements CommandExecutor {
 
     Main main = Main.getPlugin(Main.class);
 
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
+    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!main.getConfig().getBoolean("config.dev-mode")) return false;
@@ -158,7 +158,7 @@ public class ArmorstandCommand implements CommandExecutor {
                 if (args[1].equalsIgnoreCase("-8") || args[1].equalsIgnoreCase("-3") || args[1].equalsIgnoreCase("-1") || args[1].equalsIgnoreCase("+1") || args[1].equalsIgnoreCase("+3") || args[1].equalsIgnoreCase("+8")) {
 
                     if (stand != null) {
-                        String direction = DisplayHud.getDirection(player);
+                        String direction = DisplayHud.getDirection(player.getLocation().getYaw());
 
                         if (direction.equalsIgnoreCase("N")) {
                             stand.teleport(new Location(stand.getWorld(), stand.getLocation().getX() + (0.0625 * Float.parseFloat(args[1])), stand.getLocation().getY(), stand.getLocation().getZ()));
@@ -183,7 +183,7 @@ public class ArmorstandCommand implements CommandExecutor {
                 if (args[1].equalsIgnoreCase("-8") || args[1].equalsIgnoreCase("-3") || args[1].equalsIgnoreCase("-1") || args[1].equalsIgnoreCase("+1") || args[1].equalsIgnoreCase("+3") || args[1].equalsIgnoreCase("+8")) {
 
                     if (stand != null) {
-                        String direction = DisplayHud.getDirection(player);
+                        String direction = DisplayHud.getDirection(player.getLocation().getYaw());
 
                         if (direction.equalsIgnoreCase("N")) {
                             stand.teleport(new Location(stand.getWorld(), stand.getLocation().getX(), stand.getLocation().getY(), stand.getLocation().getZ() - (0.0625 * Float.parseFloat(args[1]))));
