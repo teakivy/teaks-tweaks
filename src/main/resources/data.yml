@@ -95,6 +95,7 @@ messages:
       name: "Count Mob Deaths"
     villager-death-messages:
       name: "Villager Death Messages"
+      death-message: "%prefix% &c A Villager has died! &r(&6XYZ: %x% %y% %z% &e%world%&r)"
 
     spawn:
       name: "Spawn"

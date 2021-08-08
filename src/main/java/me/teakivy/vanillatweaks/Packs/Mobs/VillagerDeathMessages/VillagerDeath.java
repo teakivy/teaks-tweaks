@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Mobs.VillagerDeathMessages;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Messages.MessageHandler;
 import me.teakivy.vanillatweaks.Utils.Logger.Log;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -21,9 +22,14 @@ public class VillagerDeath implements Listener {
         if (!main.getConfig().getBoolean("packs.villager-death-messages.enabled")) return;
         if (event.getEntity().getType() == EntityType.VILLAGER) {
             Location loc = event.getEntity().getLocation();
-            String deathMessage = ChatColor.YELLOW + "A villager has died! " + ChatColor.RESET + "(" + ChatColor.GOLD + "XYZ: " + Math.floor(loc.getX()) + " " + Math.floor(loc.getY()) + " " + Math.floor(loc.getZ()) + ChatColor.YELLOW + getWorldName(loc) + ChatColor.RESET + ")";
+            String deathMessage = MessageHandler.getMessage("pack.villager-death-messages.death-message")
+                    .replace("%x%", Math.floor(loc.getX()) + "")
+                    .replace("%y%", Math.floor(loc.getY()) + "")
+                    .replace("%z%", Math.floor(loc.getZ()) + "")
+                    .replace("world", getWorldName(loc));
 
-            if (main.getConfig().getBoolean("packs.villager-death-messages.show-in-chat")) Bukkit.broadcastMessage(deathMessage);
+            if (main.getConfig().getBoolean("packs.villager-death-messages.show-in-chat"))
+                Bukkit.broadcastMessage(deathMessage);
             else Log.message(deathMessage);
         }
     }
@@ -32,8 +38,10 @@ public class VillagerDeath implements Listener {
         World world = loc.getWorld();
         if (world == null) return "";
         if (world.getName().equalsIgnoreCase("world")) return ChatColor.YELLOW + " in " + ChatColor.GREEN + "Overworld";
-        if (world.getName().equalsIgnoreCase("world_nether")) return ChatColor.YELLOW + " in " + ChatColor.RED + "The Nether";
-        if (world.getName().equalsIgnoreCase("world_the_end")) return ChatColor.YELLOW + " in " + ChatColor.LIGHT_PURPLE + "The End";
+        if (world.getName().equalsIgnoreCase("world_nether"))
+            return ChatColor.YELLOW + " in " + ChatColor.RED + "The Nether";
+        if (world.getName().equalsIgnoreCase("world_the_end"))
+            return ChatColor.YELLOW + " in " + ChatColor.LIGHT_PURPLE + "The End";
         return "";
     }
 
