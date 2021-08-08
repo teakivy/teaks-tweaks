@@ -680,14 +680,14 @@ commands:
   conduitpower:
     enabled: true
 
-  # /killboat /killboats
+  # /killboats
   # Kill all empty boats
-  killboat:
+  killboats:
     enabled: true
 
-  # /realtime /realtimeclock /rtc
+  # /realtimeclock /rtc
   # View a world's Real Time
-  realtime:
+  realtimeclock:
     enabled: true
 
   # /spawn
@@ -705,14 +705,14 @@ commands:
   home:
     enabled: true
 
-  # /duraping /dp
+  # /durabilityping /duraping /dp
   # Get pinged when your tools drop below 10% Durability!
-  duraping:
+  durabilityping:
     enabled: true
 
-  # /taggame (Changed from /tag to not conflict with vanilla commands)
+  # /taggame
   # The classic game of Tag!
-  tag:
+  taggame:
     enabled: true
 
   # /back
@@ -730,9 +730,9 @@ commands:
   shrine:
     enabled: true
 
-  # /workstation
+  # /workstation /workstationhighlights /wh
   # Villager Workstations!
-  workstation:
+  workstationhighlights:
     enabled: true
 
   # /sethome
@@ -740,7 +740,7 @@ commands:
   sethome:
     enabled: true
 
-  # /itemaverages (Aliases: /ia, /itemaverage)
+  # /itemaverages /ia
   # Check how many items flow through a source in 2 minutes!
   itemaverages:
     enabled: true
@@ -750,7 +750,7 @@ commands:
   grave:
     enabled: true
 
-  # /spawningspheres
+  # /spawningspheres /sphere /ss
   # Spawn a sphere to help with mob spawining!
   spawningspheres:
     enabled: true

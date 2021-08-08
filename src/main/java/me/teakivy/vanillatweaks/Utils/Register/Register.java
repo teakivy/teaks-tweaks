@@ -471,7 +471,7 @@ public class Register {
             new ConduitPowerCommand().register();
         }
 
-        if (main.getConfig().getBoolean("commands.killboat.enabled")) {
+        if (main.getConfig().getBoolean("commands.killboats.enabled")) {
             new KillBoatsCommand().register();
         }
 
@@ -479,7 +479,7 @@ public class Register {
             new TestCommand().register();
         }
 
-        if (main.getConfig().getBoolean("commands.rtc.enabled")) {
+        if (main.getConfig().getBoolean("commands.realtimeclock.enabled")) {
             new RealTimeClockCommand().register();
         }
 
@@ -495,11 +495,11 @@ public class Register {
             new HomeCommand().register();
         }
 
-        if (main.getConfig().getBoolean("commands.duraping.enabled")) {
+        if (main.getConfig().getBoolean("commands.durabilityping.enabled")) {
             new DurabilityPingCommand().register();
         }
 
-        if (main.getConfig().getBoolean("commands.tag.enabled")) {
+        if (main.getConfig().getBoolean("commands.taggame.enabled")) {
             new TagGameCommand().register();
         }
 
@@ -515,7 +515,7 @@ public class Register {
             new ShrineCommand().register();
         }
 
-        if (main.getConfig().getBoolean("commands.workstation.enabled")) {
+        if (main.getConfig().getBoolean("commands.workstationhighlights.enabled")) {
             new WorkstationHighlightCommand().register();
         }
 
