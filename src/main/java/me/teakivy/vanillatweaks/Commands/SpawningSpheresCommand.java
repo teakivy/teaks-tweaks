@@ -7,127 +7,129 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Location;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class SpawningSpheresCommand implements CommandExecutor {
+public class SpawningSpheresCommand extends BukkitCommand {
 
     Main main = Main.getPlugin(Main.class);
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
+    public SpawningSpheresCommand(String name) {
+        super(name);
+        this.setDescription("Spawn a sphere to help with mob spawining!");
+        this.setAliases(Arrays.asList("ss", "sphere"));
+        this.usageMessage = "/spawningspheres";
+    }
+
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+        if (!main.getConfig().getBoolean("packs.spawning-spheres.enabled")) {
+            sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
+            return true;
+        }
+        if (!(sender instanceof Player)) {
+            sender.sendMessage("[VT] You must be a player to run this command!");
+            return true;
+        }
+        Player player = (Player) sender;
 
-        if (command.getName().equalsIgnoreCase("ss") || command.getName().equalsIgnoreCase("spawningspheres") || command.getName().equalsIgnoreCase("spawningsphere") || command.getName().equalsIgnoreCase("spheres") || command.getName().equalsIgnoreCase("sphere")) {
-            if (!main.getConfig().getBoolean("packs.spawning-spheres.enabled")) {
-                sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
+        if (args.length < 1) {
+            player.sendMessage(vt + ChatColor.RED + "Please specify an action!");
+            return true;
+        }
+
+        SphereData sData = new SphereData();
+
+        if (!player.isOp() && main.getConfig().getBoolean("packs.spawning-spheres.require-op")) {
+            player.sendMessage(vt + ChatColor.RED + "You don't have permission to use this command!");
+            return true;
+        }
+
+        if (args[0].equalsIgnoreCase("create")) {
+            if (args.length < 2) {
+                player.sendMessage(vt + "Please specify a sphere color!");
                 return true;
             }
-            if (!(sender instanceof Player)) {
-                sender.sendMessage("[VT] You must be a player to run this command!");
+
+            if (args[1].equalsIgnoreCase("red")) {
+                if (checkSphere(Color.RED, player, sData, true)) return true;
+                Sphere.spawnSphere(player.getLocation(), Color.RED);
+                player.sendMessage(vt + ChatColor.GREEN + "Summoned the " + ChatColor.RED + "Red" + ChatColor.GREEN + " sphere!");
+                sData.setSphere(Color.RED, player.getLocation());
+            }
+
+            if (args[1].equalsIgnoreCase("blue")) {
+                if (checkSphere(Color.BLUE, player, sData, true)) return true;
+                Sphere.spawnSphere(player.getLocation(), Color.BLUE);
+                player.sendMessage(vt + ChatColor.GREEN + "Summoned the " + ChatColor.AQUA + "Blue" + ChatColor.GREEN + " sphere!");
+                sData.setSphere(Color.BLUE, player.getLocation());
+            }
+
+            if (args[1].equalsIgnoreCase("green")) {
+                if (checkSphere(Color.GREEN, player, sData, true)) return true;
+                Sphere.spawnSphere(player.getLocation(), Color.GREEN);
+                player.sendMessage(vt + ChatColor.GREEN + "Summoned the " + ChatColor.DARK_GREEN + "Green" + ChatColor.GREEN + " sphere!");
+                sData.setSphere(Color.GREEN, player.getLocation());
+            }
+        }
+
+        if (args[0].equalsIgnoreCase("remove")) {
+            if (args.length < 2) {
+                player.sendMessage(vt + "Please specify a sphere color!");
                 return true;
             }
-            Player player = (Player) sender;
 
-            if (args.length < 1) {
-                player.sendMessage(vt + ChatColor.RED + "Please specify an action!");
-                return true;
+            if (args[1].equalsIgnoreCase("red")) {
+                if (checkSphere(Color.RED, player, sData, false)) return true;
+                removeSphere(Color.RED, player, sData);
+                sData.setSphere(Color.RED, null);
             }
 
-            SphereData sData = new SphereData();
-
-            if (!player.isOp() && main.getConfig().getBoolean("packs.spawning-spheres.require-op")) {
-                player.sendMessage(vt + ChatColor.RED + "You don't have permission to use this command!");
-                return true;
+            if (args[1].equalsIgnoreCase("blue")) {
+                if (checkSphere(Color.BLUE, player, sData, false)) return true;
+                removeSphere(Color.BLUE, player, sData);
+                sData.setSphere(Color.BLUE, null);
             }
 
-            if (args[0].equalsIgnoreCase("create")) {
-                if (args.length < 2) {
-                    player.sendMessage(vt + "Please specify a sphere color!");
-                    return true;
-                }
-
-                if (args[1].equalsIgnoreCase("red")) {
-                    if (checkSphere(Color.RED, player, sData, true)) return true;
-                    Sphere.spawnSphere(player.getLocation(), Color.RED);
-                    player.sendMessage(vt + ChatColor.GREEN + "Summoned the " + ChatColor.RED + "Red" + ChatColor.GREEN + " sphere!");
-                    sData.setSphere(Color.RED, player.getLocation());
-                }
-
-                if (args[1].equalsIgnoreCase("blue")) {
-                    if (checkSphere(Color.BLUE, player, sData, true)) return true;
-                    Sphere.spawnSphere(player.getLocation(), Color.BLUE);
-                    player.sendMessage(vt + ChatColor.GREEN + "Summoned the " + ChatColor.AQUA + "Blue" + ChatColor.GREEN + " sphere!");
-                    sData.setSphere(Color.BLUE, player.getLocation());
-                }
-
-                if (args[1].equalsIgnoreCase("green")) {
-                    if (checkSphere(Color.GREEN, player, sData, true)) return true;
-                    Sphere.spawnSphere(player.getLocation(), Color.GREEN);
-                    player.sendMessage(vt + ChatColor.GREEN + "Summoned the " + ChatColor.DARK_GREEN + "Green" + ChatColor.GREEN + " sphere!");
-                    sData.setSphere(Color.GREEN, player.getLocation());
-                }
-            }
-
-            if (args[0].equalsIgnoreCase("remove")) {
-                if (args.length < 2) {
-                    player.sendMessage(vt + "Please specify a sphere color!");
-                    return true;
-                }
-
-                if (args[1].equalsIgnoreCase("red")) {
-                    if (checkSphere(Color.RED, player, sData, false)) return true;
-                    removeSphere(Color.RED, player, sData);
-                    sData.setSphere(Color.RED, null);
-                }
-
-                if (args[1].equalsIgnoreCase("blue")) {
-                    if (checkSphere(Color.BLUE, player, sData, false)) return true;
-                    removeSphere(Color.BLUE, player, sData);
-                    sData.setSphere(Color.BLUE, null);
-                }
-
-                if (args[1].equalsIgnoreCase("green")) {
-                    if (checkSphere(Color.GREEN, player, sData, false)) return true;
-                    removeSphere(Color.GREEN, player, sData);
-                    sData.setSphere(Color.GREEN, null);
-                }
-
-            }
-
-            if (args[0].equalsIgnoreCase("tp") || args[0].equalsIgnoreCase("teleport")) {
-                if (args.length < 2) {
-                    player.sendMessage(vt + "Please specify a sphere color!");
-                    return true;
-                }
-
-                if (args[1].equalsIgnoreCase("red")) {
-                    if (checkSphere(Color.RED, player, sData, false)) return true;
-                    player.teleport(sData.getSphereLocation(Color.RED));
-                    player.sendMessage(vt + ChatColor.GREEN + "Teleported to the " + ChatColor.RED + "Red" + ChatColor.GREEN + " Sphere!");
-                }
-
-                if (args[1].equalsIgnoreCase("blue")) {
-                    if (checkSphere(Color.BLUE, player, sData, false)) return true;
-                    player.teleport(sData.getSphereLocation(Color.BLUE));
-                    player.sendMessage(vt + ChatColor.GREEN + "Teleported to the " + ChatColor.AQUA + "Blue" + ChatColor.GREEN + " Sphere!");
-                }
-
-                if (args[1].equalsIgnoreCase("green")) {
-                    if (checkSphere(Color.GREEN, player, sData, false)) return true;
-                    player.teleport(sData.getSphereLocation(Color.GREEN));
-                    player.sendMessage(vt + ChatColor.GREEN + "Teleported to the " + ChatColor.DARK_GREEN + "Green" + ChatColor.GREEN + " Sphere!");
-                }
+            if (args[1].equalsIgnoreCase("green")) {
+                if (checkSphere(Color.GREEN, player, sData, false)) return true;
+                removeSphere(Color.GREEN, player, sData);
+                sData.setSphere(Color.GREEN, null);
             }
 
         }
 
+        if (args[0].equalsIgnoreCase("tp") || args[0].equalsIgnoreCase("teleport")) {
+            if (args.length < 2) {
+                player.sendMessage(vt + "Please specify a sphere color!");
+                return true;
+            }
+
+            if (args[1].equalsIgnoreCase("red")) {
+                if (checkSphere(Color.RED, player, sData, false)) return true;
+                player.teleport(sData.getSphereLocation(Color.RED));
+                player.sendMessage(vt + ChatColor.GREEN + "Teleported to the " + ChatColor.RED + "Red" + ChatColor.GREEN + " Sphere!");
+            }
+
+            if (args[1].equalsIgnoreCase("blue")) {
+                if (checkSphere(Color.BLUE, player, sData, false)) return true;
+                player.teleport(sData.getSphereLocation(Color.BLUE));
+                player.sendMessage(vt + ChatColor.GREEN + "Teleported to the " + ChatColor.AQUA + "Blue" + ChatColor.GREEN + " Sphere!");
+            }
+
+            if (args[1].equalsIgnoreCase("green")) {
+                if (checkSphere(Color.GREEN, player, sData, false)) return true;
+                player.teleport(sData.getSphereLocation(Color.GREEN));
+                player.sendMessage(vt + ChatColor.GREEN + "Teleported to the " + ChatColor.DARK_GREEN + "Green" + ChatColor.GREEN + " Sphere!");
+            }
+        }
         return false;
     }
 

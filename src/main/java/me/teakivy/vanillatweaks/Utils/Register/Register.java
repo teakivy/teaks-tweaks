@@ -44,6 +44,13 @@ import me.teakivy.vanillatweaks.Packs.Utilities.ItemAverages.ItemTracker;
 import me.teakivy.vanillatweaks.Packs.Utilities.SpawningSpheres.Sphere;
 import me.teakivy.vanillatweaks.Packs.Utilities.SpectatorConduitPower.ConduitPower;
 import me.teakivy.vanillatweaks.Packs.Utilities.SpectatorNightVision.NightVision;
+import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandMap;
+import org.bukkit.command.TabCompleter;
+import org.bukkit.command.defaults.BukkitCommand;
+
+import java.lang.reflect.Field;
 
 public class Register {
 
@@ -444,107 +451,136 @@ public class Register {
             main.getServer().getPluginManager().registerEvents(sphere, main);
         }
     }
-
     public static void registerCommands() {
 
-        main.getCommand("vt").setExecutor(new vtCommand());
-        main.getCommand("vt").setTabCompleter(new vtTab());
+
+        registerCommand(new VanillaTweaksCommand("vanillatweaks"), new vtTab());
 
         if (main.getConfig().getBoolean("commands.portal.enabled")) {
-            main.getCommand("portal").setExecutor(new portalCommand());
+            registerCommand(new PortalCommand("portal"));
         }
 
         if (main.getConfig().getBoolean("commands.coordshud.enabled")) {
-            main.getCommand("ch").setExecutor(new chCommand());
-            main.getCommand("ch").setTabCompleter(new chTab());
+            registerCommand(new CoordsHudCommand("cordshud"), new chTab());
+//            main.getCommand("ch").setTabCompleter(new chTab());
         }
 
         if (main.getConfig().getBoolean("commands.nightvision.enabled")) {
-            main.getCommand("nv").setExecutor(new nvCommand());
+            registerCommand(new NightVisionCommand("nightvision"));
         }
 
         if (main.getConfig().getBoolean("commands.conduitpower.enabled")) {
-            main.getCommand("cp").setExecutor(new cpCommand());
+            registerCommand(new ConduitPowerCommand("conduitpower"));
         }
 
         if (main.getConfig().getBoolean("commands.killboat.enabled")) {
-            main.getCommand("killboat").setExecutor(new KillBoatsCommand());
+            registerCommand(new KillBoatsCommand("killboats"));
         }
 
         if (main.getConfig().getBoolean("commands.test.enabled")) {
-            main.getCommand("test").setExecutor(new testCommand());
+//            registerCommand(new TestCommand());
         }
 
         if (main.getConfig().getBoolean("commands.rtc.enabled")) {
-            main.getCommand("rtc").setExecutor(new rtcCommand());
+            registerCommand(new RealTimeClockCommand("realtimeclock"));
         }
 
         if (main.getConfig().getBoolean("commands.spawn.enabled")) {
-            main.getCommand("spawn").setExecutor(new SpawnCommand());
+            registerCommand(new SpawnCommand("spawn"));
         }
 
         if (main.getConfig().getBoolean("commands.tpa.enabled")) {
-            main.getCommand("tpa").setExecutor(new tpaCommand());
+            registerCommand(new TPACommand("tpa"));
         }
 
         if (main.getConfig().getBoolean("commands.home.enabled")) {
-            main.getCommand("home").setExecutor(new HomeCommand());
-            main.getCommand("home").setTabCompleter(new homeTab());
+            registerCommand(new HomeCommand("home"), new homeTab());
+//            main.getCommand("home").setTabCompleter(new homeTab());
         }
 
         if (main.getConfig().getBoolean("commands.duraping.enabled")) {
-            main.getCommand("duraping").setExecutor(new duraPingCommand());
-            main.getCommand("duraping").setTabCompleter(new duraPingTab());
+            registerCommand(new DurabilityPingCommand("durabilityping"), new duraPingTab());
+//            main.getCommand("duraping").setTabCompleter(new duraPingTab());
         }
 
         if (main.getConfig().getBoolean("commands.tag.enabled")) {
-            main.getCommand("taggame").setExecutor(new TagCommand());
-            main.getCommand("taggame").setTabCompleter(new TagTab());
+            registerCommand(new TagGameCommand("taggame"), new TagTab());
+//            main.getCommand("taggame").setTabCompleter(new TagTab());
         }
 
         if (main.getConfig().getBoolean("commands.back.enabled")) {
-            main.getCommand("back").setExecutor(new BackCommand());
+            registerCommand(new BackCommand("back"));
         }
 
         if (main.getConfig().getBoolean("commands.afk.enabled")) {
-            main.getCommand("afk").setExecutor(new afkCommand());
-            main.getCommand("afk").setTabCompleter(new afkTab());
+            registerCommand(new AFKCommand("afk"), new afkTab());
+//            main.getCommand("afk").setTabCompleter(new afkTab());
         }
 
         if (main.getConfig().getBoolean("commands.shrine.enabled")) {
-            main.getCommand("shrine").setExecutor(new ShrineCommand());
-            main.getCommand("shrine").setTabCompleter(new ShrineTab());
+            registerCommand(new ShrineCommand("shrine"), new ShrineTab());
+//            main.getCommand("shrine").setTabCompleter(new ShrineTab());
         }
 
         if (main.getConfig().getBoolean("commands.workstation.enabled")) {
-            main.getCommand("workstation").setExecutor(new WorkstationHighlightCommand());
+            registerCommand(new WorkstationHighlightCommand("workstationhighlights"));
         }
 
         if (main.getConfig().getBoolean("commands.sethome.enabled")) {
-            main.getCommand("sethome").setExecutor(new setHomeCommand());
+            registerCommand(new SetHomeCommand("sethome"));
         }
 
         if (main.getConfig().getBoolean("commands.itemaverages.enabled")) {
-            main.getCommand("itemaverages").setExecutor(new ItemAveragesCommand());
-            main.getCommand("itemaverages").setTabCompleter(new ItemAveragesTab());
+            registerCommand(new ItemAveragesCommand("itemaverages"), new ItemAveragesTab());
+//            main.getCommand("itemaverages").setTabCompleter(new ItemAveragesTab());
         }
 
         if (main.getConfig().getBoolean("commands.grave.enabled")) {
-            main.getCommand("grave").setExecutor(new GraveCommand());
-            main.getCommand("grave").setTabCompleter(new GraveTab());
+            registerCommand(new GraveCommand("grave"), new GraveTab());
+//            main.getCommand("grave").setTabCompleter(new GraveTab());
         }
 
         if (main.getConfig().getBoolean("commands.spawningspheres.enabled")) {
-            main.getCommand("spawningspheres").setExecutor(new SpawningSpheresCommand());
-            main.getCommand("spawningspheres").setTabCompleter(new SpawningSpheresTab());
+            registerCommand(new SpawningSpheresCommand("spawningspheres"), new SpawningSpheresTab());
+//            main.getCommand("spawningspheres").setTabCompleter(new SpawningSpheresTab());
         }
 
         if (main.getConfig().getBoolean("commands.gem.enabled")) {
-            main.getCommand("gem").setExecutor(new GemVillagersCommand());
-            main.getCommand("gem").setTabCompleter(new GemVillagersTab());
+            registerCommand(new GemCommand("gem"), new GemVillagersTab());
+//            main.getCommand("gem").setTabCompleter(new GemVillagersTab());
         }
 
 
+    }
+
+    public static void registerCommand(BukkitCommand command) {
+        registerCommand(command, null);
+    }
+
+    public static void registerCommand(Command command) {
+        try {
+            final Field bukkitCommandMap = Bukkit.getServer().getClass().getDeclaredField("commandMap");
+
+            bukkitCommandMap.setAccessible(true);
+            CommandMap commandMap = (CommandMap) bukkitCommandMap.get(Bukkit.getServer());
+
+            commandMap.register(command.getName(), command);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void registerCommand(BukkitCommand command, TabCompleter tabCompleter) {
+        try {
+            final Field bukkitCommandMap = Bukkit.getServer().getClass().getDeclaredField("commandMap");
+
+            bukkitCommandMap.setAccessible(true);
+            CommandMap commandMap = (CommandMap) bukkitCommandMap.get(Bukkit.getServer());
+
+            commandMap.register(command.getName(), command);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
