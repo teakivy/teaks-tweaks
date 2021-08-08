@@ -134,7 +134,7 @@ public class AFK implements Listener {
                 }
             }
             if (main.getConfig().getBoolean("packs.afk-display.message.display-to-console")) {
-                Log.message("[VT]" + player.getName() + " is now AFK!");
+                Log.message("[VT] " + player.getName() + " is now AFK!");
             }
         } else {
             if (main.getConfig().getBoolean("packs.afk-display.message.display-to-self")) {
