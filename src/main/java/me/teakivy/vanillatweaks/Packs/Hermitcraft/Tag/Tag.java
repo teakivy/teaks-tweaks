@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Hermitcraft.Tag;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Messages.MessageHandler;
 import me.teakivy.vanillatweaks.Packs.Survival.AFKDisplay.AFK;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -45,7 +46,7 @@ public class Tag implements Listener {
 
         if (AFK.afk.get(player.getUniqueId())) {
             if (!main.getConfig().getBoolean("packs.tag.allow-tagging-afk")) {
-                damager.sendMessage(vt + ChatColor.YELLOW + "You cannot Tag an AFK player!");
+                damager.sendMessage(MessageHandler.getMessage("pack.tag.cant-tag-afk"));
                 event.setCancelled(true);
                 return;
             }
@@ -82,7 +83,7 @@ public class Tag implements Listener {
             tagFullInventory(player);
         }
         if (main.getConfig().getBoolean("packs.tag.enabled")) {
-            Bukkit.broadcastMessage(vt + ChatColor.RED + player.getName() + ChatColor.YELLOW + " was tagged by " + ChatColor.GOLD + damager.getName());
+            Bukkit.broadcastMessage(MessageHandler.getMessage("pack.tag.tag-message").replace("%tagged_name%", player.getName()).replace("%tagger_name%", damager.getName()));
         }
         event.setDamage(0);
     }

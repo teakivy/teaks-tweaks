@@ -124,6 +124,8 @@ messages:
       name: "Wandering Trades"
     tag:
       name: "Tag"
+      cant-tag-afk: "%prefix% You can't Tag an AFK Player!"
+      tag-message: "%prefix% &c%tagged_name% &ewas tagged by &6%tagger_name%"
     thunder-shrine:
       name: "Thunder Shrine"
 
