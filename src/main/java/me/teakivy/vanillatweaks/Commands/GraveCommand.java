@@ -14,6 +14,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GraveCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
@@ -88,5 +91,30 @@ public class GraveCommand extends AbstractCommand {
             player.sendMessage(vt + ChatColor.YELLOW + "Removed all loaded Graves!");
         }
         return false;
+    }
+
+    List<String> arguments = new ArrayList<String>();
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+
+        if (arguments.isEmpty()) {
+            arguments.add("locate");
+            if (sender.isOp()) {
+                arguments.add("key");
+                arguments.add("uninstall");
+            }
+        }
+
+        List<String> result = new ArrayList<String>();
+        if (args.length == 1) {
+            for (String a : arguments) {
+                if (a.toLowerCase().startsWith(args[0].toLowerCase()))
+                    result.add(a);
+            }
+            return result;
+        }
+
+        return null;
     }
 }

@@ -13,6 +13,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -273,5 +274,39 @@ public class SpawningSpheresCommand extends AbstractCommand {
             }
         }
         return true;
+    }
+
+    List<String> arguments1 = new ArrayList<String>();
+    List<String> arguments2 = new ArrayList<String>();
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+
+        arguments1.add("create");
+        arguments1.add("remove");
+        arguments1.add("teleport");
+        arguments1.add("tp");
+
+        arguments2.add("red");
+        arguments2.add("blue");
+        arguments2.add("green");
+
+        List<String> result = new ArrayList<String>();
+        if (args.length == 1) {
+            for (String a : arguments1) {
+                if (a.toLowerCase().startsWith(args[0].toLowerCase()))
+                    result.add(a);
+            }
+            return result;
+        }
+        if (args.length == 2) {
+            for (String a : arguments2) {
+                if (a.toLowerCase().startsWith(args[1].toLowerCase()))
+                    result.add(a);
+            }
+            return result;
+        }
+
+        return null;
     }
 }

@@ -7,7 +7,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 public class VanillaTweaksCommand extends AbstractCommand {
@@ -38,5 +40,26 @@ public class VanillaTweaksCommand extends AbstractCommand {
         Register.unregisterAll();
         Register.registerAll();
         return false;
+    }
+
+    List<String> arguments = new ArrayList<String>();
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+
+        if (arguments.isEmpty()) {
+            arguments.add("reload");
+        }
+
+        List<String> result = new ArrayList<String>();
+        if (args.length == 1) {
+            for (String a : arguments) {
+                if (a.toLowerCase().startsWith(args[0].toLowerCase()))
+                    result.add(a);
+            }
+            return result;
+        }
+
+        return null;
     }
 }

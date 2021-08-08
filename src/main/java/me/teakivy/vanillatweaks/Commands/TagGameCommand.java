@@ -14,6 +14,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TagGameCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
@@ -84,5 +87,25 @@ public class TagGameCommand extends AbstractCommand {
             return true;
         }
         return false;
+    }
+
+    List<String> arguments1 = new ArrayList<String>();
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+
+        if (arguments1.isEmpty()) {
+            arguments1.add("uninstall");
+        }
+
+        List<String> result = new ArrayList<String>();
+        if (args.length == 1) {
+            for (String a : arguments1) {
+                if (a.toLowerCase().startsWith(args[0].toLowerCase()))
+                    result.add(a);
+            }
+            return result;
+        }
+        return null;
     }
 }
