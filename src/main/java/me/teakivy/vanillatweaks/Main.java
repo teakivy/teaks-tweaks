@@ -2,6 +2,7 @@ package me.teakivy.vanillatweaks;
 
 import me.teakivy.vanillatweaks.CraftingTweaks.CraftingRegister;
 import me.teakivy.vanillatweaks.Events.UpdateJoinAlert;
+import me.teakivy.vanillatweaks.Messages.MessageHandler;
 import me.teakivy.vanillatweaks.Packs.Hermitcraft.Tag.Tag;
 import me.teakivy.vanillatweaks.Utils.ConfigUpdater.ConfigUpdater;
 import me.teakivy.vanillatweaks.Utils.Credits;
@@ -36,8 +37,20 @@ public final class Main extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
 
+        // Data Manager
+        this.data = new DataManager(this);
+        data.saveDefaultConfig();
+
+        // Data updater
+        try {
+            ConfigUpdater.update(this, "data.yml", new File(this.getDataFolder(), "data.yml"), Collections.emptyList(), false);
+            this.reloadConfig();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         if (getConfig().getBoolean("config.dev-mode")) {
-            Log.message("[VT] Dev Mode Enabled!");
+            Log.message(MessageHandler.getMessage("plugin.startup.dev-mode-enabled"));
         }
 
         // Credits
@@ -57,7 +70,7 @@ public final class Main extends JavaPlugin implements Listener {
                 try {
                     ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList(), true);
                     this.reloadConfig();
-                    Log.message("[VT] Updated Config to Version: " + this.getConfig().getInt("config.version"));
+                    Log.message(MessageHandler.getMessage("plugin.startup.updated-config-version").replace("%config_version%", String.valueOf(this.getConfig().getInt("config.version"))));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -66,7 +79,7 @@ public final class Main extends JavaPlugin implements Listener {
             try {
                 ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList(), true);
                 this.reloadConfig();
-                Log.message("[VT] Updated Config to Version: " + this.getConfig().getInt("config.version"));
+                Log.message(MessageHandler.getMessage("plugin.startup.updated-config-version").replace("%config_version%", String.valueOf(this.getConfig().getInt("config.version"))));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -80,11 +93,11 @@ public final class Main extends JavaPlugin implements Listener {
             latestVersion = new UpdateChecker(this, 94021).getLatestVersion();
         } catch (IOException | ParseException e) {
             e.printStackTrace();
-            Logger.log(Logger.LogLevel.ERROR, ChatColor.RED + "Could not get latest version!");
+            Logger.log(Logger.LogLevel.ERROR, MessageHandler.getMessage("plugin.error.cant-get-latest"));
         }
         String thisVersion = this.getDescription().getVersion();
         if (!thisVersion.equalsIgnoreCase(latestVersion)) {
-            Logger.log(Logger.LogLevel.WARNING, "[VT] Vanilla Tweaks has an update!\nPlease update to the latest version (" + latestVersion + ")\n" + ChatColor.YELLOW + "https://www.spigotmc.org/resources/vanilla-tweaks.94021/");
+            Logger.log(Logger.LogLevel.WARNING, MessageHandler.getMessage("plugin.startup.update-available").replace("%latest_version%", latestVersion));
             newVersionAvaliable = true;
             latestVTVersion = latestVersion;
         }
@@ -92,18 +105,6 @@ public final class Main extends JavaPlugin implements Listener {
 
         // Crafting Tweaks
         CraftingRegister.register();
-
-        // Data Manager
-        this.data = new DataManager(this);
-        data.saveDefaultConfig();
-
-        // Data updater
-        try {
-            ConfigUpdater.update(this, "data.yml", new File(this.getDataFolder(), "data.yml"), Collections.emptyList(), false);
-            this.reloadConfig();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         // Commands
         Register.registerCommands();
@@ -118,7 +119,7 @@ public final class Main extends JavaPlugin implements Listener {
                 if (!displayedFirstSpace) Log.message("");
                 displayedFirstSpace = true;
 
-                Log.message("[VT] " + getPackName(pack) + " Enabled!");
+                Log.message(MessageHandler.getMessage("plugin.startup.pack-enabled").replace("%pack%", getPackName(pack)));
             }
         }
         if (displayedFirstSpace) Log.message("");
@@ -131,7 +132,7 @@ public final class Main extends JavaPlugin implements Listener {
         }
 
         // Plugin startup logic
-        Log.message("[VT] Vanilla Tweaks Started!");
+        Log.message(MessageHandler.getMessage("plugin.startup.plugin-started"));
 
         // Packs
         Register.registerAll();
@@ -140,7 +141,7 @@ public final class Main extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        Log.message("[VT] Vanilla Tweaks Shutting Down...");
+        Log.message(MessageHandler.getMessage("plugin.shutdown.plugin-shutdown"));
 
         data.reloadConfig();
         List<String> list = new ArrayList<>();
@@ -157,114 +158,7 @@ public final class Main extends JavaPlugin implements Listener {
     }
 
     public String getPackName(String pack) {
-        if (pack.equals("player-head-drops")) {
-            return "Player Head Drops";
-        }
-        if (pack.equals("double-shulker-shells")) {
-            return "Double Shulker Shells";
-        }
-        if (pack.equals("dragon-drops")) {
-            return "Dragon Drops";
-        }
-        if (pack.equals("silence-mobs")) {
-            return "Silence Mobs";
-        }
-        if (pack.equals("anti-creeper-grief")) {
-            return "Anti Creeper Grief";
-        }
-        if (pack.equals("anti-enderman-grief")) {
-            return "Anti Enderman Grief";
-        }
-        if (pack.equals("anti-ghast-grief")) {
-            return "Anti Ghast Grief";
-        }
-        if (pack.equals("nether-portal-coords")) {
-            return "Nether Portal Coords";
-        }
-        if (pack.equals("coords-hud")) {
-            return "Coords HUD";
-        }
-        if (pack.equals("spectator-night-vision")) {
-            return "Spectator Night Vision";
-        }
-        if (pack.equals("spectator-conduit-power")) {
-            return "Spectator Conduit Power";
-        }
-        if (pack.equals("kill-boats")) {
-            return "Kill Boats";
-        }
-        if (pack.equals("more-mob-heads")) {
-            return "More Mob Heads";
-        }
-        if (pack.equals("multiplayer-sleep")) {
-            return "Multiplayer Sleep";
-        }
-        if (pack.equals("unlock-all-recipes")) {
-            return "Unlock All Recipes";
-        }
-        if (pack.equals("cauldron-concrete")) {
-            return "Cauldron Concrete";
-        }
-        if (pack.equals("real-time-clock")) {
-            return "Real Time CLock";
-        }
-        if (pack.equals("villager-death-messages")) {
-            return "Villager Death Messages";
-        }
-        if (pack.equals("wandering-trades")) {
-            return "Wandering Trades";
-        }
-        if (pack.equals("tpa")) {
-            return "TPA";
-        }
-        if (pack.equals("homes")) {
-            return "Homes";
-        }
-        if (pack.equals("spawn")) {
-            return "Spawn";
-        }
-        if (pack.equals("durability-ping")) {
-            return "Durability Ping";
-        }
-        if (pack.equals("tag")) {
-            return "Tag";
-        }
-        if (pack.equals("xp-management")) {
-            return "XP Management";
-        }
-        if (pack.equals("back")) {
-            return "Back";
-        }
-        if (pack.equals("confetti-creepers")) {
-            return "Confetti Creepers";
-        }
-        if (pack.equals("afk-display")) {
-            return "AFK Display";
-        }
-        if (pack.equals("thunder-shrine")) {
-            return "Thunder Shrine";
-        }
-        if (pack.equals("larger-phantoms")) {
-            return "Larger Phantoms";
-        }
-        if (pack.equals("chunk-loaders")) {
-            return "Chunk Loaders";
-        }
-        if (pack.equals("workstation-highlights")) {
-            return "Workstation Highlights";
-        }
-        if (pack.equals("fast-leaf-decay")) {
-            return "Fast Leaf Decay";
-        }
-        if (pack.equals("pillager-tools")) {
-            return "Pillager Tools";
-        }
-        if (pack.equals("elevators")) {
-            return "Elevators";
-        }
-        if (pack.equals("rotation-wrench")) {
-            return "Rotation Wrench";
-        }
-        return pack;
+        if (!data.getConfig().contains("messages.pack." + pack)) return pack;
+        return ChatColor.translateAlternateColorCodes('&', MessageHandler.getMessage("pack." + pack + ".name"));
     }
 }

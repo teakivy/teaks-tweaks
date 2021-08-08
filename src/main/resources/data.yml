@@ -17,9 +17,121 @@ spheres:
 messages:
   plugin:
     reload: "&aReloaded Vanilla Tweaks Config!"
-    message-prefix: "&7[&6&lVT&7] "
-    errors:
+    message-prefix: "&7[&6&lVT&7]"
+    bland-prefix: "[VT]"
+    startup:
+      plugin-started: "%bland_prefix% Vanilla Tweaks Started!"
+      pack-enabled: "%bland_prefix% %pack% Enabled!"
+      update-available: "%bland_prefix% Vanilla Tweaks has an update!\nPlease update to the latest version (%latest_version%)\n&ehttps://www.spigotmc.org/resources/vanilla-tweaks.94021/"
+      updated-config-version: "%bland_prefix% Updated Config to Version: %config_version"
+      dev-mode-enabled: "%bland_prefix% Developer Mode Enabled!"
+    error:
       pack-not-enabled: "&cThis pack is not enabled!"
       not-player: "&cThis command can only be ran by a Player!"
       no-op: "&cYou must be OP to use this command!"
       missing-permission: "&cYou don't have permission to use this command!"
+      cant-get-latest: "&cCould not get the latest version!"
+    shutdown:
+      plugin-shutdown: "%bland_prefix% Vanilla Tweaks Shutting Down..."
+  pack:
+    unlock-all-recipes:
+      name: "Unlock All Recipes"
+    fast-leaf-decay:
+      name: "Fast Leaf Decay"
+    afk-display:
+      name: "AFK Display"
+    multiplayer-sleep:
+      name: "Multiplayer Sleep"
+    graves:
+      name: "Graves"
+    custom-nether-portals:
+      name: "Custom Nether Portals"
+    durability-ping:
+      name: "Durability Ping"
+    cauldron-concrete:
+      name: "Cauldron Concrete"
+    track-raw-statistics:
+      name: "Track Raw Statistics"
+    track-statistics:
+      name: "Track Statistics"
+    nether-portal-coords:
+      name: "Nether Portal Coords"
+    coords-hud:
+      name: "Coords Hud"
+    classic-fishing-loot:
+      name: "Classic Fishing Loot"
+    real-time-clock:
+      name: "Real Time Clock"
+    workstation-highlights:
+      name: "Workstation Highlights"
+    pillager-tools:
+      name: "Pillager Tools"
+
+    rotation-wrench:
+      name: "Rotation Wrench"
+    armored-elytra:
+      name: "Armored Elytra"
+    player-head-drops:
+      name: "Player Head Drops"
+
+    anti-creeper-grief:
+      name: "Anti Creeper Grief"
+    anti-enderman-grief:
+      name: "Anti Enderman Grief"
+    anti-ghast-grief:
+      name: "Anti Ghast Grief"
+    double-shulker-shells:
+      name: "Double Shulker Shells"
+    dragon-drops:
+      name: "Dragon Drops"
+    larger-phantoms:
+      name: "Larger Phantoms"
+    more-mob-heads:
+      name: "More Mob Heads"
+    silence-mobs:
+      name: "Silence Mobs"
+    count-mob-deaths:
+      name: "Count Mob Deaths"
+    villager-death-messages:
+      name: "Villager Death Messages"
+
+    spawn:
+      name: "Spawn"
+    homes:
+      name: "Homes"
+    tpa:
+      name: "TPA"
+    back:
+      name: "Back"
+
+    custom-villager-shops:
+      name: "Custom Villager Shops"
+    spawning-spheres:
+      name: "Spawning Spheres"
+    spectator-night-vision:
+      name: "Spectator Night Vision"
+    spectator-conduit-power:
+      name: "Spectator Conduit Power"
+    item-averages:
+      name: "Item Averages"
+    kill-boats:
+      name: "Kill Boats"
+
+    treasure-gems:
+      name: "Treasure Gems"
+    wandering-trades:
+      name: "Wandering Trades"
+    tag:
+      name: "Tag"
+    thunder-shrine:
+      name: "Thunder Shrine"
+
+    xp-management:
+      name: "XP Management"
+    chunk-loaders:
+      name: "Chunk Loaders"
+    confetti-creepers:
+      name: "Confetti Creepers"
+    elevators:
+      name: "Elevators"
+
