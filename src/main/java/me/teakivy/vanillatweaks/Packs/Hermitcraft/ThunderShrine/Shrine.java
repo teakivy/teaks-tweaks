@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Hermitcraft.ThunderShrine;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Messages.MessageHandler;
 import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.AreaEffectCloud;
@@ -98,7 +99,7 @@ public class Shrine implements Listener {
         world.setStorm(true);
         world.setThundering(true);
         if (config.getBoolean("packs.thunder-shrine.summoning.brodcast-message")) {
-            Bukkit.broadcastMessage(vt + ChatColor.RED + "A great storm has been initiated by the ritual");
+            Bukkit.broadcastMessage(MessageHandler.getMessage("pack.thunder-shrine.storm-initialize"));
         }
     }
 
