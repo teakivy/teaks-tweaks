@@ -3,25 +3,24 @@ package me.teakivy.vanillatweaks.Commands;
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Hermitcraft.GemVillagers.GemVllagers;
 import me.teakivy.vanillatweaks.Packs.Hermitcraft.TreasureGems.Gems;
+import me.teakivy.vanillatweaks.Utils.AbstractCommand;
 import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-public class GemCommand extends BukkitCommand {
+public class GemCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
-    public GemCommand(String name) {
-        super(name);
-        this.setDescription("Gems, Villagers, & Gem Villagers!");
-        this.usageMessage = "/gem";
+    public GemCommand() {
+        super("gem", "/gem", "Gems, Villagers, & Gem Villagers!");
     }
 
     @Override
-    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!main.getConfig().getBoolean("packs.treasure-gems.enabled")) {
             sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
             return true;

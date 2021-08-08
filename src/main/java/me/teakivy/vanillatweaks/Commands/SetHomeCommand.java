@@ -1,29 +1,28 @@
 package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Utils.AbstractCommand;
 import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import java.io.IOException;
 
-public class SetHomeCommand extends BukkitCommand {
+public class SetHomeCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     FileConfiguration data = main.data.getConfig();
 
-    public SetHomeCommand(String name) {
-        super(name);
-        this.setDescription("Set a home to teleport to at a later date.");
-        this.usageMessage = "/sethome";
+    public SetHomeCommand() {
+        super("sethome", "/sethome", "Set a home to teleport to at a later date.");
     }
 
     @Override
-    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!main.getConfig().getBoolean("packs.homes.enabled")) {
             sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
             return true;

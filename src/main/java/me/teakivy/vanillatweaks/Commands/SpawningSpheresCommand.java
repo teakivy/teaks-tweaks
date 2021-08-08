@@ -3,12 +3,13 @@ package me.teakivy.vanillatweaks.Commands;
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Utilities.SpawningSpheres.Sphere;
 import me.teakivy.vanillatweaks.Packs.Utilities.SpawningSpheres.SphereData;
+import me.teakivy.vanillatweaks.Utils.AbstractCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Location;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
@@ -16,20 +17,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class SpawningSpheresCommand extends BukkitCommand {
+public class SpawningSpheresCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
-    public SpawningSpheresCommand(String name) {
-        super(name);
-        this.setDescription("Spawn a sphere to help with mob spawining!");
-        this.setAliases(Arrays.asList("ss", "sphere"));
-        this.usageMessage = "/spawningspheres";
+    public SpawningSpheresCommand() {
+        super("spawningspheres", "/spawningspheres", "Spawn a sphere to help with mob spawining!", Arrays.asList("ss", "sphere"));
     }
 
     @Override
-    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!main.getConfig().getBoolean("packs.spawning-spheres.enabled")) {
             sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
             return true;

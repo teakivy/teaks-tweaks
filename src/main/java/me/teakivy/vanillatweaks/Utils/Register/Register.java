@@ -1,7 +1,6 @@
 package me.teakivy.vanillatweaks.Utils.Register;
 
 import me.teakivy.vanillatweaks.Commands.*;
-import me.teakivy.vanillatweaks.Commands.TabCompleter.*;
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Experimental.ChunkLoaders.Loader;
 import me.teakivy.vanillatweaks.Packs.Experimental.ConfettiCreepers.ConfettiCreeper;
@@ -454,100 +453,90 @@ public class Register {
     public static void registerCommands() {
 
 
-        registerCommand(new VanillaTweaksCommand("vanillatweaks"), new vtTab());
+        new VanillaTweaksCommand().register();
 
         if (main.getConfig().getBoolean("commands.portal.enabled")) {
-            registerCommand(new PortalCommand("portal"));
+            new PortalCommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.coordshud.enabled")) {
-            registerCommand(new CoordsHudCommand("cordshud"), new chTab());
-//            main.getCommand("ch").setTabCompleter(new chTab());
+            new CoordsHudCommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.nightvision.enabled")) {
-            registerCommand(new NightVisionCommand("nightvision"));
+            new NightVisionCommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.conduitpower.enabled")) {
-            registerCommand(new ConduitPowerCommand("conduitpower"));
+            new ConduitPowerCommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.killboat.enabled")) {
-            registerCommand(new KillBoatsCommand("killboats"));
+            new KillBoatsCommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.test.enabled")) {
-//            registerCommand(new TestCommand());
+            new TestCommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.rtc.enabled")) {
-            registerCommand(new RealTimeClockCommand("realtimeclock"));
+            new RealTimeClockCommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.spawn.enabled")) {
-            registerCommand(new SpawnCommand("spawn"));
+            new SpawnCommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.tpa.enabled")) {
-            registerCommand(new TPACommand("tpa"));
+            new TPACommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.home.enabled")) {
-            registerCommand(new HomeCommand("home"), new homeTab());
-//            main.getCommand("home").setTabCompleter(new homeTab());
+            new HomeCommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.duraping.enabled")) {
-            registerCommand(new DurabilityPingCommand("durabilityping"), new duraPingTab());
-//            main.getCommand("duraping").setTabCompleter(new duraPingTab());
+            new DurabilityPingCommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.tag.enabled")) {
-            registerCommand(new TagGameCommand("taggame"), new TagTab());
-//            main.getCommand("taggame").setTabCompleter(new TagTab());
+            new TagGameCommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.back.enabled")) {
-            registerCommand(new BackCommand("back"));
+            new BackCommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.afk.enabled")) {
-            registerCommand(new AFKCommand("afk"), new afkTab());
-//            main.getCommand("afk").setTabCompleter(new afkTab());
+            new AFKCommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.shrine.enabled")) {
-            registerCommand(new ShrineCommand("shrine"), new ShrineTab());
-//            main.getCommand("shrine").setTabCompleter(new ShrineTab());
+            new ShrineCommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.workstation.enabled")) {
-            registerCommand(new WorkstationHighlightCommand("workstationhighlights"));
+            new WorkstationHighlightCommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.sethome.enabled")) {
-            registerCommand(new SetHomeCommand("sethome"));
+            new SetHomeCommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.itemaverages.enabled")) {
-            registerCommand(new ItemAveragesCommand("itemaverages"), new ItemAveragesTab());
-//            main.getCommand("itemaverages").setTabCompleter(new ItemAveragesTab());
+            new ItemAveragesCommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.grave.enabled")) {
-            registerCommand(new GraveCommand("grave"), new GraveTab());
-//            main.getCommand("grave").setTabCompleter(new GraveTab());
+            new GraveCommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.spawningspheres.enabled")) {
-            registerCommand(new SpawningSpheresCommand("spawningspheres"), new SpawningSpheresTab());
-//            main.getCommand("spawningspheres").setTabCompleter(new SpawningSpheresTab());
+            new SpawningSpheresCommand().register();
         }
 
         if (main.getConfig().getBoolean("commands.gem.enabled")) {
-            registerCommand(new GemCommand("gem"), new GemVillagersTab());
-//            main.getCommand("gem").setTabCompleter(new GemVillagersTab());
+            new GemCommand().register();
         }
 
 

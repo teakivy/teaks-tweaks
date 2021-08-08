@@ -2,31 +2,30 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Teleportation.Back.Back;
+import me.teakivy.vanillatweaks.Utils.AbstractCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.UUID;
 
-public class BackCommand extends BukkitCommand {
+public class BackCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     HashMap<UUID, Long> cooldown = new HashMap<>();
 
-    public BackCommand(String name) {
-        super(name);
-        this.setDescription("Teleport back to your last location!");
-        this.usageMessage = "/back";
+    public BackCommand() {
+        super("back", "/back", "Teleport back to your last location!");
     }
 
     @Override
-    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!main.getConfig().getBoolean("packs.back.enabled")) {
             sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
             return true;

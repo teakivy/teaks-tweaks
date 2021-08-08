@@ -2,32 +2,31 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Hermitcraft.ThunderShrine.Shrine;
+import me.teakivy.vanillatweaks.Utils.AbstractCommand;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.chat.hover.content.Text;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import java.io.IOException;
 
-public class ShrineCommand extends BukkitCommand {
+public class ShrineCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
-    public ShrineCommand(String name) {
-        super(name);
-        this.setDescription("Thunder Shrines!");
-        this.usageMessage = "/shrine";
+    public ShrineCommand() {
+        super("shrine", "/shrine", "Thunder Shrines!");
     }
 
     @Override
-    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!main.getConfig().getBoolean("packs.thunder-shrine.enabled")) {
             sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
             return true;

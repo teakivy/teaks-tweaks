@@ -2,29 +2,28 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Survival.AFKDisplay.AFK;
+import me.teakivy.vanillatweaks.Utils.AbstractCommand;
 import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.UUID;
 
-public class AFKCommand extends BukkitCommand {
+public class AFKCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     HashMap<UUID, Long> cooldown = new HashMap<>();
 
-    public AFKCommand(String name) {
-        super(name);
-        this.setDescription("Get away from your keyboard!");
-        this.usageMessage = "/afk";
+    public AFKCommand() {
+        super("afk", "/afk", "Get away from your keyboard!");
     }
 
     @Override
-    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!main.getConfig().getBoolean("packs.afk-display.enabled")) {
             sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
             return true;

@@ -1,28 +1,26 @@
 package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Utils.AbstractCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
 
 import java.util.Collections;
 
-public class RealTimeClockCommand extends BukkitCommand {
+public class RealTimeClockCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
+    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
-    public RealTimeClockCommand(String name) {
-        super(name);
-        this.setDescription("View a world's Real Time");
-        this.usageMessage = "/realtimeclock";
-        this.setAliases(Collections.singletonList("rtc"));
+    public RealTimeClockCommand() {
+        super("realtimeclock", "/realtimeclock", "View a world's Real Time", Collections.singletonList("rtc"));
     }
 
     @Override
-    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (!main.getConfig().getBoolean("packs.real-time-clock.enabled")) {
             sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");

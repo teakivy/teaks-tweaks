@@ -2,29 +2,27 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Utilities.ItemAverages.ItemTracker;
+import me.teakivy.vanillatweaks.Utils.AbstractCommand;
 import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import java.util.Collections;
 
-public class ItemAveragesCommand extends BukkitCommand {
+public class ItemAveragesCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
 
-    public ItemAveragesCommand(String name) {
-        super(name);
-        this.setDescription("Check how many items flow through a source in 2 minutes!");
-        this.setAliases(Collections.singletonList("ia"));
-        this.usageMessage = "/itemaverages";
+    public ItemAveragesCommand() {
+        super("itemaverages", "/itemaverages", "Check how many items flow through a source in 2 minutes!", Collections.singletonList("ia"));
     }
 
     @Override
-    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!main.getConfig().getBoolean("packs.item-averages.enabled")) {
             sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
             return true;

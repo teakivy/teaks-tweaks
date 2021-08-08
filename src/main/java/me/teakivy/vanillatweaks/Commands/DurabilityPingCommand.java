@@ -2,13 +2,14 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Survival.DurabilityPing.DuraPing;
+import me.teakivy.vanillatweaks.Utils.AbstractCommand;
 import net.md_5.bungee.api.chat.*;
 import net.md_5.bungee.api.chat.hover.content.Text;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -16,20 +17,17 @@ import java.util.Arrays;
 import java.util.Set;
 
 
-public class DurabilityPingCommand extends BukkitCommand {
+public class DurabilityPingCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
-    public DurabilityPingCommand(String name) {
-        super(name);
-        this.setDescription("Get pinged when your tools drop below 10% Durability!");
-        this.setAliases(Arrays.asList("dp", "duraping"));
-        this.usageMessage = "/durabilityping";
+    public DurabilityPingCommand() {
+        super("durabilityping", "/durabilityping", "Get pinged when your tools drop below 10% Durability!", Arrays.asList("dp", "duraping"));
     }
 
     @Override
-    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (!main.getConfig().getBoolean("packs.durability-ping.enabled")) {
             sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] " + ChatColor.RED + "This pack is not enabled!");

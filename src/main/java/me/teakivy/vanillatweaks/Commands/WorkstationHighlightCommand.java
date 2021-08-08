@@ -2,40 +2,28 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Survival.WorkstationHighlights.Highlighter;
+import me.teakivy.vanillatweaks.Utils.AbstractCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Particle;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.*;
 import org.bukkit.entity.memory.MemoryKey;
 
 import java.util.Arrays;
 
-public class WorkstationHighlightCommand extends BukkitCommand {
+public class WorkstationHighlightCommand extends AbstractCommand {
 
     static Main main = Main.getPlugin(Main.class);
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
-    public WorkstationHighlightCommand(String name) {
-        super(name);
-        this.setDescription("Villager Workstations!");
-        this.setAliases(Arrays.asList("wh", "workstation"));
-        this.usageMessage = "/workstationhighlight";
-    }
-
-    public static void createParticles(Location location, int length) {
-        AreaEffectCloud e = (AreaEffectCloud) location.getWorld().spawnEntity(location, EntityType.AREA_EFFECT_CLOUD);
-        e.setParticle(Particle.HEART);
-        e.setRadius(.001F);
-        e.setRadiusPerTick(0);
-        e.setRadiusOnUse(0);
-        e.setDuration(length);
-        e.setWaitTime(10);
+    public WorkstationHighlightCommand() {
+        super("workstationhighlight", "/workstationhighlight", "Villager Workstations!", Arrays.asList("wh", "workstation"));
     }
 
     @Override
-    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (!main.getConfig().getBoolean("packs.workstation-highlights.enabled")) {
             sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] " + ChatColor.RED + "This pack is not enabled!");
@@ -76,5 +64,15 @@ public class WorkstationHighlightCommand extends BukkitCommand {
         createParticles(jobSite.add(.5, 1, .5), 200);
         player.sendMessage(vt + ChatColor.YELLOW + "The workstation is located at " + ChatColor.GOLD + "[XYZ]: " + jobSite.getX() + " " + jobSite.getY() + " " + jobSite.getZ());
         return false;
+    }
+
+    public static void createParticles(Location location, int length) {
+        AreaEffectCloud e = (AreaEffectCloud) location.getWorld().spawnEntity(location, EntityType.AREA_EFFECT_CLOUD);
+        e.setParticle(Particle.HEART);
+        e.setRadius(.001F);
+        e.setRadiusPerTick(0);
+        e.setRadiusOnUse(0);
+        e.setDuration(length);
+        e.setWaitTime(10);
     }
 }

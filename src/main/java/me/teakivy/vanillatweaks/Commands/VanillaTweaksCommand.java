@@ -1,34 +1,32 @@
 package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Utils.AbstractCommand;
 import me.teakivy.vanillatweaks.Utils.Register.Register;
 import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.defaults.BukkitCommand;
 
 import java.util.Collections;
 import java.util.Objects;
 
-public class VanillaTweaksCommand extends BukkitCommand {
+public class VanillaTweaksCommand extends AbstractCommand {
 
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
-    public VanillaTweaksCommand(String name) {
-        super(name);
-        this.setDescription("Vanilla Tweaks Main Command!");
-        this.setAliases(Collections.singletonList("vt"));
-        this.usageMessage = "/vanillatweaks reload";
+    public VanillaTweaksCommand() {
+        super("vanillatweaks", "/vanillatweaks", "Vanilla Tweaks Main Command!", Collections.singletonList("vt"));
     }
 
     @Override
-    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!sender.isOp()) {
             sender.sendMessage(vt + ChatColor.RED + "You don't have permission to use this command!");
             return true;
         }
 
         if (args.length < 1) {
-            sender.sendMessage(vt + ChatColor.RED + "Usage: /" + commandLabel + " reload");
+            sender.sendMessage(vt + ChatColor.RED + "Usage: /" + label + " reload");
             return true;
         }
 
