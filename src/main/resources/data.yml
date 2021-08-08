@@ -129,6 +129,8 @@ messages:
 
     xp-management:
       name: "XP Management"
+      bottle-contains: "&6Contains %return_amount% XP"
+      smelt-contains: "&7Smelt for %take_amount% XP"
     chunk-loaders:
       name: "Chunk Loaders"
     confetti-creepers:

@@ -1,8 +1,8 @@
 package me.teakivy.vanillatweaks.Packs.Experimental.XPManagement;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Messages.MessageHandler;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Furnace;
@@ -110,9 +110,9 @@ public class XPManagement implements Listener {
 
         if (main.getConfig().getBoolean("packs.xp-management.display-amount")) {
             List<String> lore = new ArrayList<>();
-            lore.add(ChatColor.GOLD + "Contains " + main.getConfig().getInt("packs.xp-management.return-xp-amount") + " XP");
+            lore.add(MessageHandler.replace(MessageHandler.getMessage("pack.xp-management.bottle-contains"), "%take_amount%", String.valueOf(main.getConfig().getInt("packs.xp-management.return-xp-amount"))));
             if (main.getConfig().getBoolean("packs.xp-management.allow-smelting")) {
-                lore.add(ChatColor.DARK_GRAY + "Smelt for " + main.getConfig().getInt("packs.xp-management.take-xp-amount") + " XP");
+                lore.add(MessageHandler.replace(MessageHandler.getMessage("pack.xp-management.bottle-contains"), "%take_amount%", String.valueOf(main.getConfig().getInt("packs.xp-management.take-xp-amount"))));
             }
             xpMeta.setLore(lore);
         }
