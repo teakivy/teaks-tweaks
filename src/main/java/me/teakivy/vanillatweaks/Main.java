@@ -6,7 +6,6 @@ import me.teakivy.vanillatweaks.Packs.Hermitcraft.Tag.Tag;
 import me.teakivy.vanillatweaks.Utils.ConfigUpdater.ConfigUpdater;
 import me.teakivy.vanillatweaks.Utils.Credits;
 import me.teakivy.vanillatweaks.Utils.DataManager.DataManager;
-import me.teakivy.vanillatweaks.Utils.DataManager.MessageManager;
 import me.teakivy.vanillatweaks.Utils.Logger.Log;
 import me.teakivy.vanillatweaks.Utils.Logger.Logger;
 import me.teakivy.vanillatweaks.Utils.Metrics.Metrics;
@@ -30,7 +29,6 @@ public final class Main extends JavaPlugin implements Listener {
     public String latestVTVersion;
 
     public DataManager data;
-    public MessageManager messages;
 
 
     public Tag tagListener;
@@ -57,7 +55,7 @@ public final class Main extends JavaPlugin implements Listener {
         if (!getConfig().getBoolean("config.dev-mode")) {
             if (this.getConfig().getInt("config.version") < Objects.requireNonNull(this.getConfig().getDefaults()).getInt("config.version")) {
                 try {
-                    ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList());
+                    ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList(), true);
                     this.reloadConfig();
                     Log.message("[VT] Updated Config to Version: " + this.getConfig().getInt("config.version"));
                 } catch (IOException e) {
@@ -66,7 +64,7 @@ public final class Main extends JavaPlugin implements Listener {
             }
         } else {
             try {
-                ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList());
+                ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList(), true);
                 this.reloadConfig();
                 Log.message("[VT] Updated Config to Version: " + this.getConfig().getInt("config.version"));
             } catch (IOException e) {
@@ -99,9 +97,13 @@ public final class Main extends JavaPlugin implements Listener {
         this.data = new DataManager(this);
         data.saveDefaultConfig();
 
-        // Message Manager
-        this.messages = new MessageManager(this);
-        messages.saveDefaultConfig();
+        // Data updater
+        try {
+            ConfigUpdater.update(this, "data.yml", new File(this.getDataFolder(), "data.yml"), Collections.emptyList(), false);
+            this.reloadConfig();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // Commands
         Register.registerCommands();
@@ -140,6 +142,7 @@ public final class Main extends JavaPlugin implements Listener {
         // Plugin shutdown logic
         Log.message("[VT] Vanilla Tweaks Shutting Down...");
 
+        data.reloadConfig();
         List<String> list = new ArrayList<>();
         for (UUID uuid : chEnabled) {
             list.add(uuid.toString());
