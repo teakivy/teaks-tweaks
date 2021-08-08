@@ -28,20 +28,22 @@ public class ConfigUpdater {
 
     /**
      * Update a yaml file from a resource inside your plugin jar
-     * @param plugin You plugin
+     * @param plugin Your plugin
      * @param resourceName The yaml file name to update from, typically config.yml
      * @param toUpdate The yaml file to update
      * @param ignoredSections List of sections to ignore and copy from the current config
      * @throws IOException If an IOException occurs
      */
-    public static void update(Plugin plugin, String resourceName, File toUpdate, List<String> ignoredSections) throws IOException {
+    public static void update(Plugin plugin, String resourceName, File toUpdate, List<String> ignoredSections, boolean setVer) throws IOException {
         BufferedReader newReader = new BufferedReader(new InputStreamReader(plugin.getResource(resourceName), StandardCharsets.UTF_8));
         List<String> newLines = newReader.lines().collect(Collectors.toList());
         newReader.close();
 
         FileConfiguration oldConfig = YamlConfiguration.loadConfiguration(toUpdate);
         FileConfiguration newConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(plugin.getResource(resourceName)));
-        oldConfig.set("config.version", newConfig.getInt("config.version"));
+        if (setVer) {
+            oldConfig.set("config.version", newConfig.getInt("config.version"));
+        }
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(toUpdate), StandardCharsets.UTF_8));
 
         List<String> ignoredSectionsArrayList = new ArrayList<>(ignoredSections);
