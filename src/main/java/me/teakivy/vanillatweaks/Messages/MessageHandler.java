@@ -9,6 +9,7 @@ import java.util.Objects;
 public class MessageHandler {
     static Main main = Main.getPlugin(Main.class);
     static DataManager messageManager = main.data;
+    public static String prefix = messageManager.getConfig().getString("messages.plugin.message-prefix");
 
     public static String getString(String path) {
         if (messageManager.getConfig().contains("messages." + path)) {

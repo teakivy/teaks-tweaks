@@ -19,6 +19,7 @@ messages:
     reload: "&aReloaded Vanilla Tweaks Config!"
     message-prefix: "&7[&6&lVT&7]"
     bland-prefix: "[VT]"
+    update-join-alert: "&eThere is a new Version of Vanilla Tweaks avaliable! Please update to the latest version: &6%latest_version%"
     startup:
       plugin-started: "%bland_prefix% Vanilla Tweaks Started!"
       pack-enabled: "%bland_prefix% %pack% Enabled!"
