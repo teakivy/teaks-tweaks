@@ -1,7 +1,7 @@
-chEnabled:
+chEnabled: []
 
 multiplayer-sleep:
-  percent-to-sleep:
+  percent-to-sleep: 1
 
 spheres:
   red:
@@ -13,3 +13,13 @@ spheres:
   green:
     in-use: false
     location: null
+
+messages:
+  plugin:
+    reload: "&aReloaded Vanilla Tweaks Config!"
+    message-prefix: "&7[&6&lVT&7] "
+    errors:
+      pack-not-enabled: "&cThis pack is not enabled!"
+      not-player: "&cThis command can only be ran by a Player!"
+      no-op: "&cYou must be OP to use this command!"
+      missing-permission: "&cYou don't have permission to use this command!"
