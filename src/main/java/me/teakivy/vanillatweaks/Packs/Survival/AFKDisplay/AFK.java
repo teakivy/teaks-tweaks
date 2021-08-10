@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Survival.AFKDisplay;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Messages.MessageHandler;
 import me.teakivy.vanillatweaks.Utils.Logger.Log;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -20,7 +21,6 @@ import java.util.UUID;
 public class AFK implements Listener {
 
     static Main main = Main.getPlugin(Main.class);
-    static String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public static HashMap<UUID, Boolean> afk = new HashMap<>();
     static HashMap<UUID, Long> lastMove = new HashMap<>();
@@ -124,31 +124,31 @@ public class AFK implements Listener {
     public static void displayAFKMessage(Player player, Boolean isAFK) {
         if (isAFK) {
             if (main.getConfig().getBoolean("packs.afk-display.message.display-to-self")) {
-                player.sendMessage(vt + ChatColor.YELLOW + "You are now AFK!");
+                player.sendMessage(MessageHandler.getMessage("pack.afk-display.self-now-afk"));
             }
             if (main.getConfig().getBoolean("packs.afk-display.message.display-to-everyone")) {
                 for (Player player1 : Bukkit.getOnlinePlayers()) {
                     if (player1.getUniqueId() != player.getUniqueId()) {
-                        player1.sendMessage(vt + ChatColor.GOLD + player.getName() + ChatColor.YELLOW + " is now AFK!");
+                        player1.sendMessage(MessageHandler.getMessage("pack.afk-display.other-now-afk").replace("%player_name%", player.getName()));
                     }
                 }
             }
             if (main.getConfig().getBoolean("packs.afk-display.message.display-to-console")) {
-                Log.message("[VT] " + player.getName() + " is now AFK!");
+                Log.message(MessageHandler.getMessage("pack.afk-display.console-now-afk").replace("%player_name%", player.getName()));
             }
         } else {
             if (main.getConfig().getBoolean("packs.afk-display.message.display-to-self")) {
-                player.sendMessage(vt + ChatColor.YELLOW + "You are no longer AFK!");
+                player.sendMessage(MessageHandler.getMessage("pack.afk-display.self-not-afk"));
             }
             if (main.getConfig().getBoolean("packs.afk-display.message.display-to-everyone")) {
                 for (Player player1 : Bukkit.getOnlinePlayers()) {
                     if (player1.getUniqueId() != player.getUniqueId()) {
-                        player1.sendMessage(vt + ChatColor.GOLD + player.getName() + ChatColor.YELLOW + " is no longer AFK!");
+                        player1.sendMessage(MessageHandler.getMessage("pack.afk-display.other-not-afk").replace("%player_name%", player.getName()));
                     }
                 }
             }
             if (main.getConfig().getBoolean("packs.afk-display.message.display-to-console")) {
-                Log.message("[VT] " + player.getName() + " is no longer AFK!");
+                Log.message(MessageHandler.getMessage("pack.afk-display.console-not-afk").replace("%player_name%", player.getName()));
             }
         }
     }

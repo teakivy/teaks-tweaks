@@ -41,6 +41,12 @@ messages:
       name: "Fast Leaf Decay"
     afk-display:
       name: "AFK Display"
+      self-now-afk: "%prefix% &eYou are now AFK!"
+      other-now-afk: "%prefix% &6%player_name% &eis now AFK!"
+      console-now-afk: "%bland_prefix% %player_name% is now AFK!"
+      self-not-afk: "%prefix% &eYou are no longer AFK!"
+      other-not-afk: "%prefix% &6%player_name% &eis no longer AFK!"
+      console-not-afk: "%bland_prefix% %player_name% is no longer AFK!"
     multiplayer-sleep:
       name: "Multiplayer Sleep"
     graves:
