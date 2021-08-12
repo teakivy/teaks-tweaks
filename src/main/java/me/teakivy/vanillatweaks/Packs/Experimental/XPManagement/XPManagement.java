@@ -1,7 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Experimental.XPManagement;
 
 import me.teakivy.vanillatweaks.Main;
-import me.teakivy.vanillatweaks.Messages.MessageHandler;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;

@@ -3,6 +3,7 @@ package me.teakivy.vanillatweaks.Commands;
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Survival.DurabilityPing.DuraPing;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import net.md_5.bungee.api.chat.*;
 import net.md_5.bungee.api.chat.hover.content.Text;
 import org.bukkit.ChatColor;
@@ -14,7 +15,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -25,7 +25,7 @@ public class DurabilityPingCommand extends AbstractCommand {
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public DurabilityPingCommand() {
-        super("durabilityping", "/durabilityping", "Get pinged when your tools drop below 10% Durability!", Arrays.asList("dp", "duraping"));
+        super(MessageHandler.getCmdName("durabilityping"), MessageHandler.getCmdUsage("durabilityping"), MessageHandler.getCmdDescription("durabilityping"), MessageHandler.getCmdAliases("durabilityping"));
     }
 
     @Override

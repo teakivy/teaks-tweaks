@@ -3,7 +3,7 @@ package me.teakivy.vanillatweaks.Commands;
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Survival.AFKDisplay.AFK;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
-import org.bukkit.ChatColor;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -16,29 +16,29 @@ import java.util.UUID;
 public class AFKCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
+    String vt = MessageHandler.getMessage("plugin.message-prefix");
 
     HashMap<UUID, Long> cooldown = new HashMap<>();
 
     public AFKCommand() {
-        super("afk", "/afk", "Get away from your keyboard!");
+        super(MessageHandler.getCmdName("afk"), MessageHandler.getCmdUsage("afk"), MessageHandler.getCmdDescription("afk"), MessageHandler.getCmdAliases("afk"));
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!main.getConfig().getBoolean("packs.afk-display.enabled")) {
-            sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
+            sender.sendMessage(vt + MessageHandler.getMessage("plugin.error.pack-not-enabled"));
             return true;
         }
         if (!(sender instanceof Player)) {
-            sender.sendMessage(vt + "This command can only be ran by a Player!");
+            sender.sendMessage(vt + MessageHandler.getMessage("plugin.error.not-player"));
             return true;
         }
         Player player = (Player) sender;
 
         if (args.length < 1) {
             if (!main.getConfig().getBoolean("packs.afk-display.allow-afk-command")) {
-                player.sendMessage(vt + ChatColor.RED + "This command has been disabled a server administrator!");
+                sender.sendMessage(vt + MessageHandler.getMessage("plugin.error.command-disabled"));
                 return true;
             }
             if (AFK.afk.containsKey(player.getUniqueId())) {
@@ -55,7 +55,7 @@ public class AFKCommand extends AbstractCommand {
             if (player.isOp()) {
                 AFK.uninstall();
             } else {
-                player.sendMessage(vt + ChatColor.RED + "You must be an OP to run this command!");
+                sender.sendMessage(vt + MessageHandler.getMessage("plugin.error.no-op"));
             }
         }
         return false;

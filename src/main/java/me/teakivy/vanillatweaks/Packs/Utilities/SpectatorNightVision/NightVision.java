@@ -1,7 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Utilities.SpectatorNightVision;
 
 import me.teakivy.vanillatweaks.Main;
-import org.bukkit.ChatColor;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -21,7 +21,7 @@ public class NightVision implements Listener {
         if (player.getGameMode().equals(GameMode.SPECTATOR)) {
             if (player.hasPotionEffect(PotionEffectType.NIGHT_VISION)) {
                 player.removePotionEffect(PotionEffectType.NIGHT_VISION);
-                player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] " + ChatColor.RED + "Night Vision removed because of Game Mode change");
+                player.sendMessage(MessageHandler.getMessage("pack.spectator-conduit-power.game-mode-change"));
             }
         }
     }

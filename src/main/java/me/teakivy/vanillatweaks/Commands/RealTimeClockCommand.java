@@ -2,13 +2,12 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import java.util.Collections;
 
 public class RealTimeClockCommand extends AbstractCommand {
 
@@ -16,7 +15,7 @@ public class RealTimeClockCommand extends AbstractCommand {
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public RealTimeClockCommand() {
-        super("realtimeclock", "/realtimeclock", "View a world's Real Time", Collections.singletonList("rtc"));
+        super(MessageHandler.getCmdName("realtimeclock"), MessageHandler.getCmdUsage("realtimeclock"), MessageHandler.getCmdDescription("realtimeclock"), MessageHandler.getCmdAliases("realtimeclock"));
     }
 
     @Override

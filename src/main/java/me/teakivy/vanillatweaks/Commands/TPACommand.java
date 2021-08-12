@@ -3,6 +3,7 @@ package me.teakivy.vanillatweaks.Commands;
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Teleportation.Back.Back;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -23,7 +24,7 @@ public class TPACommand extends AbstractCommand {
     HashMap<Player, Player> requests = new HashMap<>();
 
     public TPACommand() {
-        super("tpa", "/tpa", "Teleport to someone else (With Permission!)");
+        super(MessageHandler.getCmdName("tpa"), MessageHandler.getCmdUsage("tpa"), MessageHandler.getCmdDescription("tpa"), MessageHandler.getCmdAliases("tpa"));
     }
 
     @Override

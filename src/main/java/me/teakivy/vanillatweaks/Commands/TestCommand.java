@@ -2,6 +2,7 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -14,7 +15,7 @@ public class TestCommand extends AbstractCommand {
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public TestCommand() {
-        super("test", "/test", "Testing Command");
+        super(MessageHandler.getCmdName("test"), MessageHandler.getCmdUsage("test"), MessageHandler.getCmdDescription("test"), MessageHandler.getCmdAliases("test"));
     }
 
     @Override

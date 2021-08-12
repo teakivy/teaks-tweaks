@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Survival.Graves;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
@@ -85,7 +86,7 @@ public class GraveEvents implements Listener {
                 entity.remove();
                 return;
             } else {
-                event.getPlayer().sendMessage(ChatColor.RED + "You are not allowed to rob graves!");
+                event.getPlayer().sendMessage(MessageHandler.getMessage("pack.graves.cant-rob-grave"));
             }
         }
         event.setCancelled(true);
@@ -120,7 +121,11 @@ public class GraveEvents implements Listener {
         gc.createGrave(loc, player, xp);
 
         if (main.getConfig().getBoolean("packs.graves.locatable")) {
-            String lastGrave = ChatColor.GOLD + "Your last grave is at " + ChatColor.YELLOW + "(" + (int) Math.floor(loc.getX()) + ", " + (int) Math.floor(loc.getY()) + ", " + (int) Math.floor(loc.getZ()) + ")" + ChatColor.GOLD + " in " + loc.getWorld().getName() + ".";
+            String lastGrave = MessageHandler.getMessage("pack.graves.last-grave")
+                    .replace("%grave_location_x%", String.valueOf((int) Math.floor(loc.getX())))
+                    .replace("%grave_location_y%", String.valueOf((int) Math.floor(loc.getY())))
+                    .replace("%grave_location_z%", String.valueOf((int) Math.floor(loc.getZ())))
+                    .replace("%grave_location_world%", loc.getWorld().getName());
             player.sendMessage(lastGrave);
             PersistentDataContainer playerData = player.getPersistentDataContainer();
             playerData.set(new NamespacedKey(main, "vt_graves_last"), PersistentDataType.STRING, lastGrave);

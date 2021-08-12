@@ -3,6 +3,7 @@ package me.teakivy.vanillatweaks.Commands;
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Utilities.ItemAverages.ItemTracker;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -10,7 +11,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ItemAveragesCommand extends AbstractCommand {
@@ -20,7 +20,7 @@ public class ItemAveragesCommand extends AbstractCommand {
 
 
     public ItemAveragesCommand() {
-        super("itemaverages", "/itemaverages", "Check how many items flow through a source in 2 minutes!", Collections.singletonList("ia"));
+        super(MessageHandler.getCmdName("itemaverages"), MessageHandler.getCmdUsage("itemaverages"), MessageHandler.getCmdDescription("itemaverages"), MessageHandler.getCmdAliases("itemaverages"));
     }
 
     @Override

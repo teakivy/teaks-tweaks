@@ -1,8 +1,8 @@
 package me.teakivy.vanillatweaks.Packs.Mobs.VillagerDeathMessages;
 
 import me.teakivy.vanillatweaks.Main;
-import me.teakivy.vanillatweaks.Messages.MessageHandler;
 import me.teakivy.vanillatweaks.Utils.Logger.Log;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;

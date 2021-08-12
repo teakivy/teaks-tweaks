@@ -3,6 +3,7 @@ package me.teakivy.vanillatweaks.Commands;
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Teleportation.Back.Back;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -28,7 +29,7 @@ public class HomeCommand extends AbstractCommand {
     FileConfiguration data = main.data.getConfig();
 
     public HomeCommand() {
-        super("home", "/home", "Teleport, Set, or Delete your Homes!");
+        super(MessageHandler.getCmdName("home"), MessageHandler.getCmdUsage("home"), MessageHandler.getCmdDescription("home"), MessageHandler.getCmdAliases("home"));
     }
 
     @Override

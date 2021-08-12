@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Utilities.CustomVillagerShops;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -53,7 +54,7 @@ public class CustomVillager implements Listener {
             villager.addScoreboardTag("vt_custom_villager");
 
             villager.setRecipes(recipes);
-            player.sendMessage(vt + ChatColor.YELLOW + "Villager trades initialized!");
+            player.sendMessage(MessageHandler.getMessage("pack.custom-villager-shops.trade-init"));
             for (int i = 0; i < 8; i++) {
                 playHappyParticle(villager.getLocation());
             }

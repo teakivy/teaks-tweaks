@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Survival.MultiplayerSleep;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -83,10 +84,11 @@ public class MultiplayerSleep implements Listener {
 
     public void immediateSleepDisplay(Player player, World world, boolean bedEnter) {
         if (Objects.equals(main.getConfig().getString("packs.multiplayer-sleep.announce-type"), "chat") && main.getConfig().getBoolean("packs.multiplayer-sleep.immediate-chat-display") && bedEnter && player.isSleeping())
-            Bukkit.broadcastMessage(ChatColor.YELLOW + player.getName() + ChatColor.GOLD + " went to sleep. Sweet dreams!");
+            Bukkit.broadcastMessage(MessageHandler.getMessage("pack.multiplayer-sleep.player-sleeping").replace("%player_name%", player.getName()));
         if (Objects.equals(main.getConfig().getString("packs.multiplayer-sleep.announce-type"), "actionbar") && world.getTime() > 13000)
             for (Player online : Bukkit.getOnlinePlayers()) {
                 online.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(ChatColor.YELLOW.toString() + playersSleeping + " of " + getMaxSleepingPlayers() + " player(s) asleep"));
+                online.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(MessageHandler.getMessage("pack.multiplayer-sleep.percentage-message").replace("%sleeping%", String.valueOf(playersSleeping)).replace("%max_sleeping%", String.valueOf(getMaxSleepingPlayers()))));
             }
     }
 
@@ -95,7 +97,7 @@ public class MultiplayerSleep implements Listener {
     public int getMaxSleepingPlayers() {
         int max = 0;
         for (Player player : Bukkit.getOnlinePlayers()) {
-            if (player.getWorld().getName().equals("world")) max++;
+            if (player.getWorld().getEnvironment() == World.Environment.NORMAL) max++;
         }
         return max;
     }
@@ -114,7 +116,7 @@ public class MultiplayerSleep implements Listener {
             }
 
             if (Objects.equals(main.getConfig().getString("packs.multiplayer-sleep.announce-type"), "chat") && !main.getConfig().getBoolean("packs.multiplayer-sleep.immediate-chat-display"))
-                Bukkit.broadcastMessage(ChatColor.YELLOW + player.getName() + ChatColor.GOLD + " went to sleep. Sweet dreams!");
+                Bukkit.broadcastMessage(MessageHandler.getMessage("pack.multiplayer-sleep.player-sleeping").replace("%player_name%", player.getName()));
 
 
             Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {

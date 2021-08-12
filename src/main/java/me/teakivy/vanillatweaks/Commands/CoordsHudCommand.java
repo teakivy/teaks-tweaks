@@ -2,13 +2,13 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class CoordsHudCommand extends AbstractCommand {
@@ -17,7 +17,7 @@ public class CoordsHudCommand extends AbstractCommand {
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public CoordsHudCommand() {
-        super("coordshud", "/coordshud toggle", "Coords Hud Main Command", Collections.singletonList("ch"));
+        super(MessageHandler.getCmdName("coordshud"), MessageHandler.getCmdUsage("coordshud"), MessageHandler.getCmdDescription("coordshud"), MessageHandler.getCmdAliases("coordshud"));
     }
 
     @Override

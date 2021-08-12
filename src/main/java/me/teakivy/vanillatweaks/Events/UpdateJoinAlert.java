@@ -1,7 +1,7 @@
 package me.teakivy.vanillatweaks.Events;
 
 import me.teakivy.vanillatweaks.Main;
-import me.teakivy.vanillatweaks.Messages.MessageHandler;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

@@ -2,6 +2,7 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
@@ -10,15 +11,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.Collections;
-
 public class ConduitPowerCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public ConduitPowerCommand() {
-        super("conduitpower", "/conduitpower", "Toggle Conduit Power as a spectator", Collections.singletonList("cp"));
+        super(MessageHandler.getCmdName("conduitpower"), MessageHandler.getCmdUsage("conduitpower"), MessageHandler.getCmdDescription("conduitpower"), MessageHandler.getCmdAliases("conduitpower"));
     }
 
     @Override

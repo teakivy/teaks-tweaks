@@ -2,6 +2,7 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -18,7 +19,7 @@ public class SetHomeCommand extends AbstractCommand {
     FileConfiguration data = main.data.getConfig();
 
     public SetHomeCommand() {
-        super("sethome", "/sethome", "Set a home to teleport to at a later date.");
+        super(MessageHandler.getCmdName("sethome"), MessageHandler.getCmdUsage("sethome"), MessageHandler.getCmdDescription("sethome"), MessageHandler.getCmdAliases("sethome"));
     }
 
     @Override

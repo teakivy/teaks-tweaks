@@ -3,6 +3,7 @@ package me.teakivy.vanillatweaks.Commands;
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Survival.Graves.GraveEvents;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
@@ -24,7 +25,7 @@ public class GraveCommand extends AbstractCommand {
 
 
     public GraveCommand() {
-        super("grave", "/grave", "Keep Inventory stands no chance!");
+        super(MessageHandler.getCmdName("grave"), MessageHandler.getCmdUsage("grave"), MessageHandler.getCmdDescription("grave"), MessageHandler.getCmdAliases("grave"));
     }
 
     @Override

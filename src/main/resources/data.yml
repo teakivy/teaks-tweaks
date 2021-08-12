@@ -32,6 +32,7 @@ messages:
       no-op: "&cYou must be OP to use this command!"
       missing-permission: "&cYou don't have permission to use this command!"
       cant-get-latest: "&cCould not get the latest version!"
+      command-disabled: "&cThis command has been disabled by a server administrator!"
     shutdown:
       plugin-shutdown: "%bland_prefix% Vanilla Tweaks Shutting Down..."
   pack:
@@ -49,12 +50,27 @@ messages:
       console-not-afk: "%bland_prefix% %player_name% is no longer AFK!"
     multiplayer-sleep:
       name: "Multiplayer Sleep"
+      player-sleeping: "&e%player_name% &6went to sleep. Sweet dreams!"
+      percentage-message: "&e%sleeping% of %max_sleeping% player(s) asleep"
     graves:
       name: "Graves"
+      cant-rob-grave: "&cYou are not allowed to rob graves!"
+      last-grave: "&6Your last grave is at &e(%grave_location_x%, %grave_location_y%, %grave_location_z%) &6in &e%grave_location_world%&6."
     custom-nether-portals:
       name: "Custom Nether Portals"
     durability-ping:
       name: "Durability Ping"
+      ping:
+        subtitle:
+          title: " "
+          subtitle: "&6%item_type% &cdurability low! &6%item_durability% &cof &6%item_max_durability% &cremaining."
+        title:
+          title: "&6%item_type% &cdurability low!"
+          subtitle: "&6%item_durability% &cof &6%item_max_durability% &cremaining."
+        chat:
+          message: "&6%item_type% &cdurability low! &6%item_durability% &cof &6%item_max_durability% &cremaining."
+        actionbar:
+          message: "&6%item_type% &cdurability low! &6%item_durability% &cof &6%item_max_durability% &cremaining."
     cauldron-concrete:
       name: "Cauldron Concrete"
     track-raw-statistics:
@@ -111,17 +127,25 @@ messages:
       name: "TPA"
     back:
       name: "Back"
+      no-spot: "%prefix &cYou have no where to go back to!"
 
     custom-villager-shops:
       name: "Custom Villager Shops"
+      trade-init: "%prefix% &eVillager Trades Initialized"
     spawning-spheres:
       name: "Spawning Spheres"
+      center-stand: "Center"
     spectator-night-vision:
       name: "Spectator Night Vision"
+      game-mode-change: "%prefix% &cNight Vision removed because of Game Mode change"
     spectator-conduit-power:
       name: "Spectator Conduit Power"
+      game-mode-change: "%prefix% &cConduit Power removed because of Game Mode change"
     item-averages:
       name: "Item Averages"
+      source-production: "&eThis source produces ± per hour:"
+      no-items: "&eNo items passed through the source!"
+      log-finish: "%bland_prefix% Finished Tracking"
     kill-boats:
       name: "Kill Boats"
 
@@ -147,4 +171,164 @@ messages:
       name: "Confetti Creepers"
     elevators:
       name: "Elevators"
+
+commands:
+
+  afk:
+    name: "afk"
+    usage: "/afk"
+    description: "Get away from your keyboard!"
+    aliases: []
+    messages:
+
+
+  back:
+    name: "back"
+    usage: "/back"
+    description: "Teleport back to your last location!"
+    aliases: []
+    messages:
+
+
+  conduitpower:
+    name: "conduitpower"
+    usage: "/conduitpower"
+    description: "Toggle Conduit Power as a spectator"
+    aliases: ["cp"]
+    messages:
+
+  coordshud:
+    name: "coordshud"
+    usage: "/coordshud"
+    description: "Coords Hud Main Command"
+    aliases: ["ch"]
+    messages:
+
+
+  durabilityping:
+    name: "durabilityping"
+    usage: "/durabilityping"
+    description: "Get pinged when your tools drop below 10% Durability!"
+    aliases: ["duraping", "dp"]
+    messages:
+
+
+  gem:
+    name: "gem"
+    usage: "/gem"
+    description: "Gems, Villagers, & Gem Villagers!"
+    aliases: []
+    messages:
+
+
+  grave:
+    name: "grave"
+    usage: "/grave"
+    description: "Keep Inventory stands no chance!"
+    aliases: []
+    messages:
+
+
+  home:
+    name: "home"
+    usage: "/home"
+    description: "Teleport, Set, or Delete your Homes!"
+    aliases: []
+    messages:
+
+
+  itemaverages:
+    name: "itemaverages"
+    usage: "/itemaverages"
+    description: "Calculate how many items flow through a source in 2 minutes!"
+    aliases: ["ia"]
+    messages:
+
+
+  killboats:
+    name: "killboats"
+    usage: "/killboats"
+    description: "Kill all empty boats"
+    aliases: []
+    messages:
+
+  nightvision:
+    name: "nightvision"
+    usage: "/nightvision"
+    description: "Toggle Night Vision as a spectator"
+    aliases: ["nv"]
+    messages:
+
+  portal:
+    name: "portal"
+    usage: "/portal"
+    description: "Calculate where a portal would link to"
+    aliases: []
+    messages:
+
+  realtimeclock:
+    name: "realtimeclock"
+    usage: "/realtimeclock"
+    description: "View a world's real time"
+    aliases: ["rtc"]
+    messages:
+
+  sethome:
+    name: "sethome"
+    usage: "/sethome"
+    description: "Set a home to teleport to at a later date"
+    aliases: []
+    messages:
+
+  shrine:
+    name: "shrine"
+    usage: "/shrine"
+    description: "Thunder Shrines!"
+    aliases: []
+    messages:
+
+  spawn:
+    name: "spawn"
+    usage: "/spawn"
+    description: "Teleport to a world's spawn!"
+    aliases: []
+    messages:
+
+  spawningspheres:
+    name: "spawningspheres"
+    usage: "/spawningspheres"
+    description: "Spawn a sphere to help with mob spawning"
+    aliases: ["ss", "sphere"]
+    messages:
+
+  taggame:
+    name: "taggame"
+    usage: "/taggame"
+    description: "The classic game of tag"
+    aliases: []
+    messages:
+
+  test:
+    name: "test"
+    usage: "/test"
+    description: "Vanilla Tweaks Testing Command"
+    aliases: ["vttest"]
+    messages:
+
+  tpa:
+    name: "tpa"
+    usage: "/tpa"
+    description: "Teleport to someone else (with permission!)"
+    aliases: []
+    messages:
+
+  vanillatweaks:
+    messages:
+
+  workstationhighlight:
+    name: "workstationhighlight"
+    usage: "/workstationhighlight"
+    description: "Find a villager's workstation!"
+    aliases: ["wh", "workstation"]
+    messages:
 

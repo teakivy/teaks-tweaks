@@ -1,7 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Hermitcraft.ThunderShrine;
 
 import me.teakivy.vanillatweaks.Main;
-import me.teakivy.vanillatweaks.Messages.MessageHandler;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.AreaEffectCloud;

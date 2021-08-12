@@ -2,6 +2,7 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -14,7 +15,7 @@ public class PortalCommand extends AbstractCommand {
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public PortalCommand() {
-        super("portal", "/portal", "Calculate where a portal would link to.");
+        super(MessageHandler.getCmdName("portal"), MessageHandler.getCmdUsage("portal"), MessageHandler.getCmdDescription("portal"), MessageHandler.getCmdAliases("portal"));
     }
 
     @Override

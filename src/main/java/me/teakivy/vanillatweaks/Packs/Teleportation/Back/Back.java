@@ -1,7 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Teleportation.Back;
 
 import me.teakivy.vanillatweaks.Main;
-import org.bukkit.ChatColor;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -17,13 +17,12 @@ public class Back implements Listener {
     Main main = Main.getPlugin(Main.class);
 
     public static HashMap<UUID, Location> backLoc = new HashMap<>();
-    static String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public static void tpBack(Player player) {
         if (backLoc.containsKey(player.getUniqueId())) {
             player.teleport(backLoc.get(player.getUniqueId()));
         } else {
-            player.sendMessage(vt + ChatColor.RED + "You have nowhere to go back to!");
+            player.sendMessage(MessageHandler.getMessage("pack.back.no-spot"));
         }
     }
 

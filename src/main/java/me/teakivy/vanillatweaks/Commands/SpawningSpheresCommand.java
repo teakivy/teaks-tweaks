@@ -4,6 +4,7 @@ import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Utilities.SpawningSpheres.Sphere;
 import me.teakivy.vanillatweaks.Packs.Utilities.SpawningSpheres.SphereData;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -14,7 +15,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,7 +24,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public SpawningSpheresCommand() {
-        super("spawningspheres", "/spawningspheres", "Spawn a sphere to help with mob spawining!", Arrays.asList("ss", "sphere"));
+        super(MessageHandler.getCmdName("spawningspheres"), MessageHandler.getCmdUsage("spawningspheres"), MessageHandler.getCmdDescription("spawningspheres"), MessageHandler.getCmdAliases("spawningspheres"));
     }
 
     @Override

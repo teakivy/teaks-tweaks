@@ -3,6 +3,7 @@ package me.teakivy.vanillatweaks.Commands;
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Hermitcraft.ThunderShrine.Shrine;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -24,7 +25,7 @@ public class ShrineCommand extends AbstractCommand {
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public ShrineCommand() {
-        super("shrine", "/shrine", "Thunder Shrines!");
+        super(MessageHandler.getCmdName("shrine"), MessageHandler.getCmdUsage("shrine"), MessageHandler.getCmdDescription("shrine"), MessageHandler.getCmdAliases("shrine"));
     }
 
     @Override

@@ -3,6 +3,7 @@ package me.teakivy.vanillatweaks.Commands;
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Teleportation.Back.Back;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -21,17 +22,17 @@ public class BackCommand extends AbstractCommand {
     HashMap<UUID, Long> cooldown = new HashMap<>();
 
     public BackCommand() {
-        super("back", "/back", "Teleport back to your last location!");
+        super(MessageHandler.getCmdName("back"), MessageHandler.getCmdUsage("back"), MessageHandler.getCmdDescription("back"), MessageHandler.getCmdAliases("back"));
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!main.getConfig().getBoolean("packs.back.enabled")) {
-            sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
+            sender.sendMessage(vt + MessageHandler.getMessage("plugin.error.pack-not-enabled"));
             return true;
         }
         if (!(sender instanceof Player)) {
-            sender.sendMessage(vt + "This command can only be ran by a Player!");
+            sender.sendMessage(vt + MessageHandler.getMessage("plugin.error.not-player"));
             return true;
         }
         Player player = (Player) sender;

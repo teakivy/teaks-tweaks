@@ -4,6 +4,7 @@ import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Hermitcraft.GemVillagers.GemVllagers;
 import me.teakivy.vanillatweaks.Packs.Hermitcraft.TreasureGems.Gems;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -19,7 +20,7 @@ public class GemCommand extends AbstractCommand {
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public GemCommand() {
-        super("gem", "/gem", "Gems, Villagers, & Gem Villagers!");
+        super(MessageHandler.getCmdName("gem"), MessageHandler.getCmdUsage("gem"), MessageHandler.getCmdDescription("gem"), MessageHandler.getCmdAliases("gem"));
     }
 
     @Override

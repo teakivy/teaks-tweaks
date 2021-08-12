@@ -2,6 +2,7 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
@@ -16,7 +17,7 @@ public class KillBoatsCommand extends AbstractCommand {
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public KillBoatsCommand() {
-        super("killboats", "/killboats", "Kill all empty boats");
+        super(MessageHandler.getCmdName("killboats"), MessageHandler.getCmdUsage("killboats"), MessageHandler.getCmdDescription("killboats"), MessageHandler.getCmdAliases("killboats"));
     }
 
     @Override

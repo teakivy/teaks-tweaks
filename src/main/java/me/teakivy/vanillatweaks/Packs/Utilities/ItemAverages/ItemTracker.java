@@ -2,6 +2,7 @@ package me.teakivy.vanillatweaks.Packs.Utilities.ItemAverages;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Utils.Logger.Log;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -94,14 +95,14 @@ public class ItemTracker implements Listener {
 
         if (!totalItems.isEmpty()) {
             player.sendMessage(ChatColor.DARK_GRAY + "-------------------------");
-            player.sendMessage(ChatColor.YELLOW.toString() + "This source produces ± per hour:");
+            player.sendMessage(MessageHandler.getMessage("pack.item-averages.source-production"));
             totalItems.forEach((item, amount) -> {
                 player.sendMessage(ChatColor.GOLD.toString() + amount + ChatColor.WHITE + " " + item.toString().toLowerCase());
             });
             player.sendMessage(ChatColor.DARK_GRAY + "-------------------------");
         } else {
             player.sendMessage(ChatColor.DARK_GRAY + "-------------------------");
-            player.sendMessage(ChatColor.YELLOW + "No items passed through the source!");
+            player.sendMessage(MessageHandler.getMessage("pack.item-averages.no-items"));
             player.sendMessage(ChatColor.DARK_GRAY + "-------------------------");
         }
     }
@@ -121,7 +122,7 @@ public class ItemTracker implements Listener {
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
             entity.remove();
-            Log.message("[VT] Finished Tracking");
+            Log.message(MessageHandler.getMessage("pack.item-averages.log-finish"));
             shouldStop = true;
         }, glowLength);
     }

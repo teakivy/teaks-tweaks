@@ -2,6 +2,7 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import me.teakivy.vanillatweaks.Utils.Register.Register;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -23,7 +24,7 @@ public class TagGameCommand extends AbstractCommand {
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public TagGameCommand() {
-        super("taggame", "/taggame", "The classic game of Tag!");
+        super(MessageHandler.getCmdName("taggame"), MessageHandler.getCmdUsage("taggame"), MessageHandler.getCmdDescription("taggame"), MessageHandler.getCmdAliases("taggame"));
     }
 
     @Override

@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Utilities.SpawningSpheres;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.*;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
@@ -82,7 +83,7 @@ public class Sphere implements Listener {
             stand.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 999999, 0));
         }
         if (center) {
-            stand.setCustomName("Center");
+            stand.setCustomName(MessageHandler.getMessage("pack.spawning-spheres.center-stand"));
             stand.setCustomNameVisible(true);
         }
         stand.setMarker(true);

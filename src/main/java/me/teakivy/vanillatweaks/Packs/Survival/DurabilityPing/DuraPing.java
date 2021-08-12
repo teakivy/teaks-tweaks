@@ -1,10 +1,10 @@
 package me.teakivy.vanillatweaks.Packs.Survival.DurabilityPing;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import org.apache.commons.lang.WordUtils;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -103,17 +103,25 @@ public class DuraPing implements Listener {
         }
         if (style.equalsIgnoreCase("hidden")) return;
         if (style.equalsIgnoreCase("subtitle")) {
-            player.sendTitle(" ", ChatColor.GOLD + getItemName(item) + ChatColor.RED + " durability low! " + ChatColor.GOLD + (int) Math.ceil(durability) + ChatColor.RED + " of " + (int) maxDurability + " remaining.");
+            player.sendTitle(getDurabilityMessage("ping.subtitle.title", item, durability, maxDurability), getDurabilityMessage("ping.subtitle.subtitle", item, durability, maxDurability));
         }
         if (style.equalsIgnoreCase("title")) {
-            player.sendTitle(ChatColor.GOLD + getItemName(item) + ChatColor.RED + " durability low!", "" + ChatColor.GOLD + (int) Math.ceil(durability) + ChatColor.RED + " of " + (int) maxDurability + " remaining.");
+            player.sendTitle(getDurabilityMessage("ping.title.title", item, durability, maxDurability), getDurabilityMessage("ping.title.subtitle", item, durability, maxDurability));
         }
         if (style.equalsIgnoreCase("chat")) {
-            player.sendMessage(ChatColor.GOLD + getItemName(item) + ChatColor.RED + " durability low! " + ChatColor.GOLD + (int) Math.ceil(durability) + ChatColor.RED + " of " + (int) maxDurability + " remaining.");
+            player.sendMessage(getDurabilityMessage("ping.chat.message", item, durability, maxDurability));
         }
         if (style.equalsIgnoreCase("actionbar")) {
-            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new ComponentBuilder(ChatColor.GOLD + getItemName(item) + ChatColor.RED + " durability low! " + ChatColor.GOLD + (int) Math.ceil(durability) + ChatColor.RED + " of " + (int) maxDurability + " remaining.").create());
+            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new ComponentBuilder(getDurabilityMessage("ping.actionbar.message", item, durability, maxDurability)).create());
         }
+    }
+
+    private static String getDurabilityMessage(String path, ItemStack item, float durability, float maxDurability) {
+        String str = MessageHandler.getMessage("pack.durability-ping." + path);
+        str = str.replace("%item_type%", getItemName(item));
+        str = str.replace("%item_durability%", String.valueOf((int) Math.ceil(durability)));
+        str = str.replace("%item_max_durability%", String.valueOf((int) maxDurability));
+        return str;
     }
 
     public static void pingPlayer(Player player, ItemStack item, float durability) {

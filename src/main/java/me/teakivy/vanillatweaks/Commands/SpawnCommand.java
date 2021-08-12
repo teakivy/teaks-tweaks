@@ -3,6 +3,7 @@ package me.teakivy.vanillatweaks.Commands;
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Teleportation.Back.Back;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -22,7 +23,7 @@ public class SpawnCommand extends AbstractCommand {
     HashMap<UUID, Long> cooldown = new HashMap<>();
 
     public SpawnCommand() {
-        super("spawn", "/spawn", "Teleport to a worlds spawn!");
+        super(MessageHandler.getCmdName("spawn"), MessageHandler.getCmdUsage("spawn"), MessageHandler.getCmdDescription("spawn"), MessageHandler.getCmdAliases("spawn"));
     }
 
     @Override

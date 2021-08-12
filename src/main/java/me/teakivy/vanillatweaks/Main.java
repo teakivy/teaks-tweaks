@@ -2,13 +2,13 @@ package me.teakivy.vanillatweaks;
 
 import me.teakivy.vanillatweaks.CraftingTweaks.CraftingRegister;
 import me.teakivy.vanillatweaks.Events.UpdateJoinAlert;
-import me.teakivy.vanillatweaks.Messages.MessageHandler;
 import me.teakivy.vanillatweaks.Packs.Hermitcraft.Tag.Tag;
 import me.teakivy.vanillatweaks.Utils.ConfigUpdater.ConfigUpdater;
 import me.teakivy.vanillatweaks.Utils.Credits;
 import me.teakivy.vanillatweaks.Utils.DataManager.DataManager;
 import me.teakivy.vanillatweaks.Utils.Logger.Log;
 import me.teakivy.vanillatweaks.Utils.Logger.Logger;
+import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import me.teakivy.vanillatweaks.Utils.Metrics.Metrics;
 import me.teakivy.vanillatweaks.Utils.Register.Register;
 import me.teakivy.vanillatweaks.Utils.UpdateChecker.UpdateChecker;
