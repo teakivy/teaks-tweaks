@@ -4,8 +4,8 @@ import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Hermitcraft.GemVillagers.GemVllagers;
 import me.teakivy.vanillatweaks.Packs.Hermitcraft.TreasureGems.Gems;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.ErrorType;
 import me.teakivy.vanillatweaks.Utils.MessageHandler;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -17,7 +17,6 @@ import java.util.List;
 public class GemCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public GemCommand() {
         super(MessageHandler.getCmdName("gem"), MessageHandler.getCmdUsage("gem"), MessageHandler.getCmdDescription("gem"), MessageHandler.getCmdAliases("gem"));
@@ -26,113 +25,113 @@ public class GemCommand extends AbstractCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!main.getConfig().getBoolean("packs.treasure-gems.enabled")) {
-            sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
+            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
         if (!(sender instanceof Player)) {
-            sender.sendMessage("[VT] You must be a player to run this command!");
+            sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;
         }
         Player player = (Player) sender;
 
         if (!player.isOp()) {
-            player.sendMessage(vt + ChatColor.RED + "You don't have permission to use this command!");
+            player.sendMessage(ErrorType.NOT_OP.m());
             return true;
         }
         if (args.length < 1) {
-            player.sendMessage(vt + ChatColor.RED + "Please specify an action!");
+            player.sendMessage(ErrorType.MISSING_ACTION.m());
             return true;
         }
 
         if (args[0].equalsIgnoreCase("villager")) {
             if (args.length < 2) {
-                player.sendMessage(vt + ChatColor.RED + "Plase specify a villager type!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "error.missing-villager-type"));
                 return true;
             }
             GemVllagers gems = new GemVllagers();
 
             if (args[1].equalsIgnoreCase("aquatic")) {
                 gems.summonAquaticVillager(player.getLocation());
-                player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.AQUA + "Aquatic" + ChatColor.GREEN + " villager!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.aquatic"));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("concrete")) {
                 gems.summonConcreteVillager(player.getLocation());
-                player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.AQUA + "Concrete" + ChatColor.GREEN + " villager!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.concrete"));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("gem_trading")) {
                 gems.summonGemTraderVillager(player.getLocation());
-                player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.AQUA + "Gem Trader" + ChatColor.GREEN + " villager!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.gem-trading"));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("functional")) {
                 gems.summonFunctionalVillager(player.getLocation());
-                player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.AQUA + "Functional" + ChatColor.GREEN + " villager!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.functional"));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("gem_collector")) {
                 gems.summonGemCollectorVillager(player.getLocation());
-                player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.GOLD + "Gem Collector" + ChatColor.GREEN + " villager!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.gem-collector"));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("more_blocks")) {
                 gems.summonMoreBlocksVillager(player.getLocation());
-                player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.BLUE + "More Blocks" + ChatColor.GREEN + " villager!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.more-blocks"));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("natural")) {
                 gems.summonNaturalVillager(player.getLocation());
-                player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.BLUE + "Natural" + ChatColor.GREEN + " villager!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.natural"));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("nether")) {
                 gems.summonNetherVillager(player.getLocation());
-                player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.DARK_PURPLE + "Nether" + ChatColor.GREEN + " villager!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.nether"));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("ores")) {
                 gems.summonOresVillager(player.getLocation());
-                player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.DARK_PURPLE + "Ores" + ChatColor.GREEN + " villager!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.ores"));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("precious")) {
                 gems.summonPreciousVillager(player.getLocation());
-                player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.RED + "Precious" + ChatColor.GREEN + " villager!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.precious"));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("redstone")) {
                 gems.summonRedstoneVillager(player.getLocation());
-                player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.RED + "Redstone" + ChatColor.GREEN + " villager!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.redstone"));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("stones")) {
                 gems.summonStonesVillager(player.getLocation());
-                player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.YELLOW + "Stones" + ChatColor.GREEN + " villager!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.stones"));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("wood")) {
                 gems.summonWoodVillager(player.getLocation());
-                player.sendMessage(vt + ChatColor.GREEN + "Summoned " + ChatColor.YELLOW + "Wood" + ChatColor.GREEN + " villager!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.wood"));
                 return true;
             }
         }
 
         if (args[0].equalsIgnoreCase("give")) {
             if (args.length < 2) {
-                player.sendMessage(vt + ChatColor.RED + "Please choose a gem to give!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "error.missing-gem-type"));
             }
             int amount = 1;
             if (args.length > 2) {
@@ -143,45 +142,45 @@ public class GemCommand extends AbstractCommand {
                 }
             }
             if (amount > 64) {
-                player.sendMessage(vt + ChatColor.RED + "You cannot give yourself more than 64 gems!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "error.amount-more-64"));
             }
             if (amount < 1) {
-                player.sendMessage(vt + ChatColor.RED + "You must give yourself atleast 1 gem!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "error.amount-less-1"));
             }
 
             if (args[1].equalsIgnoreCase("aquamarine")) {
                 ItemStack itemStack = Gems.getAquamarineGem();
                 itemStack.setAmount(amount);
                 player.getInventory().addItem(itemStack);
-                player.sendMessage(vt + ChatColor.GREEN + "You have been given " + amount + " " + ChatColor.AQUA + "Aquamarine" + ChatColor.GREEN + " Gems!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%amount%", amount + "").replace("%type%", "gems.aquamarine"));
             }
 
             if (args[1].equalsIgnoreCase("ruby")) {
                 ItemStack itemStack = Gems.getRubyGem();
                 itemStack.setAmount(amount);
                 player.getInventory().addItem(itemStack);
-                player.sendMessage(vt + ChatColor.GREEN + "You have been given " + amount + " " + ChatColor.RED + "Ruby" + ChatColor.GREEN + " Gems!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%amount%", amount + "").replace("%type%", "gems.ruby"));
             }
 
             if (args[1].equalsIgnoreCase("amethyst")) {
                 ItemStack itemStack = Gems.getAmethystGem();
                 itemStack.setAmount(amount);
                 player.getInventory().addItem(itemStack);
-                player.sendMessage(vt + ChatColor.GREEN + "You have been given " + amount + " " + ChatColor.DARK_PURPLE + "Amethyst" + ChatColor.GREEN + " Gems!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%amount%", amount + "").replace("%type%", "gems.amethyst"));
             }
 
             if (args[1].equalsIgnoreCase("topaz")) {
                 ItemStack itemStack = Gems.getTopazGem();
                 itemStack.setAmount(amount);
                 player.getInventory().addItem(itemStack);
-                player.sendMessage(vt + ChatColor.GREEN + "You have been given " + amount + " " + ChatColor.YELLOW + "Topaz" + ChatColor.GREEN + " Gems!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%amount%", amount + "").replace("%type%", "gems.topaz"));
             }
 
             if (args[1].equalsIgnoreCase("sapphire")) {
                 ItemStack itemStack = Gems.getSapphireGem();
                 itemStack.setAmount(amount);
                 player.getInventory().addItem(itemStack);
-                player.sendMessage(vt + ChatColor.GREEN + "You have been given " + amount + " " + ChatColor.BLUE + "Sapphire" + ChatColor.GREEN + " Gems!");
+                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%amount%", amount + "").replace("%type%", "gems.sapphire"));
             }
         }
 

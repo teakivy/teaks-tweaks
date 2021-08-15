@@ -3,9 +3,9 @@ package me.teakivy.vanillatweaks.Commands;
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Survival.Graves.GraveEvents;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.ErrorType;
 import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -21,7 +21,6 @@ import java.util.List;
 public class GraveCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
 
     public GraveCommand() {
@@ -31,11 +30,11 @@ public class GraveCommand extends AbstractCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!main.getConfig().getBoolean("packs.graves.enabled")) {
-            sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
+            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
         if (!(sender instanceof Player)) {
-            sender.sendMessage(vt + "This command can only be ran by a Player!");
+            sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;
         }
         Player player = (Player) sender;
@@ -46,10 +45,10 @@ public class GraveCommand extends AbstractCommand {
                 if (data.has(new NamespacedKey(main, "vt_graves_last"), PersistentDataType.STRING)) {
                     player.sendMessage(data.get(new NamespacedKey(main, "vt_graves_last"), PersistentDataType.STRING));
                 } else {
-                    player.sendMessage(vt + ChatColor.RED + "You don't have a recent grave!");
+                    player.sendMessage(MessageHandler.getCmdMessage("grave", "no-grave"));
                 }
             } else {
-                player.sendMessage(vt + ChatColor.RED + "You are not allowed to locate your grave!");
+                player.sendMessage(ErrorType.MISSING_PERMISSION.m());
             }
             return true;
         }
@@ -60,26 +59,26 @@ public class GraveCommand extends AbstractCommand {
                 if (data.has(new NamespacedKey(main, "vt_graves_last"), PersistentDataType.STRING)) {
                     player.sendMessage(data.get(new NamespacedKey(main, "vt_graves_last"), PersistentDataType.STRING));
                 } else {
-                    player.sendMessage(vt + ChatColor.RED + "You don't have a recent grave!");
+                    player.sendMessage(MessageHandler.getCmdMessage("grave", "no-grave"));
                 }
             } else {
-                player.sendMessage(vt + ChatColor.RED + "You are not allowed to locate your grave!");
+                player.sendMessage(ErrorType.MISSING_PERMISSION.m());
             }
             return true;
         }
 
         if (args[0].equalsIgnoreCase("key")) {
             if (!player.isOp()) {
-                player.sendMessage(vt +ChatColor.RED + "You must be OP to use this command!");
+                player.sendMessage(ErrorType.NOT_OP.m());
                 return true;
             }
             player.getInventory().addItem(GraveEvents.getGraveKey());
-            player.sendMessage(vt + ChatColor.GREEN + "Enjoy your key!");
+            player.sendMessage(MessageHandler.getCmdMessage("grave", "given-key"));
         }
 
         if (args[0].equalsIgnoreCase("uninstall")) {
             if (!player.isOp()) {
-                player.sendMessage(vt +ChatColor.RED + "You must be OP to use this command!");
+                player.sendMessage(ErrorType.NOT_OP.m());
                 return true;
             }
             for (World world : Bukkit.getWorlds()) {
@@ -89,7 +88,7 @@ public class GraveCommand extends AbstractCommand {
                     }
                 }
             }
-            player.sendMessage(vt + ChatColor.YELLOW + "Removed all loaded Graves!");
+            player.sendMessage(MessageHandler.getCmdMessage("grave", "removed-graves"));
         }
         return false;
     }

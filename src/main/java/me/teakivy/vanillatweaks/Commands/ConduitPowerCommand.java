@@ -2,8 +2,8 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.ErrorType;
 import me.teakivy.vanillatweaks.Utils.MessageHandler;
-import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -14,7 +14,7 @@ import org.bukkit.potion.PotionEffectType;
 public class ConduitPowerCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
+    String vt = MessageHandler.getMessage("plugin.prefix");
 
     public ConduitPowerCommand() {
         super(MessageHandler.getCmdName("conduitpower"), MessageHandler.getCmdUsage("conduitpower"), MessageHandler.getCmdDescription("conduitpower"), MessageHandler.getCmdAliases("conduitpower"));
@@ -23,7 +23,7 @@ public class ConduitPowerCommand extends AbstractCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!main.getConfig().getBoolean("packs.spectator-conduit-power.enabled")) {
-            sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
+            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
 
@@ -32,12 +32,12 @@ public class ConduitPowerCommand extends AbstractCommand {
             if (player.getGameMode().equals(GameMode.SPECTATOR)) {
                 if (player.hasPotionEffect(PotionEffectType.CONDUIT_POWER)) player.removePotionEffect(PotionEffectType.CONDUIT_POWER);
                 else player.addPotionEffect(new PotionEffect(PotionEffectType.CONDUIT_POWER, 10000000, 0, true, true));
-                player.sendMessage(vt + ChatColor.GREEN + "Toggled Conduit Power");
+                player.sendMessage(MessageHandler.getCmdMessage("back", "toggled"));
             } else {
-                player.sendMessage(vt + ChatColor.RED + "You must be in Spectator Mode to use this command!");
+                player.sendMessage(MessageHandler.getCmdMessage("conduitpower", "wrong-gamemode"));
             }
         } else {
-            sender.sendMessage(ChatColor.RED + "[VT] You must be a player to use this command!");
+            sender.sendMessage(ErrorType.NOT_PLAYER.m());
         }
         return false;
     }

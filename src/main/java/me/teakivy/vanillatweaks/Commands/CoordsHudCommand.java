@@ -2,8 +2,8 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.ErrorType;
 import me.teakivy.vanillatweaks.Utils.MessageHandler;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -14,7 +14,6 @@ import java.util.List;
 public class CoordsHudCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public CoordsHudCommand() {
         super(MessageHandler.getCmdName("coordshud"), MessageHandler.getCmdUsage("coordshud"), MessageHandler.getCmdDescription("coordshud"), MessageHandler.getCmdAliases("coordshud"));
@@ -23,12 +22,12 @@ public class CoordsHudCommand extends AbstractCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!main.getConfig().getBoolean("packs.coords-hud.enabled")) {
-            sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
+            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
 
         if (args.length == 0) {
-            sender.sendMessage(ChatColor.RED + "Usage: /" + label + " <option>");
+            sender.sendMessage(MessageHandler.getCmdMessage("coordshud", "proper-usage"));
             return true;
         }
 
@@ -36,17 +35,17 @@ public class CoordsHudCommand extends AbstractCommand {
             Player player = (Player) sender;
             if (args[0].equalsIgnoreCase("toggle")) {
                 if (main.getConfig().getBoolean("packs.coords-hud.force-enable")) {
-                    player.sendMessage(vt + ChatColor.RED + "You cannot toggle Coordinates HUD!");
+                    player.sendMessage(MessageHandler.getCmdMessage("coordshud", "cant-toggle"));
                     return true;
                 }
                 if (!Main.chEnabled.contains(player.getUniqueId())) Main.chEnabled.add(player.getUniqueId());
                 else Main.chEnabled.remove(player.getUniqueId());
-                player.sendMessage(vt + ChatColor.GREEN + "Toggled Coords HUD");
+                player.sendMessage(MessageHandler.getCmdMessage("coordshud", "toggled"));
             } else {
-                sender.sendMessage(ChatColor.RED + "Usage: /" + label + " <option>");
+                sender.sendMessage(MessageHandler.getCmdMessage("coordshud", "proper-usage"));
             }
         } else {
-            sender.sendMessage(ChatColor.RED + "[VT] You must be a player to use this command!");
+            sender.sendMessage(ErrorType.NOT_PLAYER.m());
         }
         return false;
     }

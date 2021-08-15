@@ -3,6 +3,7 @@ package me.teakivy.vanillatweaks.Commands;
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Survival.DurabilityPing.DuraPing;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.ErrorType;
 import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import net.md_5.bungee.api.chat.*;
 import net.md_5.bungee.api.chat.hover.content.Text;
@@ -22,7 +23,6 @@ import java.util.Set;
 public class DurabilityPingCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public DurabilityPingCommand() {
         super(MessageHandler.getCmdName("durabilityping"), MessageHandler.getCmdUsage("durabilityping"), MessageHandler.getCmdDescription("durabilityping"), MessageHandler.getCmdAliases("durabilityping"));
@@ -32,12 +32,12 @@ public class DurabilityPingCommand extends AbstractCommand {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (!main.getConfig().getBoolean("packs.durability-ping.enabled")) {
-            sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] " + ChatColor.RED + "This pack is not enabled!");
+            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
 
         if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatColor.RED + "[VT] You must be a player to use this command!");
+            sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;
         }
 
@@ -50,7 +50,7 @@ public class DurabilityPingCommand extends AbstractCommand {
 
         if (args[0].equalsIgnoreCase("preview")) {
             if (args.length < 2) {
-                player.sendMessage(vt + ChatColor.RED + "Please enter which section to preview!");
+                player.sendMessage(MessageHandler.getCmdMessage("durabilityping", "missing-preview-selection"));
                 return true;
             }
 
@@ -77,7 +77,7 @@ public class DurabilityPingCommand extends AbstractCommand {
 
         if (args[0].equalsIgnoreCase("set")) {
             if (args.length < 3) {
-                player.sendMessage(vt + ChatColor.RED + "Please enter which section to set!");
+                player.sendMessage(MessageHandler.getCmdMessage("durabilityping", "missing-set-selection"));
                 return true;
             }
 
@@ -151,14 +151,14 @@ public class DurabilityPingCommand extends AbstractCommand {
     public void sendDuraPingConfig(Player player) {
         Set<String> tags = player.getScoreboardTags();
 
-        BaseComponent[] pingForHandItems = new ComponentBuilder(createCheckBox(tags.contains("dp_ping_for_hand_items"), "/duraping set ping_for_hand_items " + (tags.contains("dp_ping_for_hand_items") ? "false" : "true"), "Ping for Hand Items", "Inculdes any item with durability in the mainhand or offhand slots")).append(newText(" Ping for Hand Items")).create();
-        BaseComponent[] pingForArmorItems = new ComponentBuilder(createCheckBox(tags.contains("dp_ping_for_armor_items"), "/duraping set ping_for_armor_items " + (tags.contains("dp_ping_for_armor_items") ? "false" : "true"), "Ping for Armor Items", "Inculdes any item with durability in armor slots")).append(newText(" Ping for Armor Items")).create();
-        BaseComponent[] pingWithSound = new ComponentBuilder(createCheckBox(tags.contains("dp_ping_with_sound"), "/duraping set ping_with_sound " + (tags.contains("dp_ping_with_sound") ? "false" : "true"), "Ping with Sound", null)).append(newText(" ")).append(newPreviewPanel("/duraping preview sound", "Ping with Sound")).append(newText(" Ping with Sound")).create();
-        BaseComponent[] pingDisplayHidden = new ComponentBuilder(createCheckBox(tags.contains("dp_display_hidden"), "/duraping set display hidden", "Display: Hidden", null)).append(newText(" Display: Hidden")).create();
-        BaseComponent[] pingDisplaySubtitle = new ComponentBuilder(createCheckBox(tags.contains("dp_display_subtitle"), "/duraping set display subtitle", "Display: Subtitle", null)).append(newText(" ")).append(newPreviewPanel("/duraping preview display_subtitle", "Display: Subtitle")).append(newText(" Display: Subtitle")).create();
-        BaseComponent[] pingDisplayTitle = new ComponentBuilder(createCheckBox(tags.contains("dp_display_title"), "/duraping set display title", "Display: Title", null)).append(newText(" ")).append(newPreviewPanel("/duraping preview display_title", "Display: Title")).append(newText(" Display: Title")).create();
-        BaseComponent[] pingDisplayChat = new ComponentBuilder(createCheckBox(tags.contains("dp_display_chat"), "/duraping set display chat", "Display: Chat", null)).append(newText(" ")).append(newPreviewPanel("/duraping preview display_chat", "Display: Chat")).append(newText(" Display: Chat")).create();
-        BaseComponent[] pingDisplayActionbar = new ComponentBuilder(createCheckBox(tags.contains("dp_display_actionbar"), "/duraping set display actionbar", "Display: Action Bar", null)).append(newText(" ")).append(newPreviewPanel("/duraping preview display_actionbar", "Display: Action Bar")).append(newText(" Display: Action Bar")).create();
+        BaseComponent[] pingForHandItems = new ComponentBuilder(createCheckBox(tags.contains("dp_ping_for_hand_items"), "/duraping set ping_for_hand_items " + (tags.contains("dp_ping_for_hand_items") ? "false" : "true"), MessageHandler.getCmdMessage("durabilityping", "config.ping-for-hand-items.name"), MessageHandler.getCmdMessage("durabilityping", "config.ping-for-hand-items.description"))).append(newText(" " + MessageHandler.getCmdMessage("durabilityping", "config.ping-for-hand-items.name"))).create();
+        BaseComponent[] pingForArmorItems = new ComponentBuilder(createCheckBox(tags.contains("dp_ping_for_armor_items"), "/duraping set ping_for_armor_items " + (tags.contains("dp_ping_for_armor_items") ? "false" : "true"), MessageHandler.getCmdMessage("durabilityping", "config.ping-for-armor-items.name"), MessageHandler.getCmdMessage("durabilityping", "config.ping-for-armor-items.description"))).append(newText(" " + MessageHandler.getCmdMessage("durabilityping", "config.ping-for-armor-items.name"))).create();
+        BaseComponent[] pingWithSound = new ComponentBuilder(createCheckBox(tags.contains("dp_ping_with_sound"), "/duraping set ping_with_sound " + (tags.contains("dp_ping_with_sound") ? "false" : "true"), MessageHandler.getCmdMessage("durabilityping", "config.ping-with-sound.name"), null)).append(newText(" ")).append(newPreviewPanel("/duraping preview sound", MessageHandler.getCmdMessage("durabilityping", "config.ping-with-sound.name"))).append(newText(" " + MessageHandler.getCmdMessage("durabilityping", "config.ping-with-sound.name"))).create();
+        BaseComponent[] pingDisplayHidden = new ComponentBuilder(createCheckBox(tags.contains("dp_display_hidden"), "/duraping set display hidden", MessageHandler.getCmdMessage("durabilityping", "config.display.hidden.name"), null)).append(newText(" " + MessageHandler.getCmdMessage("durabilityping", "config.display.hidden.name"))).create();
+        BaseComponent[] pingDisplaySubtitle = new ComponentBuilder(createCheckBox(tags.contains("dp_display_subtitle"), "/duraping set display subtitle", MessageHandler.getCmdMessage("durabilityping", "config.display.subtitle.name"), null)).append(newText(" ")).append(newPreviewPanel("/duraping preview display_subtitle", MessageHandler.getCmdMessage("durabilityping", "config.display.subtitle.name"))).append(newText(" " + MessageHandler.getCmdMessage("durabilityping", "config.display.subtitle.name"))).create();
+        BaseComponent[] pingDisplayTitle = new ComponentBuilder(createCheckBox(tags.contains("dp_display_title"), "/duraping set display title", MessageHandler.getCmdMessage("durabilityping", "config.display.title.name"), null)).append(newText(" ")).append(newPreviewPanel("/duraping preview display_title", MessageHandler.getCmdMessage("durabilityping", "config.display.title.name"))).append(newText(" " + MessageHandler.getCmdMessage("durabilityping", "config.display.title.name"))).create();
+        BaseComponent[] pingDisplayChat = new ComponentBuilder(createCheckBox(tags.contains("dp_display_chat"), "/duraping set display chat", MessageHandler.getCmdMessage("durabilityping", "config.display.chat.name"), null)).append(newText(" ")).append(newPreviewPanel("/duraping preview display_chat", MessageHandler.getCmdMessage("durabilityping", "config.display.chat.name"))).append(newText(" " + MessageHandler.getCmdMessage("durabilityping", "config.display.chat.name"))).create();
+        BaseComponent[] pingDisplayActionbar = new ComponentBuilder(createCheckBox(tags.contains("dp_display_actionbar"), "/duraping set display actionbar", MessageHandler.getCmdMessage("durabilityping", "config.display.actionbar.name"), null)).append(newText(" ")).append(newPreviewPanel("/duraping preview display_actionbar", MessageHandler.getCmdMessage("durabilityping", "config.display.actionbar.name"))).append(newText(" " + MessageHandler.getCmdMessage("durabilityping", "config.display.actionbar.name"))).create();
 
         player.sendMessage(ChatColor.DARK_GRAY.toString() + ChatColor.STRIKETHROUGH + "                                                                                ");
         player.spigot().sendMessage(pingForHandItems);
@@ -182,18 +182,19 @@ public class DurabilityPingCommand extends AbstractCommand {
     public TextComponent newPreviewPanel(String command, String name) {
         TextComponent comp = new TextComponent(ChatColor.GRAY + "[ ℹ ]");
         comp.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, command));
-        comp.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatColor.GRAY + "Click to preview " + ChatColor.WHITE + name)));
+        comp.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(MessageHandler.getCmdMessage("durabilityping", "preview-panel.hover").replace("%name%", name))));
         return comp;
     }
 
     public TextComponent createCheckBox(Boolean checked, String command, String loreName, String loreDescription) {
         TextComponent box;
+        final String replacement = "" + loreName + (loreDescription == null ? "" : "\n" + ChatColor.GRAY + loreDescription);
         if (checked) {
             box = new TextComponent(ChatColor.GREEN + "[ ✔ ]");
-            box.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatColor.RED + "Click to disable " + ChatColor.WHITE + loreName + (loreDescription == null ? "" : "\n" + ChatColor.GRAY + loreDescription))));
+            box.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(MessageHandler.getCmdMessage("durabilityping", "checkbox-yes.hover").replace("%name%", replacement))));
         } else {
             box = new TextComponent(ChatColor.RED + "[ ❌ ]");
-            box.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatColor.GREEN + "Click to enable " + ChatColor.WHITE + loreName + (loreDescription == null ? "" : "\n" + ChatColor.GRAY + loreDescription))));
+            box.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(MessageHandler.getCmdMessage("durabilityping", "checkbox-no.hover").replace("%name%", replacement))));
         }
         box.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, command));
         return box;

@@ -2,8 +2,8 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.ErrorType;
 import me.teakivy.vanillatweaks.Utils.MessageHandler;
-import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -14,7 +14,6 @@ import org.bukkit.potion.PotionEffectType;
 public class NightVisionCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public NightVisionCommand() {
         super(MessageHandler.getCmdName("nightvision"), MessageHandler.getCmdUsage("nightvision"), MessageHandler.getCmdDescription("nightvision"), MessageHandler.getCmdAliases("nightvision"));
@@ -23,7 +22,7 @@ public class NightVisionCommand extends AbstractCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!main.getConfig().getBoolean("packs.spectator-night-vision.enabled")) {
-            sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
+            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
 
@@ -32,12 +31,12 @@ public class NightVisionCommand extends AbstractCommand {
             if (player.getGameMode().equals(GameMode.SPECTATOR)) {
                 if (player.hasPotionEffect(PotionEffectType.NIGHT_VISION)) player.removePotionEffect(PotionEffectType.NIGHT_VISION);
                 else player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 10000000, 0, true, true));
-                player.sendMessage(vt + ChatColor.GREEN + "Toggled Night Vision");
+                player.sendMessage(MessageHandler.getCmdMessage("nightvision", "toggled"));
             } else {
-                player.sendMessage(vt + ChatColor.RED + "You must be in Spectator Mode to use this command!");
+                player.sendMessage(MessageHandler.getCmdMessage("nightvision", "not-spectator"));
             }
         } else {
-            sender.sendMessage(ChatColor.RED + "[VT] You must be a player to use this command!");
+            sender.sendMessage(ErrorType.NOT_PLAYER.m());
         }
         return false;
     }

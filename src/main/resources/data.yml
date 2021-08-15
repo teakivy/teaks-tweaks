@@ -27,12 +27,14 @@ messages:
       updated-config-version: "%bland_prefix% Updated Config to Version: %config_version"
       dev-mode-enabled: "%bland_prefix% Developer Mode Enabled!"
     error:
+      unknown: "&cAn unknown error has occured!"
       pack-not-enabled: "&cThis pack is not enabled!"
       not-player: "&cThis command can only be ran by a Player!"
-      no-op: "&cYou must be OP to use this command!"
+      not-op: "&cYou must be OP to use this command!"
       missing-permission: "&cYou don't have permission to use this command!"
       cant-get-latest: "&cCould not get the latest version!"
       command-disabled: "&cThis command has been disabled by a server administrator!"
+      missing-action: "&cPlease specify an action!"
     shutdown:
       plugin-shutdown: "%bland_prefix% Vanilla Tweaks Shutting Down..."
   pack:
@@ -188,6 +190,10 @@ commands:
     description: "Teleport back to your last location!"
     aliases: []
     messages:
+      on-cooldown: "%prefix% &cYou must wait %cooldown_seconds% seconds between uses of /back"
+      missing-location: "%prefix% &cYou have nowhere to go back to!"
+      teleport: "%prefix% &eTeleporting Back..."
+      moved: "%prefix% &cYou must stand still to teleport!"
 
 
   conduitpower:
@@ -196,6 +202,8 @@ commands:
     description: "Toggle Conduit Power as a spectator"
     aliases: ["cp"]
     messages:
+      toggled: "%prefix% &aToggled Conduit Power"
+      wrong-gamemode: "%prefix% &cYou must be in Spectator Mode to use this command!"
 
   coordshud:
     name: "coordshud"
@@ -203,6 +211,9 @@ commands:
     description: "Coords Hud Main Command"
     aliases: ["ch"]
     messages:
+      cant-toggle: "%prefix% &cYou cannot toggle Coordinates HUD!"
+      toggled: "%prefix% &aToggled Coords HUD"
+      proper-usage: "&cUsage: /coordshud <option>"
 
 
   durabilityping:
@@ -211,6 +222,35 @@ commands:
     description: "Get pinged when your tools drop below 10% Durability!"
     aliases: ["duraping", "dp"]
     messages:
+      missing-preview-selection: "%prefix% &cPlease enter which section to preview!"
+      missing-set-selection: "%prefix% &cPlease enter which section to set!"
+      preview-panel:
+        hover: "&7Click to preview &f%name%"
+      checkbox-yes:
+        hover: "&cClick to disable &f%name%"
+      checkbox-no:
+        hover: "&aClick to enable &f%name%"
+      config:
+        ping-for-hand-items:
+          name: "Ping for Hand Items"
+          description: "Inculdes any item with durability in the mainhand or offhand slots"
+        ping-for-armor-items:
+          name: "Ping for Armor Items"
+          description: "Inculdes any item with durability in armor slots"
+        ping-with-sound:
+          name: "Ping with Sound"
+        display:
+          hidden:
+            name: "Display: Hidden"
+          subtitle:
+            name: "Display: Subtitle"
+          title:
+            name: "Display: Title"
+          chat:
+            name: "Display: Chat"
+          actionbar:
+            name: "Display: Actionbar"
+
 
 
   gem:
@@ -219,6 +259,36 @@ commands:
     description: "Gems, Villagers, & Gem Villagers!"
     aliases: []
     messages:
+      error:
+        missing-villager-type: "%prefix% &cPlease specify villager type!"
+        missing-gem-type: "%prefix% &cPlease choose a gem to give!"
+        amount-more-64: "%prefix% &cYou cannot give yourself more than 64 gems!"
+        amount-less-1: "%prefix% &cYou must give yourself atleast 1 gem!"
+      summoned-villager: "%prefix% &aSummoned %type%&r &avillager!"
+      villagers:
+        aquatic: "&bAquatic"
+        concrete: "&bConcrete"
+        gem-trader: "&bGem Trader"
+        functional: "&bFunctional"
+        gem-collector: "&6Gem Collector"
+        more-blocks: "&1More Blocks"
+        natural: "&1Natural"
+        nether: "&5Nether"
+        ores: "&5Ores"
+        precious: "&cPrecious"
+        redstone: "&cRedstone"
+        stones: "&eStones"
+        wood: "&eWood"
+      given-gem: "%prefix% &aYou have been given %amount% %type% &aGems!"
+      gems:
+        aquamarine: "&bAquamarine"
+        ruby: "&cRuby"
+        amethyst: "&5Amethyst"
+        topaz: "&eTopaz"
+        sapphire: "&1Sapphire"
+
+
+
 
 
   grave:
@@ -227,6 +297,9 @@ commands:
     description: "Keep Inventory stands no chance!"
     aliases: []
     messages:
+      no-grave: "%prefix% &cYou don't have a recent grave!"
+      given-key: "%prefix% &aEnjoy your key!"
+      removed-graves: "%prefix% &eRemoved all loaded Graves!"
 
 
   home:
@@ -235,6 +308,19 @@ commands:
     description: "Teleport, Set, or Delete your Homes!"
     aliases: []
     messages:
+      error:
+        missing-home: "%prefix% &cPlease specify which home you would like to teleport to!"
+        missing-home-name: "%prefix% &cPlease specify a home name!"
+        home-already-exists: "%prefix% &cThe home %name% already exists!"
+        home-doesnt-exist: "%prefix% &cThe home %name% doesn't exist!"
+        max-homes-reached: "%prefix% 7cYou can set a Maximum of %amount% Homes!"
+        cant-set-home: "%prefix% An Error has occurred! Could not set Home %name%!"
+        no-homes-yet: "%prefix% &cYou don't have any Homes set yet! Use '/home set <name>' to set one!"
+        on-cooldown: "%prefix% &cYou must wait %time% seconds between uses of /home!"
+        player-moved: "%prefix% &cYou must stand still to teleport!"
+      set-home: "%prefix% &aSet Home %name%!"
+      removed-home: "%prefix% &aRemoved Home %name%!"
+      teleporting-to-home: "%prefix% &eTeleporting to Home %name%..."
 
 
   itemaverages:
@@ -243,6 +329,9 @@ commands:
     description: "Calculate how many items flow through a source in 2 minutes!"
     aliases: ["ia"]
     messages:
+      tracker-created: "%prefix% &eCreated a tracker source at XYZ: %x% %y% %z%"
+      tracker-in-use: "%prefix% &cA tracker is already in use!"
+      tracker-mass-remove: "%prefix% &eRemoved %count% Tracker Sources!"
 
 
   killboats:
@@ -251,6 +340,7 @@ commands:
     description: "Kill all empty boats"
     aliases: []
     messages:
+      removed-boats: "%prefix% &eRemoved &6%count% &eboats!"
 
   nightvision:
     name: "nightvision"
@@ -258,6 +348,8 @@ commands:
     description: "Toggle Night Vision as a spectator"
     aliases: ["nv"]
     messages:
+      toggled: "%prefix% &aToggled Night Vision"
+      not-spectator: "%prefix% &cYou must be in Spectator Mode to use this command!"
 
   portal:
     name: "portal"
@@ -265,6 +357,8 @@ commands:
     description: "Calculate where a portal would link to"
     aliases: []
     messages:
+      location-found: "%prefix%    &eX: %x% | Y: %y% | Z: %z%"
+      unavaliable-dimension: "%prefix% &cYou cannot run this command in %world%!"
 
   realtimeclock:
     name: "realtimeclock"
@@ -272,6 +366,7 @@ commands:
     description: "View a world's real time"
     aliases: ["rtc"]
     messages:
+      world-time: "%prefix% &eThis world has been active for &6&l%days% &r&eDays, &6&l%hours% &r&eHours, and &6&l%minutes% &r&eMinutes!"
 
   sethome:
     name: "sethome"
@@ -279,6 +374,12 @@ commands:
     description: "Set a home to teleport to at a later date"
     aliases: []
     messages:
+      error:
+        missing-home-name: "%prefix% &cPlease specify a home name!"
+        home-already-exists: "%prefix% &cThe home %name% already exists!"
+        max-homes-reached: "%prefix% 7cYou can set a Maximum of %amount% Homes!"
+        cant-set-home: "%prefix% An Error has occurred! Could not set Home %name%!"
+      set-home: "%prefix% &aSet Home %name%!"
 
   shrine:
     name: "shrine"
@@ -286,6 +387,12 @@ commands:
     description: "Thunder Shrines!"
     aliases: []
     messages:
+      shrine-created: "&aA Shrine has been created at &6XYZ: &e%x% %y% %z% &ain &6World: &e%world%"
+      shrine-removed:
+        text: "%prefix% Removed the shrine &6%uuid%&e!"
+        hover: "&eClick to teleport!"
+      no-shrine-nearby: "%prefix% &cCould not find any Shrines nearby!"
+      mass-remove: "%prefix% &cAll loaded Shrines have been removed!"
 
   spawn:
     name: "spawn"
@@ -293,6 +400,10 @@ commands:
     description: "Teleport to a world's spawn!"
     aliases: []
     messages:
+      error:
+        on-cooldown: "%prefix% &cYou must wait %time% seconds between uses of /spawn!"
+        must-stand-still: "%prefix% &cYou must stand still to teleport!"
+      teleporting: "%prefix% &eTeleporting to world spawn..."
 
   spawningspheres:
     name: "spawningspheres"
@@ -300,6 +411,18 @@ commands:
     description: "Spawn a sphere to help with mob spawning"
     aliases: ["ss", "sphere"]
     messages:
+      error:
+        missing-color: "%prefix% &cPlease specify a sphere color!"
+        sphere-in-use: "%prefix% &cThe sphere %color% is already in use!"
+        sphere-not-in-use: "%prefix% &cThe sphere %color% is not in use!"
+      sphere-summoned: "%prefix% &aSummoned the %color% &aSphere!"
+      sphere-removed: "%prefix% &aRemoved the %color% &aSphere!"
+      sphere-teleport: "%prefix% &aTeleported to the %color% &aSphere!"
+      sphere:
+        red: "&cRed"
+        blue: "&bBlue"
+        green: "&aGreen"
+
 
   taggame:
     name: "taggame"
@@ -307,6 +430,8 @@ commands:
     description: "The classic game of tag"
     aliases: []
     messages:
+      uninstalled: "%prefix% &cTag Uninstalled!"
+      begun: "%prefix% &eLet the games begin!"
 
   test:
     name: "test"
@@ -314,6 +439,9 @@ commands:
     description: "Vanilla Tweaks Testing Command"
     aliases: ["vttest"]
     messages:
+      msg: "%prefix% &eTest!"
+      test-command-found: "%prefix% &eHey! Looks like you found my test command! :D"
+      enable-dev-mode: "&cThis command is used to test new features! Enable it by marking &7config.dev-mode: true &c!"
 
   tpa:
     name: "tpa"
@@ -321,9 +449,18 @@ commands:
     description: "Teleport to someone else (with permission!)"
     aliases: []
     messages:
-
-  vanillatweaks:
-    messages:
+      error:
+        missing-player: "%prefix% &cPlease specify who you would like to teleport to!"
+        missing-player-confirm: "%prefix% &cPlease specify who you would like to teleport!"
+        player-doesnt-exist: "%prefix% &cThe player %name% does not exist!"
+      teleporting-to: "%prefix% &eTeleporting to &6%name%&e..."
+      teleporting-from: "%prefix% &eTeleporting &6%name% &eto you..."
+      teleport-request:
+        text: "%prefix% &6%name% &eHas requested to teleport to you!"
+        hover: "&6Click to accept"
+        click: "/tpa confirm %name%"
+      request-sent: "%prefix% &aTeleport request sent!"
+      request-cancelled: "%prefix% &cTeleport request cancelled!"
 
   workstationhighlight:
     name: "workstationhighlight"
@@ -331,4 +468,8 @@ commands:
     description: "Find a villager's workstation!"
     aliases: ["wh", "workstation"]
     messages:
+      error:
+        no-villager: "%prefix% &cCould not find a Villager nearby!"
+        no-jobsite: "%prefix% &cThe nearest Villager does not have a job site!"
+      jobsite-found: "%prefix% &eThe workstation is located at &6[XYZ]: %x% %y% %z%"
 

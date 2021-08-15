@@ -3,8 +3,8 @@ package me.teakivy.vanillatweaks.Commands;
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Survival.WorkstationHighlights.Highlighter;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.ErrorType;
 import me.teakivy.vanillatweaks.Utils.MessageHandler;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.command.Command;
@@ -15,7 +15,6 @@ import org.bukkit.entity.memory.MemoryKey;
 public class WorkstationHighlightCommand extends AbstractCommand {
 
     static Main main = Main.getPlugin(Main.class);
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public WorkstationHighlightCommand() {
         super(MessageHandler.getCmdName("workstationhighlight"), MessageHandler.getCmdUsage("workstationhighlight"), MessageHandler.getCmdDescription("workstationhighlight"), MessageHandler.getCmdAliases("workstationhighlight"));
@@ -25,12 +24,12 @@ public class WorkstationHighlightCommand extends AbstractCommand {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (!main.getConfig().getBoolean("packs.workstation-highlights.enabled")) {
-            sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] " + ChatColor.RED + "This pack is not enabled!");
+            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
 
         if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatColor.RED + "[VT] You must be a player to use this command!");
+            sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;
         }
 
@@ -48,20 +47,24 @@ public class WorkstationHighlightCommand extends AbstractCommand {
         }
 
         if (entity == null) {
-            player.sendMessage(vt + ChatColor.RED + "Could not find a Villager nearby!");
+            player.sendMessage(MessageHandler.getCmdMessage("workstationhighlight", "errpr.no-villager"));
             return true;
         }
 
         Villager villager = (Villager) entity;
         Location jobSite = villager.getMemory(MemoryKey.JOB_SITE);
         if (jobSite == null) {
-            player.sendMessage(vt + ChatColor.RED + "The nearest Villager does not have a job site!");
+            player.sendMessage(MessageHandler.getCmdMessage("workstationhighlight", "errpr.no-jobsite"));
             return true;
         }
 
         Highlighter.glowingBlock(jobSite, 200);
         createParticles(jobSite.add(.5, 1, .5), 200);
-        player.sendMessage(vt + ChatColor.YELLOW + "The workstation is located at " + ChatColor.GOLD + "[XYZ]: " + jobSite.getX() + " " + jobSite.getY() + " " + jobSite.getZ());
+        player.sendMessage(MessageHandler.getCmdMessage("workstationhighlight", "jobsite-found")
+                .replace("%x%", ((int) jobSite.getX()) + "")
+                .replace("%y%", ((int) jobSite.getY()) + "")
+                .replace("%z%", ((int) jobSite.getZ()) + "")
+        );
         return false;
     }
 

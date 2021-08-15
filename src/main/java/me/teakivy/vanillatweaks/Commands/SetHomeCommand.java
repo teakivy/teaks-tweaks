@@ -2,8 +2,8 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.ErrorType;
 import me.teakivy.vanillatweaks.Utils.MessageHandler;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -14,7 +14,6 @@ import java.io.IOException;
 public class SetHomeCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     FileConfiguration data = main.data.getConfig();
 
@@ -25,29 +24,29 @@ public class SetHomeCommand extends AbstractCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!main.getConfig().getBoolean("packs.homes.enabled")) {
-            sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
+            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
         if (!(sender instanceof Player)) {
-            sender.sendMessage(vt + "This command can only be ran by a Player!");
+            sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;
         }
         Player player = (Player) sender;
 
         if (args.length < 1) {
-            player.sendMessage(vt + ChatColor.RED + "Please specify a home name!");
+            player.sendMessage(MessageHandler.getCmdMessage("sethome", "error.missing-home-name"));
             return true;
         }
 
         String name = args[0].toLowerCase();
 
         if (data.contains("homes." + player.getUniqueId() + "." + name)) {
-            player.sendMessage(vt + ChatColor.RED + "The home " + name + " already exists!");
+            player.sendMessage(MessageHandler.getCmdMessage("sethome", "error.home-already-exists").replace("%name%", name));
             return true;
         }
         if (main.getConfig().getInt("packs.homes.max-homes") > 0) {
             if (data.getConfigurationSection("homes." + player.getUniqueId()).getKeys(false).stream().count() >= main.getConfig().getInt("packs.homes.max-homes")) {
-                player.sendMessage(vt + ChatColor.RED + "You can set a Maximum of " + main.getConfig().getInt("packs.homes.max-homes") + " Homes!");
+                player.sendMessage(MessageHandler.getCmdMessage("sethome", "error.max-homes-reached").replace("%amount%", main.getConfig().getInt("packs.homes.max-homes") + ""));
                 return true;
             }
         }
@@ -63,10 +62,10 @@ public class SetHomeCommand extends AbstractCommand {
         data.set("homes." + player.getUniqueId() + "." + name + ".z", z);
         try {
             main.data.saveConfig();
-            player.sendMessage(vt + ChatColor.GREEN + "Set Home " + name + "!");
+            player.sendMessage(MessageHandler.getCmdMessage("sethome", "set-home").replace("%name%", name));
         } catch (IOException e) {
             e.printStackTrace();
-            player.sendMessage(vt + ChatColor.RED + "An Error has occurred! Could not set Home " + name + "!");
+            player.sendMessage(MessageHandler.getCmdMessage("sethome", "error.cant-set-home").replace("%name%", name));
         }
         return true;
     }

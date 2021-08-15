@@ -64,7 +64,10 @@ public class MessageHandler {
 
     public static String getCmdMessage(String cmd, String path) {
         if (messageManager.getConfig().contains("commands." + cmd + ".messages." + path)) {
-            return messageManager.getConfig().getString("commands." + cmd + ".messages." + path);
+            String msg = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(messageManager.getConfig().getString("commands." + cmd + ".messages." + path)));
+            msg = replace(msg, "%bland_prefix%", messageManager.getConfig().getString("messages.plugin.bland-prefix"));
+            msg = replace(msg, "%prefix%", messageManager.getConfig().getString("messages.plugin.message-prefix"));
+            return msg;
         }
         return "";
     }

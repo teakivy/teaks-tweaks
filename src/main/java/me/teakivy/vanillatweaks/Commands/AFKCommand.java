@@ -3,6 +3,7 @@ package me.teakivy.vanillatweaks.Commands;
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Survival.AFKDisplay.AFK;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.ErrorType;
 import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -16,7 +17,6 @@ import java.util.UUID;
 public class AFKCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
-    String vt = MessageHandler.getMessage("plugin.message-prefix");
 
     HashMap<UUID, Long> cooldown = new HashMap<>();
 
@@ -27,18 +27,18 @@ public class AFKCommand extends AbstractCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!main.getConfig().getBoolean("packs.afk-display.enabled")) {
-            sender.sendMessage(vt + MessageHandler.getMessage("plugin.error.pack-not-enabled"));
+            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
         if (!(sender instanceof Player)) {
-            sender.sendMessage(vt + MessageHandler.getMessage("plugin.error.not-player"));
+            sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;
         }
         Player player = (Player) sender;
 
         if (args.length < 1) {
             if (!main.getConfig().getBoolean("packs.afk-display.allow-afk-command")) {
-                sender.sendMessage(vt + MessageHandler.getMessage("plugin.error.command-disabled"));
+                sender.sendMessage(ErrorType.COMMAND_DISABLED.m());
                 return true;
             }
             if (AFK.afk.containsKey(player.getUniqueId())) {
@@ -55,7 +55,7 @@ public class AFKCommand extends AbstractCommand {
             if (player.isOp()) {
                 AFK.uninstall();
             } else {
-                sender.sendMessage(vt + MessageHandler.getMessage("plugin.error.no-op"));
+                sender.sendMessage(ErrorType.MISSING_PERMISSION.m());
             }
         }
         return false;

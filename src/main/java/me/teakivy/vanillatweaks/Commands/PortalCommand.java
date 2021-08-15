@@ -2,8 +2,8 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.ErrorType;
 import me.teakivy.vanillatweaks.Utils.MessageHandler;
-import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -12,7 +12,6 @@ import org.bukkit.entity.Player;
 public class PortalCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public PortalCommand() {
         super(MessageHandler.getCmdName("portal"), MessageHandler.getCmdUsage("portal"), MessageHandler.getCmdDescription("portal"), MessageHandler.getCmdAliases("portal"));
@@ -21,23 +20,36 @@ public class PortalCommand extends AbstractCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!main.getConfig().getBoolean("packs.nether-portal-coords.enabled")) {
-            sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
+            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
 
         if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatColor.RED + "[VT] You must be a player to use this command!");
+            sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;
         }
 
         Player player = (Player) sender;
+        int x = (int) player.getLocation().getX();
+        int y = (int) player.getLocation().getY();
+        int z = (int) player.getLocation().getZ();
         if (player.getWorld().getEnvironment() == World.Environment.NORMAL) {
-            player.sendMessage(vt + ChatColor.YELLOW + "    X: " + Math.round(player.getLocation().getX() / 8) + " | Y: " + Math.round(player.getLocation().getY()) + " | Z: " + Math.round(player.getLocation().getZ()) / 8);
+            x /= 8;
+            y /= 8;
+            z /= 8;
         } else if (player.getWorld().getEnvironment() == World.Environment.NETHER) {
-            player.sendMessage(vt + ChatColor.YELLOW + "    X: " + Math.round(player.getLocation().getX() * 8) + " | Y: " + Math.round(player.getLocation().getY()) + " | Z: " + Math.round(player.getLocation().getZ()) * 8);
+            x *= 8;
+            y *= 8;
+            z *= 8;
         } else {
-            player.sendMessage(vt + ChatColor.RED + "You cannot run this command in " + player.getWorld().getName());
+            player.sendMessage(MessageHandler.getCmdMessage("portal", "unavaliable-dimension".replace("%world%", player.getWorld().getName())));
+            return true;
         }
+        player.sendMessage(MessageHandler.getCmdMessage("portal", "location-found")
+                .replace("%x%", x + "")
+                .replace("%y%", y + "")
+                .replace("%z%", z + "")
+        );
         return false;
     }
 }

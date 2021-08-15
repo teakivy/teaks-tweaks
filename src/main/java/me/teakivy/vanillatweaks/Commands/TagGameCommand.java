@@ -2,6 +2,7 @@ package me.teakivy.vanillatweaks.Commands;
 
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.ErrorType;
 import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import me.teakivy.vanillatweaks.Utils.Register.Register;
 import org.bukkit.Bukkit;
@@ -21,7 +22,6 @@ import java.util.List;
 public class TagGameCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public TagGameCommand() {
         super(MessageHandler.getCmdName("taggame"), MessageHandler.getCmdUsage("taggame"), MessageHandler.getCmdDescription("taggame"), MessageHandler.getCmdAliases("taggame"));
@@ -32,36 +32,36 @@ public class TagGameCommand extends AbstractCommand {
 
         if (args.length == 1) {
             if (!(sender instanceof Player)) {
-                sender.sendMessage(ChatColor.RED + "[VT] You must be a player to use this command!");
+                sender.sendMessage(ErrorType.NOT_PLAYER.m());
                 return true;
             }
             Player player = (Player) sender;
 
             if (!player.isOp()) {
-                player.sendMessage(vt + ChatColor.RED + "You must be an OP to use this command!");
+                player.sendMessage(ErrorType.NOT_OP.m());
                 return true;
             }
 
             if (args[0].equalsIgnoreCase("uninstall")) {
-                player.sendMessage(vt + ChatColor.RED + "Tag Uninstalled!");
+                player.sendMessage(MessageHandler.getCmdMessage("taggame", "uninstalled"));
                 Register.tag.uninstall();
                 return true;
             }
         }
 
         if (!main.getConfig().getBoolean("packs.tag.enabled")) {
-            sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] " + ChatColor.RED + "This pack is not enabled!");
+            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
 
         if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatColor.RED + "[VT] You must be a player to use this command!");
+            sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;
         }
         Player player = (Player) sender;
 
         if (!player.isOp()) {
-            player.sendMessage(vt + ChatColor.RED + "You must be an OP to use this command!");
+            player.sendMessage(ErrorType.NOT_OP.m());
             return true;
         }
 
@@ -84,7 +84,7 @@ public class TagGameCommand extends AbstractCommand {
             }
             Team taggedTeam = sb.getTeam("TaggedTeam");
             taggedTeam.addEntry(player.getName());
-            player.sendMessage(vt + ChatColor.YELLOW + "Let the games begin!");
+            player.sendMessage(MessageHandler.getCmdMessage("taggame", "begun"));
             return true;
         }
         return false;
@@ -95,7 +95,7 @@ public class TagGameCommand extends AbstractCommand {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
 
-        if (arguments1.isEmpty()) {
+        if (arguments1.isEmpty() && sender.isOp()) {
             arguments1.add("uninstall");
         }
 

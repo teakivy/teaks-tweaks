@@ -3,9 +3,9 @@ package me.teakivy.vanillatweaks.Commands;
 import me.teakivy.vanillatweaks.Main;
 import me.teakivy.vanillatweaks.Packs.Teleportation.Back.Back;
 import me.teakivy.vanillatweaks.Utils.AbstractCommand;
+import me.teakivy.vanillatweaks.Utils.ErrorType;
 import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -18,7 +18,6 @@ import java.util.UUID;
 public class SpawnCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     HashMap<UUID, Long> cooldown = new HashMap<>();
 
@@ -29,11 +28,11 @@ public class SpawnCommand extends AbstractCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!main.getConfig().getBoolean("packs.spawn.enabled")) {
-            sender.sendMessage(vt + ChatColor.RED + "This pack is not enabled!");
+            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
         if (!(sender instanceof Player)) {
-            sender.sendMessage(vt + "This command can only be ran by a Player!");
+            sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;
         }
         Player player = (Player) sender;
@@ -41,7 +40,7 @@ public class SpawnCommand extends AbstractCommand {
         if (main.getConfig().getInt("packs.spawn.teleport-cooldown") > 0) {
             if (cooldown.containsKey(player.getUniqueId())) {
                 if (cooldown.get(player.getUniqueId()) + (main.getConfig().getInt("packs.spawn.teleport-cooldown") * 1000L) > System.currentTimeMillis()) {
-                    player.sendMessage(vt + ChatColor.RED + "You must wait " + main.getConfig().getInt("packs.spawn.teleport-cooldown") + " seconds between uses of /spawn!");
+                    player.sendMessage(MessageHandler.getCmdMessage("spawn", "error.on-cooldown").replace("%time%",  + main.getConfig().getInt("packs.spawn.teleport-cooldown") + ""));
                     return true;
                 }
             }
@@ -49,16 +48,16 @@ public class SpawnCommand extends AbstractCommand {
         }
 
         if (main.getConfig().getInt("packs.spawn.teleport-delay") == 0) {
-            player.sendMessage(vt + ChatColor.YELLOW + "Teleporting to world spawn...");
+            player.sendMessage(MessageHandler.getCmdMessage("spawn", "teleporting"));
             teleportToSpawn(player);
         } else if (main.getConfig().getInt("packs.spawn.teleport-delay") > 0) {
             Location loc = player.getLocation();
-            player.sendMessage(vt + ChatColor.YELLOW + "Teleporting to world spawn...");
+            player.sendMessage(MessageHandler.getCmdMessage("spawn", "teleporting"));
             Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
                 if (player.getLocation().getX() == loc.getX() && player.getLocation().getY() == loc.getY() && player.getLocation().getZ() == loc.getZ()) {
                     teleportToSpawn(player);
                 } else {
-                    player.sendMessage(vt + ChatColor.RED + "You must stand still to teleport!");
+                    player.sendMessage(MessageHandler.getCmdMessage("spawn", "error.must-stand-still"));
                 }
             }, main.getConfig().getInt("packs.spawn.teleport-delay") * 20L);
         }

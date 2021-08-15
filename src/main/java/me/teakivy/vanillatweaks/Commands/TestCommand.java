@@ -23,11 +23,11 @@ public class TestCommand extends AbstractCommand {
         Player player = (Player) sender;
         World world = player.getWorld();
         if (main.getConfig().getBoolean("config.dev-mode")) {
-            player.sendMessage(vt + ChatColor.GREEN + "Test!");
+            player.sendMessage(MessageHandler.getCmdMessage("test", "msg"));
         } else {
-            player.sendMessage(vt + ChatColor.YELLOW + "Hey! Looks like you found my test command! :D");
+            player.sendMessage(MessageHandler.getCmdMessage("test", "test-command-found"));
             if (player.isOp()) {
-                player.sendMessage(ChatColor.YELLOW + "This command is used to test new features! Enable it by marking " + ChatColor.GRAY + "config.dev-mode: true" + ChatColor.YELLOW + "!");
+                player.sendMessage(MessageHandler.getCmdMessage("test", "enable-dev-mode"));
             }
         }
         return false;
