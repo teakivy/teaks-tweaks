@@ -108,16 +108,16 @@ public class HomeCommand extends AbstractCommand {
             return true;
         }
 
-        if (main.getConfig().getInt("packs.spawn.teleport-cooldown") > 0) {
+        if (main.getConfig().getInt("packs.homes.teleport-cooldown") > 0) {
             if (cooldown.containsKey(player.getUniqueId())) {
-                if (cooldown.get(player.getUniqueId()) + (main.getConfig().getInt("packs.spawn.teleport-cooldown") * 1000L) > System.currentTimeMillis()) {
-                    player.sendMessage(MessageHandler.getCmdMessage("home", "error.on-cooldown").replace("%time%", main.getConfig().getInt("packs.spawn.teleport-cooldown") + ""));
+                if (cooldown.get(player.getUniqueId()) + (main.getConfig().getInt("packs.homes.teleport-cooldown") * 1000L) > System.currentTimeMillis()) {
+                    player.sendMessage(MessageHandler.getCmdMessage("home", "error.on-cooldown").replace("%time%", main.getConfig().getInt("packs.homes.teleport-cooldown") + ""));
                     return true;
                 }
             }
             cooldown.put(player.getUniqueId(), System.currentTimeMillis());
         }
-        if (main.getConfig().getInt("packs.spawn.teleport-delay") == 0) {
+        if (main.getConfig().getInt("packs.homes.teleport-delay") == 0) {
             if (data.contains("homes." + player.getUniqueId() + "." + args[0].toLowerCase())) {
                 player.sendMessage(MessageHandler.getCmdMessage("home", "teleporting-to-home").replace("%name%", args[0].toLowerCase()));
                 Back.backLoc.put(player.getUniqueId(), player.getLocation());
@@ -126,7 +126,7 @@ public class HomeCommand extends AbstractCommand {
                 player.sendMessage(MessageHandler.getCmdMessage("home", "error.home-doesnt-exist").replace("%name%", args[0].toLowerCase()));
             }
             return true;
-        } else if (main.getConfig().getInt("packs.spawn.teleport-delay") > 0) {
+        } else if (main.getConfig().getInt("packs.homes.teleport-delay") > 0) {
             Location loc = player.getLocation();
 
             if (data.contains("homes." + player.getUniqueId() + "." + args[0].toLowerCase())) {
@@ -138,7 +138,7 @@ public class HomeCommand extends AbstractCommand {
                     } else {
                         player.sendMessage(MessageHandler.getCmdMessage("home", "error.player-moved"));
                     }
-                }, main.getConfig().getInt("packs.spawn.teleport-delay") * 20L);
+                }, main.getConfig().getInt("packs.homes.teleport-delay") * 20L);
             } else {
                 player.sendMessage(MessageHandler.getCmdMessage("home", "error.home-doesnt-exist").replace("%name%", args[0].toLowerCase()));
             }
