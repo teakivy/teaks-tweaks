@@ -1,11 +1,12 @@
 package me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Mobs;
 
+import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Head;
 import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.MobHeads;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 public class Llama {
     public static void onDeath(EntityDeathEvent event) {
-        if (!MobHeads.dropChance(event.getEntity().getKiller(), .24, .02)) return;
+        if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("llama"))) return;
         org.bukkit.entity.Llama llaama = (org.bukkit.entity.Llama) event.getEntity();
 
         if (llaama.getColor() == org.bukkit.entity.Llama.Color.CREAMY) event.getDrops().add(MobHeads.getHead("Creamy Llama", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGQ2N2ZkNGJmZjI5MzI2OWNiOTA4OTc0ZGNhODNjMzM0ODVlNDM1ZWQ1YThlMWRiZDY1MjFjNjE2ODcxNDAifX19"));

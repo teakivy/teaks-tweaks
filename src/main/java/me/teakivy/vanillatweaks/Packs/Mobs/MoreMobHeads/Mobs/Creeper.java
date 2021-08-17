@@ -1,11 +1,12 @@
 package me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Mobs;
 
+import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Head;
 import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.MobHeads;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 public class Creeper {
     public static void onDeath(EntityDeathEvent event) {
-        if (!MobHeads.dropChance(event.getEntity().getKiller(), 1, 0)) return;
+        if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("creeper"))) return;
         org.bukkit.entity.Creeper creeper = (org.bukkit.entity.Creeper) event.getEntity();
 
         if (!creeper.isPowered()) return;

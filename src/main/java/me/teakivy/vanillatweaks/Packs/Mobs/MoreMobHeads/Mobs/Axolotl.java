@@ -1,5 +1,6 @@
 package me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Mobs;
 
+import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Head;
 import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.MobHeads;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -10,9 +11,9 @@ public class Axolotl implements Listener {
         org.bukkit.entity.Axolotl axolotl = (org.bukkit.entity.Axolotl) event.getEntity();
 
         if (axolotl.getVariant() == org.bukkit.entity.Axolotl.Variant.BLUE) {
-            if (!MobHeads.dropChance(event.getEntity().getKiller(), 1, 0)) return;
+            if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("blue-axolotl"))) return;
         } else {
-            if (!MobHeads.dropChance(event.getEntity().getKiller(), .1, .01)) return;
+            if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("axolotl"))) return;
         }
 
         if (axolotl.getVariant() == org.bukkit.entity.Axolotl.Variant.LUCY)

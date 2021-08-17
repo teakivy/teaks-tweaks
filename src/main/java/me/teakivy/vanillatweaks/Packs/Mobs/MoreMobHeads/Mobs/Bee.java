@@ -1,5 +1,6 @@
 package me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Mobs;
 
+import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Head;
 import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.MobHeads;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.Listener;
@@ -9,7 +10,7 @@ public class Bee implements Listener {
 
     public static void onDeath(EntityDeathEvent event) {
         Entity entity = event.getEntity();
-        if (!MobHeads.dropChance(event.getEntity().getKiller(), .2, .02)) return;
+        if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("bee"))) return;
         org.bukkit.entity.Bee bee = (org.bukkit.entity.Bee) entity;
 
         if (bee.getAnger() != 0) {

@@ -1,11 +1,12 @@
 package me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Mobs;
 
+import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Head;
 import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.MobHeads;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 public class Panda {
     public static void onDeath(EntityDeathEvent event) {
-        if (!MobHeads.dropChance(event.getEntity().getKiller(), .27, .004)) return;
+        if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("panda"))) return;
         org.bukkit.entity.Panda panda = (org.bukkit.entity.Panda) event.getEntity();
 
         if (panda.getMainGene() == org.bukkit.entity.Panda.Gene.AGGRESSIVE) event.getDrops().add(MobHeads.getHead("Aggressive Panda", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTU0NmU0MzZkMTY2YjE3ZjA1MjFiZDg1MzhlYTEzY2Q2ZWUzYjVkZjEwMmViMzJlM2U0MjVjYjI4NWQ0NDA2MyJ9fX0"));

@@ -1,12 +1,13 @@
 package me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Mobs;
 
+import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Head;
 import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.MobHeads;
 import org.bukkit.entity.Llama;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 public class TraderLlama {
     public static void onDeath(EntityDeathEvent event) {
-        if (!MobHeads.dropChance(event.getEntity().getKiller(), .24, .07)) return;
+        if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("trader-llama"))) return;
 
         org.bukkit.entity.TraderLlama llama = (org.bukkit.entity.TraderLlama) event.getEntity();
 

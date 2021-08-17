@@ -1,5 +1,6 @@
 package me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Mobs;
 
+import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Head;
 import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.MobHeads;
 import org.bukkit.event.entity.EntityDeathEvent;
 
@@ -7,9 +8,9 @@ public class Fox {
     public static void onDeath(EntityDeathEvent event) {
         org.bukkit.entity.Fox fox = (org.bukkit.entity.Fox) event.getEntity();
         if (fox.getFoxType() == org.bukkit.entity.Fox.Type.RED) {
-            if (!MobHeads.dropChance(event.getEntity().getKiller(), .10, .004)) return;
+            if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("red-fox"))) return;
         } else {
-            if (!MobHeads.dropChance(event.getEntity().getKiller(), .20, .004)) return;
+            if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("white-fox"))) return;
         }
 
         if (fox.getFoxType() == org.bukkit.entity.Fox.Type.RED)

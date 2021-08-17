@@ -1,5 +1,6 @@
 package me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Mobs;
 
+import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Head;
 import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.MobHeads;
 import org.bukkit.event.entity.EntityDeathEvent;
 
@@ -7,7 +8,7 @@ import java.util.Random;
 
 public class Wither {
     public static void onDeath(EntityDeathEvent event) {
-        if (!MobHeads.dropChance(event.getEntity().getKiller(), 1, 0)) return;
+        if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("wither"))) return;
 
         Random rand = new Random();
         int gen = rand.nextInt(4);

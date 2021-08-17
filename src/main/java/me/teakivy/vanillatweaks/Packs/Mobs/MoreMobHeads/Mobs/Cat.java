@@ -1,12 +1,13 @@
 package me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Mobs;
 
+import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Head;
 import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.MobHeads;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 public class Cat {
 
     public static void onDeath(EntityDeathEvent event) {
-        if (!MobHeads.dropChance(event.getEntity().getKiller(), .033, .02)) return;
+        if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("cat"))) return;
         org.bukkit.entity.Cat cat = (org.bukkit.entity.Cat) event.getEntity();
         org.bukkit.entity.Cat.Type catType = cat.getCatType();
 

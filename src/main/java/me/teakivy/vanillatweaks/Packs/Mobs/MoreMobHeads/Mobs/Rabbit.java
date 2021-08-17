@@ -1,5 +1,6 @@
 package me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Mobs;
 
+import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Head;
 import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.MobHeads;
 import org.bukkit.event.entity.EntityDeathEvent;
 
@@ -8,15 +9,15 @@ public class Rabbit {
         org.bukkit.entity.Rabbit rabbit = (org.bukkit.entity.Rabbit) event.getEntity();
         boolean rabbitNamed = rabbit.getCustomName() == null;
         if (rabbit.getRabbitType() == org.bukkit.entity.Rabbit.Type.THE_KILLER_BUNNY)
-            if (!MobHeads.dropChance(event.getEntity().getKiller(), 1, 0)) return;
+            if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("killer-rabbit"))) return;
         else if (rabbitNamed) {
             if (rabbit.getCustomName().equals("Toast"))
-                if (!MobHeads.dropChance(event.getEntity().getKiller(), 1, 0)) return;
+                if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("toast-rabbit"))) return;
             else {
-                    if (!MobHeads.dropChance(event.getEntity().getKiller(), .26, .05)) return;
+                    if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("rabbit"))) return;
             }
         }
-        else {if (!MobHeads.dropChance(event.getEntity().getKiller(), .26, .05)) return;}
+        else {if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("rabbit"))) return;}
 
 
         if (rabbit.getCustomName() != null) {

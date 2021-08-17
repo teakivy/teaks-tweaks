@@ -1,11 +1,12 @@
 package me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Mobs;
 
+import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Head;
 import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.MobHeads;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 public class Wolf {
     public static void onDeath(EntityDeathEvent event) {
-        if (!MobHeads.dropChance(event.getEntity().getKiller(), .2, .01)) return;
+        if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("wolf"))) return;
 
         org.bukkit.entity.Wolf wolf = (org.bukkit.entity.Wolf) event.getEntity();
 

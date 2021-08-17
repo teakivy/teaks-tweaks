@@ -1,11 +1,12 @@
 package me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Mobs;
 
+import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Head;
 import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.MobHeads;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 public class ZombieVillager {
     public static void onDeath(EntityDeathEvent event) {
-        if (!MobHeads.dropChance(event.getEntity().getKiller(), .5, .2)) return;
+        if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("zombie-villager"))) return;
 
         org.bukkit.entity.ZombieVillager villager = (org.bukkit.entity.ZombieVillager) event.getEntity();
 
