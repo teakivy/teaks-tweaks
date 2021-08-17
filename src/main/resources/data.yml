@@ -473,3 +473,227 @@ commands:
         no-jobsite: "%prefix% &cThe nearest Villager does not have a job site!"
       jobsite-found: "%prefix% &eThe workstation is located at &6[XYZ]: %x% %y% %z%"
 
+
+mob-heads:
+  axolotl:
+    chance: .1
+    looting-bonus: .01
+  blue-axolotl:
+    chance: 1
+    looting-bonus: 0
+  bat:
+    chance: .1
+    looting-bonus: .02
+  bee:
+    chance: .2
+    looting-bonus: .02
+  blaze:
+    chance: .005
+    looting-bonus: .0005
+  cat:
+    chance: .033
+    looting-bonus: .02
+  cave-spider:
+    chance: .005
+    looting-bonus: .01
+  chicken:
+    chance: .01
+    looting-bonus: .001
+  cod:
+    chance: .1
+    looting-bonus: .01
+  cow:
+    chance: .01
+    looting-bonus: .001
+  charged-creeper:
+    chance: 1
+    looting-bonus: 0
+  dolphin:
+    chance: .33
+    looting-bonus: .02
+  donkey:
+    chance: .2
+    looting-bonus: .09
+  drowned:
+    chance: .05
+    looting-bonus: .02
+  elder-guardian:
+    chance: 1
+    looting-bonus: 0
+  ender-dragon:
+    chance: 1
+    looting-bonus: 0
+  enderman:
+    chance: .005
+    looting-bonus: .0001
+  endermite:
+    chance: .1
+    looting-bonus: .001
+  evoker:
+    chance: .25
+    looting-bonus: .02
+  red-fox:
+    chance: .10
+    looting-bonus: .004
+  white-fox:
+    chance: .10
+    looting-bonus: .004
+  ghast:
+    chance: .625
+    looting-bonus: .0125
+  glow-squid:
+    chance: .05
+    looting-bonus: .01
+  goat:
+    chance: .01
+    looting-bonus: .001
+  screaming-goat:
+    chance: 1
+    looting-bonus: 0
+  guardian:
+    chance: .005
+    looting-bonus: .001
+  hoglin:
+    chance: .03
+    looting-bonus: .02
+  horse:
+    chance: .27
+    looting-bonus: .1
+  husk:
+    chance: .6
+    looting-bonus: .01
+  illusioner:
+    chance: .25
+    looting-bonus: .02
+  iron-golem:
+    chance: .05
+    looting-bonus: .015
+  llama:
+    chance: .24
+    looting-bonus: .02
+  magma-cube:
+    chance: .005
+    looting-bonus: .001
+  red-mooshroom:
+    chance: .01
+    looting-bonus: .001
+  brown-mooshroom:
+    chance: .1
+    looting-bonus: .001
+  mule:
+    chance: .2
+    looting-bonus: .5
+  ocelot:
+    chance: .2
+    looting-bonus: .02
+  panda:
+    chance: .27
+    looting-bonus: .004
+  parrot:
+    chance: .25
+    looting-bonus: .02
+  phantom:
+    chance: .1
+    looting-bonus: .01
+  pig:
+    chance: .01
+    looting-bonus: .001
+  piglin:
+    chance: .04
+    looting-bonus: .01
+  piglin-brute:
+    chance: .1
+    looting-bonus: .01
+  pillager:
+    chance: .025
+    looting-bonus: .005
+  polar-bear:
+    chance: .2
+    looting-bonus: .05
+  pufferfish:
+    chance: .15
+    looting-bonus: .01
+  rabbit:
+    chance: .26
+    looting-bonus: .05
+  killer-rabbit:
+    chance: 1
+    looting-bonus: 0
+  toast-rabbit:
+    chance: 1
+    looting-bonus: 0
+  ravager:
+    chance: .25
+    looting-bonus: .02
+  salmon:
+    chance: .1
+    looting-bonus: .01
+  shulker:
+    chance: .05
+    looting-bonus: .01
+  silverfish:
+    chance: .05
+    looting-bonus: .01
+  skeleton-horse:
+    chance: .2
+    looting-bonus: .05
+  slime:
+    chance: .005
+    looting-bonus: .001
+  snow-golem:
+    chance: .05
+    looting-bonus: .01
+  spider:
+    chance: .005
+    looting-bonus: .001
+  squid:
+    chance: .05
+    looting-bonus: .01
+  stray:
+    chance: .06
+    looting-bonus: .05
+  strider:
+    chance: .1
+    looting-bonus: .05
+  trader-llama:
+    chance: .24
+    looting-bonus: .07
+  tropical-fish:
+    chance: .1
+    looting-bonus: .01
+  turtle:
+    chance: .1
+    looting-bonus: .01
+  vex:
+    chance: .1
+    looting-bonus: .01
+  villager:
+    chance: 1
+    looting-bonus: 0
+  vindicator:
+    chance: .05
+    looting-bonus: .015
+  wandering-trader:
+    chance: 1
+    looting-bonus: 0
+  witch:
+    chance: .005
+    looting-bonus: .001
+  wither:
+    chance: 1
+    looting-bonus: 0
+  wolf:
+    chance: .2
+    looting-bonus: .01
+  zoglin:
+    chance: .2
+    looting-bonus: .05
+  zombie-horse:
+    chance: 1
+    looting-bonus: 0
+  zombie-villager:
+    chance: .5
+    looting-bonus: .2
+  zombified-piglin:
+    chance: .005
+    looting-bonus: .001
