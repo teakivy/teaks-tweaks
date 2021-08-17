@@ -49,7 +49,7 @@ public class CraftingRegister {
         if (main.getConfig().getBoolean("crafting-tweaks.craftable-enchanted-golden-apples.enabled"))
             CraftableEnchantedGoldenApples.registerRecipes();
         if (main.getConfig().getBoolean("crafting-tweaks.craftable-name-tags.enabled"))
-            CraftableEnchantedGoldenApples.registerRecipes();
+            CraftableNameTags.registerRecipes();
         if (main.getConfig().getBoolean("crafting-tweaks.craftable-bundles-rabbit-hide.enabled"))
             CraftableBundlesRabbitHide.registerRecipes();
         if (main.getConfig().getBoolean("crafting-tweaks.craftable-bundles-leather.enabled"))
