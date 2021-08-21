@@ -61,9 +61,11 @@ public class HomeCommand extends AbstractCommand {
                 return true;
             }
             if (main.getConfig().getInt("packs.homes.max-homes") > 0) {
-                if (data.getConfigurationSection("homes." + player.getUniqueId()).getKeys(false).stream().count() >= main.getConfig().getInt("packs.homes.max-homes")) {
-                    player.sendMessage(MessageHandler.getCmdMessage("home", "error.max-homes-reached").replace("%amount%", "" + main.getConfig().getInt("packs.homes.max-homes")));
-                    return true;
+                if (data.getConfigurationSection("homes." + player.getUniqueId()) != null) {
+                    if ((long) data.getConfigurationSection("homes." + player.getUniqueId()).getKeys(false).size() >= main.getConfig().getInt("packs.homes.max-homes")) {
+                        player.sendMessage(MessageHandler.getCmdMessage("home", "error.max-homes-reached").replace("%amount%", "" + main.getConfig().getInt("packs.homes.max-homes")));
+                        return true;
+                    }
                 }
             }
 
@@ -72,10 +74,11 @@ public class HomeCommand extends AbstractCommand {
             double z = player.getLocation().getZ();
             String world = player.getWorld().getName();
 
-            data.set("homes." + player.getUniqueId() + "." + name + ".world", world);
-            data.set("homes." + player.getUniqueId() + "." + name + ".x", x);
-            data.set("homes." + player.getUniqueId() + "." + name + ".y", y);
-            data.set("homes." + player.getUniqueId() + "." + name + ".z", z);
+
+            main.data.getConfig().set("homes." + player.getUniqueId() + "." + name + ".world", world);
+            main.data.getConfig().set("homes." + player.getUniqueId() + "." + name + ".x", x);
+            main.data.getConfig().set("homes." + player.getUniqueId() + "." + name + ".y", y);
+            main.data.getConfig().set("homes." + player.getUniqueId() + "." + name + ".z", z);
             try {
                 main.data.saveConfig();
                 player.sendMessage(MessageHandler.getCmdMessage("home", "set-home").replace("%name%", name));
@@ -98,7 +101,7 @@ public class HomeCommand extends AbstractCommand {
                 return true;
             }
 
-            data.set("homes." + player.getUniqueId() + "." + name, null);
+            main.data.getConfig().set("homes." + player.getUniqueId() + "." + name, null);
             player.sendMessage(MessageHandler.getCmdMessage("home", "removed-home").replace("%name%", name));
             return true;
         }
