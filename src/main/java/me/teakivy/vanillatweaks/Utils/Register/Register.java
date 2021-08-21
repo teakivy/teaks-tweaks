@@ -345,6 +345,7 @@ public class Register {
 
         if (pack.equalsIgnoreCase("unlock-all-recipes")) {
             main.getServer().getPluginManager().registerEvents(unlockRecipes, main);
+            unlockRecipes.register();
         }
 
         if (pack.equalsIgnoreCase("villager-death-messages")) {
