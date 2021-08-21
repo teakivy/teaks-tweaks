@@ -1,6 +1,8 @@
 package me.teakivy.vanillatweaks.Packs.Items.PlayerHeadDrops;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.Head;
+import me.teakivy.vanillatweaks.Packs.Mobs.MoreMobHeads.MobHeads;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,6 +21,7 @@ public class HeadDrop implements Listener {
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
         if (!main.getConfig().getBoolean("packs.player-head-drops.enabled")) return;
+        if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getPlayerChance())) return;
         Player player = event.getEntity();
         if (player.isDead()) {
             if (player.getKiller() != null) {

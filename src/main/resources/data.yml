@@ -697,3 +697,8 @@ mob-heads:
   zombified-piglin:
     chance: .005
     looting-bonus: .001
+
+
+player-heads:
+  chance: 1
+  looting-bonus: 0
