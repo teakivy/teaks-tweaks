@@ -42,12 +42,13 @@ public final class Main extends JavaPlugin implements Listener {
         data.saveDefaultConfig();
 
         // Data updater
-        try {
-            ConfigUpdater.update(this, "data.yml", new File(this.getDataFolder(), "data.yml"), Collections.emptyList(), false);
-            this.reloadConfig();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            ConfigUpdater.update(this, "data.yml", new File(this.getDataFolder(), "data.yml"), Collections.emptyList(), false);
+//            this.reloadConfig();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        data.saveDefaultConfig();
 
         if (getConfig().getBoolean("config.dev-mode")) {
             Log.message(MessageHandler.getMessage("plugin.startup.dev-mode-enabled"));
