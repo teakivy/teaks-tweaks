@@ -61,7 +61,7 @@ public class AFK implements Listener {
                         long currentTime = System.currentTimeMillis();
                         if (lastMove.containsKey(uuid)) {
                             if (lastMove.get(uuid) + (afkMinutes * 60 * 1000) < currentTime) {
-                                afk(player);
+                                afk(player, false);
                             }
                         }
                     }
@@ -109,7 +109,8 @@ public class AFK implements Listener {
         lastMove.put(uuid, System.currentTimeMillis());
     }
 
-    public static void afk(Player player) {
+    public static void afk(Player player, boolean fromCommand) {
+        if (!fromCommand && lastMove.get(player.getUniqueId()) +  + (afkMinutes * 60 * 1000) > System.currentTimeMillis()) return;
         afkTeam.addEntry(player.getName());
         afk.put(player.getUniqueId(), true);
         displayAFKMessage(player, true);

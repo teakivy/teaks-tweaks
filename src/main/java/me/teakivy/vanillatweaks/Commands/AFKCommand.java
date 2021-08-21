@@ -45,7 +45,7 @@ public class AFKCommand extends AbstractCommand {
                 if (AFK.afk.get(player.getUniqueId())) {
                     AFK.unAFK(player);
                 } else {
-                    AFK.afk(player);
+                    AFK.afk(player, true);
                 }
             }
             return true;
