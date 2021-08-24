@@ -10,6 +10,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class SetHomeCommand extends AbstractCommand {
 
@@ -45,9 +46,11 @@ public class SetHomeCommand extends AbstractCommand {
             return true;
         }
         if (main.getConfig().getInt("packs.homes.max-homes") > 0) {
-            if (data.getConfigurationSection("homes." + player.getUniqueId()).getKeys(false).stream().count() >= main.getConfig().getInt("packs.homes.max-homes")) {
-                player.sendMessage(MessageHandler.getCmdMessage("sethome", "error.max-homes-reached").replace("%amount%", main.getConfig().getInt("packs.homes.max-homes") + ""));
-                return true;
+            if (data.getConfigurationSection("homes." + player.getUniqueId()) != null) {
+                if (Objects.requireNonNull(data.getConfigurationSection("homes." + player.getUniqueId())).getKeys(false).stream().count() >= main.getConfig().getInt("packs.homes.max-homes")) {
+                    player.sendMessage(MessageHandler.getCmdMessage("sethome", "error.max-homes-reached").replace("%amount%", main.getConfig().getInt("packs.homes.max-homes") + ""));
+                    return true;
+                }
             }
         }
 
