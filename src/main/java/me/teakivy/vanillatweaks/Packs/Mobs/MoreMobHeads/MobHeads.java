@@ -125,6 +125,7 @@ public class MobHeads implements Listener {
         double chance = chances[0];
         double lootingBonus = chances[1];
         Random rand = new Random();
+        if (player == null) return false;
         if (player.getInventory().getItemInMainHand().getItemMeta() != null) {
             for (int i = 0; i < player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(Enchantment.LOOT_BONUS_MOBS); i++) {
                 chance = chance + lootingBonus;

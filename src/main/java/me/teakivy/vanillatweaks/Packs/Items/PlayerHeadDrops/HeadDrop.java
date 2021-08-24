@@ -20,11 +20,10 @@ public class HeadDrop implements Listener {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
-        if (!main.getConfig().getBoolean("packs.player-head-drops.enabled")) return;
-        if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getPlayerChance())) return;
         Player player = event.getEntity();
         if (player.isDead()) {
             if (player.getKiller() != null) {
+                if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getPlayerChance())) return;
                 Player killer = player.getKiller();
                 event.getDrops().add(getHead(player, killer.getName()));
             }
