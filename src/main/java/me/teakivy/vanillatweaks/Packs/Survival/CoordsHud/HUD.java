@@ -33,6 +33,7 @@ public class HUD implements Listener {
     public static void startHUD() {
         if (taskID != -1) return;
         running = true;
+        DisplayHud.init();
         taskID = Bukkit.getScheduler().runTaskTimer(main, () -> {
             for (UUID uuid : Main.chEnabled) {
                 Player player = Bukkit.getPlayer(uuid);
