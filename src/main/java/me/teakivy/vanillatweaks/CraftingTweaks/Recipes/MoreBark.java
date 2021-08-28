@@ -33,7 +33,7 @@ public class MoreBark {
     public static void newBarkedRecipe(String name, Material input, Material output) {
         NamespacedKey key = new NamespacedKey(main, name + "_vt_bark");
 
-        ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(output, 12));
+        ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(output, 4));
 
         recipe.shape("xx", "xx");
         recipe.setIngredient('x', input);
