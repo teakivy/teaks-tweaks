@@ -23,12 +23,9 @@ public class ConfettiCreeper implements Listener {
 
     @EventHandler
     public void onPrime(ExplosionPrimeEvent event) {
-        System.out.println("test1");
         Entity entity = event.getEntity();
         if (entity.getType() != EntityType.CREEPER) return;
-        System.out.println("test2");
         if (entity.getScoreboardTags().contains("vt_confetti_true") || entity.getScoreboardTags().contains("vt_confetti_false")) return;
-        System.out.println("test3");
 
         int chance = main.getConfig().getInt("packs.confetti-creepers.confetti-chance");
         boolean confetti = randomChance(chance);
@@ -37,12 +34,10 @@ public class ConfettiCreeper implements Listener {
             entity.addScoreboardTag("vt_confetti_false");
             return;
         }
-        System.out.println("test4");
         entity.addScoreboardTag("vt_confetti_true");
         if (!main.getConfig().getBoolean("packs.confetti-creepers.do-block-damage")) {
             event.setRadius(0);
         }
-        System.out.println("test5");
 
         FireworkEffect fwEffect = FireworkEffect.builder()
                 .trail(false)
