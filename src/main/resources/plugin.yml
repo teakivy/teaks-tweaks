@@ -133,3 +133,11 @@ permissions:
   vanillatweaks.nightvision.toggle:
     description: Toggle Spectator Night Vision
     default: true
+
+  vanillatweaks.netherportalcoords.*:
+    description: All Vanilla Tweaks Nether Portal Coords Permissions
+    children:
+      vanillatweaks.netherportalcoords.execute: true
+  vanillatweaks.netherportalcoords.execute:
+    description: Execute the nether portal coords command
+    default: true

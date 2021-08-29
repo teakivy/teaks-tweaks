@@ -29,6 +29,11 @@ public class PortalCommand extends AbstractCommand {
             return true;
         }
 
+        if (!sender.hasPermission("vanillatweaks.netherportalcoords.execute")) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
+
         Player player = (Player) sender;
         int x = (int) player.getLocation().getX();
         int y = (int) player.getLocation().getY();
