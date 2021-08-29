@@ -69,7 +69,7 @@ public class ItemAveragesCommand extends AbstractCommand {
                 }
                 return true;
             }
-            if (args[0].equalsIgnoreCase("remove")) {
+            if (args[0].equalsIgnoreCase("uninstall")) {
                 if (!player.isOp()) {
                     player.sendMessage(ErrorType.NOT_OP.m());
                     return true;
@@ -95,7 +95,7 @@ public class ItemAveragesCommand extends AbstractCommand {
         if (arguments.isEmpty()) {
             arguments.add("create");
             if (sender.isOp()) {
-                arguments.add("remove");
+                arguments.add("uninstall");
             }
         }
 
