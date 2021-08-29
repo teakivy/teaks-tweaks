@@ -28,6 +28,12 @@ public class WorkstationHighlightCommand extends AbstractCommand {
             return true;
         }
 
+
+        if (!sender.hasPermission("vanillatweaks.workstationhighlights.execute")) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
+
         if (!(sender instanceof Player)) {
             sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;

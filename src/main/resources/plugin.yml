@@ -11,12 +11,27 @@ permissions:
   vanillatweaks.*:
     description: All Vanilla Tweaks Permissions
     children:
+      vanillatweaks.reload: true
       vanillatweaks.afk.*: true
       vanillatweaks.back.*: true
-      vanillatweaks.conduitpower.*: true
+      vanillatweaks.spectatorconduitpower.*: true
       vanillatweaks.coordshud.*: true
       vanillatweaks.durabilityping.*: true
       vanillatweaks.gem.*: true
+      vanillatweaks.grave.*: true
+      vanillatweaks.homes.*: true
+      vanillatweaks.itemaverages.*: true
+      vanillatweaks.killboats.*: true
+      vanillatweaks.spectatornightvision.*: true
+      vanillatweaks.netherportalcoords.*: true
+      vanillatweaks.realtimeclock.*: true
+      vanillatweaks.shrines.*: true
+      vanillatweaks.spawn.*: true
+      vanillatweaks.spawningspheres.*: true
+      vanillatweaks.taggame.*: true
+      vanillatweaks.test.*: true
+      vanillatweaks.tpa.*: true
+      vanillatweaks.workstationhighlights.*: true
 
   vanillatweaks.reload:
     description: Reload Vanilla Tweaks
@@ -220,4 +235,12 @@ permissions:
       vanillatweaks.tpa.use: true
   vanillatweaks.tpa.use:
     description: Use the TPA command
+    default: true
+
+  vanillatweaks.workstationhighlights.*:
+    description: All Vanilla Tweaks Workstation Hightlights Permissions
+    children:
+      vanillatweaks.workstationhighlights.execute: true
+  vanillatweaks.workstationhighlights.execute:
+    description: Execute the workstation highlights command
     default: true
