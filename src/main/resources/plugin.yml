@@ -201,3 +201,11 @@ permissions:
   vanillatweaks.taggame.uninstall:
     description: Remove the tag from all inventories
     default: op
+
+  vanillatweaks.test.*:
+    description: All Vanilla Tweaks Test Permissions
+    children:
+      vanillatweaks.test.execute: true
+  vanillatweaks.test.execute:
+    description: Execute the test command
+    default: true
