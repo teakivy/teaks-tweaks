@@ -37,12 +37,12 @@ public class TagGameCommand extends AbstractCommand {
             }
             Player player = (Player) sender;
 
-            if (!player.isOp()) {
-                player.sendMessage(ErrorType.NOT_OP.m());
-                return true;
-            }
 
             if (args[0].equalsIgnoreCase("uninstall")) {
+                if (!sender.hasPermission("vanillatweaks.taggame.uninstall")) {
+                    sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+                    return true;
+                }
                 player.sendMessage(MessageHandler.getCmdMessage("taggame", "uninstalled"));
                 Register.tag.uninstall();
                 return true;
@@ -60,12 +60,12 @@ public class TagGameCommand extends AbstractCommand {
         }
         Player player = (Player) sender;
 
-        if (!player.isOp()) {
-            player.sendMessage(ErrorType.NOT_OP.m());
-            return true;
-        }
 
         if (args.length < 1) {
+            if (!sender.hasPermission("vanillatweaks.taggame.give")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+                return true;
+            }
             Register.tag.uninstall();
             ItemStack tag = new ItemStack(Material.NAME_TAG);
             ItemMeta tagMeta = tag.getItemMeta();

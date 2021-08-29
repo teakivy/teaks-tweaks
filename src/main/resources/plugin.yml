@@ -189,3 +189,15 @@ permissions:
   vanillatweaks.spawningspheres.teleport:
     description: Teleport to a spawning sphere
     default: op
+
+  vanillatweaks.taggame.*:
+    description: All Vanilla Tweaks Tag Game Permissions
+    children:
+      vanillatweaks.taggame.give: true
+      vanillatweaks.taggame.uninstall: true
+  vanillatweaks.taggame.give:
+    description: Give yourself the tag
+    default: op
+  vanillatweaks.taggame.uninstall:
+    description: Remove the tag from all inventories
+    default: op
