@@ -35,6 +35,10 @@ public class ItemAveragesCommand extends AbstractCommand {
 
         Player player = (Player) sender;
         if (args.length < 1) {
+            if (!sender.hasPermission("vanillatweaks.itemaverages.create")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+                return true;
+            }
             if (main.getConfig().getBoolean("packs.item-averages.require-op") && !player.isOp()) {
                 player.sendMessage(ErrorType.NOT_OP.m());
                 return true;
@@ -53,6 +57,10 @@ public class ItemAveragesCommand extends AbstractCommand {
         }
         if (args.length == 1) {
             if (args[0].equalsIgnoreCase("create")) {
+                if (!sender.hasPermission("vanillatweaks.itemaverages.create")) {
+                    sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+                    return true;
+                }
                 if (main.getConfig().getBoolean("packs.item-averages.require-op") && !player.isOp()) {
                     player.sendMessage(ErrorType.NOT_OP.m());
                     return true;
@@ -70,8 +78,8 @@ public class ItemAveragesCommand extends AbstractCommand {
                 return true;
             }
             if (args[0].equalsIgnoreCase("uninstall")) {
-                if (!player.isOp()) {
-                    player.sendMessage(ErrorType.NOT_OP.m());
+                if (!sender.hasPermission("vanillatweaks.itemaverages.uninstall")) {
+                    sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                     return true;
                 }
                 int count = 0;

@@ -105,3 +105,15 @@ permissions:
   vanillatweaks.homes.teleport:
     description: Teleport to a home
     default: true
+
+  vanillatweaks.itemaverages.*:
+    description: All Vanilla Tweaks Item Averages Permissions
+    children:
+      vanillatweaks.itemaverages.create: true
+      vanillatweaks.itemaverages.uninstall: true
+  vanillatweaks.itemaverages.create:
+    description: Create an Item Tracker
+    default: true
+  vanillatweaks.itemaverages.uninstall:
+    description: Remove all loaded Item Trackers
+    default: op
