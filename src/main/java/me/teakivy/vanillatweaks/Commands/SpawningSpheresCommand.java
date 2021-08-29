@@ -45,14 +45,14 @@ public class SpawningSpheresCommand extends AbstractCommand {
 
         SphereData sData = new SphereData();
 
-        if (!player.isOp() && main.getConfig().getBoolean("packs.spawning-spheres.require-op")) {
-            player.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-            return true;
-        }
-
         if (args[0].equalsIgnoreCase("create")) {
             if (args.length < 2) {
                 player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "error.missing-color"));
+                return true;
+            }
+
+            if (!sender.hasPermission("vanillatweaks.spawningspheres.create")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
 
@@ -84,6 +84,11 @@ public class SpawningSpheresCommand extends AbstractCommand {
                 return true;
             }
 
+            if (!sender.hasPermission("vanillatweaks.spawningspheres.remove")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+                return true;
+            }
+
             if (args[1].equalsIgnoreCase("red")) {
                 if (checkSphere(Color.RED, player, sData, false)) return true;
                 removeSphere(Color.RED, player, sData);
@@ -107,6 +112,11 @@ public class SpawningSpheresCommand extends AbstractCommand {
         if (args[0].equalsIgnoreCase("tp") || args[0].equalsIgnoreCase("teleport")) {
             if (args.length < 2) {
                 player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "error.missing-color"));
+                return true;
+            }
+
+            if (!sender.hasPermission("vanillatweaks.spawningspheres.teleport")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
 

@@ -173,3 +173,19 @@ permissions:
   vanillatweaks.spawn.teleport:
     description: Teleport back to spawn
     default: true
+
+  vanillatweaks.spawningspheres.*:
+    description: All Vanilla Tweaks Spawning Spheres Permissions
+    children:
+      vanillatweaks.spawningspheres.create: true
+      vanillatweaks.spawningspheres.remove: true
+      vanillatweaks.spawningspheres.teleport: true
+  vanillatweaks.spawningspheres.create:
+    description: Create a spawning sphere
+    default: op
+  vanillatweaks.spawningspheres.remove:
+    description: Remove a spawning sphere
+    default: op
+  vanillatweaks.spawningspheres.teleport:
+    description: Teleport to a spawning sphere
+    default: op
