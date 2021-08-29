@@ -76,4 +76,20 @@ permissions:
     default: op
   vanillatweaks.gem.give:
     description: Give yourself gems
+    default: op
+
+  vanillatweaks.grave.*:
+    description: All Vanilla Tweaks Grave Permissions
+    children:
+      vanillatweaks.grave.locate: true
+      vanillatweaks.grave.key: true
+      vanillatweaks.grave.uninstall: true
+  vanillatweaks.grave.locate:
+    description: Locate your last grave
     default: true
+  vanillatweaks.grave.key:
+    description: Get a grave key
+    default: op
+  vanillatweaks.grave.uninstall:
+    description: Uninstall graves pack
+    default: op

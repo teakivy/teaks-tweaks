@@ -40,6 +40,10 @@ public class GraveCommand extends AbstractCommand {
         Player player = (Player) sender;
 
         if (args.length < 1) {
+            if (!sender.hasPermission("vanillatweaks.grave.locate")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+                return true;
+            }
             if (main.getConfig().getBoolean("packs.graves.locatable")) {
                 PersistentDataContainer data = player.getPersistentDataContainer();
                 if (data.has(new NamespacedKey(main, "vt_graves_last"), PersistentDataType.STRING)) {
@@ -54,6 +58,10 @@ public class GraveCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("locate")) {
+            if (!sender.hasPermission("vanillatweaks.grave.locate")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+                return true;
+            }
             if (main.getConfig().getBoolean("packs.graves.locatable")) {
                 PersistentDataContainer data = player.getPersistentDataContainer();
                 if (data.has(new NamespacedKey(main, "vt_graves_last"), PersistentDataType.STRING)) {
@@ -68,8 +76,8 @@ public class GraveCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("key")) {
-            if (!player.isOp()) {
-                player.sendMessage(ErrorType.NOT_OP.m());
+            if (!sender.hasPermission("vanillatweaks.grave.key")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
             player.getInventory().addItem(GraveEvents.getGraveKey());
@@ -77,8 +85,8 @@ public class GraveCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("uninstall")) {
-            if (!player.isOp()) {
-                player.sendMessage(ErrorType.NOT_OP.m());
+            if (!sender.hasPermission("vanillatweaks.grave.uninstall")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
             for (World world : Bukkit.getWorlds()) {
