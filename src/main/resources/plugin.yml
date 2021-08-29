@@ -125,3 +125,11 @@ permissions:
   vanillatweaks.killboats.remove:
     description: Remove all loaded boats in a world
     default: op
+
+  vanillatweaks.nightvision.*:
+    description: All Vanilla Tweaks Night Vision Permissions
+    children:
+      vanillatweaks.nightvision.toggle: true
+  vanillatweaks.nightvision.toggle:
+    description: Toggle Spectator Night Vision
+    default: true

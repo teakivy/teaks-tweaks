@@ -26,6 +26,11 @@ public class NightVisionCommand extends AbstractCommand {
             return true;
         }
 
+        if (!sender.hasPermission("vanillatweaks.nightvision.toggle")) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
+
         if (sender instanceof Player) {
             Player player = (Player) sender;
             if (player.getGameMode().equals(GameMode.SPECTATOR)) {
