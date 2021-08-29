@@ -46,7 +46,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
         SphereData sData = new SphereData();
 
         if (!player.isOp() && main.getConfig().getBoolean("packs.spawning-spheres.require-op")) {
-            player.sendMessage(ErrorType.MISSING_PERMISSION.m());
+            player.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
         }
 

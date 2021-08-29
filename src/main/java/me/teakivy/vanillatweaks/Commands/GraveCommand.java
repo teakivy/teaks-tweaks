@@ -48,7 +48,7 @@ public class GraveCommand extends AbstractCommand {
                     player.sendMessage(MessageHandler.getCmdMessage("grave", "no-grave"));
                 }
             } else {
-                player.sendMessage(ErrorType.MISSING_PERMISSION.m());
+                player.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             }
             return true;
         }
@@ -62,7 +62,7 @@ public class GraveCommand extends AbstractCommand {
                     player.sendMessage(MessageHandler.getCmdMessage("grave", "no-grave"));
                 }
             } else {
-                player.sendMessage(ErrorType.MISSING_PERMISSION.m());
+                player.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             }
             return true;
         }
