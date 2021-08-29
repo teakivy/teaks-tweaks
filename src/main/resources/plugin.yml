@@ -41,3 +41,11 @@ permissions:
   vanillatweaks.conduitpower.toggle:
     default: true
     description: Toggle Conduit Power
+
+  vanillatweaks.coordshud.*:
+    description: All Vanilla Tweaks Coordinates Hud Permissions
+    children:
+      vanillatweaks.coordshud.toggle: true
+  vanillatweaks.coordshud.toggle:
+    default: true
+    description: Toggle Coordinates Hud
