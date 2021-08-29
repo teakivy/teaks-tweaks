@@ -13,6 +13,9 @@ permissions:
     children:
       vanillatweaks.afk.*: true
       vanillatweaks.back.*: true
+      vanillatweaks.conduitpower.*: true
+      vanillatweaks.coordshud.*: true
+      vanillatweaks.durabilityping.*: true
 
   vanillatweaks.afk.*:
     description: All Vanilla Tweaks AFK Permissions
@@ -49,3 +52,15 @@ permissions:
   vanillatweaks.coordshud.toggle:
     default: true
     description: Toggle Coordinates Hud
+
+  vanillatweaks.durabilityping.*:
+    description: All Vanilla Tweaks Durability Ping Permissions
+    children:
+      vanillatweaks.durabilityping.preview: true
+      vanillatweaks.durabilityping.set: true
+  vanillatweaks.durabilityping.preview:
+    description: Preview Durability Ping Options
+    default: true
+  vanillatweaks.durabilityping.set:
+    description: Set Durability Ping Options
+    default: true

@@ -53,6 +53,10 @@ public class DurabilityPingCommand extends AbstractCommand {
                 player.sendMessage(MessageHandler.getCmdMessage("durabilityping", "missing-preview-selection"));
                 return true;
             }
+            if (!sender.hasPermission("vanillatweaks.durabilityping.preview")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+                return true;
+            }
 
             if (args[1].equalsIgnoreCase("sound")) {
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 1, 2);
@@ -78,6 +82,10 @@ public class DurabilityPingCommand extends AbstractCommand {
         if (args[0].equalsIgnoreCase("set")) {
             if (args.length < 3) {
                 player.sendMessage(MessageHandler.getCmdMessage("durabilityping", "missing-set-selection"));
+                return true;
+            }
+            if (!sender.hasPermission("vanillatweaks.durabilityping.set")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
 
