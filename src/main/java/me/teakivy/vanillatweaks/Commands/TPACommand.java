@@ -40,6 +40,11 @@ public class TPACommand extends AbstractCommand {
         }
         Player player = (Player) sender;
 
+        if (!sender.hasPermission("vanillatweaks.tpa.use")) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
+
         if (args.length < 1) {
             player.sendMessage(MessageHandler.getCmdMessage("tpa", "error.missing-player"));
             return true;

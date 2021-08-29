@@ -209,3 +209,11 @@ permissions:
   vanillatweaks.test.execute:
     description: Execute the test command
     default: true
+
+  vanillatweaks.tpa.*:
+    description: All Vanilla Tweaks TPA Permissions
+    children:
+      vanillatweaks.tpa.use: true
+  vanillatweaks.tpa.use:
+    description: Use the TPA command
+    default: true
