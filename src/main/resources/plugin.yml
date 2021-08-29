@@ -165,3 +165,11 @@ permissions:
   vanillatweaks.shrines.uninstall:
     description: Remove all loaded thunder shrines
     default: op
+
+  vanillatweaks.spawn.*:
+    description: All Vanilla Tweaks Spawn Permissions
+    children:
+      vanillatweaks.spawn.teleport: true
+  vanillatweaks.spawn.teleport:
+    description: Teleport back to spawn
+    default: true

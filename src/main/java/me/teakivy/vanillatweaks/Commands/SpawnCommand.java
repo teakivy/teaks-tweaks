@@ -37,6 +37,12 @@ public class SpawnCommand extends AbstractCommand {
         }
         Player player = (Player) sender;
 
+
+        if (!sender.hasPermission("vanillatweaks.spawn.teleport")) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
+
         if (main.getConfig().getInt("packs.spawn.teleport-cooldown") > 0) {
             if (cooldown.containsKey(player.getUniqueId())) {
                 if (cooldown.get(player.getUniqueId()) + (main.getConfig().getInt("packs.spawn.teleport-cooldown") * 1000L) > System.currentTimeMillis()) {
