@@ -38,11 +38,11 @@ permissions:
     default: true
     description: Teleport back to your last location
 
-  vanillatweaks.conduitpower.*:
+  vanillatweaks.spectatorconduitpower.*:
     description: All Vanilla Tweaks Conduit Power Permissions
     children:
       vanillatweaks.conduitpower.toggle: true
-  vanillatweaks.conduitpower.toggle:
+  vanillatweaks.spectatorconduitpower.toggle:
     default: true
     description: Toggle Conduit Power
 
@@ -126,11 +126,11 @@ permissions:
     description: Remove all loaded boats in a world
     default: op
 
-  vanillatweaks.nightvision.*:
+  vanillatweaks.spectatornightvision.*:
     description: All Vanilla Tweaks Night Vision Permissions
     children:
       vanillatweaks.nightvision.toggle: true
-  vanillatweaks.nightvision.toggle:
+  vanillatweaks.spectatornightvision.toggle:
     description: Toggle Spectator Night Vision
     default: true
 
