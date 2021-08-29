@@ -117,3 +117,11 @@ permissions:
   vanillatweaks.itemaverages.uninstall:
     description: Remove all loaded Item Trackers
     default: op
+
+  vanillatweaks.killboats.*:
+    description: All Vanilla Tweaks Kill Boats Permissions
+    children:
+      vanillatweaks.killboats.remove: true
+  vanillatweaks.killboats.remove:
+    description: Remove all loaded boats in a world
+    default: op

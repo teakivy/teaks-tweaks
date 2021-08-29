@@ -25,8 +25,8 @@ public class KillBoatsCommand extends AbstractCommand {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
-        if (!sender.isOp()) {
-            sender.sendMessage(ErrorType.NOT_OP.m());
+        if (!sender.hasPermission("vanillatweaks.killboats.remove")) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
         }
         int boats = 0;
