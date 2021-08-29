@@ -31,3 +31,10 @@ permissions:
       vanillatweaks.back.teleport: true
   vanillatweaks.back.teleport:
     description: Teleport back to your last location
+
+  vanillatweaks.conduitpower.*:
+    description: All Vanilla Tweaks Conduit Power Permissions
+    children:
+      vanillatweaks.conduitpower.toggle: true
+  vanillatweaks.conduitpower.toggle:
+    description: Toggle Conduit Power
