@@ -34,10 +34,6 @@ public class GemCommand extends AbstractCommand {
         }
         Player player = (Player) sender;
 
-        if (!player.isOp()) {
-            player.sendMessage(ErrorType.NOT_OP.m());
-            return true;
-        }
         if (args.length < 1) {
             player.sendMessage(ErrorType.MISSING_ACTION.m());
             return true;
@@ -46,6 +42,10 @@ public class GemCommand extends AbstractCommand {
         if (args[0].equalsIgnoreCase("villager")) {
             if (args.length < 2) {
                 player.sendMessage(MessageHandler.getCmdMessage("gem", "error.missing-villager-type"));
+                return true;
+            }
+            if (!sender.hasPermission("vanillatweaks.gem.villager")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
             GemVllagers gems = new GemVllagers();
@@ -132,6 +132,10 @@ public class GemCommand extends AbstractCommand {
         if (args[0].equalsIgnoreCase("give")) {
             if (args.length < 2) {
                 player.sendMessage(MessageHandler.getCmdMessage("gem", "error.missing-gem-type"));
+            }
+            if (!sender.hasPermission("vanillatweaks.gem.give")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+                return true;
             }
             int amount = 1;
             if (args.length > 2) {

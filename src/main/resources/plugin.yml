@@ -16,6 +16,7 @@ permissions:
       vanillatweaks.conduitpower.*: true
       vanillatweaks.coordshud.*: true
       vanillatweaks.durabilityping.*: true
+      vanillatweaks.gem.*: true
 
   vanillatweaks.afk.*:
     description: All Vanilla Tweaks AFK Permissions
@@ -63,4 +64,16 @@ permissions:
     default: true
   vanillatweaks.durabilityping.set:
     description: Set Durability Ping Options
+    default: true
+
+  vanillatweaks.gem.*:
+    description: All Vanilla Tweaks Gem Permissions
+    children:
+      vanillatweaks.gem.villager: true
+      vanillatweaks.gem.give: true
+  vanillatweaks.gem.villager:
+    description: Summon a gem villager
+    default: op
+  vanillatweaks.gem.give:
+    description: Give yourself gems
     default: true
