@@ -32,6 +32,7 @@ messages:
       not-player: "&cThis command can only be ran by a Player!"
       not-op: "&cYou must be OP to use this command!"
       missing-command-permission: "&cYou don't have permission to use this command!"
+      missing-permission: "&cYou don't have permission to do this!"
       cant-get-latest: "&cCould not get the latest version!"
       command-disabled: "&cThis command has been disabled by a server administrator!"
       missing-action: "&cPlease specify an action!"
