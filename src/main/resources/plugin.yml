@@ -12,6 +12,7 @@ permissions:
     description: All Vanilla Tweaks Permissions
     children:
       vanillatweaks.afk.*: true
+      vanillatweaks.back.*: true
 
   vanillatweaks.afk.*:
     description: All Vanilla Tweaks AFK Permissions
@@ -23,3 +24,10 @@ permissions:
   vanillatweaks.afk.uninstall:
     description: Uninstall the AFK Pack
     default: op
+
+  vanillatweaks.back.*:
+    description: All Vanilla Tweaks Back Permissions
+    children:
+      vanillatweaks.back.teleport: true
+  vanillatweaks.back.teleport:
+    description: Teleport back to your last location

@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Teleportation.Back;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Utils.ErrorType;
 import me.teakivy.vanillatweaks.Utils.MessageHandler;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -19,6 +20,10 @@ public class Back implements Listener {
     public static HashMap<UUID, Location> backLoc = new HashMap<>();
 
     public static void tpBack(Player player) {
+        if (!player.hasPermission("vanillatweaks.back.teleport")) {
+            player.sendMessage(ErrorType.MISSING_PERMISSION.m());
+            return;
+        }
         if (backLoc.containsKey(player.getUniqueId())) {
             player.teleport(backLoc.get(player.getUniqueId()));
         } else {
