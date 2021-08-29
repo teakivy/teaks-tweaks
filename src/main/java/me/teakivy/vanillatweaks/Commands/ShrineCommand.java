@@ -33,10 +33,6 @@ public class ShrineCommand extends AbstractCommand {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
-        if (!sender.isOp()) {
-            sender.sendMessage(ErrorType.NOT_OP.m());
-            return true;
-        }
 
         if (!(sender instanceof Player)) {
             sender.sendMessage(ErrorType.NOT_PLAYER.m());
@@ -50,6 +46,10 @@ public class ShrineCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("create")) {
+            if (!sender.hasPermission("vanillatweaks.shrines.create")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+                return true;
+            }
             try {
                 Location loc = player.getLocation();
                 String world = loc.getWorld().getName();
@@ -70,6 +70,11 @@ public class ShrineCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("remove")) {
+
+            if (!sender.hasPermission("vanillatweaks.shrines.remove")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+                return true;
+            }
             Entity shrine = null;
             for (Entity entity : player.getNearbyEntities(3, 3, 3)) {
                 if (Shrine.getShrines().contains(entity)) {
@@ -91,6 +96,10 @@ public class ShrineCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("uninstall")) {
+            if (!sender.hasPermission("vanillatweaks.shrines.uninstall")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+                return true;
+            }
             for (Entity shrine : Shrine.getShrines()) {
                 shrine.remove();
             }

@@ -149,3 +149,19 @@ permissions:
   vanillatweaks.realtimeclock.execute:
     description: Execute the real time clock command
     default: true
+
+  vanillatweaks.shrines.*:
+    description: All Vanilla Tweaks Shrines Permissions
+    children:
+      vanillatweaks.shrines.create: true
+      vanillatweaks.shrines.remove: true
+      vanillatweaks.shrines.uninstall: true
+  vanillatweaks.shrines.create:
+    description: Create a thunder shrine
+    default: op
+  vanillatweaks.shrines.remove:
+    description: Remove a thunder shrine
+    default: op
+  vanillatweaks.shrines.uninstall:
+    description: Remove all loaded thunder shrines
+    default: op
