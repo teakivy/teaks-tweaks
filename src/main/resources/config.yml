@@ -65,6 +65,8 @@ packs:
       # Whether or not to display the AFK message to Server Console
       display-to-console: true
 
+  # Multiplayer Sleep
+  # Not all players in the overworld need to sleep to skip the night & the rain.
   multiplayer-sleep:
     enabled: false
     # Announce Type
@@ -103,6 +105,8 @@ packs:
     # Whether or not all players can take from a players grave
     allow-robbing: false
 
+  # Custom Nether Portals
+  # Ignite nether portals of any size or shape you like, or using crying obsidian in the portal frame if enabled.
   custom-nether-portals:
     enabled: false
     # Whether or not to allow crying obsidian to be used in portal making
@@ -426,7 +430,7 @@ packs:
     allow-tagging-afk: false
 
   # Thunder Shrine
-  #
+  # A shrine that allows you to create a thunder storm when offered a Nether Star
   thunder-shrine:
     enabled: false
     # Whether or not to show particles where shrines are
@@ -477,6 +481,10 @@ packs:
     # Whether or not to do damage to blocks nearby
     do-block-damage: false
 
+  # Elevators
+  # Drop an ender pearl above a wool block to make it into an elevator.
+  # Jump on it to warp onto an elevator of the same color directly above.
+  # Crouch on it to warp onto one directly above
   elevators:
     enabled: false
     # What Item/Block needs to be dropped to create an elevator
