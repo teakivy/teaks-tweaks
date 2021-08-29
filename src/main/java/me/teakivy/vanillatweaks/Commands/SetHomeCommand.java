@@ -32,6 +32,12 @@ public class SetHomeCommand extends AbstractCommand {
             sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;
         }
+
+
+        if (!sender.hasPermission("vanillatweaks.homes.manage")) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
         Player player = (Player) sender;
 
         if (args.length < 1) {
