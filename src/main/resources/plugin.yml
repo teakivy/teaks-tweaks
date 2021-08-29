@@ -141,3 +141,11 @@ permissions:
   vanillatweaks.netherportalcoords.execute:
     description: Execute the nether portal coords command
     default: true
+
+  vanillatweaks.realtimeclock.*:
+    description: All Vanilla Tweaks Real Time Clock Permissions
+    children:
+      vanillatweaks.realtimeclock.execute: true
+  vanillatweaks.realtimeclock.execute:
+    description: Execute the real time clock command
+    default: true

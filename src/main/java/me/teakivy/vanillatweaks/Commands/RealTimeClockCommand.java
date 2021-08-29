@@ -25,6 +25,12 @@ public class RealTimeClockCommand extends AbstractCommand {
             return true;
         }
 
+
+        if (!sender.hasPermission("vanillatweaks.realtimeclock.execute")) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
+
         if (sender instanceof Player) {
             Player player = (Player) sender;
             World world = player.getWorld();
