@@ -6,3 +6,20 @@ prefix: VT
 authors: [ TeakIvy ]
 description: A Plugin recreation of the Vanilla Tweaks datapacks!
 website: https://vanillatweaks.net/
+
+permissions:
+  vanillatweaks.*:
+    description: All Vanilla Tweaks Permissions
+    children:
+      vanillatweaks.afk.*: true
+
+  vanillatweaks.afk.*:
+    description: All Vanilla Tweaks AFK Permissions
+    children:
+      vanillatweaks.afk.toggle: true
+      vanillatweaks.afk.uninstall: true
+  vanillatweaks.afk.toggle:
+    description: Toggle AFK on yourself
+  vanillatweaks.afk.uninstall:
+    description: Uninstall the AFK Pack
+    default: op

@@ -41,6 +41,10 @@ public class AFKCommand extends AbstractCommand {
                 sender.sendMessage(ErrorType.COMMAND_DISABLED.m());
                 return true;
             }
+            if (!player.hasPermission("vanillatweaks.afk.toggle")) {
+                sender.sendMessage(ErrorType.MISSING_PERMISSION.m());
+                return true;
+            }
             if (AFK.afk.containsKey(player.getUniqueId())) {
                 if (AFK.afk.get(player.getUniqueId())) {
                     AFK.unAFK(player);
@@ -52,7 +56,7 @@ public class AFKCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("uninstall")) {
-            if (player.isOp()) {
+            if (player.hasPermission("vanillatweaks.afk.uninstall")) {
                 AFK.uninstall();
             } else {
                 sender.sendMessage(ErrorType.MISSING_PERMISSION.m());
