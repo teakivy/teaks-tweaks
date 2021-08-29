@@ -23,8 +23,9 @@ public class VanillaTweaksCommand extends AbstractCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!sender.isOp()) {
-            sender.sendMessage(ErrorType.NOT_OP.m());
+
+        if (!sender.hasPermission("vanillatweaks.reload")) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
         }
 

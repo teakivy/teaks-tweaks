@@ -18,6 +18,10 @@ permissions:
       vanillatweaks.durabilityping.*: true
       vanillatweaks.gem.*: true
 
+  vanillatweaks.reload:
+    description: Reload Vanilla Tweaks
+    default: op
+
   vanillatweaks.afk.*:
     description: All Vanilla Tweaks AFK Permissions
     children:
