@@ -37,7 +37,7 @@ public class ConduitPowerCommand extends AbstractCommand {
             if (player.getGameMode().equals(GameMode.SPECTATOR)) {
                 if (player.hasPotionEffect(PotionEffectType.CONDUIT_POWER)) player.removePotionEffect(PotionEffectType.CONDUIT_POWER);
                 else player.addPotionEffect(new PotionEffect(PotionEffectType.CONDUIT_POWER, 10000000, 0, true, true));
-                player.sendMessage(MessageHandler.getCmdMessage("back", "toggled"));
+                player.sendMessage(MessageHandler.getCmdMessage("conduitpower", "toggled"));
             } else {
                 player.sendMessage(MessageHandler.getCmdMessage("conduitpower", "wrong-gamemode"));
             }

@@ -20,6 +20,7 @@ permissions:
       vanillatweaks.afk.toggle: true
       vanillatweaks.afk.uninstall: true
   vanillatweaks.afk.toggle:
+    default: true
     description: Toggle AFK on yourself
   vanillatweaks.afk.uninstall:
     description: Uninstall the AFK Pack
@@ -30,6 +31,7 @@ permissions:
     children:
       vanillatweaks.back.teleport: true
   vanillatweaks.back.teleport:
+    default: true
     description: Teleport back to your last location
 
   vanillatweaks.conduitpower.*:
@@ -37,4 +39,5 @@ permissions:
     children:
       vanillatweaks.conduitpower.toggle: true
   vanillatweaks.conduitpower.toggle:
+    default: true
     description: Toggle Conduit Power
