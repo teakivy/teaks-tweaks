@@ -54,6 +54,10 @@ public class HomeCommand extends AbstractCommand {
                 player.sendMessage(MessageHandler.getCmdMessage("home", "error.missing-home-name"));
                 return true;
             }
+            if (!sender.hasPermission("vanillatweaks.homes.manage")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+                return true;
+            }
             String name = args[1].toLowerCase();
 
             if (data.contains("homes." + player.getUniqueId() + "." + name)) {
@@ -94,6 +98,10 @@ public class HomeCommand extends AbstractCommand {
                 player.sendMessage(MessageHandler.getCmdMessage("home", "error.missing-home-name").replace("%name%", args[0].toLowerCase()));
                 return true;
             }
+            if (!sender.hasPermission("vanillatweaks.homes.manage")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+                return true;
+            }
             String name = args[1].toLowerCase();
 
             if (!data.contains("homes." + player.getUniqueId() + "." + name)) {
@@ -121,6 +129,11 @@ public class HomeCommand extends AbstractCommand {
             cooldown.put(player.getUniqueId(), System.currentTimeMillis());
         }
         if (main.getConfig().getInt("packs.homes.teleport-delay") == 0) {
+
+            if (!sender.hasPermission("vanillatweaks.homes.teleport")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+                return true;
+            }
             if (data.contains("homes." + player.getUniqueId() + "." + args[0].toLowerCase())) {
                 player.sendMessage(MessageHandler.getCmdMessage("home", "teleporting-to-home").replace("%name%", args[0].toLowerCase()));
                 Back.backLoc.put(player.getUniqueId(), player.getLocation());
@@ -132,6 +145,10 @@ public class HomeCommand extends AbstractCommand {
         } else if (main.getConfig().getInt("packs.homes.teleport-delay") > 0) {
             Location loc = player.getLocation();
 
+            if (!sender.hasPermission("vanillatweaks.homes.teleport")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+                return true;
+            }
             if (data.contains("homes." + player.getUniqueId() + "." + args[0].toLowerCase())) {
                 player.sendMessage(MessageHandler.getCmdMessage("home", "teleporting-to-home").replace("%name%", args[0].toLowerCase()));
                 Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {

@@ -93,3 +93,15 @@ permissions:
   vanillatweaks.grave.uninstall:
     description: Uninstall graves pack
     default: op
+
+  vanillatweaks.homes.*:
+    description: All Vanilla Tweaks Homes Permissions
+    children:
+      vanillatweaks.homes.manage: true
+      vanillatweaks.homes.teleport: true
+  vanillatweaks.homes.manage:
+    description: Set & Delete Homes
+    default: true
+  vanillatweaks.homes.teleport:
+    description: Teleport to a home
+    default: true
