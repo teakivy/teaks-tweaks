@@ -215,6 +215,8 @@ packs:
     rotate-redstone: true
     # Whether or not to rotate glazed terracotta
     rotate-terracotta: true
+    # Whether or not to suggest the Rotation Wrench Resource pack (shows the wrench as a wrench item instead of carrot on a stick)
+    suggest-pack: false
 
   # Armored Elytra
   # Drop an elytra and a chestplate above an anvil to merge them into one item. Drop the item above a grindstone to separate them again.

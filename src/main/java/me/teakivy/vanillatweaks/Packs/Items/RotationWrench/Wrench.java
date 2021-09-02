@@ -15,14 +15,18 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Objects;
 
 public class Wrench implements Listener {
+    private final String resourcePackUrl = "https://potrebic.box.com/shared/static/uw4fvii2o8qsjuz6xuant1safwjdnrez.zip";
+    private final byte[] hash = new BigInteger("1ACF79C491B3CB9EEE50816AD0CC1FC45AABA147", 16).toByteArray();
 
     static Main main = Main.getPlugin(Main.class);
     private final List<BlockFace> faces = Lists.newArrayList(BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST, BlockFace.NORTH, BlockFace.UP, BlockFace.DOWN);
@@ -33,6 +37,7 @@ public class Wrench implements Listener {
         ItemStack result = new ItemStack(Material.CARROT_ON_A_STICK);
         ItemMeta meta = result.getItemMeta();
         meta.setUnbreakable(true);
+        meta.setCustomModelData(4321);
         result.setDurability((short) 1);
         meta.setDisplayName(ChatColor.GOLD + "Wrench");
         result.setItemMeta(meta);
@@ -44,6 +49,13 @@ public class Wrench implements Listener {
         recipe.setIngredient('$', Material.IRON_INGOT);
         if (Bukkit.getRecipe(key) == null) {
             Bukkit.addRecipe(recipe);
+        }
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        if (main.getConfig().getBoolean("packs.rotation-wrench.suggest-pack")) {
+            event.getPlayer().setResourcePack(resourcePackUrl, hash);
         }
     }
 
