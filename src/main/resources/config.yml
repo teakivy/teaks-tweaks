@@ -8,13 +8,14 @@
 reload:
   message: "&7[&6&lVT&7] &aReloaded Vanilla Tweaks Config!"
 
+# Be sure to check the data.yml file for more customizability!
+
 # Data Packs
 # https://vanillatweaks.net/picker/datapacks/
 packs:
   # Enable a pack by marking "enabled" as "true"
   # If a pack is not enabled, none of its effects will happen.
   # You can reload these settings by running "/vt reload" in game.
-
 
   # Survival:
 
@@ -226,6 +227,7 @@ packs:
 
   # Player Head Drops
   # A player will drop their head when killed by another player. The item displays who the killer is.
+  # Be sure to check the data.yml file for more customizability!
   player-head-drops:
     enabled: false
     # Whether to display who killed the player in the items lore (default: true)
@@ -268,6 +270,7 @@ packs:
 
   # More Mob Heads
   # Adds a chance to receive a mob head upon killing it.
+  # Be sure to check the data.yml file for more customizability!
   more-mob-heads:
     enabled: false
 
@@ -669,6 +672,8 @@ crafting-tweaks:
 commands:
   # Select which commands will be registered
   # This will NOT be reloaded upon /vt reload, changing Commands requires a full server restart.
+
+  # Be sure to check the data.yml file for more customizability!
 
 
   # /test
