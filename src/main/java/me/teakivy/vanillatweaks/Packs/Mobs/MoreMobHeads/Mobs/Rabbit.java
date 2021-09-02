@@ -7,17 +7,18 @@ import org.bukkit.event.entity.EntityDeathEvent;
 public class Rabbit {
     public static void onDeath(EntityDeathEvent event) {
         org.bukkit.entity.Rabbit rabbit = (org.bukkit.entity.Rabbit) event.getEntity();
-        boolean rabbitNamed = rabbit.getCustomName() == null;
-        if (rabbit.getRabbitType() == org.bukkit.entity.Rabbit.Type.THE_KILLER_BUNNY)
+        boolean rabbitNamed = rabbit.getCustomName() != null;
+        if (rabbit.getRabbitType() == org.bukkit.entity.Rabbit.Type.THE_KILLER_BUNNY) {
             if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("killer-rabbit"))) return;
-        else if (rabbitNamed) {
+        } else if (rabbitNamed) {
             if (rabbit.getCustomName().equals("Toast"))
                 if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("toast-rabbit"))) return;
             else {
                     if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("rabbit"))) return;
             }
+        } else {
+            if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("rabbit"))) return;
         }
-        else {if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("rabbit"))) return;}
 
 
         if (rabbit.getCustomName() != null) {
