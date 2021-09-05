@@ -25,7 +25,6 @@ public class MultiplayerSleep implements Listener {
 
     @EventHandler
     public void onSleep(PlayerBedEnterEvent event) {
-        if (!main.getConfig().getBoolean("packs.multiplayer-sleep.enabled")) return;
         Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
             if (!event.getPlayer().isSleeping()) return;
             int tempCount = 0;
@@ -58,11 +57,12 @@ public class MultiplayerSleep implements Listener {
         int sleepingPercentage = main.getConfig().getInt("packs.multiplayer-sleep.sleeping-percentage");
         World world = player.getWorld();
         if (sleepingPercentage == 0) {
-            Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(main, () -> {
+            Bukkit.getServer().getScheduler().runTaskLater(main, () -> {
+                System.out.println(player.isSleeping());
                 if (player.isSleeping()) {
                     sleep(player, world);
                 }
-            }, 5000);
+            }, 5 * 20L);
         } else {
             int sleepingCount = 0;
             for (Player sleeping : Bukkit.getOnlinePlayers()) {
@@ -77,7 +77,7 @@ public class MultiplayerSleep implements Listener {
                     if (sleepingCount2 >= Math.ceil(getMaxSleepingPlayers() * (sleepingPercentage / 100)) ) {
                         sleep(player, world);
                     }
-                }, 5000);
+                }, 5 * 20L);
             }
         }
     }
