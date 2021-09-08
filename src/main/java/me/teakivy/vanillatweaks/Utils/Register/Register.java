@@ -31,7 +31,7 @@ import me.teakivy.vanillatweaks.Packs.Survival.CustomNetherPortals.NetherPortal;
 import me.teakivy.vanillatweaks.Packs.Survival.DurabilityPing.DuraPing;
 import me.teakivy.vanillatweaks.Packs.Survival.FastLeafDecay.Decay;
 import me.teakivy.vanillatweaks.Packs.Survival.Graves.GraveEvents;
-import me.teakivy.vanillatweaks.Packs.Survival.MultiplayerSleep.MultiplayerSleep;
+import me.teakivy.vanillatweaks.Packs.Survival.MultiplayerSleep.MultiSleep;
 import me.teakivy.vanillatweaks.Packs.Survival.PillagerTools.PillagerSpawning;
 import me.teakivy.vanillatweaks.Packs.Survival.TrackRawStatistics.RawStats;
 import me.teakivy.vanillatweaks.Packs.Survival.TrackStatistics.StatTracker;
@@ -64,7 +64,7 @@ public class Register {
     public static DragonDrops dragonDrops = new DragonDrops();
     public static DuraPing duraPing = new DuraPing();
     public static MobHeads mobHeads = new MobHeads();
-    public static MultiplayerSleep multiplayerSleep = new MultiplayerSleep();
+    public static MultiSleep multiplayerSleep = new MultiSleep();
     public static HeadDrop headDrop = new HeadDrop();
     public static Silencer silencer = new Silencer();
     public static ConduitPower conduitPower = new ConduitPower();
@@ -157,7 +157,7 @@ public class Register {
         }
 
         if (pack.equalsIgnoreCase("multiplayer-sleep")) {
-            multiplayerSleep.unregister();
+//            multiplayerSleep.unregister();
         }
 
         if (pack.equalsIgnoreCase("player-head-drops")) {
@@ -321,6 +321,7 @@ public class Register {
 
         if (pack.equalsIgnoreCase("multiplayer-sleep")) {
             main.getServer().getPluginManager().registerEvents(multiplayerSleep, main);
+            multiplayerSleep.init();
         }
 
         if (pack.equalsIgnoreCase("player-head-drops")) {
