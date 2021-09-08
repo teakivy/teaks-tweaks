@@ -16,6 +16,7 @@ import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.event.player.PlayerBedLeaveEvent;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class MultiSleep implements Listener {
     int sleeping = 0;
@@ -49,9 +50,6 @@ public class MultiSleep implements Listener {
             if (Objects.equals(main.getConfig().getString("packs.multiplayer-sleep.announce-type"), "actionbar")) {
                 actionbarMessage();
             }
-
-
-
             triggerSleep(event.getPlayer());
         }
     }
@@ -141,11 +139,18 @@ public class MultiSleep implements Listener {
     }
 
     public void triggerSleep(Player player) {
+        Random rand = new Random();
         Bukkit.getScheduler().runTaskLater(main, () -> {
             if (!canSleep()) return;
             for (World world : Bukkit.getWorlds()) {
                 if (world.getEnvironment() == World.Environment.NORMAL) {
                     world.setTime(1000);
+
+                    if (!main.getConfig().getBoolean("packs.multiplayer-sleep.always-reset-weather-cycle")) {
+                        if (world.hasStorm()) world.setClearWeatherDuration(rand.nextInt(156000) + 12000);
+                    } else {
+                        world.setClearWeatherDuration(rand.nextInt(156000) + 12000);
+                    }
                 }
             }
             if (Objects.equals(main.getConfig().getString("packs.multiplayer-sleep.announce-type"), "chat") && !main.getConfig().getBoolean("packs.multiplayer-sleep.immediate-chat-display")) {
