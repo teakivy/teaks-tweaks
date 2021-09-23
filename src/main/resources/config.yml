@@ -278,6 +278,8 @@ packs:
   # Adds the ability to silence mobs using a name tag. 'Silence Me'; 'Silence me'; 'silence me'; 'silence_me'; are all acceptable names.
   silence-mobs:
     enabled: false
+    # Whether or not you can silence minecart types
+    allow-minecarts: false
 
   # Count Mob Deaths
   # Adds the ability to count the mob deaths during the time the system has started.
