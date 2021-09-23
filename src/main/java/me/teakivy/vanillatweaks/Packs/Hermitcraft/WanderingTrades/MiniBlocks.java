@@ -3,6 +3,7 @@ package me.teakivy.vanillatweaks.Packs.Hermitcraft.WanderingTrades;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Utils.DataManager.DataManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -18,10 +19,11 @@ import java.util.UUID;
 public class MiniBlocks {
 
     static Main main = Main.getPlugin(Main.class);
+    static DataManager data = main.data;
 
     public static List<MerchantRecipe> getBlockTrades() {
         List<MerchantRecipe> recipes = new ArrayList<>();
-        int amount = 7;
+        int amount = data.getConfig().getInt("wandering-trades.mini-blocks.amount-of-blocks");
         List<Integer> numbers = new ArrayList<>();
 
         if (main.getConfig().getBoolean("config.dev-mode")) {
@@ -258,9 +260,9 @@ public class MiniBlocks {
 
 
     private static MerchantRecipe newBlockTrade(String name, Material block, String texture) {
-        MerchantRecipe recipe = new MerchantRecipe(newMiniBlock(name, texture), 8);
+        MerchantRecipe recipe = new MerchantRecipe(newMiniBlock(name, texture), data.getConfig().getInt("wandering-trades.mini-blocks.max-per-trade"));
 
-        recipe.addIngredient(new ItemStack(Material.EMERALD));
+        recipe.addIngredient(new ItemStack(Material.valueOf(data.getConfig().getString("wandering-trades.mini-blocks.trade-item")), data.getConfig().getInt("wandering-trades.mini-blocks.trade-amount")));
         recipe.addIngredient(new ItemStack(block));
 
         return recipe;

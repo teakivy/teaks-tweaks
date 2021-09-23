@@ -699,6 +699,17 @@ mob-heads:
     chance: .005
     looting-bonus: .001
 
+wandering-trades:
+  mini-blocks:
+    amount-of-trades: 7
+    max-per-trade: 8
+    trade-item: "EMERALD"
+    trade-amount: 1
+  heads:
+    amount-of-trades: 3
+    max-per-trade: 1
+    trade-item: "EMERALD"
+    trade-amount: 1
 
 player-heads:
   chance: 1

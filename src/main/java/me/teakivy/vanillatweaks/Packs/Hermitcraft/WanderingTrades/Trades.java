@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Hermitcraft.WanderingTrades;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Utils.DataManager.DataManager;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.WanderingTrader;
@@ -19,6 +20,7 @@ import java.util.Random;
 public class Trades implements Listener {
 
     Main main = Main.getPlugin(Main.class);
+    DataManager data = main.data;
 
     @EventHandler
     public void traderSpawn(EntitySpawnEvent event) {
@@ -45,7 +47,7 @@ public class Trades implements Listener {
                 trades.add(newHeadRecipe(player));
             }
         } else {
-            int amount = 3;
+            int amount = data.getConfig().getInt("wandering-trades.heads.amount-of-trades");
             List<Integer> numbers = new ArrayList<>();
 
             for (int i = 0; i < amount; i++) {
@@ -63,17 +65,15 @@ public class Trades implements Listener {
                 }
             }
         }
-
-
         return trades;
 
     }
 
 
     private MerchantRecipe newHeadRecipe(String playerName) {
-        MerchantRecipe recipe = new MerchantRecipe(getHead(playerName), 3);
+        MerchantRecipe recipe = new MerchantRecipe(getHead(playerName), data.getConfig().getInt("wandering-trades.heads.max-per-trade"));
 
-        recipe.addIngredient(new ItemStack(Material.EMERALD));
+        recipe.addIngredient(new ItemStack(Material.valueOf(data.getConfig().getString("wandering-trades.heads.trade-item")), data.getConfig().getInt("wandering-trades.heads.trade-amount")));
 
         return recipe;
     }
