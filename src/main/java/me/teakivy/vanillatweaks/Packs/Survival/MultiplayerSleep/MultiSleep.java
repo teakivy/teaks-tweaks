@@ -36,7 +36,7 @@ public class MultiSleep implements Listener {
         if (event.isCancelled()) sleeping--;
 
 
-        if (Objects.equals(main.getConfig().getString("packs.multiplayer-sleep.announce-type"), "bossbar")) {
+        if (Objects.equals(main.getConfig().getString("packs.multiplayer-sleep.announce-type"), "bossbar")  && sleeping > 0) {
             bar.setTitle(sleeping + " of " + getMaxSleeping() + " player(s) asleep");
             bar.setColor(getBossBarColor());
             bar.setProgress((100.0/getMaxSleeping() * sleeping) / 100);
