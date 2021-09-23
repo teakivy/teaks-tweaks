@@ -1,6 +1,7 @@
 package me.teakivy.vanillatweaks.Packs.Items.ArmoredElytra;
 
 import me.teakivy.vanillatweaks.Main;
+import me.teakivy.vanillatweaks.Utils.Serializer.Base64Serializer;
 import me.teakivy.vanillatweaks.Utils.Serializer.ItemStackSerializer;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
@@ -21,6 +22,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -116,8 +118,22 @@ public class ArmoredElytras implements Listener {
                     item.remove();
                     item.getWorld().spawnParticle(Particle.FLAME, item.getLocation(), 100, 0, 0, 0, .5);
                     event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.BLOCK_GRINDSTONE_USE, 1, 1);
-                    item.getWorld().dropItem(event.getItemDrop().getLocation(), getChestplateFromArmoredElytra(itemStack)).setVelocity(new Vector(0, 0, 0));
-                    item.getWorld().dropItem(event.getItemDrop().getLocation(), getElytraFromArmoredElytra(itemStack)).setVelocity(new Vector(0, 0, 0));
+                    if (itemStack.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(main, "base64"), PersistentDataType.STRING)) {
+                        try {
+                            item.getWorld().dropItem(item.getLocation(), getB64ChestplateFromArmoredElytra(itemStack)).setVelocity(new Vector(0, 0, 0));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            item.getWorld().dropItem(item.getLocation(), getB64ElytraFromArmoredElytra(itemStack)).setVelocity(new Vector(0, 0, 0));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        item.remove();
+                    } else {
+                        item.getWorld().dropItem(event.getItemDrop().getLocation(), getChestplateFromArmoredElytra(itemStack)).setVelocity(new Vector(0, 0, 0));
+                        item.getWorld().dropItem(event.getItemDrop().getLocation(), getElytraFromArmoredElytra(itemStack)).setVelocity(new Vector(0, 0, 0));
+                    }
                 }
                 if (event.getItemDrop().isDead()) this.cancel();
             }
@@ -125,13 +141,19 @@ public class ArmoredElytras implements Listener {
     }
 
     @EventHandler
-    public void onBurn(EntityDamageEvent event) {
+    public void onBurn(EntityDamageEvent event) throws IOException {
         if (!(event.getEntity() instanceof Item)) return;
         Item item = (Item) event.getEntity();
         ItemStack itemStack = item.getItemStack();
         if (itemStack.getType() != Material.ELYTRA) return;
         if (!itemStack.hasItemMeta()) return;
         if (itemStack.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(main, "armored_elytra"), PersistentDataType.STRING)) {
+            if (itemStack.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(main, "base64"), PersistentDataType.STRING)) {
+                item.getWorld().dropItem(item.getLocation(), getB64ChestplateFromArmoredElytra(itemStack)).setVelocity(new Vector(0, 0, 0));
+                item.getWorld().dropItem(item.getLocation(), getB64ElytraFromArmoredElytra(itemStack)).setVelocity(new Vector(0, 0, 0));
+                item.remove();
+                return;
+            }
             item.getWorld().dropItem(item.getLocation(), getChestplateFromArmoredElytra(itemStack)).setVelocity(new Vector(0, 0, 0));
             item.getWorld().dropItem(item.getLocation(), getElytraFromArmoredElytra(itemStack)).setVelocity(new Vector(0, 0, 0));
             item.remove();
@@ -161,10 +183,13 @@ public class ArmoredElytras implements Listener {
         meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "true");
 
         NamespacedKey chestplate_storage_key = new NamespacedKey(main, "chestplate_storage");
-        meta.getPersistentDataContainer().set(chestplate_storage_key, PersistentDataType.STRING, ItemStackSerializer.serialize(chestplate));
+        meta.getPersistentDataContainer().set(chestplate_storage_key, PersistentDataType.STRING, serializeItem(chestplate));
 
         NamespacedKey elytra_storage_key = new NamespacedKey(main, "elytra_storage");
-        meta.getPersistentDataContainer().set(elytra_storage_key, PersistentDataType.STRING, ItemStackSerializer.serialize(elytra));
+        meta.getPersistentDataContainer().set(elytra_storage_key, PersistentDataType.STRING, serializeItem(elytra));
+
+        NamespacedKey base64_key = new NamespacedKey(main, "base64");
+        meta.getPersistentDataContainer().set(base64_key, PersistentDataType.STRING, "true");
 
 
         chestplate.getEnchantments().forEach((enchantment, integer) -> {
@@ -237,6 +262,29 @@ public class ArmoredElytras implements Listener {
         if (!elytra.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(main, "armored_elytra"), PersistentDataType.STRING)) return null;
         String oldElytra = elytra.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(main, "elytra_storage"), PersistentDataType.STRING);
         return ItemStackSerializer.deserialize(oldElytra);
+    }
+
+    private ItemStack getB64ChestplateFromArmoredElytra(ItemStack elytra) throws IOException {
+        if (!elytra.hasItemMeta()) return null;
+        if (!elytra.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(main, "armored_elytra"), PersistentDataType.STRING)) return null;
+        String chestplate = elytra.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(main, "chestplate_storage"), PersistentDataType.STRING);
+        return deserializeItem(chestplate);
+    }
+
+    private ItemStack getB64ElytraFromArmoredElytra(ItemStack elytra) throws IOException {
+        if (!elytra.hasItemMeta()) return null;
+        if (!elytra.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(main, "armored_elytra"), PersistentDataType.STRING)) return null;
+        String oldElytra = elytra.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(main, "elytra_storage"), PersistentDataType.STRING);
+        return deserializeItem(oldElytra);
+    }
+
+    public String serializeItem(ItemStack item) {
+
+        return Base64Serializer.itemStackArrayToBase64(new ItemStack[]{item});
+    }
+
+    public ItemStack deserializeItem(String serialized) throws IOException {
+        return Base64Serializer.itemStackArrayFromBase64(serialized)[0];
     }
 
     public void unregister() {
