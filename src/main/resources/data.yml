@@ -16,14 +16,14 @@ spheres:
 
 messages:
   plugin:
-    reload: "&aReloaded Vanilla Tweaks Config!"
+    reload: "&aReloaded Teaks Tweaks Config!"
     message-prefix: "&7[&6&lVT&7]"
     bland-prefix: "[VT]"
-    update-join-alert: "&eThere is a new Version of Vanilla Tweaks avaliable! Please update to the latest version: &6%latest_version%"
+    update-join-alert: "&eThere is a new Version of Teaks Tweaks avaliable! Please update to the latest version: &6%latest_version%"
     startup:
-      plugin-started: "%bland_prefix% Vanilla Tweaks Started!"
+      plugin-started: "%bland_prefix% Teaks Tweaks Started!"
       pack-enabled: "%bland_prefix% %pack% Enabled!"
-      update-available: "%bland_prefix% Vanilla Tweaks has an update!\nPlease update to the latest version (%latest_version%)\n&ehttps://www.spigotmc.org/resources/vanilla-tweaks.94021/"
+      update-available: "%bland_prefix% Teaks Tweaks has an update!\nPlease update to the latest version (%latest_version%)\n&ehttps://www.spigotmc.org/resources/+-tweaks.94021/"
       updated-config-version: "%bland_prefix% Updated Config to Version: %config_version"
       dev-mode-enabled: "%bland_prefix% Developer Mode Enabled!"
     error:
@@ -37,7 +37,7 @@ messages:
       command-disabled: "&cThis command has been disabled by a server administrator!"
       missing-action: "&cPlease specify an action!"
     shutdown:
-      plugin-shutdown: "%bland_prefix% Vanilla Tweaks Shutting Down..."
+      plugin-shutdown: "%bland_prefix% Teaks Tweaks Shutting Down..."
   pack:
     unlock-all-recipes:
       name: "Unlock All Recipes"
@@ -437,7 +437,7 @@ commands:
   test:
     name: "test"
     usage: "/test"
-    description: "Vanilla Tweaks Testing Command"
+    description: "Teaks Tweaks Testing Command"
     aliases: ["vttest"]
     messages:
       msg: "%prefix% &eTest!"

@@ -5,21 +5,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.teakivy</groupId>
-    <artifactId>vanillatweaks</artifactId>
+    <artifactId>teakstweaks</artifactId>
     <version>1.5.3-beta</version>
     <packaging>jar</packaging>
 
-    <name>VanillaTweaks</name>
+    <name>TeaksTweaks</name>
 
     <description>A Plugin recreation of the Vanilla Tweaks datapacks!</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <url>https://vanillatweaks.net/</url>
+    <url>https://youtube.com/teakivy</url>
 
     <build>
-        <finalName>Vanilla Tweaks - ${project.version}</finalName>
+        <finalName>Teaks Tweaks - ${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

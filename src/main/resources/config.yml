@@ -6,7 +6,7 @@
 # ░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚══╝╚═╝╚══════╝╚══════╝╚═╝░░╚═╝    ░░░╚═╝░░░░░░╚═╝░░░╚═╝░░╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░
 
 reload:
-  message: "&7[&6&lVT&7] &aReloaded Vanilla Tweaks Config!"
+  message: "&7[&6&lVT&7] &aReloaded Teak's Tweaks Config!"
 
 # Be sure to check the data.yml file for more customizability!
 
@@ -679,7 +679,7 @@ commands:
 
 
   # /test
-  # Vanilla Tweaks Test Command
+  # Teak's Tweaks Test Command
   test:
     enabled: false
 

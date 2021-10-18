@@ -1,11 +1,11 @@
-name: VanillaTweaks
+name: TeaksTweaks
 version: ${project.version}
-main: me.teakivy.vanillatweaks.Main
+main: me.teakivy.teakstweaks.Main
 api-version: 1.17
-prefix: VT
+prefix: TeaksTweaks
 authors: [ TeakIvy ]
 description: A Plugin recreation of the Vanilla Tweaks datapacks!
-website: https://vanillatweaks.net/
+website: https://youtube.com/teakivy
 
 permissions:
   vanillatweaks.*:
