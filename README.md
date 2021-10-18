@@ -1,5 +1,6 @@
 
-# Vanilla Tweaks Plugin
+# Teak's Tweaks Plugin
+### [Previously known as Vanilla Tweaks]
 
 Datapacks can sometimes cause lag, especially when running loops, or constant checks. So
 how can this be solved? Well.. by using a Plugin! Spigot plugins can be optimised to run
