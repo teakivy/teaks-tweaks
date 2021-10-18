@@ -176,7 +176,7 @@ packs:
     time-world: "world"
     # What to display as the coords hud message
     # Avaliable Placeholders:
-    # https://github.com/teakivy/vanilla-tweaks/blob/master/src/main/java/me/teakivy/vanillatweaks/Packs/Survival/CoordsHud/PLACEHOLDERS.md
+    # https://github.com/teakivy/teaks-tweaks/blob/master/src/main/java/me/teakivy/vanillatweaks/Packs/Survival/CoordsHud/PLACEHOLDERS.md
     message: "&6XYZ: &f%x% %y% %z%  &6%direction_abbreviated%      %world_time%"
 
   # Classic Fishing Loot
