@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.Packs.Survival.Graves;
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.Utils.Serializer.Base64Serializer;
 import me.teakivy.teakstweaks.Utils.Serializer.ItemStackSerializer;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -148,7 +149,9 @@ public class GraveCreator {
         airTypes.add(Material.LADDER);
         airTypes.add(Material.BAMBOO_SAPLING);
         airTypes.add(Material.BAMBOO);
-        airTypes.add(Material.GLOW_LICHEN);
+        if (Bukkit.getVersion().contains("1.17")) {
+            airTypes.add(Material.GLOW_LICHEN);
+        }
         airTypes.add(Material.FERN);
         airTypes.add(Material.LARGE_FERN);
         return airTypes;

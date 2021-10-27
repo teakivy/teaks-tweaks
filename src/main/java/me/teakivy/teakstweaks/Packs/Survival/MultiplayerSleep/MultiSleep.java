@@ -116,12 +116,24 @@ public class MultiSleep implements Listener {
         if (cs == null) return color;
         cs = cs.toLowerCase();
         switch (cs) {
-            case "blue" -> color = BarColor.BLUE;
-            case "green" -> color = BarColor.GREEN;
-            case "pink" -> color = BarColor.PINK;
-            case "purple" -> color = BarColor.PURPLE;
-            case "red" -> color = BarColor.RED;
-            case "yellow" -> color = BarColor.YELLOW;
+            case "blue":
+                color = BarColor.BLUE;
+                break;
+            case "green":
+                color = BarColor.GREEN;
+                break;
+            case "pink":
+                color = BarColor.PINK;
+                break;
+            case "purple":
+                color = BarColor.PURPLE;
+                break;
+            case "red":
+                color = BarColor.RED;
+                break;
+            case "yellow":
+                color = BarColor.YELLOW;
+                break;
         }
         return color;
     }

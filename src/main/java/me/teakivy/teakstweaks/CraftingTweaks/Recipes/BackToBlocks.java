@@ -46,19 +46,33 @@ public class BackToBlocks {
         newShapelessStairRecipe("stone_bricks", new ItemStack(Material.STONE_BRICKS, 3), Material.STONE_BRICK_STAIRS, 4);
         newShapelessStairRecipe("stone", new ItemStack(Material.STONE, 3), Material.STONE_STAIRS, 4);
         newShapelessStairRecipe("warped_planks", new ItemStack(Material.WARPED_PLANKS, 3), Material.WARPED_STAIRS, 4);
-        newShapelessStairRecipe("cut_copper", new ItemStack(Material.CUT_COPPER, 3), Material.CUT_COPPER_STAIRS, 4);
-        newShapelessStairRecipe("exposed_cut_copper", new ItemStack(Material.EXPOSED_CUT_COPPER, 3), Material.EXPOSED_CUT_COPPER_STAIRS, 4);
-        newShapelessStairRecipe("weathered_cut_copper", new ItemStack(Material.WEATHERED_CUT_COPPER, 3), Material.WEATHERED_CUT_COPPER_STAIRS, 4);
-        newShapelessStairRecipe("oxidized_cut_copper", new ItemStack(Material.OXIDIZED_CUT_COPPER, 3), Material.OXIDIZED_CUT_COPPER_STAIRS, 4);
-        newShapelessStairRecipe("waxed_cut_copper", new ItemStack(Material.WAXED_CUT_COPPER, 3), Material.WAXED_CUT_COPPER_STAIRS, 4);
-        newShapelessStairRecipe("waxed_exposed_cut_copper", new ItemStack(Material.WAXED_EXPOSED_CUT_COPPER, 3), Material.WAXED_EXPOSED_CUT_COPPER_STAIRS, 4);
-        newShapelessStairRecipe("waxed_weathered_cut_copper", new ItemStack(Material.WAXED_WEATHERED_CUT_COPPER, 3), Material.WAXED_WEATHERED_CUT_COPPER_STAIRS, 4);
-        newShapelessStairRecipe("waxed_oxidized_cut_copper", new ItemStack(Material.WAXED_OXIDIZED_CUT_COPPER, 3), Material.WAXED_OXIDIZED_CUT_COPPER_STAIRS, 4);
-        newShapelessStairRecipe("cobbled_deepslate", new ItemStack(Material.COBBLED_DEEPSLATE, 3), Material.COBBLED_DEEPSLATE_STAIRS, 4);
-        newShapelessStairRecipe("polished_deepslate", new ItemStack(Material.POLISHED_DEEPSLATE, 3), Material.POLISHED_DEEPSLATE_STAIRS, 4);
-        newShapelessStairRecipe("deepslate_bricks", new ItemStack(Material.DEEPSLATE_BRICKS, 3), Material.DEEPSLATE_BRICK_STAIRS, 4);
-        newShapelessStairRecipe("deepslate_tiles", new ItemStack(Material.DEEPSLATE_TILES, 3), Material.DEEPSLATE_TILE_STAIRS, 4);
 
+        if (Bukkit.getVersion().toString().contains("1.17")) {
+            newShapelessStairRecipe("cut_copper", new ItemStack(Material.CUT_COPPER, 3), Material.CUT_COPPER_STAIRS, 4);
+            newShapelessStairRecipe("exposed_cut_copper", new ItemStack(Material.EXPOSED_CUT_COPPER, 3), Material.EXPOSED_CUT_COPPER_STAIRS, 4);
+            newShapelessStairRecipe("weathered_cut_copper", new ItemStack(Material.WEATHERED_CUT_COPPER, 3), Material.WEATHERED_CUT_COPPER_STAIRS, 4);
+            newShapelessStairRecipe("oxidized_cut_copper", new ItemStack(Material.OXIDIZED_CUT_COPPER, 3), Material.OXIDIZED_CUT_COPPER_STAIRS, 4);
+            newShapelessStairRecipe("waxed_cut_copper", new ItemStack(Material.WAXED_CUT_COPPER, 3), Material.WAXED_CUT_COPPER_STAIRS, 4);
+            newShapelessStairRecipe("waxed_exposed_cut_copper", new ItemStack(Material.WAXED_EXPOSED_CUT_COPPER, 3), Material.WAXED_EXPOSED_CUT_COPPER_STAIRS, 4);
+            newShapelessStairRecipe("waxed_weathered_cut_copper", new ItemStack(Material.WAXED_WEATHERED_CUT_COPPER, 3), Material.WAXED_WEATHERED_CUT_COPPER_STAIRS, 4);
+            newShapelessStairRecipe("waxed_oxidized_cut_copper", new ItemStack(Material.WAXED_OXIDIZED_CUT_COPPER, 3), Material.WAXED_OXIDIZED_CUT_COPPER_STAIRS, 4);
+            newShapelessStairRecipe("cobbled_deepslate", new ItemStack(Material.COBBLED_DEEPSLATE, 3), Material.COBBLED_DEEPSLATE_STAIRS, 4);
+            newShapelessStairRecipe("polished_deepslate", new ItemStack(Material.POLISHED_DEEPSLATE, 3), Material.POLISHED_DEEPSLATE_STAIRS, 4);
+            newShapelessStairRecipe("deepslate_bricks", new ItemStack(Material.DEEPSLATE_BRICKS, 3), Material.DEEPSLATE_BRICK_STAIRS, 4);
+            newShapelessStairRecipe("deepslate_tiles", new ItemStack(Material.DEEPSLATE_TILES, 3), Material.DEEPSLATE_TILE_STAIRS, 4);
+            newShapedSlabRecipe("cut_copper", new ItemStack(Material.CUT_COPPER, 1), Material.CUT_COPPER_SLAB);
+            newShapedSlabRecipe("exposed_cut_copper", new ItemStack(Material.EXPOSED_CUT_COPPER, 1), Material.EXPOSED_CUT_COPPER_SLAB);
+            newShapedSlabRecipe("weathered_cut_copper", new ItemStack(Material.WEATHERED_CUT_COPPER, 1), Material.WEATHERED_CUT_COPPER_SLAB);
+            newShapedSlabRecipe("oxidized_cut_copper", new ItemStack(Material.OXIDIZED_CUT_COPPER, 1), Material.OXIDIZED_CUT_COPPER_SLAB);
+            newShapedSlabRecipe("waxed_cut_copper", new ItemStack(Material.WAXED_CUT_COPPER, 1), Material.WAXED_CUT_COPPER_SLAB);
+            newShapedSlabRecipe("waxed_exposed_cut_copper", new ItemStack(Material.WAXED_EXPOSED_CUT_COPPER, 1), Material.WAXED_EXPOSED_CUT_COPPER_SLAB);
+            newShapedSlabRecipe("waxed_weathered_cut_copper", new ItemStack(Material.WAXED_WEATHERED_CUT_COPPER, 1), Material.WAXED_WEATHERED_CUT_COPPER_SLAB);
+            newShapedSlabRecipe("waxed_oxidized_cut_copper", new ItemStack(Material.WAXED_OXIDIZED_CUT_COPPER, 1), Material.WAXED_OXIDIZED_CUT_COPPER_SLAB);
+            newShapedSlabRecipe("cobbled_deepslate", new ItemStack(Material.COBBLED_DEEPSLATE, 1), Material.COBBLED_DEEPSLATE_SLAB);
+            newShapedSlabRecipe("polished_deepslate", new ItemStack(Material.POLISHED_DEEPSLATE, 1), Material.POLISHED_DEEPSLATE_SLAB);
+            newShapedSlabRecipe("deepslate_bricks", new ItemStack(Material.DEEPSLATE_BRICKS, 1), Material.DEEPSLATE_BRICK_SLAB);
+            newShapedSlabRecipe("deepslate_tiles", new ItemStack(Material.DEEPSLATE_TILES, 1), Material.DEEPSLATE_TILE_SLAB);
+        }
         newShapedSlabRecipe("acacia_planks", new ItemStack(Material.ACACIA_PLANKS, 1), Material.ACACIA_SLAB);
         newShapedSlabRecipe("birch_planks", new ItemStack(Material.BIRCH_PLANKS, 1), Material.BIRCH_SLAB);
         newShapedSlabRecipe("blackstone", new ItemStack(Material.BLACKSTONE, 1), Material.BLACKSTONE_SLAB);
@@ -91,18 +105,6 @@ public class BackToBlocks {
         newShapedSlabRecipe("stone_bricks", new ItemStack(Material.STONE_BRICKS, 1), Material.STONE_BRICK_SLAB);
         newShapedSlabRecipe("stone", new ItemStack(Material.STONE, 1), Material.STONE_SLAB);
         newShapedSlabRecipe("warped_planks", new ItemStack(Material.WARPED_PLANKS, 1), Material.WARPED_SLAB);
-        newShapedSlabRecipe("cut_copper", new ItemStack(Material.CUT_COPPER, 1), Material.CUT_COPPER_SLAB);
-        newShapedSlabRecipe("exposed_cut_copper", new ItemStack(Material.EXPOSED_CUT_COPPER, 1), Material.EXPOSED_CUT_COPPER_SLAB);
-        newShapedSlabRecipe("weathered_cut_copper", new ItemStack(Material.WEATHERED_CUT_COPPER, 1), Material.WEATHERED_CUT_COPPER_SLAB);
-        newShapedSlabRecipe("oxidized_cut_copper", new ItemStack(Material.OXIDIZED_CUT_COPPER, 1), Material.OXIDIZED_CUT_COPPER_SLAB);
-        newShapedSlabRecipe("waxed_cut_copper", new ItemStack(Material.WAXED_CUT_COPPER, 1), Material.WAXED_CUT_COPPER_SLAB);
-        newShapedSlabRecipe("waxed_exposed_cut_copper", new ItemStack(Material.WAXED_EXPOSED_CUT_COPPER, 1), Material.WAXED_EXPOSED_CUT_COPPER_SLAB);
-        newShapedSlabRecipe("waxed_weathered_cut_copper", new ItemStack(Material.WAXED_WEATHERED_CUT_COPPER, 1), Material.WAXED_WEATHERED_CUT_COPPER_SLAB);
-        newShapedSlabRecipe("waxed_oxidized_cut_copper", new ItemStack(Material.WAXED_OXIDIZED_CUT_COPPER, 1), Material.WAXED_OXIDIZED_CUT_COPPER_SLAB);
-        newShapedSlabRecipe("cobbled_deepslate", new ItemStack(Material.COBBLED_DEEPSLATE, 1), Material.COBBLED_DEEPSLATE_SLAB);
-        newShapedSlabRecipe("polished_deepslate", new ItemStack(Material.POLISHED_DEEPSLATE, 1), Material.POLISHED_DEEPSLATE_SLAB);
-        newShapedSlabRecipe("deepslate_bricks", new ItemStack(Material.DEEPSLATE_BRICKS, 1), Material.DEEPSLATE_BRICK_SLAB);
-        newShapedSlabRecipe("deepslate_tiles", new ItemStack(Material.DEEPSLATE_TILES, 1), Material.DEEPSLATE_TILE_SLAB);
     }
 
     public static void newShapelessStairRecipe(String keyName, ItemStack result, Material ingredient, int amount) {

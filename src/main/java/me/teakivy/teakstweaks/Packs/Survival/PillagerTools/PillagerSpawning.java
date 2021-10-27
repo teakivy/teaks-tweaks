@@ -22,7 +22,7 @@ public class PillagerSpawning implements Listener {
         }
 
         if (main.getConfig().getBoolean("packs.pillager-tools.disable-leaders")) {
-            if (event.getEntity().getType() != EntityType.PILLAGER) {
+            if (event.getEntity().getType() == EntityType.PILLAGER) {
                 Pillager pillager = (Pillager) event.getEntity();
                 if (pillager.isPatrolLeader()) {
                     event.setCancelled(true);
