@@ -66,6 +66,8 @@ public class CraftingRegister {
             LogChests.registerRecipes();
         if (main.getConfig().getBoolean("crafting-tweaks.craftable-spore-blossoms.enabled"))
             CraftableSporeBlossoms.registerRecipes();
+        if (main.getConfig().getBoolean("crafting-tweaks.craftable-small-dripleaf.enabled"))
+            CraftableSmallDripleaves.registerRecipes();
 
     }
 

@@ -655,6 +655,11 @@ crafting-tweaks:
   craftable-spore-blossoms:
     enabled: false
 
+  # Craftable Small Dripleaf
+  # Allows you to craft Small dripleaves from a large dripleaf.
+  craftable-small-dripleaf:
+    enabled: false
+
   # Unpackable Ice
   # Allows you to break down Ice into 9 pieces. 1 Blue Ice to 9 Packed Ice to 81 Ice.
   unpackable-ice:
