@@ -665,6 +665,11 @@ crafting-tweaks:
   unpackable-wool:
     enabled: false
 
+  # Log Chests
+  # Allows you to craft Chests from Logs.
+  log-chests:
+    enabled: false
+
 
 
 
