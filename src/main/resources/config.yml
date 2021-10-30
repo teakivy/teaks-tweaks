@@ -650,6 +650,11 @@ crafting-tweaks:
   craftable-blackstone:
     enabled: false
 
+  # Craftable Spore Blossoms
+  # Allows you to craft Spore Blossoms using Lilacs, Azalea Leaves, and Honeycombs
+  craftable-spore-blossoms:
+    enabled: false
+
   # Unpackable Ice
   # Allows you to break down Ice into 9 pieces. 1 Blue Ice to 9 Packed Ice to 81 Ice.
   unpackable-ice:

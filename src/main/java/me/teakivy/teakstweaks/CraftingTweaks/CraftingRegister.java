@@ -63,7 +63,9 @@ public class CraftingRegister {
         if (main.getConfig().getBoolean("crafting-tweaks.unpackable-wool.enabled"))
             UnpackableWool.registerRecipes();
         if (main.getConfig().getBoolean("crafting-tweaks.log-chests.enabled"))
-            UnpackableWool.registerRecipes();
+            LogChests.registerRecipes();
+        if (main.getConfig().getBoolean("crafting-tweaks.craftable-spore-blossoms.enabled"))
+            CraftableSporeBlossoms.registerRecipes();
 
     }
 
