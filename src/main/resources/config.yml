@@ -28,6 +28,17 @@ packs:
     # Allow the mob to be set in its adult form (By Naming a mob 'grow')
     grow: true
 
+  # Chat Colors
+  # Use Chat Colors to make your messages, signs, and items look better (Using '&' for color codes)
+  chat-colors:
+    enabled: false
+    # Enable Colors in the chat
+    chat: true
+    # Enable Colors on signs
+    signs: true
+    # Enable Colors on items (Using anvils)
+    items: true
+
   # Vanilla Tweaks:
 
   # Survival:

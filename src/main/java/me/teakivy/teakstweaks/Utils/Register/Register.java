@@ -37,6 +37,7 @@ import me.teakivy.teakstweaks.Packs.Survival.TrackRawStatistics.RawStats;
 import me.teakivy.teakstweaks.Packs.Survival.TrackStatistics.StatTracker;
 import me.teakivy.teakstweaks.Packs.Survival.UnlockAllRecipes.UnlockRecipes;
 import me.teakivy.teakstweaks.Packs.Survival.WorkstationHighlights.Highlighter;
+import me.teakivy.teakstweaks.Packs.TeaksTweaks.ChatColors.ChatColors;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.KeepSmall.KeepSmall;
 import me.teakivy.teakstweaks.Packs.Teleportation.Back.Back;
 import me.teakivy.teakstweaks.Packs.Utilities.CustomVillagerShops.CustomVillager;
@@ -98,6 +99,7 @@ public class Register {
     public static CustomVillager customVillager = new CustomVillager();
     public static Sphere sphere = new Sphere();
     public static KeepSmall keepSmall = new KeepSmall();
+    public static ChatColors chatColors = new ChatColors();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -159,7 +161,7 @@ public class Register {
         }
 
         if (pack.equalsIgnoreCase("multiplayer-sleep")) {
-//            multiplayerSleep.unregister();
+            multiplayerSleep.unregister();
         }
 
         if (pack.equalsIgnoreCase("player-head-drops")) {
@@ -280,6 +282,10 @@ public class Register {
 
         if (pack.equalsIgnoreCase("keep-small")) {
             keepSmall.unregister();
+        }
+
+        if (pack.equalsIgnoreCase("chat-colors")) {
+            chatColors.unregister();
         }
     }
 
@@ -460,6 +466,10 @@ public class Register {
 
         if (pack.equalsIgnoreCase("keep-small")) {
             main.getServer().getPluginManager().registerEvents(keepSmall, main);
+        }
+
+        if (pack.equalsIgnoreCase("chat-colors")) {
+            main.getServer().getPluginManager().registerEvents(chatColors, main);
         }
     }
     public static void registerCommands() {
