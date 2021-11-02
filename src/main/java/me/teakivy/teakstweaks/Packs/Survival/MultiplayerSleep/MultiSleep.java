@@ -11,6 +11,7 @@ import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.event.player.PlayerBedLeaveEvent;
@@ -183,6 +184,10 @@ public class MultiSleep implements Listener {
         System.out.println(sleeping);
         System.out.println(100 / sleepAvaliable * sleeping);
         System.out.println(sleepingPercentage);
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
     }
 
 }
