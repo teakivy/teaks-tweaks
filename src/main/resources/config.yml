@@ -22,7 +22,7 @@ packs:
   # Keep Small
   # Keep a mob in its child form (if it has one)
   keep-small:
-    enabled: true
+    enabled: false
     # Allow the mob to be kept in its child form (By Naming a mob 'keep small')
     smallify: true
     # Allow the mob to be set in its adult form (By Naming a mob 'grow')
