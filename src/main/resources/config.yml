@@ -17,6 +17,19 @@ packs:
   # If a pack is not enabled, none of its effects will happen.
   # You can reload these settings by running "/vt reload" in game.
 
+  # Teak's Tweaks:
+
+  # Keep Small
+  # Keep a mob in its child form (if it has one)
+  keep-small:
+    enabled: true
+    # Allow the mob to be kept in its child form (By Naming a mob 'keep small')
+    smallify: true
+    # Allow the mob to be set in its adult form (By Naming a mob 'grow')
+    grow: true
+
+  # Vanilla Tweaks:
+
   # Survival:
 
   # Unlock All Recipes

@@ -37,6 +37,7 @@ import me.teakivy.teakstweaks.Packs.Survival.TrackRawStatistics.RawStats;
 import me.teakivy.teakstweaks.Packs.Survival.TrackStatistics.StatTracker;
 import me.teakivy.teakstweaks.Packs.Survival.UnlockAllRecipes.UnlockRecipes;
 import me.teakivy.teakstweaks.Packs.Survival.WorkstationHighlights.Highlighter;
+import me.teakivy.teakstweaks.Packs.TeaksTweaks.KeepSmall.KeepSmall;
 import me.teakivy.teakstweaks.Packs.Teleportation.Back.Back;
 import me.teakivy.teakstweaks.Packs.Utilities.CustomVillagerShops.CustomVillager;
 import me.teakivy.teakstweaks.Packs.Utilities.ItemAverages.ItemTracker;
@@ -96,6 +97,7 @@ public class Register {
     public static HUD hud = new HUD();
     public static CustomVillager customVillager = new CustomVillager();
     public static Sphere sphere = new Sphere();
+    public static KeepSmall keepSmall = new KeepSmall();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -275,6 +277,10 @@ public class Register {
         if (pack.equalsIgnoreCase("spawning-spheres")) {
             sphere.unregister();
         }
+
+        if (pack.equalsIgnoreCase("keep-small")) {
+            keepSmall.unregister();
+        }
     }
 
     public static void registerPack(String pack) {
@@ -450,6 +456,10 @@ public class Register {
 
         if (pack.equalsIgnoreCase("spawning-spheres")) {
             main.getServer().getPluginManager().registerEvents(sphere, main);
+        }
+
+        if (pack.equalsIgnoreCase("keep-small")) {
+            main.getServer().getPluginManager().registerEvents(keepSmall, main);
         }
     }
     public static void registerCommands() {
