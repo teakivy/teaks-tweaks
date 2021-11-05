@@ -41,13 +41,6 @@ public final class Main extends JavaPlugin implements Listener {
         this.data = new DataManager(this);
         data.saveDefaultConfig();
 
-        // Data updater
-//        try {
-//            ConfigUpdater.update(this, "data.yml", new File(this.getDataFolder(), "data.yml"), Collections.emptyList(), false);
-//            this.reloadConfig();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
         data.saveDefaultConfig();
 
         if (getConfig().getBoolean("config.dev-mode")) {
