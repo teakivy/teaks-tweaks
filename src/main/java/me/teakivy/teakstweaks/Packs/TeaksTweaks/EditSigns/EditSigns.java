@@ -3,8 +3,10 @@ package me.teakivy.teakstweaks.Packs.TeaksTweaks.EditSigns;
 import me.teakivy.teakstweaks.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.block.TileState;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Directional;
 import org.bukkit.entity.Player;
@@ -14,9 +16,12 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -88,8 +93,23 @@ public class EditSigns implements Listener {
     public void onInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         Block block = event.getClickedBlock();
+
         if (!player.isSneaking()) return;
         if (block != null && block.getType().toString().contains("SIGN") && event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && isInteractingWithAir(player)) {
+
+            if (block.getState() instanceof TileState) {
+                TileState tileState = (TileState) block.getState();
+                PersistentDataContainer container = tileState.getPersistentDataContainer();
+                if (container.has(new NamespacedKey(plugin, "tweaks_sign_owner"), PersistentDataType.STRING)) {
+                    String owner = container.get(new NamespacedKey(plugin, "tweaks_sign_owner"), PersistentDataType.STRING);
+                    if (owner != null) {
+                        if (plugin.getConfig().getBoolean("packs.editable-signs.owner-only")) {
+                            if (!owner.equals(player.getUniqueId().toString())) return;
+                        }
+                    }
+                }
+            }
+
             Material material = block.getType();
 
             Block attachedBlock;
@@ -158,6 +178,19 @@ public class EditSigns implements Listener {
 
     public void unregister() {
         HandlerList.unregisterAll(this);
+    }
+
+    @EventHandler
+    public void onChange(SignChangeEvent event) {
+        Block block = event.getBlock();
+        Player player = event.getPlayer();
+        TileState state = (TileState) block.getState();
+        PersistentDataContainer container = state.getPersistentDataContainer();
+        if (!container.has(new NamespacedKey(plugin, "tweaks_sign_owner"), PersistentDataType.STRING)) {
+            container.set(new NamespacedKey(plugin, "tweaks_sign_owner"), PersistentDataType.STRING, player.getUniqueId().toString());
+            state.update();
+        }
+
     }
 
 
