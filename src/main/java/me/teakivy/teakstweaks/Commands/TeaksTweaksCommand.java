@@ -9,7 +9,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,11 +18,15 @@ public class TeaksTweaksCommand extends AbstractCommand {
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public TeaksTweaksCommand() {
-        super("teakstweaks", "/teakstweaks", "Teak's Tweaks Main Command!", Collections.singletonList("tweaks"));
+        super("teakstweaks", "/teakstweaks", "Teak's Tweaks Main Command!", Arrays.asList("tweaks", "tt", "vt", "vanillatweaks"));
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+
+        if (cmd.getName().equalsIgnoreCase("vt") || cmd.getName().equalsIgnoreCase("vanillatweaks")) {
+            sender.sendMessage(vt + ChatColor.RED + "This command is deprecated, please use /teakstweaks instead!");
+        }
 
         if (!sender.hasPermission("vanillatweaks.reload")) {
             sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
