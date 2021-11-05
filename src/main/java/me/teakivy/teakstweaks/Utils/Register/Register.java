@@ -38,6 +38,7 @@ import me.teakivy.teakstweaks.Packs.Survival.TrackStatistics.StatTracker;
 import me.teakivy.teakstweaks.Packs.Survival.UnlockAllRecipes.UnlockRecipes;
 import me.teakivy.teakstweaks.Packs.Survival.WorkstationHighlights.Highlighter;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.ChatColors.ChatColors;
+import me.teakivy.teakstweaks.Packs.TeaksTweaks.EditSigns.EditSigns;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.KeepSmall.KeepSmall;
 import me.teakivy.teakstweaks.Packs.Teleportation.Back.Back;
 import me.teakivy.teakstweaks.Packs.Utilities.CustomVillagerShops.CustomVillager;
@@ -100,6 +101,7 @@ public class Register {
     public static Sphere sphere = new Sphere();
     public static KeepSmall keepSmall = new KeepSmall();
     public static ChatColors chatColors = new ChatColors();
+    public static EditSigns editableSigns = new EditSigns();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -287,6 +289,10 @@ public class Register {
         if (pack.equalsIgnoreCase("chat-colors")) {
             chatColors.unregister();
         }
+
+        if (pack.equalsIgnoreCase("editable-signs")) {
+            editableSigns.unregister();
+        }
     }
 
     public static void registerPack(String pack) {
@@ -470,6 +476,11 @@ public class Register {
 
         if (pack.equalsIgnoreCase("chat-colors")) {
             main.getServer().getPluginManager().registerEvents(chatColors, main);
+        }
+
+        if (pack.equalsIgnoreCase("editable-signs")) {
+            EditSigns.init(main);
+            main.getServer().getPluginManager().registerEvents(editableSigns, main);
         }
     }
     public static void registerCommands() {

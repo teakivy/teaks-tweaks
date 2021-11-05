@@ -39,6 +39,11 @@ packs:
     # Enable Colors on items (Using anvils)
     items: true
 
+  # Editable Signs
+  # Allow players to edit signs by shift-right clicking them
+  editable-signs:
+    enabled: false
+
   # Vanilla Tweaks:
 
   # Survival:
