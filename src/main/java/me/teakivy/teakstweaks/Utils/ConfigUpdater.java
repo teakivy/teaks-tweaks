@@ -1,4 +1,4 @@
-package me.teakivy.teakstweaks.Utils.ConfigUpdater;
+package me.teakivy.teakstweaks.Utils;
 
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;

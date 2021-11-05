@@ -1,4 +1,4 @@
-package me.teakivy.teakstweaks.Utils.Register;
+package me.teakivy.teakstweaks.Utils;
 
 import me.teakivy.teakstweaks.Commands.*;
 import me.teakivy.teakstweaks.Main;

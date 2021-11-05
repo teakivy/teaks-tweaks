@@ -1,4 +1,4 @@
-package me.teakivy.teakstweaks.Utils.UpdateChecker;
+package me.teakivy.teakstweaks.Utils;
 
 import me.teakivy.teakstweaks.Main;
 import org.apache.commons.io.IOUtils;

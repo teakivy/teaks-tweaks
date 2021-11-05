@@ -4,7 +4,7 @@ import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.Utils.AbstractCommand;
 import me.teakivy.teakstweaks.Utils.ErrorType;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
-import me.teakivy.teakstweaks.Utils.Register.Register;
+import me.teakivy.teakstweaks.Utils.Register;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
