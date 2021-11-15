@@ -45,6 +45,11 @@ packs:
     enabled: false
     owner-only: true
 
+  # Lectern Reset
+  # Reset a lectern's book to the first page after closing it
+  lectern-reset:
+    enabled: false
+
   # Vanilla Tweaks:
 
   # Survival:
