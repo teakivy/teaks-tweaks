@@ -36,6 +36,8 @@ public class GraveEvents implements Listener {
         if (!entity.getScoreboardTags().contains("vt_grave")) return;
 
         if (ownsGrave(entity, event.getPlayer())) {
+            event.setCancelled(true);
+            entity.remove();
             PersistentDataContainer data = entity.getPersistentDataContainer();
             if (data.has(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_items"), PersistentDataType.STRING)) {
                 String ownerItems = data.get(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_items"), PersistentDataType.STRING);
@@ -57,10 +59,10 @@ public class GraveEvents implements Listener {
                     orb.setExperience(data.get(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_xp"), PersistentDataType.INTEGER));
                 }
             }
-            event.setCancelled(true);
-            entity.remove();
             return;
         } else {
+            event.setCancelled(true);
+            entity.remove();
             if (main.getConfig().getBoolean("packs.graves.allow-robbing") || holdingKey(event.getPlayer())) {
                 if (holdingKey(event.getPlayer()) && !main.getConfig().getBoolean("packs.graves.allow-robbing") && event.getPlayer().getGameMode() != GameMode.CREATIVE) {
                     event.getPlayer().getInventory().remove(getGraveKey());
@@ -82,8 +84,6 @@ public class GraveEvents implements Listener {
                         orb.setExperience(data.get(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_xp"), PersistentDataType.INTEGER));
                     }
                 }
-                event.setCancelled(true);
-                entity.remove();
                 return;
             } else {
                 event.getPlayer().sendMessage(MessageHandler.getMessage("pack.graves.cant-rob-grave"));
