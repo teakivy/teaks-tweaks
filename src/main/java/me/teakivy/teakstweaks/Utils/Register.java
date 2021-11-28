@@ -41,6 +41,7 @@ import me.teakivy.teakstweaks.Packs.TeaksTweaks.ChatColors.ChatColors;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.EditSigns.EditSigns;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.KeepSmall.KeepSmall;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.LecternReset.LecternReset;
+import me.teakivy.teakstweaks.Packs.TeaksTweaks.Sudoku.Sudoku;
 import me.teakivy.teakstweaks.Packs.Teleportation.Back.Back;
 import me.teakivy.teakstweaks.Packs.Utilities.CustomVillagerShops.CustomVillager;
 import me.teakivy.teakstweaks.Packs.Utilities.ItemAverages.ItemTracker;
@@ -104,6 +105,7 @@ public class Register {
     public static ChatColors chatColors = new ChatColors();
     public static EditSigns editableSigns = new EditSigns();
     public static LecternReset lecternReset = new LecternReset();
+    public static Sudoku sudoku = new Sudoku();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -299,6 +301,10 @@ public class Register {
         if (pack.equalsIgnoreCase("lectern-reset")) {
             lecternReset.unregister();
         }
+
+        if (pack.equalsIgnoreCase("sudoku")) {
+            sudoku.unregister();
+        }
     }
 
     public static void registerPack(String pack) {
@@ -492,6 +498,10 @@ public class Register {
         if (pack.equalsIgnoreCase("lectern-reset")) {
             main.getServer().getPluginManager().registerEvents(lecternReset, main);
         }
+
+        if (pack.equalsIgnoreCase("sudoku")) {
+            main.getServer().getPluginManager().registerEvents(sudoku, main);
+        }
     }
     public static void registerCommands() {
 
@@ -580,6 +590,10 @@ public class Register {
 
         if (main.getConfig().getBoolean("commands.gem.enabled")) {
             new GemCommand().register();
+        }
+
+        if (main.getConfig().getBoolean("commands.sudoku.enabled")) {
+            new SudokuCommand().register();
         }
 
 

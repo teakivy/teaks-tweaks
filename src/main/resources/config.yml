@@ -50,6 +50,12 @@ packs:
   lectern-reset:
     enabled: false
 
+  # Sudoku
+  # Allow players to commit sudoku
+  sudoku:
+    enabled: false
+
+
   # Vanilla Tweaks:
 
   # Survival:
@@ -831,6 +837,11 @@ commands:
   # /gem
   # Gems, Villagers, & Gem Villagers!
   gem:
+    enabled: true
+
+  # /sudoku
+  # Commit Sudoku!
+  sudoku:
     enabled: true
 
 
