@@ -70,7 +70,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.3.1</version>
                 <configuration>
-                    <outputDirectory>C:\Users\TeakIvy\Desktop\1.17.1 - Paper\plugins</outputDirectory>
+                    <outputDirectory>C:\Users\TeakIvy\Desktop\1.18 - Spigot\plugins</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>
