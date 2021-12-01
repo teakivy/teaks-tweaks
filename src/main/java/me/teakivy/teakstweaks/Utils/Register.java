@@ -41,6 +41,7 @@ import me.teakivy.teakstweaks.Packs.TeaksTweaks.ChatColors.ChatColors;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.EditSigns.EditSigns;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.KeepSmall.KeepSmall;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.LecternReset.LecternReset;
+import me.teakivy.teakstweaks.Packs.TeaksTweaks.StairChairs.StairChairs;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.Sudoku.Sudoku;
 import me.teakivy.teakstweaks.Packs.Teleportation.Back.Back;
 import me.teakivy.teakstweaks.Packs.Utilities.CustomVillagerShops.CustomVillager;
@@ -55,6 +56,7 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.command.defaults.BukkitCommand;
 
 import java.lang.reflect.Field;
+import java.util.logging.Level;
 
 public class Register {
 
@@ -106,6 +108,7 @@ public class Register {
     public static EditSigns editableSigns = new EditSigns();
     public static LecternReset lecternReset = new LecternReset();
     public static Sudoku sudoku = new Sudoku();
+    public static StairChairs stairChairs = new StairChairs();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -305,6 +308,10 @@ public class Register {
         if (pack.equalsIgnoreCase("sudoku")) {
             sudoku.unregister();
         }
+
+        if (pack.equalsIgnoreCase("stair-chairs")) {
+            stairChairs.unregister();
+        }
     }
 
     public static void registerPack(String pack) {
@@ -491,8 +498,12 @@ public class Register {
         }
 
         if (pack.equalsIgnoreCase("editable-signs")) {
-            EditSigns.init(main);
-            main.getServer().getPluginManager().registerEvents(editableSigns, main);
+            if (!Bukkit.getServer().getVersion().contains("1.18")) {
+                EditSigns.init(main);
+                main.getServer().getPluginManager().registerEvents(editableSigns, main);
+            } else {
+                main.getLogger().log(Level.SEVERE, "Editable signs are not supported on 1.18 at the moment.");
+            }
         }
 
         if (pack.equalsIgnoreCase("lectern-reset")) {
@@ -501,6 +512,10 @@ public class Register {
 
         if (pack.equalsIgnoreCase("sudoku")) {
             main.getServer().getPluginManager().registerEvents(sudoku, main);
+        }
+
+        if (pack.equalsIgnoreCase("stair-chairs")) {
+            main.getServer().getPluginManager().registerEvents(stairChairs, main);
         }
     }
     public static void registerCommands() {

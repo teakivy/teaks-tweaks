@@ -35,6 +35,7 @@ public class TestCommand extends AbstractCommand {
                 player.sendMessage(MessageHandler.getCmdMessage("test", "enable-dev-mode"));
             }
         }
+
         return false;
     }
 }

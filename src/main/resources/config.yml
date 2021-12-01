@@ -55,6 +55,14 @@ packs:
   sudoku:
     enabled: false
 
+  # Stair Chairs
+  # Allow players to sit on chairs
+  # Right-click a stair with a saddle to make it a chair
+  # Break the stair to remove the chair and get the saddle back
+  stair-chairs:
+    enabled: false
+
+
 
   # Vanilla Tweaks:
 
