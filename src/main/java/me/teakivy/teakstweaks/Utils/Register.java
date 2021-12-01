@@ -498,11 +498,11 @@ public class Register {
         }
 
         if (pack.equalsIgnoreCase("editable-signs")) {
-            if (!Bukkit.getServer().getVersion().contains("1.18")) {
+            if (Bukkit.getServer().getVersion().toLowerCase().contains("paper")) {
                 EditSigns.init(main);
                 main.getServer().getPluginManager().registerEvents(editableSigns, main);
             } else {
-                main.getLogger().log(Level.SEVERE, "Editable signs are not supported on 1.18 at the moment.");
+                main.getLogger().log(Level.SEVERE, "Editable signs are only supported on Paper at the moment.");
             }
         }
 
