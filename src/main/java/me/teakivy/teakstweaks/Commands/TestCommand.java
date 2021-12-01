@@ -5,7 +5,6 @@ import me.teakivy.teakstweaks.Utils.AbstractCommand;
 import me.teakivy.teakstweaks.Utils.ErrorType;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
 import org.bukkit.ChatColor;
-import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -22,7 +21,6 @@ public class TestCommand extends AbstractCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player = (Player) sender;
-        World world = player.getWorld();
         if (!sender.hasPermission("vanillatweaks.test.execute")) {
             sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
@@ -35,7 +33,6 @@ public class TestCommand extends AbstractCommand {
                 player.sendMessage(MessageHandler.getCmdMessage("test", "enable-dev-mode"));
             }
         }
-
         return false;
     }
 }
