@@ -41,6 +41,7 @@ packs:
 
   # Editable Signs
   # Allow players to edit signs by shift-right clicking them
+  # REQUIRES PAPER
   editable-signs:
     enabled: false
     owner-only: true
