@@ -24,7 +24,7 @@ public class CraftableCoral3x3 {
     }
 
     private static void newCoralRecipe(String type) {
-        NamespacedKey key = new NamespacedKey(main, type.toLowerCase() + "_vt_coral_2x2");
+        NamespacedKey key = new NamespacedKey(main, type.toLowerCase() + "_vt_coral_3x3");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.valueOf(type.toUpperCase() + "_CORAL_BLOCK")));
 
