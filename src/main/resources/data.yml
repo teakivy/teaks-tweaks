@@ -457,7 +457,7 @@ commands:
       teleporting-to: "%prefix% &eTeleporting to &6%name%&e..."
       teleporting-from: "%prefix% &eTeleporting &6%name% &eto you..."
       teleport-request:
-        text: "%prefix% &6%name% &eHas requested to teleport to you!"
+        text: "%prefix% &6%name% &eHas requested to teleport to you! Click to accept"
         hover: "&6Click to accept"
         click: "/tpa confirm %name%"
       request-sent: "%prefix% &aTeleport request sent!"
