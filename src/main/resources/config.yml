@@ -732,6 +732,11 @@ crafting-tweaks:
   log-chests:
     enabled: false
 
+  # Smeltable Raw Ore Blocks
+  # Smelt Raw Ore Blocks to Ore Blocks.
+  smeltable-raw-ore-blocks:
+    enabled: false
+
 
 
 
