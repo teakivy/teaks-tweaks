@@ -516,6 +516,9 @@ mob-heads:
   charged-creeper:
     chance: 1
     looting-bonus: 0
+  creeper:
+    chance: .005
+    looting-bonus: .001
   dolphin:
     chance: .33
     looting-bonus: .02
@@ -642,6 +645,9 @@ mob-heads:
   silverfish:
     chance: .05
     looting-bonus: .01
+  skeleton:
+    chance: .005
+    looting-bonus: .001
   skeleton-horse:
     chance: .2
     looting-bonus: .05
@@ -696,6 +702,9 @@ mob-heads:
   zoglin:
     chance: .2
     looting-bonus: .05
+  zombie:
+    chance: .005
+    looting-bonus: .001
   zombie-horse:
     chance: 1
     looting-bonus: 0

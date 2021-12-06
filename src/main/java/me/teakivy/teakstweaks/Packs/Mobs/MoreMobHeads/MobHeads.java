@@ -40,7 +40,7 @@ public class MobHeads implements Listener {
         if (entity.getType().toString().equals("CHICKEN")) Chicken.onDeath(event);
         if (entity.getType().toString().equals("COD")) Cod.onDeath(event);
         if (entity.getType().toString().equals("COW")) Cow.onDeath(event);
-        if (entity.getType().toString().equals("CREEPER")) Creeper.onDeath(event);
+        if (entity.getType().toString().equals("CREEPER")) ChargedCreeper.onDeath(event);
         if (entity.getType().toString().equals("DOLPHIN")) Dolphin.onDeath(event);
         if (entity.getType().toString().equals("DONKEY")) Donkey.onDeath(event);
         if (entity.getType().toString().equals("DROWNED")) Drowned.onDeath(event);
@@ -99,6 +99,13 @@ public class MobHeads implements Listener {
         if (entity.getType().toString().equals("ZOMBIE_HORSE")) ZombieHorse.onDeath(event);
         if (entity.getType().toString().equals("ZOMBIE_VILLAGER")) ZombieVillager.onDeath(event);
         if (entity.getType().toString().equals("ZOMBIFIED_PIGLIN")) ZombifiedPiglin.onDeath(event);
+
+        // Base Heads
+        if (main.getConfig().getBoolean("packs.more-mob-heads.use-base-heads")) {
+            if (entity.getType().toString().equals("SKELETON")) Skeleton.onDeath(event);
+            if (entity.getType().toString().equals("ZOMBIE")) Zombie.onDeath(event);
+            if (entity.getType().toString().equals("CREEPER")) Creeper.onDeath(event);
+        }
     }
 
     public static ItemStack getHead(String name, String texture) {

@@ -323,6 +323,8 @@ packs:
   # Be sure to check the data.yml file for more customizability!
   more-mob-heads:
     enabled: false
+    # Allow creepers, skeletons, and zombies to drop their heads & skulls
+    use-base-heads: false
 
   # Silence Mobs
   # Adds the ability to silence mobs using a name tag. 'Silence Me'; 'Silence me'; 'silence me'; 'silence_me'; are all acceptable names.
