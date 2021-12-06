@@ -21,6 +21,13 @@ public class CustomMetrics {
             @Override
             public Map<String, Integer> call() throws Exception {
                 Map<String, Integer> valueMap = new HashMap<>();
+                valueMap.put("Keep Small", getPack("keep-small"));
+                valueMap.put("Chat Colors", getPack("chat-colors"));
+                valueMap.put("Editable Signs", getPack("editable-signs"));
+                valueMap.put("Lectern Reset", getPack("lectern-reset"));
+                valueMap.put("Sudoku", getPack("sudoku"));
+                valueMap.put("Stair Chairs", getPack("stair-chairs"));
+
                 valueMap.put("Unlock All Recipes", getPack("unlock-all-recipes"));
                 valueMap.put("Fast Leaf Decay", getPack("fast-leaf-decay"));
                 valueMap.put("AFK Display", getPack("afk-display"));
@@ -33,6 +40,7 @@ public class CustomMetrics {
                 valueMap.put("Track Statistics", getPack("track-statistics"));
                 valueMap.put("Nether Portal Coords", getPack("nether-portal-coords"));
                 valueMap.put("Coords HUD", getPack("coords-hud"));
+                valueMap.put("Classic Fishing Loop", getPack("classic-fishing-loop"));
                 valueMap.put("Real Time Clock", getPack("real-time-clock"));
                 valueMap.put("Workstation Highlights", getPack("workstation-highlights"));
                 valueMap.put("Pillager Tools", getPack("pillager-tools"));
@@ -46,11 +54,11 @@ public class CustomMetrics {
                 valueMap.put("Anti Ghast Grief", getPack("anti-ghast-grief"));
                 valueMap.put("Double Shulker Shells", getPack("double-shulker-shells"));
                 valueMap.put("Dragon Drops", getPack("dragon-drops"));
+                valueMap.put("Larger Phantoms", getPack("larger-phantoms"));
                 valueMap.put("More Mob Heads", getPack("more-mob-heads"));
                 valueMap.put("Silence Mobs", getPack("silence-mobs"));
                 valueMap.put("Count Mob Deaths", getPack("count-mob-deaths"));
                 valueMap.put("Villager Death Messages", getPack("villager-death-messages"));
-                valueMap.put("Larger Phantoms", getPack("larger-phantoms"));
 
                 valueMap.put("Spawn", getPack("spawn"));
                 valueMap.put("Homes", getPack("homes"));
@@ -70,8 +78,8 @@ public class CustomMetrics {
                 valueMap.put("Thunder Shrine", getPack("thunder-shrine"));
 
                 valueMap.put("XP Management", getPack("xp-management"));
-                valueMap.put("Confetti Creepers", getPack("confetti-creepers"));
                 valueMap.put("Chunk Loaders", getPack("chunk-loaders"));
+                valueMap.put("Confetti Creepers", getPack("confetti-creepers"));
                 valueMap.put("Elevators", getPack("elevators"));
                 return valueMap;
             }
@@ -112,9 +120,14 @@ public class CustomMetrics {
                 valueMap.put("Craftable Bundles Rabbit Hide", getCraftingTweak("craftable-bundles-rabbit-hide"));
                 valueMap.put("Craftable Bundles Leather", getCraftingTweak("craftable-bundles-leather"));
                 valueMap.put("Craftable Blackstone", getCraftingTweak("craftable-blackstone"));
+                valueMap.put("Craftable Gilded Blackstone", getCraftingTweak("craftable-gilded-blackstone"));
+                valueMap.put("Craftable Spore Blossoms", getCraftingTweak("craftable-spore-blossoms"));
+                valueMap.put("Craftable Small Dripleaf", getCraftingTweak("craftable-small-dripleaf"));
                 valueMap.put("Unpackable Ice", getCraftingTweak("unpackable-ice"));
                 valueMap.put("Unpackable Nether Wart", getCraftingTweak("unpackable-nether-wart"));
                 valueMap.put("Unpackable Wool", getCraftingTweak("unpackable-wool"));
+                valueMap.put("Log Chests", getCraftingTweak("log-chests"));
+                valueMap.put("Smeltable Raw Ore Blocks", getCraftingTweak("smeltable-raw-ore-blocks"));
                 return valueMap;
             }
         }));
@@ -149,7 +162,9 @@ public class CustomMetrics {
                 valueMap.put("Set Home", getCommand("sethome"));
                 valueMap.put("Item Averages", getCommand("itemaverages"));
                 valueMap.put("Grave", getCommand("grave"));
+                valueMap.put("Spawning Spheres", getCommand("spawningspheres"));
                 valueMap.put("Gem", getCommand("gem"));
+                valueMap.put("Sudoku", getCommand("sudoku"));
                 return valueMap;
             }
         }));
