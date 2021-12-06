@@ -70,6 +70,8 @@ public class CraftingRegister {
             CraftableSmallDripleaves.registerRecipes();
         if (main.getConfig().getBoolean("crafting-tweaks.smeltable-raw-ore-blocks.enabled"))
             SmeltableRawOreBlocks.registerRecipes();
+        if (main.getConfig().getBoolean("crafting-tweaks.craftable-gilded-blackstone.enabled"))
+            CraftableGildedBlackstone.registerRecipes();
 
     }
 
