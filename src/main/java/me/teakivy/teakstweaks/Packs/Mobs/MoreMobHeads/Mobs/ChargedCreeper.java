@@ -4,9 +4,9 @@ import me.teakivy.teakstweaks.Packs.Mobs.MoreMobHeads.Head;
 import me.teakivy.teakstweaks.Packs.Mobs.MoreMobHeads.MobHeads;
 import org.bukkit.event.entity.EntityDeathEvent;
 
-public class Creeper {
+public class ChargedCreeper {
     public static void onDeath(EntityDeathEvent event) {
-        if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("creeper"))) return;
+        if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("charged-creeper"))) return;
         org.bukkit.entity.Creeper creeper = (org.bukkit.entity.Creeper) event.getEntity();
 
         if (!creeper.isPowered()) return;
