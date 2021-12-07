@@ -15,7 +15,9 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class TPACommand extends AbstractCommand {
 
@@ -97,5 +99,27 @@ public class TPACommand extends AbstractCommand {
             }
         }, 60 * 20L);
         return false;
+    }
+
+    List<String> arguments1 = new ArrayList<String>();
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+
+        if (arguments1.isEmpty() && sender.isOp()) {
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                arguments1.add(player.getName());
+            }
+        }
+
+        List<String> result = new ArrayList<String>();
+        if (args.length == 1) {
+            for (String a : arguments1) {
+                if (a.toLowerCase().startsWith(args[0].toLowerCase()))
+                    result.add(a);
+            }
+            return result;
+        }
+        return null;
     }
 }
