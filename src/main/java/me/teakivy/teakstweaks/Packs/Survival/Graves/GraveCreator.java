@@ -3,10 +3,7 @@ package me.teakivy.teakstweaks.Packs.Survival.Graves;
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.Utils.Serializer.Base64Serializer;
 import me.teakivy.teakstweaks.Utils.Serializer.ItemStackSerializer;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
@@ -104,11 +101,13 @@ public class GraveCreator {
         NamespacedKey key = new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_uuid");
         data.set(key, PersistentDataType.STRING, player.getUniqueId().toString());
 
-        NamespacedKey key2 = new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_items");
-        data.set(key2, PersistentDataType.STRING, serializeItems(player));
+        if (!Boolean.TRUE.equals(location.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY))) {
+            NamespacedKey key2 = new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_items");
+            data.set(key2, PersistentDataType.STRING, serializeItems(player));
 
-        NamespacedKey key3 = new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_xp");
-        data.set(key3, PersistentDataType.INTEGER, xp);
+            NamespacedKey key3 = new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_xp");
+            data.set(key3, PersistentDataType.INTEGER, xp);
+        }
     }
 
     public ArrayList<Material> getAirTypes() {
