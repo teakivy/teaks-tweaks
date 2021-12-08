@@ -17,6 +17,12 @@ Placeholders to use in the coordinates hud message for the Vanilla Tweaks Plugin
 | `%direction_abbreviated%` | Get a players direction abbreviated | N
 | `%direction_abbreviated_lower%` | Get a players direction abbreviated (lowercase) | n
 | `%direction_abbreviated_upper%` | Get a players direction abbreviated (uppercase) | N
+| `%direction_two_point%` | Get a players 2 point direction | Northwest
+| `%direction_two_point_lower%` | Get a players 2 point direction (lowercase) | northwest
+| `%direction_two_point_upper%` | Get a players 2 point direction (uppercase) | NORTHWEST
+| `%direction_abbreviated_two_point%` | Get a players 2 point direction abbreviated | NW
+| `%direction_abbreviated_two_point_lower%` | Get a players 2 point direction abbreviated (lowercase) | nw
+| `%direction_abbreviated_two_point_upper%` | Get a players 2 point direction abbreviated (uppercase) | NW
 | `%world_time%` | Get the time of the time world (24hr) | 23:00
 | `%world_time_12hr%` | Get the time of the time world (12hr) | 1:00
 | `%am_pm%` | Get the time as Am or Pm | Am

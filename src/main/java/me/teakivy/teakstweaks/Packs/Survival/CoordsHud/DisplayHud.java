@@ -37,6 +37,16 @@ public class DisplayHud {
         msg = msg.replace("%direction_abbreviated_lower%", getDirectionAbbrLower(playerDirection));
         msg = msg.replace("%direction_abbreviated_upper%", getDirectionAbbrUpper(playerDirection));
 
+
+        msg = msg.replace("%direction_two_point%", get2PointDirection(playerDirection));
+        msg = msg.replace("%direction_two_point_lower%", get2PointDirectionLower(playerDirection));
+        msg = msg.replace("%direction_two_point_upper%", get2PointDirectionUpper(playerDirection));
+
+        msg = msg.replace("%direction_abbreviated_two_point%", get2PointDirectionAbbr(playerDirection));
+        msg = msg.replace("%direction_abbreviated_two_point_lower%", get2PointDirectionAbbrLower(playerDirection));
+        msg = msg.replace("%direction_abbreviated_two_point_upper%", get2PointDirectionAbbrUpper(playerDirection));
+
+
         msg = msg.replace("%world_time%", getWorldTime());
         msg = msg.replace("%world_time_12hr%", getWorldTime12Hr());
 
@@ -81,6 +91,90 @@ public class DisplayHud {
         msg = msg.replace("%facing_upper%", getFacingXZUpper(playerDirection));
 
         player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(msg));
+    }
+
+    public static String get2PointDirection(float direction) {
+        direction = direction + 180 - 22.5f;
+        if (direction < 45) return "North";
+        if (direction < 90) return "Northeast";
+        if (direction < 135) return "East";
+        if (direction < 180) return "Southeast";
+        if (direction < 225) return "South";
+        if (direction < 270) return "Southwest";
+        if (direction < 315) return "West";
+        if (direction < 360) return "Northwest";
+
+        return "N/A";
+    }
+
+    public static String get2PointDirectionUpper(float direction) {
+        direction = direction + 180 - 22.5f;
+        if (direction < 45) return "NORTH";
+        if (direction < 90) return "NORTHEAST";
+        if (direction < 135) return "EAST";
+        if (direction < 180) return "SOUTHEAST";
+        if (direction < 225) return "SOUTH";
+        if (direction < 270) return "SOUTHWEST";
+        if (direction < 315) return "WEST";
+        if (direction < 360) return "NORTHWEST";
+
+        return "N/A";
+    }
+
+    public static String get2PointDirectionLower(float direction) {
+        direction = direction + 180 - 22.5f;
+        if (direction < 45) return "north";
+        if (direction < 90) return "northeast";
+        if (direction < 135) return "east";
+        if (direction < 180) return "southeast";
+        if (direction < 225) return "south";
+        if (direction < 270) return "southwest";
+        if (direction < 315) return "west";
+        if (direction < 360) return "northwest";
+
+        return "N/A";
+    }
+
+    public static String get2PointDirectionAbbr(float direction) {
+        direction = direction + 180 - 22.5f;
+        if (direction < 45) return "N";
+        if (direction < 90) return "NE";
+        if (direction < 135) return "E";
+        if (direction < 180) return "SE";
+        if (direction < 225) return "S";
+        if (direction < 270) return "SW";
+        if (direction < 315) return "W";
+        if (direction < 360) return "NW";
+
+        return "N/A";
+    }
+
+    public static String get2PointDirectionAbbrUpper(float direction) {
+        direction = direction + 180 - 22.5f;
+        if (direction < 45) return "N";
+        if (direction < 90) return "NE";
+        if (direction < 135) return "E";
+        if (direction < 180) return "SE";
+        if (direction < 225) return "S";
+        if (direction < 270) return "SW";
+        if (direction < 315) return "W";
+        if (direction < 360) return "NW";
+
+        return "N/A";
+    }
+
+    public static String get2PointDirectionAbbrLower(float direction) {
+        direction = direction + 180 - 22.5f;
+        if (direction < 45) return "n";
+        if (direction < 90) return "ne";
+        if (direction < 135) return "e";
+        if (direction < 180) return "se";
+        if (direction < 225) return "s";
+        if (direction < 270) return "sw";
+        if (direction < 315) return "w";
+        if (direction < 360) return "nw";
+
+        return "N/A";
     }
 
     public static String getDirection(float direction) {
