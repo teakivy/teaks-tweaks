@@ -33,8 +33,12 @@ public class MultiSleep implements Listener {
 
     @EventHandler
     public void onSleep(PlayerBedEnterEvent event) {
+        Bukkit.getScheduler().runTaskLater(main, () -> {
         sleeping++;
-        if (event.isCancelled()) sleeping--;
+        if (event.isCancelled() || !event.getPlayer().isSleeping()) {
+            sleeping--;
+            return;
+        }
 
 
         if (Objects.equals(main.getConfig().getString("packs.multiplayer-sleep.announce-type"), "bossbar")  && sleeping > 0) {
@@ -53,12 +57,14 @@ public class MultiSleep implements Listener {
             }
             triggerSleep(event.getPlayer());
         }
+        }, 1L);
     }
 
     @EventHandler
     public void onSleepEnd(PlayerBedLeaveEvent event) {
         sleeping--;
         if (event.isCancelled()) sleeping++;
+
 
         if (Objects.equals(main.getConfig().getString("packs.multiplayer-sleep.announce-type"), "actionbar")) {
             actionbarMessage();
