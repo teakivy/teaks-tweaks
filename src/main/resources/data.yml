@@ -723,7 +723,7 @@ wandering-trades:
     trade-amount: 1
   heads:
     amount-of-trades: 3
-    max-per-trade: 1
+    max-per-trade: 3
     trade-item: "EMERALD"
     trade-amount: 1
 
