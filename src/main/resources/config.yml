@@ -446,6 +446,8 @@ packs:
     player-heads:
       # Whether it has player heads or not (Hermit Edition)
       has-player-heads: false
+      # Read the server whitelist instead of the player name list (Hermit Edition)
+      read-from-whitelist: false
       # What Players will be avaliable in the Wandering Trader shop. (Default: hermitcraft heads
       # To add your own set of heads, just make a list using ` - ` and put the ign of the players you want.
       players:

@@ -2,7 +2,9 @@ package me.teakivy.teakstweaks.Packs.Hermitcraft.WanderingTrades;
 
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.Utils.DataManager.DataManager;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.WanderingTrader;
 import org.bukkit.event.EventHandler;
@@ -41,6 +43,13 @@ public class Trades implements Listener {
     private List<MerchantRecipe> getHeadTrades() {
         List<MerchantRecipe> trades = new ArrayList<>();
         List<String> players = new ArrayList<>(main.getConfig().getStringList("packs.wandering-trades.player-heads.players"));
+
+        if (main.getConfig().getBoolean("packs.wandering-trades.player-heads.read-from-whitelist")) {
+            players.clear();
+            for (OfflinePlayer pl : Bukkit.getWhitelistedPlayers()) {
+                players.add(pl.getName());
+            }
+        }
 
         if (main.getConfig().getBoolean("config.dev-mode")) {
             for (String player : players) {
