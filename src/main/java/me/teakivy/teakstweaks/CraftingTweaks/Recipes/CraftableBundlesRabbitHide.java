@@ -12,16 +12,14 @@ public class CraftableBundlesRabbitHide {
     static Main main = Main.getPlugin(Main.class);
 
     public static void registerRecipes() {
-        if (Bukkit.getVersion().toString().contains("1.17")) {
-            NamespacedKey key = new NamespacedKey(main, "bundle_rabbit_hide_vt_bundles");
+        NamespacedKey key = new NamespacedKey(main, "bundle_rabbit_hide_vt_bundles");
 
-            ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.BUNDLE));
+        ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.BUNDLE));
 
-            recipe.shape("s#s", "# #", "###");
-            recipe.setIngredient('#', Material.RABBIT_HIDE);
-            recipe.setIngredient('s', Material.STRING);
+        recipe.shape("s#s", "# #", "###");
+        recipe.setIngredient('#', Material.RABBIT_HIDE);
+        recipe.setIngredient('s', Material.STRING);
 
-            Bukkit.addRecipe(recipe);
-        }
+        Bukkit.addRecipe(recipe);
     }
 }

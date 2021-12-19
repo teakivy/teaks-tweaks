@@ -20,16 +20,14 @@ public class MoreStairs {
         newStairsRecipe(Material.ACACIA_PLANKS, Material.ACACIA_STAIRS);
         newStairsRecipe(Material.CRIMSON_PLANKS, Material.CRIMSON_STAIRS);
         newStairsRecipe(Material.WARPED_PLANKS, Material.WARPED_STAIRS);
-        if (Bukkit.getVersion().toString().contains("1.17")) {
-            newStairsRecipe(Material.CUT_COPPER, Material.CUT_COPPER_STAIRS);
-            newStairsRecipe(Material.EXPOSED_CUT_COPPER, Material.EXPOSED_CUT_COPPER_STAIRS);
-            newStairsRecipe(Material.WEATHERED_CUT_COPPER, Material.WEATHERED_CUT_COPPER_STAIRS);
-            newStairsRecipe(Material.OXIDIZED_CUT_COPPER, Material.OXIDIZED_CUT_COPPER_STAIRS);
-            newStairsRecipe(Material.WAXED_CUT_COPPER, Material.WAXED_CUT_COPPER_STAIRS);
-            newStairsRecipe(Material.WAXED_EXPOSED_CUT_COPPER, Material.WAXED_EXPOSED_CUT_COPPER_STAIRS);
-            newStairsRecipe(Material.WAXED_WEATHERED_CUT_COPPER, Material.WAXED_WEATHERED_CUT_COPPER_STAIRS);
-            newStairsRecipe(Material.WAXED_OXIDIZED_CUT_COPPER, Material.WAXED_OXIDIZED_CUT_COPPER_STAIRS);
-        }
+        newStairsRecipe(Material.CUT_COPPER, Material.CUT_COPPER_STAIRS);
+        newStairsRecipe(Material.EXPOSED_CUT_COPPER, Material.EXPOSED_CUT_COPPER_STAIRS);
+        newStairsRecipe(Material.WEATHERED_CUT_COPPER, Material.WEATHERED_CUT_COPPER_STAIRS);
+        newStairsRecipe(Material.OXIDIZED_CUT_COPPER, Material.OXIDIZED_CUT_COPPER_STAIRS);
+        newStairsRecipe(Material.WAXED_CUT_COPPER, Material.WAXED_CUT_COPPER_STAIRS);
+        newStairsRecipe(Material.WAXED_EXPOSED_CUT_COPPER, Material.WAXED_EXPOSED_CUT_COPPER_STAIRS);
+        newStairsRecipe(Material.WAXED_WEATHERED_CUT_COPPER, Material.WAXED_WEATHERED_CUT_COPPER_STAIRS);
+        newStairsRecipe(Material.WAXED_OXIDIZED_CUT_COPPER, Material.WAXED_OXIDIZED_CUT_COPPER_STAIRS);
         newStairsRecipe(Material.PURPUR_BLOCK, Material.PURPUR_STAIRS);
         newStairsRecipe(Material.COBBLESTONE, Material.COBBLESTONE_STAIRS);
         newStairsRecipe(Material.BRICKS, Material.BRICK_STAIRS);
@@ -55,12 +53,10 @@ public class MoreStairs {
         newStairsRecipe(Material.RED_NETHER_BRICKS, Material.RED_NETHER_BRICK_STAIRS);
         newStairsRecipe(Material.POLISHED_ANDESITE, Material.POLISHED_ANDESITE_STAIRS);
         newStairsRecipe(Material.DIORITE, Material.DIORITE_STAIRS);
-        if (Bukkit.getVersion().toString().contains("1.17")) {
         newStairsRecipe(Material.COBBLED_DEEPSLATE, Material.COBBLED_DEEPSLATE_STAIRS);
         newStairsRecipe(Material.POLISHED_DEEPSLATE, Material.POLISHED_DEEPSLATE_STAIRS);
-            newStairsRecipe(Material.DEEPSLATE_BRICKS, Material.DEEPSLATE_BRICK_STAIRS);
-            newStairsRecipe(Material.DEEPSLATE_TILES, Material.DEEPSLATE_TILE_STAIRS);
-        }
+        newStairsRecipe(Material.DEEPSLATE_BRICKS, Material.DEEPSLATE_BRICK_STAIRS);
+        newStairsRecipe(Material.DEEPSLATE_TILES, Material.DEEPSLATE_TILE_STAIRS);
         newStairsRecipe(Material.BLACKSTONE, Material.BLACKSTONE_STAIRS);
         newStairsRecipe(Material.POLISHED_BLACKSTONE, Material.POLISHED_BLACKSTONE_STAIRS);
         newStairsRecipe(Material.POLISHED_BLACKSTONE_BRICKS, Material.POLISHED_BLACKSTONE_BRICK_STAIRS);

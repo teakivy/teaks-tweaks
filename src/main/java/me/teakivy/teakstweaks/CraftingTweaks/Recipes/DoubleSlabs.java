@@ -37,20 +37,18 @@ public class DoubleSlabs {
         newShapelessRecipe("smooth_sandstone", Material.SMOOTH_SANDSTONE, Material.SMOOTH_SANDSTONE_SLAB);
         newShapelessRecipe("stone_bricks", Material.STONE_BRICKS, Material.STONE_BRICK_SLAB);
 
-        if (Bukkit.getVersion().toString().contains("1.17")) {
-            newShapelessRecipe("cut_copper", Material.CUT_COPPER, Material.CUT_COPPER_SLAB);
-            newShapelessRecipe("exposed_cut_copper", Material.EXPOSED_CUT_COPPER, Material.EXPOSED_CUT_COPPER_SLAB);
-            newShapelessRecipe("weathered_cut_copper", Material.WEATHERED_CUT_COPPER, Material.WEATHERED_CUT_COPPER_SLAB);
-            newShapelessRecipe("oxidized_cut_copper", Material.OXIDIZED_CUT_COPPER, Material.OXIDIZED_CUT_COPPER_SLAB);
-            newShapelessRecipe("waxed_cut_copper", Material.WAXED_CUT_COPPER, Material.WAXED_CUT_COPPER_SLAB);
-            newShapelessRecipe("waxed_exposed_cut_copper", Material.WAXED_EXPOSED_CUT_COPPER, Material.WAXED_EXPOSED_CUT_COPPER_SLAB);
-            newShapelessRecipe("waxed_weathered_cut_copper", Material.WAXED_WEATHERED_CUT_COPPER, Material.WAXED_WEATHERED_CUT_COPPER_SLAB);
-            newShapelessRecipe("waxed_oxidized_cut_copper", Material.WAXED_OXIDIZED_CUT_COPPER, Material.WAXED_OXIDIZED_CUT_COPPER_SLAB);
-            newShapelessRecipe("cobbled_deepslate", Material.COBBLED_DEEPSLATE, Material.COBBLED_DEEPSLATE_SLAB);
-            newShapelessRecipe("polished_deepslate", Material.POLISHED_DEEPSLATE, Material.POLISHED_DEEPSLATE_SLAB);
-            newShapelessRecipe("deepslate_bricks", Material.DEEPSLATE_BRICKS, Material.DEEPSLATE_BRICK_SLAB);
-            newShapelessRecipe("deepslate_tiles", Material.DEEPSLATE_TILES, Material.DEEPSLATE_TILE_SLAB);
-        }
+        newShapelessRecipe("cut_copper", Material.CUT_COPPER, Material.CUT_COPPER_SLAB);
+        newShapelessRecipe("exposed_cut_copper", Material.EXPOSED_CUT_COPPER, Material.EXPOSED_CUT_COPPER_SLAB);
+        newShapelessRecipe("weathered_cut_copper", Material.WEATHERED_CUT_COPPER, Material.WEATHERED_CUT_COPPER_SLAB);
+        newShapelessRecipe("oxidized_cut_copper", Material.OXIDIZED_CUT_COPPER, Material.OXIDIZED_CUT_COPPER_SLAB);
+        newShapelessRecipe("waxed_cut_copper", Material.WAXED_CUT_COPPER, Material.WAXED_CUT_COPPER_SLAB);
+        newShapelessRecipe("waxed_exposed_cut_copper", Material.WAXED_EXPOSED_CUT_COPPER, Material.WAXED_EXPOSED_CUT_COPPER_SLAB);
+        newShapelessRecipe("waxed_weathered_cut_copper", Material.WAXED_WEATHERED_CUT_COPPER, Material.WAXED_WEATHERED_CUT_COPPER_SLAB);
+        newShapelessRecipe("waxed_oxidized_cut_copper", Material.WAXED_OXIDIZED_CUT_COPPER, Material.WAXED_OXIDIZED_CUT_COPPER_SLAB);
+        newShapelessRecipe("cobbled_deepslate", Material.COBBLED_DEEPSLATE, Material.COBBLED_DEEPSLATE_SLAB);
+        newShapelessRecipe("polished_deepslate", Material.POLISHED_DEEPSLATE, Material.POLISHED_DEEPSLATE_SLAB);
+        newShapelessRecipe("deepslate_bricks", Material.DEEPSLATE_BRICKS, Material.DEEPSLATE_BRICK_SLAB);
+        newShapelessRecipe("deepslate_tiles", Material.DEEPSLATE_TILES, Material.DEEPSLATE_TILE_SLAB);
     }
 
     public static void newShapelessRecipe(String keyName, Material ingredient, Material result) {
