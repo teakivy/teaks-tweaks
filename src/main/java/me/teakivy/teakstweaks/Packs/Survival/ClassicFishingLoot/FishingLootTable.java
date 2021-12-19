@@ -297,11 +297,11 @@ public class FishingLootTable {
             if (item.getEnchantments().size() >= 5) tonextlevel = 50;
             if (item.getEnchantments().size() >= 7) tonextlevel = 100;
             if (rand.nextInt(tonextlevel) == 2) {
-                meta.addEnchant(enchantments.get(i), rand.nextInt(enchants.get(enchantments.get(i))) + 1, true);
+                meta.addStoredEnchant(enchantments.get(i), rand.nextInt(enchants.get(enchantments.get(i))) + 1, true);
             }
         }
         if (meta.getEnchants().isEmpty()) {
-            meta.addEnchant(Enchantment.DIG_SPEED, rand.nextInt(Enchantment.DIG_SPEED.getMaxLevel()) + 1, true);
+            meta.addStoredEnchant(Enchantment.DIG_SPEED, rand.nextInt(Enchantment.DIG_SPEED.getMaxLevel()) + 1, true);
         }
         item.setItemMeta(meta);
         return item;
