@@ -72,6 +72,8 @@ public class CraftingRegister {
             SmeltableRawOreBlocks.registerRecipes();
         if (main.getConfig().getBoolean("crafting-tweaks.craftable-gilded-blackstone.enabled"))
             CraftableGildedBlackstone.registerRecipes();
+        if (main.getConfig().getBoolean("crafting-tweaks.craftable-sculk-sensors.enabled"))
+            CraftableSculkSensors.registerRecipes();
 
     }
 

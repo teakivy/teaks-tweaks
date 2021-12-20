@@ -27,6 +27,7 @@ public class CustomMetrics {
                 valueMap.put("Lectern Reset", getPack("lectern-reset"));
                 valueMap.put("Sudoku", getPack("sudoku"));
                 valueMap.put("Stair Chairs", getPack("stair-chairs"));
+                valueMap.put("Unsticky Pistons", getPack("unsticky-pistons"));
 
                 valueMap.put("Unlock All Recipes", getPack("unlock-all-recipes"));
                 valueMap.put("Fast Leaf Decay", getPack("fast-leaf-decay"));
@@ -123,6 +124,7 @@ public class CustomMetrics {
                 valueMap.put("Craftable Gilded Blackstone", getCraftingTweak("craftable-gilded-blackstone"));
                 valueMap.put("Craftable Spore Blossoms", getCraftingTweak("craftable-spore-blossoms"));
                 valueMap.put("Craftable Small Dripleaf", getCraftingTweak("craftable-small-dripleaf"));
+                valueMap.put("Craftable Sculk Sensors", getCraftingTweak("craftable-sculk-sensors"));
                 valueMap.put("Unpackable Ice", getCraftingTweak("unpackable-ice"));
                 valueMap.put("Unpackable Nether Wart", getCraftingTweak("unpackable-nether-wart"));
                 valueMap.put("Unpackable Wool", getCraftingTweak("unpackable-wool"));
