@@ -745,6 +745,11 @@ crafting-tweaks:
   unpackable-wool:
     enabled: false
 
+  # Unpackable Quartz Blocks
+  # Allows you to break quartz blocks down into 4 quartz
+  unpackable-quartz-blocks:
+    enabled: false
+
   # Log Chests
   # Allows you to craft Chests from Logs.
   log-chests:

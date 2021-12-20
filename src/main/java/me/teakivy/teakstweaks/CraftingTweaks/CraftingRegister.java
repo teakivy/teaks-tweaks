@@ -62,6 +62,8 @@ public class CraftingRegister {
             UnpackableNetherWart.registerRecipes();
         if (main.getConfig().getBoolean("crafting-tweaks.unpackable-wool.enabled"))
             UnpackableWool.registerRecipes();
+        if (main.getConfig().getBoolean("crafting-tweaks.unpackable-quartz-blocks.enabled"))
+            UnpackableQuartz.registerRecipes();
         if (main.getConfig().getBoolean("crafting-tweaks.log-chests.enabled"))
             LogChests.registerRecipes();
         if (main.getConfig().getBoolean("crafting-tweaks.craftable-spore-blossoms.enabled"))
