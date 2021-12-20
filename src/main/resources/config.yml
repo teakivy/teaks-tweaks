@@ -63,6 +63,12 @@ packs:
   stair-chairs:
     enabled: false
 
+  # Unsticky Pistons
+  # Allow players to remove slime from pistons by right-clicking them with an axe
+  # Right-click a piston with a slimeball to make it sticky
+  unsticky-pistons:
+    enabled: false
+
 
 
   # Vanilla Tweaks:
@@ -717,6 +723,11 @@ crafting-tweaks:
   # Craftable Small Dripleaf
   # Allows you to craft Small dripleaves from a large dripleaf.
   craftable-small-dripleaf:
+    enabled: false
+
+  # Craftable Sculk Sensors
+  # Allows you to craft Sculk Sensors.
+  craftable-sculk-sensors:
     enabled: false
 
   # Unpackable Ice

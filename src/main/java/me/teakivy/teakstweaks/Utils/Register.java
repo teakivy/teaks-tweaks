@@ -43,6 +43,7 @@ import me.teakivy.teakstweaks.Packs.TeaksTweaks.KeepSmall.KeepSmall;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.LecternReset.LecternReset;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.StairChairs.StairChairs;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.Sudoku.Sudoku;
+import me.teakivy.teakstweaks.Packs.TeaksTweaks.UnstickyPistons.UnstickyPistons;
 import me.teakivy.teakstweaks.Packs.Teleportation.Back.Back;
 import me.teakivy.teakstweaks.Packs.Utilities.CustomVillagerShops.CustomVillager;
 import me.teakivy.teakstweaks.Packs.Utilities.ItemAverages.ItemTracker;
@@ -109,6 +110,7 @@ public class Register {
     public static LecternReset lecternReset = new LecternReset();
     public static Sudoku sudoku = new Sudoku();
     public static StairChairs stairChairs = new StairChairs();
+    public static UnstickyPistons unstickyPistons = new UnstickyPistons();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -311,6 +313,10 @@ public class Register {
 
         if (pack.equalsIgnoreCase("stair-chairs")) {
             stairChairs.unregister();
+        }
+
+        if (pack.equalsIgnoreCase("unsticky-pistons")) {
+            unstickyPistons.unregister();
         }
     }
 
@@ -516,6 +522,10 @@ public class Register {
 
         if (pack.equalsIgnoreCase("stair-chairs")) {
             main.getServer().getPluginManager().registerEvents(stairChairs, main);
+        }
+
+        if (pack.equalsIgnoreCase("unsticky-pistons")) {
+            main.getServer().getPluginManager().registerEvents(unstickyPistons, main);
         }
     }
     public static void registerCommands() {
