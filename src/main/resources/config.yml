@@ -69,6 +69,12 @@ packs:
   unsticky-pistons:
     enabled: false
 
+  # Slime Cream
+  # Convert Slime Balls to Magma Cream by right-clicking a lava cauldron
+  # Convert Magma Cream to Slime Balls by right-clicking a water cauldron
+  slime-cream:
+    enabled: false
+
 
 
   # Vanilla Tweaks:
