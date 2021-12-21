@@ -94,85 +94,79 @@ public class DisplayHud {
     }
 
     public static String get2PointDirection(float direction) {
-        direction = direction + 180 - 22.5f;
-        if (direction < 45) return "North";
-        if (direction < 90) return "Northeast";
-        if (direction < 135) return "East";
-        if (direction < 180) return "Southeast";
-        if (direction < 225) return "South";
-        if (direction < 270) return "Southwest";
-        if (direction < 315) return "West";
-        if (direction < 360) return "Northwest";
+        if (direction <= -157.5 || direction >= 157.5) return "North";
+        if (direction >= 112.5 && direction <= 157.5) return "NorthWest";
+        if (direction >= 67.5 && direction <= 112.5) return "West";
+        if (direction >= 22.5 && direction <= 67.5) return "SouthWest";
+        if (direction >= -22.5 && direction <= 22.5) return "South";
+        if (direction >= -67.5 && direction <= -22.5) return "SouthEast";
+        if (direction >= -112.5 && direction <= -67.5) return "East";
+        if (direction >= -157.5 && direction <= -112.5) return "NorthEast";
 
         return "N/A";
     }
 
     public static String get2PointDirectionUpper(float direction) {
-        direction = direction + 180 - 22.5f;
-        if (direction < 45) return "NORTH";
-        if (direction < 90) return "NORTHEAST";
-        if (direction < 135) return "EAST";
-        if (direction < 180) return "SOUTHEAST";
-        if (direction < 225) return "SOUTH";
-        if (direction < 270) return "SOUTHWEST";
-        if (direction < 315) return "WEST";
-        if (direction < 360) return "NORTHWEST";
+        if (direction <= -157.5 || direction >= 157.5) return "NORTH";
+        if (direction >= 112.5 && direction <= 157.5) return "NORTHWEST";
+        if (direction >= 67.5 && direction <= 112.5) return "WEST";
+        if (direction >= 22.5 && direction <= 67.5) return "SOUTHWEST";
+        if (direction >= -22.5 && direction <= 22.5) return "SOUTH";
+        if (direction >= -67.5 && direction <= -22.5) return "SOUTHEAST";
+        if (direction >= -112.5 && direction <= -67.5) return "EAST";
+        if (direction >= -157.5 && direction <= -112.5) return "NORTHEAST";
 
         return "N/A";
     }
 
     public static String get2PointDirectionLower(float direction) {
-        direction = direction + 180 - 22.5f;
-        if (direction < 45) return "north";
-        if (direction < 90) return "northeast";
-        if (direction < 135) return "east";
-        if (direction < 180) return "southeast";
-        if (direction < 225) return "south";
-        if (direction < 270) return "southwest";
-        if (direction < 315) return "west";
-        if (direction < 360) return "northwest";
+        if (direction <= -157.5 || direction >= 157.5) return "north";
+        if (direction >= 112.5 && direction <= 157.5) return "northwest";
+        if (direction >= 67.5 && direction <= 112.5) return "west";
+        if (direction >= 22.5 && direction <= 67.5) return "southwest";
+        if (direction >= -22.5 && direction <= 22.5) return "south";
+        if (direction >= -67.5 && direction <= -22.5) return "southeast";
+        if (direction >= -112.5 && direction <= -67.5) return "east";
+        if (direction >= -157.5 && direction <= -112.5) return "northeast";
 
         return "N/A";
     }
 
     public static String get2PointDirectionAbbr(float direction) {
-        direction = direction + 180 - 22.5f;
-        if (direction < 45) return "N";
-        if (direction < 90) return "NE";
-        if (direction < 135) return "E";
-        if (direction < 180) return "SE";
-        if (direction < 225) return "S";
-        if (direction < 270) return "SW";
-        if (direction < 315) return "W";
-        if (direction < 360) return "NW";
+        if (direction <= -157.5 || direction >= 157.5) return "N";
+        if (direction >= 112.5 && direction <= 157.5) return "NW";
+        if (direction >= 67.5 && direction <= 112.5) return "W";
+        if (direction >= 22.5 && direction <= 67.5) return "SW";
+        if (direction >= -22.5 && direction <= 22.5) return "S";
+        if (direction >= -67.5 && direction <= -22.5) return "SE";
+        if (direction >= -112.5 && direction <= -67.5) return "E";
+        if (direction >= -157.5 && direction <= -112.5) return "NE";
 
         return "N/A";
     }
 
     public static String get2PointDirectionAbbrUpper(float direction) {
-        direction = direction + 180 - 22.5f;
-        if (direction < 45) return "N";
-        if (direction < 90) return "NE";
-        if (direction < 135) return "E";
-        if (direction < 180) return "SE";
-        if (direction < 225) return "S";
-        if (direction < 270) return "SW";
-        if (direction < 315) return "W";
-        if (direction < 360) return "NW";
+        if (direction <= -157.5 || direction >= 157.5) return "N";
+        if (direction >= 112.5 && direction <= 157.5) return "NW";
+        if (direction >= 67.5 && direction <= 112.5) return "W";
+        if (direction >= 22.5 && direction <= 67.5) return "SW";
+        if (direction >= -22.5 && direction <= 22.5) return "S";
+        if (direction >= -67.5 && direction <= -22.5) return "SE";
+        if (direction >= -112.5 && direction <= -67.5) return "E";
+        if (direction >= -157.5 && direction <= -112.5) return "NE";
 
         return "N/A";
     }
 
     public static String get2PointDirectionAbbrLower(float direction) {
-        direction = direction + 180 - 22.5f;
-        if (direction < 45) return "n";
-        if (direction < 90) return "ne";
-        if (direction < 135) return "e";
-        if (direction < 180) return "se";
-        if (direction < 225) return "s";
-        if (direction < 270) return "sw";
-        if (direction < 315) return "w";
-        if (direction < 360) return "nw";
+        if (direction <= -157.5 || direction >= 157.5) return "n";
+        if (direction >= 112.5 && direction <= 157.5) return "nw";
+        if (direction >= 67.5 && direction <= 112.5) return "w";
+        if (direction >= 22.5 && direction <= 67.5) return "sw";
+        if (direction >= -22.5 && direction <= 22.5) return "s";
+        if (direction >= -67.5 && direction <= -22.5) return "se";
+        if (direction >= -112.5 && direction <= -67.5) return "e";
+        if (direction >= -157.5 && direction <= -112.5) return "ne";
 
         return "N/A";
     }
