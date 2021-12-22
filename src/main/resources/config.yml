@@ -898,7 +898,7 @@ commands:
 # Leave these options alone unless you know what you're doing!
 # Changing these values may cause unexpected issues.
 config:
-  plugin-version: 1.6.4-beta
+  plugin-version: 1.6.5-beta
   alert-op-on-new-version: true
-  version: 24
+  version: 25
   dev-mode: false
