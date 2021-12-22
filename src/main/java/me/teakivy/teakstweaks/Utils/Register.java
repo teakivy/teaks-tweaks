@@ -39,6 +39,7 @@ import me.teakivy.teakstweaks.Packs.Survival.UnlockAllRecipes.UnlockRecipes;
 import me.teakivy.teakstweaks.Packs.Survival.WorkstationHighlights.Highlighter;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.ChatColors.ChatColors;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.EditSigns.EditSigns;
+import me.teakivy.teakstweaks.Packs.TeaksTweaks.InvisibleItemFrames.InvisibleItemFrames;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.KeepSmall.KeepSmall;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.LecternReset.LecternReset;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.SlimeCream.SlimeCream;
@@ -113,6 +114,7 @@ public class Register {
     public static StairChairs stairChairs = new StairChairs();
     public static UnstickyPistons unstickyPistons = new UnstickyPistons();
     public static SlimeCream slimeCream = new SlimeCream();
+    public static InvisibleItemFrames invisibleItemFrames = new InvisibleItemFrames();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -323,6 +325,10 @@ public class Register {
 
         if (pack.equalsIgnoreCase("slime-cream")) {
             slimeCream.unregister();
+        }
+
+        if (pack.equalsIgnoreCase("invisible-item-frames")) {
+            invisibleItemFrames.unregister();
         }
     }
 
@@ -536,6 +542,10 @@ public class Register {
 
         if (pack.equalsIgnoreCase("slime-cream")) {
             main.getServer().getPluginManager().registerEvents(slimeCream, main);
+        }
+
+        if (pack.equalsIgnoreCase("invisible-item-frames")) {
+            main.getServer().getPluginManager().registerEvents(invisibleItemFrames, main);
         }
     }
     public static void registerCommands() {

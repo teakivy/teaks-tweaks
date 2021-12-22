@@ -75,6 +75,11 @@ packs:
   slime-cream:
     enabled: false
 
+  # Invsible Item Frames
+  # Shift right-click an item frame with shears to make it invisible
+  invisible-item-frames:
+    enabled: false
+
 
 
   # Vanilla Tweaks:
