@@ -5,6 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Directional;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,7 +14,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.util.Vector;
+
+import java.util.Random;
 
 public class UnstickyPistons implements Listener {
 
@@ -38,6 +42,11 @@ public class UnstickyPistons implements Listener {
             item.setVelocity(new Vector(0, 0.01, 0));
             event.getClickedBlock().getWorld().playSound(event.getClickedBlock().getLocation(), Sound.BLOCK_SLIME_BLOCK_FALL, 1, 1);
 
+            if (event.getPlayer().getGameMode() != org.bukkit.GameMode.CREATIVE) {
+                Damageable dmgItem = (Damageable) itemStack.getItemMeta();
+                dmgItem.setDamage(dmgItem.getDamage() + getDamage(itemStack));
+                itemStack.setItemMeta(dmgItem);
+            }
             return;
         }
         if (itemStack.getType() == Material.SLIME_BALL && event.getClickedBlock().getType() == Material.PISTON) {
@@ -55,6 +64,15 @@ public class UnstickyPistons implements Listener {
             }
             event.getClickedBlock().getWorld().playSound(event.getClickedBlock().getLocation(), Sound.BLOCK_SLIME_BLOCK_HIT, 1, 1);
         }
+    }
+
+    public int getDamage(ItemStack itemStack) {
+        int unbLvl = itemStack.getEnchantmentLevel(Enchantment.DURABILITY);
+        int dmgTop = 100 / (unbLvl + 1);
+
+        Random rand = new Random();
+        if (rand.nextInt(100) < dmgTop) return 1;
+        return 0;
     }
 
     public void unregister() {
