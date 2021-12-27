@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.Packs.TeaksTweaks.SlimeCream;
 
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -31,12 +32,14 @@ public class SlimeCream implements Listener {
             Item drop = block.getLocation().getWorld().dropItem(block.getLocation().add(.5, 1, .5), new ItemStack(Material.SLIME_BALL));
             drop.setVelocity(new Vector(0, 0, 0));
             drop.setGravity(false);
+            player.playSound(block.getLocation(), Sound.BLOCK_POINTED_DRIPSTONE_DRIP_WATER_INTO_CAULDRON, 1, 1);
         } else if (event.getClickedBlock().getType() == Material.LAVA_CAULDRON && item.getType() == Material.SLIME_BALL) {
 
             item.setAmount(item.getAmount() - 1);
             Item drop = block.getLocation().getWorld().dropItem(block.getLocation().add(.5, 1, .5), new ItemStack(Material.MAGMA_CREAM));
             drop.setVelocity(new Vector(0, 0, 0));
             drop.setGravity(false);
+            player.playSound(block.getLocation(), Sound.BLOCK_POINTED_DRIPSTONE_DRIP_LAVA_INTO_CAULDRON, 1, 1);
         }
     }
 

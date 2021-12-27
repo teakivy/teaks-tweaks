@@ -2,8 +2,10 @@ package me.teakivy.teakstweaks.Packs.TeaksTweaks.UnstickyPistons;
 
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Directional;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
@@ -11,6 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.util.Vector;
 
 public class UnstickyPistons implements Listener {
 
@@ -31,7 +34,9 @@ public class UnstickyPistons implements Listener {
             directional2.setFacing(directional.getFacing());
             event.getClickedBlock().getLocation().getBlock().setBlockData(directional2);
 
-            event.getClickedBlock().getLocation().getWorld().dropItemNaturally(event.getClickedBlock().getLocation().add(0, 1, 0), new ItemStack(Material.SLIME_BALL));
+            Item item = event.getClickedBlock().getLocation().getWorld().dropItemNaturally(event.getClickedBlock().getLocation().add(0, .7, 0), new ItemStack(Material.SLIME_BALL));
+            item.setVelocity(new Vector(0, 0.01, 0));
+            event.getClickedBlock().getWorld().playSound(event.getClickedBlock().getLocation(), Sound.BLOCK_SLIME_BLOCK_FALL, 1, 1);
 
             return;
         }
@@ -48,6 +53,7 @@ public class UnstickyPistons implements Listener {
             if (player.getGameMode() != org.bukkit.GameMode.CREATIVE) {
                 player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
             }
+            event.getClickedBlock().getWorld().playSound(event.getClickedBlock().getLocation(), Sound.BLOCK_SLIME_BLOCK_HIT, 1, 1);
         }
     }
 
