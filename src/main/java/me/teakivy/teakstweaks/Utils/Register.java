@@ -37,6 +37,7 @@ import me.teakivy.teakstweaks.Packs.Survival.TrackRawStatistics.RawStats;
 import me.teakivy.teakstweaks.Packs.Survival.TrackStatistics.StatTracker;
 import me.teakivy.teakstweaks.Packs.Survival.UnlockAllRecipes.UnlockRecipes;
 import me.teakivy.teakstweaks.Packs.Survival.WorkstationHighlights.Highlighter;
+import me.teakivy.teakstweaks.Packs.TeaksTweaks.BetterFoliage.BetterFoliage;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.ChatColors.ChatColors;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.EditSigns.EditSigns;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.InvisibleItemFrames.InvisibleItemFrames;
@@ -115,6 +116,7 @@ public class Register {
     public static UnstickyPistons unstickyPistons = new UnstickyPistons();
     public static SlimeCream slimeCream = new SlimeCream();
     public static InvisibleItemFrames invisibleItemFrames = new InvisibleItemFrames();
+    public static BetterFoliage betterFoliage = new BetterFoliage();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -329,6 +331,10 @@ public class Register {
 
         if (pack.equalsIgnoreCase("invisible-item-frames")) {
             invisibleItemFrames.unregister();
+        }
+
+        if (pack.equalsIgnoreCase("better-foliage")) {
+            betterFoliage.unregister();
         }
     }
 
@@ -546,6 +552,10 @@ public class Register {
 
         if (pack.equalsIgnoreCase("invisible-item-frames")) {
             main.getServer().getPluginManager().registerEvents(invisibleItemFrames, main);
+        }
+
+        if (pack.equalsIgnoreCase("better-foliage")) {
+            main.getServer().getPluginManager().registerEvents(betterFoliage, main);
         }
     }
     public static void registerCommands() {

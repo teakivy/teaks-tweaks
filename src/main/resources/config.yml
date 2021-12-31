@@ -80,6 +80,21 @@ packs:
   invisible-item-frames:
     enabled: false
 
+  # Better Foliage
+  # Add foliage features to the world!
+  better-foliage:
+    enabled: false
+    # Convert dirt to grass by right-clicking a dirt block with seeds
+    dirt-to-grass:
+      enabled: true
+      # Chance to convert dirt to grass based on the seed type
+      chance:
+        wheat-seeds: 0.3
+        melon-seeds: 0.03
+        pumpkin-seeds: 0.03
+        beetroot-seeds: 0.03
+
+
 
 
   # Vanilla Tweaks:

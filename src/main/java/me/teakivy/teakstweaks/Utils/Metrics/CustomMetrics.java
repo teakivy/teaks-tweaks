@@ -30,6 +30,7 @@ public class CustomMetrics {
                 valueMap.put("Unsticky Pistons", getPack("unsticky-pistons"));
                 valueMap.put("Slime Cream", getPack("slime-cream"));
                 valueMap.put("Invisible Item Frames", getPack("invisible-item-frames"));
+                valueMap.put("Better Foliage", getPack("better-foliage"));
 
                 valueMap.put("Unlock All Recipes", getPack("unlock-all-recipes"));
                 valueMap.put("Fast Leaf Decay", getPack("fast-leaf-decay"));
