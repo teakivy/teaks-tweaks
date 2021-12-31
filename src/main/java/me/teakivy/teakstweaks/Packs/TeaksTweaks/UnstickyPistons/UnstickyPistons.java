@@ -40,7 +40,7 @@ public class UnstickyPistons implements Listener {
 
             Item item = event.getClickedBlock().getLocation().getWorld().dropItemNaturally(event.getClickedBlock().getLocation().add(0, .7, 0), new ItemStack(Material.SLIME_BALL));
             item.setVelocity(new Vector(0, 0.01, 0));
-            event.getClickedBlock().getWorld().playSound(event.getClickedBlock().getLocation(), Sound.BLOCK_SLIME_BLOCK_FALL, 1, 1);
+            event.getClickedBlock().getWorld().playSound(event.getClickedBlock().getLocation(), Sound.ENTITY_SLIME_ATTACK, 1, .75f);
 
             if (event.getPlayer().getGameMode() != org.bukkit.GameMode.CREATIVE) {
                 Damageable dmgItem = (Damageable) itemStack.getItemMeta();
@@ -62,7 +62,7 @@ public class UnstickyPistons implements Listener {
             if (player.getGameMode() != org.bukkit.GameMode.CREATIVE) {
                 player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
             }
-            event.getClickedBlock().getWorld().playSound(event.getClickedBlock().getLocation(), Sound.BLOCK_SLIME_BLOCK_HIT, 1, 1);
+            event.getClickedBlock().getWorld().playSound(event.getClickedBlock().getLocation(), Sound.BLOCK_SLIME_BLOCK_PLACE, 1, .6f);
         }
     }
 

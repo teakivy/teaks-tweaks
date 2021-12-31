@@ -22,7 +22,7 @@ public class InvisibleItemFrames implements Listener {
             ItemFrame frame = (ItemFrame) event.getRightClicked();
             frame.setVisible(!frame.isVisible());
             frame.getWorld().spawnParticle(Particle.END_ROD, frame.getLocation().add(0, .5, 0), 1, .1, .1, .1, 0);
-            event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.BLOCK_BEEHIVE_SHEAR, 1, 1);
+            event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.BLOCK_BEEHIVE_SHEAR, 1, 1.4f);
         }
     }
 

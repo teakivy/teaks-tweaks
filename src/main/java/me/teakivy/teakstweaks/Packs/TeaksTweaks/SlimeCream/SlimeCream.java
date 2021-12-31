@@ -32,7 +32,7 @@ public class SlimeCream implements Listener {
             Item drop = block.getLocation().getWorld().dropItem(block.getLocation().add(.5, 1, .5), new ItemStack(Material.SLIME_BALL));
             drop.setVelocity(new Vector(0, 0, 0));
             drop.setGravity(false);
-            player.playSound(block.getLocation(), Sound.BLOCK_POINTED_DRIPSTONE_DRIP_WATER_INTO_CAULDRON, 1, 1);
+            player.playSound(block.getLocation(), Sound.BLOCK_POINTED_DRIPSTONE_DRIP_WATER_INTO_CAULDRON, 1, .5f);
         } else if (event.getClickedBlock().getType() == Material.LAVA_CAULDRON && item.getType() == Material.SLIME_BALL) {
 
             item.setAmount(item.getAmount() - 1);
