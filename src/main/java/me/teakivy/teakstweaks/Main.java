@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks;
 
 import me.teakivy.teakstweaks.CraftingTweaks.CraftingRegister;
-import me.teakivy.teakstweaks.Events.UpdateJoinAlert;
 import me.teakivy.teakstweaks.Packs.Hermitcraft.Tag.Tag;
 import me.teakivy.teakstweaks.Utils.*;
 import me.teakivy.teakstweaks.Utils.DataManager.DataManager;

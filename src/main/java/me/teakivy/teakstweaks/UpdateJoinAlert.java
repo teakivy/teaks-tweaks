@@ -1,6 +1,5 @@
-package me.teakivy.teakstweaks.Events;
+package me.teakivy.teakstweaks;
 
-import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
