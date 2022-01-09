@@ -23,7 +23,7 @@ public class MiniBlocks {
 
     public static List<MerchantRecipe> getBlockTrades() {
         List<MerchantRecipe> recipes = new ArrayList<>();
-        int amount = data.getConfig().getInt("wandering-trades.mini-blocks.amount-of-blocks");
+        int amount = data.getConfig().getInt("wandering-trades.mini-blocks.amount-of-trades");
         List<Integer> numbers = new ArrayList<>();
 
         if (main.getConfig().getBoolean("config.dev-mode")) {
