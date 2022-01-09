@@ -26,6 +26,8 @@ public class MiniBlocks {
         int amount = data.getConfig().getInt("wandering-trades.mini-blocks.amount-of-trades");
         List<Integer> numbers = new ArrayList<>();
 
+        if (!main.getConfig().getBoolean("packs.wandering-trades.has-mini-blocks")) return recipes;
+
         if (main.getConfig().getBoolean("config.dev-mode")) {
             for (int i = 0; i < 175; i++) {
                 recipes.add(getMiniBlockTradeByNumber(i));

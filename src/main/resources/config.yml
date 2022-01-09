@@ -474,6 +474,8 @@ packs:
   # Adds Mini Blocks to the Wandering Trader's trades.
   wandering-trades:
     enabled: false
+    # Whether or not Wandering Trader's have mini blocks
+    has-mini-blocks: true
     # Player heads section of Wandering Trades (Hermit Edition)
     player-heads:
       # Whether it has player heads or not (Hermit Edition)
