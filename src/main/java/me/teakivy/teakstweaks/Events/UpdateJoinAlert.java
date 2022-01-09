@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.Events;
 
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,7 +19,7 @@ public class UpdateJoinAlert implements Listener {
         if (player.isOp()) {
             if (main.getConfig().getBoolean("config.alert-op-on-new-version")) {
                 if (main.newVersionAvaliable) {
-                    player.sendMessage(vt + MessageHandler.getMessage("plugin.update-join-alert").replace("%latest_version%", main.latestVTVersion));
+                    player.sendMessage(ChatColor.GRAY.toString() + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD.toString() + "TT"  + ChatColor.RESET.toString() + ChatColor.GRAY.toString() + "]"  + ChatColor.RESET.toString() + ChatColor.YELLOW + " There is a new Version of Teaks Tweaks avaliable! Please update to the latest version: " + ChatColor.BOLD + ChatColor.GOLD +  main.latestVTVersion);
                 }
             }
         }

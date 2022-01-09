@@ -17,15 +17,11 @@ spheres:
 messages:
   plugin:
     reload: "&aReloaded Teaks Tweaks Config!"
-    message-prefix: "&7[&6&lVT&7]"
-    bland-prefix: "[VT]"
-    update-join-alert: "&eThere is a new Version of Teaks Tweaks avaliable! Please update to the latest version: &6%latest_version%"
+    message-prefix: "&7[&6&lTT&7]"
+    bland-prefix: "[TT]"
     startup:
       plugin-started: "%bland_prefix% Teaks Tweaks Started!"
       pack-enabled: "%bland_prefix% %pack% Enabled!"
-      update-available: "%bland_prefix% Teaks Tweaks has an update!\nPlease update to the latest version (%latest_version%)\n&ehttps://www.spigotmc.org/resources/+-tweaks.94021/"
-      updated-config-version: "%bland_prefix% Updated Config to Version: %config_version"
-      dev-mode-enabled: "%bland_prefix% Developer Mode Enabled!"
     error:
       unknown: "&cAn unknown error has occured!"
       pack-not-enabled: "&cThis pack is not enabled!"

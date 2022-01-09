@@ -67,7 +67,7 @@ public final class Main extends JavaPlugin implements Listener {
                 try {
                     ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList(), true);
                     this.reloadConfig();
-                    Log.message(MessageHandler.getMessage("plugin.startup.updated-config-version").replace("%config_version%", String.valueOf(this.getConfig().getInt("config.version"))));
+                    Log.message("Dev Mode Enabled!");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -76,7 +76,7 @@ public final class Main extends JavaPlugin implements Listener {
             try {
                 ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList(), true);
                 this.reloadConfig();
-                Log.message(MessageHandler.getMessage("plugin.startup.updated-config-version").replace("%config_version%", String.valueOf(this.getConfig().getInt("config.version"))));
+                Log.message("Updated Config to Version: " + this.getConfig().getInt("config.version"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -94,7 +94,7 @@ public final class Main extends JavaPlugin implements Listener {
         }
         String thisVersion = this.getDescription().getVersion();
         if (!thisVersion.equalsIgnoreCase(latestVersion)) {
-            Logger.log(Logger.LogLevel.WARNING, MessageHandler.getMessage("plugin.startup.update-available").replace("%latest_version%", latestVersion));
+            Log.warning("[VT] Teaks Tweaks has an update!\nPlease update to the latest version (" + latestVersion + ")\n&ehttps://www.spigotmc.org/resources/teaks-tweaks.94021/");
             newVersionAvaliable = true;
             latestVTVersion = latestVersion;
         }
