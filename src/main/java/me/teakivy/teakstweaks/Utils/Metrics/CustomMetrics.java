@@ -14,6 +14,8 @@ public class CustomMetrics {
         registerPackMetrics(metrics);
         registerCraftingTweaksMetrics(metrics);
         registerCommandMetrics(metrics);
+        registerFirstUsedMetrics(metrics);
+        registerDevModeMetrics(metrics);
     }
 
     public static void registerPackMetrics(Metrics metrics) {
@@ -179,6 +181,35 @@ public class CustomMetrics {
     public static int getCommand(String cmd) {
         if (main.getConfig().getBoolean("commands." + cmd + ".enabled")) return 1;
         return 0;
+    }
+
+    public static void registerFirstUsedMetrics(Metrics metrics) {
+        metrics.addCustomChart(new Metrics.AdvancedPie("first_used", new Callable<Map<String, Integer>>() {
+            @Override
+            public Map<String, Integer> call() throws Exception {
+                Map<String, Integer> valueMap = new HashMap<>();
+                valueMap.put(main.getConfig().getString("config.plugin-version"), 1);
+
+                return valueMap;
+            }
+        }));
+    }
+
+    public static void registerDevModeMetrics(Metrics metrics) {
+        metrics.addCustomChart(new Metrics.AdvancedPie("dev_mode", new Callable<Map<String, Integer>>() {
+            @Override
+            public Map<String, Integer> call() throws Exception {
+                Map<String, Integer> valueMap = new HashMap<>();
+                if (main.getConfig().getBoolean("config.dev-mode")) {
+                    valueMap.put("Enabled", 1);
+                }
+                else {
+                    valueMap.put("Disabled", 1);
+                }
+
+                return valueMap;
+            }
+        }));
     }
 
 }
