@@ -11,7 +11,6 @@ import org.bukkit.command.CommandSender;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class TeaksTweaksCommand extends AbstractCommand {
 
@@ -40,7 +39,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
 
         if (args[0].equalsIgnoreCase("reload")) {
             Main.getPlugin(Main.class).reloadConfig();
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(Main.getPlugin(Main.class).getConfig().getString("reload.message"))));
+            sender.sendMessage(vt + ChatColor.GREEN + "Config reloaded!");
         }
 
         Register.unregisterAll();

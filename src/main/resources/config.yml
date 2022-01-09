@@ -6,8 +6,8 @@
 #    ░░░██║░░░███████╗██║░░██║██║░╚██╗██████╔╝  ░░░██║░░░░░╚██╔╝░╚██╔╝░███████╗██║░░██║██║░╚██╗██████╔╝
 #    ░░░╚═╝░░░╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░  ░░░╚═╝░░░░░░╚═╝░░░╚═╝░░╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░
 
-reload:
-  message: "&7[&6&lVT&7] &aReloaded Teak's Tweaks Config!"
+# NOTE: This project is not ran by the Vanilla Tweaks Team.
+# For support, please use my Discord: https://dsc.gg/teakivy or the project's GitHub: https://github.com/teakivy/teaks-tweaks
 
 # Be sure to check the data.yml file for more customizability!
 
