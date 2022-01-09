@@ -29,7 +29,7 @@ public class PortalCommand extends AbstractCommand {
             return true;
         }
 
-        if (!sender.hasPermission("vanillatweaks.netherportalcoords.execute")) {
+        if (!sender.hasPermission("teakstweaks.netherportalcoords.execute")) {
             sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
         }

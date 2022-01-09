@@ -21,7 +21,7 @@ public class TestCommand extends AbstractCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player = (Player) sender;
-        if (!sender.hasPermission("vanillatweaks.test.execute")) {
+        if (!sender.hasPermission("teakstweaks.test.execute")) {
             sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
         }

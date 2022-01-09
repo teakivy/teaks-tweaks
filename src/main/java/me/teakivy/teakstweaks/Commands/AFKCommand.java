@@ -41,7 +41,7 @@ public class AFKCommand extends AbstractCommand {
                 sender.sendMessage(ErrorType.COMMAND_DISABLED.m());
                 return true;
             }
-            if (!player.hasPermission("vanillatweaks.afk.toggle")) {
+            if (!player.hasPermission("teakstweaks.afk.toggle")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
@@ -56,7 +56,7 @@ public class AFKCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("uninstall")) {
-            if (player.hasPermission("vanillatweaks.afk.uninstall")) {
+            if (player.hasPermission("teakstweaks.afk.uninstall")) {
                 AFK.uninstall();
             } else {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());

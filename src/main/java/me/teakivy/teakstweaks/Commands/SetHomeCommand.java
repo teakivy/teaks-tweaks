@@ -34,7 +34,7 @@ public class SetHomeCommand extends AbstractCommand {
         }
 
 
-        if (!sender.hasPermission("vanillatweaks.homes.manage")) {
+        if (!sender.hasPermission("teakstweaks.homes.manage")) {
             sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
         }

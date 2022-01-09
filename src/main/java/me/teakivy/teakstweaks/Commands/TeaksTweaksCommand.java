@@ -28,7 +28,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
             sender.sendMessage(vt + ChatColor.RED + "This command is deprecated, please use /teakstweaks instead!");
         }
 
-        if (!sender.hasPermission("vanillatweaks.reload")) {
+        if (!sender.hasPermission("teakstweaks.reload")) {
             sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
         }

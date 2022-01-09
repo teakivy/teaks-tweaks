@@ -42,7 +42,7 @@ public class TPACommand extends AbstractCommand {
         }
         Player player = (Player) sender;
 
-        if (!sender.hasPermission("vanillatweaks.tpa.use")) {
+        if (!sender.hasPermission("teakstweaks.tpa.use")) {
             sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
         }

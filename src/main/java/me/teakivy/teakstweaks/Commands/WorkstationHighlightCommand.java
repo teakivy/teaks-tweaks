@@ -29,7 +29,7 @@ public class WorkstationHighlightCommand extends AbstractCommand {
         }
 
 
-        if (!sender.hasPermission("vanillatweaks.workstationhighlights.execute")) {
+        if (!sender.hasPermission("teakstweaks.workstationhighlights.execute")) {
             sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
         }

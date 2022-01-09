@@ -20,7 +20,7 @@ public class Back implements Listener {
     public static HashMap<UUID, Location> backLoc = new HashMap<>();
 
     public static void tpBack(Player player) {
-        if (!player.hasPermission("vanillatweaks.back.teleport")) {
+        if (!player.hasPermission("teakstweaks.back.teleport")) {
             player.sendMessage(ErrorType.MISSING_PERMISSION.m());
             return;
         }

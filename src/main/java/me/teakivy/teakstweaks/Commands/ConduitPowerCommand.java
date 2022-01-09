@@ -27,7 +27,7 @@ public class ConduitPowerCommand extends AbstractCommand {
             return true;
         }
 
-        if (!sender.hasPermission("vanillatweaks.spectatorconduitpower.toggle")) {
+        if (!sender.hasPermission("teakstweaks.spectatorconduitpower.toggle")) {
             sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
         }

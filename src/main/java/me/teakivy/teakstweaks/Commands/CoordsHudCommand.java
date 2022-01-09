@@ -34,7 +34,7 @@ public class CoordsHudCommand extends AbstractCommand {
         if (sender instanceof Player) {
             Player player = (Player) sender;
             if (args[0].equalsIgnoreCase("toggle")) {
-                if (!player.hasPermission("vanillatweaks.coordshud.toggle")) {
+                if (!player.hasPermission("teakstweaks.coordshud.toggle")) {
                     sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                     return true;
                 }

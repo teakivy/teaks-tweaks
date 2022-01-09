@@ -40,7 +40,7 @@ public class GraveCommand extends AbstractCommand {
         Player player = (Player) sender;
 
         if (args.length < 1) {
-            if (!sender.hasPermission("vanillatweaks.grave.locate")) {
+            if (!sender.hasPermission("teakstweaks.grave.locate")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
@@ -58,7 +58,7 @@ public class GraveCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("locate")) {
-            if (!sender.hasPermission("vanillatweaks.grave.locate")) {
+            if (!sender.hasPermission("teakstweaks.grave.locate")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
@@ -76,7 +76,7 @@ public class GraveCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("key")) {
-            if (!sender.hasPermission("vanillatweaks.grave.key")) {
+            if (!sender.hasPermission("teakstweaks.grave.key")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
@@ -85,7 +85,7 @@ public class GraveCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("uninstall")) {
-            if (!sender.hasPermission("vanillatweaks.grave.uninstall")) {
+            if (!sender.hasPermission("teakstweaks.grave.uninstall")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }

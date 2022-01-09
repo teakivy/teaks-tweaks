@@ -39,7 +39,7 @@ public class TagGameCommand extends AbstractCommand {
 
 
             if (args[0].equalsIgnoreCase("uninstall")) {
-                if (!sender.hasPermission("vanillatweaks.taggame.uninstall")) {
+                if (!sender.hasPermission("teakstweaks.taggame.uninstall")) {
                     sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                     return true;
                 }
@@ -62,7 +62,7 @@ public class TagGameCommand extends AbstractCommand {
 
 
         if (args.length < 1) {
-            if (!sender.hasPermission("vanillatweaks.taggame.give")) {
+            if (!sender.hasPermission("teakstweaks.taggame.give")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }

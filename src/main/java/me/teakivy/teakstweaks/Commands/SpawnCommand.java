@@ -38,7 +38,7 @@ public class SpawnCommand extends AbstractCommand {
         Player player = (Player) sender;
 
 
-        if (!sender.hasPermission("vanillatweaks.spawn.teleport")) {
+        if (!sender.hasPermission("teakstweaks.spawn.teleport")) {
             sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
         }

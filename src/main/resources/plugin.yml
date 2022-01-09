@@ -8,239 +8,239 @@ description: A Plugin recreation of the Vanilla Tweaks datapacks!
 website: https://youtube.com/teakivy
 
 permissions:
-  vanillatweaks.*:
+  teakstweaks.*:
     description: All Vanilla Tweaks Permissions
     children:
-      vanillatweaks.reload: true
-      vanillatweaks.afk.*: true
-      vanillatweaks.back.*: true
-      vanillatweaks.spectatorconduitpower.*: true
-      vanillatweaks.coordshud.*: true
-      vanillatweaks.durabilityping.*: true
-      vanillatweaks.gem.*: true
-      vanillatweaks.grave.*: true
-      vanillatweaks.homes.*: true
-      vanillatweaks.itemaverages.*: true
-      vanillatweaks.killboats.*: true
-      vanillatweaks.spectatornightvision.*: true
-      vanillatweaks.netherportalcoords.*: true
-      vanillatweaks.realtimeclock.*: true
-      vanillatweaks.shrines.*: true
-      vanillatweaks.spawn.*: true
-      vanillatweaks.spawningspheres.*: true
-      vanillatweaks.taggame.*: true
-      vanillatweaks.test.*: true
-      vanillatweaks.tpa.*: true
-      vanillatweaks.workstationhighlights.*: true
+      teakstweaks.reload: true
+      teakstweaks.afk.*: true
+      teakstweaks.back.*: true
+      teakstweaks.spectatorconduitpower.*: true
+      teakstweaks.coordshud.*: true
+      teakstweaks.durabilityping.*: true
+      teakstweaks.gem.*: true
+      teakstweaks.grave.*: true
+      teakstweaks.homes.*: true
+      teakstweaks.itemaverages.*: true
+      teakstweaks.killboats.*: true
+      teakstweaks.spectatornightvision.*: true
+      teakstweaks.netherportalcoords.*: true
+      teakstweaks.realtimeclock.*: true
+      teakstweaks.shrines.*: true
+      teakstweaks.spawn.*: true
+      teakstweaks.spawningspheres.*: true
+      teakstweaks.taggame.*: true
+      teakstweaks.test.*: true
+      teakstweaks.tpa.*: true
+      teakstweaks.workstationhighlights.*: true
 
-  vanillatweaks.reload:
+  teakstweaks.reload:
     description: Reload Vanilla Tweaks
     default: op
 
-  vanillatweaks.afk.*:
+  teakstweaks.afk.*:
     description: All Vanilla Tweaks AFK Permissions
     children:
-      vanillatweaks.afk.toggle: true
-      vanillatweaks.afk.uninstall: true
-  vanillatweaks.afk.toggle:
+      teakstweaks.afk.toggle: true
+      teakstweaks.afk.uninstall: true
+  teakstweaks.afk.toggle:
     default: true
     description: Toggle AFK on yourself
-  vanillatweaks.afk.uninstall:
+  teakstweaks.afk.uninstall:
     description: Uninstall the AFK Pack
     default: op
 
-  vanillatweaks.back.*:
+  teakstweaks.back.*:
     description: All Vanilla Tweaks Back Permissions
     children:
-      vanillatweaks.back.teleport: true
-  vanillatweaks.back.teleport:
+      teakstweaks.back.teleport: true
+  teakstweaks.back.teleport:
     default: true
     description: Teleport back to your last location
 
-  vanillatweaks.spectatorconduitpower.*:
+  teakstweaks.spectatorconduitpower.*:
     description: All Vanilla Tweaks Conduit Power Permissions
     children:
-      vanillatweaks.conduitpower.toggle: true
-  vanillatweaks.spectatorconduitpower.toggle:
+      teakstweaks.conduitpower.toggle: true
+  teakstweaks.spectatorconduitpower.toggle:
     default: true
     description: Toggle Conduit Power
 
-  vanillatweaks.coordshud.*:
+  teakstweaks.coordshud.*:
     description: All Vanilla Tweaks Coordinates Hud Permissions
     children:
-      vanillatweaks.coordshud.toggle: true
-  vanillatweaks.coordshud.toggle:
+      teakstweaks.coordshud.toggle: true
+  teakstweaks.coordshud.toggle:
     default: true
     description: Toggle Coordinates Hud
 
-  vanillatweaks.durabilityping.*:
+  teakstweaks.durabilityping.*:
     description: All Vanilla Tweaks Durability Ping Permissions
     children:
-      vanillatweaks.durabilityping.preview: true
-      vanillatweaks.durabilityping.set: true
-  vanillatweaks.durabilityping.preview:
+      teakstweaks.durabilityping.preview: true
+      teakstweaks.durabilityping.set: true
+  teakstweaks.durabilityping.preview:
     description: Preview Durability Ping Options
     default: true
-  vanillatweaks.durabilityping.set:
+  teakstweaks.durabilityping.set:
     description: Set Durability Ping Options
     default: true
 
-  vanillatweaks.gem.*:
+  teakstweaks.gem.*:
     description: All Vanilla Tweaks Gem Permissions
     children:
-      vanillatweaks.gem.villager: true
-      vanillatweaks.gem.give: true
-  vanillatweaks.gem.villager:
+      teakstweaks.gem.villager: true
+      teakstweaks.gem.give: true
+  teakstweaks.gem.villager:
     description: Summon a gem villager
     default: op
-  vanillatweaks.gem.give:
+  teakstweaks.gem.give:
     description: Give yourself gems
     default: op
 
-  vanillatweaks.grave.*:
+  teakstweaks.grave.*:
     description: All Vanilla Tweaks Grave Permissions
     children:
-      vanillatweaks.grave.locate: true
-      vanillatweaks.grave.key: true
-      vanillatweaks.grave.uninstall: true
-  vanillatweaks.grave.locate:
+      teakstweaks.grave.locate: true
+      teakstweaks.grave.key: true
+      teakstweaks.grave.uninstall: true
+  teakstweaks.grave.locate:
     description: Locate your last grave
     default: true
-  vanillatweaks.grave.key:
+  teakstweaks.grave.key:
     description: Get a grave key
     default: op
-  vanillatweaks.grave.uninstall:
+  teakstweaks.grave.uninstall:
     description: Uninstall graves pack
     default: op
 
-  vanillatweaks.homes.*:
+  teakstweaks.homes.*:
     description: All Vanilla Tweaks Homes Permissions
     children:
-      vanillatweaks.homes.manage: true
-      vanillatweaks.homes.teleport: true
-  vanillatweaks.homes.manage:
+      teakstweaks.homes.manage: true
+      teakstweaks.homes.teleport: true
+  teakstweaks.homes.manage:
     description: Set & Delete Homes
     default: true
-  vanillatweaks.homes.teleport:
+  teakstweaks.homes.teleport:
     description: Teleport to a home
     default: true
 
-  vanillatweaks.itemaverages.*:
+  teakstweaks.itemaverages.*:
     description: All Vanilla Tweaks Item Averages Permissions
     children:
-      vanillatweaks.itemaverages.create: true
-      vanillatweaks.itemaverages.uninstall: true
-  vanillatweaks.itemaverages.create:
+      teakstweaks.itemaverages.create: true
+      teakstweaks.itemaverages.uninstall: true
+  teakstweaks.itemaverages.create:
     description: Create an Item Tracker
     default: true
-  vanillatweaks.itemaverages.uninstall:
+  teakstweaks.itemaverages.uninstall:
     description: Remove all loaded Item Trackers
     default: op
 
-  vanillatweaks.killboats.*:
+  teakstweaks.killboats.*:
     description: All Vanilla Tweaks Kill Boats Permissions
     children:
-      vanillatweaks.killboats.remove: true
-  vanillatweaks.killboats.remove:
+      teakstweaks.killboats.remove: true
+  teakstweaks.killboats.remove:
     description: Remove all loaded boats in a world
     default: op
 
-  vanillatweaks.spectatornightvision.*:
+  teakstweaks.spectatornightvision.*:
     description: All Vanilla Tweaks Night Vision Permissions
     children:
-      vanillatweaks.nightvision.toggle: true
-  vanillatweaks.spectatornightvision.toggle:
+      teakstweaks.nightvision.toggle: true
+  teakstweaks.spectatornightvision.toggle:
     description: Toggle Spectator Night Vision
     default: true
 
-  vanillatweaks.netherportalcoords.*:
+  teakstweaks.netherportalcoords.*:
     description: All Vanilla Tweaks Nether Portal Coords Permissions
     children:
-      vanillatweaks.netherportalcoords.execute: true
-  vanillatweaks.netherportalcoords.execute:
+      teakstweaks.netherportalcoords.execute: true
+  teakstweaks.netherportalcoords.execute:
     description: Execute the nether portal coords command
     default: true
 
-  vanillatweaks.realtimeclock.*:
+  teakstweaks.realtimeclock.*:
     description: All Vanilla Tweaks Real Time Clock Permissions
     children:
-      vanillatweaks.realtimeclock.execute: true
-  vanillatweaks.realtimeclock.execute:
+      teakstweaks.realtimeclock.execute: true
+  teakstweaks.realtimeclock.execute:
     description: Execute the real time clock command
     default: true
 
-  vanillatweaks.shrines.*:
+  teakstweaks.shrines.*:
     description: All Vanilla Tweaks Shrines Permissions
     children:
-      vanillatweaks.shrines.create: true
-      vanillatweaks.shrines.remove: true
-      vanillatweaks.shrines.uninstall: true
-  vanillatweaks.shrines.create:
+      teakstweaks.shrines.create: true
+      teakstweaks.shrines.remove: true
+      teakstweaks.shrines.uninstall: true
+  teakstweaks.shrines.create:
     description: Create a thunder shrine
     default: op
-  vanillatweaks.shrines.remove:
+  teakstweaks.shrines.remove:
     description: Remove a thunder shrine
     default: op
-  vanillatweaks.shrines.uninstall:
+  teakstweaks.shrines.uninstall:
     description: Remove all loaded thunder shrines
     default: op
 
-  vanillatweaks.spawn.*:
+  teakstweaks.spawn.*:
     description: All Vanilla Tweaks Spawn Permissions
     children:
-      vanillatweaks.spawn.teleport: true
-  vanillatweaks.spawn.teleport:
+      teakstweaks.spawn.teleport: true
+  teakstweaks.spawn.teleport:
     description: Teleport back to spawn
     default: true
 
-  vanillatweaks.spawningspheres.*:
+  teakstweaks.spawningspheres.*:
     description: All Vanilla Tweaks Spawning Spheres Permissions
     children:
-      vanillatweaks.spawningspheres.create: true
-      vanillatweaks.spawningspheres.remove: true
-      vanillatweaks.spawningspheres.teleport: true
-  vanillatweaks.spawningspheres.create:
+      teakstweaks.spawningspheres.create: true
+      teakstweaks.spawningspheres.remove: true
+      teakstweaks.spawningspheres.teleport: true
+  teakstweaks.spawningspheres.create:
     description: Create a spawning sphere
     default: op
-  vanillatweaks.spawningspheres.remove:
+  teakstweaks.spawningspheres.remove:
     description: Remove a spawning sphere
     default: op
-  vanillatweaks.spawningspheres.teleport:
+  teakstweaks.spawningspheres.teleport:
     description: Teleport to a spawning sphere
     default: op
 
-  vanillatweaks.taggame.*:
+  teakstweaks.taggame.*:
     description: All Vanilla Tweaks Tag Game Permissions
     children:
-      vanillatweaks.taggame.give: true
-      vanillatweaks.taggame.uninstall: true
-  vanillatweaks.taggame.give:
+      teakstweaks.taggame.give: true
+      teakstweaks.taggame.uninstall: true
+  teakstweaks.taggame.give:
     description: Give yourself the tag
     default: op
-  vanillatweaks.taggame.uninstall:
+  teakstweaks.taggame.uninstall:
     description: Remove the tag from all inventories
     default: op
 
-  vanillatweaks.test.*:
+  teakstweaks.test.*:
     description: All Vanilla Tweaks Test Permissions
     children:
-      vanillatweaks.test.execute: true
-  vanillatweaks.test.execute:
+      teakstweaks.test.execute: true
+  teakstweaks.test.execute:
     description: Execute the test command
     default: true
 
-  vanillatweaks.tpa.*:
+  teakstweaks.tpa.*:
     description: All Vanilla Tweaks TPA Permissions
     children:
-      vanillatweaks.tpa.use: true
-  vanillatweaks.tpa.use:
+      teakstweaks.tpa.use: true
+  teakstweaks.tpa.use:
     description: Use the TPA command
     default: true
 
-  vanillatweaks.workstationhighlights.*:
+  teakstweaks.workstationhighlights.*:
     description: All Vanilla Tweaks Workstation Hightlights Permissions
     children:
-      vanillatweaks.workstationhighlights.execute: true
-  vanillatweaks.workstationhighlights.execute:
+      teakstweaks.workstationhighlights.execute: true
+  teakstweaks.workstationhighlights.execute:
     description: Execute the workstation highlights command
     default: true

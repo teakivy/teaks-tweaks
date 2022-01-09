@@ -53,7 +53,7 @@ public class DurabilityPingCommand extends AbstractCommand {
                 player.sendMessage(MessageHandler.getCmdMessage("durabilityping", "missing-preview-selection"));
                 return true;
             }
-            if (!sender.hasPermission("vanillatweaks.durabilityping.preview")) {
+            if (!sender.hasPermission("teakstweaks.durabilityping.preview")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
@@ -84,7 +84,7 @@ public class DurabilityPingCommand extends AbstractCommand {
                 player.sendMessage(MessageHandler.getCmdMessage("durabilityping", "missing-set-selection"));
                 return true;
             }
-            if (!sender.hasPermission("vanillatweaks.durabilityping.set")) {
+            if (!sender.hasPermission("teakstweaks.durabilityping.set")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
