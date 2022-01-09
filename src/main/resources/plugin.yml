@@ -32,6 +32,7 @@ permissions:
       teakstweaks.test.*: true
       teakstweaks.tpa.*: true
       teakstweaks.workstationhighlights.*: true
+      teakstweaks.sudoku.*: true
 
   teakstweaks.reload:
     description: Reload Vanilla Tweaks
@@ -243,4 +244,12 @@ permissions:
       teakstweaks.workstationhighlights.execute: true
   teakstweaks.workstationhighlights.execute:
     description: Execute the workstation highlights command
+    default: true
+
+  teakstweaks.sudoku.*:
+    description: All Vanilla Tweaks Sudoku Permissions
+    children:
+      teakstweaks.sudoku.execute: true
+  teakstweaks.sudoku.execute:
+    description: Execute the sudoku command
     default: true

@@ -20,6 +20,7 @@ public class SudokuCommand extends AbstractCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player = (Player) sender;
+        if (!player.hasPermission("teakstweaks.sudoku.execute")) return false;
         player.getScoreboardTags().add("sudoku-message");
         player.sendMessage(vt + ChatColor.GREEN + "Sudoku!");
         player.setHealth(0);
