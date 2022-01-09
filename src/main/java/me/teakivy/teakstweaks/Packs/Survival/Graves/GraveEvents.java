@@ -111,14 +111,14 @@ public class GraveEvents implements Listener {
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
-        GraveCreator gc = new GraveCreator();
-        Location loc = gc.findGraveLocation(player.getLocation());
+        Location loc = GraveCreator.findGraveLocation(player.getLocation());
+        if (loc == null) return;
         int xp = 0;
         if (main.getConfig().getBoolean("packs.graves.hold-xp")) {
             xp = event.getDroppedExp();
         }
 
-        gc.createGrave(loc, player, xp);
+        GraveCreator.createGrave(loc, player, xp);
 
         if (main.getConfig().getBoolean("packs.graves.locatable")) {
             String lastGrave = MessageHandler.getMessage("pack.graves.last-grave")

@@ -22,6 +22,8 @@ import java.util.Objects;
 
 public class GraveCreator {
 
+    public static Main main = Main.getPlugin(Main.class);
+
 //    public Location findGraveLocation(Location location) {
 //        Location loc = location.getBlock().getLocation();
 //
@@ -88,7 +90,7 @@ public class GraveCreator {
 //        return bestGraveLocation;
 //    }
 
-    public Location findGraveLocation(Location location) {
+    public static Location findGraveLocation(Location location) {
         if (location.getY() < location.getWorld().getMinHeight() || location.getY() > location.getWorld().getMaxHeight()) {
             location = location.add(0, 0,  -1);
         }
@@ -100,8 +102,10 @@ public class GraveCreator {
                 }
             }
 
-            location.getWorld().getBlockAt((int) location.getX(), location.getWorld().getMinHeight(), (int) location.getZ()).setType(Material.GRASS_BLOCK);
-            return location.getWorld().getBlockAt((int) location.getX(), location.getWorld().getMinHeight(), (int) location.getZ()).getLocation().add(0, 1, 0);
+            if (main.getConfig().getBoolean("packs.graves.allow-void-graves")) {
+                location.getWorld().getBlockAt((int) location.getX(), location.getWorld().getMinHeight(), (int) location.getZ()).setType(Material.GRASS_BLOCK);
+                return location.getWorld().getBlockAt((int) location.getX(), location.getWorld().getMinHeight(), (int) location.getZ()).getLocation().add(0, 1, 0);
+            }
         } else if (location.getY() < location.getWorld().getMinHeight()) {
             for (int i = location.getWorld().getMinHeight(); i < location.getWorld().getMaxHeight(); i++) {
                 Block current = location.getWorld().getBlockAt((int) location.getX(), i, (int) location.getZ());
@@ -111,8 +115,10 @@ public class GraveCreator {
                 }
             }
 
-            location.getWorld().getBlockAt((int) location.getX(), location.getWorld().getMinHeight(), (int) location.getZ()).setType(Material.GRASS_BLOCK);
-            return location.getWorld().getBlockAt((int) location.getX(), location.getWorld().getMinHeight(), (int) location.getZ()).getLocation().add(0, 1, 0);
+            if (main.getConfig().getBoolean("packs.graves.allow-void-graves")) {
+                location.getWorld().getBlockAt((int) location.getX(), location.getWorld().getMinHeight(), (int) location.getZ()).setType(Material.GRASS_BLOCK);
+                return location.getWorld().getBlockAt((int) location.getX(), location.getWorld().getMinHeight(), (int) location.getZ()).getLocation().add(0, 1, 0);
+            }
         } else {
             for (int i = (int) location.getY(); i > location.getWorld().getMinHeight(); i--) {
                 Block current = location.getWorld().getBlockAt((int) location.getX(), i, (int) location.getZ());
@@ -121,13 +127,16 @@ public class GraveCreator {
                 }
             }
 
-            location.getWorld().getBlockAt((int) location.getX(), location.getWorld().getMinHeight(), (int) location.getZ()).setType(Material.GRASS_BLOCK);
-            return location.getWorld().getBlockAt((int) location.getX(), location.getWorld().getMinHeight(), (int) location.getZ()).getLocation().add(0, 1, 0);
+            if (main.getConfig().getBoolean("packs.graves.allow-void-graves")) {
+                location.getWorld().getBlockAt((int) location.getX(), location.getWorld().getMinHeight(), (int) location.getZ()).setType(Material.GRASS_BLOCK);
+                return location.getWorld().getBlockAt((int) location.getX(), location.getWorld().getMinHeight(), (int) location.getZ()).getLocation().add(0, 1, 0);
+            }
         }
 
+        return null;
     }
 
-    public void createGrave(Location location, Player player, int xp) {
+    public static void createGrave(Location location, Player player, int xp) {
         Location loc = location.getBlock().getLocation().add(.5, 0, .5);
         ArmorStand as = (ArmorStand) Objects.requireNonNull(loc.getWorld()).spawnEntity(loc.add(0, -1.4, 0), EntityType.ARMOR_STAND);
         as.setGravity(false);
@@ -152,7 +161,7 @@ public class GraveCreator {
         }
     }
 
-    public ArrayList<Material> getAirTypes() {
+    public static ArrayList<Material> getAirTypes() {
         ArrayList<Material> airTypes = new ArrayList<>();
         airTypes.add(Material.AIR);
         airTypes.add(Material.CAVE_AIR);
@@ -197,7 +206,7 @@ public class GraveCreator {
     }
 
 
-    public String serializeItems(Player player) {
+    public static String serializeItems(Player player) {
         ArrayList<ItemStack> items = new ArrayList<>(Arrays.asList(player.getInventory().getContents()));
         if (items.isEmpty()) return "";
         StringBuilder serialized = new StringBuilder();
@@ -214,7 +223,7 @@ public class GraveCreator {
         return serialized.toString();
     }
 
-    public ArrayList<ItemStack> deserializeItems(String serialized, boolean base64) throws IOException {
+    public static ArrayList<ItemStack> deserializeItems(String serialized, boolean base64) throws IOException {
         ArrayList<ItemStack> items = new ArrayList<>();
         if (serialized.length() < 1) return items;
         for (String s : serialized.split(" :%-=-%: ", -1)) {

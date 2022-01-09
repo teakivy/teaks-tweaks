@@ -187,6 +187,8 @@ packs:
     locatable: true
     # Whether or not all players can take from a players grave
     allow-robbing: false
+    # Whether or not to allow graves to be placed above the void
+    allow-void-graves: true
 
   # Custom Nether Portals
   # Ignite nether portals of any size or shape you like, or using crying obsidian in the portal frame if enabled.
