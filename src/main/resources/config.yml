@@ -180,6 +180,7 @@ packs:
   # and crouch to make it so only you can pick them up.
   # Get a grave key to unlock any grave: `/grave key`
   # Locate your last grave (if locatable is on): `/grave locate` or `/grave`
+  # NOTE: If you are using EssentialsX back command, you must have `register-back-in-listener` set to true in the Essentials config.yml
   graves:
     enabled: false
     # Whether or not graves hold the players xp
