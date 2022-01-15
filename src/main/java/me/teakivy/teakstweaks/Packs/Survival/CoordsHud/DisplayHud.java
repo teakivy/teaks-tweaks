@@ -21,76 +21,78 @@ public class DisplayHud {
     }
 
     public static void showHud(Player player) {
-        String msg = ChatColor.translateAlternateColorCodes('&', hudMessage);
-        msg = msg.replace("%x%", ((int) player.getLocation().getX()) + "");
-        msg = msg.replace("%y%", ((int) player.getLocation().getY()) + "");
-        msg = msg.replace("%z%", ((int) player.getLocation().getZ()) + "");
+        new Thread(() -> {
+            String msg = ChatColor.translateAlternateColorCodes('&', hudMessage);
+            msg = msg.replace("%x%", ((int) player.getLocation().getX()) + "");
+            msg = msg.replace("%y%", ((int) player.getLocation().getY()) + "");
+            msg = msg.replace("%z%", ((int) player.getLocation().getZ()) + "");
 
-        Location playerLocation = player.getLocation();
-        float playerDirection = playerLocation.getYaw();
+            Location playerLocation = player.getLocation();
+            float playerDirection = playerLocation.getYaw();
 
-        msg = msg.replace("%direction%", getDirection(playerDirection));
-        msg = msg.replace("%direction_lower%", getDirectionLower(playerDirection));
-        msg = msg.replace("%direction_upper%", getDirectionUpper(playerDirection));
+            msg = msg.replace("%direction%", getDirection(playerDirection));
+            msg = msg.replace("%direction_lower%", getDirectionLower(playerDirection));
+            msg = msg.replace("%direction_upper%", getDirectionUpper(playerDirection));
 
-        msg = msg.replace("%direction_abbreviated%", getDirectionAbbr(playerDirection));
-        msg = msg.replace("%direction_abbreviated_lower%", getDirectionAbbrLower(playerDirection));
-        msg = msg.replace("%direction_abbreviated_upper%", getDirectionAbbrUpper(playerDirection));
-
-
-        msg = msg.replace("%direction_two_point%", get2PointDirection(playerDirection));
-        msg = msg.replace("%direction_two_point_lower%", get2PointDirectionLower(playerDirection));
-        msg = msg.replace("%direction_two_point_upper%", get2PointDirectionUpper(playerDirection));
-
-        msg = msg.replace("%direction_abbreviated_two_point%", get2PointDirectionAbbr(playerDirection));
-        msg = msg.replace("%direction_abbreviated_two_point_lower%", get2PointDirectionAbbrLower(playerDirection));
-        msg = msg.replace("%direction_abbreviated_two_point_upper%", get2PointDirectionAbbrUpper(playerDirection));
+            msg = msg.replace("%direction_abbreviated%", getDirectionAbbr(playerDirection));
+            msg = msg.replace("%direction_abbreviated_lower%", getDirectionAbbrLower(playerDirection));
+            msg = msg.replace("%direction_abbreviated_upper%", getDirectionAbbrUpper(playerDirection));
 
 
-        msg = msg.replace("%world_time%", getWorldTime());
-        msg = msg.replace("%world_time_12hr%", getWorldTime12Hr());
+            msg = msg.replace("%direction_two_point%", get2PointDirection(playerDirection));
+            msg = msg.replace("%direction_two_point_lower%", get2PointDirectionLower(playerDirection));
+            msg = msg.replace("%direction_two_point_upper%", get2PointDirectionUpper(playerDirection));
 
-        msg = msg.replace("%am_pm%", getWorldTimeAmPm());
-        msg = msg.replace("%am_pm_lower%", getWorldTimeAmPmLower());
-        msg = msg.replace("%am_pm_upper%", getWorldTimeAmPmUpper());
+            msg = msg.replace("%direction_abbreviated_two_point%", get2PointDirectionAbbr(playerDirection));
+            msg = msg.replace("%direction_abbreviated_two_point_lower%", get2PointDirectionAbbrLower(playerDirection));
+            msg = msg.replace("%direction_abbreviated_two_point_upper%", get2PointDirectionAbbrUpper(playerDirection));
 
-        msg = msg.replace("%yaw%", getYaw(player));
-        msg = msg.replace("%pitch%", getPitch(player));
 
-        msg = msg.replace("%biome%", getBiome(player));
-        msg = msg.replace("%biome_upper%", getBiomeUpper(player));
-        msg = msg.replace("%biome_lower%", getBiomeLower(player));
+            msg = msg.replace("%world_time%", getWorldTime());
+            msg = msg.replace("%world_time_12hr%", getWorldTime12Hr());
 
-        msg = msg.replace("%slime_chunk%", getSlimeChunk(player));
-        msg = msg.replace("%slime_chunk_lower%", getSlimeChunkLower(player));
-        msg = msg.replace("%slime_chunk_upper%", getSlimeChunkUpper(player));
+            msg = msg.replace("%am_pm%", getWorldTimeAmPm());
+            msg = msg.replace("%am_pm_lower%", getWorldTimeAmPmLower());
+            msg = msg.replace("%am_pm_upper%", getWorldTimeAmPmUpper());
 
-        msg = msg.replace("%item_durability%", getDurability(player));
-        msg = msg.replace("%item_durability_main_hand%", getDurabilityMainHand(player));
-        msg = msg.replace("%item_durability_off_hand%", getDurabilityOffHand(player));
+            msg = msg.replace("%yaw%", getYaw(player));
+            msg = msg.replace("%pitch%", getPitch(player));
 
-        msg = msg.replace("%item_durability_helmet%", getDurabilityHelmet(player));
-        msg = msg.replace("%item_durability_chestplate%", getDurabilityChestplate(player));
-        msg = msg.replace("%item_durability_leggings%", getDurabilityLeggings(player));
-        msg = msg.replace("%item_durability_boots%", getDurabilityBoots(player));
+            msg = msg.replace("%biome%", getBiome(player));
+            msg = msg.replace("%biome_upper%", getBiomeUpper(player));
+            msg = msg.replace("%biome_lower%", getBiomeLower(player));
 
-        msg = msg.replace("%target_block%", getTargetBlock(player));
-        msg = msg.replace("%target_block_lower%", getTargetBlockLower(player));
-        msg = msg.replace("%target_block_upper%", getTargetBlockUpper(player));
+            msg = msg.replace("%slime_chunk%", getSlimeChunk(player));
+            msg = msg.replace("%slime_chunk_lower%", getSlimeChunkLower(player));
+            msg = msg.replace("%slime_chunk_upper%", getSlimeChunkUpper(player));
 
-        msg = msg.replace("%target_block_x%", getTargetBlockX(player));
-        msg = msg.replace("%target_block_y%", getTargetBlockY(player));
-        msg = msg.replace("%target_block_z%", getTargetBlockZ(player));
+            msg = msg.replace("%item_durability%", getDurability(player));
+            msg = msg.replace("%item_durability_main_hand%", getDurabilityMainHand(player));
+            msg = msg.replace("%item_durability_off_hand%", getDurabilityOffHand(player));
 
-        msg = msg.replace("%world%", getWorld(player));
-        msg = msg.replace("%world_lower%", getWorldLower(player));
-        msg = msg.replace("%world_upper%", getWorldUpper(player));
+            msg = msg.replace("%item_durability_helmet%", getDurabilityHelmet(player));
+            msg = msg.replace("%item_durability_chestplate%", getDurabilityChestplate(player));
+            msg = msg.replace("%item_durability_leggings%", getDurabilityLeggings(player));
+            msg = msg.replace("%item_durability_boots%", getDurabilityBoots(player));
 
-        msg = msg.replace("%facing%", getFacingXZ(playerDirection));
-        msg = msg.replace("%facing_lower%", getFacingXZLower(playerDirection));
-        msg = msg.replace("%facing_upper%", getFacingXZUpper(playerDirection));
+            msg = msg.replace("%target_block%", getTargetBlock(player));
+            msg = msg.replace("%target_block_lower%", getTargetBlockLower(player));
+            msg = msg.replace("%target_block_upper%", getTargetBlockUpper(player));
 
-        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(msg));
+            msg = msg.replace("%target_block_x%", getTargetBlockX(player));
+            msg = msg.replace("%target_block_y%", getTargetBlockY(player));
+            msg = msg.replace("%target_block_z%", getTargetBlockZ(player));
+
+            msg = msg.replace("%world%", getWorld(player));
+            msg = msg.replace("%world_lower%", getWorldLower(player));
+            msg = msg.replace("%world_upper%", getWorldUpper(player));
+
+            msg = msg.replace("%facing%", getFacingXZ(playerDirection));
+            msg = msg.replace("%facing_lower%", getFacingXZLower(playerDirection));
+            msg = msg.replace("%facing_upper%", getFacingXZUpper(playerDirection));
+
+            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(msg));
+        }).start();
     }
 
     public static String get2PointDirection(float direction) {

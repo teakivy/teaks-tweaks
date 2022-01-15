@@ -34,17 +34,18 @@ public class HUD implements Listener {
         if (taskID != -1) return;
         running = true;
         DisplayHud.init();
-        taskID = Bukkit.getScheduler().runTaskTimer(main, () -> {
-            for (UUID uuid : Main.chEnabled) {
-                Player player = Bukkit.getPlayer(uuid);
-                if (player == null) continue;
-                if (player.isOnline()) DisplayHud.showHud(player);
-            }
-            if (!running) {
-                Bukkit.getScheduler().cancelTask(taskID);
-                taskID = -1;
-            }
-        }, 1, 1).getTaskId();
+        new Thread(() -> {
+            taskID = Bukkit.getScheduler().runTaskTimer(main, () -> {
+                for (UUID uuid : Main.chEnabled) {
+                    Player player = Bukkit.getPlayer(uuid);
+                    if (player == null) continue;
+                    if (player.isOnline()) DisplayHud.showHud(player);
+                }
+                if (!running) {
+                    Bukkit.getScheduler().cancelTask(taskID);
+                    taskID = -1;
+                }
+        }, 1, 1).getTaskId();}).start();
     }
 
     public static void stopHUD() {
