@@ -1,25 +1,22 @@
 package me.teakivy.teakstweaks.Packs.Survival.UnlockAllRecipes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.Keyed;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Recipe;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class UnlockRecipes implements Listener {
-
-    Main main = Main.getPlugin(Main.class);
-
+public class UnlockRecipes extends BasePack {
     ArrayList<NamespacedKey> recipes = new ArrayList<>();
 
-    public void register() {
+    public UnlockRecipes() {
+        super("Unlock All Recipes", "unlock-all-recipes");
+
         recipes.clear();
         Iterator<Recipe> it = main.getServer().recipeIterator();
         while (it.hasNext()) {
@@ -36,10 +33,6 @@ public class UnlockRecipes implements Listener {
         for (NamespacedKey recipe : recipes) {
             player.discoverRecipe(recipe);
         }
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

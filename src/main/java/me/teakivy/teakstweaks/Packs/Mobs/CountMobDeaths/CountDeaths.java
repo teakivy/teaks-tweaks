@@ -1,26 +1,25 @@
 package me.teakivy.teakstweaks.Packs.Mobs.CountMobDeaths;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.Objects;
 
-public class CountDeaths implements Listener {
+public class CountDeaths extends BasePack {
 
-    Main main = Main.getPlugin(Main.class);
+    public CountDeaths() {
+        super("Count Mob Deaths", "count-mob-deaths");
+    }
 
     Objective objective;
 
     @EventHandler
     public void onDeath(EntityDeathEvent event) {
-        if (!main.getConfig().getBoolean("packs.count-mob-deaths.enabled")) return;
         if (event.getEntity().getType() == EntityType.PLAYER) return;
         if (event.getEntity().getCustomName() == null) return;
 
@@ -35,10 +34,6 @@ public class CountDeaths implements Listener {
 
         String name = ChatColor.YELLOW + event.getEntity().getName();
         objective.getScore(name).setScore(objective.getScore(name).getScore() + 1);
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

@@ -1,21 +1,21 @@
 package me.teakivy.teakstweaks.Packs.Survival.WorkstationHighlights;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class Highlighter implements Listener {
+public class Highlighter extends BasePack {
 
-    static Main main = Main.getPlugin(Main.class);
+    public Highlighter() {
+        super("Workstation Highlights", "workstation-highlights");
+    }
 
     @EventHandler
     public void onDamage(EntityDamageEvent event) {
@@ -42,11 +42,7 @@ public class Highlighter implements Listener {
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
             entity.remove();
-        }, (long) glowLength);
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
+        }, glowLength);
     }
 
 }

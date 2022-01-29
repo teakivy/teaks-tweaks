@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.Packs.TeaksTweaks.EditSigns;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
@@ -9,8 +10,6 @@ import org.bukkit.block.TileState;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -18,9 +17,23 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
-public class EditSigns implements Listener {
+import java.util.logging.Level;
 
-    Main main = Main.getPlugin(Main.class);
+public class EditSigns extends BasePack {
+
+    public EditSigns() {
+        super("Editable Signs", "editable-signs");
+    }
+
+    @Override
+    public void init() {
+        String ver = Bukkit.getServer().getVersion().toLowerCase();
+        if (ver.contains("paper")) {
+            super.init();
+        } else {
+            main.getLogger().log(Level.SEVERE, "Editable signs are only supported on Paper at the moment.");
+        }
+    }
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
@@ -36,7 +49,7 @@ public class EditSigns implements Listener {
                 if (container.has(new NamespacedKey(main, "tweaks_sign_owner"), PersistentDataType.STRING)) {
                     String owner = container.get(new NamespacedKey(main, "tweaks_sign_owner"), PersistentDataType.STRING);
                     if (owner != null) {
-                        if (main.getConfig().getBoolean("packs.editable-signs.owner-only")) {
+                        if (getConfig().getBoolean("owner-only")) {
                             if (!owner.equals(event.getPlayer().getUniqueId().toString())) return;
                         }
                     }
@@ -51,9 +64,6 @@ public class EditSigns implements Listener {
 
     }
 
-    public static void init(Main main) {
-
-    }
     private boolean isInteractingWithAir(Player player) {
         try {
             ItemStack mainHand = player.getEquipment().getItemInMainHand();
@@ -64,9 +74,6 @@ public class EditSigns implements Listener {
             ItemStack item = player.getItemInHand();
             return item == null || item.getType().equals(Material.AIR);
         }
-    }
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
     @EventHandler
@@ -81,8 +88,5 @@ public class EditSigns implements Listener {
         }
 
     }
-
-
-
 
 }

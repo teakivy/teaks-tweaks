@@ -1,21 +1,21 @@
 package me.teakivy.teakstweaks.Packs.TeaksTweaks.BetterFoliage;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class BetterFoliage implements Listener {
+public class BetterFoliage extends BasePack {
 
-    static Main main = Main.getPlugin(Main.class);
+    public BetterFoliage() {
+        super("Better Foliage", "better-foliage");
+    }
 
     @EventHandler
     public void interactEvent(PlayerInteractEvent event) {
@@ -27,11 +27,11 @@ public class BetterFoliage implements Listener {
         if (player.getInventory().getItemInMainHand().getType() == Material.AIR) return;
         ItemStack item = player.getInventory().getItemInMainHand();
 
-        if (block.getType() == Material.DIRT && main.getConfig().getBoolean("packs.better-foliage.dirt-to-grass.enabled")) {
-            double wheatChance = main.getConfig().getDouble("packs.better-foliage.dirt-to-grass.chance.wheat-seeds");
-            double melonChance = main.getConfig().getDouble("packs.better-foliage.dirt-to-grass.chance.melon-seeds");
-            double pumpkinChance = main.getConfig().getDouble("packs.better-foliage.dirt-to-grass.chance.pumpkin-seeds");
-            double beetrootChance = main.getConfig().getDouble("packs.better-foliage.dirt-to-grass.chance.beetroot-seeds");
+        if (block.getType() == Material.DIRT && getConfig().getBoolean("dirt-to-grass.enabled")) {
+            double wheatChance = getConfig().getDouble("dirt-to-grass.chance.wheat-seeds");
+            double melonChance = getConfig().getDouble("dirt-to-grass.chance.melon-seeds");
+            double pumpkinChance = getConfig().getDouble("dirt-to-grass.chance.pumpkin-seeds");
+            double beetrootChance = getConfig().getDouble("dirt-to-grass.chance.beetroot-seeds");
 
             double chance;
 
@@ -47,7 +47,6 @@ public class BetterFoliage implements Listener {
                     break;
                 case BEETROOT_SEEDS:
                     chance = beetrootChance;
-                    break;
                 default:
                     return;
             }
@@ -63,7 +62,7 @@ public class BetterFoliage implements Listener {
             }
         }
 
-        if (main.getConfig().getBoolean("packs.better-foliage.foliage-shearing")) {
+        if (getConfig().getBoolean("foliage-shearing")) {
             if (block.getType() == Material.LARGE_FERN && item.getType() == Material.SHEARS) {
                 block.breakNaturally(new ItemStack(Material.SHEARS));
             }
@@ -76,9 +75,5 @@ public class BetterFoliage implements Listener {
 
     public boolean getRandomFromChance(double chance) {
         return Math.random() < chance;
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 }

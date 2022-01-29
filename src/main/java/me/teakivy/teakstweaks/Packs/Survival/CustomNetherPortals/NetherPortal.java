@@ -1,14 +1,12 @@
 package me.teakivy.teakstweaks.Packs.Survival.CustomNetherPortals;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.*;
 import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.Orientable;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockIgniteEvent;
 import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
@@ -19,9 +17,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class NetherPortal implements Listener {
-
-    Main main = Main.getPlugin(Main.class);
+public class NetherPortal extends BasePack {
 
     int portalMaxWidth = 23;
     int portalMaxHeight = 23;
@@ -37,6 +33,10 @@ public class NetherPortal implements Listener {
     BlockFace downFace;
     String portalAxis;
 
+    public NetherPortal() {
+        super("Custom Nether Portals", "custom-nether-portals");
+    }
+
     public void ArbitraryPortals() {
         this.validPortalBlocks = this.validPortalBlocksMap.keySet(0);
         this.checkedBlocksMap = new ConcurrentHashMap();
@@ -44,13 +44,15 @@ public class NetherPortal implements Listener {
         this.upFace = BlockFace.UP;
         this.downFace = BlockFace.DOWN;
 
-        this.portalMaxWidth = main.getConfig().getInt("packs.custom-nether-portals.max-portal-width");
-        this.portalMaxHeight = main.getConfig().getInt("packs.custom-nether-portals.max-portal-height");
+        this.portalMaxWidth = getConfig().getInt("max-portal-width");
+        this.portalMaxHeight = getConfig().getInt("max-portal-height");
     }
 
-    public void registerThis() {
+    public void init() {
+        super.init();
+
         this.portalFrameMaterials.add(Material.OBSIDIAN);
-        if (main.getConfig().getBoolean("packs.custom-nether-portals.allow-crying-obsidian")) {
+        if (getConfig().getBoolean("allow-crying-obsidian")) {
             this.portalFrameMaterials.add(Material.CRYING_OBSIDIAN);
         }
         this.endBiomes.add(Biome.END_BARRENS);
@@ -100,7 +102,7 @@ public class NetherPortal implements Listener {
                         }
                     }
 
-                    if (buildPortal && this.validPortalBlocks.size() >= main.getConfig().getInt("packs.custom-nether-portals.minumum-portal-size")) {
+                    if (buildPortal && this.validPortalBlocks.size() >= getConfig().getInt("minumum-portal-size")) {
                         int xMax = block.getX();
                         int zMax = block.getZ();
                         int yMax = block.getY();
@@ -197,10 +199,5 @@ public class NetherPortal implements Listener {
     public boolean isObsidian(Block block) {
         return block != null && this.portalFrameMaterials.contains(block.getType());
     }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
-    }
-
 
 }

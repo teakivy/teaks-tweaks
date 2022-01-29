@@ -1,14 +1,12 @@
 package me.teakivy.teakstweaks.Packs.Experimental.ConfettiCreepers;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
@@ -17,9 +15,11 @@ import org.bukkit.inventory.meta.FireworkMeta;
 
 import java.util.Random;
 
-public class ConfettiCreeper implements Listener {
+public class ConfettiCreeper extends BasePack {
 
-    Main main = Main.getPlugin(Main.class);
+    public ConfettiCreeper() {
+        super("Confetti Creeper", "confetti-creeper");
+    }
 
     @EventHandler
     public void onPrime(ExplosionPrimeEvent event) {
@@ -27,7 +27,7 @@ public class ConfettiCreeper implements Listener {
         if (entity.getType() != EntityType.CREEPER) return;
         if (entity.getScoreboardTags().contains("vt_confetti_true") || entity.getScoreboardTags().contains("vt_confetti_false")) return;
 
-        int chance = main.getConfig().getInt("packs.confetti-creepers.confetti-chance");
+        int chance = getConfig().getInt("confetti-chance");
         boolean confetti = randomChance(chance);
 
         if (!confetti) {
@@ -35,7 +35,7 @@ public class ConfettiCreeper implements Listener {
             return;
         }
         entity.addScoreboardTag("vt_confetti_true");
-        if (!main.getConfig().getBoolean("packs.confetti-creepers.do-block-damage")) {
+        if (!getConfig().getBoolean("do-block-damage")) {
             event.setRadius(0);
         }
 
@@ -75,11 +75,11 @@ public class ConfettiCreeper implements Listener {
     @EventHandler public void onExplosionDamage(EntityDamageByEntityEvent event) {
         if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) {
             if (event.getDamager().getScoreboardTags().contains("vt_confetti_true")) {
-                if (main.getConfig().getInt("packs.confetti-creepers.entity-damage-reduction") > 1) {
-                    double damage = (event.getDamage() * (100 - main.getConfig().getInt("packs.confetti-creepers.entity-damage-reduction"))) * .01;
+                if (getConfig().getInt("entity-damage-reduction") > 1) {
+                    double damage = (event.getDamage() * (100 - getConfig().getInt("entity-damage-reduction"))) * .01;
                     event.setDamage(damage);
                     event.setCancelled(true);
-                } else if (main.getConfig().getInt("packs.confetti-creepers.entity-damage-reduction") > 99) {
+                } else if (getConfig().getInt("entity-damage-reduction") > 99) {
                     event.setDamage(0);
                     event.setCancelled(true);
                 }
@@ -95,10 +95,6 @@ public class ConfettiCreeper implements Listener {
         int randInt = rand.nextInt(100) + 1;
 
         return randInt <= percent;
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

@@ -1,8 +1,7 @@
 package me.teakivy.teakstweaks.Packs.Utilities.CustomVillagerShops;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
-import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -13,8 +12,6 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -23,17 +20,18 @@ import org.bukkit.inventory.MerchantRecipe;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomVillager implements Listener {
+public class CustomVillager extends BasePack {
 
-    Main main = Main.getPlugin(Main.class);
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
+    public CustomVillager() {
+        super("Custom Villager Shops", "custom-villager-shops");
+    }
 
     @EventHandler
     public void onSneak(PlayerToggleSneakEvent event) {
         Player player = event.getPlayer();
         if (!event.isSneaking()) return;
         if (player.getGameMode() != GameMode.CREATIVE) return;
-        if (main.getConfig().getBoolean("packs.custom-villager-shops.require-op") && !player.isOp()) return;
+        if (getConfig().getBoolean("require-op") && !player.isOp()) return;
 
         Entity nearest = getNearestVillager(player);
         if (nearest == null) return;
@@ -97,10 +95,6 @@ public class CustomVillager implements Listener {
     private static void playHappyParticle(Location loc) {
         if (loc.getWorld() == null) return;
         loc.getWorld().spawnParticle(Particle.VILLAGER_HAPPY, loc.add(0, 1, 0), 1, .5, .5, .5, .1);
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

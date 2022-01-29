@@ -1,15 +1,21 @@
 package me.teakivy.teakstweaks.Packs.Survival.TrackRawStatistics;
 
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.Bukkit;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.Objects;
 
-public class RawStats {
+public class RawStats extends BasePack {
     Scoreboard sb = Objects.requireNonNull(Bukkit.getScoreboardManager()).getMainScoreboard();
 
-    public void register() {
+    public RawStats() {
+        super("Track Raw Statistics", "track-raw-statistics");
+    }
+
+    public void init() {
+        super.init();
         if (sb == null) sb = Objects.requireNonNull(Bukkit.getScoreboardManager()).getMainScoreboard();
         registerStat( "ts_Deaths", "deathCount", "Deaths");
         registerStat( "ts_KillCount", "playerKillCount", "Kill Count");

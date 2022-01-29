@@ -1,22 +1,21 @@
 package me.teakivy.teakstweaks.Packs.Mobs.AntiCreeperGreif;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 
-public class AntiCreeper implements Listener {
+public class AntiCreeper extends BasePack {
 
-    static Main main = Main.getPlugin(Main.class);
+    public AntiCreeper() {
+        super("Anti Creeper Grief", "anti-creeper-grief");
+    }
 
     @EventHandler
     public void onExplosion(EntityExplodeEvent event) {
-        if (!main.getConfig().getBoolean("packs.anti-creeper-grief.enabled")) return;
         Entity entity = event.getEntity();
         if (entity.getType().equals(EntityType.CREEPER)) {
             event.blockList().clear();
@@ -25,7 +24,6 @@ public class AntiCreeper implements Listener {
 
     @EventHandler
     public void onExplosionDamage(EntityDamageByEntityEvent event) {
-        if (!main.getConfig().getBoolean("packs.anti-creeper-grief.enabled")) return;
         EntityDamageEvent.DamageCause damageCause = event.getCause();
 
         if (damageCause == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) {
@@ -33,10 +31,6 @@ public class AntiCreeper implements Listener {
                 event.setCancelled(true);
             }
         }
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

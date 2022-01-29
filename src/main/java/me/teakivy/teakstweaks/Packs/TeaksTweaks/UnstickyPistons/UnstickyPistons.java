@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.Packs.TeaksTweaks.UnstickyPistons;
 
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -9,8 +10,6 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
@@ -19,7 +18,11 @@ import org.bukkit.util.Vector;
 
 import java.util.Random;
 
-public class UnstickyPistons implements Listener {
+public class UnstickyPistons extends BasePack {
+
+    public UnstickyPistons() {
+        super("Unsticky Pistons", "unsticky-pistons");
+    }
 
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
@@ -73,10 +76,6 @@ public class UnstickyPistons implements Listener {
         Random rand = new Random();
         if (rand.nextInt(100) < dmgTop) return 1;
         return 0;
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

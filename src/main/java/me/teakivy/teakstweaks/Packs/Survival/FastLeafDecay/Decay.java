@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.Packs.Survival.FastLeafDecay;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
@@ -9,8 +9,6 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.type.Leaves;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.LeavesDecayEvent;
 
@@ -19,12 +17,16 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Decay implements Listener {
+public class Decay extends BasePack {
 
     // Code By: @StarTux on Github
     // Couldn't find where to contact you
     // If you have any issues with this, DM me @TeakIvyYT on Twitter
     // Thanks!
+
+    public Decay() {
+        super("Fast Leaf Decay", "fast-leaf-decay");
+    }
 
     private final List<Block> scheduledBlocks = new ArrayList<>();
     private static final List<BlockFace> NEIGHBORS = Arrays
@@ -32,17 +34,15 @@ public class Decay implements Listener {
                     BlockFace.NORTH, BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST,
                     BlockFace.DOWN);
 
-    Main main = Main.getPlugin(Main.class);
-
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
-        onBlockRemove(event.getBlock(), main.getConfig().getLong("packs.fast-leaf-decay.break-delay"));
+        onBlockRemove(event.getBlock(), getConfig().getLong("break-delay"));
     }
 
     @EventHandler
     public void onLeavesDecay(LeavesDecayEvent event) {
-        onBlockRemove(event.getBlock(), main.getConfig().getLong("packs.fast-leaf-decay.decay-delay"));
+        onBlockRemove(event.getBlock(), getConfig().getLong("decay-delay"));
     }
 
 
@@ -60,7 +60,7 @@ public class Decay implements Listener {
             Leaves leaves = (Leaves) block.getBlockData();
             if (leaves.isPersistent()) continue;
             if (scheduledBlocks.contains(block)) continue;
-            if (main.getConfig().getBoolean("packs.fast-leaf-decay.one-by-one")) {
+            if (getConfig().getBoolean("one-by-one")) {
                 if (scheduledBlocks.isEmpty()) {
                     main.getServer().getScheduler().runTaskLater(main, this::decayOne, delay);
                 }
@@ -82,14 +82,14 @@ public class Decay implements Listener {
         LeavesDecayEvent event = new LeavesDecayEvent(block);
         main.getServer().getPluginManager().callEvent(event);
         if (event.isCancelled()) return false;
-        if (main.getConfig().getBoolean("packs.fast-leaf-decay.spawn-particles")) {
+        if (getConfig().getBoolean("spawn-particles")) {
             block.getWorld()
                     .spawnParticle(Particle.BLOCK_DUST,
                             block.getLocation().add(0.5, 0.5, 0.5),
                             8, 0.2, 0.2, 0.2, 0,
                             block.getType().createBlockData());
         }
-        if (main.getConfig().getBoolean("packs.fast-leaf-decay.play-sound")) {
+        if (getConfig().getBoolean("play-sound")) {
             block.getWorld().playSound(block.getLocation(),
                     Sound.BLOCK_GRASS_BREAK,
                     SoundCategory.BLOCKS, 0.05f, 1.2f);
@@ -105,13 +105,9 @@ public class Decay implements Listener {
             decayed = decay(block); // Will remove block from list.
         } while (!decayed);
         if (!scheduledBlocks.isEmpty()) {
-            long delay = main.getConfig().getLong("packs.fast-leaf-decay.decay-delay");
+            long delay = getConfig().getLong("decay-delay");
             if (delay <= 0) delay = 1L;
             main.getServer().getScheduler().runTaskLater(main, this::decayOne, delay);
         }
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 }

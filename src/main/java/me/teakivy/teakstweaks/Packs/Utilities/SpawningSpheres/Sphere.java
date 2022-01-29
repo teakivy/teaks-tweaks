@@ -1,13 +1,11 @@
 package me.teakivy.teakstweaks.Packs.Utilities.SpawningSpheres;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
 import org.bukkit.*;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -17,26 +15,26 @@ import org.bukkit.scoreboard.Team;
 
 import java.util.Objects;
 
-public class Sphere implements Listener {
+import static org.bukkit.Color.RED;
 
-    Main main = Main.getPlugin(Main.class);
+public class Sphere extends BasePack {
+
+    public Sphere() {
+        super("Spawning Spheres", "spawning-spheres");
+    }
 
     @EventHandler
     public void onMove(PlayerMoveEvent event) {
         if (event.getPlayer().getScoreboardTags().contains("vt_despawning_sphere")) event.setCancelled(true);
     }
 
-    public void unregister() {
-        HandlerList.unregisterAll(this);
-    }
-
     public static void spawnSphere(Location loc, Color color) {
         ItemStack colorStack = new ItemStack(Material.AIR);
-        if (color == Color.RED) colorStack = new ItemStack(Material.RED_CONCRETE);
+        if (color == RED) colorStack = new ItemStack(Material.RED_CONCRETE);
         if (color == Color.BLUE) colorStack = new ItemStack(Material.CYAN_CONCRETE);
         if (color == Color.GREEN) colorStack = new ItemStack(Material.GREEN_CONCRETE);
         String sColor = "";
-        if (color == Color.RED) sColor = "red";
+        if (color == RED) sColor = "red";
         if (color == Color.BLUE) sColor = "blue";
         if (color == Color.GREEN) sColor = "green";
 
@@ -56,7 +54,7 @@ public class Sphere implements Listener {
             }
         }
 
-        if (color == Color.RED) colorStack = new ItemStack(Material.ORANGE_CONCRETE);
+        if (color == RED) colorStack = new ItemStack(Material.ORANGE_CONCRETE);
         if (color == Color.BLUE) colorStack = new ItemStack(Material.LIGHT_BLUE_CONCRETE);
         if (color == Color.GREEN) colorStack = new ItemStack(Material.LIME_CONCRETE);
         team = getCombinationTeam(color);
@@ -99,7 +97,7 @@ public class Sphere implements Listener {
     private static Team getTeam(Color color) {
         Scoreboard sb = Objects.requireNonNull(Bukkit.getScoreboardManager()).getMainScoreboard();
         Team team = null;
-        if (color == Color.RED) {
+        if (color == RED) {
             if (sb.getTeam("vt_sphere_red") == null) {
                 Team tTeam = sb.registerNewTeam("vt_sphere_red");
                 tTeam.setColor(ChatColor.RED);
@@ -145,15 +143,10 @@ public class Sphere implements Listener {
     }
 
     private static Team getCombinationTeam(Color color) {
-        if (color == Color.RED) {
-            return getTeam(Color.ORANGE);
-        }
-        if (color == Color.BLUE) {
-            return getTeam(Color.AQUA);
-        }
-        if (color == Color.GREEN) {
-            return getTeam(Color.LIME);
-        }
+        if (color == RED) return getTeam(Color.ORANGE);
+        if (color == Color.BLUE) return getTeam(Color.AQUA);
+        if (color == Color.GREEN) return getTeam(Color.LIME);
+
         return getTeam(color);
     }
 }

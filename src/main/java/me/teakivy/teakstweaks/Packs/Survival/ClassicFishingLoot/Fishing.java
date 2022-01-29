@@ -1,14 +1,17 @@
 package me.teakivy.teakstweaks.Packs.Survival.ClassicFishingLoot;
 
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.inventory.EquipmentSlot;
 
-public class Fishing implements Listener {
+public class Fishing extends BasePack {
+
+    public Fishing() {
+        super("Classic Fishing Loot", "classic-fishing-loot");
+    }
 
     @EventHandler
     public void onFish(PlayerFishEvent event) {
@@ -20,10 +23,6 @@ public class Fishing implements Listener {
         }
 
         caught.setItemStack(FishingLootTable.generateFishingLoot(luckNum, false));
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

@@ -1,27 +1,27 @@
 package me.teakivy.teakstweaks.Packs.Survival.PillagerTools;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Pillager;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityPotionEffectEvent;
 
-public class PillagerSpawning implements Listener {
+public class PillagerSpawning extends BasePack {
 
-    Main main = Main.getPlugin(Main.class);
+    public PillagerSpawning() {
+        super("Pillager Tools", "pillager-tools");
+    }
 
     @EventHandler
     public void onSpawn(CreatureSpawnEvent event) {
-        if (main.getConfig().getBoolean("packs.pillager-tools.disable-patrols")) {
+        if (getConfig().getBoolean("disable-patrols")) {
             if (event.getSpawnReason() == CreatureSpawnEvent.SpawnReason.PATROL) {
                 event.setCancelled(true);
             }
         }
 
-        if (main.getConfig().getBoolean("packs.pillager-tools.disable-leaders")) {
+        if (getConfig().getBoolean("disable-leaders")) {
             if (event.getEntity().getType() == EntityType.PILLAGER) {
                 Pillager pillager = (Pillager) event.getEntity();
                 if (pillager.isPatrolLeader()) {
@@ -33,15 +33,11 @@ public class PillagerSpawning implements Listener {
 
     @EventHandler
     public void onPotion(EntityPotionEffectEvent event) {
-        if (main.getConfig().getBoolean("packs.pillager-tools.disable-bad-omen")) {
+        if (getConfig().getBoolean("disable-bad-omen")) {
             if (event.getCause() == EntityPotionEffectEvent.Cause.PATROL_CAPTAIN) {
                 event.setCancelled(true);
             }
         }
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

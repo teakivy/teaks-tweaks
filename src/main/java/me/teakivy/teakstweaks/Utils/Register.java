@@ -60,7 +60,6 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.command.defaults.BukkitCommand;
 
 import java.lang.reflect.Field;
-import java.util.logging.Level;
 
 public class Register {
 
@@ -69,12 +68,13 @@ public class Register {
     public static AntiCreeper antiCreeper = new AntiCreeper();
     public static AntiEnderman antiEnderman = new AntiEnderman();
     public static AntiGhast antiGhast = new AntiGhast();
-    public static ConcreteConverter concreteConverter = new ConcreteConverter();
-    public static CountDeaths countDeaths = new CountDeaths();
     public static DoubleShulkers doubleShulkers = new DoubleShulkers();
     public static DragonDrops dragonDrops = new DragonDrops();
-    public static DuraPing duraPing = new DuraPing();
+    public static Phantoms phantoms = new Phantoms();
     public static MobHeads mobHeads = new MobHeads();
+    public static DuraPing duraPing = new DuraPing();
+    public static ConcreteConverter concreteConverter = new ConcreteConverter();
+    public static CountDeaths countDeaths = new CountDeaths();
     public static MultiSleep multiplayerSleep = new MultiSleep();
     public static HeadDrop headDrop = new HeadDrop();
     public static Silencer silencer = new Silencer();
@@ -89,7 +89,6 @@ public class Register {
     public static Back back = new Back();
     public static AFK afk = new AFK();
     public static Shrine shrine = new Shrine();
-    public static Phantoms phantoms = new Phantoms();
     public static Highlighter highlighter = new Highlighter();
     public static Loader loader = new Loader();
     public static Decay decay = new Decay();
@@ -136,426 +135,114 @@ public class Register {
 
     public static void unregisterPack(String pack) {
 
-        if (pack.equalsIgnoreCase("anti-creeper-grief")) {
-            antiCreeper.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("anti-enderman-grief")) {
-            antiEnderman.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("anti-ghast-grief")) {
-            antiGhast.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("cauldron-concrete")) {
-            concreteConverter.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("coords-hud")) {
-            HUD.stopHUD();
-            hud.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("count-mob-deaths")) {
-            countDeaths.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("double-shulker-shells")) {
-            doubleShulkers.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("dragon-drops")) {
-            dragonDrops.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("durability-ping")) {
-            duraPing.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("more-mob-heads")) {
-            mobHeads.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("multiplayer-sleep")) {
-            multiplayerSleep.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("player-head-drops")) {
-            headDrop.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("silence-mobs")) {
-            silencer.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("spectator-conduit-power")) {
-            conduitPower.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("spectator-night-vision")) {
-            nightVision.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("tag")) {
-            tag.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("unlock-all-recipes")) {
-            unlockRecipes.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("villager-death-messages")) {
-            villagerDeath.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("wandering-trades")) {
-            trades.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("xp-management")) {
-            xpManagement.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("confetti-creepers")) {
-            confettiCreeper.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("back")) {
-            back.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("afk-display")) {
-            afk.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("thunder-shrine")) {
-            shrine.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("larger-phantoms")) {
-            phantoms.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("workstation-highlights")) {
-            highlighter.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("chunk-loaders")) {
-            loader.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("fast-leaf-decay")) {
-            decay.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("pillager-tools")) {
-            pillagerSpawning.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("elevators")) {
-            elevator.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("rotation-wrench")) {
-            wrench.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("treasure-gems")) {
-            gems.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("armored-elytra")) {
-            armoredElytras.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("classic-fishing-loot")) {
-            classicFishing.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("custom-nether-portals")) {
-            portal.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("item-averages")) {
-            itemTracker.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("track-statistics")) {
-            statTracker.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("graves")) {
-            graves.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("custom-villager-shops")) {
-            customVillager.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("spawning-spheres")) {
-            sphere.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("keep-small")) {
-            keepSmall.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("chat-colors")) {
-            chatColors.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("editable-signs")) {
-            editableSigns.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("lectern-reset")) {
-            lecternReset.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("sudoku")) {
-            sudoku.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("stair-chairs")) {
-            stairChairs.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("unsticky-pistons")) {
-            unstickyPistons.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("slime-cream")) {
-            slimeCream.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("invisible-item-frames")) {
-            invisibleItemFrames.unregister();
-        }
-
-        if (pack.equalsIgnoreCase("better-foliage")) {
-            betterFoliage.unregister();
+        switch (pack) {
+            case "player-head-drops" -> headDrop.unregister();
+            case "anti-creeper-grief" -> antiCreeper.unregister();
+            case "anti-enderman-grief" -> antiEnderman.unregister();
+            case "anti-ghast-grief" -> antiGhast.unregister();
+            case "double-shulker-shells" -> doubleShulkers.unregister();
+            case "dragon-drops" -> dragonDrops.unregister();
+            case "larger-phantoms" -> phantoms.unregister();
+            case "more-mob-heads" -> mobHeads.unregister();
+            case "silence-mobs" -> silencer.unregister();
+            case "count-mob-deaths" -> countDeaths.init();
+            case "villager-death-messages" -> villagerDeath.init();
+            case "coords-hud" -> hud.unregister();
+            case "cauldron-concrete" -> concreteConverter.unregister();
+            case "durability-ping" -> duraPing.unregister();
+            case "multiplayer-sleep" -> multiplayerSleep.unregister();
+            case "spectator-conduit-power" -> conduitPower.unregister();
+            case "spectator-night-vision" -> nightVision.unregister();
+            case "tag" -> tag.unregister();
+            case "unlock-all-recipes" -> unlockRecipes.unregister();
+            case "wandering-trades" -> trades.unregister();
+            case "xp-management" -> xpManagement.unregister();
+            case "confetti-creepers" -> confettiCreeper.unregister();
+            case "back" -> back.unregister();
+            case "afk-display" -> afk.unregister();
+            case "thunder-shrine" -> shrine.unregister();
+            case "workstation-highlights" -> highlighter.unregister();
+            case "chunk-loaders" -> loader.unregister();
+            case "fast-leaf-decay" -> decay.unregister();
+            case "pillager-tools" -> pillagerSpawning.unregister();
+            case "elevators" -> elevator.unregister();
+            case "rotation-wrench" -> wrench.unregister();
+            case "treasure-gems" -> gems.unregister();
+            case "armored-elytra" -> armoredElytras.unregister();
+            case "classic-fishing-loot" -> classicFishing.unregister();
+            case "custom-nether-portals" -> portal.unregister();
+            case "item-averages" -> itemTracker.unregister();
+            case "track-statistics" -> statTracker.unregister();
+            case "track-raw-statistics" -> rawStats.unregister();
+            case "graves" -> graves.unregister();
+            case "custom-villager-shops" -> customVillager.unregister();
+            case "spawning-spheres" -> sphere.unregister();
+            case "keep-small" -> keepSmall.unregister();
+            case "chat-colors" -> chatColors.unregister();
+            case "editable-signs" -> editableSigns.unregister();
+            case "lectern-reset" -> lecternReset.unregister();
+            case "sudoku" -> sudoku.unregister();
+            case "stair-chairs" -> stairChairs.unregister();
+            case "unsticky-pistons" -> unstickyPistons.unregister();
+            case "slime-cream" -> slimeCream.unregister();
+            case "invisible-item-frames" -> invisibleItemFrames.unregister();
+            case "better-foliage" -> betterFoliage.unregister();
         }
     }
 
     public static void registerPack(String pack) {
-        if (pack.equalsIgnoreCase("anti-creeper-grief")) {
-            main.getServer().getPluginManager().registerEvents(antiCreeper, main);
-        }
-
-        if (pack.equalsIgnoreCase("anti-enderman-grief")) {
-            main.getServer().getPluginManager().registerEvents(antiEnderman, main);
-        }
-
-        if (pack.equalsIgnoreCase("anti-ghast-grief")) {
-            main.getServer().getPluginManager().registerEvents(antiGhast, main);
-        }
-
-        if (pack.equalsIgnoreCase("cauldron-concrete")) {
-            main.getServer().getPluginManager().registerEvents(concreteConverter, main);
-        }
-
-        if (pack.equalsIgnoreCase("coords-hud")) {
-            HUD.startHUD();
-            main.getServer().getPluginManager().registerEvents(hud, main);
-        }
-
-        if (pack.equalsIgnoreCase("count-mob-deaths")) {
-            main.getServer().getPluginManager().registerEvents(countDeaths, main);
-        }
-
-        if (pack.equalsIgnoreCase("double-shulker-shells")) {
-            main.getServer().getPluginManager().registerEvents(doubleShulkers, main);
-        }
-
-        if (pack.equalsIgnoreCase("dragon-drops")) {
-            main.getServer().getPluginManager().registerEvents(dragonDrops, main);
-        }
-
-        if (pack.equalsIgnoreCase("durability-ping")) {
-            main.getServer().getPluginManager().registerEvents(duraPing, main);
-        }
-
-        if (pack.equalsIgnoreCase("more-mob-heads")) {
-            main.getServer().getPluginManager().registerEvents(mobHeads, main);
-        }
-
-        if (pack.equalsIgnoreCase("multiplayer-sleep")) {
-            main.getServer().getPluginManager().registerEvents(multiplayerSleep, main);
-            multiplayerSleep.init();
-        }
-
-        if (pack.equalsIgnoreCase("player-head-drops")) {
-            main.getServer().getPluginManager().registerEvents(headDrop, main);
-        }
-
-        if (pack.equalsIgnoreCase("silence-mobs")) {
-            main.getServer().getPluginManager().registerEvents(silencer, main);
-        }
-
-        if (pack.equalsIgnoreCase("spectator-conduit-power")) {
-            main.getServer().getPluginManager().registerEvents(conduitPower, main);
-        }
-
-        if (pack.equalsIgnoreCase("spectator-night-vision")) {
-            main.getServer().getPluginManager().registerEvents(nightVision, main);
-        }
-
-        if (pack.equalsIgnoreCase("tag")) {
-            main.getServer().getPluginManager().registerEvents(tag, main);
-        }
-
-        if (pack.equalsIgnoreCase("unlock-all-recipes")) {
-            main.getServer().getPluginManager().registerEvents(unlockRecipes, main);
-            unlockRecipes.register();
-        }
-
-        if (pack.equalsIgnoreCase("villager-death-messages")) {
-            main.getServer().getPluginManager().registerEvents(villagerDeath, main);
-        }
-
-        if (pack.equalsIgnoreCase("wandering-trades")) {
-            main.getServer().getPluginManager().registerEvents(trades, main);
-        }
-
-        if (pack.equalsIgnoreCase("xp-management")) {
-            main.getServer().getPluginManager().registerEvents(xpManagement, main);
-            xpManagement.registerRecipe();
-        }
-
-        if (pack.equalsIgnoreCase("confetti-creepers")) {
-            main.getServer().getPluginManager().registerEvents(confettiCreeper, main);
-        }
-
-        if (pack.equalsIgnoreCase("back")) {
-            main.getServer().getPluginManager().registerEvents(back, main);
-        }
-
-        if (pack.equalsIgnoreCase("afk-display")) {
-            main.getServer().getPluginManager().registerEvents(afk, main);
-            AFK.register();
-        }
-
-        if (pack.equalsIgnoreCase("thunder-shrine")) {
-            main.getServer().getPluginManager().registerEvents(shrine, main);
-            shrine.register();
-        }
-
-        if (pack.equalsIgnoreCase("larger-phantoms")) {
-            main.getServer().getPluginManager().registerEvents(phantoms, main);
-        }
-
-        if (pack.equalsIgnoreCase("workstation-highlights")) {
-            main.getServer().getPluginManager().registerEvents(highlighter, main);
-        }
-
-        if (pack.equalsIgnoreCase("chunk-loaders")) {
-            main.getServer().getPluginManager().registerEvents(loader, main);
-        }
-
-        if (pack.equalsIgnoreCase("fast-leaf-decay")) {
-            main.getServer().getPluginManager().registerEvents(decay, main);
-        }
-
-        if (pack.equalsIgnoreCase("pillager-tools")) {
-            main.getServer().getPluginManager().registerEvents(pillagerSpawning, main);
-        }
-
-        if (pack.equalsIgnoreCase("elevators")) {
-            main.getServer().getPluginManager().registerEvents(elevator, main);
-            Elevator.register();
-        }
-
-        if (pack.equalsIgnoreCase("rotation-wrench")) {
-            main.getServer().getPluginManager().registerEvents(wrench, main);
-            Wrench.register();
-        }
-
-        if (pack.equalsIgnoreCase("treasure-gems")) {
-            main.getServer().getPluginManager().registerEvents(gems, main);
-        }
-
-        if (pack.equalsIgnoreCase("armored-elytra")) {
-            main.getServer().getPluginManager().registerEvents(armoredElytras, main);
-        }
-
-        if (pack.equalsIgnoreCase("classic-fishing-loot")) {
-            main.getServer().getPluginManager().registerEvents(classicFishing, main);
-        }
-
-        if (pack.equalsIgnoreCase("custom-nether-portals")) {
-            portal.registerThis();
-            main.getServer().getPluginManager().registerEvents(portal, main);
-        }
-
-        if (pack.equalsIgnoreCase("item-averages")) {
-            main.getServer().getPluginManager().registerEvents(itemTracker, main);
-        }
-
-        if (pack.equalsIgnoreCase("track-statistics")) {
-            statTracker.register();
-            main.getServer().getPluginManager().registerEvents(statTracker, main);
-        }
-
-        if (pack.equalsIgnoreCase("track-raw-statistics")) {
-            rawStats.register();
-        }
-
-        if (pack.equalsIgnoreCase("graves")) {
-            main.getServer().getPluginManager().registerEvents(graves, main);
-        }
-
-        if (pack.equalsIgnoreCase("custom-villager-shops")) {
-            main.getServer().getPluginManager().registerEvents(customVillager, main);
-        }
-
-        if (pack.equalsIgnoreCase("spawning-spheres")) {
-            main.getServer().getPluginManager().registerEvents(sphere, main);
-        }
-
-        if (pack.equalsIgnoreCase("keep-small")) {
-            main.getServer().getPluginManager().registerEvents(keepSmall, main);
-        }
-
-        if (pack.equalsIgnoreCase("chat-colors")) {
-            main.getServer().getPluginManager().registerEvents(chatColors, main);
-        }
-
-        if (pack.equalsIgnoreCase("editable-signs")) {
-            if (Bukkit.getServer().getVersion().toLowerCase().contains("paper")) {
-                EditSigns.init(main);
-                main.getServer().getPluginManager().registerEvents(editableSigns, main);
-            } else {
-                main.getLogger().log(Level.SEVERE, "Editable signs are only supported on Paper at the moment.");
-            }
-        }
-
-        if (pack.equalsIgnoreCase("lectern-reset")) {
-            main.getServer().getPluginManager().registerEvents(lecternReset, main);
-        }
-
-        if (pack.equalsIgnoreCase("sudoku")) {
-            main.getServer().getPluginManager().registerEvents(sudoku, main);
-        }
-
-        if (pack.equalsIgnoreCase("stair-chairs")) {
-            main.getServer().getPluginManager().registerEvents(stairChairs, main);
-        }
-
-        if (pack.equalsIgnoreCase("unsticky-pistons")) {
-            main.getServer().getPluginManager().registerEvents(unstickyPistons, main);
-        }
-
-        if (pack.equalsIgnoreCase("slime-cream")) {
-            main.getServer().getPluginManager().registerEvents(slimeCream, main);
-        }
-
-        if (pack.equalsIgnoreCase("invisible-item-frames")) {
-            main.getServer().getPluginManager().registerEvents(invisibleItemFrames, main);
-        }
-
-        if (pack.equalsIgnoreCase("better-foliage")) {
-            main.getServer().getPluginManager().registerEvents(betterFoliage, main);
+        switch (pack) {
+            case "player-head-drops" -> headDrop.init();
+            case "anti-creeper-grief" -> antiCreeper.init();
+            case "anti-enderman-grief" -> antiEnderman.init();
+            case "anti-ghast-grief" -> antiGhast.init();
+            case "double-shulker-shells" -> doubleShulkers.init();
+            case "dragon-drops" -> dragonDrops.init();
+            case "larger-phantoms" -> phantoms.init();
+            case "more-mob-heads" -> mobHeads.init();
+            case "silence-mobs" -> silencer.init();
+            case "count-mob-deaths" -> countDeaths.init();
+            case "villager-death-messages" -> villagerDeath.init();
+            case "coords-hud" -> hud.init();
+            case "cauldron-concrete" -> concreteConverter.init();
+            case "durability-ping" -> duraPing.init();
+            case "multiplayer-sleep" -> multiplayerSleep.init();
+            case "spectator-conduit-power" -> conduitPower.init();
+            case "spectator-night-vision" -> nightVision.init();
+            case "tag" -> tag.init();
+            case "unlock-all-recipes" -> unlockRecipes.init();
+            case "wandering-trades" -> trades.init();
+            case "xp-management" -> xpManagement.init();
+            case "confetti-creepers" -> confettiCreeper.init();
+            case "back" -> back.init();
+            case "afk-display" -> afk.init();
+            case "thunder-shrine" -> shrine.init();
+            case "workstation-highlights" -> highlighter.init();
+            case "chunk-loaders" -> loader.init();
+            case "fast-leaf-decay" -> decay.init();
+            case "pillager-tools" -> pillagerSpawning.init();
+            case "elevators" -> elevator.init();
+            case "rotation-wrench" -> wrench.init();
+            case "treasure-gems" -> gems.init();
+            case "armored-elytra" -> armoredElytras.init();
+            case "classic-fishing-loot" -> classicFishing.init();
+            case "custom-nether-portals" -> portal.init();
+            case "item-averages" -> itemTracker.init();
+            case "track-statistics" -> statTracker.init();
+            case "track-raw-statistics" -> rawStats.init();
+            case "graves" -> graves.init();
+            case "custom-villager-shops" -> customVillager.init();
+            case "spawning-spheres" -> sphere.init();
+            case "keep-small" -> keepSmall.init();
+            case "chat-colors" -> chatColors.init();
+            case "editable-signs" -> editableSigns.init();
+            case "lectern-reset" -> lecternReset.init();
+            case "sudoku" -> sudoku.init();
+            case "stair-chairs" -> stairChairs.init();
+            case "unsticky-pistons" -> unstickyPistons.init();
+            case "slime-cream" -> slimeCream.init();
+            case "invisible-item-frames" -> invisibleItemFrames.init();
+            case "better-foliage" -> betterFoliage.init();
         }
     }
     public static void registerCommands() {

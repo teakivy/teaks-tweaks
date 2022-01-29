@@ -1,20 +1,23 @@
 package me.teakivy.teakstweaks.Packs.TeaksTweaks.SlimeCream;
 
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
-public class SlimeCream implements Listener {
+public class SlimeCream extends BasePack {
+
+    public SlimeCream() {
+        super("SlimeCream", "slime-cream");
+    }
 
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
@@ -41,10 +44,6 @@ public class SlimeCream implements Listener {
             drop.setGravity(false);
             player.playSound(block.getLocation(), Sound.BLOCK_POINTED_DRIPSTONE_DRIP_LAVA_INTO_CAULDRON, 1, 1);
         }
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

@@ -1,29 +1,31 @@
 package me.teakivy.teakstweaks.Packs.Survival.TrackStatistics;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.Bukkit;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.Objects;
 
-public class StatTracker implements Listener {
-
-    Main main = Main.getPlugin(Main.class);
-
+public class StatTracker extends BasePack {
     Scoreboard sb;
 
     Objective playTimeMinutes;
     Objective elytraKm;
     Objective swimKm;
 
-    public void register() {
+    public StatTracker() {
+        super("Track Statistics", "track-statistics");
+    }
+
+    @Override
+    public void init() {
+        super.init();
+
         sb = Objects.requireNonNull(Bukkit.getScoreboardManager()).getMainScoreboard();
         if (playTimeMinutes == null) {
             Objective playTimeMinutes_ = sb.getObjective("hc_playTime");
@@ -57,10 +59,6 @@ public class StatTracker implements Listener {
 
     public void setStatistic(Player player, Objective objective, int amount) {
         objective.getScore(player.getName()).setScore(amount);
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

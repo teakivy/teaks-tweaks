@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.Packs.Mobs.LargerPhantoms;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.Bukkit;
 import org.bukkit.Statistic;
 import org.bukkit.attribute.Attribute;
@@ -9,15 +9,15 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Phantom;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 
 import java.util.Objects;
 
-public class Phantoms implements Listener {
+public class Phantoms extends BasePack {
 
-    Main main = Main.getPlugin(Main.class);
+    public Phantoms() {
+        super("Larger Phantoms", "larger-phantoms");
+    }
 
     @EventHandler
     public void onSpawn(CreatureSpawnEvent event) {
@@ -54,15 +54,11 @@ public class Phantoms implements Listener {
 
     public void setPhantomAttributes(Phantom phantom, int size, int maxHeath, double movementSpeed, int followRange, int attackDamage) {
         phantom.setSize(size);
-        phantom.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(maxHeath);
-        phantom.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(movementSpeed);
-        phantom.getAttribute(Attribute.GENERIC_FOLLOW_RANGE).setBaseValue(followRange);
-        phantom.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(attackDamage);
+        Objects.requireNonNull(phantom.getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(maxHeath);
+        Objects.requireNonNull(phantom.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED)).setBaseValue(movementSpeed);
+        Objects.requireNonNull(phantom.getAttribute(Attribute.GENERIC_FOLLOW_RANGE)).setBaseValue(followRange);
+        Objects.requireNonNull(phantom.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE)).setBaseValue(attackDamage);
         phantom.setHealth(maxHeath);
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

@@ -1,21 +1,21 @@
 package me.teakivy.teakstweaks.Packs.Teleportation.Back;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import me.teakivy.teakstweaks.Utils.ErrorType;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 import java.util.HashMap;
 import java.util.UUID;
 
-public class Back implements Listener {
+public class Back extends BasePack {
 
-    Main main = Main.getPlugin(Main.class);
+    public Back() {
+        super("Back", "back");
+    }
 
     public static HashMap<UUID, Location> backLoc = new HashMap<>();
 
@@ -34,13 +34,9 @@ public class Back implements Listener {
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
-        if (!main.getConfig().getBoolean("packs.back.save-death-location")) return;
+        if (!getConfig().getBoolean("save-death-location")) return;
 
         backLoc.put(player.getUniqueId(), player.getLocation());
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

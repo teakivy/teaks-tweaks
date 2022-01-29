@@ -2,11 +2,10 @@ package me.teakivy.teakstweaks.Packs.Hermitcraft.TreasureGems;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.world.LootGenerateEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -19,7 +18,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Gems implements Listener {
+public class Gems extends BasePack {
 
     final static List<String> chests = Stream.of(
             "minecraft:chests/desert_pyramid",
@@ -35,6 +34,10 @@ public class Gems implements Listener {
             "minecraft:chests/village_blacksmith",
             "minecraft:chests/woodland_mansion")
             .collect(Collectors.toList());
+
+    public Gems() {
+        super ("Treasure Gems", "treasure-gems");
+    }
 
     @EventHandler
     public void onGenerate(LootGenerateEvent event) {
@@ -55,46 +58,17 @@ public class Gems implements Listener {
 
 
     private ItemStack randomAddGem() {
-        Random rand = new Random();
+        ItemStack gem = new ItemStack(Material.AIR);
 
-        int chance = 125;
-
-        if (rand.nextInt(chance) == 5) {
-            return getRubyGem();
-        }
-        if (rand.nextInt(chance) == 5) {
-            return getRubyGem();
-        }
-
-        if (rand.nextInt(chance) == 5) {
-            return getTopazGem();
-        }
-        if (rand.nextInt(chance) == 5) {
-            return getTopazGem();
+        switch (new Random().nextInt(55)) {
+            case 2 -> gem = getRubyGem();
+            case 4 -> gem = getTopazGem();
+            case 6 -> gem = getSapphireGem();
+            case 8 -> gem = getAmethystGem();
+            case 10 -> gem = getAquamarineGem();
         }
 
-        if (rand.nextInt(chance) == 5) {
-            return getSapphireGem();
-        }
-        if (rand.nextInt(chance) == 5) {
-            return getSapphireGem();
-        }
-
-        if (rand.nextInt(chance) == 5) {
-            return getAmethystGem();
-        }
-        if (rand.nextInt(chance) == 5) {
-            return getAmethystGem();
-        }
-
-        if (rand.nextInt(chance) == 5) {
-            return getAquamarineGem();
-        }
-        if (rand.nextInt(chance) == 5) {
-            return getAquamarineGem();
-        }
-
-        return new ItemStack(Material.AIR);
+        return gem;
     }
 
     public static ItemStack getRubyGem() {
@@ -137,10 +111,6 @@ public class Gems implements Listener {
 
         head.setItemMeta(headMeta);
         return head;
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

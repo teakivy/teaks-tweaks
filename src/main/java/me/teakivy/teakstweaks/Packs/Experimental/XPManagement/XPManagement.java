@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.Packs.Experimental.XPManagement;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -9,8 +9,6 @@ import org.bukkit.block.Furnace;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.ThrownExpBottle;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.ExpBottleEvent;
 import org.bukkit.event.inventory.FurnaceBurnEvent;
@@ -25,12 +23,20 @@ import org.bukkit.persistence.PersistentDataType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class XPManagement implements Listener {
+public class XPManagement extends BasePack {
 
-    Main main = Main.getPlugin(Main.class);
+    public XPManagement() {
+        super("XP Management", "xp-management");
+    }
+
+    @Override
+    public void init() {
+        super.init();
+        registerRecipe();
+    }
 
     public void registerRecipe() {
-        if (main.getConfig().getBoolean("packs.xp-management.allow-smelting")) {
+        if (getConfig().getBoolean("allow-smelting")) {
             FurnaceRecipe recipe = new FurnaceRecipe(new ItemStack(Material.GLASS_BOTTLE), Material.EXPERIENCE_BOTTLE);
             recipe.setExperience(main.getConfig().getInt("packs.xp-management.take-xp-amount"));
             Bukkit.addRecipe(recipe);
@@ -74,12 +80,12 @@ public class XPManagement implements Listener {
         if (item == null) return;
         if (item.getType() != Material.GLASS_BOTTLE) return;
 
-        if (player.getTotalExperience() <= main.getConfig().getInt("packs.xp-management.take-xp-amount")) return;
+        if (player.getTotalExperience() <= getConfig().getInt("take-xp-amount")) return;
 
-        final int takeXPAmount = main.getConfig().getInt("packs.xp-management.take-xp-amount");
+        final int takeXPAmount = getConfig().getInt("take-xp-amount");
         int finalXPAmount = takeXPAmount;
         int timesToBottle = 1;
-        if (player.isSneaking() && main.getConfig().getBoolean("packs.xp-management.sneak-to-bottle-all")) {
+        if (player.isSneaking() && getConfig().getBoolean("sneak-to-bottle-all")) {
             if (player.getTotalExperience() >= item.getAmount() * takeXPAmount) {
                 timesToBottle = item.getAmount();
                 finalXPAmount = item.getAmount() * takeXPAmount;
@@ -108,10 +114,10 @@ public class XPManagement implements Listener {
         ItemStack xpBottle = new ItemStack(Material.EXPERIENCE_BOTTLE, 1);
         ItemMeta xpMeta = xpBottle.getItemMeta();
 
-        if (main.getConfig().getBoolean("packs.xp-management.display-amount")) {
+        if (getConfig().getBoolean("display-amount")) {
             List<String> lore = new ArrayList<>();
             lore.add(MessageHandler.replace(MessageHandler.getMessage("pack.xp-management.bottle-contains"), "%take_amount%", String.valueOf(main.getConfig().getInt("packs.xp-management.return-xp-amount"))));
-            if (main.getConfig().getBoolean("packs.xp-management.allow-smelting")) {
+            if (getConfig().getBoolean("allow-smelting")) {
                 lore.add(MessageHandler.replace(MessageHandler.getMessage("pack.xp-management.bottle-contains"), "%take_amount%", String.valueOf(main.getConfig().getInt("packs.xp-management.take-xp-amount"))));
             }
             xpMeta.setLore(lore);
@@ -124,7 +130,7 @@ public class XPManagement implements Listener {
         data.set(new NamespacedKey(main, "vt_xp_smelt_amount"), PersistentDataType.INTEGER, main.getConfig().getInt("packs.xp-management.take-xp-amount"));
         xpBottle.setItemMeta(xpMeta);
 
-        if (main.getConfig().getBoolean("packs.xp-management.sneak-to-bottle-all") && player.isSneaking()) {
+        if (getConfig().getBoolean("sneak-to-bottle-all") && player.isSneaking()) {
             for (int i = 0; i < timesToBottle; i++) {
                 player.getInventory().addItem(xpBottle);
             }
@@ -144,10 +150,6 @@ public class XPManagement implements Listener {
                 event.setExperience(data.get(new NamespacedKey(main, "vt_xp_amount"), PersistentDataType.INTEGER));
             }
         }
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

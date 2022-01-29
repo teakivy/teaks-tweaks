@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.Packs.Survival.MultiplayerSleep;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -11,23 +11,20 @@ import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.event.player.PlayerBedLeaveEvent;
 
 import java.util.Objects;
 import java.util.Random;
 
-public class MultiSleep implements Listener {
+public class MultiSleep extends BasePack {
     int sleeping = 0;
-    int sleepingPercentage = 100;
+    int sleepingPercentage;
     BossBar bar;
 
-    Main main = Main.getPlugin(Main.class);
-
-    public void init() {
-        this.sleepingPercentage = main.getConfig().getInt("packs.multiplayer-sleep.sleeping-percentage");
+    public MultiSleep() {
+        super("Multiplayer Sleep", "multiplayer-sleep");
+        this.sleepingPercentage = getConfig().getInt("sleeping-percentage");
         this.bar = Bukkit.getServer().createBossBar("0 of 0 player(s) asleep", BarColor.WHITE, BarStyle.SOLID);
     }
 
@@ -41,7 +38,7 @@ public class MultiSleep implements Listener {
         }
 
 
-        if (Objects.equals(main.getConfig().getString("packs.multiplayer-sleep.announce-type"), "bossbar")  && sleeping > 0) {
+        if (Objects.equals(getConfig().getString("announce-type"), "bossbar")  && sleeping > 0) {
             bar.setTitle(sleeping + " of " + getMaxSleeping() + " player(s) asleep");
             bar.setColor(getBossBarColor());
             bar.setProgress((100.0/getMaxSleeping() * sleeping) / 100);
@@ -52,7 +49,7 @@ public class MultiSleep implements Listener {
             }
         }
         if (canSleep()) {
-            if (Objects.equals(main.getConfig().getString("packs.multiplayer-sleep.announce-type"), "actionbar")) {
+            if (Objects.equals(getConfig().getString("announce-type"), "actionbar")) {
                 actionbarMessage();
             }
             triggerSleep(event.getPlayer());
@@ -66,11 +63,11 @@ public class MultiSleep implements Listener {
         if (event.isCancelled()) sleeping++;
 
 
-        if (Objects.equals(main.getConfig().getString("packs.multiplayer-sleep.announce-type"), "actionbar")) {
+        if (Objects.equals(getConfig().getString("announce-type"), "actionbar")) {
             actionbarMessage();
         }
 
-        if (Objects.equals(main.getConfig().getString("packs.multiplayer-sleep.announce-type"), "bossbar") && sleeping > 0) {
+        if (Objects.equals(getConfig().getString("announce-type"), "bossbar") && sleeping > 0) {
             bar.setTitle(sleeping + " of " + getMaxSleeping() + " player(s) asleep");
             bar.setColor(getBossBarColor());
             bar.setProgress((100.0/getMaxSleeping() * sleeping) / 100);
@@ -81,7 +78,7 @@ public class MultiSleep implements Listener {
             }
         }
 
-        if (Objects.equals(main.getConfig().getString("packs.multiplayer-sleep.announce-type"), "bossbar") && sleeping <= 0) {
+        if (Objects.equals(getConfig().getString("announce-type"), "bossbar") && sleeping <= 0) {
             for (Player player : bar.getPlayers()) {
                 bar.removePlayer(player);
             }
@@ -118,29 +115,17 @@ public class MultiSleep implements Listener {
     }
 
     public BarColor getBossBarColor() {
-        String cs = main.getConfig().getString("packs.multiplayer-sleep.boss-bar-color");
+        String cs = getConfig().getString("boss-bar-color");
         BarColor color = BarColor.WHITE;
         if (cs == null) return color;
         cs = cs.toLowerCase();
         switch (cs) {
-            case "blue":
-                color = BarColor.BLUE;
-                break;
-            case "green":
-                color = BarColor.GREEN;
-                break;
-            case "pink":
-                color = BarColor.PINK;
-                break;
-            case "purple":
-                color = BarColor.PURPLE;
-                break;
-            case "red":
-                color = BarColor.RED;
-                break;
-            case "yellow":
-                color = BarColor.YELLOW;
-                break;
+            case "blue" -> color = BarColor.BLUE;
+            case "green" -> color = BarColor.GREEN;
+            case "pink" -> color = BarColor.PINK;
+            case "purple" -> color = BarColor.PURPLE;
+            case "red" -> color = BarColor.RED;
+            case "yellow" -> color = BarColor.YELLOW;
         }
         return color;
     }
@@ -165,14 +150,14 @@ public class MultiSleep implements Listener {
                 if (world.getEnvironment() == World.Environment.NORMAL) {
                     world.setTime(1000);
 
-                    if (!main.getConfig().getBoolean("packs.multiplayer-sleep.always-reset-weather-cycle")) {
+                    if (!getConfig().getBoolean("always-reset-weather-cycle")) {
                         if (world.hasStorm()) world.setClearWeatherDuration(rand.nextInt(156000) + 12000);
                     } else {
                         world.setClearWeatherDuration(rand.nextInt(156000) + 12000);
                     }
                 }
             }
-            if (Objects.equals(main.getConfig().getString("packs.multiplayer-sleep.announce-type"), "chat") && !main.getConfig().getBoolean("packs.multiplayer-sleep.immediate-chat-display")) {
+            if (Objects.equals(getConfig().getString("announce-type"), "chat") && !getConfig().getBoolean("immediate-chat-display")) {
                 sleepMessage(player);
             }
         }, 5 * 20L);
@@ -190,10 +175,6 @@ public class MultiSleep implements Listener {
         System.out.println(sleeping);
         System.out.println(100 / sleepAvaliable * sleeping);
         System.out.println(sleepingPercentage);
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

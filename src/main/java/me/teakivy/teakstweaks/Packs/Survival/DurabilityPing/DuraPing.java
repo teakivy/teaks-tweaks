@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.Packs.Survival.DurabilityPing;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -9,8 +9,6 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemDamageEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
@@ -20,55 +18,55 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
 
-public class DuraPing implements Listener {
+public class DuraPing extends BasePack {
 
-    static Main main = Main.getPlugin(Main.class);
+    public DuraPing() {
+        super("Durability Ping", "durability-ping");
+    }
 
     private final HashMap<UUID, Long> pingCooldown = new HashMap<>();
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        if (!main.getConfig().getBoolean("packs.durability-ping.enabled")) return;
         Player player = event.getPlayer();
 
         if (player.getScoreboardTags().contains("dp_customized")) return;
-        if (main.getConfig().getBoolean("packs.durability-ping.default-settings.ping-for-hand-items")) {
+        if (getConfig().getBoolean("default-settings.ping-for-hand-items")) {
             player.addScoreboardTag("dp_ping_for_hand_items");
         } else {
             player.removeScoreboardTag("dp_ping_for_hand_items");
         }
-        if (main.getConfig().getBoolean("packs.durability-ping.default-settings.ping-for-armor-items")) {
+        if (getConfig().getBoolean("default-settings.ping-for-armor-items")) {
             player.addScoreboardTag("dp_ping_for_armor_items");
         } else {
             player.removeScoreboardTag("dp_ping_for_armor_items");
         }
-        if (main.getConfig().getBoolean("packs.durability-ping.default-settings.ping-with-sound")) {
+        if (getConfig().getBoolean("default-settings.ping-with-sound")) {
             player.addScoreboardTag("dp_ping_with_sound");
         } else {
             player.removeScoreboardTag("dp_ping_with_sound");
         }
 
         if (player.getScoreboardTags().contains("dp_display_hidden") || player.getScoreboardTags().contains("dp_display_subtitle") || player.getScoreboardTags().contains("dp_display_title") || player.getScoreboardTags().contains("dp_display_chat") || player.getScoreboardTags().contains("dp_display_actionbar")) return;
-        if (Objects.requireNonNull(main.getConfig().getString("packs.durability-ping.default-settings.display")).equalsIgnoreCase("hidden")) {
+        if (Objects.requireNonNull(getConfig().getString("default-settings.display")).equalsIgnoreCase("hidden")) {
             player.addScoreboardTag("dp_display_hidden");
         }
-        if (Objects.requireNonNull(main.getConfig().getString("packs.durability-ping.default-settings.display")).equalsIgnoreCase("subtitle")) {
+        if (Objects.requireNonNull(getConfig().getString("default-settings.display")).equalsIgnoreCase("subtitle")) {
             player.addScoreboardTag("dp_display_subtitle");
         }
-        if (Objects.requireNonNull(main.getConfig().getString("packs.durability-ping.default-settings.display")).equalsIgnoreCase("title")) {
+        if (Objects.requireNonNull(getConfig().getString("default-settings.display")).equalsIgnoreCase("title")) {
             player.addScoreboardTag("dp_display_title");
         }
-        if (Objects.requireNonNull(main.getConfig().getString("packs.durability-ping.default-settings.display")).equalsIgnoreCase("chat")) {
+        if (Objects.requireNonNull(getConfig().getString("default-settings.display")).equalsIgnoreCase("chat")) {
             player.addScoreboardTag("dp_display_chat");
         }
-        if (Objects.requireNonNull(main.getConfig().getString("packs.durability-ping.default-settings.display")).equalsIgnoreCase("actionbar")) {
+        if (Objects.requireNonNull(getConfig().getString("default-settings.display")).equalsIgnoreCase("actionbar")) {
             player.addScoreboardTag("dp_display_actionbar");
         }
     }
 
     @EventHandler
     public void onItemUse(PlayerItemDamageEvent event) {
-        if (!main.getConfig().getBoolean("packs.durability-ping.enabled")) return;
         ItemStack item = event.getItem();
         Player player = event.getPlayer();
 
@@ -76,7 +74,7 @@ public class DuraPing implements Listener {
         float maxDurability = event.getItem().getType().getMaxDurability();
         int percentDamaged = (int) ((durability / maxDurability) * 100);
 
-        if (main.getConfig().getInt("packs.durability-ping.ping-at-percent") >= percentDamaged) {
+        if (getConfig().getInt("ping-at-percent") >= percentDamaged) {
             if (pingCooldown.containsKey(player.getUniqueId())) {
                 if (pingCooldown.get(player.getUniqueId()) > System.currentTimeMillis()) return;
             }
@@ -199,10 +197,6 @@ public class DuraPing implements Listener {
 
     public static String getItemName(ItemStack itemStack) {
         return WordUtils.capitalize(itemStack.getType().toString().replace("_", " ").toLowerCase(Locale.ROOT));
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

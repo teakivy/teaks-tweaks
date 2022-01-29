@@ -1,8 +1,7 @@
 package me.teakivy.teakstweaks.Packs.Experimental.ChunkLoaders;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.Color;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.block.Block;
@@ -11,20 +10,15 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Loader extends BasePack {
 
-public class Loader implements Listener {
-
-    Main main = Main.getPlugin(Main.class);
-
-    List<Location> loaded = new ArrayList<>();
+    public Loader() {
+        super("Chunk Loaders", "chunk-loaders");
+    }
 
     @EventHandler
     public void onItemDrop(PlayerDropItemEvent event) {
@@ -73,10 +67,6 @@ public class Loader implements Listener {
                 }
             }
         }
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

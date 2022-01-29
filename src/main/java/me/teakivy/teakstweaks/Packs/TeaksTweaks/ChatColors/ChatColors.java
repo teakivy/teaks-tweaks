@@ -1,29 +1,29 @@
 package me.teakivy.teakstweaks.Packs.TeaksTweaks.ChatColors;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.inventory.PrepareAnvilEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class ChatColors implements Listener {
+public class ChatColors extends BasePack {
 
-    Main main = Main.getPlugin(Main.class);
+    public ChatColors() {
+        super("Chat Colors", "chat-colors");
+    }
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event) {
-        if (!main.getConfig().getBoolean("packs.chat-colors.chat")) return;
+        if (!getConfig().getBoolean("chat")) return;
         event.setMessage(ChatColor.translateAlternateColorCodes('&', event.getMessage()));
     }
 
     @EventHandler
     private void onAnvil(PrepareAnvilEvent event) {
-        if (!main.getConfig().getBoolean("packs.chat-colors.items")) return;
+        if (!getConfig().getBoolean("items")) return;
         ItemStack result = event.getResult();
         if (result == null) return;
         if (!result.hasItemMeta()) return;
@@ -39,15 +39,11 @@ public class ChatColors implements Listener {
 
     @EventHandler
     public void onSign(SignChangeEvent event) {
-        if (!main.getConfig().getBoolean("packs.chat-colors.signs")) return;
+        if (!getConfig().getBoolean("signs")) return;
         for (int i = 0; i < event.getLines().length; i++) {
             if (event.getLine(i) == null) continue;
             event.setLine(i, ChatColor.translateAlternateColorCodes('&', event.getLine(i)));
         }
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

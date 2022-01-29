@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.Packs.Mobs.VillagerDeathMessages;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import me.teakivy.teakstweaks.Utils.Logger.Log;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
 import org.bukkit.Bukkit;
@@ -9,17 +9,16 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 
-public class VillagerDeath implements Listener {
+public class VillagerDeath extends BasePack {
 
-    Main main = Main.getPlugin(Main.class);
+    public VillagerDeath() {
+        super("Villager Death Messages", "villager-death-messages");
+    }
 
     @EventHandler
     public void onMobDeath(EntityDeathEvent event) {
-        if (!main.getConfig().getBoolean("packs.villager-death-messages.enabled")) return;
         if (event.getEntity().getType() == EntityType.VILLAGER) {
             Location loc = event.getEntity().getLocation();
             String deathMessage = MessageHandler.getMessage("pack.villager-death-messages.death-message")
@@ -28,9 +27,11 @@ public class VillagerDeath implements Listener {
                     .replace("%z%", Math.floor(loc.getZ()) + "")
                     .replace("world", getWorldName(loc));
 
-            if (main.getConfig().getBoolean("packs.villager-death-messages.show-in-chat"))
+            if (getConfig().getBoolean("show-in-chat")) {
                 Bukkit.broadcastMessage(deathMessage);
-            else Log.message(deathMessage);
+            } else {
+                Log.message(deathMessage);
+            }
         }
     }
 
@@ -43,10 +44,6 @@ public class VillagerDeath implements Listener {
         if (world.getName().equalsIgnoreCase("world_the_end"))
             return ChatColor.YELLOW + " in " + ChatColor.LIGHT_PURPLE + "The End";
         return "";
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 

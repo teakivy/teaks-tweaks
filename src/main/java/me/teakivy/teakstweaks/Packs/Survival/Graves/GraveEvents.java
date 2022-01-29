@@ -1,13 +1,11 @@
 package me.teakivy.teakstweaks.Packs.Survival.Graves;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -26,9 +24,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class GraveEvents implements Listener {
+public class GraveEvents extends BasePack {
 
-    Main main = Main.getPlugin(Main.class);
+    public GraveEvents() {
+        super("Graves", "graves");
+    }
 
     @EventHandler
     public void onInteract(PlayerInteractAtEntityEvent event) throws IOException {
@@ -39,37 +39,37 @@ public class GraveEvents implements Listener {
             event.setCancelled(true);
             entity.remove();
             PersistentDataContainer data = entity.getPersistentDataContainer();
-            if (data.has(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_items"), PersistentDataType.STRING)) {
-                String ownerItems = data.get(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_items"), PersistentDataType.STRING);
+            if (data.has(new NamespacedKey(main, "vt_grave_owner_items"), PersistentDataType.STRING)) {
+                String ownerItems = data.get(new NamespacedKey(main, "vt_grave_owner_items"), PersistentDataType.STRING);
                 if (ownerItems != null) {
                     for (ItemStack item : new GraveCreator().deserializeItems(ownerItems, entity.getScoreboardTags().contains("vt_base64"))) {
                         Item itemE = entity.getWorld().dropItem(entity.getLocation().add(0, 2, 0), item);
                         if (event.getPlayer().isSneaking()) {
                             PersistentDataContainer iData = itemE.getPersistentDataContainer();
-                            iData.set(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_item_owner_uuid"), PersistentDataType.STRING, event.getPlayer().getUniqueId().toString());
+                            iData.set(new NamespacedKey(main, "vt_grave_item_owner_uuid"), PersistentDataType.STRING, event.getPlayer().getUniqueId().toString());
                         }
                         itemE.setPickupDelay(0);
                         itemE.setVelocity(new Vector(0, 0, 0));
                     }
                 }
             }
-            if (data.has(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_xp"), PersistentDataType.INTEGER)) {
-                if (data.get(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_xp"), PersistentDataType.INTEGER) > 0) {
+            if (data.has(new NamespacedKey(main, "vt_grave_owner_xp"), PersistentDataType.INTEGER)) {
+                if (data.get(new NamespacedKey(main, "vt_grave_owner_xp"), PersistentDataType.INTEGER) > 0) {
                     ExperienceOrb orb = (ExperienceOrb) entity.getWorld().spawnEntity(entity.getLocation().add(0, 2, 0), EntityType.EXPERIENCE_ORB);
-                    orb.setExperience(data.get(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_xp"), PersistentDataType.INTEGER));
+                    orb.setExperience(data.get(new NamespacedKey(main, "vt_grave_owner_xp"), PersistentDataType.INTEGER));
                 }
             }
             return;
         } else {
             event.setCancelled(true);
             entity.remove();
-            if (main.getConfig().getBoolean("packs.graves.allow-robbing") || holdingKey(event.getPlayer())) {
-                if (holdingKey(event.getPlayer()) && !main.getConfig().getBoolean("packs.graves.allow-robbing") && event.getPlayer().getGameMode() != GameMode.CREATIVE) {
+            if (getConfig().getBoolean("allow-robbing") || holdingKey(event.getPlayer())) {
+                if (holdingKey(event.getPlayer()) && !getConfig().getBoolean("allow-robbing") && event.getPlayer().getGameMode() != GameMode.CREATIVE) {
                     event.getPlayer().getInventory().remove(getGraveKey());
                 }
                 PersistentDataContainer data = entity.getPersistentDataContainer();
-                if (data.has(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_items"), PersistentDataType.STRING)) {
-                    String ownerItems = data.get(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_items"), PersistentDataType.STRING);
+                if (data.has(new NamespacedKey(main, "vt_grave_owner_items"), PersistentDataType.STRING)) {
+                    String ownerItems = data.get(new NamespacedKey(main, "vt_grave_owner_items"), PersistentDataType.STRING);
                     if (ownerItems != null) {
                         for (ItemStack item : new GraveCreator().deserializeItems(ownerItems, entity.getScoreboardTags().contains("vt_base64"))) {
                             Item itemE = entity.getWorld().dropItem(entity.getLocation().add(0, 2, 0), item);
@@ -78,10 +78,10 @@ public class GraveEvents implements Listener {
                         }
                     }
                 }
-                if (data.has(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_xp"), PersistentDataType.INTEGER)) {
-                    if (data.get(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_xp"), PersistentDataType.INTEGER) > 0) {
+                if (data.has(new NamespacedKey(main, "vt_grave_owner_xp"), PersistentDataType.INTEGER)) {
+                    if (data.get(new NamespacedKey(main, "vt_grave_owner_xp"), PersistentDataType.INTEGER) > 0) {
                         ExperienceOrb orb = (ExperienceOrb) entity.getWorld().spawnEntity(entity.getLocation().add(0, 2, 0), EntityType.EXPERIENCE_ORB);
-                        orb.setExperience(data.get(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_xp"), PersistentDataType.INTEGER));
+                        orb.setExperience(data.get(new NamespacedKey(main, "vt_grave_owner_xp"), PersistentDataType.INTEGER));
                     }
                 }
                 return;
@@ -101,9 +101,9 @@ public class GraveEvents implements Listener {
     public void onPickUp(InventoryPickupItemEvent event) {
         if (!(event.getInventory().getHolder() instanceof Player)) return;
         Player player = (Player) event.getInventory().getHolder();
-        if (event.getItem().getPersistentDataContainer().has(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_item_owner_uuid"), PersistentDataType.STRING)) {
+        if (event.getItem().getPersistentDataContainer().has(new NamespacedKey(main, "vt_grave_item_owner_uuid"), PersistentDataType.STRING)) {
             UUID playerUUID = player.getUniqueId();
-            UUID itemUUID = UUID.fromString(event.getItem().getPersistentDataContainer().get(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_item_owner_uuid"), PersistentDataType.STRING));
+            UUID itemUUID = UUID.fromString(event.getItem().getPersistentDataContainer().get(new NamespacedKey(main, "vt_grave_item_owner_uuid"), PersistentDataType.STRING));
             if (playerUUID != itemUUID) event.setCancelled(true);
         }
     }
@@ -114,13 +114,13 @@ public class GraveEvents implements Listener {
         Location loc = GraveCreator.findGraveLocation(player.getLocation());
         if (loc == null) return;
         int xp = 0;
-        if (main.getConfig().getBoolean("packs.graves.hold-xp")) {
+        if (getConfig().getBoolean("hold-xp")) {
             xp = event.getDroppedExp();
         }
 
         GraveCreator.createGrave(loc, player, xp);
 
-        if (main.getConfig().getBoolean("packs.graves.locatable")) {
+        if (getConfig().getBoolean("locatable")) {
             String lastGrave = MessageHandler.getMessage("pack.graves.last-grave")
                     .replace("%grave_location_x%", String.valueOf((int) Math.floor(loc.getX())))
                     .replace("%grave_location_y%", String.valueOf((int) Math.floor(loc.getY())))
@@ -130,7 +130,7 @@ public class GraveEvents implements Listener {
             PersistentDataContainer playerData = player.getPersistentDataContainer();
             playerData.set(new NamespacedKey(main, "vt_graves_last"), PersistentDataType.STRING, lastGrave);
         }
-        if (main.getConfig().getBoolean("packs.graves.hold-xp")) {
+        if (getConfig().getBoolean("hold-xp")) {
             event.setDroppedExp(0);
         }
         event.getDrops().clear();
@@ -138,8 +138,8 @@ public class GraveEvents implements Listener {
 
     public boolean ownsGrave(Entity entity, Player player) {
         PersistentDataContainer data = entity.getPersistentDataContainer();
-        if (data.has(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_uuid"), PersistentDataType.STRING)) {
-            String ownerUUID = data.get(new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_uuid"), PersistentDataType.STRING);
+        if (data.has(new NamespacedKey(main, "vt_grave_owner_uuid"), PersistentDataType.STRING)) {
+            String ownerUUID = data.get(new NamespacedKey(main, "vt_grave_owner_uuid"), PersistentDataType.STRING);
             return player.getUniqueId().toString().equals(ownerUUID);
         } else {
             return false;
@@ -167,10 +167,6 @@ public class GraveEvents implements Listener {
     @EventHandler
     public void onPlace(BlockPlaceEvent event) {
         if (holdingKey(event.getPlayer())) event.setCancelled(true);
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

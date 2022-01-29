@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.Packs.Utilities.ItemAverages;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import me.teakivy.teakstweaks.Utils.Logger.Log;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
 import org.bukkit.Bukkit;
@@ -9,8 +9,6 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
@@ -20,9 +18,7 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ItemTracker implements Listener {
-
-    static Main main = Main.getPlugin(Main.class);
+public class ItemTracker extends BasePack {
     public static boolean inUse = false;
     public static Location tracking = null;
     private static boolean shouldStop = false;
@@ -30,6 +26,10 @@ public class ItemTracker implements Listener {
 
     static ArrayList<Entity> itemsTracked = new ArrayList<>();
     static HashMap<Material, Integer> items = new HashMap<>();
+
+    public ItemTracker() {
+        super("Item Averages", "item-averages");
+    }
 
     public static void spawnTracker(Location loc, Player player) {
         glowingBlock(loc, 2*60*20);
@@ -125,9 +125,5 @@ public class ItemTracker implements Listener {
             Log.message(MessageHandler.getMessage("pack.item-averages.log-finish"));
             shouldStop = true;
         }, glowLength);
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 }

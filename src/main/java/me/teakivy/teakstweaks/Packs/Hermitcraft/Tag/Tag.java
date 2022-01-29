@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.Packs.Hermitcraft.Tag;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import me.teakivy.teakstweaks.Packs.Survival.AFKDisplay.AFK;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
 import org.bukkit.Bukkit;
@@ -11,7 +11,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.entity.ItemDespawnEvent;
@@ -27,10 +26,11 @@ import org.bukkit.scoreboard.Team;
 
 import java.util.Objects;
 
-public class Tag implements Listener {
+public class Tag extends BasePack {
 
-    Main main = Main.getPlugin(Main.class);
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
+    public Tag() {
+        super ("Tag", "tag");
+    }
 
     @EventHandler
     public void tagPlayer(EntityDamageByEntityEvent event) {
@@ -45,7 +45,7 @@ public class Tag implements Listener {
         if (!damager.getScoreboardTags().contains("vt_tag_it")) return;
 
         if (AFK.afk.get(player.getUniqueId())) {
-            if (!main.getConfig().getBoolean("packs.tag.allow-tagging-afk")) {
+            if (!getConfig().getBoolean("allow-tagging-afk")) {
                 damager.sendMessage(MessageHandler.getMessage("pack.tag.cant-tag-afk"));
                 event.setCancelled(true);
                 return;
@@ -82,7 +82,7 @@ public class Tag implements Listener {
         } else {
             tagFullInventory(player);
         }
-        if (main.getConfig().getBoolean("packs.tag.enabled")) {
+        if (getConfig().getBoolean("display-when-tagged")) {
             Bukkit.broadcastMessage(MessageHandler.getMessage("pack.tag.tag-message").replace("%tagged_name%", player.getName()).replace("%tagger_name%", damager.getName()));
         }
         event.setDamage(0);

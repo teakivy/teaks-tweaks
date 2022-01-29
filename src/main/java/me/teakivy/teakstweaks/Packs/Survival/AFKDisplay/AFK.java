@@ -1,14 +1,12 @@
 package me.teakivy.teakstweaks.Packs.Survival.AFKDisplay;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import me.teakivy.teakstweaks.Utils.Logger.Log;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.scoreboard.Scoreboard;
@@ -18,9 +16,17 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.UUID;
 
-public class AFK implements Listener {
+public class AFK extends BasePack {
 
-    static Main main = Main.getPlugin(Main.class);
+    public AFK() {
+        super("AFK Display", "afk-display");
+    }
+
+    @Override
+    public void init() {
+        super.init();
+        register();
+    }
 
     public static HashMap<UUID, Boolean> afk = new HashMap<>();
     static HashMap<UUID, Long> lastMove = new HashMap<>();
@@ -32,14 +38,14 @@ public class AFK implements Listener {
 
     static Team afkTeam;
 
-    public static void register() {
+    public void register() {
         registerTeam();
 
-        afkMinutes = main.getConfig().getInt("packs.afk-display.afk-after");
-        kickAfter = main.getConfig().getInt("packs.afk-display.kick-after");
+        afkMinutes = getConfig().getInt("afk-after");
+        kickAfter = getConfig().getInt("kick-after");
 
-        if (main.getConfig().getBoolean("packs.afk-display.display-afk-badge")) {
-            afkTeam.setPrefix(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(main.getConfig().getString("packs.afk-display.afk-badge"))) + " ");
+        if (getConfig().getBoolean("display-afk-badge")) {
+            afkTeam.setPrefix(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(getConfig().getString("afk-badge"))) + " ");
         } else {
             afkTeam.setPrefix("");
         }
@@ -68,11 +74,11 @@ public class AFK implements Listener {
                 } else {
                     if (player != null) {
                         if (kickAfter == 0) {
-                            player.kickPlayer(main.getConfig().getString("packs.afk-display.kick-message"));
+                            player.kickPlayer(getConfig().getString("kick-message"));
                         }
                         if (kickAfter > 0) {
                             if (lastMove.get(uuid) + (afkMinutes * 60 * 1000) + (kickAfter * 60 * 1000) < System.currentTimeMillis()) {
-                                player.kickPlayer(main.getConfig().getString("packs.afk-display.kick-message"));
+                                player.kickPlayer(getConfig().getString("kick-message"));
                             }
                         }
                     }
@@ -154,8 +160,9 @@ public class AFK implements Listener {
         }
     }
 
+    @Override
     public void unregister() {
-        HandlerList.unregisterAll(this);
+        super.unregister();
         Bukkit.getScheduler().cancelTask(afkTimer);
     }
 

@@ -1,64 +1,38 @@
 package me.teakivy.teakstweaks.Packs.Survival.CauldronConcrete;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDropItemEvent;
 import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class ConcreteConverter implements Listener {
+public class ConcreteConverter extends BasePack {
 
-    Main main = Main.getPlugin(Main.class);
+    public ConcreteConverter() {
+        super ("Cauldron Concrete", "cauldron-concrete");
+    }
 
     @EventHandler
     public void onDrop(EntityDropItemEvent event) {
-        if (!main.getConfig().getBoolean("packs.cauldron-concrete.enabled")) return;
         ItemStack item = event.getItemDrop().getItemStack();
         Material material = item.getType();
-        if (material == Material.WHITE_CONCRETE_POWDER) concreteConverter(Material.WHITE_CONCRETE, event);
-        if (material == Material.BLACK_CONCRETE_POWDER) concreteConverter(Material.BLACK_CONCRETE, event);
-        if (material == Material.BLUE_CONCRETE_POWDER) concreteConverter(Material.BLUE_CONCRETE, event);
-        if (material == Material.CYAN_CONCRETE_POWDER) concreteConverter(Material.CYAN_CONCRETE, event);
-        if (material == Material.LIGHT_BLUE_CONCRETE_POWDER) concreteConverter(Material.LIGHT_BLUE_CONCRETE, event);
-        if (material == Material.GRAY_CONCRETE_POWDER) concreteConverter(Material.GRAY_CONCRETE, event);
-        if (material == Material.LIGHT_GRAY_CONCRETE_POWDER) concreteConverter(Material.LIGHT_GRAY_CONCRETE, event);
-        if (material == Material.LIME_CONCRETE_POWDER) concreteConverter(Material.LIME_CONCRETE, event);
-        if (material == Material.GREEN_CONCRETE_POWDER) concreteConverter(Material.GREEN_CONCRETE, event);
-        if (material == Material.PURPLE_CONCRETE_POWDER) concreteConverter(Material.PURPLE_CONCRETE, event);
-        if (material == Material.RED_CONCRETE_POWDER) concreteConverter(Material.RED_CONCRETE, event);
-        if (material == Material.PINK_CONCRETE_POWDER) concreteConverter(Material.PINK_CONCRETE, event);
-        if (material == Material.MAGENTA_CONCRETE_POWDER) concreteConverter(Material.MAGENTA_CONCRETE, event);
-        if (material == Material.BROWN_CONCRETE_POWDER) concreteConverter(Material.BROWN_CONCRETE, event);
-        if (material == Material.YELLOW_CONCRETE_POWDER) concreteConverter(Material.YELLOW_CONCRETE, event);
-        if (material == Material.ORANGE_CONCRETE_POWDER) concreteConverter(Material.ORANGE_CONCRETE, event);
+
+        if (material.toString().contains("_CONCRETE_POWDER")) {
+            concreteConverter(Material.valueOf(material.toString().replace("_CONCRETE_POWDER", "_CONCRETE")), event);
+        }
 
     }
 
     @EventHandler
     public void blockDrop(ItemSpawnEvent event) {
-        if (!main.getConfig().getBoolean("packs.cauldron-concrete.enabled")) return;
         ItemStack item = event.getEntity().getItemStack();
         Material material = item.getType();
-        if (material == Material.WHITE_CONCRETE_POWDER) concreteConverter(Material.WHITE_CONCRETE, event);
-        if (material == Material.BLACK_CONCRETE_POWDER) concreteConverter(Material.BLACK_CONCRETE, event);
-        if (material == Material.BLUE_CONCRETE_POWDER) concreteConverter(Material.BLUE_CONCRETE, event);
-        if (material == Material.CYAN_CONCRETE_POWDER) concreteConverter(Material.CYAN_CONCRETE, event);
-        if (material == Material.LIGHT_BLUE_CONCRETE_POWDER) concreteConverter(Material.LIGHT_BLUE_CONCRETE, event);
-        if (material == Material.GRAY_CONCRETE_POWDER) concreteConverter(Material.GRAY_CONCRETE, event);
-        if (material == Material.LIGHT_GRAY_CONCRETE_POWDER) concreteConverter(Material.LIGHT_GRAY_CONCRETE, event);
-        if (material == Material.LIME_CONCRETE_POWDER) concreteConverter(Material.LIME_CONCRETE, event);
-        if (material == Material.GREEN_CONCRETE_POWDER) concreteConverter(Material.GREEN_CONCRETE, event);
-        if (material == Material.PURPLE_CONCRETE_POWDER) concreteConverter(Material.PURPLE_CONCRETE, event);
-        if (material == Material.RED_CONCRETE_POWDER) concreteConverter(Material.RED_CONCRETE, event);
-        if (material == Material.PINK_CONCRETE_POWDER) concreteConverter(Material.PINK_CONCRETE, event);
-        if (material == Material.MAGENTA_CONCRETE_POWDER) concreteConverter(Material.MAGENTA_CONCRETE, event);
-        if (material == Material.BROWN_CONCRETE_POWDER) concreteConverter(Material.BROWN_CONCRETE, event);
-        if (material == Material.YELLOW_CONCRETE_POWDER) concreteConverter(Material.YELLOW_CONCRETE, event);
-        if (material == Material.ORANGE_CONCRETE_POWDER) concreteConverter(Material.ORANGE_CONCRETE, event);
+
+        if (material.toString().contains("_CONCRETE_POWDER")) {
+            concreteConverter(Material.valueOf(material.toString().replace("_CONCRETE_POWDER", "_CONCRETE")), event);
+        }
 
     }
 
@@ -88,10 +62,6 @@ public class ConcreteConverter implements Listener {
                 if (event.getEntity().isDead()) this.cancel();
             }
         }.runTaskTimer(main, 0, 20L);
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 

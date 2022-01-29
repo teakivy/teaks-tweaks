@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.Packs.Hermitcraft.ThunderShrine;
 
 import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
 import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -9,8 +10,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -21,14 +20,22 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Shrine implements Listener {
+public class Shrine extends BasePack {
 
     static Main main = Main.getPlugin(Main.class);
     static FileConfiguration data = main.data.getConfig();
 
-    static String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
-
     int particleTask = -1;
+
+    public Shrine() {
+        super("Thunder Shrine", "thunder-shrine");
+    }
+
+    @Override
+    public void init() {
+        super.init();
+        register();
+    }
 
     public void register() {
         if (main.getConfig().getBoolean("packs.thunder-shrine.idle-particles")) {
@@ -140,8 +147,9 @@ public class Shrine implements Listener {
         main.data.saveConfig();
     }
 
+    @Override
     public void unregister() {
-        HandlerList.unregisterAll(this);
+        super.unregister();
         if (particleTask != -1) {
             Bukkit.getScheduler().cancelTask(particleTask);
         }

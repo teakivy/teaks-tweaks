@@ -1,27 +1,22 @@
 package me.teakivy.teakstweaks.Packs.Mobs.AntiGhastGrief;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityExplodeEvent;
 
-public class AntiGhast implements Listener {
+public class AntiGhast extends BasePack {
 
-    static Main main = Main.getPlugin(Main.class);
+    public AntiGhast() {
+        super("Anti Ghast Grief", "anti-ghast-grief");
+    }
 
     @EventHandler
     public void onExplosion(EntityExplodeEvent event) {
-        if (!main.getConfig().getBoolean("packs.anti-ghast-grief.enabled")) return;
         Entity entity = event.getEntity();
         if (entity.getType().equals(EntityType.FIREBALL)) {
             event.blockList().clear();
         }
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 }

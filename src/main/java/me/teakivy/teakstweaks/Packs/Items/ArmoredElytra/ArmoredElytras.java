@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.Packs.Items.ArmoredElytra;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import me.teakivy.teakstweaks.Utils.Serializer.Base64Serializer;
 import me.teakivy.teakstweaks.Utils.Serializer.ItemStackSerializer;
 import org.bukkit.*;
@@ -10,9 +10,8 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.EquipmentSlot;
@@ -23,86 +22,54 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class ArmoredElytras implements Listener {
+public class ArmoredElytras extends BasePack {
 
-    Main main = Main.getPlugin(Main.class);
-
-    static List<UUID> broken = new ArrayList<>();
-
-    private final List<String> combinable = Stream.of(
-            "NETHERITE_CHESTPLATE",
-            "DIAMOND_CHESTPLATE",
-            "GOLDEN_CHESTPLATE",
-            "IRON_CHESTPLATE",
-            "CHAINMAIL_CHESTPLATE",
-            "LEATHER_CHESTPLATE"
-            )
-            .collect(Collectors.toList());
-
-    private final List<String> chestplates = Stream.of(
-            "NETHERITE_CHESTPLATE",
-            "DIAMOND_CHESTPLATE",
-            "GOLDEN_CHESTPLATE",
-            "IRON_CHESTPLATE",
-            "CHAINMAIL_CHESTPLATE",
-            "LEATHER_CHESTPLATE"
-    )
-            .collect(Collectors.toList());
+    public ArmoredElytras() {
+        super("Armored Elytra", "armored-elytra");
+    }
 
     @EventHandler
     public void onDrop(PlayerDropItemEvent event) {
         ItemStack item = event.getItemDrop().getItemStack();
-        if (!combinable.contains(item.getType().toString())) return;
+        Item itemDrop = event.getItemDrop();
+        Player player = event.getPlayer();
+
+        if (!isChestplate(item.getType())) return;
+
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (event.getItemDrop().getLocation().add(0, -1, 0).getBlock().getType().equals(Material.ANVIL)) {
-                    for (Entity entity : event.getItemDrop().getNearbyEntities(1, 1, 1)) {
-                        if (entity.getType() == EntityType.DROPPED_ITEM) {
-                            if (chestplates.contains(item.getType().toString())) {
-                                Item item = (Item) entity;
-                                if (item.getItemStack().getType() == Material.ELYTRA) {
-                                    if (item.getItemStack().hasItemMeta()) {
-                                        if (!item.getItemStack().getItemMeta().getPersistentDataContainer().has(new NamespacedKey(main, "armored_elytra"), PersistentDataType.STRING)) {
-                                            if (!event.getItemDrop().isDead() && !item.isDead()) {
-                                                item.remove();
-                                                event.getItemDrop().remove();
-                                                item.getWorld().spawnParticle(Particle.FLAME, item.getLocation(), 100, 0, 0, 0, .5);
-                                                event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.BLOCK_ANVIL_USE, 1, 1);
+                if (getBlockBelow(itemDrop.getLocation()) != Material.ANVIL) return;
 
-                                                ItemStack newElytra = createArmoredElytra(item.getItemStack(), event.getItemDrop().getItemStack());
+                for (Entity entity : itemDrop.getNearbyEntities(1, 1, 1)) {
+                    if (entity.getType() != EntityType.DROPPED_ITEM) continue;
 
-                                                item.getLocation().getWorld().dropItem(item.getLocation(), newElytra).setVelocity(new Vector(0, 0, 0));
-                                            }
-                                        }
-                                    } else {
-                                        if (!event.getItemDrop().isDead() && !item.isDead()) {
-                                            item.remove();
-                                            event.getItemDrop().remove();
-                                            item.getWorld().spawnParticle(Particle.FLAME, item.getLocation(), 100, 0, 0, 0, .5);
-                                            event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.BLOCK_ANVIL_USE, 1, 1);
+                    Item item = (Item) entity;
+                    if (item.getItemStack().getType() != Material.ELYTRA) continue;
+                    if (itemDrop.isDead() || item.isDead()) continue;
 
-                                            ItemStack newElytra = createArmoredElytra(item.getItemStack(), event.getItemDrop().getItemStack());
+                    item.remove();
+                    itemDrop.remove();
+                    item.getWorld().spawnParticle(Particle.FLAME, item.getLocation(), 100, 0, 0, 0, .5);
 
-                                            item.getLocation().getWorld().dropItem(item.getLocation(), newElytra).setVelocity(new Vector(0, 0, 0));
-                                        }
-                                    }
+                    player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_USE, 1, 1);
 
-                                }
-                            }
-                        }
-                    }
+                    ItemStack newElytra = createArmoredElytra(item.getItemStack(), itemDrop.getItemStack());
+
+                    item.getLocation().getWorld().dropItem(item.getLocation(), newElytra).setVelocity(new Vector(0, 0, 0));
+
                 }
-                if (event.getItemDrop().isDead()) this.cancel();
+
+                if (itemDrop.isDead()) this.cancel();
             }
         }.runTaskTimer(main, 0, 20L);
+    }
+
+    private Material getBlockBelow(Location location) {
+        return location.add(0, -1, 0).getBlock().getType();
     }
 
     @EventHandler
@@ -158,6 +125,10 @@ public class ArmoredElytras implements Listener {
             item.getWorld().dropItem(item.getLocation(), getElytraFromArmoredElytra(itemStack)).setVelocity(new Vector(0, 0, 0));
             item.remove();
         }
+    }
+
+    public boolean isChestplate(Material material) {
+        return material.toString().toLowerCase().contains("chestplate");
     }
 
     private ItemStack createArmoredElytra(ItemStack elytra, ItemStack chestplate) {
@@ -279,16 +250,11 @@ public class ArmoredElytras implements Listener {
     }
 
     public String serializeItem(ItemStack item) {
-
         return Base64Serializer.itemStackArrayToBase64(new ItemStack[]{item});
     }
 
     public ItemStack deserializeItem(String serialized) throws IOException {
         return Base64Serializer.itemStackArrayFromBase64(serialized)[0];
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

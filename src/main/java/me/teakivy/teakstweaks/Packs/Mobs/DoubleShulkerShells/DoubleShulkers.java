@@ -1,31 +1,26 @@
 package me.teakivy.teakstweaks.Packs.Mobs.DoubleShulkerShells;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class DoubleShulkers implements Listener {
+public class DoubleShulkers extends BasePack {
 
-    static Main main = Main.getPlugin(Main.class);
+    public DoubleShulkers() {
+        super("Double Shulker Shells", "double-shulker-shells");
+    }
 
     @EventHandler
     public void shulkerKill(EntityDeathEvent event) {
-        if (!main.getConfig().getBoolean("packs.double-shulker-shells.enabled")) return;
         Entity entity = event.getEntity();
         if (entity.getType() == EntityType.SHULKER) {
             event.getDrops().clear();
             event.getDrops().add(new ItemStack(Material.SHULKER_SHELL, 2));
         }
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

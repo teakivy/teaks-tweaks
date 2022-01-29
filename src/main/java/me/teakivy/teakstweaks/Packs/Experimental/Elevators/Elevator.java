@@ -1,7 +1,7 @@
 package me.teakivy.teakstweaks.Packs.Experimental.Elevators;
 
 import com.google.common.collect.Sets;
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.AreaEffectCloud;
@@ -9,8 +9,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -23,22 +21,26 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-public class Elevator implements Listener {
+public class Elevator extends BasePack {
 
-    static Main main = Main.getPlugin(Main.class);
+    public Elevator() {
+        super("Elevators", "elevators");
+    }
 
     static List<Material> elevatorMaterials = new ArrayList<>();
     private Set<UUID> prevPlayersOnGround = Sets.newHashSet();
 
-    public static void register() {
-        for (String block : main.getConfig().getStringList("packs.elevators.elevator-blocks")) {
+    @Override
+    public void init() {
+        super.init();
+        for (String block : getConfig().getStringList("elevator-blocks")) {
             elevatorMaterials.add(Material.valueOf(block));
         }
     }
 
     @EventHandler
     public void onDrop(PlayerDropItemEvent event) {
-        if (event.getItemDrop().getItemStack().getType() == Material.valueOf(main.getConfig().getString("packs.elevators.activator"))) {
+        if (event.getItemDrop().getItemStack().getType() == Material.valueOf(getConfig().getString("activator"))) {
             if (event.getItemDrop().getItemStack().getAmount() != 1) return;
             if (isElevator(event.getItemDrop().getLocation().add(0, -1, 0).getBlock())) return;
             new BukkitRunnable() {
@@ -82,7 +84,7 @@ public class Elevator implements Listener {
 
                 if (elevatorSpot != null) {
                     player.teleport(new Location(player.getWorld(), player.getLocation().getX(), elevatorSpot.getY() + 1, player.getLocation().getZ(), player.getLocation().getYaw(), player.getLocation().getPitch()));
-                    if (main.getConfig().getBoolean("packs.elevators.play-sound")) {
+                    if (getConfig().getBoolean("elevators.play-sound")) {
                         player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
                     }
                     player.getWorld().spawnParticle(Particle.PORTAL, player.getLocation().add(0, 1, 0), 20, -.5, -.5, -.5, 4);
@@ -103,7 +105,7 @@ public class Elevator implements Listener {
                 if (elevatorSpot != null) {
                     Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
                         player.teleport(new Location(player.getWorld(), player.getLocation().getX(), elevatorSpot.getY() + 1, player.getLocation().getZ(), player.getLocation().getYaw(), player.getLocation().getPitch()));
-                        if (main.getConfig().getBoolean("packs.elevators.play-sound")) {
+                        if (getConfig().getBoolean("play-sound")) {
                             player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
                         }
                         player.getWorld().spawnParticle(Particle.PORTAL, player.getLocation().add(0, 1, 0), 20, -.5, -.5, -.5, 4);
@@ -143,7 +145,7 @@ public class Elevator implements Listener {
         Block next = null;
         for (int i = minY; i < (int) eBlock.getLocation().getY(); i++) {
             Block block = eBlock.getLocation().getWorld().getBlockAt((int) eBlock.getLocation().getX(), i, (int) eBlock.getLocation().getZ());
-            if ((!main.getConfig().getBoolean("packs.elevators.require-same-type") || eBlock.getLocation().getBlock().getType() == block.getType()) && block.getY() != eBlock.getY()) {
+            if ((!getConfig().getBoolean("require-same-type") || eBlock.getLocation().getBlock().getType() == block.getType()) && block.getY() != eBlock.getY()) {
                 if (isElevator(block)) {
                     next = block;
                 }
@@ -156,7 +158,7 @@ public class Elevator implements Listener {
         Block next = null;
         for (int i = (int) eBlock.getLocation().getY(); i < maxY; i++) {
             Block block = eBlock.getLocation().getWorld().getBlockAt((int) eBlock.getLocation().getX(), i, (int) eBlock.getLocation().getZ());
-            if ((!main.getConfig().getBoolean("packs.elevators.require-same-type") || eBlock.getLocation().getBlock().getType() == block.getType()) && block.getY() != eBlock.getY()) {
+            if ((!getConfig().getBoolean("require-same-type") || eBlock.getLocation().getBlock().getType() == block.getType()) && block.getY() != eBlock.getY()) {
                 if (isElevator(block)) {
                     next = block;
                     return next;
@@ -164,10 +166,6 @@ public class Elevator implements Listener {
             }
         }
         return next;
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 
 }

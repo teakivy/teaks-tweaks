@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.Packs.TeaksTweaks.StairChairs;
 
+import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -11,8 +12,6 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Marker;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -21,7 +20,11 @@ import org.spigotmc.event.entity.EntityDismountEvent;
 
 import java.util.Objects;
 
-public class StairChairs implements Listener {
+public class StairChairs extends BasePack {
+
+    public StairChairs() {
+        super("Stair Chairs", "stair-chairs");
+    }
 
 
     @EventHandler
@@ -95,9 +98,5 @@ public class StairChairs implements Listener {
         if (!(event.getEntity() instanceof Player)) return;
         if (event.getDismounted().getScoreboardTags().contains("chair-rider")) event.getDismounted().remove();
         event.getEntity().teleport(event.getEntity().getLocation().add(0, 1, 0));
-    }
-
-    public void unregister() {
-        HandlerList.unregisterAll(this);
     }
 }
