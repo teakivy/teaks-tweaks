@@ -81,6 +81,11 @@ packs:
   invisible-item-frames:
     enabled: false
 
+  # Fixed Item Frames
+  # Shift right-click an item frame with iron bars to make it fixed
+  fixed-item-frames:
+    enabled: false
+
   # Better Foliage
   # Add foliage features to the world!
   better-foliage:

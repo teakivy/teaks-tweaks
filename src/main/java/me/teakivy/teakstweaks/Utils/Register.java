@@ -40,6 +40,7 @@ import me.teakivy.teakstweaks.Packs.Survival.WorkstationHighlights.Highlighter;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.BetterFoliage.BetterFoliage;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.ChatColors.ChatColors;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.EditSigns.EditSigns;
+import me.teakivy.teakstweaks.Packs.TeaksTweaks.FixedItemFrames.FixedItemFrames;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.InvisibleItemFrames.InvisibleItemFrames;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.KeepSmall.KeepSmall;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.LecternReset.LecternReset;
@@ -116,6 +117,7 @@ public class Register {
     public static SlimeCream slimeCream = new SlimeCream();
     public static InvisibleItemFrames invisibleItemFrames = new InvisibleItemFrames();
     public static BetterFoliage betterFoliage = new BetterFoliage();
+    public static FixedItemFrames fixedItemFrames = new FixedItemFrames();
 
     public static void registerAll() {
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
@@ -187,6 +189,7 @@ public class Register {
             case "slime-cream" -> slimeCream.unregister();
             case "invisible-item-frames" -> invisibleItemFrames.unregister();
             case "better-foliage" -> betterFoliage.unregister();
+            case "fixed-item-frames" -> fixedItemFrames.unregister();
         }
     }
 
@@ -243,6 +246,7 @@ public class Register {
             case "slime-cream" -> slimeCream.init();
             case "invisible-item-frames" -> invisibleItemFrames.init();
             case "better-foliage" -> betterFoliage.init();
+            case "fixed-item-frames" -> fixedItemFrames.init();
         }
     }
     public static void registerCommands() {
