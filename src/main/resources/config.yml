@@ -83,6 +83,7 @@ packs:
 
   # Fixed Item Frames
   # Shift right-click an item frame with iron bars to make it fixed
+  # Shift right-click an item frame with shears to make it not fixed
   fixed-item-frames:
     enabled: false
 
@@ -924,7 +925,7 @@ commands:
 # Leave these options alone unless you know what you're doing!
 # Changing these values may cause unexpected issues.
 config:
-  plugin-version: 1.6.6-beta
+  plugin-version: 1.6.7-beta
   alert-op-on-new-version: true
-  version: 26
+  version: 27
   dev-mode: false
