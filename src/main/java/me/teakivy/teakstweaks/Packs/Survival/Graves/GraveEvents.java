@@ -110,7 +110,13 @@ public class GraveEvents extends BasePack {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
+        if (!config.getBoolean("generate-in-lava")) {
+            if (event.getPlayer().getLocation().getBlock().getType() == Material.LAVA || event.getPlayer().getLocation().getBlock().getType() == Material.LAVA_CAULDRON) {
+                return;
+            }
+        }
         Player player = event.getEntity();
+
         Location loc = GraveCreator.findGraveLocation(player.getLocation());
         if (loc == null) return;
         int xp = 0;

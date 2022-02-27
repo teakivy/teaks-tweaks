@@ -197,6 +197,8 @@ packs:
     allow-robbing: false
     # Whether or not to allow graves to be placed above the void
     allow-void-graves: true
+    # Whether or not to allow graves to generate when a player dies in lava
+    generate-in-lava: true
 
   # Custom Nether Portals
   # Ignite nether portals of any size or shape you like, or using crying obsidian in the portal frame if enabled.
