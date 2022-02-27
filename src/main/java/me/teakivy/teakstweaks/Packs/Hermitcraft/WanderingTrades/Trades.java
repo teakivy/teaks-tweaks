@@ -55,20 +55,21 @@ public class Trades extends BasePack {
             }
         } else {
             int amount = getData().getConfig().getInt("wandering-trades.heads.amount-of-trades");
-            List<Integer> numbers = new ArrayList<>();
+            List<String> headNames = new ArrayList<>();
 
-            for (int i = 0; i < amount; i++) {
-                Random rand = new Random();
-                int num = rand.nextInt(players.size());
-                if (!numbers.contains(num)) {
-                    trades.add(newHeadRecipe(players.get(num)));
-                    numbers.add(num);
-                } else {
-                    int num2 = rand.nextInt(players.size());
-                    if (!numbers.contains(num2)) {
-                        trades.add(newHeadRecipe(players.get(num)));
-                        numbers.add(num);
-                    }
+            Random rand = new Random();
+            int attempts = amount + 25;
+            while (amount > 0) {
+                attempts--;
+                if (attempts <= 0) break;
+
+                String name = players.get(rand.nextInt(players.size()));
+
+                if (!headNames.contains(name)) {
+                    headNames.add(name);
+                    amount--;
+
+                    trades.add(newHeadRecipe(name));
                 }
             }
         }
