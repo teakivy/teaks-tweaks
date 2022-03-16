@@ -22,7 +22,7 @@ public class BasePack implements Listener {
     }
 
 	public void init() {
-		System.out.println(name + " Enabled!");
+		main.getLogger().info(name + " Enabled!");
 		registerEvents(this);
 	}
 

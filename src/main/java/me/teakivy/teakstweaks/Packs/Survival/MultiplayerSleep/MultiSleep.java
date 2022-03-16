@@ -171,10 +171,10 @@ public class MultiSleep extends BasePack {
             }
         }
 
-        System.out.println(sleepAvaliable);
-        System.out.println(sleeping);
-        System.out.println(100 / sleepAvaliable * sleeping);
-        System.out.println(sleepingPercentage);
+        main.getLogger().info(sleepAvaliable + "");
+        main.getLogger().info(sleeping + "");
+        main.getLogger().info((100 / sleepAvaliable * sleeping) + "");
+        main.getLogger().info(sleepingPercentage + "");
     }
 
 }
