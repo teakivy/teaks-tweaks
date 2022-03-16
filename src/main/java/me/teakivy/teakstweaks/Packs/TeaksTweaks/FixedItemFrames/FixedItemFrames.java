@@ -35,7 +35,6 @@ public class FixedItemFrames extends BasePack {
 
 	@EventHandler
 	public void onInteract(PlayerInteractAtEntityEvent event) {
-		System.out.println(event.getRightClicked().getType());
 		if (event.getRightClicked().getType() == EntityType.ITEM_FRAME || event.getRightClicked().getType() == EntityType.GLOW_ITEM_FRAME) {
             if (!event.getPlayer().isSneaking()) return;
             if (event.getPlayer().getInventory().getItemInMainHand().getType() != Material.SHEARS) return;
