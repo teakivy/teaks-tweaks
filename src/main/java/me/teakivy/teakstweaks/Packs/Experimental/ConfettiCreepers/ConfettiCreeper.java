@@ -18,7 +18,7 @@ import java.util.Random;
 public class ConfettiCreeper extends BasePack {
 
     public ConfettiCreeper() {
-        super("Confetti Creeper", "confetti-creeper");
+        super("Confetti Creeper", "confetti-creepers");
     }
 
     @EventHandler
