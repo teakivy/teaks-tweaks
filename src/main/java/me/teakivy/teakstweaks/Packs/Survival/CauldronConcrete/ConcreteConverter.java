@@ -42,9 +42,11 @@ public class ConcreteConverter extends BasePack {
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (event.getItemDrop().getLocation().getBlock().getType().equals(Material.WATER_CAULDRON)) {
+                if (event.getItemDrop().getLocation().getBlock().getType().equals(Material.WATER_CAULDRON) && result != Material.AIR) {
                     event.getItemDrop().getWorld().dropItem(event.getItemDrop().getLocation(), new ItemStack(result, event.getItemDrop().getItemStack().getAmount()));
                     event.getItemDrop().remove();
+                } else {
+                    this.cancel();
                 }
                 if (event.getItemDrop().isDead()) this.cancel();
             }
@@ -55,9 +57,11 @@ public class ConcreteConverter extends BasePack {
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (event.getEntity().getLocation().getBlock().getType().equals(Material.WATER_CAULDRON)) {
+                if (event.getEntity().getLocation().getBlock().getType().equals(Material.WATER_CAULDRON) && result != Material.AIR) {
                     event.getEntity().getWorld().dropItem(event.getEntity().getLocation(), new ItemStack(result, event.getEntity().getItemStack().getAmount()));
                     event.getEntity().remove();
+                } else {
+                    this.cancel();
                 }
                 if (event.getEntity().isDead()) this.cancel();
             }
