@@ -28,6 +28,7 @@ public final class Main extends JavaPlugin implements Listener {
 
     public DataManager data;
 
+    private ArrayList<String> activePacks = new ArrayList<>();
 
     public Tag tagListener;
 
@@ -156,5 +157,17 @@ public final class Main extends JavaPlugin implements Listener {
     public String getPackName(String pack) {
         if (!data.getConfig().contains("messages.pack." + pack)) return pack;
         return ChatColor.translateAlternateColorCodes('&', MessageHandler.getMessage("pack." + pack + ".name"));
+    }
+
+    public void clearPacks() {
+        activePacks.clear();
+    }
+
+    public void addPack(String name) {
+        activePacks.add(name);
+    }
+
+    public ArrayList<String> getPacks() {
+        return activePacks;
     }
 }

@@ -54,13 +54,6 @@ import me.teakivy.teakstweaks.Packs.Utilities.ItemAverages.ItemTracker;
 import me.teakivy.teakstweaks.Packs.Utilities.SpawningSpheres.Sphere;
 import me.teakivy.teakstweaks.Packs.Utilities.SpectatorConduitPower.ConduitPower;
 import me.teakivy.teakstweaks.Packs.Utilities.SpectatorNightVision.NightVision;
-import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandMap;
-import org.bukkit.command.TabCompleter;
-import org.bukkit.command.defaults.BukkitCommand;
-
-import java.lang.reflect.Field;
 
 public class Register {
 
@@ -120,6 +113,7 @@ public class Register {
     public static FixedItemFrames fixedItemFrames = new FixedItemFrames();
 
     public static void registerAll() {
+        unregisterAll();
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
             if (main.getConfig().getBoolean("packs." + pack + ".enabled")) {
                 registerPack(pack);
@@ -128,6 +122,7 @@ public class Register {
     }
 
     public static void unregisterAll() {
+        main.clearPacks();
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
             if (!main.getConfig().getBoolean("packs." + pack + ".enabled")) {
                 unregisterPack(pack);
@@ -363,36 +358,8 @@ public class Register {
             new SudokuCommand().register();
         }
 
-
-    }
-
-    public static void registerCommand(BukkitCommand command) {
-        registerCommand(command, null);
-    }
-
-    public static void registerCommand(Command command) {
-        try {
-            final Field bukkitCommandMap = Bukkit.getServer().getClass().getDeclaredField("commandMap");
-
-            bukkitCommandMap.setAccessible(true);
-            CommandMap commandMap = (CommandMap) bukkitCommandMap.get(Bukkit.getServer());
-
-            commandMap.register(command.getName(), command);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void registerCommand(BukkitCommand command, TabCompleter tabCompleter) {
-        try {
-            final Field bukkitCommandMap = Bukkit.getServer().getClass().getDeclaredField("commandMap");
-
-            bukkitCommandMap.setAccessible(true);
-            CommandMap commandMap = (CommandMap) bukkitCommandMap.get(Bukkit.getServer());
-
-            commandMap.register(command.getName(), command);
-        } catch(Exception e) {
-            e.printStackTrace();
+        if (main.getConfig().getBoolean("commands.packlist.enabled")) {
+            new PackList().register();
         }
     }
 

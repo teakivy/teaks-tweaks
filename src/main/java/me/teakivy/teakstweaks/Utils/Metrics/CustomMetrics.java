@@ -174,6 +174,7 @@ public class CustomMetrics {
                 valueMap.put("Spawning Spheres", getCommand("spawningspheres"));
                 valueMap.put("Gem", getCommand("gem"));
                 valueMap.put("Sudoku", getCommand("sudoku"));
+                valueMap.put("Pack List", getCommand("packlist"));
                 return valueMap;
             }
         }));

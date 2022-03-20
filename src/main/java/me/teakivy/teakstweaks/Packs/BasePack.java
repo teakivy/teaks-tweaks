@@ -24,6 +24,7 @@ public class BasePack implements Listener {
 	public void init() {
 		main.getLogger().info(name + " Enabled!");
 		registerEvents(this);
+		main.addPack(name);
 	}
 
 	public void registerEvents(Listener listener) {

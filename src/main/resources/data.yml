@@ -173,6 +173,13 @@ messages:
 
 commands:
 
+  pack-list:
+    name: "packlist"
+    usage: "/packlist"
+    description: "List all currently active Packs"
+    aliases: ["pkl"]
+    messages:
+
   afk:
     name: "afk"
     usage: "/afk"

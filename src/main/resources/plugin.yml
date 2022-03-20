@@ -33,10 +33,19 @@ permissions:
       teakstweaks.tpa.*: true
       teakstweaks.workstationhighlights.*: true
       teakstweaks.sudoku.*: true
+      teakstweaks.packlist.*: true
 
   teakstweaks.reload:
     description: Reload Vanilla Tweaks
     default: op
+
+  teakstweaks.packlist.*:
+    description: All Teak's Tweaks packlist permissions
+    children:
+      teakstweaks.packslist.execute: true
+  teakstweaks.packlist.execute:
+    default: op
+    description: Execute /packlist
 
   teakstweaks.afk.*:
     description: All Vanilla Tweaks AFK Permissions
