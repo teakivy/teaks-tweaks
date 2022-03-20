@@ -10,15 +10,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
 public class AFKCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
-
-    HashMap<UUID, Long> cooldown = new HashMap<>();
 
     public AFKCommand() {
         super(MessageHandler.getCmdName("afk"), MessageHandler.getCmdUsage("afk"), MessageHandler.getCmdDescription("afk"), MessageHandler.getCmdAliases("afk"));
