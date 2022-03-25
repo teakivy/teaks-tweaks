@@ -26,21 +26,25 @@ public class PackListCommand extends AbstractCommand {
         }
 
         ArrayList<String> packs = main.getPacks();
-
         String str = ChatColor.WHITE + "Packs (" + packs.size() + "): " + arrayToString(packs);
+        ArrayList<String> ctweaks = main.getCraftingTweaks();
+        String str2 = ChatColor.WHITE + "Crafting Tweaks (" + ctweaks.size() + "): " + arrayToString(ctweaks);
 
         sender.sendMessage(str);
+        sender.sendMessage(str2);
 
         return false;
     }
 
     public String arrayToString(ArrayList<String> arr) {
         StringBuilder str = new StringBuilder();
-        for (int i = 0; i < arr.size() - 1; i++) {
-            str.append(ChatColor.GREEN).append(arr.get(i));
-            str.append(ChatColor.WHITE).append(", ");
+        if (arr.size() > 0) {
+            for (int i = 0; i < arr.size() - 1; i++) {
+                str.append(ChatColor.GREEN).append(arr.get(i));
+                str.append(ChatColor.WHITE).append(", ");
+            }
+            str.append(ChatColor.GREEN).append(arr.get(arr.size() - 1));
         }
-        str.append(ChatColor.GREEN).append(arr.get(arr.size() - 1));
 
         return str.toString();
     }
