@@ -4,7 +4,6 @@ import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.Utils.AbstractCommand;
 import me.teakivy.teakstweaks.Utils.ErrorType;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -12,7 +11,6 @@ import org.bukkit.entity.Player;
 public class TestCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
 
     public TestCommand() {
         super(MessageHandler.getCmdName("test"), MessageHandler.getCmdUsage("test"), MessageHandler.getCmdDescription("test"), MessageHandler.getCmdAliases("test"));

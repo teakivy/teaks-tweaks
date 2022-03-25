@@ -1,6 +1,5 @@
 package me.teakivy.teakstweaks.Commands;
 
-import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.Utils.AbstractCommand;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
 import org.bukkit.ChatColor;
@@ -10,8 +9,7 @@ import org.bukkit.entity.Player;
 
 public class SudokuCommand extends AbstractCommand {
 
-    Main main = Main.getPlugin(Main.class);
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "VT" + ChatColor.GRAY + "] ";
+    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "TT" + ChatColor.GRAY + "] ";
 
     public SudokuCommand() {
         super(MessageHandler.getCmdName("sudoku"), MessageHandler.getCmdUsage("sudoku"), MessageHandler.getCmdDescription("sudoku"), MessageHandler.getCmdAliases("sudoku"));
