@@ -1,17 +1,19 @@
 package me.teakivy.teakstweaks.CraftingTweaks.Recipes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.CraftingTweaks.AbstractRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 
-public class MoreBricks {
+public class MoreBricks extends AbstractRecipe {
 
-    static Main main = Main.getPlugin(Main.class);
+    public MoreBricks() {
+        super("More Bricks");
+    }
 
-    public static void registerRecipes() {
+    public void registerRecipes() {
         NamespacedKey key = new NamespacedKey(main, "bricks_vt_bricks");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.BRICKS, 4));

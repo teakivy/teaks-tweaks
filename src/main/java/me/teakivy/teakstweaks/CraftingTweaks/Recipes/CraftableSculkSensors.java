@@ -1,17 +1,20 @@
 package me.teakivy.teakstweaks.CraftingTweaks.Recipes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.CraftingTweaks.AbstractRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 
-public class CraftableSculkSensors {
+public class CraftableSculkSensors extends AbstractRecipe {
 
-    static Main main = Main.getPlugin(Main.class);
+    public CraftableSculkSensors() {
+        super("Craftable Sculk Sensors");
+    }
 
-    public static void registerRecipes() {
+    @Override
+    public void registerRecipes() {
         NamespacedKey key = new NamespacedKey(main, "craftable_sculk_sensor");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.SCULK_SENSOR));

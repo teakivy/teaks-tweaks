@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.CraftingTweaks.Recipes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.CraftingTweaks.AbstractRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -11,11 +11,14 @@ import org.bukkit.inventory.ShapedRecipe;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CraftableSporeBlossoms {
+public class CraftableSporeBlossoms extends AbstractRecipe {
 
-    static Main main = Main.getPlugin(Main.class);
+    public CraftableSporeBlossoms() {
+        super("Craftable Spore Blossoms");
+    }
 
-    public static void registerRecipes() {
+    @Override
+    public void registerRecipes() {
         NamespacedKey key = new NamespacedKey(main, "craftable_spore_blossom_vt");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.SPORE_BLOSSOM, 4));

@@ -142,8 +142,8 @@ public class Register {
             case "larger-phantoms" -> phantoms.unregister();
             case "more-mob-heads" -> mobHeads.unregister();
             case "silence-mobs" -> silencer.unregister();
-            case "count-mob-deaths" -> countDeaths.init();
-            case "villager-death-messages" -> villagerDeath.init();
+            case "count-mob-deaths" -> countDeaths.unregister();
+            case "villager-death-messages" -> villagerDeath.unregister();
             case "coords-hud" -> hud.unregister();
             case "cauldron-concrete" -> concreteConverter.unregister();
             case "durability-ping" -> duraPing.unregister();

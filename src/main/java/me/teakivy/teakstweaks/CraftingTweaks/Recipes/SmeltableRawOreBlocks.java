@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.CraftingTweaks.Recipes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.CraftingTweaks.AbstractRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -8,11 +8,14 @@ import org.bukkit.inventory.BlastingRecipe;
 import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
 
-public class SmeltableRawOreBlocks {
+public class SmeltableRawOreBlocks extends AbstractRecipe {
 
-    static Main main = Main.getPlugin(Main.class);
+    public SmeltableRawOreBlocks() {
+        super("Smeltable Raw Ore Blocks");
+    }
 
-    public static void registerRecipes() {
+    @Override
+    public void registerRecipes() {
         FurnaceRecipe ironRecipe = new FurnaceRecipe(new NamespacedKey(main, "tt_smeltable_raw_iron_block"), new ItemStack(Material.IRON_BLOCK), Material.RAW_IRON_BLOCK, 10, 1000);
         Bukkit.addRecipe(ironRecipe);
         FurnaceRecipe goldRecipe = new FurnaceRecipe(new NamespacedKey(main, "tt_smeltable_raw_gold_block"), new ItemStack(Material.GOLD_BLOCK), Material.RAW_GOLD_BLOCK, 10, 1000);

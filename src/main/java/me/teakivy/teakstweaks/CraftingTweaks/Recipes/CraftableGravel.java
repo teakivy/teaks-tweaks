@@ -1,17 +1,20 @@
 package me.teakivy.teakstweaks.CraftingTweaks.Recipes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.CraftingTweaks.AbstractRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 
-public class CraftableGravel {
+public class CraftableGravel  extends AbstractRecipe {
 
-    static Main main = Main.getPlugin(Main.class);
+    public CraftableGravel() {
+        super("CraftableGravel");
+    }
 
-    public static void registerRecipes() {
+    @Override
+    public void registerRecipes() {
 
         NamespacedKey key = new NamespacedKey(main, "gravel_vt_gravel");
 

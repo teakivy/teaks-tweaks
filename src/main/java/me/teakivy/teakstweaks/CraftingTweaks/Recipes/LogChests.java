@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.CraftingTweaks.Recipes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.CraftingTweaks.AbstractRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -11,11 +11,14 @@ import org.bukkit.inventory.ShapedRecipe;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LogChests {
+public class LogChests extends AbstractRecipe {
 
-    static Main main = Main.getPlugin(Main.class);
+    public LogChests() {
+        super("Log Chests");
+    }
 
-    public static void registerRecipes() {
+    @Override
+    public void registerRecipes() {
         List<Material> logList = new ArrayList<Material>();
         logList.add(Material.OAK_LOG);
         logList.add(Material.STRIPPED_OAK_LOG);

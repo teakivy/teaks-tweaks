@@ -1,17 +1,20 @@
 package me.teakivy.teakstweaks.CraftingTweaks.Recipes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.CraftingTweaks.AbstractRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 
-public class CraftableNameTags {
+public class CraftableNameTags extends AbstractRecipe {
 
-    static Main main = Main.getPlugin(Main.class);
+    public CraftableNameTags() {
+        super("Craftable Name Tags");
+    }
 
-    public static void registerRecipes() {
+    @Override
+    public void registerRecipes() {
         NamespacedKey key = new NamespacedKey(main, "name_tags_vt_tags");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.NAME_TAG));

@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.CraftingTweaks.Recipes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.CraftingTweaks.AbstractRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -11,11 +11,14 @@ import org.bukkit.inventory.ShapelessRecipe;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UnpackableWool {
+public class UnpackableWool extends AbstractRecipe {
 
-    static Main main = Main.getPlugin(Main.class);
+    public UnpackableWool() {
+        super("Unpackable Wool");
+    }
 
-    public static void registerRecipes() {
+    @Override
+    public void registerRecipes() {
         List<Material> woolList = new ArrayList<Material>();
         woolList.add(Material.WHITE_WOOL);
         woolList.add(Material.ORANGE_WOOL);

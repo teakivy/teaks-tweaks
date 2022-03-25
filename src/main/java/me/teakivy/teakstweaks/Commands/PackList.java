@@ -7,14 +7,12 @@ import me.teakivy.teakstweaks.Utils.MessageHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 
 public class PackList extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "TT" + ChatColor.GRAY + "] ";
 
     public PackList() {
         super(MessageHandler.getCmdName("pack-list"), MessageHandler.getCmdUsage("pack-list"), MessageHandler.getCmdDescription("pack-list"), MessageHandler.getCmdAliases("pack-list"));
@@ -22,7 +20,6 @@ public class PackList extends AbstractCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        Player player = (Player) sender;
         if (!sender.hasPermission("teakstweaks.packlist.execute")) {
             sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
@@ -32,7 +29,7 @@ public class PackList extends AbstractCommand {
 
         String str = ChatColor.WHITE + "Packs (" + packs.size() + "): " + arrayToString(packs);
 
-        player.sendMessage(str);
+        sender.sendMessage(str);
 
         return false;
     }

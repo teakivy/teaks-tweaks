@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.CraftingTweaks.Recipes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.CraftingTweaks.AbstractRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -11,11 +11,14 @@ import org.bukkit.inventory.ShapedRecipe;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CraftableCoral3x3 {
+public class CraftableCoral3x3 extends AbstractRecipe {
 
-    static Main main = Main.getPlugin(Main.class);
+    public CraftableCoral3x3() {
+        super("Craftable Coral 3x3");
+    }
 
-    public static void registerRecipes() {
+    @Override
+    public void registerRecipes() {
         newCoralRecipe("TUBE");
         newCoralRecipe("BRAIN");
         newCoralRecipe("BUBBLE");

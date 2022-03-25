@@ -1,17 +1,20 @@
 package me.teakivy.teakstweaks.CraftingTweaks.Recipes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.CraftingTweaks.AbstractRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapelessRecipe;
 
-public class CharcoalToBlackDye {
+public class CharcoalToBlackDye extends AbstractRecipe {
 
-    static Main main = Main.getPlugin(Main.class);
+    public CharcoalToBlackDye() {
+        super("Charcoal To Black Dye");
+    }
 
-    public static void registerRecipes() {
+    @Override
+    public void registerRecipes() {
         NamespacedKey key = new NamespacedKey(main, "black_dye_vt_charcoal");
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.BLACK_DYE));
         recipe.addIngredient(Material.CHARCOAL);

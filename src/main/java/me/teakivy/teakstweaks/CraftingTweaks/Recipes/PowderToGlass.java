@@ -1,13 +1,19 @@
 package me.teakivy.teakstweaks.CraftingTweaks.Recipes;
 
+import me.teakivy.teakstweaks.CraftingTweaks.AbstractRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
 
-public class PowderToGlass {
+public class PowderToGlass extends AbstractRecipe {
 
-    public static void registerRecipes() {
+    public PowderToGlass() {
+        super("Powder to Glass");
+    }
+
+    @Override
+    public void registerRecipes() {
         newSmeltableGlass("BLACK");
         newSmeltableGlass("BLUE");
         newSmeltableGlass("BROWN");

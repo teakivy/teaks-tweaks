@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.CraftingTweaks.Recipes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.CraftingTweaks.AbstractRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -12,11 +12,14 @@ import org.bukkit.inventory.ShapelessRecipe;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UniversalDyeing {
+public class UniversalDyeing extends AbstractRecipe {
 
-    static Main main = Main.getPlugin(Main.class);
+    public UniversalDyeing() {
+        super("Universal Dyeing");
+    }
 
-    public static void registerRecipes() {
+    @Override
+    public void registerRecipes() {
         registerNewRecipeType("CONCRETE_POWDER");
         registerNewRecipeType("GLAZED_TERRACOTTA");
         registerNewRecipeType("TERRACOTTA");

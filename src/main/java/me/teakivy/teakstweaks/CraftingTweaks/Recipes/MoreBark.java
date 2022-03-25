@@ -1,17 +1,20 @@
 package me.teakivy.teakstweaks.CraftingTweaks.Recipes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.CraftingTweaks.AbstractRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 
-public class MoreBark {
+public class MoreBark extends AbstractRecipe {
 
-    static Main main = Main.getPlugin(Main.class);
+    public MoreBark() {
+        super("More Bark");
+    }
 
-    public static void registerRecipes() {
+    @Override
+    public void registerRecipes() {
         newBarkedRecipe("oak", Material.OAK_LOG, Material.OAK_WOOD);
         newBarkedRecipe("stripped_oak", Material.STRIPPED_OAK_LOG, Material.STRIPPED_OAK_WOOD);
         newBarkedRecipe("dark_oak", Material.DARK_OAK_LOG, Material.DARK_OAK_WOOD);

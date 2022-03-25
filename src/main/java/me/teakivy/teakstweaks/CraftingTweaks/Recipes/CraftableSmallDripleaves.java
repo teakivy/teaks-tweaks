@@ -1,17 +1,20 @@
 package me.teakivy.teakstweaks.CraftingTweaks.Recipes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.CraftingTweaks.AbstractRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapelessRecipe;
 
-public class CraftableSmallDripleaves {
+public class CraftableSmallDripleaves extends AbstractRecipe {
 
-    static Main main = Main.getPlugin(Main.class);
+    public CraftableSmallDripleaves() {
+        super("Craftable Small Dripleaves");
+    }
 
-    public static void registerRecipes() {
+    @Override
+    public void registerRecipes() {
 
         NamespacedKey key = new NamespacedKey(main, "vt_craftable_dripleaf");
 

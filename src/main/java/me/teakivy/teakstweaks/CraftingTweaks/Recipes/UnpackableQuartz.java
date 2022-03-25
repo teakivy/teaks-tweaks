@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.CraftingTweaks.Recipes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.CraftingTweaks.AbstractRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -11,11 +11,14 @@ import org.bukkit.inventory.ShapelessRecipe;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UnpackableQuartz {
+public class UnpackableQuartz extends AbstractRecipe {
 
-    static Main main = Main.getPlugin(Main.class);
+    public UnpackableQuartz() {
+        super("Unpackable Quartz");
+    }
 
-    public static void registerRecipes() {
+    @Override
+    public void registerRecipes() {
         List<Material> materials = new ArrayList<Material>();
         materials.add(Material.QUARTZ_BLOCK);
         materials.add(Material.QUARTZ_PILLAR);

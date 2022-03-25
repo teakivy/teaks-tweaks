@@ -1,17 +1,20 @@
 package me.teakivy.teakstweaks.CraftingTweaks.Recipes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.CraftingTweaks.AbstractRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapelessRecipe;
 
-public class DoubleSlabs {
+public class DoubleSlabs extends AbstractRecipe {
 
-    static Main main = Main.getPlugin(Main.class);
+    public DoubleSlabs() {
+        super("Double Slabs");
+    }
 
-    public static void registerRecipes() {
+    @Override
+    public void registerRecipes() {
         newShapelessRecipe("blackstone", Material.BLACKSTONE, Material.BLACKSTONE_SLAB);
         newShapelessRecipe("bricks", Material.BRICKS, Material.BRICK_SLAB);
         newShapelessRecipe("cobblestone", Material.COBBLESTONE, Material.COBBLESTONE_SLAB);

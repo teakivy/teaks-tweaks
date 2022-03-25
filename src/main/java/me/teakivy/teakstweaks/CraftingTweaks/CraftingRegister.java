@@ -7,76 +7,51 @@ public class CraftingRegister {
 
     static Main main = Main.getPlugin(Main.class);
 
-    public static void register() {
-        if (main.getConfig().getBoolean("crafting-tweaks.back-to-blocks.enabled"))
-            BackToBlocks.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.double-slabs.enabled"))
-            DoubleSlabs.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.dropper-to-dispenser.enabled"))
-            DropperToDispenser.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.rotten-flesh-to-leather.enabled"))
-            RottenFleshToLeather.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.charcoal-to-black-dye.enabled"))
-            CharcoalToBlackDye.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.coal-to-black-dye.enabled"))
-            CoalToBlackDye.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.sandstone-dyeing.enabled"))
-            SandstoneDyeing.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.universal-dyeing.enabled"))
-            UniversalDyeing.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.straight-to-shapeless.enabled"))
-            StraightToShapeless.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.blackstone-cobblestone.enabled"))
-            BlackstoneCobblestone.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.powder-to-glass.enabled"))
-            PowderToGlass.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.more-trapdoors.enabled"))
-            MoreTrapdoors.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.more-bark.enabled"))
-            MoreBark.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.more-stairs.enabled"))
-            MoreStairs.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.more-bricks.enabled"))
-            MoreBricks.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.craftable-gravel.enabled"))
-            CraftableGravel.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.craftable-horse-armor.enabled"))
-            CraftableHorseArmor.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.craftable-coral-blocks-2x2.enabled"))
-            CraftableCoral2x2.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.craftable-coral-blocks-3x3.enabled"))
-            CraftableCoral3x3.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.craftable-enchanted-golden-apples.enabled"))
-            CraftableEnchantedGoldenApples.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.craftable-name-tags.enabled"))
-            CraftableNameTags.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.craftable-bundles-rabbit-hide.enabled"))
-            CraftableBundlesRabbitHide.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.craftable-bundles-leather.enabled"))
-            CraftableBundlesLeather.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.craftable-blackstone.enabled"))
-            CraftableBlackstone.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.unpackable-ice.enabled"))
-            UnpackableIce.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.unpackable-nether-wart.enabled"))
-            UnpackableNetherWart.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.unpackable-wool.enabled"))
-            UnpackableWool.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.unpackable-quartz-blocks.enabled"))
-            UnpackableQuartz.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.log-chests.enabled"))
-            LogChests.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.craftable-spore-blossoms.enabled"))
-            CraftableSporeBlossoms.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.craftable-small-dripleaf.enabled"))
-            CraftableSmallDripleaves.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.smeltable-raw-ore-blocks.enabled"))
-            SmeltableRawOreBlocks.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.craftable-gilded-blackstone.enabled"))
-            CraftableGildedBlackstone.registerRecipes();
-        if (main.getConfig().getBoolean("crafting-tweaks.craftable-sculk-sensors.enabled"))
-            CraftableSculkSensors.registerRecipes();
+    public static void registerAll() {
+        for (String craftingTweak : main.getConfig().getConfigurationSection("crafting-tweaks").getKeys(false)) {
+            if (main.getConfig().getBoolean("packs." + craftingTweak + ".enabled")) {
+                registerTweak(craftingTweak);
+            }
+        }
+    }
 
+    public static void registerTweak(String tweak) {
+        switch (tweak) {
+            case "back-to-blocks" -> new BackToBlocks().init();
+            case "double-slabs" -> new DoubleSlabs().init();
+            case "dropper-to-dispenser" -> new DropperToDispenser().init();
+            case "rotten-flesh-to-leather" -> new RottenFleshToLeather().init();
+            case "charcoal-to-black-dye" -> new CharcoalToBlackDye().init();
+            case "coal-to-black-dye" -> new CoalToBlackDye().init();
+            case "sandstone-dyeing" -> new SandstoneDyeing().init();
+            case "universal-dyeing" -> new UniversalDyeing().init();
+            case "straight-to-shapeless" -> new StraightToShapeless().init();
+            case "blackstone-cobblestone" -> new BlackstoneCobblestone().init();
+            case "powder-to-glass" -> new PowderToGlass().init();
+            case "more-trapdoors" -> new MoreTrapdoors().init();
+            case "more-bark" -> new MoreBark().init();
+            case "more-stairs" -> new MoreStairs().init();
+            case "more-bricks" -> new MoreBricks().init();
+            case "craftable-gravel" -> new CraftableGravel().init();
+            case "craftable-horse-armor" -> new CraftableHorseArmor().init();
+            case "craftable-coral-blocks-2x2" -> new CraftableCoral2x2().init();
+            case "craftable-coral-blocks-3x3" -> new CraftableCoral3x3().init();
+            case "craftable-enchanted-golden-apples" -> new CraftableEnchantedGoldenApples().init();
+            case "craftable-name-tags" -> new CraftableNameTags().init();
+            case "craftable-bundles-rabbit-hide" -> new CraftableBundlesRabbitHide().init();
+            case "craftable-bundles-leather" -> new CraftableBundlesLeather().init();
+            case "craftable-blackstone" -> new CraftableBlackstone().init();
+            case "craftable-gilded-blackstone" -> new CraftableGildedBlackstone().init();
+            case "craftable-spore-blossoms" -> new CraftableSporeBlossoms().init();
+            case "craftable-small-dripleaf" -> new CraftableSmallDripleaves().init();
+            case "craftable-sculk-sensors" -> new CraftableSculkSensors().init();
+            case "unpackable-ice" -> new UnpackableIce().init();
+            case "unpackable-nether-wart" -> new UnpackableNetherWart().init();
+            case "unpackable-wool" -> new UnpackableWool().init();
+            case "unpackable-quartz-blocks" -> new UnpackableQuartz().init();
+            case "log-chests" -> new LogChests().init();
+            case "smeltable-raw-ore-blocks" -> new SmeltableRawOreBlocks().init();
+        }
     }
 
 }

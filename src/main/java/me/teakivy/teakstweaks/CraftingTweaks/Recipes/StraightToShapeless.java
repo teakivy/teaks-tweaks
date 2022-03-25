@@ -1,17 +1,20 @@
 package me.teakivy.teakstweaks.CraftingTweaks.Recipes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.CraftingTweaks.AbstractRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapelessRecipe;
 
-public class StraightToShapeless {
+public class StraightToShapeless extends AbstractRecipe {
 
-    static Main main = Main.getPlugin(Main.class);
+    public StraightToShapeless() {
+        super("Straight To Shapeless");
+    }
 
-    public static void registerRecipes() {
+    @Override
+    public void registerRecipes() {
         NamespacedKey breadKey = new NamespacedKey(main, "bread_vt_shapeless");
         ShapelessRecipe breadRecipe = new ShapelessRecipe(breadKey, new ItemStack(Material.BREAD));
         breadRecipe.addIngredient(3, Material.WHEAT);

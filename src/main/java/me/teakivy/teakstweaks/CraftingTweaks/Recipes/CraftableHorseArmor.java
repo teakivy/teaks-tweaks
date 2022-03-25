@@ -1,17 +1,20 @@
 package me.teakivy.teakstweaks.CraftingTweaks.Recipes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.CraftingTweaks.AbstractRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 
-public class CraftableHorseArmor {
+public class CraftableHorseArmor extends AbstractRecipe {
 
-    static Main main = Main.getPlugin(Main.class);
+    public CraftableHorseArmor() {
+        super("Craftable Horse Armor");
+    }
 
-    public static void registerRecipes() {
+    @Override
+    public void registerRecipes() {
 
         newHorseArmor("iron", Material.IRON_INGOT, Material.IRON_HORSE_ARMOR);
         newHorseArmor("gold", Material.GOLD_INGOT, Material.GOLDEN_HORSE_ARMOR);

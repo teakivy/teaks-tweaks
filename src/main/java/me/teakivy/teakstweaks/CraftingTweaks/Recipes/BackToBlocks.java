@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.CraftingTweaks.Recipes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.CraftingTweaks.AbstractRecipe;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -8,11 +8,14 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 
-public class BackToBlocks {
+public class BackToBlocks extends AbstractRecipe {
 
-    static Main main = Main.getPlugin(Main.class);
+    public BackToBlocks() {
+        super("Back To Blocks");
+    }
 
-    public static void registerRecipes() {
+    @Override
+    public void registerRecipes() {
         newShapelessStairRecipe("acacia_planks", new ItemStack(Material.ACACIA_PLANKS, 3), Material.ACACIA_STAIRS, 4);
         newShapelessStairRecipe("birch_planks", new ItemStack(Material.BIRCH_PLANKS, 3), Material.BIRCH_STAIRS, 4);
         newShapelessStairRecipe("blackstone", new ItemStack(Material.BLACKSTONE, 3), Material.BLACKSTONE_STAIRS, 4);

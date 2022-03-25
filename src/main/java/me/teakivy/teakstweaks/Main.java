@@ -29,6 +29,7 @@ public final class Main extends JavaPlugin implements Listener {
     public DataManager data;
 
     private ArrayList<String> activePacks = new ArrayList<>();
+    private ArrayList<String> activeCraftingTweaks = new ArrayList<>();
 
     public Tag tagListener;
 
@@ -101,7 +102,7 @@ public final class Main extends JavaPlugin implements Listener {
 
 
         // Crafting Tweaks
-        CraftingRegister.register();
+        CraftingRegister.registerAll();
 
         // Commands
         Register.registerCommands();
@@ -169,5 +170,17 @@ public final class Main extends JavaPlugin implements Listener {
 
     public ArrayList<String> getPacks() {
         return activePacks;
+    }
+
+    public void clearCraftingTweaks() {
+        activeCraftingTweaks.clear();
+    }
+
+    public void addCraftingTweaks(String name) {
+        activeCraftingTweaks.add(name);
+    }
+
+    public ArrayList<String> getCraftingTweaks() {
+        return activeCraftingTweaks;
     }
 }
