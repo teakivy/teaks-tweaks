@@ -359,7 +359,7 @@ public class Register {
         }
 
         if (main.getConfig().getBoolean("commands.packlist.enabled")) {
-            new PackList().register();
+            new PackListCommand().register();
         }
     }
 
