@@ -10,11 +10,11 @@ import org.bukkit.command.CommandSender;
 
 import java.util.ArrayList;
 
-public class PackList extends AbstractCommand {
+public class PackListCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
 
-    public PackList() {
+    public PackListCommand() {
         super(MessageHandler.getCmdName("pack-list"), MessageHandler.getCmdUsage("pack-list"), MessageHandler.getCmdDescription("pack-list"), MessageHandler.getCmdAliases("pack-list"));
     }
 
