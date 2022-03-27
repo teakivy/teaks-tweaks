@@ -9,7 +9,7 @@ public class CraftingRegister {
 
     public static void registerAll() {
         for (String craftingTweak : main.getConfig().getConfigurationSection("crafting-tweaks").getKeys(false)) {
-            if (main.getConfig().getBoolean("packs." + craftingTweak + ".enabled")) {
+            if (main.getConfig().getBoolean("crafting-tweaks." + craftingTweak + ".enabled")) {
                 registerTweak(craftingTweak);
             }
         }

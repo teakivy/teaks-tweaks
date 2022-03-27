@@ -12,7 +12,7 @@ public class AbstractRecipe {
 
     public void init() {
         main.addCraftingTweaks(this.name);
-        registerRecipes();
+        this.registerRecipes();
     }
 
     public void registerRecipes() {
