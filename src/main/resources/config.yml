@@ -932,7 +932,7 @@ commands:
 # Leave these options alone unless you know what you're doing!
 # Changing these values may cause unexpected issues.
 config:
-  plugin-version: 1.6.9-beta
+  plugin-version: 1.6.10-beta
   alert-op-on-new-version: true
-  version: 29
+  version: 30
   dev-mode: false
