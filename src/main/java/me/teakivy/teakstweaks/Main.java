@@ -21,13 +21,13 @@ import static me.teakivy.teakstweaks.Utils.Metrics.CustomMetrics.registerCustomM
 public final class Main extends JavaPlugin implements Listener {
 
     public static ArrayList<UUID> chEnabled = new ArrayList<>();
-    public Boolean newVersionAvaliable = false;
+    public Boolean newVersionAvailable = false;
     public String latestVTVersion;
 
     public DataManager data;
 
-    private ArrayList<String> activePacks = new ArrayList<>();
-    private ArrayList<String> activeCraftingTweaks = new ArrayList<>();
+    private final ArrayList<String> activePacks = new ArrayList<>();
+    private final ArrayList<String> activeCraftingTweaks = new ArrayList<>();
 
     public Tag tagListener;
 
@@ -88,7 +88,7 @@ public final class Main extends JavaPlugin implements Listener {
         String thisVersion = this.getDescription().getVersion();
         if (!thisVersion.equalsIgnoreCase(latestVersion)) {
             Log.warning("[VT] Teaks Tweaks has an update!\nPlease update to the latest version (" + latestVersion + ")\n&ehttps://www.spigotmc.org/resources/teaks-tweaks.94021/");
-            newVersionAvaliable = true;
+            newVersionAvailable = true;
             latestVTVersion = latestVersion;
         }
 
@@ -150,10 +150,6 @@ public final class Main extends JavaPlugin implements Listener {
 
     public ArrayList<String> getPacks() {
         return activePacks;
-    }
-
-    public void clearCraftingTweaks() {
-        activeCraftingTweaks.clear();
     }
 
     public void addCraftingTweaks(String name) {

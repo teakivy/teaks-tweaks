@@ -17,7 +17,7 @@ public class UpdateJoinAlert implements Listener {
         Player player = event.getPlayer();
         if (player.isOp()) {
             if (main.getConfig().getBoolean("config.alert-op-on-new-version")) {
-                if (main.newVersionAvaliable) {
+                if (main.newVersionAvailable) {
                     player.sendMessage(ChatColor.GRAY.toString() + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD.toString() + "TT"  + ChatColor.RESET.toString() + ChatColor.GRAY.toString() + "]"  + ChatColor.RESET.toString() + ChatColor.YELLOW + " There is a new Version of Teaks Tweaks avaliable! Please update to the latest version: " + ChatColor.BOLD + ChatColor.GOLD +  main.latestVTVersion);
                 }
             }
