@@ -110,18 +110,6 @@ public final class Main extends JavaPlugin implements Listener {
         // Config
         this.saveDefaultConfig();
 
-        boolean displayedFirstSpace = false;
-
-        for (String pack : this.getConfig().getConfigurationSection("packs").getKeys(false)) {
-            if (this.getConfig().getBoolean("packs." + pack + ".enabled")) {
-                if (!displayedFirstSpace) Log.message("");
-                displayedFirstSpace = true;
-
-                Log.message(MessageHandler.getMessage("plugin.startup.pack-enabled").replace("%pack%", getPackName(pack)));
-            }
-        }
-        if (displayedFirstSpace) Log.message("");
-
         tagListener = new Tag();
 
         // Coords HUD
