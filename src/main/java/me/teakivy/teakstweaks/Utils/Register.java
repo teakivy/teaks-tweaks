@@ -41,6 +41,7 @@ import me.teakivy.teakstweaks.Packs.TeaksTweaks.BetterFoliage.BetterFoliage;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.ChatColors.ChatColors;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.EditSigns.EditSigns;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.FixedItemFrames.FixedItemFrames;
+import me.teakivy.teakstweaks.Packs.TeaksTweaks.InstantDeepslate.InstantDeepslate;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.InvisibleItemFrames.InvisibleItemFrames;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.KeepSmall.KeepSmall;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.LecternReset.LecternReset;
@@ -111,6 +112,7 @@ public class Register {
     public static InvisibleItemFrames invisibleItemFrames = new InvisibleItemFrames();
     public static BetterFoliage betterFoliage = new BetterFoliage();
     public static FixedItemFrames fixedItemFrames = new FixedItemFrames();
+    public static InstantDeepslate instantDeepslate = new InstantDeepslate();
 
     public static void registerAll() {
         unregisterAll();
@@ -185,6 +187,7 @@ public class Register {
             case "invisible-item-frames" -> invisibleItemFrames.unregister();
             case "better-foliage" -> betterFoliage.unregister();
             case "fixed-item-frames" -> fixedItemFrames.unregister();
+            case "instant-deepslate" -> instantDeepslate.unregister();
         }
     }
 
@@ -242,6 +245,7 @@ public class Register {
             case "invisible-item-frames" -> invisibleItemFrames.init();
             case "better-foliage" -> betterFoliage.init();
             case "fixed-item-frames" -> fixedItemFrames.init();
+            case "instant-deepslate" -> instantDeepslate.init();
         }
     }
     public static void registerCommands() {

@@ -101,6 +101,11 @@ packs:
         pumpkin-seeds: 0.03
         beetroot-seeds: 0.03
 
+  # Instant Deepslate
+  # Instantly mine deepslate blocks if you have a netherite pickaxe with efficiency 5 or higher, and haste 2 or higher.
+  instant-deepslate:
+    enabled: false
+
 
 
 
