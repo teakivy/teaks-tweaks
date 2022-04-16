@@ -7,7 +7,6 @@ import me.teakivy.teakstweaks.Utils.DataManager.DataManager;
 import me.teakivy.teakstweaks.Utils.Logger.Log;
 import me.teakivy.teakstweaks.Utils.Logger.Logger;
 import me.teakivy.teakstweaks.Utils.Metrics.Metrics;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,7 +15,6 @@ import org.json.simple.parser.ParseException;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-import java.util.logging.Level;
 
 import static me.teakivy.teakstweaks.Utils.Metrics.CustomMetrics.registerCustomMetrics;
 
@@ -35,12 +33,6 @@ public final class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-
-        // 1.18 Warning
-        if (Bukkit.getServer().getVersion().contains("1.18")) {
-            getServer().getLogger().log(Level.WARNING, "This plugin has not been fully tested with 1.18, please report any bugs to the GitHub, or on our support Discord.\nhttps://github.com/teakivy/teaks-tweaks\nhttps://discord.io/teakivy");
-        }
-
         // Data Manager
         this.data = new DataManager(this);
         data.saveDefaultConfig();
