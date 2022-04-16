@@ -29,6 +29,8 @@ public final class Main extends JavaPlugin implements Listener {
     private final ArrayList<String> activePacks = new ArrayList<>();
     private final ArrayList<String> activeCraftingTweaks = new ArrayList<>();
 
+    private Register register;
+
     public Tag tagListener;
 
     @Override
@@ -113,7 +115,8 @@ public final class Main extends JavaPlugin implements Listener {
         Log.message(MessageHandler.getMessage("plugin.startup.plugin-started"));
 
         // Packs
-        Register.registerAll();
+        register = new Register();
+        register.registerAll();
     }
 
     @Override
@@ -159,4 +162,9 @@ public final class Main extends JavaPlugin implements Listener {
     public ArrayList<String> getCraftingTweaks() {
         return activeCraftingTweaks;
     }
+
+    public Register getRegister() {
+        return register;
+    }
+
 }

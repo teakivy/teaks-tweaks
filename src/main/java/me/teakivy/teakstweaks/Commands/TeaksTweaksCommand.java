@@ -3,7 +3,6 @@ package me.teakivy.teakstweaks.Commands;
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.Utils.AbstractCommand;
 import me.teakivy.teakstweaks.Utils.ErrorType;
-import me.teakivy.teakstweaks.Utils.Register;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -15,6 +14,7 @@ import java.util.List;
 public class TeaksTweaksCommand extends AbstractCommand {
 
     String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "TT" + ChatColor.GRAY + "] ";
+    Main main = Main.getPlugin(Main.class);
 
     public TeaksTweaksCommand() {
         super("teakstweaks", "/teakstweaks", "Teak's Tweaks Main Command!", Arrays.asList("tweaks", "tt", "vt", "vanillatweaks"));
@@ -58,9 +58,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
                 return true;
             }
             Main.getPlugin(Main.class).reloadConfig();
-
-            Register.unregisterAll();
-            Register.registerAll();
+            main.getRegister().registerAll();
 
             sender.sendMessage(vt + ChatColor.GREEN + "Config reloaded!");
             return true;

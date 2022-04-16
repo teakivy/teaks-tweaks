@@ -4,7 +4,6 @@ import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.Utils.AbstractCommand;
 import me.teakivy.teakstweaks.Utils.ErrorType;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
-import me.teakivy.teakstweaks.Utils.Register;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -44,7 +43,7 @@ public class TagGameCommand extends AbstractCommand {
                     return true;
                 }
                 player.sendMessage(MessageHandler.getCmdMessage("taggame", "uninstalled"));
-                Register.tag.uninstall();
+                main.getRegister().unregisterPack("tag");
                 return true;
             }
         }
@@ -66,7 +65,7 @@ public class TagGameCommand extends AbstractCommand {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
-            Register.tag.uninstall();
+            main.getRegister().unregisterPack("tag");
             ItemStack tag = new ItemStack(Material.NAME_TAG);
             ItemMeta tagMeta = tag.getItemMeta();
             tagMeta.setDisplayName(ChatColor.YELLOW + "Tag!");

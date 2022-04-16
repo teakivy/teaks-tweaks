@@ -60,61 +60,61 @@ public class Register {
 
     static Main main = Main.getPlugin(Main.class);
 
-    public static AntiCreeper antiCreeper = new AntiCreeper();
-    public static AntiEnderman antiEnderman = new AntiEnderman();
-    public static AntiGhast antiGhast = new AntiGhast();
-    public static DoubleShulkers doubleShulkers = new DoubleShulkers();
-    public static DragonDrops dragonDrops = new DragonDrops();
-    public static Phantoms phantoms = new Phantoms();
-    public static MobHeads mobHeads = new MobHeads();
-    public static DuraPing duraPing = new DuraPing();
-    public static ConcreteConverter concreteConverter = new ConcreteConverter();
-    public static CountDeaths countDeaths = new CountDeaths();
-    public static MultiSleep multiplayerSleep = new MultiSleep();
-    public static HeadDrop headDrop = new HeadDrop();
-    public static Silencer silencer = new Silencer();
-    public static ConduitPower conduitPower = new ConduitPower();
-    public static NightVision nightVision = new NightVision();
-    public static Tag tag = new Tag();
-    public static UnlockRecipes unlockRecipes = new UnlockRecipes();
-    public static VillagerDeath villagerDeath = new VillagerDeath();
-    public static Trades trades = new Trades();
-    public static XPManagement xpManagement = new XPManagement();
-    public static ConfettiCreeper confettiCreeper = new ConfettiCreeper();
-    public static Back back = new Back();
-    public static AFK afk = new AFK();
-    public static Shrine shrine = new Shrine();
-    public static Highlighter highlighter = new Highlighter();
-    public static Loader loader = new Loader();
-    public static Decay decay = new Decay();
-    public static PillagerSpawning pillagerSpawning = new PillagerSpawning();
-    public static Elevator elevator = new Elevator();
-    public static Wrench wrench = new Wrench();
-    public static Gems gems = new Gems();
-    public static ArmoredElytras armoredElytras = new ArmoredElytras();
-    public static Fishing classicFishing = new Fishing();
-    public static NetherPortal portal = new NetherPortal();
-    public static ItemTracker itemTracker = new ItemTracker();
-    public static StatTracker statTracker = new StatTracker();
-    public static RawStats rawStats = new RawStats();
-    public static GraveEvents graves = new GraveEvents();
-    public static HUD hud = new HUD();
-    public static CustomVillager customVillager = new CustomVillager();
-    public static Sphere sphere = new Sphere();
-    public static KeepSmall keepSmall = new KeepSmall();
-    public static ChatColors chatColors = new ChatColors();
-    public static EditSigns editableSigns = new EditSigns();
-    public static LecternReset lecternReset = new LecternReset();
-    public static Sudoku sudoku = new Sudoku();
-    public static StairChairs stairChairs = new StairChairs();
-    public static UnstickyPistons unstickyPistons = new UnstickyPistons();
-    public static SlimeCream slimeCream = new SlimeCream();
-    public static InvisibleItemFrames invisibleItemFrames = new InvisibleItemFrames();
-    public static BetterFoliage betterFoliage = new BetterFoliage();
-    public static FixedItemFrames fixedItemFrames = new FixedItemFrames();
-    public static InstantDeepslate instantDeepslate = new InstantDeepslate();
+    private final AntiCreeper antiCreeper = new AntiCreeper();
+    private final AntiEnderman antiEnderman = new AntiEnderman();
+    private final AntiGhast antiGhast = new AntiGhast();
+    private final DoubleShulkers doubleShulkers = new DoubleShulkers();
+    private final DragonDrops dragonDrops = new DragonDrops();
+    private final Phantoms phantoms = new Phantoms();
+    private final MobHeads mobHeads = new MobHeads();
+    private final DuraPing duraPing = new DuraPing();
+    private final ConcreteConverter concreteConverter = new ConcreteConverter();
+    private final CountDeaths countDeaths = new CountDeaths();
+    private final MultiSleep multiplayerSleep = new MultiSleep();
+    private final HeadDrop headDrop = new HeadDrop();
+    private final Silencer silencer = new Silencer();
+    private final ConduitPower conduitPower = new ConduitPower();
+    private final NightVision nightVision = new NightVision();
+    private final Tag tag = new Tag();
+    private final UnlockRecipes unlockRecipes = new UnlockRecipes();
+    private final VillagerDeath villagerDeath = new VillagerDeath();
+    private final Trades trades = new Trades();
+    private final XPManagement xpManagement = new XPManagement();
+    private final ConfettiCreeper confettiCreeper = new ConfettiCreeper();
+    private final Back back = new Back();
+    private final AFK afk = new AFK();
+    private final Shrine shrine = new Shrine();
+    private final Highlighter highlighter = new Highlighter();
+    private final Loader loader = new Loader();
+    private final Decay decay = new Decay();
+    private final PillagerSpawning pillagerSpawning = new PillagerSpawning();
+    private final Elevator elevator = new Elevator();
+    private final Wrench wrench = new Wrench();
+    private final Gems gems = new Gems();
+    private final ArmoredElytras armoredElytras = new ArmoredElytras();
+    private final Fishing classicFishing = new Fishing();
+    private final NetherPortal portal = new NetherPortal();
+    private final ItemTracker itemTracker = new ItemTracker();
+    private final StatTracker statTracker = new StatTracker();
+    private final RawStats rawStats = new RawStats();
+    private final GraveEvents graves = new GraveEvents();
+    private final HUD hud = new HUD();
+    private final CustomVillager customVillager = new CustomVillager();
+    private final Sphere sphere = new Sphere();
+    private final KeepSmall keepSmall = new KeepSmall();
+    private final ChatColors chatColors = new ChatColors();
+    private final EditSigns editableSigns = new EditSigns();
+    private final LecternReset lecternReset = new LecternReset();
+    private final Sudoku sudoku = new Sudoku();
+    private final StairChairs stairChairs = new StairChairs();
+    private final UnstickyPistons unstickyPistons = new UnstickyPistons();
+    private final SlimeCream slimeCream = new SlimeCream();
+    private final InvisibleItemFrames invisibleItemFrames = new InvisibleItemFrames();
+    private final BetterFoliage betterFoliage = new BetterFoliage();
+    private final FixedItemFrames fixedItemFrames = new FixedItemFrames();
+    private final InstantDeepslate instantDeepslate = new InstantDeepslate();
 
-    public static void registerAll() {
+    public void registerAll() {
         unregisterAll();
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
             if (main.getConfig().getBoolean("packs." + pack + ".enabled")) {
@@ -123,7 +123,7 @@ public class Register {
         }
     }
 
-    public static void unregisterAll() {
+    public void unregisterAll() {
         main.clearPacks();
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
             if (!main.getConfig().getBoolean("packs." + pack + ".enabled")) {
@@ -132,7 +132,7 @@ public class Register {
         }
     }
 
-    public static void unregisterPack(String pack) {
+    public void unregisterPack(String pack) {
 
         switch (pack) {
             case "player-head-drops" -> headDrop.unregister();
@@ -191,7 +191,7 @@ public class Register {
         }
     }
 
-    public static void registerPack(String pack) {
+    public void registerPack(String pack) {
         switch (pack) {
             case "player-head-drops" -> headDrop.init();
             case "anti-creeper-grief" -> antiCreeper.init();
