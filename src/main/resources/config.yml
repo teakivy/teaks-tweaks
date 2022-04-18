@@ -101,6 +101,18 @@ packs:
         pumpkin-seeds: 0.03
         beetroot-seeds: 0.03
 
+  # Cry Obsidian
+  # Let them cry, they may have feelings too!
+  cry-obsidian:
+    enabled: false
+    # Convert obsidian to crying obsidian by right-clicking it with ghast tears or water buckets
+    cry-obsidian:
+      enabled: true
+      # Chance to convert dirt to grass based on the seed type
+      chance:
+        tear: 0.75
+        water: 0.1
+
   # Instant Deepslate
   # Instantly mine deepslate blocks if you have a netherite pickaxe with efficiency 5 or higher, and haste 2 or higher.
   instant-deepslate:

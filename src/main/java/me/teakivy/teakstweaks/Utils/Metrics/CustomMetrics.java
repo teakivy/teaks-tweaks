@@ -34,6 +34,7 @@ public class CustomMetrics {
                 valueMap.put("Invisible Item Frames", getPack("invisible-item-frames"));
                 valueMap.put("Fixed Item Frames", getPack("fixed-item-frames"));
                 valueMap.put("Better Foliage", getPack("better-foliage"));
+                valueMap.put("Cry Obsidian", getPack("cry-obsidian"));
                 valueMap.put("Instant Deepslate", getPack("instant-deepslate"));
 
                 valueMap.put("Unlock All Recipes", getPack("unlock-all-recipes"));
