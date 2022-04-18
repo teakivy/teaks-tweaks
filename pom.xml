@@ -6,7 +6,7 @@
 
     <groupId>me.teakivy</groupId>
     <artifactId>teakstweaks</artifactId>
-    <version>1.6.11-beta</version>
+    <version>1.6.12-beta</version>
     <packaging>jar</packaging>
 
     <name>TeaksTweaks</name>
