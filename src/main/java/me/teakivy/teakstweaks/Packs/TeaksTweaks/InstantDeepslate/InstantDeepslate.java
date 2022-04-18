@@ -6,7 +6,7 @@ import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.block.BlockDamageEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -33,17 +33,14 @@ public class InstantDeepslate extends BasePack {
     }
 
     @EventHandler
-    public void onBeginBreak(PlayerInteractEvent e) {
+    public void onBeginBreak(BlockDamageEvent e) {
         Player player = e.getPlayer();
-        if (e.getHand() == null) return;
-        ItemStack item = player.getInventory().getItem(e.getHand());
-        if (item == null) return;
-        Block block = e.getClickedBlock();
-        if (block == null) return;
+        ItemStack item = e.getItemInHand();
+        Block block = e.getBlock();
         if (!instantMaterials.contains(block.getType())) return;
 
         if (item.getType().equals(Material.NETHERITE_PICKAXE) && hasHasteTwo(player) && isEfficiencyFive(item)) {
-            block.breakNaturally(item);
+            e.setInstaBreak(true);
             player.playSound(block.getLocation(), block.getBlockData().getSoundGroup().getBreakSound(), 1f, 1f);
         }
     }
