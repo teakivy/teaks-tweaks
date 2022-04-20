@@ -57,6 +57,14 @@ public class GraveCreator {
             for (int i = (int) location.getY(); i > location.getWorld().getMinHeight(); i--) {
                 Block current = location.getWorld().getBlockAt((int) location.getX(), i, (int) location.getZ());
                 if (!getAirTypes().contains(current.getType())) {
+                    if (main.getConfig().getBoolean("packs.graves.create-above-fluids") && getFluidTypes().contains(current.getType())) {
+                        for (int y = i; y < location.getWorld().getMaxHeight(); y++) {
+                            current = location.getWorld().getBlockAt((int) location.getX(), y, (int) location.getZ());
+                            if (!getFluidTypes().contains(current.getType())) {
+                                return current.getLocation().add(0, 0, 0);
+                            }
+                        }
+                    }
                     return current.getLocation().add(0, 1, 0);
                 }
             }
@@ -102,7 +110,6 @@ public class GraveCreator {
         airTypes.add(Material.VOID_AIR);
         airTypes.add(Material.GRASS);
         airTypes.add(Material.TALL_GRASS);
-        airTypes.add(Material.WATER);
         airTypes.add(Material.SEAGRASS);
         airTypes.add(Material.POPPY);
         airTypes.add(Material.DANDELION);
@@ -137,6 +144,13 @@ public class GraveCreator {
         airTypes.add(Material.FERN);
         airTypes.add(Material.LARGE_FERN);
         return airTypes;
+    }
+
+    public static ArrayList<Material> getFluidTypes() {
+        ArrayList<Material> fluidTypes = new ArrayList<>();
+        fluidTypes.add(Material.WATER);
+        fluidTypes.add(Material.LAVA);
+        return fluidTypes;
     }
 
 
