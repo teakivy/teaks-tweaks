@@ -62,8 +62,8 @@ public class GraveEvents extends BasePack {
             return;
         } else {
             event.setCancelled(true);
-            entity.remove();
             if (getConfig().getBoolean("allow-robbing") || holdingKey(event.getPlayer())) {
+                entity.remove();
                 if (holdingKey(event.getPlayer()) && !getConfig().getBoolean("allow-robbing") && event.getPlayer().getGameMode() != GameMode.CREATIVE) {
                     event.getPlayer().getInventory().remove(getGraveKey());
                 }

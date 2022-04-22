@@ -204,6 +204,8 @@ packs:
     allow-void-graves: true
     # Whether or not to allow graves to generate when a player dies in lava
     generate-in-lava: true
+    # Whether or not to create the graves above water and lava
+    create-above-fluids: false
 
   # Custom Nether Portals
   # Ignite nether portals of any size or shape you like, or using crying obsidian in the portal frame if enabled.
