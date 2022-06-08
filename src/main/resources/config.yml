@@ -369,6 +369,11 @@ packs:
   larger-phantoms:
     enabled: false
 
+  # Bat Membranes
+  # Disable Phantoms to get membranes from Bats instead.
+  bat-membranes:
+    enabled: false
+
   # More Mob Heads
   # Adds a chance to receive a mob head upon killing it.
   # Be sure to check the data.yml file for more customizability!

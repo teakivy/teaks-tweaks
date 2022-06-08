@@ -16,6 +16,7 @@ import me.teakivy.teakstweaks.Packs.Items.RotationWrench.Wrench;
 import me.teakivy.teakstweaks.Packs.Mobs.AntiCreeperGreif.AntiCreeper;
 import me.teakivy.teakstweaks.Packs.Mobs.AntiEndermanGrief.AntiEnderman;
 import me.teakivy.teakstweaks.Packs.Mobs.AntiGhastGrief.AntiGhast;
+import me.teakivy.teakstweaks.Packs.Mobs.BatMembranes.BatMembranes;
 import me.teakivy.teakstweaks.Packs.Mobs.CountMobDeaths.CountDeaths;
 import me.teakivy.teakstweaks.Packs.Mobs.DoubleShulkerShells.DoubleShulkers;
 import me.teakivy.teakstweaks.Packs.Mobs.DragonDrops.DragonDrops;
@@ -113,6 +114,7 @@ public class Register {
     private final BetterFoliage betterFoliage = new BetterFoliage();
     private final FixedItemFrames fixedItemFrames = new FixedItemFrames();
     private final InstantDeepslate instantDeepslate = new InstantDeepslate();
+    private final BatMembranes batMembranes = new BatMembranes();
 
     public void registerAll() {
         unregisterAll();
@@ -188,6 +190,7 @@ public class Register {
             case "better-foliage" -> betterFoliage.unregister();
             case "fixed-item-frames" -> fixedItemFrames.unregister();
             case "instant-deepslate" -> instantDeepslate.unregister();
+            case "bat-membranes" -> batMembranes.unregister();
         }
     }
 
@@ -246,6 +249,7 @@ public class Register {
             case "better-foliage" -> betterFoliage.init();
             case "fixed-item-frames" -> fixedItemFrames.init();
             case "instant-deepslate" -> instantDeepslate.init();
+            case "bat-membranes" -> batMembranes.init();
         }
     }
     public static void registerCommands() {

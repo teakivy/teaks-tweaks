@@ -67,6 +67,7 @@ public class CustomMetrics {
                 valueMap.put("Silence Mobs", getPack("silence-mobs"));
                 valueMap.put("Count Mob Deaths", getPack("count-mob-deaths"));
                 valueMap.put("Villager Death Messages", getPack("villager-death-messages"));
+                valueMap.put("Bat Membranes", getPack("bat-membranes"));
 
                 valueMap.put("Spawn", getPack("spawn"));
                 valueMap.put("Homes", getPack("homes"));
