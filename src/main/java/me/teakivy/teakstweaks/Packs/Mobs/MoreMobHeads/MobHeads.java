@@ -33,8 +33,9 @@ public class MobHeads extends BasePack {
 
 
         switch (entityName) {
-            case "BAT" -> Bat.onDeath(event);
+            case "ALLAY" -> Allay.onDeath(event);
             case "AXOLOTL" -> Axolotl.onDeath(event);
+            case "BAT" -> Bat.onDeath(event);
             case "BEE" -> Bee.onDeath(event);
             case "BLAZE" -> Blaze.onDeath(event);
             case "CAT" -> Cat.onDeath(event);
@@ -52,6 +53,7 @@ public class MobHeads extends BasePack {
             case "ENDERMITE" -> Endermite.onDeath(event);
             case "EVOKER" -> Evoker.onDeath(event);
             case "FOX" -> Fox.onDeath(event);
+            case "FROG" -> Frog.onDeath(event);
             case "GHAST" -> Ghast.onDeath(event);
             case "GLOW_SQUID" -> GlowSquid.onDeath(event);
             case "GOAT" -> Goat.onDeath(event);
@@ -87,6 +89,7 @@ public class MobHeads extends BasePack {
             case "SQUID" -> Squid.onDeath(event);
             case "STRAY" -> Stray.onDeath(event);
             case "STRIDER" -> Strider.onDeath(event);
+            case "TADPOLE" -> Tadpole.onDeath(event);
             case "TRADER_LLAMA" -> TraderLlama.onDeath(event);
             case "TROPICAL_FISH" -> TropicalFish.onDeath(event);
             case "TURTLE" -> Turtle.onDeath(event);
@@ -94,6 +97,7 @@ public class MobHeads extends BasePack {
             case "VILLAGER" -> Villager.onDeath(event);
             case "VINDICATOR" -> Vindicator.onDeath(event);
             case "WANDERING_TRADER" -> WanderingTrader.onDeath(event);
+            case "WARDEN" -> Warden.onDeath(event);
             case "WITCH" -> Witch.onDeath(event);
             case "WITHER" -> Wither.onDeath(event);
             case "WOLF" -> Wolf.onDeath(event);

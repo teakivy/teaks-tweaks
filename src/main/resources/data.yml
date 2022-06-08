@@ -486,6 +486,9 @@ commands:
 
 
 mob-heads:
+  allay:
+    chance: .2
+    looting-bonus: .01
   axolotl:
     chance: .1
     looting-bonus: .01
@@ -546,6 +549,9 @@ mob-heads:
   evoker:
     chance: .25
     looting-bonus: .02
+  frog:
+    chance: .2
+    looting-bonus: .01
   red-fox:
     chance: .10
     looting-bonus: .004
@@ -672,6 +678,9 @@ mob-heads:
   strider:
     chance: .1
     looting-bonus: .05
+  tadpole:
+    chance: .1
+    looting-bonus: .01
   trader-llama:
     chance: .24
     looting-bonus: .07
@@ -691,6 +700,9 @@ mob-heads:
     chance: .05
     looting-bonus: .015
   wandering-trader:
+    chance: 1
+    looting-bonus: 0
+  warden:
     chance: 1
     looting-bonus: 0
   witch:
