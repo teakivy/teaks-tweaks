@@ -1,12 +1,13 @@
 package me.teakivy.teakstweaks.Packs.Survival.CauldronConcrete;
 
 import me.teakivy.teakstweaks.Packs.BasePack;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.block.data.Levelled;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.entity.EntityDropItemEvent;
-import org.bukkit.event.entity.ItemSpawnEvent;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scheduler.BukkitRunnable;
 
 public class ConcreteConverter extends BasePack {
 
@@ -15,67 +16,34 @@ public class ConcreteConverter extends BasePack {
     }
 
     @EventHandler
-    public void onDrop(EntityDropItemEvent event) {
-        ItemStack item = event.getItemDrop().getItemStack();
-        Material material = item.getType();
+    public void onInteract(PlayerInteractEvent event) {
+        if (event.isCancelled()) return;
+        if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+        if (event.getClickedBlock() == null) return;
+        if (event.getClickedBlock().getType() != Material.WATER_CAULDRON) return;
 
-        if (material.toString().contains("_CONCRETE_POWDER")) {
-            concreteConverter(Material.valueOf(material.toString().replace("_CONCRETE_POWDER", "_CONCRETE")), event);
+        if (event.getItem() == null) return;
+        if (!event.getItem().getType().name().contains("_CONCRETE_POWDER")) return;
+
+        Levelled levelled = (Levelled) event.getClickedBlock().getBlockData();
+        if (levelled.getLevel() == 1) {
+            event.getClickedBlock().setType(Material.BARRIER);
+            Bukkit.getScheduler().runTaskLater(main, () -> event.getClickedBlock().setType(Material.CAULDRON), 1L);
+
         }
 
-    }
+        event.setCancelled(true);
 
-    @EventHandler
-    public void blockDrop(ItemSpawnEvent event) {
-        ItemStack item = event.getEntity().getItemStack();
-        Material material = item.getType();
-
-        if (material.toString().contains("_CONCRETE_POWDER")) {
-            concreteConverter(Material.valueOf(material.toString().replace("_CONCRETE_POWDER", "_CONCRETE")), event);
+        if (event.getClickedBlock().getType() == Material.WATER_CAULDRON) {
+            levelled.setLevel(levelled.getLevel() - 1);
         }
 
+        event.getClickedBlock().setBlockData(levelled);
+
+        event.getItem().setAmount(event.getItem().getAmount() - 1);
+
+        ItemStack newItem = new ItemStack(Material.valueOf(event.getItem().getType().name().replace("_CONCRETE_POWDER", "_CONCRETE")));
+
+        event.getPlayer().getInventory().addItem(newItem);
     }
-
-
-
-    public void concreteConverter(Material result, EntityDropItemEvent event) {
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-
-                if (event.getItemDrop().getLocation().getBlock().getType().equals(Material.WATER_CAULDRON)) {
-                    if (result == Material.AIR) this.cancel();
-                    try {
-                        event.getItemDrop().getWorld().dropItem(event.getItemDrop().getLocation(), new ItemStack(result, event.getItemDrop().getItemStack().getAmount()));
-                    } catch (Exception e) {
-                        // DO nothing
-                    }
-                    event.getItemDrop().remove();
-                }
-                if (event.getItemDrop().isDead()) this.cancel();
-            }
-        }.runTaskTimer(main, 0, 20L);
-    }
-
-    public void concreteConverter(Material result, ItemSpawnEvent event) {
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                if (event.getEntity().getLocation().getBlock().getType().equals(Material.WATER_CAULDRON)){
-                    if (result == Material.AIR) this.cancel();
-                    try {
-                        event.getEntity().getWorld().dropItem(event.getEntity().getLocation(), new ItemStack(result, event.getEntity().getItemStack().getAmount()));
-                    } catch (Exception e) {
-                        // DO nothing
-                    }
-                    event.getEntity().remove();
-                }
-                if (event.getEntity().isDead()) this.cancel();
-            }
-        }.runTaskTimer(main, 0, 20L);
-    }
-
-
-
-
 }
