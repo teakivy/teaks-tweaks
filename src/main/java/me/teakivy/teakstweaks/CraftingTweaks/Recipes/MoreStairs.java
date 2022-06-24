@@ -63,6 +63,7 @@ public class MoreStairs extends AbstractRecipe {
         newStairsRecipe(Material.BLACKSTONE, Material.BLACKSTONE_STAIRS);
         newStairsRecipe(Material.POLISHED_BLACKSTONE, Material.POLISHED_BLACKSTONE_STAIRS);
         newStairsRecipe(Material.POLISHED_BLACKSTONE_BRICKS, Material.POLISHED_BLACKSTONE_BRICK_STAIRS);
+        newStairsRecipe(Material.MANGROVE_PLANKS, Material.MANGROVE_STAIRS);
     }
 
     public static void newStairsRecipe(Material input, Material output) {
