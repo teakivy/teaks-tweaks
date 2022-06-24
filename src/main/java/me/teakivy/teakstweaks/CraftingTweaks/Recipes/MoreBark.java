@@ -31,6 +31,8 @@ public class MoreBark extends AbstractRecipe {
         newBarkedRecipe("stripped_crimson", Material.STRIPPED_CRIMSON_STEM, Material.STRIPPED_CRIMSON_HYPHAE);
         newBarkedRecipe("warped", Material.WARPED_STEM, Material.WARPED_HYPHAE);
         newBarkedRecipe("stripped_warped", Material.STRIPPED_WARPED_STEM, Material.STRIPPED_WARPED_HYPHAE);
+        newBarkedRecipe("mangrove", Material.MANGROVE_LOG, Material.MANGROVE_WOOD);
+        newBarkedRecipe("stripped_mangrove", Material.STRIPPED_MANGROVE_LOG, Material.STRIPPED_MANGROVE_WOOD);
     }
 
     public static void newBarkedRecipe(String name, Material input, Material output) {
