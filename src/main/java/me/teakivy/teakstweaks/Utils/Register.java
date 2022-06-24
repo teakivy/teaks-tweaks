@@ -322,7 +322,7 @@ public class Register {
         }
 
         if (main.getConfig().getBoolean("commands.afk.enabled") &&
-                main.getConfig().getBoolean("packs.afk.enabled")) {
+                main.getConfig().getBoolean("packs.afk-display.enabled")) {
             new AFKCommand().register();
         }
 
