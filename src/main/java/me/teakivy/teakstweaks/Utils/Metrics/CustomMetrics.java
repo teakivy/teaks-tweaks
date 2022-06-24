@@ -139,6 +139,7 @@ public class CustomMetrics {
                 valueMap.put("Unpackable Wool", getCraftingTweak("unpackable-wool"));
                 valueMap.put("Log Chests", getCraftingTweak("log-chests"));
                 valueMap.put("Smeltable Raw Ore Blocks", getCraftingTweak("smeltable-raw-ore-blocks"));
+                valueMap.put("More Packed Mud", getCraftingTweak("more-packed-mud"));
                 return valueMap;
             }
         }));

@@ -717,6 +717,11 @@ crafting-tweaks:
   more-bricks:
     enabled: false
 
+  # More Packed Mud
+  # Creates 2 Packed Mud instead of 1.
+  more-packed-mud:
+    enabled: false
+
   # Craftable Gravel
   # Allows you to craft Gravel from Flint.
   craftable-gravel:

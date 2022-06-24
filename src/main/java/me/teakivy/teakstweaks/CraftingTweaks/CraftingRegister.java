@@ -51,6 +51,7 @@ public class CraftingRegister {
             case "unpackable-quartz-blocks" -> new UnpackableQuartz().init();
             case "log-chests" -> new LogChests().init();
             case "smeltable-raw-ore-blocks" -> new SmeltableRawOreBlocks().init();
+            case "more-packed-mud" -> new MorePackedMud().init();
         }
     }
 
