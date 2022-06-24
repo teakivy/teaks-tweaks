@@ -107,6 +107,12 @@ public class BackToBlocks extends AbstractRecipe {
         newShapedSlabRecipe("stone_bricks", new ItemStack(Material.STONE_BRICKS, 1), Material.STONE_BRICK_SLAB);
         newShapedSlabRecipe("stone", new ItemStack(Material.STONE, 1), Material.STONE_SLAB);
         newShapedSlabRecipe("warped_planks", new ItemStack(Material.WARPED_PLANKS, 1), Material.WARPED_SLAB);
+
+        newShapedSlabRecipe("mangrove_planks", new ItemStack(Material.MANGROVE_PLANKS, 1), Material.MANGROVE_SLAB);
+        newShapelessStairRecipe("mangrove_planks", new ItemStack(Material.MANGROVE_PLANKS, 1), Material.MANGROVE_STAIRS, 4);
+        newShapedSlabRecipe("mud_bricks", new ItemStack(Material.MUD_BRICKS, 1), Material.MUD_BRICK_SLAB);
+        newShapelessStairRecipe("mud_bricks", new ItemStack(Material.MUD_BRICKS, 1), Material.MUD_BRICK_STAIRS, 4);
+
     }
 
     public static void newShapelessStairRecipe(String keyName, ItemStack result, Material ingredient, int amount) {
