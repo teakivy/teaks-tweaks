@@ -949,7 +949,7 @@ commands:
 # Leave these options alone unless you know what you're doing!
 # Changing these values may cause unexpected issues.
 config:
-  plugin-version: 1.7.1-beta
+  plugin-version: 1.7.2-beta
   alert-op-on-new-version: true
-  version: 34
+  version: 35
   dev-mode: false
