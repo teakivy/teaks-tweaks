@@ -53,7 +53,6 @@ public class DoubleSlabs extends AbstractRecipe {
         newShapelessRecipe("deepslate_bricks", Material.DEEPSLATE_BRICKS, Material.DEEPSLATE_BRICK_SLAB);
         newShapelessRecipe("deepslate_tiles", Material.DEEPSLATE_TILES, Material.DEEPSLATE_TILE_SLAB);
 
-        newShapelessRecipe("mangrove_planks", Material.MANGROVE_PLANKS, Material.MANGROVE_SLAB);
         newShapelessRecipe("mud_bricks", Material.MUD_BRICKS, Material.MUD_BRICK_SLAB);
     }
 
