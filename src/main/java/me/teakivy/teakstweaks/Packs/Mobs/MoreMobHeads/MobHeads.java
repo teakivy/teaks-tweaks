@@ -80,6 +80,7 @@ public class MobHeads extends BasePack {
             case "RABBIT" -> Rabbit.onDeath(event);
             case "RAVAGER" -> Ravager.onDeath(event);
             case "SALMON" -> Salmon.onDeath(event);
+            case "SHEEP" -> Sheep.onDeath(event);
             case "SHULKER" -> Shulker.onDeath(event);
             case "SILVERFISH" -> Silverfish.onDeath(event);
             case "SKELETON_HORSE" -> SkeletonHorse.onDeath(event);

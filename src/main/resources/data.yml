@@ -648,6 +648,9 @@ mob-heads:
   salmon:
     chance: .1
     looting-bonus: .01
+  sheep:
+    chance: .0175
+    looting-bonus: .0025
   shulker:
     chance: .05
     looting-bonus: .01
