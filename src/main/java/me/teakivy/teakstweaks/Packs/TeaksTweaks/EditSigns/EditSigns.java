@@ -28,7 +28,7 @@ public class EditSigns extends BasePack {
     @Override
     public void init() {
         String ver = Bukkit.getServer().getVersion().toLowerCase();
-        if (ver.contains("paper")) {
+        if (ver.contains("paper") || config.getBoolean("bypass-paper-check")) {
             super.init();
         } else {
             main.getLogger().log(Level.SEVERE, "Editable signs are only supported on Paper at the moment.");

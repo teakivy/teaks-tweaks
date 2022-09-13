@@ -12,10 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.LeavesDecayEvent;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Decay extends BasePack {
 
@@ -51,12 +48,11 @@ public class Decay extends BasePack {
                 && !Tag.LEAVES.isTagged(oldBlock.getType())) {
             return;
         }
-        final String worldName = oldBlock.getWorld().getName();
         // No return
         Collections.shuffle(NEIGHBORS);
         for (BlockFace neighborFace: NEIGHBORS) {
             final Block block = oldBlock.getRelative(neighborFace);
-            if (!Tag.LEAVES.isTagged(block.getType())) continue;
+            if (!block.getType().toString().toLowerCase(Locale.ROOT).contains("leaves")) continue;
             Leaves leaves = (Leaves) block.getBlockData();
             if (leaves.isPersistent()) continue;
             if (scheduledBlocks.contains(block)) continue;

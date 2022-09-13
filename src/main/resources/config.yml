@@ -46,6 +46,10 @@ packs:
   editable-signs:
     enabled: false
     owner-only: true
+    # Bypass the check for paper servers.
+    # WARNING: Enabling this on a non-paper based server will cause errors!
+    # Only enable if you know what you're doing.
+    bypass-paper-check: false
 
   # Lectern Reset
   # Reset a lectern's book to the first page after closing it
@@ -951,5 +955,5 @@ commands:
 config:
   plugin-version: 1.7.2-beta
   alert-op-on-new-version: true
-  version: 35
+  version: 36
   dev-mode: false
