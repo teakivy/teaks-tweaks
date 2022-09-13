@@ -35,9 +35,6 @@ public class ConfettiCreeper extends BasePack {
             return;
         }
         entity.addScoreboardTag("vt_confetti_true");
-        if (!getConfig().getBoolean("do-block-damage")) {
-            event.setRadius(0);
-        }
 
         FireworkEffect fwEffect = FireworkEffect.builder()
                 .trail(false)
@@ -58,7 +55,6 @@ public class ConfettiCreeper extends BasePack {
         FireworkMeta fwMeta = fw.getFireworkMeta();
         fwMeta.setDisplayName("Confetti");
         fwMeta.addEffect(fwEffect);
-        fwMeta.setPower(0);
         fw.setFireworkMeta(fwMeta);
         fw.detonate();
     }
@@ -70,19 +66,18 @@ public class ConfettiCreeper extends BasePack {
         boolean confetti = entity.getScoreboardTags().contains("vt_confetti_true");
 
         if (!confetti) return;
+
+        if (!getConfig().getBoolean("do-block-damage")) {
+            event.blockList().clear();
+        }
     }
 
-    @EventHandler public void onExplosionDamage(EntityDamageByEntityEvent event) {
+    @EventHandler
+    public void onExplosionDamage(EntityDamageByEntityEvent event) {
         if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) {
             if (event.getDamager().getScoreboardTags().contains("vt_confetti_true")) {
-                if (getConfig().getInt("entity-damage-reduction") > 1) {
-                    double damage = (event.getDamage() * (100 - getConfig().getInt("entity-damage-reduction"))) * .01;
-                    event.setDamage(damage);
-                    event.setCancelled(true);
-                } else if (getConfig().getInt("entity-damage-reduction") > 99) {
-                    event.setDamage(0);
-                    event.setCancelled(true);
-                }
+                event.setDamage(event.getDamage() -
+                        (event.getDamage() * (getConfig().getInt("entity-damage-reduction") / 100.0)));
             }
         }
     }
