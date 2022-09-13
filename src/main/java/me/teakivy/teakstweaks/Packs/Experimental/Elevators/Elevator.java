@@ -1,12 +1,11 @@
 package me.teakivy.teakstweaks.Packs.Experimental.Elevators;
 
-import com.google.common.collect.Sets;
 import me.teakivy.teakstweaks.Packs.BasePack;
 import org.bukkit.*;
 import org.bukkit.block.Block;
-import org.bukkit.entity.AreaEffectCloud;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Marker;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -18,8 +17,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.UUID;
 
 public class Elevator extends BasePack {
 
@@ -28,7 +25,6 @@ public class Elevator extends BasePack {
     }
 
     static List<Material> elevatorMaterials = new ArrayList<>();
-    private Set<UUID> prevPlayersOnGround = Sets.newHashSet();
 
     @Override
     public void init() {
@@ -63,7 +59,7 @@ public class Elevator extends BasePack {
         if (isElevator(block)) {
             for (Entity nearbyEntity : block.getWorld().getNearbyEntities(block.getLocation().add(.5, 1, .5), .4, .8, .4)) {
                 if (block.getY() + 1 == nearbyEntity.getLocation().getBlockY()) {
-                    if (nearbyEntity.getScoreboardTags().contains("vt_elevator") && nearbyEntity.getType() == EntityType.AREA_EFFECT_CLOUD) {
+                    if (nearbyEntity.getScoreboardTags().contains("vt_elevator") && nearbyEntity.getType() == EntityType.MARKER) {
                         nearbyEntity.remove();
                         event.getBlock().getDrops().add(new ItemStack(Material.ENDER_PEARL));
                         return;
@@ -119,13 +115,8 @@ public class Elevator extends BasePack {
     private void createElevator(Location loc) {
         Block block = loc.getBlock();
 
-        AreaEffectCloud marker = (AreaEffectCloud) block.getWorld().spawnEntity(block.getLocation().add(.5, 1, .5), EntityType.AREA_EFFECT_CLOUD);
+        Marker marker = (Marker) block.getWorld().spawnEntity(block.getLocation().add(.5, 1, .5), EntityType.MARKER);
 
-        marker.setDuration(Integer.MAX_VALUE);
-        marker.setParticle(Particle.SUSPENDED);
-        marker.setWaitTime(0);
-        marker.setColor(Color.WHITE);
-        marker.setRadius(.001F);
         marker.addScoreboardTag("vt_elevator");
 
         loc.getWorld().spawnParticle(Particle.PORTAL, block.getLocation().add(.5, 1, .5), 200, -.5, -.5, -.5, -1);
@@ -133,7 +124,7 @@ public class Elevator extends BasePack {
 
     private boolean isElevator(Block block) {
         for (Entity nearbyEntity : block.getWorld().getNearbyEntities(block.getLocation().add(.5, 1, .5), .4, .4, .4)) {
-            if (nearbyEntity.getScoreboardTags().contains("vt_elevator") && nearbyEntity.getType() == EntityType.AREA_EFFECT_CLOUD) {
+            if (nearbyEntity.getScoreboardTags().contains("vt_elevator") && nearbyEntity.getType() == EntityType.MARKER) {
                 return true;
             }
         }
