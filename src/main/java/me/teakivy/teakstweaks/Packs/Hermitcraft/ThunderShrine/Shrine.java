@@ -5,9 +5,9 @@ import me.teakivy.teakstweaks.Packs.BasePack;
 import me.teakivy.teakstweaks.Utils.MessageHandler;
 import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.AreaEffectCloud;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Marker;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerDropItemEvent;
@@ -137,12 +137,7 @@ public class Shrine extends BasePack {
     }
 
     public static void createShrine(Location loc) throws IOException {
-        AreaEffectCloud shrine = (AreaEffectCloud) Objects.requireNonNull(loc.getWorld()).spawnEntity(loc, EntityType.AREA_EFFECT_CLOUD);
-        shrine.setDuration(Integer.MAX_VALUE);
-        shrine.setParticle(Particle.SUSPENDED);
-        shrine.setWaitTime(0);
-        shrine.setColor(Color.WHITE);
-        shrine.setRadius(.001F);
+        Marker shrine = (Marker) Objects.requireNonNull(loc.getWorld()).spawnEntity(loc, EntityType.MARKER);
         data.set("thunder-shrines." + shrine.getUniqueId() + ".id", shrine.getUniqueId().toString());
         main.data.saveConfig();
     }
