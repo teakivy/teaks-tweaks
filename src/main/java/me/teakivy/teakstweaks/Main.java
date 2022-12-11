@@ -4,8 +4,6 @@ import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
 import me.teakivy.teakstweaks.packs.hermitcraft.tag.Tag;
 import me.teakivy.teakstweaks.utils.*;
 import me.teakivy.teakstweaks.utils.datamanager.DataManager;
-import me.teakivy.teakstweaks.utils.logger.Log;
-import me.teakivy.teakstweaks.utils.logger.Logger;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
 import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
@@ -42,7 +40,7 @@ public final class Main extends JavaPlugin implements Listener {
         data.saveDefaultConfig();
 
         if (getConfig().getBoolean("config.dev-mode")) {
-            Log.message(MessageHandler.getMessage("plugin.startup.dev-mode-enabled"));
+            Logger.log(Logger.LogLevel.INFO, MessageHandler.getMessage("plugin.startup.dev-mode-enabled"));
         }
 
         // Credits
@@ -62,7 +60,7 @@ public final class Main extends JavaPlugin implements Listener {
                 try {
                     ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList(), true);
                     this.reloadConfig();
-                    Log.message("Dev Mode Enabled!");
+                    Logger.log(Logger.LogLevel.INFO, "Dev Mode Enabled!");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -71,7 +69,7 @@ public final class Main extends JavaPlugin implements Listener {
             try {
                 ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList(), true);
                 this.reloadConfig();
-                Log.message("Updated Config to Version: " + this.getConfig().getInt("config.version"));
+                Logger.log(Logger.LogLevel.INFO, "Updated Config to Version: " + this.getConfig().getInt("config.version"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -112,7 +110,7 @@ public final class Main extends JavaPlugin implements Listener {
         }
 
         // Plugin startup logic
-        Log.message(MessageHandler.getMessage("plugin.startup.plugin-started"));
+        Logger.log(Logger.LogLevel.INFO, MessageHandler.getMessage("plugin.startup.plugin-started"));
 
         // Packs
         register = new Register();
@@ -122,7 +120,7 @@ public final class Main extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        Log.message(MessageHandler.getMessage("plugin.shutdown.plugin-shutdown"));
+        Logger.log(Logger.LogLevel.INFO, MessageHandler.getMessage("plugin.shutdown.plugin-shutdown"));
 
         data.reloadConfig();
         List<String> list = new ArrayList<>();

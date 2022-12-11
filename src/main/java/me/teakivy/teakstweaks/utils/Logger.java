@@ -1,4 +1,4 @@
-package me.teakivy.teakstweaks.utils.logger;
+package me.teakivy.teakstweaks.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

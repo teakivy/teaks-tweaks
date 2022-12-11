@@ -1,8 +1,8 @@
 package me.teakivy.teakstweaks.packs.survival.afkdisplay;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.MessageHandler;
-import me.teakivy.teakstweaks.utils.logger.Log;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -141,7 +141,7 @@ public class AFK extends BasePack {
                 }
             }
             if (main.getConfig().getBoolean("packs.afk-display.message.display-to-console")) {
-                Log.message(MessageHandler.getMessage("pack.afk-display.console-now-afk").replace("%player_name%", player.getName()));
+                Logger.log(Logger.LogLevel.INFO, MessageHandler.getMessage("pack.afk-display.console-now-afk").replace("%player_name%", player.getName()));
             }
         } else {
             if (main.getConfig().getBoolean("packs.afk-display.message.display-to-self")) {
@@ -155,7 +155,7 @@ public class AFK extends BasePack {
                 }
             }
             if (main.getConfig().getBoolean("packs.afk-display.message.display-to-console")) {
-                Log.message(MessageHandler.getMessage("pack.afk-display.console-not-afk").replace("%player_name%", player.getName()));
+                Logger.log(Logger.LogLevel.INFO, MessageHandler.getMessage("pack.afk-display.console-not-afk").replace("%player_name%", player.getName()));
             }
         }
     }

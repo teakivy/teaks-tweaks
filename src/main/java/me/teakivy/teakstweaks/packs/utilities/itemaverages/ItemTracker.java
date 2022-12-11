@@ -1,8 +1,8 @@
 package me.teakivy.teakstweaks.packs.utilities.itemaverages;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.MessageHandler;
-import me.teakivy.teakstweaks.utils.logger.Log;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -122,7 +122,7 @@ public class ItemTracker extends BasePack {
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
             entity.remove();
-            Log.message(MessageHandler.getMessage("pack.item-averages.log-finish"));
+            Logger.log(Logger.LogLevel.INFO, MessageHandler.getMessage("pack.item-averages.log-finish"));
             shouldStop = true;
         }, glowLength);
     }

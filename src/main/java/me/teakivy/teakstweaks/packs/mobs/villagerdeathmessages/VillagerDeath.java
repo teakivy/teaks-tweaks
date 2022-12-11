@@ -1,8 +1,8 @@
 package me.teakivy.teakstweaks.packs.mobs.villagerdeathmessages;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.MessageHandler;
-import me.teakivy.teakstweaks.utils.logger.Log;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -30,7 +30,7 @@ public class VillagerDeath extends BasePack {
             if (getConfig().getBoolean("show-in-chat")) {
                 Bukkit.broadcastMessage(deathMessage);
             } else {
-                Log.message(deathMessage);
+                Logger.log(Logger.LogLevel.INFO, deathMessage);
             }
         }
     }
