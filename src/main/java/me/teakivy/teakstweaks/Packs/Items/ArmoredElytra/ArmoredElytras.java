@@ -1,7 +1,7 @@
 package me.teakivy.teakstweaks.Packs.Items.ArmoredElytra;
 
 import me.teakivy.teakstweaks.Packs.BasePack;
-import me.teakivy.teakstweaks.Utils.Serializer.Base64Serializer;
+import me.teakivy.teakstweaks.Utils.Base64Serializer;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;

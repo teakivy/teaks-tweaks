@@ -1,7 +1,7 @@
 package me.teakivy.teakstweaks.Packs.Survival.Graves;
 
 import me.teakivy.teakstweaks.Main;
-import me.teakivy.teakstweaks.Utils.Serializer.Base64Serializer;
+import me.teakivy.teakstweaks.Utils.Base64Serializer;
 import org.bukkit.GameRule;
 import org.bukkit.Location;
 import org.bukkit.Material;

@@ -1,4 +1,4 @@
-package me.teakivy.teakstweaks.Utils.Serializer;
+package me.teakivy.teakstweaks.Utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;
