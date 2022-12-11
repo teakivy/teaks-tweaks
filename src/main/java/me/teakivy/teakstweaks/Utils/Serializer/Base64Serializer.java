@@ -18,7 +18,7 @@ public class Base64Serializer {
      *
      * @param playerInventory to turn into an array of strings.
      * @return Array of strings: [ main content, armor content ]
-     * @throws IllegalStateException
+     * @throws IllegalStateException if unable to save item stacks.
      */
     public static String[] playerInventoryToBase64(PlayerInventory playerInventory) throws IllegalStateException {
         //get the main content part, this doesn't return the armor
@@ -38,7 +38,7 @@ public class Base64Serializer {
      *
      * @param items to turn into a Base64 String.
      * @return Base64 string of the items.
-     * @throws IllegalStateException
+     * @throws IllegalStateException if unable to save item stacks.
      */
     public static String itemStackArrayToBase64(ItemStack[] items) throws IllegalStateException {
         try {
@@ -73,7 +73,7 @@ public class Base64Serializer {
      *
      * @param inventory to serialize
      * @return Base64 string of the provided inventory
-     * @throws IllegalStateException
+     * @throws IllegalStateException if unable to save item stacks.
      */
     public static String toBase64(Inventory inventory) throws IllegalStateException {
         try {
@@ -109,7 +109,7 @@ public class Base64Serializer {
      *
      * @param data Base64 string of data containing an inventory.
      * @return Inventory created from the Base64 string.
-     * @throws IOException
+     * @throws IOException if unable to decode.
      */
     public static Inventory fromBase64(String data) throws IOException {
         try {
@@ -138,7 +138,7 @@ public class Base64Serializer {
      *
      * @param data Base64 string to convert to ItemStack array.
      * @return ItemStack array created from the Base64 string.
-     * @throws IOException
+     * @throws IOException if unable to decode.
      */
     public static ItemStack[] itemStackArrayFromBase64(String data) throws IOException {
         try {

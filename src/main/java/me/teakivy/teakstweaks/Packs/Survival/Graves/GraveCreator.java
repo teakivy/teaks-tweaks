@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.Packs.Survival.Graves;
 
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.Utils.Serializer.Base64Serializer;
-import me.teakivy.teakstweaks.Utils.Serializer.ItemStackSerializer;
 import org.bukkit.GameRule;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -87,7 +86,6 @@ public class GraveCreator {
         as.setInvulnerable(true);
         as.setCustomName(player.getName());
         as.addScoreboardTag("grave");
-        as.addScoreboardTag("base64");
         as.setCustomNameVisible(true);
 
         PersistentDataContainer data = as.getPersistentDataContainer();
@@ -171,15 +169,11 @@ public class GraveCreator {
         return serialized.toString();
     }
 
-    public static ArrayList<ItemStack> deserializeItems(String serialized, boolean base64) throws IOException {
+    public static ArrayList<ItemStack> deserializeItems(String serialized) throws IOException {
         ArrayList<ItemStack> items = new ArrayList<>();
         if (serialized.length() < 1) return items;
         for (String s : serialized.split(" :%-=-%: ", -1)) {
-            if (!base64) {
-                items.add(ItemStackSerializer.deserialize(s));
-            } else {
-                items.add(Base64Serializer.itemStackArrayFromBase64(s)[0]);
-            }
+            items.add(Base64Serializer.itemStackArrayFromBase64(s)[0]);
         }
         return items;
     }

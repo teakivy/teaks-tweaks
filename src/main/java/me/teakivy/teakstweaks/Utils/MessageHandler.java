@@ -10,18 +10,25 @@ import java.util.Objects;
 public class MessageHandler {
     static Main main = Main.getPlugin(Main.class);
     static DataManager messageManager = main.data;
-    public static String prefix = messageManager.getConfig().getString("messages.plugin.message-prefix");
 
     public static String getString(String path) {
         if (messageManager.getConfig().contains("messages." + path)) {
-            return messageManager.getConfig().getString("messages." + path);
+            String str = messageManager.getConfig().getString("messages." + path);
+            str = str.replace("%prefix%", "");
+            str = str.replace("%bland_prefix%", "");
+
+            return str;
         }
         return "";
     }
 
     public static String getMessage(String path) {
         if (messageManager.getConfig().contains("messages." + path)) {
-            return ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(messageManager.getConfig().getString("messages." + path)));
+            String str = messageManager.getConfig().getString("messages." + path);
+            str = str.replace("%prefix%", "");
+            str = str.replace("%bland_prefix%", "");
+
+            return ChatColor.translateAlternateColorCodes('&', str);
         }
         return "";
     }
@@ -61,7 +68,11 @@ public class MessageHandler {
 
     public static String getCmdMessage(String cmd, String path) {
         if (messageManager.getConfig().contains("commands." + cmd + ".messages." + path)) {
-            return ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(messageManager.getConfig().getString("commands." + cmd + ".messages." + path)));
+            return ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(
+                    messageManager.getConfig().getString("commands." + cmd + ".messages." + path)
+                            .replace("%prefix%", "")
+                            .replace("%bland_prefix%", "")
+            ));
         }
         return "";
     }

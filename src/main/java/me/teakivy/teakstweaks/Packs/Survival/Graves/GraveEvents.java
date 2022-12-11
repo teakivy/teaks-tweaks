@@ -42,7 +42,7 @@ public class GraveEvents extends BasePack {
             if (data.has(new NamespacedKey(main, "grave_owner_items"), PersistentDataType.STRING)) {
                 String ownerItems = data.get(new NamespacedKey(main, "grave_owner_items"), PersistentDataType.STRING);
                 if (ownerItems != null) {
-                    for (ItemStack item : new GraveCreator().deserializeItems(ownerItems, entity.getScoreboardTags().contains("base64"))) {
+                    for (ItemStack item : new GraveCreator().deserializeItems(ownerItems)) {
                         Item itemE = entity.getWorld().dropItem(entity.getLocation().add(0, 2, 0), item);
                         if (event.getPlayer().isSneaking()) {
                             PersistentDataContainer iData = itemE.getPersistentDataContainer();
@@ -71,7 +71,7 @@ public class GraveEvents extends BasePack {
                 if (data.has(new NamespacedKey(main, "grave_owner_items"), PersistentDataType.STRING)) {
                     String ownerItems = data.get(new NamespacedKey(main, "grave_owner_items"), PersistentDataType.STRING);
                     if (ownerItems != null) {
-                        for (ItemStack item : new GraveCreator().deserializeItems(ownerItems, entity.getScoreboardTags().contains("base64"))) {
+                        for (ItemStack item : new GraveCreator().deserializeItems(ownerItems)) {
                             Item itemE = entity.getWorld().dropItem(entity.getLocation().add(0, 2, 0), item);
                             itemE.setPickupDelay(0);
                             itemE.setVelocity(new Vector(0, 0, 0));

@@ -116,10 +116,7 @@ public class XPManagement extends BasePack {
 
         if (getConfig().getBoolean("display-amount")) {
             List<String> lore = new ArrayList<>();
-            lore.add(MessageHandler.replace(MessageHandler.getMessage("pack.xp-management.bottle-contains"), "%take_amount%", String.valueOf(main.getConfig().getInt("packs.xp-management.return-xp-amount"))));
-            if (getConfig().getBoolean("allow-smelting")) {
-                lore.add(MessageHandler.replace(MessageHandler.getMessage("pack.xp-management.bottle-contains"), "%take_amount%", String.valueOf(main.getConfig().getInt("packs.xp-management.take-xp-amount"))));
-            }
+            lore.add(MessageHandler.replace(MessageHandler.getMessage("pack.xp-management.bottle-contains"), "%return_amount%", String.valueOf(config.getInt("take-xp-amount"))));
             xpMeta.setLore(lore);
         }
 
