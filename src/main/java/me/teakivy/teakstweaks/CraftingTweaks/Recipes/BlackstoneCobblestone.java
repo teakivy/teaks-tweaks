@@ -38,7 +38,7 @@ public class BlackstoneCobblestone extends AbstractRecipe {
 
         RecipeChoice wood = new RecipeChoice.MaterialChoice(woodList);
 
-        NamespacedKey pistonKey = new NamespacedKey(main, "piston_vt_blackstone");
+        NamespacedKey pistonKey = new NamespacedKey(main, "piston_blackstone");
         ShapedRecipe pistonRecipe = new ShapedRecipe(pistonKey, new ItemStack(Material.PISTON));
 
         pistonRecipe.shape("---", "bob", "bab");
@@ -49,7 +49,7 @@ public class BlackstoneCobblestone extends AbstractRecipe {
 
         Bukkit.addRecipe(pistonRecipe);
 
-        NamespacedKey observerKey = new NamespacedKey(main, "observer_vt_blackstone");
+        NamespacedKey observerKey = new NamespacedKey(main, "observer_blackstone");
         ShapedRecipe observerRecipe = new ShapedRecipe(observerKey, new ItemStack(Material.OBSERVER));
 
         observerRecipe.shape("bbb", "aaq", "bbb");
@@ -59,7 +59,7 @@ public class BlackstoneCobblestone extends AbstractRecipe {
 
         Bukkit.addRecipe(observerRecipe);
 
-        NamespacedKey dropperKey = new NamespacedKey(main, "dropper_vt_blackstone");
+        NamespacedKey dropperKey = new NamespacedKey(main, "dropper_blackstone");
         ShapedRecipe dropperRecipe = new ShapedRecipe(dropperKey, new ItemStack(Material.DROPPER));
 
         dropperRecipe.shape("bbb", "b b", "bab");
@@ -68,7 +68,7 @@ public class BlackstoneCobblestone extends AbstractRecipe {
 
         Bukkit.addRecipe(dropperRecipe);
 
-        NamespacedKey dispenserKey = new NamespacedKey(main, "dispenser_vt_blackstone");
+        NamespacedKey dispenserKey = new NamespacedKey(main, "dispenser_blackstone");
         ShapedRecipe dispenserRecipe = new ShapedRecipe(dispenserKey, new ItemStack(Material.DISPENSER));
 
         dispenserRecipe.shape("bbb", "b=b", "bab");
@@ -78,7 +78,7 @@ public class BlackstoneCobblestone extends AbstractRecipe {
 
         Bukkit.addRecipe(dispenserRecipe);
 
-        NamespacedKey brewingStandKey = new NamespacedKey(main, "brewing_stand_vt_blackstone");
+        NamespacedKey brewingStandKey = new NamespacedKey(main, "brewing_stand_blackstone");
         ShapedRecipe brewingStandRecipe = new ShapedRecipe(brewingStandKey, new ItemStack(Material.BREWING_STAND));
 
         brewingStandRecipe.shape(" | ", "bbb");
@@ -87,7 +87,7 @@ public class BlackstoneCobblestone extends AbstractRecipe {
 
         Bukkit.addRecipe(brewingStandRecipe);
 
-        NamespacedKey leverKey = new NamespacedKey(main, "lever_vt_blackstone");
+        NamespacedKey leverKey = new NamespacedKey(main, "lever_blackstone");
         ShapedRecipe leverRecipe = new ShapedRecipe(leverKey, new ItemStack(Material.LEVER));
 
         leverRecipe.shape("/", "b");

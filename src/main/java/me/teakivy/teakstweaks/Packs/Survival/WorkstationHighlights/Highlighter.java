@@ -19,14 +19,14 @@ public class Highlighter extends BasePack {
 
     @EventHandler
     public void onDamage(EntityDamageEvent event) {
-        if (event.getEntity().getScoreboardTags().contains("vt_glowing")) {
+        if (event.getEntity().getScoreboardTags().contains("glowing")) {
             event.setCancelled(true);
         }
     }
 
     @EventHandler
     public void onDeath(EntityDeathEvent event) {
-        if (event.getEntity().getScoreboardTags().contains("vt_glowing")) {
+        if (event.getEntity().getScoreboardTags().contains("glowing")) {
             event.getDrops().clear();
         }
     }
@@ -37,7 +37,7 @@ public class Highlighter extends BasePack {
         entity.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, glowLength, 0, true, false));
         entity.setAI(false);
         entity.setInvulnerable(true);
-        entity.addScoreboardTag("vt_glowing");
+        entity.addScoreboardTag("glowing");
 
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {

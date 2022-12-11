@@ -86,19 +86,19 @@ public class GraveCreator {
         as.setHelmet(new ItemStack(Material.STONE_BRICK_WALL));
         as.setInvulnerable(true);
         as.setCustomName(player.getName());
-        as.addScoreboardTag("vt_grave");
-        as.addScoreboardTag("vt_base64");
+        as.addScoreboardTag("grave");
+        as.addScoreboardTag("base64");
         as.setCustomNameVisible(true);
 
         PersistentDataContainer data = as.getPersistentDataContainer();
-        NamespacedKey key = new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_uuid");
+        NamespacedKey key = new NamespacedKey(Main.getPlugin(Main.class), "grave_owner_uuid");
         data.set(key, PersistentDataType.STRING, player.getUniqueId().toString());
 
         if (!Boolean.TRUE.equals(location.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY))) {
-            NamespacedKey key2 = new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_items");
+            NamespacedKey key2 = new NamespacedKey(Main.getPlugin(Main.class), "grave_owner_items");
             data.set(key2, PersistentDataType.STRING, serializeItems(player));
 
-            NamespacedKey key3 = new NamespacedKey(Main.getPlugin(Main.class), "vt_grave_owner_xp");
+            NamespacedKey key3 = new NamespacedKey(Main.getPlugin(Main.class), "grave_owner_xp");
             data.set(key3, PersistentDataType.INTEGER, xp);
         }
     }

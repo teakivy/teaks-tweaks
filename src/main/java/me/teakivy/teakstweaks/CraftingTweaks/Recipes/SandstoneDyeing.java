@@ -22,7 +22,7 @@ public class SandstoneDyeing extends AbstractRecipe {
 
     public static void newRedRecipe(String name, Material input, Material output) {
 
-        NamespacedKey key = new NamespacedKey(main, name + "_vt_sandstone_dyeing");
+        NamespacedKey key = new NamespacedKey(main, name + "_sandstone_dyeing");
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(output, 2));
 

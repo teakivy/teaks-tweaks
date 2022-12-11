@@ -39,7 +39,7 @@ public class UnpackableWool extends AbstractRecipe {
 
         RecipeChoice wool = new RecipeChoice.MaterialChoice(woolList);
 
-        NamespacedKey key = new NamespacedKey(main, "wool_vt_unpackables");
+        NamespacedKey key = new NamespacedKey(main, "wool_unpackables");
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.STRING, 4));
         recipe.addIngredient(wool);
 

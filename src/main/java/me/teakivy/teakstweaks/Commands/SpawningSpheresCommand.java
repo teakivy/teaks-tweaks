@@ -148,12 +148,12 @@ public class SpawningSpheresCommand extends AbstractCommand {
         long startDelay = 20L;
         if (color == Color.RED) {
             player.teleport(sLoc);
-            player.addScoreboardTag("vt_despawning_sphere");
+            player.addScoreboardTag("despawning_sphere");
             Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
                 List<Entity> entityList = (List<Entity>) Objects.requireNonNull(sLoc.getWorld()).getNearbyEntities(sLoc, 150, 150, 150);
                 int count = 0;
                 for (Entity entity : entityList) {
-                    if (entity.getScoreboardTags().contains("vt_spawning_sphere") && entity.getScoreboardTags().contains("vt_red_sphere")) {
+                    if (entity.getScoreboardTags().contains("spawning_sphere") && entity.getScoreboardTags().contains("red_sphere")) {
                         entity.remove();
                     }
                     count++;
@@ -161,14 +161,14 @@ public class SpawningSpheresCommand extends AbstractCommand {
                         count = 0;
                         entityList = (List<Entity>) Objects.requireNonNull(sLoc.getWorld()).getNearbyEntities(sLoc, 150, 150, 150);
                         for (Entity entity1 : entityList) {
-                            if (entity1.getScoreboardTags().contains("vt_spawning_sphere") && entity1.getScoreboardTags().contains("vt_red_sphere")) {
+                            if (entity1.getScoreboardTags().contains("spawning_sphere") && entity1.getScoreboardTags().contains("red_sphere")) {
                                 entity1.remove();
                             }
                             count++;
                             if (count == entityList.size()) {
                                 player.teleport(pLoc);
                                 player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "sphere-removed").replace("%color%", MessageHandler.getCmdMessage("spawningspheres", "sphere.red")));
-                                player.removeScoreboardTag("vt_despawning_sphere");
+                                player.removeScoreboardTag("despawning_sphere");
                             }
                         }
                     }
@@ -177,12 +177,12 @@ public class SpawningSpheresCommand extends AbstractCommand {
         }
         if (color == Color.BLUE) {
             player.teleport(sLoc);
-            player.addScoreboardTag("vt_despawning_sphere");
+            player.addScoreboardTag("despawning_sphere");
             Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
                 List<Entity> entityList = (List<Entity>) Objects.requireNonNull(sLoc.getWorld()).getNearbyEntities(sLoc, 150, 150, 150);
                 int count = 0;
                 for (Entity entity : entityList) {
-                    if (entity.getScoreboardTags().contains("vt_spawning_sphere") && entity.getScoreboardTags().contains("vt_blue_sphere")) {
+                    if (entity.getScoreboardTags().contains("spawning_sphere") && entity.getScoreboardTags().contains("blue_sphere")) {
                         entity.remove();
                     }
                     count++;
@@ -190,14 +190,14 @@ public class SpawningSpheresCommand extends AbstractCommand {
                         count = 0;
                         entityList = (List<Entity>) Objects.requireNonNull(sLoc.getWorld()).getNearbyEntities(sLoc, 150, 150, 150);
                         for (Entity entity1 : entityList) {
-                            if (entity1.getScoreboardTags().contains("vt_spawning_sphere") && entity1.getScoreboardTags().contains("vt_blue_sphere")) {
+                            if (entity1.getScoreboardTags().contains("spawning_sphere") && entity1.getScoreboardTags().contains("blue_sphere")) {
                                 entity1.remove();
                             }
                             count++;
                             if (count == entityList.size()) {
                                 player.teleport(pLoc);
                                 player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "sphere-removed").replace("%color%", MessageHandler.getCmdMessage("spawningspheres", "sphere.blue")));
-                                player.removeScoreboardTag("vt_despawning_sphere");
+                                player.removeScoreboardTag("despawning_sphere");
                             }
                         }
                     }
@@ -206,12 +206,12 @@ public class SpawningSpheresCommand extends AbstractCommand {
         }
         if (color == Color.GREEN) {
             player.teleport(sLoc);
-            player.addScoreboardTag("vt_despawning_sphere");
+            player.addScoreboardTag("despawning_sphere");
             Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
                 List<Entity> entityList = (List<Entity>) Objects.requireNonNull(sLoc.getWorld()).getNearbyEntities(sLoc, 150, 150, 150);
                 int count = 0;
                 for (Entity entity : entityList) {
-                    if (entity.getScoreboardTags().contains("vt_spawning_sphere") && entity.getScoreboardTags().contains("vt_green_sphere")) {
+                    if (entity.getScoreboardTags().contains("spawning_sphere") && entity.getScoreboardTags().contains("green_sphere")) {
                         entity.remove();
                     }
                     count++;
@@ -219,21 +219,21 @@ public class SpawningSpheresCommand extends AbstractCommand {
                         count = 0;
                         entityList = (List<Entity>) Objects.requireNonNull(sLoc.getWorld()).getNearbyEntities(sLoc, 150, 150, 150);
                         for (Entity entity1 : entityList) {
-                            if (entity1.getScoreboardTags().contains("vt_spawning_sphere") && entity1.getScoreboardTags().contains("vt_green_sphere")) {
+                            if (entity1.getScoreboardTags().contains("spawning_sphere") && entity1.getScoreboardTags().contains("green_sphere")) {
                                 entity1.remove();
                             }
                             count++;
                             if (count == entityList.size()) {
                                 player.teleport(pLoc);
                                 player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "sphere-removed").replace("%color%", MessageHandler.getCmdMessage("spawningspheres", "sphere.green")));
-                                player.removeScoreboardTag("vt_despawning_sphere");
+                                player.removeScoreboardTag("despawning_sphere");
                             }
                         }
                     }
                 }
             }, startDelay + tpDelay);
         }
-        player.removeScoreboardTag("vt_despawning_sphere");
+        player.removeScoreboardTag("despawning_sphere");
     }
 
     private boolean checkSphere(Color color, Player player, SphereData data, boolean creating) {

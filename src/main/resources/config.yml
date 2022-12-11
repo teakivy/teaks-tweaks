@@ -12,11 +12,10 @@
 # Be sure to check the data.yml file for more customizability!
 
 # Data Packs
-# https://vanillatweaks.net/picker/datapacks/
 packs:
   # Enable a pack by marking "enabled" as "true"
   # If a pack is not enabled, none of its effects will happen.
-  # You can reload these settings by running "/vt reload" in game.
+  # You can reload these settings by running "/teakstweaks reload" in game.
 
   # Teak's Tweaks:
 
@@ -108,6 +107,11 @@ packs:
   # Instant Deepslate
   # Instantly mine deepslate blocks if you have a netherite pickaxe with efficiency 5 or higher, and haste 2 or higher.
   instant-deepslate:
+    enabled: false
+
+  # Sleepy Spiders Eggs
+  # Instantly mine deepslate blocks if you have a netherite pickaxe with efficiency 5 or higher, and haste 2 or higher.
+  sleepy-spider-eggs:
     enabled: false
 
 
@@ -643,7 +647,7 @@ packs:
 # https://vanillatweaks.net/picker/crafting-tweaks/
 crafting-tweaks:
   # Select which Crafting Tweaks are enabled.
-  # This will NOT be reloaded upon /vt reload, changing Crafting Tweaks requires a full server restart.
+  # This will NOT be reloaded upon /teakstweaks reload, changing Crafting Tweaks requires a full server restart.
   # If tweaks are disabled after being previously enabled, you may have an error in the server console saying a recipe cannot be found. Disregard this message.
 
   # Back to Blocks
@@ -829,7 +833,7 @@ crafting-tweaks:
 # Modify each command individually
 commands:
   # Select which commands will be registered
-  # This will NOT be reloaded upon /vt reload, changing Commands requires a full server restart.
+  # This will NOT be reloaded upon /teakstweaks reload, changing Commands requires a full server restart.
 
   # Be sure to check the data.yml file for more customizability!
 

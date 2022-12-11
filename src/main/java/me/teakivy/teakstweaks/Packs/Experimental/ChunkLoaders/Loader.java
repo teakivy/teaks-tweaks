@@ -41,7 +41,7 @@ public class Loader extends BasePack {
                         marker.setWaitTime(0);
                         marker.setColor(Color.WHITE);
                         marker.setRadius(.001F);
-                        marker.addScoreboardTag("vt_loaded");
+                        marker.addScoreboardTag("loaded");
 
 
                         if (main.getConfig().getBoolean("packs.chunk-loaders.show-particles")) {
@@ -60,7 +60,7 @@ public class Loader extends BasePack {
         if (event.getBlock().getType() == Material.LODESTONE) {
             Block block = event.getBlock();
             for (Entity nearbyEntity : block.getWorld().getNearbyEntities(block.getLocation().add(.5, 1, .5), .1, .1, .1)) {
-                if (nearbyEntity.getScoreboardTags().contains("vt_loaded") && nearbyEntity.getType() == EntityType.AREA_EFFECT_CLOUD) {
+                if (nearbyEntity.getScoreboardTags().contains("loaded") && nearbyEntity.getType() == EntityType.AREA_EFFECT_CLOUD) {
                     block.getLocation().getChunk().setForceLoaded(false);
                     nearbyEntity.remove();
                     return;

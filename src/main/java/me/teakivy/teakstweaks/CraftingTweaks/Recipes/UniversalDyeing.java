@@ -54,7 +54,7 @@ public class UniversalDyeing extends AbstractRecipe {
     }
 
     public static void newDyeingRecipe(String colorType, String inputName, Material inputDye, Material output) {
-        NamespacedKey key = new NamespacedKey(main, colorType + inputName.toLowerCase() + "_vt_universal");
+        NamespacedKey key = new NamespacedKey(main, colorType + inputName.toLowerCase() + "_universal");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(output, 8));
 
@@ -85,7 +85,7 @@ public class UniversalDyeing extends AbstractRecipe {
     }
 
     public static void newBedRecipe(String colorType, String inputName, Material inputDye, Material output) {
-        NamespacedKey key = new NamespacedKey(main, colorType + inputName.toLowerCase() + "_vt_universal");
+        NamespacedKey key = new NamespacedKey(main, colorType + inputName.toLowerCase() + "_universal");
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(output));
 
@@ -136,7 +136,7 @@ public class UniversalDyeing extends AbstractRecipe {
 
 
     public static void newClearRecipe(String inputName) {
-        NamespacedKey key = new NamespacedKey(main, "clear_" + inputName.toLowerCase() + "_vt_universal");
+        NamespacedKey key = new NamespacedKey(main, "clear_" + inputName.toLowerCase() + "_universal");
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.valueOf(inputName)));
 
@@ -166,7 +166,7 @@ public class UniversalDyeing extends AbstractRecipe {
     }
 
     public static void newClearStainedRecipe(String inputName) {
-        NamespacedKey key = new NamespacedKey(main, "clear_" + inputName.toLowerCase() + "_vt_universal");
+        NamespacedKey key = new NamespacedKey(main, "clear_" + inputName.toLowerCase() + "_universal");
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.valueOf(inputName)));
 

@@ -32,7 +32,7 @@ public class CraftableBlackstone extends AbstractRecipe {
         RecipeChoice basalt = new RecipeChoice.MaterialChoice(basaltList);
 
 
-        NamespacedKey key = new NamespacedKey(main, "blackstone_vt_craftables");
+        NamespacedKey key = new NamespacedKey(main, "blackstone_craftables");
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.BLACKSTONE));
         recipe.shape("#x", "x#");
         recipe.setIngredient('#', coal);

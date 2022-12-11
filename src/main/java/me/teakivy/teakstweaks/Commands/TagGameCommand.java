@@ -74,7 +74,7 @@ public class TagGameCommand extends AbstractCommand {
 
             player.getInventory().addItem(tag);
 
-            player.addScoreboardTag("vt_tag_it");
+            player.addScoreboardTag("tag_it");
 
             Scoreboard sb = Bukkit.getScoreboardManager().getMainScoreboard();
             if (sb.getTeam("TaggedTeam") == null) {

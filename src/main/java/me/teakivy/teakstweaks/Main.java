@@ -22,7 +22,7 @@ public final class Main extends JavaPlugin implements Listener {
 
     public static ArrayList<UUID> chEnabled = new ArrayList<>();
     public Boolean newVersionAvailable = false;
-    public String latestVTVersion;
+    public String latestVersion;
 
     public DataManager data;
 
@@ -89,9 +89,9 @@ public final class Main extends JavaPlugin implements Listener {
         }
         String thisVersion = this.getDescription().getVersion();
         if (!thisVersion.equalsIgnoreCase(latestVersion)) {
-            Log.warning("[VT] Teaks Tweaks has an update!\nPlease update to the latest version (" + latestVersion + ")\n&ehttps://www.spigotmc.org/resources/teaks-tweaks.94021/");
+            Log.warning("Teak's Tweaks has an update!\nPlease update to the latest version (" + latestVersion + ")\n&ehttps://www.spigotmc.org/resources/teaks-tweaks.94021/");
             newVersionAvailable = true;
-            latestVTVersion = latestVersion;
+            this.latestVersion = latestVersion;
         }
 
 

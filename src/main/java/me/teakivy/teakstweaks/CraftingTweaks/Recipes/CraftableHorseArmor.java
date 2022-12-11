@@ -23,7 +23,7 @@ public class CraftableHorseArmor extends AbstractRecipe {
 
     private static void newHorseArmor(String name, Material input, Material output) {
 
-        NamespacedKey key = new NamespacedKey(main, name + "_vt_horse_armor");
+        NamespacedKey key = new NamespacedKey(main, name + "_horse_armor");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(output));
 

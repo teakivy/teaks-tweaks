@@ -15,7 +15,7 @@ public class CraftableBundlesLeather extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        NamespacedKey key = new NamespacedKey(main, "bundle_leather_vt_bundles");
+        NamespacedKey key = new NamespacedKey(main, "bundle_leather_bundles");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.BUNDLE));
 

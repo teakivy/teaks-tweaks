@@ -84,7 +84,7 @@ public class ItemAveragesCommand extends AbstractCommand {
                 }
                 int count = 0;
                 for (Entity entity : player.getWorld().getEntities()) {
-                    if (entity.getScoreboardTags().contains("vt_tracker")) {
+                    if (entity.getScoreboardTags().contains("tracker")) {
                         count++;
                         entity.remove();
                     }

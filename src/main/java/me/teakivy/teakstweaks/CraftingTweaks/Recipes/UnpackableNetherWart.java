@@ -15,7 +15,7 @@ public class UnpackableNetherWart extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        NamespacedKey key = new NamespacedKey(main, "nether_wart_vt_unpackables");
+        NamespacedKey key = new NamespacedKey(main, "nether_wart_unpackables");
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.NETHER_WART, 9));
         recipe.addIngredient(Material.NETHER_WART_BLOCK);
 

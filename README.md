@@ -15,7 +15,7 @@ Every Vanilla Tweaks Datapack & Crafting Tweak in the Plugin can be enabled insi
 `config.yml`.  
 
 To Enable a datapack, find it in the `packs:` section, and change `enabled: false` to `enabled: true`.  
-After marking the tweak as true, run `/vt reload` to reload the datapacks. *(remember to save the file!)*
+After marking the tweak as true, run `/teakstweaks reload` to reload the datapacks. *(remember to save the file!)*
 #### Example:
 ```yml
 packs:
@@ -52,14 +52,7 @@ crafting-tweaks:
     universal-dyeing:
         enabled: true
 ```
-
-## Future Timeline
-With there being nearly 100 Vanilla tweaks packs & crafting tweaks to add, with some being far more complex than others, it will take time to re-produce all of them.  
-
-### Todo:
-https://trello.com/b/SarwDd0k/vanilla-tweaks-plugin
-
-## 
+ 
 
 ## Credits
 

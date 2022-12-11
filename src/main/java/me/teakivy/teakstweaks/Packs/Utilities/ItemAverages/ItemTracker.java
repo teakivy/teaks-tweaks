@@ -38,14 +38,14 @@ public class ItemTracker extends BasePack {
 
     @EventHandler
     public void onDamage(EntityDamageEvent event) {
-        if (event.getEntity().getScoreboardTags().contains("vt_tracker")) {
+        if (event.getEntity().getScoreboardTags().contains("tracker")) {
             event.setCancelled(true);
         }
     }
 
     @EventHandler
     public void onDeath(EntityDeathEvent event) {
-        if (event.getEntity().getScoreboardTags().contains("vt_tracker")) {
+        if (event.getEntity().getScoreboardTags().contains("tracker")) {
             event.getDrops().clear();
         }
     }
@@ -115,7 +115,7 @@ public class ItemTracker extends BasePack {
         entity.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, glowLength, 0, true, false));
         entity.setAI(false);
         entity.setInvulnerable(true);
-        entity.addScoreboardTag("vt_tracker");
+        entity.addScoreboardTag("tracker");
         inUse = true;
         tracking = loc.getBlock().getLocation();
 

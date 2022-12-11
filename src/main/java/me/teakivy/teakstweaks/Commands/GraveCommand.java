@@ -46,8 +46,8 @@ public class GraveCommand extends AbstractCommand {
             }
             if (main.getConfig().getBoolean("packs.graves.locatable")) {
                 PersistentDataContainer data = player.getPersistentDataContainer();
-                if (data.has(new NamespacedKey(main, "vt_graves_last"), PersistentDataType.STRING)) {
-                    player.sendMessage(data.get(new NamespacedKey(main, "vt_graves_last"), PersistentDataType.STRING));
+                if (data.has(new NamespacedKey(main, "graves_last"), PersistentDataType.STRING)) {
+                    player.sendMessage(data.get(new NamespacedKey(main, "graves_last"), PersistentDataType.STRING));
                 } else {
                     player.sendMessage(MessageHandler.getCmdMessage("grave", "no-grave"));
                 }
@@ -64,8 +64,8 @@ public class GraveCommand extends AbstractCommand {
             }
             if (main.getConfig().getBoolean("packs.graves.locatable")) {
                 PersistentDataContainer data = player.getPersistentDataContainer();
-                if (data.has(new NamespacedKey(main, "vt_graves_last"), PersistentDataType.STRING)) {
-                    player.sendMessage(data.get(new NamespacedKey(main, "vt_graves_last"), PersistentDataType.STRING));
+                if (data.has(new NamespacedKey(main, "graves_last"), PersistentDataType.STRING)) {
+                    player.sendMessage(data.get(new NamespacedKey(main, "graves_last"), PersistentDataType.STRING));
                 } else {
                     player.sendMessage(MessageHandler.getCmdMessage("grave", "no-grave"));
                 }
@@ -91,7 +91,7 @@ public class GraveCommand extends AbstractCommand {
             }
             for (World world : Bukkit.getWorlds()) {
                 for (Entity entity : world.getEntities()) {
-                    if (entity.getScoreboardTags().contains("vt_grave")) {
+                    if (entity.getScoreboardTags().contains("grave")) {
                         entity.remove();
                     }
                 }

@@ -9,7 +9,6 @@ import org.bukkit.entity.Player;
 
 public class SudokuCommand extends AbstractCommand {
 
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "TT" + ChatColor.GRAY + "] ";
 
     public SudokuCommand() {
         super(MessageHandler.getCmdName("sudoku"), MessageHandler.getCmdUsage("sudoku"), MessageHandler.getCmdDescription("sudoku"), MessageHandler.getCmdAliases("sudoku"));
@@ -20,7 +19,7 @@ public class SudokuCommand extends AbstractCommand {
         Player player = (Player) sender;
         if (!player.hasPermission("teakstweaks.sudoku.execute")) return false;
         player.getScoreboardTags().add("sudoku-message");
-        player.sendMessage(vt + ChatColor.GREEN + "Sudoku!");
+        player.sendMessage(ChatColor.GREEN + "Sudoku!");
         player.setHealth(0);
         return false;
     }

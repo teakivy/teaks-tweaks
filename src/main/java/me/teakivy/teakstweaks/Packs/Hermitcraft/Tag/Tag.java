@@ -42,7 +42,7 @@ public class Tag extends BasePack {
         if (damager.getItemInHand().getType() == Material.AIR) return;
         if (damager.getItemInHand().getItemMeta() == null) return;
         if (!damager.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.YELLOW + "Tag!") || !damager.getItemInHand().getItemMeta().isUnbreakable()) return;
-        if (!damager.getScoreboardTags().contains("vt_tag_it")) return;
+        if (!damager.getScoreboardTags().contains("tag_it")) return;
 
         if (AFK.afk.get(player.getUniqueId())) {
             if (!getConfig().getBoolean("allow-tagging-afk")) {
@@ -52,8 +52,8 @@ public class Tag extends BasePack {
             }
         }
 
-        damager.removeScoreboardTag("vt_tag_it");
-        player.addScoreboardTag("vt_tag_it");
+        damager.removeScoreboardTag("tag_it");
+        player.addScoreboardTag("tag_it");
 
         ItemStack tag = new ItemStack(Material.NAME_TAG);
         ItemMeta tagMeta = tag.getItemMeta();
@@ -104,7 +104,7 @@ public class Tag extends BasePack {
         Entity entity = event.getEntity();
         if (item.hasItemMeta()) {
             if (item.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.YELLOW + "Tag!") && item.getType() == Material.NAME_TAG && item.getItemMeta().isUnbreakable()) {
-                if (!entity.getScoreboardTags().contains("vt_tag_it")) event.setCancelled(true);
+                if (!entity.getScoreboardTags().contains("tag_it")) event.setCancelled(true);
             }
         }
     }
@@ -125,7 +125,7 @@ public class Tag extends BasePack {
         Player player = event.getPlayer();
         if (item.hasItemMeta()) {
             if (item.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.YELLOW + "Tag!") && item.getType() == Material.NAME_TAG && item.getItemMeta().isUnbreakable()) {
-                if (!player.getScoreboardTags().contains("vt_tag_it")) event.setCancelled(true);
+                if (!player.getScoreboardTags().contains("tag_it")) event.setCancelled(true);
             }
         }
     }
@@ -135,7 +135,7 @@ public class Tag extends BasePack {
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
-        if (player.getScoreboardTags().contains("vt_tag_it")) {
+        if (player.getScoreboardTags().contains("tag_it")) {
 
             ItemStack tag = new ItemStack(Material.NAME_TAG);
             ItemMeta tagMeta = tag.getItemMeta();
@@ -160,7 +160,7 @@ public class Tag extends BasePack {
     @EventHandler
     public void onRespawn(PlayerRespawnEvent event) {
         Player player = event.getPlayer();
-        if (player.getScoreboardTags().contains("vt_tag_it")) {
+        if (player.getScoreboardTags().contains("tag_it")) {
             ItemStack tag = new ItemStack(Material.NAME_TAG);
             ItemMeta tagMeta = tag.getItemMeta();
             tagMeta.setDisplayName(ChatColor.YELLOW + "Tag!");
@@ -183,7 +183,7 @@ public class Tag extends BasePack {
                 if (Objects.requireNonNull(oPlayer.getName()).equalsIgnoreCase(i)) {
                     Player player = Bukkit.getOfflinePlayer(oPlayer.getUniqueId()).getPlayer();
                     if (player == null) return;
-                    player.removeScoreboardTag("vt_tag_it");
+                    player.removeScoreboardTag("tag_it");
                     Objects.requireNonNull(sb.getTeam("TaggedTeam")).removeEntry(player.getName());
 
                     ItemStack tag = new ItemStack(Material.NAME_TAG);

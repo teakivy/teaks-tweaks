@@ -40,7 +40,7 @@ public class CustomVillager extends BasePack {
         if (!(blockUnder.getState() instanceof Chest)) return;
         Villager villager = (Villager) nearest;
         Chest chest = (Chest) blockUnder.getState();
-        if (villager.getVillagerExperience() > 0 && villager.getScoreboardTags().contains("vt_custom_villager")) return;
+        if (villager.getVillagerExperience() > 0 && villager.getScoreboardTags().contains("custom_villager")) return;
 
         List<MerchantRecipe> recipes = getInventoryRecipes(chest.getBlockInventory());
         if (villager.getRecipes() != recipes) {
@@ -49,7 +49,7 @@ public class CustomVillager extends BasePack {
             villager.setVillagerType(Villager.Type.PLAINS);
             villager.setVillagerLevel(5);
             villager.setAI(false);
-            villager.addScoreboardTag("vt_custom_villager");
+            villager.addScoreboardTag("custom_villager");
 
             villager.setRecipes(recipes);
             player.sendMessage(MessageHandler.getMessage("pack.custom-villager-shops.trade-init"));

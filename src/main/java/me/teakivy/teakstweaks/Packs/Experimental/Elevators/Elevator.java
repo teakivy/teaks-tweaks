@@ -59,7 +59,7 @@ public class Elevator extends BasePack {
         if (isElevator(block)) {
             for (Entity nearbyEntity : block.getWorld().getNearbyEntities(block.getLocation().add(.5, 1, .5), .4, .8, .4)) {
                 if (block.getY() + 1 == nearbyEntity.getLocation().getBlockY()) {
-                    if (nearbyEntity.getScoreboardTags().contains("vt_elevator") && nearbyEntity.getType() == EntityType.MARKER) {
+                    if (nearbyEntity.getScoreboardTags().contains("elevator") && nearbyEntity.getType() == EntityType.MARKER) {
                         nearbyEntity.remove();
                         event.getBlock().getDrops().add(new ItemStack(Material.ENDER_PEARL));
                         return;
@@ -117,14 +117,14 @@ public class Elevator extends BasePack {
 
         Marker marker = (Marker) block.getWorld().spawnEntity(block.getLocation().add(.5, 1, .5), EntityType.MARKER);
 
-        marker.addScoreboardTag("vt_elevator");
+        marker.addScoreboardTag("elevator");
 
         loc.getWorld().spawnParticle(Particle.PORTAL, block.getLocation().add(.5, 1, .5), 200, -.5, -.5, -.5, -1);
     }
 
     private boolean isElevator(Block block) {
         for (Entity nearbyEntity : block.getWorld().getNearbyEntities(block.getLocation().add(.5, 1, .5), .4, .4, .4)) {
-            if (nearbyEntity.getScoreboardTags().contains("vt_elevator") && nearbyEntity.getType() == EntityType.MARKER) {
+            if (nearbyEntity.getScoreboardTags().contains("elevator") && nearbyEntity.getType() == EntityType.MARKER) {
                 return true;
             }
         }

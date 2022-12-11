@@ -19,7 +19,7 @@ public class CraftableSporeBlossoms extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        NamespacedKey key = new NamespacedKey(main, "craftable_spore_blossom_vt");
+        NamespacedKey key = new NamespacedKey(main, "craftable_spore_blossom");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.SPORE_BLOSSOM, 4));
 

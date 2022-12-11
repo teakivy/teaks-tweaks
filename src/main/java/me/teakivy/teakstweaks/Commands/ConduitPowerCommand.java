@@ -14,7 +14,6 @@ import org.bukkit.potion.PotionEffectType;
 public class ConduitPowerCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
-    String vt = MessageHandler.getMessage("plugin.prefix");
 
     public ConduitPowerCommand() {
         super(MessageHandler.getCmdName("conduitpower"), MessageHandler.getCmdUsage("conduitpower"), MessageHandler.getCmdDescription("conduitpower"), MessageHandler.getCmdAliases("conduitpower"));

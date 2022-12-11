@@ -1,7 +1,7 @@
 
 # Coords Hud Placeholders
 
-Placeholders to use in the coordinates hud message for the Vanilla Tweaks Plugin Project.
+Placeholders to use in the coordinates hud message for the Teak's Tweaks Plugin Project.
 
 
 | Placeholder | Description     | Example   |

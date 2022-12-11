@@ -9,7 +9,7 @@ website: https://youtube.com/teakivy
 
 permissions:
   teakstweaks.*:
-    description: All Vanilla Tweaks Permissions
+    description: All Teak's Tweaks Permissions
     children:
       teakstweaks.reload: true
       teakstweaks.afk.*: true
@@ -36,7 +36,7 @@ permissions:
       teakstweaks.packlist.*: true
 
   teakstweaks.reload:
-    description: Reload Vanilla Tweaks
+    description: Reload Teak's Tweaks
     default: op
 
   teakstweaks.packlist.*:
@@ -48,7 +48,7 @@ permissions:
     description: Execute /packlist
 
   teakstweaks.afk.*:
-    description: All Vanilla Tweaks AFK Permissions
+    description: All Teak's Tweaks AFK Permissions
     children:
       teakstweaks.afk.toggle: true
       teakstweaks.afk.uninstall: true
@@ -60,7 +60,7 @@ permissions:
     default: op
 
   teakstweaks.back.*:
-    description: All Vanilla Tweaks Back Permissions
+    description: All Teak's Tweaks Back Permissions
     children:
       teakstweaks.back.teleport: true
   teakstweaks.back.teleport:
@@ -68,7 +68,7 @@ permissions:
     description: Teleport back to your last location
 
   teakstweaks.spectatorconduitpower.*:
-    description: All Vanilla Tweaks Conduit Power Permissions
+    description: All Teak's Tweaks Conduit Power Permissions
     children:
       teakstweaks.conduitpower.toggle: true
   teakstweaks.spectatorconduitpower.toggle:
@@ -76,7 +76,7 @@ permissions:
     description: Toggle Conduit Power
 
   teakstweaks.coordshud.*:
-    description: All Vanilla Tweaks Coordinates Hud Permissions
+    description: All Teak's Tweaks Coordinates Hud Permissions
     children:
       teakstweaks.coordshud.toggle: true
   teakstweaks.coordshud.toggle:
@@ -84,7 +84,7 @@ permissions:
     description: Toggle Coordinates Hud
 
   teakstweaks.durabilityping.*:
-    description: All Vanilla Tweaks Durability Ping Permissions
+    description: All Teak's Tweaks Durability Ping Permissions
     children:
       teakstweaks.durabilityping.preview: true
       teakstweaks.durabilityping.set: true
@@ -96,7 +96,7 @@ permissions:
     default: true
 
   teakstweaks.gem.*:
-    description: All Vanilla Tweaks Gem Permissions
+    description: All Teak's Tweaks Gem Permissions
     children:
       teakstweaks.gem.villager: true
       teakstweaks.gem.give: true
@@ -108,7 +108,7 @@ permissions:
     default: op
 
   teakstweaks.grave.*:
-    description: All Vanilla Tweaks Grave Permissions
+    description: All Teak's Tweaks Grave Permissions
     children:
       teakstweaks.grave.locate: true
       teakstweaks.grave.key: true
@@ -124,7 +124,7 @@ permissions:
     default: op
 
   teakstweaks.homes.*:
-    description: All Vanilla Tweaks Homes Permissions
+    description: All Teak's Tweaks Homes Permissions
     children:
       teakstweaks.homes.manage: true
       teakstweaks.homes.teleport: true
@@ -136,7 +136,7 @@ permissions:
     default: true
 
   teakstweaks.itemaverages.*:
-    description: All Vanilla Tweaks Item Averages Permissions
+    description: All Teak's Tweaks Item Averages Permissions
     children:
       teakstweaks.itemaverages.create: true
       teakstweaks.itemaverages.uninstall: true
@@ -148,7 +148,7 @@ permissions:
     default: op
 
   teakstweaks.killboats.*:
-    description: All Vanilla Tweaks Kill Boats Permissions
+    description: All Teak's Tweaks Kill Boats Permissions
     children:
       teakstweaks.killboats.remove: true
   teakstweaks.killboats.remove:
@@ -156,7 +156,7 @@ permissions:
     default: op
 
   teakstweaks.spectatornightvision.*:
-    description: All Vanilla Tweaks Night Vision Permissions
+    description: All Teak's Tweaks Night Vision Permissions
     children:
       teakstweaks.nightvision.toggle: true
   teakstweaks.spectatornightvision.toggle:
@@ -164,7 +164,7 @@ permissions:
     default: true
 
   teakstweaks.netherportalcoords.*:
-    description: All Vanilla Tweaks Nether Portal Coords Permissions
+    description: All Teak's Tweaks Nether Portal Coords Permissions
     children:
       teakstweaks.netherportalcoords.execute: true
   teakstweaks.netherportalcoords.execute:
@@ -172,7 +172,7 @@ permissions:
     default: true
 
   teakstweaks.realtimeclock.*:
-    description: All Vanilla Tweaks Real Time Clock Permissions
+    description: All Teak's Tweaks Real Time Clock Permissions
     children:
       teakstweaks.realtimeclock.execute: true
   teakstweaks.realtimeclock.execute:
@@ -180,7 +180,7 @@ permissions:
     default: true
 
   teakstweaks.shrines.*:
-    description: All Vanilla Tweaks Shrines Permissions
+    description: All Teak's Tweaks Shrines Permissions
     children:
       teakstweaks.shrines.create: true
       teakstweaks.shrines.remove: true
@@ -196,7 +196,7 @@ permissions:
     default: op
 
   teakstweaks.spawn.*:
-    description: All Vanilla Tweaks Spawn Permissions
+    description: All Teak's Tweaks Spawn Permissions
     children:
       teakstweaks.spawn.teleport: true
   teakstweaks.spawn.teleport:
@@ -204,7 +204,7 @@ permissions:
     default: true
 
   teakstweaks.spawningspheres.*:
-    description: All Vanilla Tweaks Spawning Spheres Permissions
+    description: All Teak's Tweaks Spawning Spheres Permissions
     children:
       teakstweaks.spawningspheres.create: true
       teakstweaks.spawningspheres.remove: true
@@ -220,7 +220,7 @@ permissions:
     default: op
 
   teakstweaks.taggame.*:
-    description: All Vanilla Tweaks Tag Game Permissions
+    description: All Teak's Tweaks Tag Game Permissions
     children:
       teakstweaks.taggame.give: true
       teakstweaks.taggame.uninstall: true
@@ -232,7 +232,7 @@ permissions:
     default: op
 
   teakstweaks.test.*:
-    description: All Vanilla Tweaks Test Permissions
+    description: All Teak's Tweaks Test Permissions
     children:
       teakstweaks.test.execute: true
   teakstweaks.test.execute:
@@ -240,7 +240,7 @@ permissions:
     default: true
 
   teakstweaks.tpa.*:
-    description: All Vanilla Tweaks TPA Permissions
+    description: All Teak's Tweaks TPA Permissions
     children:
       teakstweaks.tpa.use: true
   teakstweaks.tpa.use:
@@ -248,7 +248,7 @@ permissions:
     default: true
 
   teakstweaks.workstationhighlights.*:
-    description: All Vanilla Tweaks Workstation Hightlights Permissions
+    description: All Teak's Tweaks Workstation Hightlights Permissions
     children:
       teakstweaks.workstationhighlights.execute: true
   teakstweaks.workstationhighlights.execute:
@@ -256,7 +256,7 @@ permissions:
     default: true
 
   teakstweaks.sudoku.*:
-    description: All Vanilla Tweaks Sudoku Permissions
+    description: All Teak's Tweaks Sudoku Permissions
     children:
       teakstweaks.sudoku.execute: true
   teakstweaks.sudoku.execute:

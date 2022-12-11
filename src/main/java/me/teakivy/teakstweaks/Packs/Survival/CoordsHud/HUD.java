@@ -27,8 +27,8 @@ public class HUD extends BasePack {
                 Main.chEnabled.add(player.getUniqueId());
             }
         }
-        if (getConfig().getBoolean("auto-enable") && !player.getScoreboardTags().contains("vt_ch")) {
-            player.addScoreboardTag("vt_ch");
+        if (getConfig().getBoolean("auto-enable") && !player.getScoreboardTags().contains("ch")) {
+            player.addScoreboardTag("ch");
             Main.chEnabled.add(player.getUniqueId());
         }
     }

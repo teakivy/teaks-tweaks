@@ -25,16 +25,16 @@ public class ConfettiCreeper extends BasePack {
     public void onPrime(ExplosionPrimeEvent event) {
         Entity entity = event.getEntity();
         if (entity.getType() != EntityType.CREEPER) return;
-        if (entity.getScoreboardTags().contains("vt_confetti_true") || entity.getScoreboardTags().contains("vt_confetti_false")) return;
+        if (entity.getScoreboardTags().contains("confetti_true") || entity.getScoreboardTags().contains("confetti_false")) return;
 
         int chance = getConfig().getInt("confetti-chance");
         boolean confetti = randomChance(chance);
 
         if (!confetti) {
-            entity.addScoreboardTag("vt_confetti_false");
+            entity.addScoreboardTag("confetti_false");
             return;
         }
-        entity.addScoreboardTag("vt_confetti_true");
+        entity.addScoreboardTag("confetti_true");
 
         FireworkEffect fwEffect = FireworkEffect.builder()
                 .trail(false)
@@ -63,7 +63,7 @@ public class ConfettiCreeper extends BasePack {
     public void onExplosion(EntityExplodeEvent event) {
         Entity entity = event.getEntity();
         if (entity.getType() != EntityType.CREEPER) return;
-        boolean confetti = entity.getScoreboardTags().contains("vt_confetti_true");
+        boolean confetti = entity.getScoreboardTags().contains("confetti_true");
 
         if (!confetti) return;
 
@@ -75,7 +75,7 @@ public class ConfettiCreeper extends BasePack {
     @EventHandler
     public void onExplosionDamage(EntityDamageByEntityEvent event) {
         if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) {
-            if (event.getDamager().getScoreboardTags().contains("vt_confetti_true")) {
+            if (event.getDamager().getScoreboardTags().contains("confetti_true")) {
                 event.setDamage(event.getDamage() -
                         (event.getDamage() * (getConfig().getInt("entity-damage-reduction") / 100.0)));
             }

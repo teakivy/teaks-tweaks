@@ -17,8 +17,8 @@ spheres:
 messages:
   plugin:
     reload: "&aReloaded Teaks Tweaks Config!"
-    message-prefix: "&7[&6&lTT&7]"
-    bland-prefix: "[TT]"
+    message-prefix: ""
+    bland-prefix: ""
     startup:
       plugin-started: "%bland_prefix% Teaks Tweaks Started!"
       pack-enabled: "%bland_prefix% %pack% Enabled!"
@@ -441,7 +441,7 @@ commands:
     name: "test"
     usage: "/test"
     description: "Teaks Tweaks Testing Command"
-    aliases: ["vttest"]
+    aliases: []
     messages:
       msg: "%prefix% &eTest!"
       test-command-found: "%prefix% &eHey! Looks like you found my test command! :D"

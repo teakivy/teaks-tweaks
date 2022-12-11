@@ -15,7 +15,7 @@ public class CraftableEnchantedGoldenApples extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        NamespacedKey key = new NamespacedKey(main, "enchanted_golden_apples_vt_apples");
+        NamespacedKey key = new NamespacedKey(main, "enchanted_golden_apples_apples");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.ENCHANTED_GOLDEN_APPLE));
 

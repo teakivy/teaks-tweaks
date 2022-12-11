@@ -16,7 +16,7 @@ public class DropperToDispenser extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        NamespacedKey bowRecipeKey = new NamespacedKey(main, "dispenser_vt_bow");
+        NamespacedKey bowRecipeKey = new NamespacedKey(main, "dispenser_bow");
 
         ShapelessRecipe bowRecipe = new ShapelessRecipe(bowRecipeKey, new ItemStack(Material.DISPENSER));
 
@@ -27,7 +27,7 @@ public class DropperToDispenser extends AbstractRecipe {
 
 
 
-        NamespacedKey craftRecipeKey = new NamespacedKey(main, "dispenser_vt_craft");
+        NamespacedKey craftRecipeKey = new NamespacedKey(main, "dispenser_craft");
 
         ShapedRecipe craftRecipe = new ShapedRecipe(craftRecipeKey, new ItemStack(Material.DISPENSER));
         craftRecipe.shape(" ls", "los", " ls");

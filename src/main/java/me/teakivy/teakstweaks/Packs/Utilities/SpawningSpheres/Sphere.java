@@ -25,7 +25,7 @@ public class Sphere extends BasePack {
 
     @EventHandler
     public void onMove(PlayerMoveEvent event) {
-        if (event.getPlayer().getScoreboardTags().contains("vt_despawning_sphere")) event.setCancelled(true);
+        if (event.getPlayer().getScoreboardTags().contains("despawning_sphere")) event.setCancelled(true);
     }
 
     public static void spawnSphere(Location loc, Color color) {
@@ -85,8 +85,8 @@ public class Sphere extends BasePack {
             stand.setCustomNameVisible(true);
         }
         stand.setMarker(true);
-        stand.addScoreboardTag("vt_" + color + "_sphere");
-        stand.addScoreboardTag("vt_spawning_sphere");
+        stand.addScoreboardTag(color + "_sphere");
+        stand.addScoreboardTag("spawning_sphere");
         Objects.requireNonNull(stand.getEquipment()).setHelmet(head);
 
         if (team != null) {
@@ -98,46 +98,46 @@ public class Sphere extends BasePack {
         Scoreboard sb = Objects.requireNonNull(Bukkit.getScoreboardManager()).getMainScoreboard();
         Team team = null;
         if (color == RED) {
-            if (sb.getTeam("vt_sphere_red") == null) {
-                Team tTeam = sb.registerNewTeam("vt_sphere_red");
+            if (sb.getTeam("sphere_red") == null) {
+                Team tTeam = sb.registerNewTeam("sphere_red");
                 tTeam.setColor(ChatColor.RED);
             }
-            team = sb.getTeam("vt_sphere_red");
+            team = sb.getTeam("sphere_red");
         }
         if (color == Color.ORANGE) {
-            if (sb.getTeam("vt_sphere_orange") == null) {
-                Team tTeam = sb.registerNewTeam("vt_sphere_orange");
+            if (sb.getTeam("sphere_orange") == null) {
+                Team tTeam = sb.registerNewTeam("sphere_orange");
                 tTeam.setColor(ChatColor.GOLD);
             }
-            team = sb.getTeam("vt_sphere_orange");
+            team = sb.getTeam("sphere_orange");
         }
         if (color == Color.BLUE) {
-            if (sb.getTeam("vt_sphere_cyan") == null) {
-                Team tTeam = sb.registerNewTeam("vt_sphere_cyan");
+            if (sb.getTeam("sphere_cyan") == null) {
+                Team tTeam = sb.registerNewTeam("sphere_cyan");
                 tTeam.setColor(ChatColor.DARK_AQUA);
             }
-            team = sb.getTeam("vt_sphere_cyan");
+            team = sb.getTeam("sphere_cyan");
         }
         if (color == Color.AQUA) {
-            if (sb.getTeam("vt_sphere_blue") == null) {
-                Team tTeam = sb.registerNewTeam("vt_sphere_blue");
+            if (sb.getTeam("sphere_blue") == null) {
+                Team tTeam = sb.registerNewTeam("sphere_blue");
                 tTeam.setColor(ChatColor.AQUA);
             }
-            team = sb.getTeam("vt_sphere_blue");
+            team = sb.getTeam("sphere_blue");
         }
         if (color == Color.LIME) {
-            if (sb.getTeam("vt_sphere_lime") == null) {
-                Team tTeam = sb.registerNewTeam("vt_sphere_lime");
+            if (sb.getTeam("sphere_lime") == null) {
+                Team tTeam = sb.registerNewTeam("sphere_lime");
                 tTeam.setColor(ChatColor.GREEN);
             }
-            team = sb.getTeam("vt_sphere_lime");
+            team = sb.getTeam("sphere_lime");
         }
         if (color == Color.GREEN) {
-            if (sb.getTeam("vt_sphere_green") == null) {
-                Team tTeam = sb.registerNewTeam("vt_sphere_green");
+            if (sb.getTeam("sphere_green") == null) {
+                Team tTeam = sb.registerNewTeam("sphere_green");
                 tTeam.setColor(ChatColor.DARK_GREEN);
             }
-            team = sb.getTeam("vt_sphere_green");
+            team = sb.getTeam("sphere_green");
         }
         return team;
     }

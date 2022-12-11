@@ -57,7 +57,7 @@ public class DoubleSlabs extends AbstractRecipe {
     }
 
     public static void newShapelessRecipe(String keyName, Material ingredient, Material result) {
-        NamespacedKey key = new NamespacedKey(main, keyName + "_vt_double_slab");
+        NamespacedKey key = new NamespacedKey(main, keyName + "_double_slab");
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(result, 2));
 

@@ -16,7 +16,7 @@ public class CraftableGravel  extends AbstractRecipe {
     @Override
     public void registerRecipes() {
 
-        NamespacedKey key = new NamespacedKey(main, "gravel_vt_gravel");
+        NamespacedKey key = new NamespacedKey(main, "gravel_gravel");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.GRAVEL, 4));
 

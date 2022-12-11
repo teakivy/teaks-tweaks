@@ -46,6 +46,7 @@ import me.teakivy.teakstweaks.Packs.TeaksTweaks.InstantDeepslate.InstantDeepslat
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.InvisibleItemFrames.InvisibleItemFrames;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.KeepSmall.KeepSmall;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.LecternReset.LecternReset;
+import me.teakivy.teakstweaks.Packs.TeaksTweaks.SleepySpiderEggs.SleepySpiderEggs;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.SlimeCream.SlimeCream;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.StairChairs.StairChairs;
 import me.teakivy.teakstweaks.Packs.TeaksTweaks.Sudoku.Sudoku;
@@ -115,6 +116,7 @@ public class Register {
     private final FixedItemFrames fixedItemFrames = new FixedItemFrames();
     private final InstantDeepslate instantDeepslate = new InstantDeepslate();
     private final BatMembranes batMembranes = new BatMembranes();
+    private final SleepySpiderEggs sleepySpiderEggs = new SleepySpiderEggs();
 
     public void registerAll() {
         unregisterAll();
@@ -191,6 +193,7 @@ public class Register {
             case "fixed-item-frames" -> fixedItemFrames.unregister();
             case "instant-deepslate" -> instantDeepslate.unregister();
             case "bat-membranes" -> batMembranes.unregister();
+            case "sleepy-spider-eggs" -> sleepySpiderEggs.unregister();
         }
     }
 
@@ -250,6 +253,7 @@ public class Register {
             case "fixed-item-frames" -> fixedItemFrames.init();
             case "instant-deepslate" -> instantDeepslate.init();
             case "bat-membranes" -> batMembranes.init();
+            case "sleepy-spider-eggs" -> sleepySpiderEggs.init();
         }
     }
     public static void registerCommands() {

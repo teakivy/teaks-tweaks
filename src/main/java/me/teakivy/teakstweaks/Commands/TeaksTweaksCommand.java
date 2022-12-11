@@ -13,20 +13,14 @@ import java.util.List;
 
 public class TeaksTweaksCommand extends AbstractCommand {
 
-    String vt = ChatColor.GRAY + "[" + ChatColor.GOLD.toString() + ChatColor.BOLD + "TT" + ChatColor.GRAY + "] ";
     Main main = Main.getPlugin(Main.class);
 
     public TeaksTweaksCommand() {
-        super("teakstweaks", "/teakstweaks", "Teak's Tweaks Main Command!", Arrays.asList("tweaks", "tt", "vt", "vanillatweaks"));
+        super("teakstweaks", "/teakstweaks", "Teak's Tweaks Main Command!", Arrays.asList("tweaks", "tt"));
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
-        if (cmd.getName().equalsIgnoreCase("vt") || cmd.getName().equalsIgnoreCase("vanillatweaks")) {
-            sender.sendMessage(vt + ChatColor.RED + "This command is deprecated, please use /teakstweaks instead!");
-        }
-
         if (args.length < 1) {
             sendInfoMessage(sender);
             return true;
@@ -38,17 +32,17 @@ public class TeaksTweaksCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("version") || args[0].equalsIgnoreCase("v") || args[0].equalsIgnoreCase("ver")) {
-            sender.sendMessage(vt + ChatColor.GREEN + "v" + Main.getPlugin(Main.class).getDescription().getVersion());
+            sender.sendMessage(ChatColor.GREEN + "v" + Main.getPlugin(Main.class).getDescription().getVersion());
             return true;
         }
 
         if (args[0].equalsIgnoreCase("support")) {
-            sender.sendMessage(vt + ChatColor.GREEN + "https://discord.gg/wfP4SkZx6s");
+            sender.sendMessage(ChatColor.GREEN + "https://discord.gg/wfP4SkZx6s");
             return true;
         }
 
         if (args[0].equalsIgnoreCase("update")) {
-            sender.sendMessage(vt + ChatColor.WHITE + "You can check for updates at " + ChatColor.YELLOW + "https://www.spigotmc.org/resources/teaks-tweaks.94021/");
+            sender.sendMessage(ChatColor.WHITE + "You can check for updates at " + ChatColor.YELLOW + "https://www.spigotmc.org/resources/teaks-tweaks.94021/");
             return true;
         }
 
@@ -60,7 +54,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
             Main.getPlugin(Main.class).reloadConfig();
             main.getRegister().registerAll();
 
-            sender.sendMessage(vt + ChatColor.GREEN + "Config reloaded!");
+            sender.sendMessage(ChatColor.GREEN + "Config reloaded!");
             return true;
         }
         return false;

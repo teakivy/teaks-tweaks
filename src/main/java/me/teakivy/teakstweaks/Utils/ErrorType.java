@@ -11,7 +11,6 @@ public enum ErrorType {
     COMMAND_DISABLED(MessageHandler.getMessage("plugin.error.command-disabled")),
     MISSING_ACTION(MessageHandler.getMessage("plugin.error.missing-action"));
 
-    final String vt = MessageHandler.getMessage("plugin.message-prefix");
 
     final String text;
 
@@ -20,7 +19,7 @@ public enum ErrorType {
     }
 
     public String m() {
-        return vt + " " + text;
+        return text;
     }
 
     @Override

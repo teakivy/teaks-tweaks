@@ -15,7 +15,7 @@ public class CraftableNameTags extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        NamespacedKey key = new NamespacedKey(main, "name_tags_vt_tags");
+        NamespacedKey key = new NamespacedKey(main, "name_tags_tags");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.NAME_TAG));
 
