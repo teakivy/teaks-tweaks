@@ -1,12 +1,12 @@
 package me.teakivy.teakstweaks;
 
-import me.teakivy.teakstweaks.CraftingTweaks.CraftingRegister;
-import me.teakivy.teakstweaks.Packs.Hermitcraft.Tag.Tag;
-import me.teakivy.teakstweaks.Utils.*;
-import me.teakivy.teakstweaks.Utils.DataManager.DataManager;
-import me.teakivy.teakstweaks.Utils.Logger.Log;
-import me.teakivy.teakstweaks.Utils.Logger.Logger;
-import me.teakivy.teakstweaks.Utils.Metrics.Metrics;
+import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
+import me.teakivy.teakstweaks.packs.hermitcraft.tag.Tag;
+import me.teakivy.teakstweaks.utils.*;
+import me.teakivy.teakstweaks.utils.datamanager.DataManager;
+import me.teakivy.teakstweaks.utils.logger.Log;
+import me.teakivy.teakstweaks.utils.logger.Logger;
+import me.teakivy.teakstweaks.utils.metrics.Metrics;
 import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,7 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-import static me.teakivy.teakstweaks.Utils.Metrics.CustomMetrics.registerCustomMetrics;
+import static me.teakivy.teakstweaks.utils.metrics.CustomMetrics.registerCustomMetrics;
 
 public final class Main extends JavaPlugin implements Listener {
 
@@ -89,7 +89,7 @@ public final class Main extends JavaPlugin implements Listener {
         }
         String thisVersion = this.getDescription().getVersion();
         if (!thisVersion.equalsIgnoreCase(latestVersion)) {
-            Log.warning("Teak's Tweaks has an update!\nPlease update to the latest version (" + latestVersion + ")\n&ehttps://www.spigotmc.org/resources/teaks-tweaks.94021/");
+            Logger.log(Logger.LogLevel.WARNING, "Teak's Tweaks has an update!\nPlease update to the latest version (" + latestVersion + ")\n&ehttps://www.spigotmc.org/resources/teaks-tweaks.94021/");
             newVersionAvailable = true;
             this.latestVersion = latestVersion;
         }
