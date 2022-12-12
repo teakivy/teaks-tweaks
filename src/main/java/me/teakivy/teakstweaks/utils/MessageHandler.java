@@ -8,8 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class MessageHandler {
-    static Main main = Main.getPlugin(Main.class);
-    static DataManager messageManager = main.data;
+    static DataManager messageManager = Main.getInstance().data;
 
     public static String getString(String path) {
         if (messageManager.getConfig().contains("messages." + path)) {

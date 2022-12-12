@@ -8,10 +8,8 @@ import java.io.IOException;
 
 public class Credits {
 
-    Main main = Main.getPlugin(Main.class);
-
     public void createCredits() throws IOException {
-        File credits = new File(main.getDataFolder(), "credits.txt");
+        File credits = new File(Main.getInstance().getDataFolder(), "credits.txt");
         FileWriter writer = new FileWriter(credits);
         writer.write("Plugin Creator: TeakIvy\n" +
                         " - https://twitter.com/TeakIvyYT\n" +

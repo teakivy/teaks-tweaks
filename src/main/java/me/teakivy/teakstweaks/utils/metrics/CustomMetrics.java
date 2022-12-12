@@ -8,12 +8,9 @@ import java.util.concurrent.Callable;
 
 public class CustomMetrics {
 
-    static Main main = Main.getPlugin(Main.class);
-
     public static void registerCustomMetrics(Metrics metrics) {
         registerPackMetrics(metrics);
         registerCraftingTweaksMetrics(metrics);
-        registerCommandMetrics(metrics);
         registerFirstUsedMetrics(metrics);
         registerDevModeMetrics(metrics);
     }
@@ -96,7 +93,7 @@ public class CustomMetrics {
     }
 
     public static int getPack(String pack) {
-        if (main.getConfig().getBoolean("packs." + pack + ".enabled")) return 1;
+        if (Main.getPackConfig(pack).getBoolean("enabled")) return 1;
         return 0;
     }
 
@@ -146,45 +143,7 @@ public class CustomMetrics {
     }
 
     public static int getCraftingTweak(String tweak) {
-        if (main.getConfig().getBoolean("crafting-tweaks." + tweak + ".enabled")) return 1;
-        return 0;
-    }
-
-    public static void registerCommandMetrics(Metrics metrics) {
-        metrics.addCustomChart(new Metrics.AdvancedPie("commands", new Callable<Map<String, Integer>>() {
-            @Override
-            public Map<String, Integer> call() throws Exception {
-                Map<String, Integer> valueMap = new HashMap<>();
-                valueMap.put("Test", getCommand("test"));
-                valueMap.put("Portal", getCommand("portal"));
-                valueMap.put("Coords HUD", getCommand("coordshud"));
-                valueMap.put("Night Vision", getCommand("nightvision"));
-                valueMap.put("Conduit Power", getCommand("conduitpower"));
-                valueMap.put("Kill Boats", getCommand("killboats"));
-                valueMap.put("Real Time", getCommand("realtimeclock"));
-                valueMap.put("Spawn", getCommand("spawn"));
-                valueMap.put("TPA", getCommand("tpa"));
-                valueMap.put("Home", getCommand("home"));
-                valueMap.put("DuraPing", getCommand("durabilityping"));
-                valueMap.put("Tag", getCommand("taggame"));
-                valueMap.put("Back", getCommand("back"));
-                valueMap.put("AFK", getCommand("afk"));
-                valueMap.put("Shrine", getCommand("shrine"));
-                valueMap.put("Workstation", getCommand("workstationhighlights"));
-                valueMap.put("Set Home", getCommand("sethome"));
-                valueMap.put("Item Averages", getCommand("itemaverages"));
-                valueMap.put("Grave", getCommand("grave"));
-                valueMap.put("Spawning Spheres", getCommand("spawningspheres"));
-                valueMap.put("Gem", getCommand("gem"));
-                valueMap.put("Sudoku", getCommand("sudoku"));
-                valueMap.put("Pack List", getCommand("packlist"));
-                return valueMap;
-            }
-        }));
-    }
-
-    public static int getCommand(String cmd) {
-        if (main.getConfig().getBoolean("commands." + cmd + ".enabled")) return 1;
+        if (Main.getInstance().getConfig().getBoolean("crafting-tweaks." + tweak + ".enabled")) return 1;
         return 0;
     }
 
@@ -193,7 +152,7 @@ public class CustomMetrics {
             @Override
             public Map<String, Integer> call() throws Exception {
                 Map<String, Integer> valueMap = new HashMap<>();
-                valueMap.put(main.getConfig().getString("config.plugin-version"), 1);
+                valueMap.put(Main.getInstance().getConfig().getString("config.plugin-version"), 1);
 
                 return valueMap;
             }
@@ -205,7 +164,7 @@ public class CustomMetrics {
             @Override
             public Map<String, Integer> call() throws Exception {
                 Map<String, Integer> valueMap = new HashMap<>();
-                if (main.getConfig().getBoolean("config.dev-mode")) {
+                if (Main.getInstance().getConfig().getBoolean("config.dev-mode")) {
                     valueMap.put("Enabled", 1);
                 }
                 else {

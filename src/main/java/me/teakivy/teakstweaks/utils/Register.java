@@ -60,8 +60,6 @@ import me.teakivy.teakstweaks.packs.utilities.spectatornightvision.NightVision;
 
 public class Register {
 
-    static Main main = Main.getPlugin(Main.class);
-
     private final AntiCreeper antiCreeper = new AntiCreeper();
     private final AntiEnderman antiEnderman = new AntiEnderman();
     private final AntiGhast antiGhast = new AntiGhast();
@@ -119,6 +117,7 @@ public class Register {
     private final SleepySpiderEggs sleepySpiderEggs = new SleepySpiderEggs();
 
     public void registerAll() {
+        Main main = Main.getInstance();
         unregisterAll();
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
             if (main.getConfig().getBoolean("packs." + pack + ".enabled")) {
@@ -128,6 +127,7 @@ public class Register {
     }
 
     public void unregisterAll() {
+        Main main = Main.getInstance();
         main.clearPacks();
         for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
             if (!main.getConfig().getBoolean("packs." + pack + ".enabled")) {
