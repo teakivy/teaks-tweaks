@@ -19,7 +19,7 @@ public class GemCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public GemCommand() {
-        super(MessageHandler.getCmdName("gem"), MessageHandler.getCmdUsage("gem"), MessageHandler.getCmdDescription("gem"), MessageHandler.getCmdAliases("gem"));
+        super("treasure-gems", MessageHandler.getCmdName("gem"), MessageHandler.getCmdUsage("gem"), MessageHandler.getCmdDescription("gem"), MessageHandler.getCmdAliases("gem"));
     }
 
     @Override

@@ -16,7 +16,7 @@ public class ConduitPowerCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public ConduitPowerCommand() {
-        super(MessageHandler.getCmdName("conduitpower"), MessageHandler.getCmdUsage("conduitpower"), MessageHandler.getCmdDescription("conduitpower"), MessageHandler.getCmdAliases("conduitpower"));
+        super("spectator-conduit-power", MessageHandler.getCmdName("conduitpower"), MessageHandler.getCmdUsage("conduitpower"), MessageHandler.getCmdDescription("conduitpower"), MessageHandler.getCmdAliases("conduitpower"));
     }
 
     @Override

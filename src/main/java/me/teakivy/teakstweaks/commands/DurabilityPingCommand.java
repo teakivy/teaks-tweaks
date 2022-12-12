@@ -25,7 +25,7 @@ public class DurabilityPingCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public DurabilityPingCommand() {
-        super(MessageHandler.getCmdName("durabilityping"), MessageHandler.getCmdUsage("durabilityping"), MessageHandler.getCmdDescription("durabilityping"), MessageHandler.getCmdAliases("durabilityping"));
+        super("durability-ping", MessageHandler.getCmdName("durabilityping"), MessageHandler.getCmdUsage("durabilityping"), MessageHandler.getCmdDescription("durabilityping"), MessageHandler.getCmdAliases("durabilityping"));
     }
 
     @Override

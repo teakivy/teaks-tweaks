@@ -14,7 +14,7 @@ public class RealTimeClockCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public RealTimeClockCommand() {
-        super(MessageHandler.getCmdName("realtimeclock"), MessageHandler.getCmdUsage("realtimeclock"), MessageHandler.getCmdDescription("realtimeclock"), MessageHandler.getCmdAliases("realtimeclock"));
+        super("real-time-clock", MessageHandler.getCmdName("realtimeclock"), MessageHandler.getCmdUsage("realtimeclock"), MessageHandler.getCmdDescription("realtimeclock"), MessageHandler.getCmdAliases("realtimeclock"));
     }
 
     @Override

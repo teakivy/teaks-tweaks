@@ -9,9 +9,8 @@ import org.bukkit.entity.Player;
 
 public class SudokuCommand extends AbstractCommand {
 
-
     public SudokuCommand() {
-        super(MessageHandler.getCmdName("sudoku"), MessageHandler.getCmdUsage("sudoku"), MessageHandler.getCmdDescription("sudoku"), MessageHandler.getCmdAliases("sudoku"));
+        super("sudoku", MessageHandler.getCmdName("sudoku"), MessageHandler.getCmdUsage("sudoku"), MessageHandler.getCmdDescription("sudoku"), MessageHandler.getCmdAliases("sudoku"));
     }
 
     @Override

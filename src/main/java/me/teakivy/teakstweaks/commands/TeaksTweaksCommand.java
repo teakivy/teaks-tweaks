@@ -16,7 +16,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public TeaksTweaksCommand() {
-        super("teakstweaks", "/teakstweaks", "Teak's Tweaks Main Command!", Arrays.asList("tweaks", "tt"));
+        super(null, "teakstweaks", "/teakstweaks", "Teak's Tweaks Main Command!", Arrays.asList("tweaks", "tt"));
     }
 
     @Override
@@ -93,6 +93,9 @@ public class TeaksTweaksCommand extends AbstractCommand {
         sender.sendMessage(ChatColor.WHITE + "Author: " + ChatColor.GREEN + Main.getPlugin(Main.class).getDescription().getAuthors().get(0));
         sender.sendMessage(ChatColor.WHITE + "Config Version: " + ChatColor.GREEN + Main.getPlugin(Main.class).getConfig().getString("config.version"));
         sender.sendMessage(ChatColor.WHITE + "Config Generated: " + ChatColor.GREEN + Main.getPlugin(Main.class).getConfig().getString("config.plugin-version"));
+        if (main.getConfig().getBoolean("config.dev-mode")) {
+            sender.sendMessage(ChatColor.WHITE + "Dev Mode: " + ChatColor.GREEN + "Enabled");
+        }
         sender.sendMessage(ChatColor.WHITE + "Support Server: " + ChatColor.GREEN + "https://discord.gg/wfP4SkZx6s");
         sender.sendMessage("");
         sender.sendMessage(ChatColor.GRAY + "-----------------------------------------------------");

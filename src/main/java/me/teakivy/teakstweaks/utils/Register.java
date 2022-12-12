@@ -257,121 +257,35 @@ public class Register {
         }
     }
     public static void registerCommands() {
+        AbstractCommand[] cmds = {
+            new TeaksTweaksCommand(),
+            new PortalCommand(),
+            new CoordsHudCommand(),
+            new NightVisionCommand(),
+            new ConduitPowerCommand(),
+            new KillBoatsCommand(),
+            new TestCommand(),
+            new RealTimeClockCommand(),
+            new SpawnCommand(),
+            new TPACommand(),
+            new HomeCommand(),
+            new DurabilityPingCommand(),
+            new TagGameCommand(),
+            new BackCommand(),
+            new AFKCommand(),
+            new ShrineCommand(),
+            new WorkstationHighlightCommand(),
+            new SetHomeCommand(),
+            new ItemAveragesCommand(),
+            new GraveCommand(),
+            new SpawningSpheresCommand(),
+            new GemCommand(),
+            new SudokuCommand(),
+            new PackListCommand()
+        };
 
-
-        new TeaksTweaksCommand().register();
-
-        if (main.getConfig().getBoolean("commands.portal.enabled") &&
-                main.getConfig().getBoolean("packs.nether-portal-coords.enabled")) {
-            new PortalCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.coordshud.enabled") &&
-                main.getConfig().getBoolean("packs.coords-hud.enabled")) {
-            new CoordsHudCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.nightvision.enabled") &&
-                main.getConfig().getBoolean("packs.spectator-night-vision.enabled")) {
-            new NightVisionCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.conduitpower.enabled") &&
-                main.getConfig().getBoolean("packs.spectator-conduit-power.enabled")) {
-            new ConduitPowerCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.killboats.enabled") &&
-                main.getConfig().getBoolean("packs.kill-boats.enabled")) {
-            new KillBoatsCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.test.enabled")) {
-            new TestCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.realtimeclock.enabled") &&
-                main.getConfig().getBoolean("packs.real-time-clock.enabled")) {
-            new RealTimeClockCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.spawn.enabled") &&
-                main.getConfig().getBoolean("packs.spawn.enabled")) {
-            new SpawnCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.tpa.enabled") &&
-                main.getConfig().getBoolean("packs.tpa.enabled")) {
-            new TPACommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.home.enabled") &&
-                main.getConfig().getBoolean("packs.homes.enabled")) {
-            new HomeCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.durabilityping.enabled") &&
-                main.getConfig().getBoolean("packs.durability-ping.enabled")) {
-            new DurabilityPingCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.taggame.enabled") &&
-                main.getConfig().getBoolean("packs.tag.enabled")) {
-            new TagGameCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.back.enabled") &&
-                main.getConfig().getBoolean("packs.back.enabled")) {
-            new BackCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.afk.enabled") &&
-                main.getConfig().getBoolean("packs.afk-display.enabled")) {
-            new AFKCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.shrine.enabled")
-                && main.getConfig().getBoolean("packs.thunder-shrine.enabled")) {
-            new ShrineCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.workstationhighlights.enabled") &&
-                main.getConfig().getBoolean("packs.workstation-highlights.enabled")) {
-            new WorkstationHighlightCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.sethome.enabled") &&
-                main.getConfig().getBoolean("packs.homes.enabled")) {
-            new SetHomeCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.itemaverages.enabled") &&
-                main.getConfig().getBoolean("packs.item-averages.enabled")) {
-            new ItemAveragesCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.grave.enabled") &&
-                main.getConfig().getBoolean("packs.graves.enabled")) {
-            new GraveCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.spawningspheres.enabled") &&
-                main.getConfig().getBoolean("packs.spawning-spheres.enabled")) {
-            new SpawningSpheresCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.gem.enabled") &&
-                main.getConfig().getBoolean("packs.treasure-gem.enabled")) {
-            new GemCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.sudoku.enabled") &&
-                main.getConfig().getBoolean("packs.sudoku.enabled")) {
-            new SudokuCommand().register();
-        }
-
-        if (main.getConfig().getBoolean("commands.packlist.enabled")) {
-            new PackListCommand().register();
+        for (AbstractCommand cmd : cmds) {
+            cmd.register();
         }
     }
 

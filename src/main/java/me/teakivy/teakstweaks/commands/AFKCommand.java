@@ -17,7 +17,7 @@ public class AFKCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public AFKCommand() {
-        super(MessageHandler.getCmdName("afk"), MessageHandler.getCmdUsage("afk"), MessageHandler.getCmdDescription("afk"), MessageHandler.getCmdAliases("afk"));
+        super("afk-display", MessageHandler.getCmdName("afk"), MessageHandler.getCmdUsage("afk"), MessageHandler.getCmdDescription("afk"), MessageHandler.getCmdAliases("afk"));
     }
 
     @Override

@@ -23,7 +23,7 @@ public class TagGameCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public TagGameCommand() {
-        super(MessageHandler.getCmdName("taggame"), MessageHandler.getCmdUsage("taggame"), MessageHandler.getCmdDescription("taggame"), MessageHandler.getCmdAliases("taggame"));
+        super("tag", MessageHandler.getCmdName("taggame"), MessageHandler.getCmdUsage("taggame"), MessageHandler.getCmdDescription("taggame"), MessageHandler.getCmdAliases("taggame"));
     }
 
     @Override

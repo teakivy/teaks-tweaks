@@ -19,7 +19,7 @@ public class ItemAveragesCommand extends AbstractCommand {
 
 
     public ItemAveragesCommand() {
-        super(MessageHandler.getCmdName("itemaverages"), MessageHandler.getCmdUsage("itemaverages"), MessageHandler.getCmdDescription("itemaverages"), MessageHandler.getCmdAliases("itemaverages"));
+        super("item-averages", MessageHandler.getCmdName("itemaverages"), MessageHandler.getCmdUsage("itemaverages"), MessageHandler.getCmdDescription("itemaverages"), MessageHandler.getCmdAliases("itemaverages"));
     }
 
     @Override

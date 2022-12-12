@@ -16,7 +16,7 @@ public class CoordsHudCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public CoordsHudCommand() {
-        super(MessageHandler.getCmdName("coordshud"), MessageHandler.getCmdUsage("coordshud"), MessageHandler.getCmdDescription("coordshud"), MessageHandler.getCmdAliases("coordshud"));
+        super("coords-hud", MessageHandler.getCmdName("coordshud"), MessageHandler.getCmdUsage("coordshud"), MessageHandler.getCmdDescription("coordshud"), MessageHandler.getCmdAliases("coordshud"));
     }
 
     @Override

@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.teakstweaks.editsigns;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.utils.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -17,8 +18,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
-import java.util.logging.Level;
-
 public class EditSigns extends BasePack {
 
     public EditSigns() {
@@ -31,7 +30,7 @@ public class EditSigns extends BasePack {
         if (ver.contains("paper") || config.getBoolean("bypass-paper-check")) {
             super.init();
         } else {
-            main.getLogger().log(Level.SEVERE, "Editable signs are only supported on Paper at the moment.");
+            Logger.log(Logger.LogLevel.ERROR, "Editable signs are only supported on Paper at the moment.");
         }
     }
 

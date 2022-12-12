@@ -13,7 +13,7 @@ public class TestCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public TestCommand() {
-        super(MessageHandler.getCmdName("test"), MessageHandler.getCmdUsage("test"), MessageHandler.getCmdDescription("test"), MessageHandler.getCmdAliases("test"));
+        super("test", MessageHandler.getCmdName("test"), MessageHandler.getCmdUsage("test"), MessageHandler.getCmdDescription("test"), MessageHandler.getCmdAliases("test"));
     }
 
     @Override
@@ -32,5 +32,12 @@ public class TestCommand extends AbstractCommand {
             }
         }
         return false;
+    }
+
+    @Override
+    public void register() {
+        if (main.getConfig().getBoolean("config.dev-mode")) {
+            super.register();
+        }
     }
 }

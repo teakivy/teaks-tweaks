@@ -22,7 +22,7 @@ public class SpawnCommand extends AbstractCommand {
     HashMap<UUID, Long> cooldown = new HashMap<>();
 
     public SpawnCommand() {
-        super(MessageHandler.getCmdName("spawn"), MessageHandler.getCmdUsage("spawn"), MessageHandler.getCmdDescription("spawn"), MessageHandler.getCmdAliases("spawn"));
+        super("spawn", MessageHandler.getCmdName("spawn"), MessageHandler.getCmdUsage("spawn"), MessageHandler.getCmdDescription("spawn"), MessageHandler.getCmdAliases("spawn"));
     }
 
     @Override

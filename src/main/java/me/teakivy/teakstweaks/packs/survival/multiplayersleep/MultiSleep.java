@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.survival.multiplayersleep;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.MessageHandler;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -171,10 +172,10 @@ public class MultiSleep extends BasePack {
             }
         }
 
-        main.getLogger().info(sleepAvaliable + "");
-        main.getLogger().info(sleeping + "");
-        main.getLogger().info((100 / sleepAvaliable * sleeping) + "");
-        main.getLogger().info(sleepingPercentage + "");
+        Logger.log(Logger.LogLevel.INFO, sleepAvaliable + "");
+        Logger.log(Logger.LogLevel.INFO, sleeping + "");
+        Logger.log(Logger.LogLevel.INFO, (100 / sleepAvaliable * sleeping) + "");
+        Logger.log(Logger.LogLevel.INFO, sleepingPercentage + "");
     }
 
 }

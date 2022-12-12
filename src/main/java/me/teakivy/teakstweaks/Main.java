@@ -6,6 +6,7 @@ import me.teakivy.teakstweaks.utils.*;
 import me.teakivy.teakstweaks.utils.datamanager.DataManager;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.json.simple.parser.ParseException;
@@ -163,6 +164,14 @@ public final class Main extends JavaPlugin implements Listener {
 
     public Register getRegister() {
         return register;
+    }
+
+    public static Main getInstance() {
+        return getPlugin(Main.class);
+    }
+
+    public static ConfigurationSection getPackConfig(String pack) {
+        return getInstance().getConfig().getConfigurationSection("packs." + pack);
     }
 
 }

@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs;
 
 import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.datamanager.DataManager;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
@@ -22,9 +23,9 @@ public class BasePack implements Listener {
     }
 
 	public void init() {
-		main.getLogger().info(name + " Enabled!");
 		registerEvents(this);
 		main.addPack(name);
+		Logger.log(Logger.LogLevel.INFO, "Registered Pack: " + name);
 	}
 
 	public void registerEvents(Listener listener) {

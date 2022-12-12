@@ -23,7 +23,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public SpawningSpheresCommand() {
-        super(MessageHandler.getCmdName("spawningspheres"), MessageHandler.getCmdUsage("spawningspheres"), MessageHandler.getCmdDescription("spawningspheres"), MessageHandler.getCmdAliases("spawningspheres"));
+        super("spawning-spheres", MessageHandler.getCmdName("spawningspheres"), MessageHandler.getCmdUsage("spawningspheres"), MessageHandler.getCmdDescription("spawningspheres"), MessageHandler.getCmdAliases("spawningspheres"));
     }
 
     @Override

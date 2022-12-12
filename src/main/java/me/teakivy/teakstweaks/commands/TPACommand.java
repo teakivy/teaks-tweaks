@@ -25,7 +25,7 @@ public class TPACommand extends AbstractCommand {
     HashMap<Player, Player> requests = new HashMap<>();
 
     public TPACommand() {
-        super(MessageHandler.getCmdName("tpa"), MessageHandler.getCmdUsage("tpa"), MessageHandler.getCmdDescription("tpa"), MessageHandler.getCmdAliases("tpa"));
+        super("tpa", MessageHandler.getCmdName("tpa"), MessageHandler.getCmdUsage("tpa"), MessageHandler.getCmdDescription("tpa"), MessageHandler.getCmdAliases("tpa"));
     }
 
     @Override

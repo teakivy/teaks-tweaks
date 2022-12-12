@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.utils;
 
+import me.teakivy.teakstweaks.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.command.*;
 
@@ -13,6 +14,8 @@ import java.util.List;
  */
 public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
 
+    protected final String parentPack;
+
     protected final String command;
     protected final String description;
     protected final List<String> alias;
@@ -21,27 +24,28 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
 
     protected static CommandMap cmap;
 
-    public AbstractCommand(String command) {
-        this(command, null, null, null, null);
+    public AbstractCommand(String parentPack, String command) {
+        this(parentPack, command, null, null, null, null);
     }
 
-    public AbstractCommand(String command, String usage) {
-        this(command, usage, null, null, null);
+    public AbstractCommand(String parentPack, String command, String usage) {
+        this(parentPack, command, usage, null, null, null);
     }
 
-    public AbstractCommand(String command, String usage, String description) {
-        this(command, usage, description, null, null);
+    public AbstractCommand(String parentPack, String command, String usage, String description) {
+        this(parentPack, command, usage, description, null, null);
     }
 
-    public AbstractCommand(String command, String usage, String description, String permissionMessage) {
-        this(command, usage, description, permissionMessage, null);
+    public AbstractCommand(String parentPack, String command, String usage, String description, String permissionMessage) {
+        this(parentPack, command, usage, description, permissionMessage, null);
     }
 
-    public AbstractCommand(String command, String usage, String description, List<String> aliases) {
-        this(command, usage, description, null, aliases);
+    public AbstractCommand(String parentPack, String command, String usage, String description, List<String> aliases) {
+        this(parentPack, command, usage, description, null, aliases);
     }
 
-    public AbstractCommand(String command, String usage, String description, String permissionMessage, List<String> aliases) {
+    public AbstractCommand(String parentPack, String command, String usage, String description, String permissionMessage, List<String> aliases) {
+        this.parentPack = parentPack;
         this.command = command.toLowerCase();
         this.usage = usage;
         this.description = description;
@@ -50,6 +54,11 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     }
 
     public void register() {
+        if (this.parentPack != null &&
+                (!this.parentPack.equalsIgnoreCase("test")
+                        && !Main.getPackConfig(parentPack).getBoolean("enabled")))
+            return;
+
         ReflectCommand cmd = new ReflectCommand(this.command);
         if (this.alias != null) cmd.setAliases(this.alias);
         if (this.description != null) cmd.setDescription(this.description);
@@ -57,6 +66,8 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         if (this.permMessage != null) cmd.setPermissionMessage(this.permMessage);
         getCommandMap().register("", cmd);
         cmd.setExecutor(this);
+
+        Logger.log(Logger.LogLevel.INFO, "Registered command: /" + command);
     }
 
     final CommandMap getCommandMap() {

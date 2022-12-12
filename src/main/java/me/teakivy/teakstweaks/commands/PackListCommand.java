@@ -15,7 +15,7 @@ public class PackListCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public PackListCommand() {
-        super(MessageHandler.getCmdName("pack-list"), MessageHandler.getCmdUsage("pack-list"), MessageHandler.getCmdDescription("pack-list"), MessageHandler.getCmdAliases("pack-list"));
+        super(null, MessageHandler.getCmdName("pack-list"), MessageHandler.getCmdUsage("pack-list"), MessageHandler.getCmdDescription("pack-list"), MessageHandler.getCmdAliases("pack-list"));
     }
 
     @Override

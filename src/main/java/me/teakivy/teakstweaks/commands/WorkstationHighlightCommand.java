@@ -17,7 +17,7 @@ public class WorkstationHighlightCommand extends AbstractCommand {
     static Main main = Main.getPlugin(Main.class);
 
     public WorkstationHighlightCommand() {
-        super(MessageHandler.getCmdName("workstationhighlight"), MessageHandler.getCmdUsage("workstationhighlight"), MessageHandler.getCmdDescription("workstationhighlight"), MessageHandler.getCmdAliases("workstationhighlight"));
+        super("workstation-highlights", MessageHandler.getCmdName("workstationhighlight"), MessageHandler.getCmdUsage("workstationhighlight"), MessageHandler.getCmdDescription("workstationhighlight"), MessageHandler.getCmdAliases("workstationhighlight"));
     }
 
     @Override

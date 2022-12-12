@@ -21,7 +21,7 @@ public class BackCommand extends AbstractCommand {
     HashMap<UUID, Long> cooldown = new HashMap<>();
 
     public BackCommand() {
-        super(MessageHandler.getCmdName("back"), MessageHandler.getCmdUsage("back"), MessageHandler.getCmdDescription("back"), MessageHandler.getCmdAliases("back"));
+        super("back", MessageHandler.getCmdName("back"), MessageHandler.getCmdUsage("back"), MessageHandler.getCmdDescription("back"), MessageHandler.getCmdAliases("back"));
     }
 
     @Override

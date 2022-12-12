@@ -14,7 +14,7 @@ public class PortalCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public PortalCommand() {
-        super(MessageHandler.getCmdName("portal"), MessageHandler.getCmdUsage("portal"), MessageHandler.getCmdDescription("portal"), MessageHandler.getCmdAliases("portal"));
+        super("nether-portal-coords", MessageHandler.getCmdName("portal"), MessageHandler.getCmdUsage("portal"), MessageHandler.getCmdDescription("portal"), MessageHandler.getCmdAliases("portal"));
     }
 
     @Override

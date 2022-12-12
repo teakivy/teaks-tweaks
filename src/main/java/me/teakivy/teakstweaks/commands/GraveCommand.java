@@ -24,7 +24,7 @@ public class GraveCommand extends AbstractCommand {
 
 
     public GraveCommand() {
-        super(MessageHandler.getCmdName("grave"), MessageHandler.getCmdUsage("grave"), MessageHandler.getCmdDescription("grave"), MessageHandler.getCmdAliases("grave"));
+        super("graves", MessageHandler.getCmdName("grave"), MessageHandler.getCmdUsage("grave"), MessageHandler.getCmdDescription("grave"), MessageHandler.getCmdAliases("grave"));
     }
 
     @Override

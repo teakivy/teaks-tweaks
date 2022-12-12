@@ -24,7 +24,7 @@ public class ShrineCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public ShrineCommand() {
-        super(MessageHandler.getCmdName("shrine"), MessageHandler.getCmdUsage("shrine"), MessageHandler.getCmdDescription("shrine"), MessageHandler.getCmdAliases("shrine"));
+        super("thunder-shrine", MessageHandler.getCmdName("shrine"), MessageHandler.getCmdUsage("shrine"), MessageHandler.getCmdDescription("shrine"), MessageHandler.getCmdAliases("shrine"));
     }
 
     @Override

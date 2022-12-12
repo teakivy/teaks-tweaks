@@ -19,7 +19,7 @@ public class SetHomeCommand extends AbstractCommand {
     FileConfiguration data = main.data.getConfig();
 
     public SetHomeCommand() {
-        super(MessageHandler.getCmdName("sethome"), MessageHandler.getCmdUsage("sethome"), MessageHandler.getCmdDescription("sethome"), MessageHandler.getCmdAliases("sethome"));
+        super("homes", MessageHandler.getCmdName("sethome"), MessageHandler.getCmdUsage("sethome"), MessageHandler.getCmdDescription("sethome"), MessageHandler.getCmdAliases("sethome"));
     }
 
     @Override

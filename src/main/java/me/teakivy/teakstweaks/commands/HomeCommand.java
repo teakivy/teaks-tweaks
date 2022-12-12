@@ -28,7 +28,7 @@ public class HomeCommand extends AbstractCommand {
     FileConfiguration data = main.data.getConfig();
 
     public HomeCommand() {
-        super(MessageHandler.getCmdName("home"), MessageHandler.getCmdUsage("home"), MessageHandler.getCmdDescription("home"), MessageHandler.getCmdAliases("home"));
+        super("homes", MessageHandler.getCmdName("home"), MessageHandler.getCmdUsage("home"), MessageHandler.getCmdDescription("home"), MessageHandler.getCmdAliases("home"));
     }
 
     @Override

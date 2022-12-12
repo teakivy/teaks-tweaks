@@ -16,7 +16,7 @@ public class KillBoatsCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public KillBoatsCommand() {
-        super(MessageHandler.getCmdName("killboats"), MessageHandler.getCmdUsage("killboats"), MessageHandler.getCmdDescription("killboats"), MessageHandler.getCmdAliases("killboats"));
+        super("kill-boats", MessageHandler.getCmdName("killboats"), MessageHandler.getCmdUsage("killboats"), MessageHandler.getCmdDescription("killboats"), MessageHandler.getCmdAliases("killboats"));
     }
 
     @Override

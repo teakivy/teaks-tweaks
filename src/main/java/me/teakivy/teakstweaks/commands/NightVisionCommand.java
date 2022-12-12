@@ -16,7 +16,7 @@ public class NightVisionCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public NightVisionCommand() {
-        super(MessageHandler.getCmdName("nightvision"), MessageHandler.getCmdUsage("nightvision"), MessageHandler.getCmdDescription("nightvision"), MessageHandler.getCmdAliases("nightvision"));
+        super("spectator-night-vision", MessageHandler.getCmdName("nightvision"), MessageHandler.getCmdUsage("nightvision"), MessageHandler.getCmdDescription("nightvision"), MessageHandler.getCmdAliases("nightvision"));
     }
 
     @Override
