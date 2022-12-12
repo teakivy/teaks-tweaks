@@ -17,11 +17,9 @@ spheres:
 messages:
   plugin:
     reload: "&aReloaded Teaks Tweaks Config!"
-    message-prefix: ""
-    bland-prefix: ""
     startup:
-      plugin-started: "%bland_prefix% Teaks Tweaks Started!"
-      pack-enabled: "%bland_prefix% %pack% Enabled!"
+      plugin-started: "Teaks Tweaks Started!"
+      pack-enabled: "%pack% Enabled!"
     error:
       unknown: "&cAn unknown error has occured!"
       pack-not-enabled: "&cThis pack is not enabled!"
@@ -33,7 +31,7 @@ messages:
       command-disabled: "&cThis command has been disabled by a server administrator!"
       missing-action: "&cPlease specify an action!"
     shutdown:
-      plugin-shutdown: "%bland_prefix% Teaks Tweaks Shutting Down..."
+      plugin-shutdown: "Teaks Tweaks Shutting Down..."
   pack:
     unlock-all-recipes:
       name: "Unlock All Recipes"
@@ -41,12 +39,12 @@ messages:
       name: "Fast Leaf Decay"
     afk-display:
       name: "AFK Display"
-      self-now-afk: "%prefix% &eYou are now AFK!"
-      other-now-afk: "%prefix% &6%player_name% &eis now AFK!"
-      console-now-afk: "%bland_prefix% %player_name% is now AFK!"
-      self-not-afk: "%prefix% &eYou are no longer AFK!"
-      other-not-afk: "%prefix% &6%player_name% &eis no longer AFK!"
-      console-not-afk: "%bland_prefix% %player_name% is no longer AFK!"
+      self-now-afk: "&eYou are now AFK!"
+      other-now-afk: "&6%player_name% &eis now AFK!"
+      console-now-afk: "%player_name% is now AFK!"
+      self-not-afk: "&eYou are no longer AFK!"
+      other-not-afk: "&6%player_name% &eis no longer AFK!"
+      console-not-afk: "%player_name% is no longer AFK!"
     multiplayer-sleep:
       name: "Multiplayer Sleep"
       player-sleeping: "&e%player_name% &6went to sleep. Sweet dreams!"
@@ -116,7 +114,7 @@ messages:
       name: "Count Mob Deaths"
     villager-death-messages:
       name: "Villager Death Messages"
-      death-message: "%prefix% &c A Villager has died! &r(&6XYZ: %x% %y% %z% &e%world%&r)"
+      death-message: "&c A Villager has died! &r(&6XYZ: %x% %y% %z% &e%world%&r)"
 
     spawn:
       name: "Spawn"
@@ -130,21 +128,21 @@ messages:
 
     custom-villager-shops:
       name: "Custom Villager Shops"
-      trade-init: "%prefix% &eVillager Trades Initialized"
+      trade-init: "&eVillager Trades Initialized"
     spawning-spheres:
       name: "Spawning Spheres"
       center-stand: "Center"
     spectator-night-vision:
       name: "Spectator Night Vision"
-      game-mode-change: "%prefix% &cNight Vision removed because of Game Mode change"
+      game-mode-change: "&cNight Vision removed because of Game Mode change"
     spectator-conduit-power:
       name: "Spectator Conduit Power"
-      game-mode-change: "%prefix% &cConduit Power removed because of Game Mode change"
+      game-mode-change: "&cConduit Power removed because of Game Mode change"
     item-averages:
       name: "Item Averages"
       source-production: "&eThis source produces ± per hour:"
       no-items: "&eNo items passed through the source!"
-      log-finish: "%bland_prefix% Finished Tracking"
+      log-finish: "Finished Tracking"
     kill-boats:
       name: "Kill Boats"
 
@@ -154,11 +152,11 @@ messages:
       name: "Wandering Trades"
     tag:
       name: "Tag"
-      cant-tag-afk: "%prefix% You can't Tag an AFK Player!"
-      tag-message: "%prefix% &c%tagged_name% &ewas tagged by &6%tagger_name%"
+      cant-tag-afk: "You can't Tag an AFK Player!"
+      tag-message: "&c%tagged_name% &ewas tagged by &6%tagger_name%"
     thunder-shrine:
       name: "Thunder Shrine"
-      storm-initialize: "%prefix% &cA great storm has been initiated by the ritual"
+      storm-initialize: "&cA great storm has been initiated by the ritual"
 
     xp-management:
       name: "XP Management"
@@ -194,10 +192,10 @@ commands:
     description: "Teleport back to your last location!"
     aliases: []
     messages:
-      on-cooldown: "%prefix% &cYou must wait %cooldown_seconds% seconds between uses of /back"
-      missing-location: "%prefix% &cYou have nowhere to go back to!"
-      teleport: "%prefix% &eTeleporting Back..."
-      moved: "%prefix% &cYou must stand still to teleport!"
+      on-cooldown: "&cYou must wait %cooldown_seconds% seconds between uses of /back"
+      missing-location: "&cYou have nowhere to go back to!"
+      teleport: "&eTeleporting Back..."
+      moved: "&cYou must stand still to teleport!"
 
 
   conduitpower:
@@ -206,8 +204,8 @@ commands:
     description: "Toggle Conduit Power as a spectator"
     aliases: ["cp"]
     messages:
-      toggled: "%prefix% &aToggled Conduit Power"
-      wrong-gamemode: "%prefix% &cYou must be in Spectator Mode to use this command!"
+      toggled: "&aToggled Conduit Power"
+      wrong-gamemode: "&cYou must be in Spectator Mode to use this command!"
 
   coordshud:
     name: "coordshud"
@@ -215,8 +213,8 @@ commands:
     description: "Coords Hud Main Command"
     aliases: ["ch"]
     messages:
-      cant-toggle: "%prefix% &cYou cannot toggle Coordinates HUD!"
-      toggled: "%prefix% &aToggled Coords HUD"
+      cant-toggle: "&cYou cannot toggle Coordinates HUD!"
+      toggled: "&aToggled Coords HUD"
       proper-usage: "&cUsage: /coordshud <option>"
 
 
@@ -226,8 +224,8 @@ commands:
     description: "Get pinged when your tools drop below 10% Durability!"
     aliases: ["duraping", "dp"]
     messages:
-      missing-preview-selection: "%prefix% &cPlease enter which section to preview!"
-      missing-set-selection: "%prefix% &cPlease enter which section to set!"
+      missing-preview-selection: "&cPlease enter which section to preview!"
+      missing-set-selection: "&cPlease enter which section to set!"
       preview-panel:
         hover: "&7Click to preview &f%name%"
       checkbox-yes:
@@ -264,11 +262,11 @@ commands:
     aliases: []
     messages:
       error:
-        missing-villager-type: "%prefix% &cPlease specify villager type!"
-        missing-gem-type: "%prefix% &cPlease choose a gem to give!"
-        amount-more-64: "%prefix% &cYou cannot give yourself more than 64 gems!"
-        amount-less-1: "%prefix% &cYou must give yourself atleast 1 gem!"
-      summoned-villager: "%prefix% &aSummoned %type%&r &avillager!"
+        missing-villager-type: "&cPlease specify villager type!"
+        missing-gem-type: "&cPlease choose a gem to give!"
+        amount-more-64: "&cYou cannot give yourself more than 64 gems!"
+        amount-less-1: "&cYou must give yourself atleast 1 gem!"
+      summoned-villager: "&aSummoned %type%&r &avillager!"
       villagers:
         aquatic: "&bAquatic"
         concrete: "&bConcrete"
@@ -283,7 +281,7 @@ commands:
         redstone: "&cRedstone"
         stones: "&eStones"
         wood: "&eWood"
-      given-gem: "%prefix% &aYou have been given %amount% %type% &aGems!"
+      given-gem: "&aYou have been given %amount% %type% &aGems!"
       gems:
         aquamarine: "&bAquamarine"
         ruby: "&cRuby"
@@ -301,9 +299,9 @@ commands:
     description: "Keep Inventory stands no chance!"
     aliases: []
     messages:
-      no-grave: "%prefix% &cYou don't have a recent grave!"
-      given-key: "%prefix% &aEnjoy your key!"
-      removed-graves: "%prefix% &eRemoved all loaded Graves!"
+      no-grave: "&cYou don't have a recent grave!"
+      given-key: "&aEnjoy your key!"
+      removed-graves: "&eRemoved all loaded Graves!"
 
 
   home:
@@ -313,18 +311,18 @@ commands:
     aliases: []
     messages:
       error:
-        missing-home: "%prefix% &cPlease specify which home you would like to teleport to!"
-        missing-home-name: "%prefix% &cPlease specify a home name!"
-        home-already-exists: "%prefix% &cThe home %name% already exists!"
-        home-doesnt-exist: "%prefix% &cThe home %name% doesn't exist!"
-        max-homes-reached: "%prefix% 7cYou can set a Maximum of %amount% Homes!"
-        cant-set-home: "%prefix% An Error has occurred! Could not set Home %name%!"
-        no-homes-yet: "%prefix% &cYou don't have any Homes set yet! Use '/home set <name>' to set one!"
-        on-cooldown: "%prefix% &cYou must wait %time% seconds between uses of /home!"
-        player-moved: "%prefix% &cYou must stand still to teleport!"
-      set-home: "%prefix% &aSet Home %name%!"
-      removed-home: "%prefix% &aRemoved Home %name%!"
-      teleporting-to-home: "%prefix% &eTeleporting to Home %name%..."
+        missing-home: "&cPlease specify which home you would like to teleport to!"
+        missing-home-name: "&cPlease specify a home name!"
+        home-already-exists: "&cThe home %name% already exists!"
+        home-doesnt-exist: "&cThe home %name% doesn't exist!"
+        max-homes-reached: "7cYou can set a Maximum of %amount% Homes!"
+        cant-set-home: "An Error has occurred! Could not set Home %name%!"
+        no-homes-yet: "&cYou don't have any Homes set yet! Use '/home set <name>' to set one!"
+        on-cooldown: "&cYou must wait %time% seconds between uses of /home!"
+        player-moved: "&cYou must stand still to teleport!"
+      set-home: "&aSet Home %name%!"
+      removed-home: "&aRemoved Home %name%!"
+      teleporting-to-home: "&eTeleporting to Home %name%..."
 
 
   itemaverages:
@@ -333,9 +331,9 @@ commands:
     description: "Calculate how many items flow through a source in 2 minutes!"
     aliases: ["ia"]
     messages:
-      tracker-created: "%prefix% &eCreated a tracker source at XYZ: %x% %y% %z%"
-      tracker-in-use: "%prefix% &cA tracker is already in use!"
-      tracker-mass-remove: "%prefix% &eRemoved %count% Tracker Sources!"
+      tracker-created: "&eCreated a tracker source at XYZ: %x% %y% %z%"
+      tracker-in-use: "&cA tracker is already in use!"
+      tracker-mass-remove: "&eRemoved %count% Tracker Sources!"
 
 
   killboats:
@@ -344,7 +342,7 @@ commands:
     description: "Kill all empty boats"
     aliases: []
     messages:
-      removed-boats: "%prefix% &eRemoved &6%count% &eboats!"
+      removed-boats: "&eRemoved &6%count% &eboats!"
 
   nightvision:
     name: "nightvision"
@@ -352,8 +350,8 @@ commands:
     description: "Toggle Night Vision as a spectator"
     aliases: ["nv"]
     messages:
-      toggled: "%prefix% &aToggled Night Vision"
-      not-spectator: "%prefix% &cYou must be in Spectator Mode to use this command!"
+      toggled: "&aToggled Night Vision"
+      not-spectator: "&cYou must be in Spectator Mode to use this command!"
 
   portal:
     name: "portal"
@@ -361,8 +359,8 @@ commands:
     description: "Calculate where a portal would link to"
     aliases: []
     messages:
-      location-found: "%prefix%    &eX: %x% | Y: %y% | Z: %z%"
-      unavaliable-dimension: "%prefix% &cYou cannot run this command in %world%!"
+      location-found: "   &eX: %x% | Y: %y% | Z: %z%"
+      unavaliable-dimension: "&cYou cannot run this command in %world%!"
 
   realtimeclock:
     name: "realtimeclock"
@@ -370,7 +368,7 @@ commands:
     description: "View a world's real time"
     aliases: ["rtc"]
     messages:
-      world-time: "%prefix% &eThis world has been active for &6&l%days% &r&eDays, &6&l%hours% &r&eHours, and &6&l%minutes% &r&eMinutes!"
+      world-time: "&eThis world has been active for &6&l%days% &r&eDays, &6&l%hours% &r&eHours, and &6&l%minutes% &r&eMinutes!"
 
   sethome:
     name: "sethome"
@@ -379,11 +377,11 @@ commands:
     aliases: []
     messages:
       error:
-        missing-home-name: "%prefix% &cPlease specify a home name!"
-        home-already-exists: "%prefix% &cThe home %name% already exists!"
-        max-homes-reached: "%prefix% 7cYou can set a Maximum of %amount% Homes!"
-        cant-set-home: "%prefix% An Error has occurred! Could not set Home %name%!"
-      set-home: "%prefix% &aSet Home %name%!"
+        missing-home-name: "&cPlease specify a home name!"
+        home-already-exists: "&cThe home %name% already exists!"
+        max-homes-reached: "7cYou can set a Maximum of %amount% Homes!"
+        cant-set-home: "An Error has occurred! Could not set Home %name%!"
+      set-home: "&aSet Home %name%!"
 
   shrine:
     name: "shrine"
@@ -393,10 +391,10 @@ commands:
     messages:
       shrine-created: "&aA Shrine has been created at &6XYZ: &e%x% %y% %z% &ain &6World: &e%world%"
       shrine-removed:
-        text: "%prefix% Removed the shrine &6%uuid%&e!"
+        text: "Removed the shrine &6%uuid%&e!"
         hover: "&eClick to teleport!"
-      no-shrine-nearby: "%prefix% &cCould not find any Shrines nearby!"
-      mass-remove: "%prefix% &cAll loaded Shrines have been removed!"
+      no-shrine-nearby: "&cCould not find any Shrines nearby!"
+      mass-remove: "&cAll loaded Shrines have been removed!"
 
   spawn:
     name: "spawn"
@@ -405,9 +403,9 @@ commands:
     aliases: []
     messages:
       error:
-        on-cooldown: "%prefix% &cYou must wait %time% seconds between uses of /spawn!"
-        must-stand-still: "%prefix% &cYou must stand still to teleport!"
-      teleporting: "%prefix% &eTeleporting to world spawn..."
+        on-cooldown: "&cYou must wait %time% seconds between uses of /spawn!"
+        must-stand-still: "&cYou must stand still to teleport!"
+      teleporting: "&eTeleporting to world spawn..."
 
   spawningspheres:
     name: "spawningspheres"
@@ -416,12 +414,12 @@ commands:
     aliases: ["ss", "sphere"]
     messages:
       error:
-        missing-color: "%prefix% &cPlease specify a sphere color!"
-        sphere-in-use: "%prefix% &cThe sphere %color% is already in use!"
-        sphere-not-in-use: "%prefix% &cThe sphere %color% is not in use!"
-      sphere-summoned: "%prefix% &aSummoned the %color% &aSphere!"
-      sphere-removed: "%prefix% &aRemoved the %color% &aSphere!"
-      sphere-teleport: "%prefix% &aTeleported to the %color% &aSphere!"
+        missing-color: "&cPlease specify a sphere color!"
+        sphere-in-use: "&cThe sphere %color% is already in use!"
+        sphere-not-in-use: "&cThe sphere %color% is not in use!"
+      sphere-summoned: "&aSummoned the %color% &aSphere!"
+      sphere-removed: "&aRemoved the %color% &aSphere!"
+      sphere-teleport: "&aTeleported to the %color% &aSphere!"
       sphere:
         red: "&cRed"
         blue: "&bBlue"
@@ -434,8 +432,8 @@ commands:
     description: "The classic game of tag"
     aliases: []
     messages:
-      uninstalled: "%prefix% &cTag Uninstalled!"
-      begun: "%prefix% &eLet the games begin!"
+      uninstalled: "&cTag Uninstalled!"
+      begun: "&eLet the games begin!"
 
   test:
     name: "test"
@@ -443,8 +441,8 @@ commands:
     description: "Teaks Tweaks Testing Command"
     aliases: []
     messages:
-      msg: "%prefix% &eTest!"
-      test-command-found: "%prefix% &eHey! Looks like you found my test command! :D"
+      msg: "&eTest!"
+      test-command-found: "&eHey! Looks like you found my test command! :D"
       enable-dev-mode: "&cThis command is used to test new features! Enable it by marking &7config.dev-mode: true &c!"
 
   tpa:
@@ -454,17 +452,17 @@ commands:
     aliases: []
     messages:
       error:
-        missing-player: "%prefix% &cPlease specify who you would like to teleport to!"
-        missing-player-confirm: "%prefix% &cPlease specify who you would like to teleport!"
-        player-doesnt-exist: "%prefix% &cThe player %name% does not exist!"
-      teleporting-to: "%prefix% &eTeleporting to &6%name%&e..."
-      teleporting-from: "%prefix% &eTeleporting &6%name% &eto you..."
+        missing-player: "&cPlease specify who you would like to teleport to!"
+        missing-player-confirm: "&cPlease specify who you would like to teleport!"
+        player-doesnt-exist: "&cThe player %name% does not exist!"
+      teleporting-to: "&eTeleporting to &6%name%&e..."
+      teleporting-from: "&eTeleporting &6%name% &eto you..."
       teleport-request:
-        text: "%prefix% &6%name% &eHas requested to teleport to you! Click to accept"
+        text: "&6%name% &eHas requested to teleport to you! Click to accept"
         hover: "&6Click to accept"
         click: "/tpa confirm %name%"
-      request-sent: "%prefix% &aTeleport request sent!"
-      request-cancelled: "%prefix% &cTeleport request cancelled!"
+      request-sent: "&aTeleport request sent!"
+      request-cancelled: "&cTeleport request cancelled!"
 
   workstationhighlight:
     name: "workstationhighlight"
@@ -473,9 +471,9 @@ commands:
     aliases: ["wh", "workstation"]
     messages:
       error:
-        no-villager: "%prefix% &cCould not find a Villager nearby!"
-        no-jobsite: "%prefix% &cThe nearest Villager does not have a job site!"
-      jobsite-found: "%prefix% &eThe workstation is located at &6[XYZ]: %x% %y% %z%"
+        no-villager: "&cCould not find a Villager nearby!"
+        no-jobsite: "&cThe nearest Villager does not have a job site!"
+      jobsite-found: "&eThe workstation is located at &6[XYZ]: %x% %y% %z%"
 
   sudoku:
     name: "sudoku"
