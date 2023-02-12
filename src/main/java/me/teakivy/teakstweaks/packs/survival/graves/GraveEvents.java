@@ -120,8 +120,10 @@ public class GraveEvents extends BasePack {
         Location loc = GraveCreator.findGraveLocation(player.getLocation());
         if (loc == null) return;
         int xp = 0;
-        if (getConfig().getBoolean("hold-xp")) {
-            xp = event.getDroppedExp();
+        if (config.getBoolean("hold-xp")) {
+            xp = config.getBoolean("keep-all-xp") ?
+                    player.getTotalExperience() :
+                    event.getDroppedExp();
         }
 
         GraveCreator.createGrave(loc, player, xp);
