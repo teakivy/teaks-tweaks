@@ -204,6 +204,8 @@ packs:
     enabled: false
     # Whether or not graves hold the players xp
     hold-xp: true
+    # Whether or not to hold all xp or just the xp dropped on death
+    keep-all-xp: false
     # Whether or not it sends a message to the player telling the location of their grave
     locatable: true
     # Whether or not all players can take from a players grave
@@ -252,9 +254,11 @@ packs:
 
 
   # Cauldron Concrete
-  # Drop concrete powder into a cauldron filled with water to instantly harden all of it.
+  # Right click a cauldron with concrete powder to harden it.
   cauldron-concrete:
     enabled: false
+    # Whether or not hardening takes a water level from the cauldron
+    drops-water-level: true
 
   # Track Raw Stats
   # Adds 100+ scoreboards that track many different statistics. Especially useful for multiplayer.
