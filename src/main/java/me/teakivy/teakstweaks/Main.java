@@ -31,50 +31,25 @@ public final class Main extends JavaPlugin implements Listener {
     private Register register;
 
     public Tag tagListener;
+    public boolean devMode;
 
     @Override
     public void onEnable() {
+        this.devMode = getConfig().getBoolean("config.dev-mode");
+
         // Data Manager
         this.data = new DataManager(this);
         data.saveDefaultConfig();
 
-        data.saveDefaultConfig();
-
-        if (getConfig().getBoolean("config.dev-mode")) {
-            Logger.log(Logger.LogLevel.INFO, MessageHandler.getMessage("plugin.startup.dev-mode-enabled"));
-        }
-
         // Credits
-        try {
-            new Credits().createCredits();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        createCredits();
 
         // Metrics
         Metrics metrics = new Metrics(this, 12001);
         registerCustomMetrics(metrics);
 
         // Update Config.yml
-        if (!getConfig().getBoolean("config.dev-mode")) {
-            if (this.getConfig().getInt("config.version") < Objects.requireNonNull(this.getConfig().getDefaults()).getInt("config.version")) {
-                try {
-                    ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList(), true);
-                    this.reloadConfig();
-                    Logger.log(Logger.LogLevel.INFO, "Dev Mode Enabled!");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } else {
-            try {
-                ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList(), true);
-                this.reloadConfig();
-                Logger.log(Logger.LogLevel.INFO, "Updated Config to Version: " + this.getConfig().getInt("config.version"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        updateConfig();
 
         // Update Checker
         getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
@@ -88,7 +63,8 @@ public final class Main extends JavaPlugin implements Listener {
         }
         String thisVersion = this.getDescription().getVersion();
         if (!thisVersion.equalsIgnoreCase(latestVersion)) {
-            Logger.log(Logger.LogLevel.WARNING, "Teak's Tweaks has an update!\nPlease update to the latest version (" + latestVersion + ")\n&ehttps://www.spigotmc.org/resources/teaks-tweaks.94021/");
+            Logger.log(Logger.LogLevel.WARNING, "Teak's Tweaks has an update!\nPlease update to the latest " +
+                    "version (" + latestVersion + ")\n&ehttps://www.spigotmc.org/resources/teaks-tweaks.94021/");
             newVersionAvailable = true;
             this.latestVersion = latestVersion;
         }
@@ -111,7 +87,9 @@ public final class Main extends JavaPlugin implements Listener {
         }
 
         // Plugin startup logic
-        Logger.log(Logger.LogLevel.INFO, MessageHandler.getMessage("plugin.startup.plugin-started"));
+        Logger.log(Logger.LogLevel.INFO, "");
+        Logger.log(Logger.LogLevel.INFO, "Teak's Tweaks Started!");
+        Logger.log(Logger.LogLevel.INFO, "");
 
         // Packs
         register = new Register();
@@ -172,6 +150,29 @@ public final class Main extends JavaPlugin implements Listener {
 
     public static ConfigurationSection getPackConfig(String pack) {
         return getInstance().getConfig().getConfigurationSection("packs." + pack);
+    }
+
+    private void createCredits() {
+        try {
+            new Credits().createCredits();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateConfig() {
+        int configVersion = this.getConfig().getInt("config.version");
+        int pluginConfigVersion = Objects.requireNonNull(this.getConfig().getDefaults()).getInt("config.version");
+
+        if (!devMode && configVersion < pluginConfigVersion) return;
+
+        try {
+            ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList(), true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Logger.log(Logger.LogLevel.INFO, "Updated Config to Version: " + this.getConfig().getInt("config.version"));
     }
 
 }
