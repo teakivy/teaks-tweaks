@@ -110,7 +110,8 @@ packs:
     enabled: false
 
   # Sleepy Spiders Eggs
-  # Instantly mine deepslate blocks if you have a netherite pickaxe with efficiency 5 or higher, and haste 2 or higher.
+  # When you sleep with a spider nearby you have a chance to "consume" 1-5 spider eggs, which give xp
+  # Inspired by a tweet by @Xilefian https://twitter.com/Xilefian/status/1584642036862685184
   sleepy-spider-eggs:
     enabled: false
 
@@ -599,7 +600,10 @@ packs:
   # Drop a Nether Star above a Lodestone to create a chunk loader (AKA a Loadstone) which keeps the chunk it's in loaded until it is broken.
   chunk-loaders:
     enabled: false
+    # Whether or not the chunk loader will show particles
     show-particles: true
+    # The item it takes to load a chunk
+    cost: NETHER_STAR
 
   # Confetti Creepers
   # There is a chance each creeper will explode into confetti and do no damage to blocks.
