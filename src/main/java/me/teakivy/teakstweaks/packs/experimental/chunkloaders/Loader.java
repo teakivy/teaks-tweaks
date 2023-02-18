@@ -23,7 +23,7 @@ public class Loader extends BasePack {
     @EventHandler
     public void onItemDrop(PlayerDropItemEvent event) {
         Item item = event.getItemDrop();
-        if (item.getItemStack().getType() == Material.NETHER_STAR) {
+        if (item.getItemStack().getType() == Material.valueOf(config.getString("cost"))) {
             new BukkitRunnable() {
                 @Override
                 public void run() {
@@ -35,14 +35,13 @@ public class Loader extends BasePack {
                         }
                         block.getLocation().getChunk().setForceLoaded(true);
                         AreaEffectCloud marker = (AreaEffectCloud) block.getWorld().spawnEntity(block.getLocation().add(.5, 1, .5), EntityType.AREA_EFFECT_CLOUD);
-//
+
                         marker.setDuration(Integer.MAX_VALUE);
                         marker.setParticle(Particle.SUSPENDED);
                         marker.setWaitTime(0);
                         marker.setColor(Color.WHITE);
                         marker.setRadius(.001F);
                         marker.addScoreboardTag("loaded");
-
 
                         if (main.getConfig().getBoolean("packs.chunk-loaders.show-particles")) {
                             marker.getWorld().spawnParticle(Particle.FLAME, item.getLocation(), 100, 0, 0, 0, .5);
