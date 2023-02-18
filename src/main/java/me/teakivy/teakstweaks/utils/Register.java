@@ -59,15 +59,18 @@ import me.teakivy.teakstweaks.packs.utilities.spawningspheres.Sphere;
 import me.teakivy.teakstweaks.packs.utilities.spectatorconduitpower.ConduitPower;
 import me.teakivy.teakstweaks.packs.utilities.spectatornightvision.NightVision;
 
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Register {
 
     private final Map<String, BasePack> packs;
+    private final List<String> enabledPacks;
 
     public Register() {
+        enabledPacks = new ArrayList<>();
+
         packs = Stream.of(new AntiCreeper(),
             new AntiEnderman(),
             new AntiGhast(),
@@ -128,20 +131,28 @@ public class Register {
     }
 
     public void registerAll() {
+        registerAll(false);
+    }
+
+    public void registerAll(boolean bypassEnabled) {
         Main main = Main.getInstance();
         unregisterAll();
-        for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
-            if (main.getConfig().getBoolean("packs." + pack + ".enabled")) {
+        for (String pack : Objects.requireNonNull(main.getConfig().getConfigurationSection("packs")).getKeys(false)) {
+            if (main.getConfig().getBoolean("packs." + pack + ".enabled") || bypassEnabled) {
                 registerPack(pack);
             }
         }
     }
 
     public void unregisterAll() {
+        unregisterAll(false);
+    }
+
+    public void unregisterAll(boolean bypassEnabled) {
         Main main = Main.getInstance();
         main.clearPacks();
-        for (String pack : main.getConfig().getConfigurationSection("packs").getKeys(false)) {
-            if (!main.getConfig().getBoolean("packs." + pack + ".enabled")) {
+        for (String pack : Objects.requireNonNull(main.getConfig().getConfigurationSection("packs")).getKeys(false)) {
+            if (main.getConfig().getBoolean("packs." + pack + ".enabled") || bypassEnabled) {
                 unregisterPack(pack);
             }
         }
@@ -150,11 +161,15 @@ public class Register {
     public void unregisterPack(String pack) {
         BasePack pk = packs.get(pack);
         if (pk != null) pk.unregister();
+
+        enabledPacks.remove(pack);
     }
 
     public void registerPack(String pack) {
         BasePack pk = packs.get(pack);
         if (pk != null) pk.init();
+
+        enabledPacks.add(pack);
     }
 
     public static void registerCommands() {
@@ -188,6 +203,25 @@ public class Register {
         for (AbstractCommand cmd : cmds) {
             cmd.register();
         }
+    }
+
+    public Set<String> getAllPacks() {
+        Main main = Main.getInstance();
+        return Objects.requireNonNull(main.getConfig().getConfigurationSection("packs")).getKeys(false);
+    }
+
+    public List<String> getEnabledPacks() {
+        return enabledPacks;
+    }
+
+    public List<String> getDisabledPacks() {
+        List<String> disabledPacks = new ArrayList<>();
+        for (String pack : getAllPacks()) {
+            if (!enabledPacks.contains(pack)) {
+                disabledPacks.add(pack);
+            }
+        }
+        return disabledPacks;
     }
 
 }

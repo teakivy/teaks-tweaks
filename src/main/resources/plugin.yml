@@ -12,6 +12,7 @@ permissions:
     description: All Teak's Tweaks Permissions
     children:
       teakstweaks.reload: true
+      teakstweaks.manage: true
       teakstweaks.afk.*: true
       teakstweaks.back.*: true
       teakstweaks.spectatorconduitpower.*: true
@@ -37,6 +38,10 @@ permissions:
 
   teakstweaks.reload:
     description: Reload Teak's Tweaks
+    default: op
+
+  teakstweaks.manage:
+    description: Manage Teak's Tweaks
     default: op
 
   teakstweaks.packlist.*:
