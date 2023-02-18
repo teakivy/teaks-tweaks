@@ -67,7 +67,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         getCommandMap().register("", cmd);
         cmd.setExecutor(this);
 
-        Logger.log(Logger.LogLevel.INFO, "Registered command: /" + command);
+        Logger.log(Logger.LogLevel.INFO, "Registered Command: /" + command);
     }
 
     final CommandMap getCommandMap() {
