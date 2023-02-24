@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class UnpackableNetherWart extends AbstractRecipe {
 
     public UnpackableNetherWart() {
-        super("Unpackable Nether Wart");
+        super("Unpackable Nether Wart", "unpackable-nether-wart");
     }
 
     @Override

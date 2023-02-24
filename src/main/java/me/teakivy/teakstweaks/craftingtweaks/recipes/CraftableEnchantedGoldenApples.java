@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapedRecipe;
 public class CraftableEnchantedGoldenApples extends AbstractRecipe {
 
     public CraftableEnchantedGoldenApples() {
-        super("Craftable Enchanted Golden Apples");
+        super("Craftable Enchanted Golden Apples", "craftable-enchanted-golden-apples");
     }
 
     @Override

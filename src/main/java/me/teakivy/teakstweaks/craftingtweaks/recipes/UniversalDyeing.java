@@ -15,7 +15,7 @@ import java.util.List;
 public class UniversalDyeing extends AbstractRecipe {
 
     public UniversalDyeing() {
-        super("Universal Dyeing");
+        super("Universal Dyeing", "universal-dyeing");
     }
 
     @Override

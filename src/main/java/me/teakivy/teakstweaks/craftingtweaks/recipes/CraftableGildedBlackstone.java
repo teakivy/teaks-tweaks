@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class CraftableGildedBlackstone extends AbstractRecipe {
 
     public CraftableGildedBlackstone() {
-        super("Craftable Gilded Blackstone");
+        super("Craftable Gilded Blackstone", "craftable-gilded-blackstone");
     }
 
     @Override

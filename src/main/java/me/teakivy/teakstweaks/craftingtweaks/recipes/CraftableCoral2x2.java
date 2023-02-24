@@ -14,7 +14,7 @@ import java.util.List;
 public class CraftableCoral2x2 extends AbstractRecipe {
 
     public CraftableCoral2x2() {
-        super("Craftable Coral 2x2");
+        super("Craftable Coral 2x2", "craftable-coral-blocks-2x2");
     }
 
     @Override

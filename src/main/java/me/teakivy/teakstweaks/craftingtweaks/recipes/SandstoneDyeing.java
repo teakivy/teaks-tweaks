@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class SandstoneDyeing extends AbstractRecipe {
 
     public SandstoneDyeing() {
-        super("Sandstone Dyeing");
+        super("Sandstone Dyeing", "sandstone-dyeing");
     }
 
     @Override

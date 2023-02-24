@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapedRecipe;
 public class CraftableHorseArmor extends AbstractRecipe {
 
     public CraftableHorseArmor() {
-        super("Craftable Horse Armor");
+        super("Craftable Horse Armor", "craftable-horse-armor");
     }
 
     @Override

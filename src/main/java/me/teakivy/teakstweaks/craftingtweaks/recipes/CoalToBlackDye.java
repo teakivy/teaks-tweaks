@@ -9,7 +9,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class CoalToBlackDye extends AbstractRecipe {
 
      public CoalToBlackDye() {
-         super("Coal To Black Dye");
+         super("Coal To Black Dye", "coal-to-black-dye");
      }
 
     @Override

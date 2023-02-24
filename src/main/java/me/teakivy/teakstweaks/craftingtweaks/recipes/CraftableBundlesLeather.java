@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapedRecipe;
 public class CraftableBundlesLeather extends AbstractRecipe {
 
     public CraftableBundlesLeather() {
-        super("Craftable Bundles Leather");
+        super("Craftable Bundles Leather", "craftable-bundles-leather");
     }
 
     @Override

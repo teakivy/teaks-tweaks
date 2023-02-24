@@ -14,7 +14,7 @@ import java.util.List;
 public class CraftableBlackstone extends AbstractRecipe {
 
     public CraftableBlackstone() {
-        super("Craftable Blackstone");
+        super("Craftable Blackstone", "craftable-blackstone");
     }
 
     @Override

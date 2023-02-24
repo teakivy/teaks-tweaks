@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class CraftableSmallDripleaves extends AbstractRecipe {
 
     public CraftableSmallDripleaves() {
-        super("Craftable Small Dripleaves");
+        super("Craftable Small Dripleaves", "craftable-small-dripleaf");
     }
 
     @Override

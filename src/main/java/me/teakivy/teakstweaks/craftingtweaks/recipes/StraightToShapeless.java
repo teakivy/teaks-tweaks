@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class StraightToShapeless extends AbstractRecipe {
 
     public StraightToShapeless() {
-        super("Straight To Shapeless");
+        super("Straight To Shapeless", "straight-to-shapeless");
     }
 
     @Override

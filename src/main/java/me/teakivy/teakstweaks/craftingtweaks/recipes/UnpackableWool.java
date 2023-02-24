@@ -14,7 +14,7 @@ import java.util.List;
 public class UnpackableWool extends AbstractRecipe {
 
     public UnpackableWool() {
-        super("Unpackable Wool");
+        super("Unpackable Wool", "unpackable-wool");
     }
 
     @Override

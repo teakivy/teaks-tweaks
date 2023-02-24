@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapedRecipe;
 public class CraftableBundlesRabbitHide extends AbstractRecipe {
 
     public CraftableBundlesRabbitHide() {
-        super("Craftable Bundles Rabbit Hide");
+        super("Craftable Bundles Rabbit Hide", "craftable-bundles-rabbit-hide");
     }
 
     @Override

@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapedRecipe;
 public class CraftableSculkSensors extends AbstractRecipe {
 
     public CraftableSculkSensors() {
-        super("Craftable Sculk Sensors");
+        super("Craftable Sculk Sensors", "craftable-sculk-sensors");
     }
 
     @Override

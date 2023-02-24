@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapedRecipe;
 public class CraftableGravel  extends AbstractRecipe {
 
     public CraftableGravel() {
-        super("CraftableGravel");
+        super("CraftableGravel", "craftable-gravel");
     }
 
     @Override

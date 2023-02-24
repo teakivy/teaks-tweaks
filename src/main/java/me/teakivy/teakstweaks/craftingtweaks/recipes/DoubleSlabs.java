@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class DoubleSlabs extends AbstractRecipe {
 
     public DoubleSlabs() {
-        super("Double Slabs");
+        super("Double Slabs", "double-slabs");
     }
 
     @Override

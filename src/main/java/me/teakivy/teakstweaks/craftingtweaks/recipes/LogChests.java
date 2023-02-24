@@ -14,7 +14,7 @@ import java.util.List;
 public class LogChests extends AbstractRecipe {
 
     public LogChests() {
-        super("Log Chests");
+        super("Log Chests", "log-chests");
     }
 
     @Override

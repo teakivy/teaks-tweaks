@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapedRecipe;
 public class MoreTrapdoors extends AbstractRecipe {
 
     public MoreTrapdoors() {
-        super("More Trapdoors");
+        super("More Trapdoors", "more-trapdoors");
     }
 
     @Override

@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class UnpackableIce extends AbstractRecipe {
 
     public UnpackableIce() {
-        super("Unpackable Ice");
+        super("Unpackable Ice", "unpackable-ice");
     }
 
     @Override

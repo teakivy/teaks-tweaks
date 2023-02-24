@@ -11,7 +11,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class DropperToDispenser extends AbstractRecipe {
 
     public DropperToDispenser() {
-        super("Dropper To Dispenser");
+        super("Dropper To Dispenser", "dropper-to-dispenser");
     }
 
     @Override

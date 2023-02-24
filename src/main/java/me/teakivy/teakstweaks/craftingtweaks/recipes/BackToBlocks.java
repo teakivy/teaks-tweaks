@@ -11,7 +11,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class BackToBlocks extends AbstractRecipe {
 
     public BackToBlocks() {
-        super("Back To Blocks");
+        super("Back To Blocks", "back-to-blocks");
     }
 
     @Override

@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 public class PowderToGlass extends AbstractRecipe {
 
     public PowderToGlass() {
-        super("Powder to Glass");
+        super("Powder to Glass", "powder-to-glass");
     }
 
     @Override

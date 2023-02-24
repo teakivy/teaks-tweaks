@@ -14,7 +14,7 @@ import java.util.List;
 public class CraftableSporeBlossoms extends AbstractRecipe {
 
     public CraftableSporeBlossoms() {
-        super("Craftable Spore Blossoms");
+        super("Craftable Spore Blossoms", "craftable-spore-blossoms");
     }
 
     @Override
