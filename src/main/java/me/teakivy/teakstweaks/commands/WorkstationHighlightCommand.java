@@ -5,6 +5,7 @@ import me.teakivy.teakstweaks.packs.survival.workstationhighlights.Highlighter;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.MessageHandler;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.command.Command;
@@ -44,6 +45,9 @@ public class WorkstationHighlightCommand extends AbstractCommand {
         double distance = Integer.MAX_VALUE;
         for (Entity e : player.getNearbyEntities(3, 3, 3)) {
             if (e.getType() == EntityType.VILLAGER) {
+                Villager villager = (Villager) e;
+                if (villager.getProfession() == Villager.Profession.NONE) continue;
+                if (villager.getProfession() == Villager.Profession.NITWIT) continue;
                 double d = e.getLocation().distanceSquared(player.getLocation());
                 if (d < distance) {
                     entity = e;
@@ -53,7 +57,7 @@ public class WorkstationHighlightCommand extends AbstractCommand {
         }
 
         if (entity == null) {
-            player.sendMessage(MessageHandler.getCmdMessage("workstationhighlight", "errpr.no-villager"));
+            player.sendMessage(ChatColor.RED + "No villager workstation found nearby!");
             return true;
         }
 
