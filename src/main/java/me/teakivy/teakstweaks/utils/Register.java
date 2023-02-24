@@ -34,7 +34,9 @@ import me.teakivy.teakstweaks.packs.survival.durabilityping.DuraPing;
 import me.teakivy.teakstweaks.packs.survival.fastleafdecay.Decay;
 import me.teakivy.teakstweaks.packs.survival.graves.GraveEvents;
 import me.teakivy.teakstweaks.packs.survival.multiplayersleep.MultiSleep;
+import me.teakivy.teakstweaks.packs.survival.netherportalcoords.NetherPortalCoords;
 import me.teakivy.teakstweaks.packs.survival.pillagertools.PillagerSpawning;
+import me.teakivy.teakstweaks.packs.survival.realtimeclock.RealTimeClock;
 import me.teakivy.teakstweaks.packs.survival.trackrawstatistics.RawStats;
 import me.teakivy.teakstweaks.packs.survival.trackstatistics.StatTracker;
 import me.teakivy.teakstweaks.packs.survival.unlockallrecipes.UnlockRecipes;
@@ -53,8 +55,12 @@ import me.teakivy.teakstweaks.packs.teakstweaks.stairchairs.StairChairs;
 import me.teakivy.teakstweaks.packs.teakstweaks.sudoku.Sudoku;
 import me.teakivy.teakstweaks.packs.teakstweaks.unstickypistons.UnstickyPistons;
 import me.teakivy.teakstweaks.packs.teleportation.back.Back;
+import me.teakivy.teakstweaks.packs.teleportation.homes.Homes;
+import me.teakivy.teakstweaks.packs.teleportation.spawn.Spawn;
+import me.teakivy.teakstweaks.packs.teleportation.tpa.TPA;
 import me.teakivy.teakstweaks.packs.utilities.customvillagershops.CustomVillager;
 import me.teakivy.teakstweaks.packs.utilities.itemaverages.ItemTracker;
+import me.teakivy.teakstweaks.packs.utilities.killboats.KillBoats;
 import me.teakivy.teakstweaks.packs.utilities.spawningspheres.Sphere;
 import me.teakivy.teakstweaks.packs.utilities.spectatorconduitpower.ConduitPower;
 import me.teakivy.teakstweaks.packs.utilities.spectatornightvision.NightVision;
@@ -125,7 +131,13 @@ public class Register {
             new FixedItemFrames(),
             new InstantDeepslate(),
             new BatMembranes(),
-            new SleepySpiderEggs()
+            new SleepySpiderEggs(),
+            new NetherPortalCoords(),
+            new RealTimeClock(),
+            new Spawn(),
+            new Homes(),
+            new TPA(),
+            new KillBoats()
         ).collect(Collectors.toMap(BasePack::getPath, x -> x));
 
     }

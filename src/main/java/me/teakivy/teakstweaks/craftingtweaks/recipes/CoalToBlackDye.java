@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
@@ -19,6 +18,6 @@ public class CoalToBlackDye extends AbstractRecipe {
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.BLACK_DYE));
         recipe.addIngredient(Material.COAL);
 
-        Bukkit.addRecipe(recipe);
+
     }
 }
