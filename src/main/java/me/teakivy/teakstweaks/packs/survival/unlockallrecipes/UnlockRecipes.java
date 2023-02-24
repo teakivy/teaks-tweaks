@@ -31,7 +31,7 @@ public class UnlockRecipes extends BasePack {
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         for (NamespacedKey recipe : recipes) {
-            player.discoverRecipe(recipe);
+            if (!player.hasDiscoveredRecipe(recipe) && !recipe.getNamespace().equals("bukkit")) player.discoverRecipe(recipe);
         }
     }
 
