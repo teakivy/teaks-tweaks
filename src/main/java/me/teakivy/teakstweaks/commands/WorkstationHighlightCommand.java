@@ -12,24 +12,43 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.*;
 import org.bukkit.entity.memory.MemoryKey;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class WorkstationHighlightCommand extends AbstractCommand {
 
     static Main main = Main.getPlugin(Main.class);
 
+    final String[] professionTypes;
+
     public WorkstationHighlightCommand() {
         super("workstation-highlights", MessageHandler.getCmdName("workstationhighlight"), MessageHandler.getCmdUsage("workstationhighlight"), MessageHandler.getCmdDescription("workstationhighlight"), MessageHandler.getCmdAliases("workstationhighlight"));
+
+        professionTypes = new String[] {
+            "ARMORER",
+            "ARMOURER",
+            "BUTCHER",
+            "CARTOGRAPHER",
+            "CLERIC",
+            "FARMER",
+            "FISHERMAN",
+            "FLETCHER",
+            "LEATHERWORKER",
+            "LIBRARIAN",
+            "MASON",
+            "SHEPHERD",
+            "TOOLSMITH",
+            "WEAPONSMITH",
+            "ANY"
+        };
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
-        if (!main.getConfig().getBoolean("packs.workstation-highlights.enabled")) {
-            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
-            return true;
-        }
-
-
         if (!sender.hasPermission("teakstweaks.workstationhighlights.execute")) {
             sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
@@ -40,14 +59,52 @@ public class WorkstationHighlightCommand extends AbstractCommand {
             return true;
         }
 
+        String profession = "ANY";
+        int radius = 3;
+
+        if (args.length == 1) {
+            if (!Arrays.toString(professionTypes).contains(args[0].toUpperCase())) {
+                sender.sendMessage(ChatColor.RED + "Invalid profession type!");
+                return true;
+            }
+
+            profession = args[0].toUpperCase();
+        }
+
+        if (args.length == 2) {
+            if (!Arrays.toString(professionTypes).contains(args[0].toUpperCase())) {
+                sender.sendMessage(ChatColor.RED + "Invalid profession type!");
+                return true;
+            }
+
+            profession = args[0].toUpperCase();
+
+            try {
+                radius = Integer.parseInt(args[1]);
+            } catch (NumberFormatException e) {
+                sender.sendMessage(ChatColor.RED + "Invalid radius!");
+                return true;
+            }
+        }
+
+        if (profession.equalsIgnoreCase("armourer")) profession = "ARMORER";
+
+        if (radius < 1 || radius > 16) {
+            sender.sendMessage(ChatColor.RED + "Radius must be between 1 and 16!");
+            return true;
+        }
+
         Player player = (Player) sender;
         Entity entity = null;
         double distance = Integer.MAX_VALUE;
-        for (Entity e : player.getNearbyEntities(3, 3, 3)) {
+        for (Entity e : player.getNearbyEntities(radius, radius, radius)) {
             if (e.getType() == EntityType.VILLAGER) {
                 Villager villager = (Villager) e;
                 if (villager.getProfession() == Villager.Profession.NONE) continue;
                 if (villager.getProfession() == Villager.Profession.NITWIT) continue;
+
+                if (!profession.equals("ANY") && !villager.getProfession().toString().equals(profession)) continue;
+
                 double d = e.getLocation().distanceSquared(player.getLocation());
                 if (d < distance) {
                     entity = e;
@@ -68,6 +125,7 @@ public class WorkstationHighlightCommand extends AbstractCommand {
             return true;
         }
 
+        villager.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 200, 0, false, false, false));
         Highlighter.glowingBlock(jobSite, 200);
         createParticles(jobSite.add(.5, 1, .5), 200);
         player.sendMessage(MessageHandler.getCmdMessage("workstationhighlight", "jobsite-found")
@@ -86,5 +144,29 @@ public class WorkstationHighlightCommand extends AbstractCommand {
         e.setRadiusOnUse(0);
         e.setDuration(length);
         e.setWaitTime(10);
+    }
+
+    List<String> arguments1 = new ArrayList<>();
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+
+        if (arguments1.isEmpty()) {
+            for (String s : professionTypes) {
+                if (s.equalsIgnoreCase("ARMOURER")) continue;
+                arguments1.add(s.toLowerCase());
+            }
+        }
+
+        List<String> result = new ArrayList<>();
+        if (args.length == 1) {
+            if ("armourer".startsWith(args[0].toLowerCase()) && args[0].contains("u")) result.add("armourer");
+            for (String a : arguments1) {
+                if (a.toLowerCase().startsWith(args[0].toLowerCase()))
+                    result.add(a);
+            }
+            return result;
+        }
+        return null;
     }
 }
