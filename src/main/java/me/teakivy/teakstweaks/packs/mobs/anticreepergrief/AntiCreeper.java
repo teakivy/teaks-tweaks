@@ -17,7 +17,7 @@ public class AntiCreeper extends BasePack {
     @EventHandler
     public void onExplosion(EntityExplodeEvent event) {
         Entity entity = event.getEntity();
-        if (entity.getType().equals(EntityType.CREEPER)) {
+        if (entity.getType().equals(EntityType.CREEPER) && !config.getBoolean("do-block-damage")) {
             event.blockList().clear();
         }
     }
@@ -26,7 +26,7 @@ public class AntiCreeper extends BasePack {
     public void onExplosionDamage(EntityDamageByEntityEvent event) {
         EntityDamageEvent.DamageCause damageCause = event.getCause();
 
-        if (damageCause == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) {
+        if (damageCause == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION && !config.getBoolean("do-entity-damage")) {
             if (event.getDamager().getType().equals(EntityType.CREEPER)) {
                 event.setCancelled(true);
             }

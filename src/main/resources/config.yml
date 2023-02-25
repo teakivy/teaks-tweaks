@@ -354,6 +354,8 @@ packs:
   # Prevents creepers from blowing up, blocks and players do not take damage.
   anti-creeper-grief:
     enabled: false
+    do-block-damage: false
+    do-entity-damage: false
 
   # Anti Enderman Grief
   # Prevents endermen from picking up blocks.
