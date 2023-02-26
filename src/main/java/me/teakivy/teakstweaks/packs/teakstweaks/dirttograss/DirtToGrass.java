@@ -1,6 +1,7 @@
-package me.teakivy.teakstweaks.packs.teakstweaks.betterfoliage;
+package me.teakivy.teakstweaks.packs.teakstweaks.dirttograss;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -11,10 +12,10 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class BetterFoliage extends BasePack {
+public class DirtToGrass extends BasePack {
 
-    public BetterFoliage() {
-        super("Better Foliage", "better-foliage");
+    public DirtToGrass() {
+        super("Dirt to Grass", "dirt-to-grass", PackType.TEAKSTWEAKS, Material.GRASS);
     }
 
     @EventHandler
