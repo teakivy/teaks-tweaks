@@ -146,27 +146,30 @@ public class WorkstationHighlightCommand extends AbstractCommand {
         e.setWaitTime(10);
     }
 
-    List<String> arguments1 = new ArrayList<>();
+List<String> arguments1 = new ArrayList<>();
 
-    @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+@Override
+public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
 
-        if (arguments1.isEmpty()) {
-            for (String s : professionTypes) {
-                if (s.equalsIgnoreCase("ARMOURER")) continue;
-                arguments1.add(s.toLowerCase());
-            }
+    if (arguments1.isEmpty()) {
+        for (String s : professionTypes) {
+            if (s.equalsIgnoreCase("armourer")) continue;
+            arguments1.add(s.toLowerCase());
         }
-
-        List<String> result = new ArrayList<>();
-        if (args.length == 1) {
-            if ("armourer".startsWith(args[0].toLowerCase()) && args[0].contains("u")) result.add("armourer");
-            for (String a : arguments1) {
-                if (a.toLowerCase().startsWith(args[0].toLowerCase()))
-                    result.add(a);
-            }
-            return result;
-        }
-        return null;
     }
+
+    List<String> result = new ArrayList<>();
+    if (args.length == 1) {
+        if ("armourer".startsWith(args[0].toLowerCase()) && args[0].contains("u")) result.add("armourer");
+
+        for (String a : arguments1) {
+            if (a.toLowerCase().startsWith(args[0].toLowerCase()))
+                result.add(a);
+        }
+
+        return result;
+    }
+
+    return null;
+}
 }
