@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.hermitcraft.treasuregems;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
@@ -36,7 +37,7 @@ public class Gems extends BasePack {
             .collect(Collectors.toList());
 
     public Gems() {
-        super ("Treasure Gems", "treasure-gems");
+        super ("Treasure Gems", "treasure-gems", PackType.HERMITCRAFT, Material.EMERALD);
     }
 
     @EventHandler

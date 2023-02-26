@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.hermitcraft.thundershrine;
 
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -28,7 +29,7 @@ public class Shrine extends BasePack {
     int particleTask = -1;
 
     public Shrine() {
-        super("Thunder Shrine", "thunder-shrine");
+        super("Thunder Shrine", "thunder-shrine", PackType.HERMITCRAFT, Material.NETHER_STAR);
     }
 
     @Override

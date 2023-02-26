@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.experimental.xpmanagement;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -26,7 +27,7 @@ import java.util.List;
 public class XPManagement extends BasePack {
 
     public XPManagement() {
-        super("XP Management", "xp-management");
+        super("XP Management", "xp-management", PackType.EXPERIMENTAL, Material.EXPERIENCE_BOTTLE);
     }
 
     @Override

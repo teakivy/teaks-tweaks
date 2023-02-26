@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.teakstweaks.editsigns;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -21,7 +22,7 @@ import org.bukkit.persistence.PersistentDataType;
 public class EditSigns extends BasePack {
 
     public EditSigns() {
-        super("Editable Signs", "editable-signs");
+        super("Editable Signs", "editable-signs", PackType.TEAKSTWEAKS, Material.OAK_SIGN);
     }
 
     @Override

@@ -1,7 +1,9 @@
 package me.teakivy.teakstweaks.packs.teakstweaks.chatcolors;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.inventory.PrepareAnvilEvent;
@@ -12,7 +14,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class ChatColors extends BasePack {
 
     public ChatColors() {
-        super("Chat Colors", "chat-colors");
+        super("Chat Colors", "chat-colors", PackType.TEAKSTWEAKS, Material.PURPLE_WOOL);
     }
 
     @EventHandler

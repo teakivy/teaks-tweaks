@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.hermitcraft.wanderingtrades;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
@@ -19,7 +20,7 @@ import java.util.Random;
 public class Trades extends BasePack {
 
     public Trades() {
-        super("Wandering Trades", "wandering-trades");
+        super("Wandering Trades", "wandering-trades", PackType.HERMITCRAFT, Material.LEAD);
     }
 
     @EventHandler

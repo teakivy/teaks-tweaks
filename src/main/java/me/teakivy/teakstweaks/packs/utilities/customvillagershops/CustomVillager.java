@@ -1,9 +1,11 @@
 package me.teakivy.teakstweaks.packs.utilities.customvillagershops;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
@@ -23,7 +25,7 @@ import java.util.List;
 public class CustomVillager extends BasePack {
 
     public CustomVillager() {
-        super("Custom Villager Shops", "custom-villager-shops");
+        super("Custom Villager Shops", "custom-villager-shops", PackType.UTILITIES, Material.VILLAGER_SPAWN_EGG);
     }
 
     @EventHandler

@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.mobs.doubleshulkershells;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -11,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 public class DoubleShulkers extends BasePack {
 
     public DoubleShulkers() {
-        super("Double Shulker Shells", "double-shulker-shells");
+        super("Double Shulker Shells", "double-shulker-shells", PackType.MOBS, Material.SHULKER_SHELL);
     }
 
     @EventHandler

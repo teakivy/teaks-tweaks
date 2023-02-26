@@ -1,13 +1,15 @@
 package me.teakivy.teakstweaks.packs.teakstweaks.sudoku;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
+import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 public class Sudoku extends BasePack {
 
     public Sudoku() {
-        super("Sudoku", "sudoku");
+        super("Sudoku", "sudoku", PackType.TEAKSTWEAKS, Material.GOLDEN_SWORD);
     }
 
     @EventHandler

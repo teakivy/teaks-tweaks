@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.utilities.itemaverages;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.Bukkit;
@@ -28,7 +29,7 @@ public class ItemTracker extends BasePack {
     static HashMap<Material, Integer> items = new HashMap<>();
 
     public ItemTracker() {
-        super("Item Averages", "item-averages");
+        super("Item Averages", "item-averages", PackType.UTILITIES, Material.HOPPER);
     }
 
     public static void spawnTracker(Location loc, Player player) {

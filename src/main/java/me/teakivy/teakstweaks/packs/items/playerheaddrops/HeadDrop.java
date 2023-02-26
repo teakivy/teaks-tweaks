@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.items.playerheaddrops;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.packs.mobs.moremobheads.Head;
 import me.teakivy.teakstweaks.packs.mobs.moremobheads.MobHeads;
 import org.bukkit.Material;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 public class HeadDrop extends BasePack {
 
     public HeadDrop() {
-        super("Player Head Drops", "player-head-drops");
+        super("Player Head Drops", "player-head-drops", PackType.ITEMS, Material.PLAYER_HEAD);
     }
 
     @EventHandler

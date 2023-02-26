@@ -1,10 +1,12 @@
 package me.teakivy.teakstweaks.packs.survival.afkdisplay;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -19,7 +21,7 @@ import java.util.UUID;
 public class AFK extends BasePack {
 
     public AFK() {
-        super("AFK Display", "afk-display");
+        super("AFK Display", "afk-display", PackType.SURVIVAL, Material.BELL);
     }
 
     @Override

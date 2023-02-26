@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.mobs.moremobheads;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.packs.mobs.moremobheads.mobs.*;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -20,7 +21,7 @@ import java.util.UUID;
 public class MobHeads extends BasePack {
 
     public MobHeads() {
-        super("More Mob Heads", "more-mob-heads");
+        super("More Mob Heads", "more-mob-heads", PackType.MOBS, Material.ZOMBIE_HEAD);
     }
 
     @EventHandler

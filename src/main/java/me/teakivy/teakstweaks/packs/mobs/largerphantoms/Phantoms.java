@@ -1,7 +1,9 @@
 package me.teakivy.teakstweaks.packs.mobs.largerphantoms;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.Statistic;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Entity;
@@ -16,7 +18,7 @@ import java.util.Objects;
 public class Phantoms extends BasePack {
 
     public Phantoms() {
-        super("Larger Phantoms", "larger-phantoms");
+        super("Larger Phantoms", "larger-phantoms", PackType.MOBS, Material.PHANTOM_SPAWN_EGG);
     }
 
     @EventHandler

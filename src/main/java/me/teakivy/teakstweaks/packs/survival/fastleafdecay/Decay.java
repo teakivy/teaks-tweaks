@@ -1,10 +1,8 @@
 package me.teakivy.teakstweaks.packs.survival.fastleafdecay;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import org.bukkit.Particle;
-import org.bukkit.Sound;
-import org.bukkit.SoundCategory;
-import org.bukkit.Tag;
+import me.teakivy.teakstweaks.packs.PackType;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.type.Leaves;
@@ -22,7 +20,7 @@ public class Decay extends BasePack {
     // Thanks!
 
     public Decay() {
-        super("Fast Leaf Decay", "fast-leaf-decay");
+        super("Fast Leaf Decay", "fast-leaf-decay", PackType.SURVIVAL, Material.OAK_LEAVES);
     }
 
     private final List<Block> scheduledBlocks = new ArrayList<>();

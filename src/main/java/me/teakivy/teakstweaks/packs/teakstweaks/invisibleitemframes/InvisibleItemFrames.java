@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.teakstweaks.invisibleitemframes;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
@@ -12,7 +13,7 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 public class InvisibleItemFrames extends BasePack {
 
     public InvisibleItemFrames() {
-        super("Invisible Item Frames", "invisible-item-frames");
+        super("Invisible Item Frames", "invisible-item-frames", PackType.TEAKSTWEAKS, Material.GLOW_ITEM_FRAME);
     }
 
     @EventHandler

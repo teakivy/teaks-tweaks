@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.survival.cauldronconcrete;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.data.Levelled;
@@ -12,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
 public class ConcreteConverter extends BasePack {
 
     public ConcreteConverter() {
-        super ("Cauldron Concrete", "cauldron-concrete");
+        super ("Cauldron Concrete", "cauldron-concrete", PackType.SURVIVAL, Material.CAULDRON);
     }
 
     @EventHandler

@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.teakstweaks.stairchairs;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -23,7 +24,7 @@ import java.util.Objects;
 public class StairChairs extends BasePack {
 
     public StairChairs() {
-        super("Stair Chairs", "stair-chairs");
+        super("Stair Chairs", "stair-chairs", PackType.TEAKSTWEAKS, Material.SMOOTH_QUARTZ_STAIRS);
     }
 
 

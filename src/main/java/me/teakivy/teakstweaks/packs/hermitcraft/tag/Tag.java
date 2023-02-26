@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.hermitcraft.tag;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.packs.survival.afkdisplay.AFK;
 import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.Bukkit;
@@ -29,7 +30,7 @@ import java.util.Objects;
 public class Tag extends BasePack {
 
     public Tag() {
-        super ("Tag", "tag");
+        super ("Tag", "tag", PackType.HERMITCRAFT, Material.NAME_TAG);
     }
 
     @EventHandler

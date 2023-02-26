@@ -1,8 +1,10 @@
 package me.teakivy.teakstweaks.packs.experimental.confetticreepers;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
@@ -18,7 +20,7 @@ import java.util.Random;
 public class ConfettiCreeper extends BasePack {
 
     public ConfettiCreeper() {
-        super("Confetti Creeper", "confetti-creepers");
+        super("Confetti Creeper", "confetti-creepers", PackType.EXPERIMENTAL, Material.FIREWORK_ROCKET);
     }
 
     @EventHandler

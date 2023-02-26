@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.items.armoredelytra;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Base64Serializer;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
@@ -27,7 +28,7 @@ import java.util.UUID;
 public class ArmoredElytras extends BasePack {
 
     public ArmoredElytras() {
-        super("Armored Elytra", "armored-elytra");
+        super("Armored Elytra", "armored-elytra", PackType.ITEMS, Material.ELYTRA);
     }
 
     @EventHandler

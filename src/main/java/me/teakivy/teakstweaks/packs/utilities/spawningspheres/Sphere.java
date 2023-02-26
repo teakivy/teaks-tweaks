@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.utilities.spawningspheres;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.*;
 import org.bukkit.entity.ArmorStand;
@@ -20,7 +21,7 @@ import static org.bukkit.Color.RED;
 public class Sphere extends BasePack {
 
     public Sphere() {
-        super("Spawning Spheres", "spawning-spheres");
+        super("Spawning Spheres", "spawning-spheres", PackType.UTILITIES, Material.WARDEN_SPAWN_EGG);
     }
 
     @EventHandler

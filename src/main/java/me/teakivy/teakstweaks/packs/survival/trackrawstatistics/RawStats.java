@@ -1,7 +1,9 @@
 package me.teakivy.teakstweaks.packs.survival.trackrawstatistics;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 
@@ -11,7 +13,7 @@ public class RawStats extends BasePack {
     Scoreboard sb = Objects.requireNonNull(Bukkit.getScoreboardManager()).getMainScoreboard();
 
     public RawStats() {
-        super("Track Raw Statistics", "track-raw-statistics");
+        super("Track Raw Statistics", "track-raw-statistics", PackType.SURVIVAL, Material.PAPER);
     }
 
     public void init() {

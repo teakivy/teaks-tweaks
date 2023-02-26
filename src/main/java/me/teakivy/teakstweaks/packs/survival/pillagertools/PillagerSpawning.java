@@ -1,6 +1,8 @@
 package me.teakivy.teakstweaks.packs.survival.pillagertools;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
+import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Pillager;
 import org.bukkit.event.EventHandler;
@@ -10,7 +12,7 @@ import org.bukkit.event.entity.EntityPotionEffectEvent;
 public class PillagerSpawning extends BasePack {
 
     public PillagerSpawning() {
-        super("Pillager Tools", "pillager-tools");
+        super("Pillager Tools", "pillager-tools", PackType.SURVIVAL, Material.PILLAGER_SPAWN_EGG);
     }
 
     @EventHandler

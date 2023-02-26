@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.experimental.elevators;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
@@ -21,7 +22,7 @@ import java.util.List;
 public class Elevator extends BasePack {
 
     public Elevator() {
-        super("Elevators", "elevators");
+        super("Elevators", "elevators", PackType.EXPERIMENTAL, Material.ENDER_PEARL);
     }
 
     static List<Material> elevatorMaterials = new ArrayList<>();

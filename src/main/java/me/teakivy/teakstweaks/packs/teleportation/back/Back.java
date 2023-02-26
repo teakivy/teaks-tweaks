@@ -1,9 +1,11 @@
 package me.teakivy.teakstweaks.packs.teleportation.back;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -14,7 +16,7 @@ import java.util.UUID;
 public class Back extends BasePack {
 
     public Back() {
-        super("Back", "back");
+        super("Back", "back", PackType.TELEPORTATION, Material.REDSTONE_TORCH);
     }
 
     public static HashMap<UUID, Location> backLoc = new HashMap<>();

@@ -1,7 +1,9 @@
 package me.teakivy.teakstweaks.packs.teakstweaks.keepsmall;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.Entity;
@@ -13,7 +15,7 @@ import java.util.UUID;
 public class KeepSmall extends BasePack {
 
     public KeepSmall() {
-        super("Keep Small", "keep-small");
+        super("Keep Small", "keep-small", PackType.TEAKSTWEAKS, Material.STONE_BUTTON);
     }
 
     @EventHandler

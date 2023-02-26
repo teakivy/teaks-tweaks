@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.teakstweaks.instantdeepslate;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
@@ -17,7 +18,7 @@ public class InstantDeepslate extends BasePack {
     private final ArrayList<Material> instantMaterials = new ArrayList<>();
 
     public InstantDeepslate() {
-        super("Instant Deepslate", "instant-deepslate");
+        super("Instant Deepslate", "instant-deepslate", PackType.TEAKSTWEAKS, Material.DEEPSLATE);
     }
 
     @Override

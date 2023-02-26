@@ -41,8 +41,8 @@ import me.teakivy.teakstweaks.packs.survival.trackrawstatistics.RawStats;
 import me.teakivy.teakstweaks.packs.survival.trackstatistics.StatTracker;
 import me.teakivy.teakstweaks.packs.survival.unlockallrecipes.UnlockRecipes;
 import me.teakivy.teakstweaks.packs.survival.workstationhighlights.Highlighter;
-import me.teakivy.teakstweaks.packs.teakstweaks.betterfoliage.BetterFoliage;
 import me.teakivy.teakstweaks.packs.teakstweaks.chatcolors.ChatColors;
+import me.teakivy.teakstweaks.packs.teakstweaks.dirttograss.DirtToGrass;
 import me.teakivy.teakstweaks.packs.teakstweaks.editsigns.EditSigns;
 import me.teakivy.teakstweaks.packs.teakstweaks.fixeditemframes.FixedItemFrames;
 import me.teakivy.teakstweaks.packs.teakstweaks.instantdeepslate.InstantDeepslate;
@@ -127,7 +127,7 @@ public class Register {
             new UnstickyPistons(),
             new SlimeCream(),
             new InvisibleItemFrames(),
-            new BetterFoliage(),
+            new DirtToGrass(),
             new FixedItemFrames(),
             new InstantDeepslate(),
             new BatMembranes(),

@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.survival.graves;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
@@ -27,7 +28,7 @@ import java.util.UUID;
 public class GraveEvents extends BasePack {
 
     public GraveEvents() {
-        super("Graves", "graves");
+        super("Graves", "graves", PackType.SURVIVAL, Material.COBBLESTONE_WALL);
     }
 
     @EventHandler

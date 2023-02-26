@@ -1,12 +1,10 @@
 package me.teakivy.teakstweaks.packs.mobs.villagerdeathmessages;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.MessageHandler;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -14,7 +12,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 public class VillagerDeath extends BasePack {
 
     public VillagerDeath() {
-        super("Villager Death Messages", "villager-death-messages");
+        super("Villager Death Messages", "villager-death-messages", PackType.MOBS, Material.TORCH);
     }
 
     @EventHandler

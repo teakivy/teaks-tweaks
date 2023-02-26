@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.survival.durabilityping;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.MessageHandler;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -21,7 +22,7 @@ import java.util.UUID;
 public class DuraPing extends BasePack {
 
     public DuraPing() {
-        super("Durability Ping", "durability-ping");
+        super("Durability Ping", "durability-ping", PackType.SURVIVAL, Material.DIAMOND_PICKAXE);
     }
 
     private final HashMap<UUID, Long> pingCooldown = new HashMap<>();

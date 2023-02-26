@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.experimental.chunkloaders;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -17,7 +18,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class Loader extends BasePack {
 
     public Loader() {
-        super("Chunk Loaders", "chunk-loaders");
+        super("Chunk Loaders", "chunk-loaders", PackType.EXPERIMENTAL, Material.LODESTONE);
     }
 
     @EventHandler

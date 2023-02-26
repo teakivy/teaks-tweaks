@@ -1,11 +1,13 @@
 package me.teakivy.teakstweaks.packs.survival.multiplayersleep;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.MessageHandler;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
@@ -24,7 +26,7 @@ public class MultiSleep extends BasePack {
     BossBar bar;
 
     public MultiSleep() {
-        super("Multiplayer Sleep", "multiplayer-sleep");
+        super("Multiplayer Sleep", "multiplayer-sleep", PackType.SURVIVAL, Material.RED_BED);
         this.sleepingPercentage = getConfig().getInt("sleeping-percentage");
         this.bar = Bukkit.getServer().createBossBar("0 of 0 player(s) asleep", BarColor.WHITE, BarStyle.SOLID);
     }
