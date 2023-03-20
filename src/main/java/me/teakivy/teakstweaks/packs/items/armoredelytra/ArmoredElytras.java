@@ -42,7 +42,8 @@ public class ArmoredElytras extends BasePack {
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (getBlockBelow(itemDrop.getLocation()) != Material.ANVIL) return;
+                Material b = getBlockBelow(itemDrop.getLocation());
+                if (b != Material.ANVIL && b != Material.CHIPPED_ANVIL && b != Material.DAMAGED_ANVIL) return;
 
                 for (Entity entity : itemDrop.getNearbyEntities(1, 1, 1)) {
                     if (entity.getType() != EntityType.DROPPED_ITEM) continue;
@@ -213,14 +214,14 @@ public class ArmoredElytras extends BasePack {
         return item;
     }
 
-    private ItemStack getB64ChestplateFromArmoredElytra(ItemStack elytra) throws IOException {
+    public static ItemStack getB64ChestplateFromArmoredElytra(ItemStack elytra) throws IOException {
         if (!elytra.hasItemMeta()) return null;
         if (!elytra.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(main, "armored_elytra"), PersistentDataType.STRING)) return null;
         String chestplate = elytra.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(main, "chestplate_storage"), PersistentDataType.STRING);
         return deserializeItem(chestplate);
     }
 
-    private ItemStack getB64ElytraFromArmoredElytra(ItemStack elytra) throws IOException {
+    public static ItemStack getB64ElytraFromArmoredElytra(ItemStack elytra) throws IOException {
         if (!elytra.hasItemMeta()) return null;
         if (!elytra.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(main, "armored_elytra"), PersistentDataType.STRING)) return null;
         String oldElytra = elytra.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(main, "elytra_storage"), PersistentDataType.STRING);
@@ -231,7 +232,7 @@ public class ArmoredElytras extends BasePack {
         return Base64Serializer.itemStackArrayToBase64(new ItemStack[]{item});
     }
 
-    public ItemStack deserializeItem(String serialized) throws IOException {
+    public static ItemStack deserializeItem(String serialized) throws IOException {
         return Base64Serializer.itemStackArrayFromBase64(serialized)[0];
     }
 

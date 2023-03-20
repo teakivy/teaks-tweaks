@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.survival.graves;
 
 import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.packs.items.armoredelytra.ArmoredElytras;
 import me.teakivy.teakstweaks.utils.Base64Serializer;
 import org.bukkit.GameRule;
 import org.bukkit.Location;
@@ -77,7 +78,7 @@ public class GraveCreator {
         return null;
     }
 
-    public static void createGrave(Location location, Player player, int xp) {
+    public static void createGrave(Location location, Player player, int xp) throws IOException {
         Location loc = location.getBlock().getLocation().add(.5, 0, .5);
         ArmorStand as = (ArmorStand) Objects.requireNonNull(loc.getWorld()).spawnEntity(loc.add(0, -1.4, 0), EntityType.ARMOR_STAND);
         as.setGravity(false);
@@ -152,8 +153,34 @@ public class GraveCreator {
     }
 
 
-    public static String serializeItems(Player player) {
+    public static String serializeItems(Player player) throws IOException {
         ArrayList<ItemStack> items = new ArrayList<>(Arrays.asList(player.getInventory().getContents()));
+
+        System.out.println(items);
+
+        ArrayList<ItemStack> items2 = new ArrayList<>();
+
+        ArrayList<ItemStack> toRemove = new ArrayList<>();
+
+        for (ItemStack item : items) {
+            if (item == null) continue;
+            if (!item.getType().equals(Material.ELYTRA)) continue;
+
+            if (!item.hasItemMeta()) continue;
+            if (!item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(main, "armored_elytra"), PersistentDataType.STRING)) continue;
+
+            items2.add(ArmoredElytras.getB64ChestplateFromArmoredElytra(item));
+            items2.add(ArmoredElytras.getB64ElytraFromArmoredElytra(item));
+
+            toRemove.add(item);
+        }
+
+        items.addAll(items2);
+
+        items.removeAll(toRemove);
+
+        System.out.println(items);
+
         if (items.isEmpty()) return "";
         StringBuilder serialized = new StringBuilder();
         for (ItemStack item : items) {
