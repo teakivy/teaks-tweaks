@@ -7,7 +7,7 @@ import org.bukkit.GameRule;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.block.Block;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -24,58 +24,40 @@ public class GraveCreator {
 
     public static Main main = Main.getPlugin(Main.class);
 
-    public static Location findGraveLocation(Location location) {
-        if (location.getY() < location.getWorld().getMinHeight() || location.getY() > location.getWorld().getMaxHeight()) {
-            location = location.add(0, 0,  -1);
-        }
-        if (location.getY() > location.getWorld().getMaxHeight()) {
-            for (int i = location.getWorld().getMaxHeight(); i > location.getWorld().getMinHeight(); i--) {
-                Block current = location.getWorld().getBlockAt((int) location.getX(), i, (int) location.getZ());
-                if (!getAirTypes().contains(current.getType())) {
-                    return current.getLocation().add(0, 1, 0);
-                }
-            }
+    public static ConfigurationSection config = main.getConfig().getConfigurationSection("packs.graves");
 
-            if (main.getConfig().getBoolean("packs.graves.allow-void-graves")) {
-                location.getWorld().getBlockAt((int) location.getX(), location.getWorld().getMinHeight(), (int) location.getZ()).setType(Material.GRASS_BLOCK);
-                return location.getWorld().getBlockAt((int) location.getX(), location.getWorld().getMinHeight(), (int) location.getZ()).getLocation().add(0, 1, 0);
-            }
-        } else if (location.getY() < location.getWorld().getMinHeight()) {
-            for (int i = location.getWorld().getMinHeight(); i < location.getWorld().getMaxHeight(); i++) {
-                Block current = location.getWorld().getBlockAt((int) location.getX(), i, (int) location.getZ());
-                Block above = location.getWorld().getBlockAt((int) location.getX(), i + 1, (int) location.getZ());
-                if (!getAirTypes().contains(current.getType()) && getAirTypes().contains(above.getType())) {
-                    return current.getLocation().add(0, 1, 0);
-                }
-            }
+    public static Location findGraveLocation(Location loc) {
+        Location ogLoc = loc.clone();
 
-            if (main.getConfig().getBoolean("packs.graves.allow-void-graves")) {
-                location.getWorld().getBlockAt((int) location.getX(), location.getWorld().getMinHeight(), (int) location.getZ()).setType(Material.GRASS_BLOCK);
-                return location.getWorld().getBlockAt((int) location.getX(), location.getWorld().getMinHeight(), (int) location.getZ()).getLocation().add(0, 1, 0);
-            }
-        } else {
-            for (int i = (int) location.getY(); i > location.getWorld().getMinHeight(); i--) {
-                Block current = location.getWorld().getBlockAt((int) location.getX(), i, (int) location.getZ());
-                if (!getAirTypes().contains(current.getType())) {
-                    if (main.getConfig().getBoolean("packs.graves.create-above-fluids") && getFluidTypes().contains(current.getType())) {
-                        for (int y = i; y < location.getWorld().getMaxHeight(); y++) {
-                            current = location.getWorld().getBlockAt((int) location.getX(), y, (int) location.getZ());
-                            if (!getFluidTypes().contains(current.getType())) {
-                                return current.getLocation().add(0, 0, 0);
-                            }
-                        }
-                    }
-                    return current.getLocation().add(0, 1, 0);
-                }
-            }
-
-            if (main.getConfig().getBoolean("packs.graves.allow-void-graves")) {
-                location.getWorld().getBlockAt((int) location.getX(), location.getWorld().getMinHeight(), (int) location.getZ()).setType(Material.GRASS_BLOCK);
-                return location.getWorld().getBlockAt((int) location.getX(), location.getWorld().getMinHeight(), (int) location.getZ()).getLocation().add(0, 1, 0);
-            }
+        if (loc.getY() > loc.getWorld().getMaxHeight()) loc.setY(loc.getWorld().getMaxHeight());
+        if (loc.getY() < loc.getWorld().getMinHeight()) {
+            if (!config.getBoolean("allow-void-graves")) return null;
+            loc.setY(loc.getWorld().getMaxHeight());
         }
 
-        return null;
+        if (getTopBlock(loc, loc.getWorld().getMaxHeight()) == null) {
+            if (!config.getBoolean("allow-void-graves")) return null;
+            loc.setY(loc.getWorld().getMinHeight());
+
+            loc.getBlock().setType(Material.GRASS_BLOCK);
+
+            loc.setY(loc.getY() + 1);
+            return loc;
+        }
+
+        loc = getNextAir(loc);
+
+        if (loc == null) {
+            if (!config.getBoolean("allow-void-graves")) return null;
+            loc = new Location(ogLoc.getWorld(), ogLoc.getX(), ogLoc.getWorld().getMinHeight(), ogLoc.getZ());
+        }
+
+        Location tb = getTopBlock(loc, loc.getBlockY());
+        if (tb != null && tb.getBlockY() < loc.getBlockY()) {
+            loc.setY(tb.getY() + 1);
+        }
+
+        return loc;
     }
 
     public static void createGrave(Location location, Player player, int xp) throws IOException {
@@ -152,6 +134,30 @@ public class GraveCreator {
         return fluidTypes;
     }
 
+    public static Location getTopBlock(Location location, int max) {
+        Location loc = location.clone();
+        loc.setY(max);
+        while (loc.getY() > loc.getWorld().getMinHeight()) {
+            if (!getAirTypes().contains(loc.getBlock().getType())) {
+                return loc;
+            }
+            loc.setY(loc.getY() - 1);
+        }
+        return null;
+    }
+
+    public static Location getNextAir(Location location) {
+        Location loc = location.clone();
+        while (loc.getY() <= loc.getWorld().getMaxHeight()) {
+            if (getAirTypes().contains(loc.getBlock().getType())) {
+                return loc;
+            }
+            loc.setY(loc.getY() + 1);
+        }
+
+        return null;
+    }
+
 
     public static String serializeItems(Player player) throws IOException {
         ArrayList<ItemStack> items = new ArrayList<>(Arrays.asList(player.getInventory().getContents()));
@@ -179,14 +185,11 @@ public class GraveCreator {
 
         items.removeAll(toRemove);
 
-        System.out.println(items);
-
         if (items.isEmpty()) return "";
         StringBuilder serialized = new StringBuilder();
         for (ItemStack item : items) {
             if (item == null) continue;
             String newSerItem = Base64Serializer.itemStackArrayToBase64(new ItemStack[]{item});
-//            String serItem = ItemStackSerializer.serialize(item);
             serialized.append(newSerItem);
             serialized.append(" :%-=-%: ");
         }

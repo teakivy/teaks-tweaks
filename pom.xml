@@ -70,7 +70,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.3.1</version>
                 <configuration>
-                    <outputDirectory>/Users/collinj2005/Desktop/Servers/Teak's Tweaks Testing/plugins</outputDirectory>
+                    <outputDirectory>C:\Users\TeakIvy\Desktop\Servers\TeaksTweaksTesting\plugins</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>

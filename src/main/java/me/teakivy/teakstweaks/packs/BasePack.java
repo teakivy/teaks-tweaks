@@ -102,8 +102,8 @@ public class BasePack implements Listener {
 
 	@EventHandler
 	public void onJoin(PlayerJoinEvent event) {
-		if (!path.equalsIgnoreCase("graves")) return;
-		event.getPlayer().getInventory().addItem(item);
+//		if (!path.equalsIgnoreCase("graves")) return;
+//		event.getPlayer().getInventory().addItem(item);
 	}
 
 	private String transformKey(String key) {

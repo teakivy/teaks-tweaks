@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.survival.graves;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.MessageHandler;
+import me.teakivy.teakstweaks.utils.XPUtils;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
@@ -28,7 +29,7 @@ import java.util.UUID;
 public class GraveEvents extends BasePack {
 
     public GraveEvents() {
-        super("Graves", "graves", PackType.SURVIVAL, Material.COBBLESTONE_WALL);
+        super("Graves", "graves", PackType.SURVIVAL, Material.STONE_BRICK_WALL);
     }
 
     @EventHandler
@@ -120,10 +121,14 @@ public class GraveEvents extends BasePack {
 
         Location loc = GraveCreator.findGraveLocation(player.getLocation());
         if (loc == null) return;
+        if (GraveCreator.getAirTypes().contains(loc.getBlock().getType())) {
+            loc.setY(loc.getWorld().getMaxHeight());
+            loc = GraveCreator.findGraveLocation(loc);
+        }
         int xp = 0;
         if (config.getBoolean("hold-xp")) {
             xp = config.getBoolean("keep-all-xp") ?
-                    player.getTotalExperience() :
+                    XPUtils.getPlayerExp(player) :
                     event.getDroppedExp();
         }
 
