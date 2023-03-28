@@ -3,17 +3,22 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
+import me.teakivy.teakstweaks.utils.Logger;
+import me.teakivy.teakstweaks.utils.UpdateChecker;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.plugin.InvalidDescriptionException;
+import org.bukkit.plugin.InvalidPluginException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class TeaksTweaksCommand extends AbstractCommand {
 
-    Main main = Main.getPlugin(Main.class);
+    Main main = Main.getInstance();
 
     public TeaksTweaksCommand() {
         super(null, "teakstweaks", "/teakstweaks", "Teak's Tweaks Main Command!", Arrays.asList("tweaks", "tt"));
@@ -35,7 +40,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("version") || args[0].equalsIgnoreCase("v") || args[0].equalsIgnoreCase("ver")) {
-            sender.sendMessage(ChatColor.GREEN + "v" + Main.getPlugin(Main.class).getDescription().getVersion());
+            sender.sendMessage(ChatColor.GREEN + "v" + Main.getInstance().getDescription().getVersion());
             return true;
         }
 
@@ -45,8 +50,33 @@ public class TeaksTweaksCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("update")) {
-            sender.sendMessage(ChatColor.WHITE + "You can check for updates at " + ChatColor.YELLOW + "https://www.spigotmc.org/resources/teaks-tweaks.94021/");
-            return true;
+            if (!sender.hasPermission("teakstweaks.manage")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+                return true;
+            }
+
+            if (args.length < 2) {
+                sender.sendMessage(ChatColor.RED + "This command will download the latest version of Teak's Tweaks and reload the plugin.");
+                sender.sendMessage(ChatColor.RED + "If you are sure you want to do this, please run " + ChatColor.GOLD + "/teakstweaks update confirm");
+                return true;
+            }
+
+            if (!args[1].equalsIgnoreCase("confirm")) {
+                sender.sendMessage(ChatColor.RED + "This command will download the latest version of Teak's Tweaks and reload the plugin.");
+                sender.sendMessage(ChatColor.RED + "If you are sure you want to do this, please run /teakstweaks update confirm");
+                return true;
+            }
+
+            try {
+                Logger.log(Logger.LogLevel.INFO, "Starting Teak's Tweaks update sequence. This may take up to a minute.", true);
+
+                UpdateChecker.update();
+            } catch (IOException | InvalidPluginException | InvalidDescriptionException e) {
+                sender.sendMessage(ChatColor.RED + "An error occurred while updating Teak's Tweaks!");
+                throw new RuntimeException(e);
+            }
+
+            return false;
         }
 
         if (args[0].equalsIgnoreCase("enable")) {
@@ -137,7 +167,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
-            Main.getPlugin(Main.class).reloadConfig();
+            Main.getInstance().reloadConfig();
             main.getRegister().registerAll();
 
             sender.sendMessage(ChatColor.GREEN + "Config reloaded!");
@@ -205,11 +235,11 @@ public class TeaksTweaksCommand extends AbstractCommand {
     public void sendInfoMessage(CommandSender sender) {
         sender.sendMessage(ChatColor.GRAY + "-----------------------------------------------------");
         sender.sendMessage("");
-        sender.sendMessage(ChatColor.GOLD + "Teak's Tweaks " + ChatColor.YELLOW + "v" + Main.getPlugin(Main.class).getDescription().getVersion());
+        sender.sendMessage(ChatColor.GOLD + "Teak's Tweaks " + ChatColor.YELLOW + "v" + Main.getInstance().getDescription().getVersion());
         sender.sendMessage("");
-        sender.sendMessage(ChatColor.WHITE + "Author: " + ChatColor.GREEN + Main.getPlugin(Main.class).getDescription().getAuthors().get(0));
-        sender.sendMessage(ChatColor.WHITE + "Config Version: " + ChatColor.GREEN + Main.getPlugin(Main.class).getConfig().getString("config.version"));
-        sender.sendMessage(ChatColor.WHITE + "Config Generated: " + ChatColor.GREEN + Main.getPlugin(Main.class).getConfig().getString("config.plugin-version"));
+        sender.sendMessage(ChatColor.WHITE + "Author: " + ChatColor.GREEN + Main.getInstance().getDescription().getAuthors().get(0));
+        sender.sendMessage(ChatColor.WHITE + "Config Version: " + ChatColor.GREEN + Main.getInstance().getConfig().getString("config.version"));
+        sender.sendMessage(ChatColor.WHITE + "Config Generated: " + ChatColor.GREEN + Main.getInstance().getConfig().getString("config.plugin-version"));
         if (main.getConfig().getBoolean("config.dev-mode")) {
             sender.sendMessage(ChatColor.WHITE + "Dev Mode: " + ChatColor.GREEN + "Enabled");
         }
