@@ -162,8 +162,6 @@ public class GraveCreator {
     public static String serializeItems(Player player) throws IOException {
         ArrayList<ItemStack> items = new ArrayList<>(Arrays.asList(player.getInventory().getContents()));
 
-        System.out.println(items);
-
         ArrayList<ItemStack> items2 = new ArrayList<>();
 
         ArrayList<ItemStack> toRemove = new ArrayList<>();

@@ -74,8 +74,6 @@ public class TPACommand extends AbstractCommand {
         Player player2 = Bukkit.getPlayer(args[0]);
 
         if (player2 == null) {
-
-
             player.sendMessage(MessageHandler.getCmdMessage("tpa", "error.player-doesnt-exist").replace("%name%", args[0]));
             return true;
         }

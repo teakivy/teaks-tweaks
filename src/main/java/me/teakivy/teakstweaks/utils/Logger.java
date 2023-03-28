@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
 public class Logger {
-    public static void log(LogLevel level, String message) {
+    public static void log(LogLevel level, String message, boolean toAdmins) {
         if (message == null) return;
 
         String prefix = "";
@@ -22,6 +22,14 @@ public class Logger {
         }
 
         Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[&6&lTeaksTweaks&r&8] " + prefix + " &f" + message));
+
+        if (!toAdmins) return;
+
+        Bukkit.getOnlinePlayers().stream().filter(player -> player.hasPermission("teakstweaks.manage")).forEach(player -> player.sendMessage(ChatColor.YELLOW + message));
+    }
+
+    public static void log(LogLevel level, String message) {
+        log(level, message, false);
     }
 
     public enum LogLevel { ERROR, WARNING, INFO, SUCCESS, OUTLINE }
