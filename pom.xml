@@ -19,7 +19,7 @@
     <url>https://youtube.com/teakivy</url>
 
     <build>
-        <finalName>Teaks Tweaks - ${project.version}</finalName>
+        <finalName>TeaksTweaks</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
