@@ -3,10 +3,8 @@ package me.teakivy.teakstweaks.packs.survival.graves;
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.packs.items.armoredelytra.ArmoredElytras;
 import me.teakivy.teakstweaks.utils.Base64Serializer;
-import org.bukkit.GameRule;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
+import me.teakivy.teakstweaks.utils.Logger;
+import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
@@ -81,6 +79,20 @@ public class GraveCreator {
 
             NamespacedKey key3 = new NamespacedKey(Main.getPlugin(Main.class), "grave_owner_xp");
             data.set(key3, PersistentDataType.INTEGER, xp);
+        }
+
+        if (!config.getBoolean("console-info")) return;
+
+        Logger.log(Logger.LogLevel.INFO, "Created grave for " + ChatColor.GOLD + player.getName() + ChatColor.WHITE + " at " + ChatColor.GOLD + loc.getBlockX() + " " + loc.getBlockY() + " " + loc.getBlockZ() + ChatColor.WHITE + " in " + ChatColor.GOLD + loc.getWorld().getName());
+        int items = 0;
+        for (ItemStack item : player.getInventory().getContents()) {
+            if (item == null) continue;
+            items += item.getAmount();
+        }
+        Logger.log(Logger.LogLevel.INFO, "Contains " + ChatColor.GOLD + items + ChatColor.WHITE + " items and " + ChatColor.GOLD + xp + ChatColor.WHITE + " XP");
+        for (ItemStack item : player.getInventory().getContents()) {
+            if (item == null) continue;
+            Logger.log(Logger.LogLevel.INFO, " - " + ChatColor.GOLD + item.getType().name() + ChatColor.WHITE + " x " + ChatColor.GOLD + item.getAmount());
         }
     }
 
