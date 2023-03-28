@@ -11,6 +11,23 @@
 
 # Be sure to check the data.yml file for more customizability!
 
+# Plugin Settings
+settings:
+
+  # Enable Auto-Update
+  # If enabled, the plugin will automatically update itself when a new version is released.
+  # If disabled, you will have to update the plugin manually.
+  auto-update: true
+
+  # Update Check Interval
+  # How often the plugin should check for updates (in minutes)
+  update-check-interval: 15
+
+  # Alert on new version
+  # If enabled, the plugin will alert you when a new version is released. (Requires auto-update to be disabled)
+  alert-on-new-version: true
+
+
 # Data Packs
 packs:
   # Enable a pack by marking "enabled" as "true"
@@ -838,6 +855,5 @@ crafting-tweaks:
 # Changing these values may cause unexpected issues.
 config:
   plugin-version: 1.8.3-beta
-  alert-op-on-new-version: true
   version: 41
   dev-mode: false
