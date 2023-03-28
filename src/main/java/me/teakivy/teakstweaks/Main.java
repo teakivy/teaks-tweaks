@@ -5,11 +5,11 @@ import me.teakivy.teakstweaks.packs.hermitcraft.tag.Tag;
 import me.teakivy.teakstweaks.utils.*;
 import me.teakivy.teakstweaks.utils.datamanager.DataManager;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.json.simple.parser.ParseException;
 
 import java.io.File;
 import java.io.IOException;
@@ -54,20 +54,7 @@ public final class Main extends JavaPlugin implements Listener {
         // Update Checker
         getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
 
-        String latestVersion = null;
-        try {
-            latestVersion = new UpdateChecker(this, 94021).getLatestVersion();
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-            Logger.log(Logger.LogLevel.ERROR, MessageHandler.getMessage("plugin.error.cant-get-latest"));
-        }
-        String thisVersion = this.getDescription().getVersion();
-        if (!thisVersion.equalsIgnoreCase(latestVersion)) {
-            Logger.log(Logger.LogLevel.WARNING, "Teak's Tweaks has an update!\nPlease update to the latest " +
-                    "version (" + latestVersion + ")\n&ehttps://www.spigotmc.org/resources/teaks-tweaks.94021/");
-            newVersionAvailable = true;
-            this.latestVersion = latestVersion;
-        }
+        Bukkit.getScheduler().runTaskLater(this, UpdateChecker::sendUpdateMessage, 20L * 3);
 
 
         // Crafting Tweaks
@@ -94,6 +81,10 @@ public final class Main extends JavaPlugin implements Listener {
         // Packs
         register = new Register();
         register.registerAll();
+
+        UpdateChecker.deleteUpdater();
+
+        UpdateChecker.startLoop();
     }
 
     @Override
