@@ -18,7 +18,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class Loader extends BasePack {
 
     public Loader() {
-        super("Chunk Loaders", "chunk-loaders", PackType.EXPERIMENTAL, Material.LODESTONE);
+        super("Chunk Loaders", "chunk-loaders", PackType.EXPERIMENTAL, Material.LODESTONE, "Drop a Nether Star above a Lodestone to create a chunk loader (AKA a Loadstone) which keeps the chunk it's in loaded until it is broken.");
     }
 
     @EventHandler

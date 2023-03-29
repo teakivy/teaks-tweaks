@@ -29,7 +29,7 @@ public class ItemTracker extends BasePack {
     static HashMap<Material, Integer> items = new HashMap<>();
 
     public ItemTracker() {
-        super("Item Averages", "item-averages", PackType.UTILITIES, Material.HOPPER);
+        super("Item Averages", "item-averages", PackType.UTILITIES, Material.HOPPER, "Adds a marker that tracks items flowing past it for 2 minutes, then calculates how many of each item will run through per hour", "Command /itemaverage");
     }
 
     public static void spawnTracker(Location loc, Player player) {

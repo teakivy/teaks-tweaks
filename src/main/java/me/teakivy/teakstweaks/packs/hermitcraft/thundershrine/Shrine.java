@@ -29,7 +29,7 @@ public class Shrine extends BasePack {
     int particleTask = -1;
 
     public Shrine() {
-        super("Thunder Shrine", "thunder-shrine", PackType.HERMITCRAFT, Material.NETHER_STAR);
+        super("Thunder Shrine", "thunder-shrine", PackType.HERMITCRAFT, Material.NETHER_STAR, "A shrine that allows you to create a thunder storm when offered a Nether Star.", "Drop a Nether Star on top of a shrine to create a thunder storm.");
     }
 
     @Override

@@ -12,7 +12,7 @@ import org.bukkit.event.entity.EntityPotionEffectEvent;
 public class PillagerSpawning extends BasePack {
 
     public PillagerSpawning() {
-        super("Pillager Tools", "pillager-tools", PackType.SURVIVAL, Material.PILLAGER_SPAWN_EGG);
+        super("Pillager Tools", "pillager-tools", PackType.SURVIVAL, Material.PILLAGER_SPAWN_EGG, "Allows you do disable bad omen, patrols, or patrol leaders separately");
     }
 
     @EventHandler

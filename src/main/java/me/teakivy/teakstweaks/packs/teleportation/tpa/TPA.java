@@ -7,6 +7,6 @@ import org.bukkit.Material;
 public class TPA extends BasePack {
 
     public TPA() {
-        super("TPA", "tpa", PackType.TELEPORTATION, Material.BEACON);
+        super("TPA", "tpa", PackType.TELEPORTATION, Material.BEACON, "Enter '/tpa <player>' to request to teleport to another player.");
     }
 }

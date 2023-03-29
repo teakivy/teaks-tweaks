@@ -28,7 +28,7 @@ import java.util.UUID;
 public class ArmoredElytras extends BasePack {
 
     public ArmoredElytras() {
-        super("Armored Elytra", "armored-elytra", PackType.ITEMS, Material.ELYTRA);
+        super("Armored Elytra", "armored-elytra", PackType.ITEMS, Material.ELYTRA, "Drop an elytra and a chestplate above an anvil to merge them into one item. Drop the item above a grindstone to separate them again.", "Enchantments are kept safely between merging and separating. Burning netherite armored elytra will separate the items.");
     }
 
     @EventHandler

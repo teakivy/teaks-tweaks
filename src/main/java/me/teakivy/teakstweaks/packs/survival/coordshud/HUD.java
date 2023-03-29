@@ -14,7 +14,7 @@ import java.util.UUID;
 public class HUD extends BasePack {
 
     public HUD () {
-        super("Coords Hud", "coords-hud", PackType.SURVIVAL, Material.OBSERVER);
+        super("Coords Hud", "coords-hud", PackType.SURVIVAL, Material.OBSERVER, "Adds information to your actionbar. XYZ Coords and a 24hr clock.", "Command: /ch toggle");
         startHUD();
     }
 

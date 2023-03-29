@@ -4,6 +4,7 @@ import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
 import me.teakivy.teakstweaks.packs.hermitcraft.tag.Tag;
 import me.teakivy.teakstweaks.utils.*;
 import me.teakivy.teakstweaks.utils.datamanager.DataManager;
+import me.teakivy.teakstweaks.utils.gui.GUIListener;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -20,8 +21,6 @@ import static me.teakivy.teakstweaks.utils.metrics.CustomMetrics.registerCustomM
 public final class Main extends JavaPlugin implements Listener {
 
     public static ArrayList<UUID> chEnabled = new ArrayList<>();
-    public Boolean newVersionAvailable = false;
-    public String latestVersion;
 
     public DataManager data;
 
@@ -53,6 +52,7 @@ public final class Main extends JavaPlugin implements Listener {
 
         // Update Checker
         getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
+        getServer().getPluginManager().registerEvents(new GUIListener(), this);
 
         Bukkit.getScheduler().runTaskLater(this, UpdateChecker::sendUpdateMessage, 20L * 3);
 
@@ -131,8 +131,8 @@ public final class Main extends JavaPlugin implements Listener {
         return activeCraftingTweaks;
     }
 
-    public Register getRegister() {
-        return register;
+    public static Register getRegister() {
+        return Main.getInstance().register;
     }
 
     public static Main getInstance() {

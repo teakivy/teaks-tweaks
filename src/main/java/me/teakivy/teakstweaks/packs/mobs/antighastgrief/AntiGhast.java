@@ -11,7 +11,7 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 public class AntiGhast extends BasePack {
 
     public AntiGhast() {
-        super("Anti Ghast Grief", "anti-ghast-grief", PackType.MOBS, Material.GHAST_SPAWN_EGG);
+        super("Anti Ghast Grief", "anti-ghast-grief", PackType.MOBS, Material.GHAST_SPAWN_EGG, "Prevents ghasts from blowing up blocks.");
     }
 
     @EventHandler

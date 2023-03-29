@@ -29,7 +29,7 @@ import java.util.UUID;
 public class GraveEvents extends BasePack {
 
     public GraveEvents() {
-        super("Graves", "graves", PackType.SURVIVAL, Material.STONE_BRICK_WALL);
+        super("Graves", "graves", PackType.SURVIVAL, Material.STONE_BRICK_WALL, "When a player dies, a grave is made at their location containing all their items. Right-click the grave to receive your items, and crouch to make it so only you can pick them up.", "Get a grave key to unlock any grave: `/grave key`", "Locate your last grave (if locatable is on): `/grave locate`");
     }
 
     @EventHandler

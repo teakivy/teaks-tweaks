@@ -15,7 +15,7 @@ import java.util.UUID;
 public class KeepSmall extends BasePack {
 
     public KeepSmall() {
-        super("Keep Small", "keep-small", PackType.TEAKSTWEAKS, Material.STONE_BUTTON);
+        super("Keep Small", "keep-small", PackType.TEAKSTWEAKS, Material.STONE_BUTTON, "Keep a mob in its child form (if it has one)");
     }
 
     @EventHandler

@@ -13,7 +13,7 @@ import org.bukkit.potion.PotionEffectType;
 public class ConduitPower extends BasePack {
 
     public ConduitPower() {
-        super("Spectator Conduit Power", "spectator-conduit-power", PackType.UTILITIES, Material.HEART_OF_THE_SEA);
+        super("Spectator Conduit Power", "spectator-conduit-power", PackType.UTILITIES, Material.HEART_OF_THE_SEA, "Easily toggle conduit power when in spectator.", "Command: /cp");
     }
 
     @EventHandler

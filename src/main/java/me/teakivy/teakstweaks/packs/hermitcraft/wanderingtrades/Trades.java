@@ -20,7 +20,7 @@ import java.util.Random;
 public class Trades extends BasePack {
 
     public Trades() {
-        super("Wandering Trades", "wandering-trades", PackType.HERMITCRAFT, Material.LEAD);
+        super("Wandering Trades", "wandering-trades", PackType.HERMITCRAFT, Material.LEAD, "Adds Mini Blocks & Player heads to the Wandering Trader's trades.");
     }
 
     @EventHandler

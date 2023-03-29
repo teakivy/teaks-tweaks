@@ -27,7 +27,7 @@ import java.util.List;
 public class XPManagement extends BasePack {
 
     public XPManagement() {
-        super("XP Management", "xp-management", PackType.EXPERIMENTAL, Material.EXPERIENCE_BOTTLE);
+        super("XP Management", "xp-management", PackType.EXPERIMENTAL, Material.EXPERIENCE_BOTTLE, "Right-Click an enchanting table with an empty bottle to fill it with some of your XP.");
     }
 
     @Override

@@ -18,7 +18,7 @@ import java.util.Objects;
 public class Phantoms extends BasePack {
 
     public Phantoms() {
-        super("Larger Phantoms", "larger-phantoms", PackType.MOBS, Material.PHANTOM_SPAWN_EGG);
+        super("Larger Phantoms", "larger-phantoms", PackType.MOBS, Material.PHANTOM_SPAWN_EGG, "Makes the naturally spawning phantoms larger the longer you do not sleep.");
     }
 
     @EventHandler

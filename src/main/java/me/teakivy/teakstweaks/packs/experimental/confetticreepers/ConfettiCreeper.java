@@ -20,7 +20,7 @@ import java.util.Random;
 public class ConfettiCreeper extends BasePack {
 
     public ConfettiCreeper() {
-        super("Confetti Creeper", "confetti-creepers", PackType.EXPERIMENTAL, Material.FIREWORK_ROCKET);
+        super("Confetti Creeper", "confetti-creepers", PackType.EXPERIMENTAL, Material.FIREWORK_ROCKET, "There is a chance each creeper will explode into confetti and do no damage to blocks.");
     }
 
     @EventHandler

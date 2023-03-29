@@ -11,7 +11,7 @@ import org.bukkit.event.entity.EntityChangeBlockEvent;
 public class AntiEnderman extends BasePack {
 
     public AntiEnderman() {
-        super("Anti Enderman Grief", "anti-enderman-grief", PackType.MOBS, Material.ENDERMAN_SPAWN_EGG);
+        super("Anti Enderman Grief", "anti-enderman-grief", PackType.MOBS, Material.ENDERMAN_SPAWN_EGG, "Prevents endermen from picking up blocks.");
     }
 
     @EventHandler

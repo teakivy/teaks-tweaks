@@ -7,6 +7,6 @@ import org.bukkit.Material;
 public class Spawn extends BasePack {
 
         public Spawn() {
-            super("Spawn", "spawn", PackType.TELEPORTATION, Material.COMPASS);
+            super("Spawn", "spawn", PackType.TELEPORTATION, Material.COMPASS, "Enter '/spawn' to teleport to the world spawn point.");
         }
 }

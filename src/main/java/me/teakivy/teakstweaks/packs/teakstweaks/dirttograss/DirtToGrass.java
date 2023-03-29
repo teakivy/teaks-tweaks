@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 public class DirtToGrass extends BasePack {
 
     public DirtToGrass() {
-        super("Dirt to Grass", "dirt-to-grass", PackType.TEAKSTWEAKS, Material.GRASS);
+        super("Dirt to Grass", "dirt-to-grass", PackType.TEAKSTWEAKS, Material.GRASS, "Convert dirt to grass by right-clicking a dirt block with seeds");
     }
 
     @EventHandler
@@ -28,48 +28,37 @@ public class DirtToGrass extends BasePack {
         if (player.getInventory().getItemInMainHand().getType() == Material.AIR) return;
         ItemStack item = player.getInventory().getItemInMainHand();
 
-        if (block.getType() == Material.DIRT && getConfig().getBoolean("dirt-to-grass.enabled")) {
-            double wheatChance = getConfig().getDouble("dirt-to-grass.chance.wheat-seeds");
-            double melonChance = getConfig().getDouble("dirt-to-grass.chance.melon-seeds");
-            double pumpkinChance = getConfig().getDouble("dirt-to-grass.chance.pumpkin-seeds");
-            double beetrootChance = getConfig().getDouble("dirt-to-grass.chance.beetroot-seeds");
+        double wheatChance = getConfig().getDouble("wheat-seeds-chance");
+        double melonChance = getConfig().getDouble("melon-seeds-chance");
+        double pumpkinChance = getConfig().getDouble("pumpkin-seeds-chance");
+        double beetrootChance = getConfig().getDouble("beetroot-seeds-chance");
 
-            double chance;
+        double chance;
 
-            switch (item.getType()) {
-                case WHEAT_SEEDS:
-                    chance = wheatChance;
-                    break;
-                case MELON_SEEDS:
-                    chance = melonChance;
-                    break;
-                case PUMPKIN_SEEDS:
-                    chance = pumpkinChance;
-                    break;
-                case BEETROOT_SEEDS:
-                    chance = beetrootChance;
-                default:
-                    return;
-            }
-
-
-            if (player.getGameMode() != GameMode.CREATIVE) {
-                player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
-            }
-            event.getClickedBlock().getWorld().playSound(event.getClickedBlock().getLocation(), Sound.ITEM_BONE_MEAL_USE, 1.0F, 2F);
-
-            if (getRandomFromChance(chance)) {
-                block.setType(Material.GRASS_BLOCK);
-            }
+        switch (item.getType()) {
+            case WHEAT_SEEDS:
+                chance = wheatChance;
+                break;
+            case MELON_SEEDS:
+                chance = melonChance;
+                break;
+            case PUMPKIN_SEEDS:
+                chance = pumpkinChance;
+                break;
+            case BEETROOT_SEEDS:
+                chance = beetrootChance;
+            default:
+                return;
         }
 
-        if (getConfig().getBoolean("foliage-shearing")) {
-            if (block.getType() == Material.LARGE_FERN && item.getType() == Material.SHEARS) {
-                block.breakNaturally(new ItemStack(Material.SHEARS));
-            }
-            if (block.getType() == Material.TALL_GRASS && item.getType() == Material.SHEARS) {
-                block.breakNaturally(new ItemStack(Material.SHEARS));
-            }
+
+        if (player.getGameMode() != GameMode.CREATIVE) {
+            player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+        }
+        event.getClickedBlock().getWorld().playSound(event.getClickedBlock().getLocation(), Sound.ITEM_BONE_MEAL_USE, 1.0F, 2F);
+
+        if (getRandomFromChance(chance)) {
+            block.setType(Material.GRASS_BLOCK);
         }
     }
 

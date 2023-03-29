@@ -7,7 +7,7 @@ import org.bukkit.Material;
 public class Homes extends BasePack {
 
     public Homes() {
-        super("Homes", "homes", PackType.TELEPORTATION, Material.RECOVERY_COMPASS);
+        super("Homes", "homes", PackType.TELEPORTATION, Material.RECOVERY_COMPASS, "Allows you to set homes ('/home set <name>') and teleport back to them ('/home <name>')");
     }
 
 }

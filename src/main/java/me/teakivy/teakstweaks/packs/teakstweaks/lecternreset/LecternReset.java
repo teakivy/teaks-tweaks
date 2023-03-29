@@ -12,7 +12,7 @@ import org.bukkit.inventory.LecternInventory;
 public class LecternReset extends BasePack {
 
     public LecternReset() {
-        super("Lectern Reset", "lectern-reset", PackType.TEAKSTWEAKS, Material.LECTERN);
+        super("Lectern Reset", "lectern-reset", PackType.TEAKSTWEAKS, Material.LECTERN, "Reset a lectern's book to the first page after closing it");
     }
 
     @EventHandler

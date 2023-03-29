@@ -21,7 +21,7 @@ import java.util.UUID;
 public class AFK extends BasePack {
 
     public AFK() {
-        super("AFK Display", "afk-display", PackType.SURVIVAL, Material.BELL);
+        super("AFK Display", "afk-display", PackType.SURVIVAL, Material.BELL, "Gray out a players name that is not moving for 5 minutes.");
     }
 
     @Override

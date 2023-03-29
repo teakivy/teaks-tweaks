@@ -30,7 +30,7 @@ public class Wrench extends BasePack {
     private final List<BlockFace> faces = Lists.newArrayList(BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST, BlockFace.NORTH, BlockFace.UP, BlockFace.DOWN);
 
     public Wrench() {
-        super("Rotation Wrench", "rotation-wrench", PackType.ITEMS, Material.CARROT_ON_A_STICK);
+        super("Rotation Wrench", "rotation-wrench", PackType.ITEMS, Material.CARROT_ON_A_STICK, "Adds a custom wrench in-game that allows you to rotate redstone components, & glazed terracotta when right-clicking.");
     }
 
     @Override

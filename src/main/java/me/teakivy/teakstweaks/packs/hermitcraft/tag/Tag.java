@@ -30,7 +30,7 @@ import java.util.Objects;
 public class Tag extends BasePack {
 
     public Tag() {
-        super ("Tag", "tag", PackType.HERMITCRAFT, Material.NAME_TAG);
+        super ("Tag", "tag", PackType.HERMITCRAFT, Material.NAME_TAG, "Adds the Hermitcraft Tag game directly into your world! '/tag'");
     }
 
     @EventHandler

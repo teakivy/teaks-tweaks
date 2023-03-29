@@ -16,7 +16,7 @@ import java.util.UUID;
 public class Back extends BasePack {
 
     public Back() {
-        super("Back", "back", PackType.TELEPORTATION, Material.REDSTONE_TORCH);
+        super("Back", "back", PackType.TELEPORTATION, Material.REDSTONE_TORCH, "Enter '/back' to go back to the last location you teleported from. (using Homes, Spawn, or TPA)", "You can also allow players to teleport back to their death location if that's enabled.");
     }
 
     public static HashMap<UUID, Location> backLoc = new HashMap<>();

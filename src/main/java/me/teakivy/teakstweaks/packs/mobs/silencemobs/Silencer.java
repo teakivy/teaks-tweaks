@@ -19,7 +19,7 @@ import java.util.UUID;
 public class Silencer extends BasePack {
 
     public Silencer() {
-        super("Silence Mobs", "silence-mobs", PackType.MOBS, Material.SCULK_SHRIEKER);
+        super("Silence Mobs", "silence-mobs", PackType.MOBS, Material.SCULK_SHRIEKER, "Adds the ability to silence mobs using a name tag. 'Silence Me'; 'Silence me'; 'silence me'; 'silence_me'; are all acceptable names.");
 
         if (minecartTypes.isEmpty()) {
             minecartTypes.add(EntityType.MINECART);

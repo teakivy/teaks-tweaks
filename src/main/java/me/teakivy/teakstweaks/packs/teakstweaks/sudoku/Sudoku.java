@@ -9,7 +9,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 public class Sudoku extends BasePack {
 
     public Sudoku() {
-        super("Sudoku", "sudoku", PackType.TEAKSTWEAKS, Material.GOLDEN_SWORD);
+        super("Sudoku", "sudoku", PackType.TEAKSTWEAKS, Material.GOLDEN_SWORD, "Allow players to commit sudoku", "Command: /sudoku");
     }
 
     @EventHandler

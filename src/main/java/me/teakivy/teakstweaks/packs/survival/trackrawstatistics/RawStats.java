@@ -13,7 +13,7 @@ public class RawStats extends BasePack {
     Scoreboard sb = Objects.requireNonNull(Bukkit.getScoreboardManager()).getMainScoreboard();
 
     public RawStats() {
-        super("Track Raw Statistics", "track-raw-statistics", PackType.SURVIVAL, Material.PAPER);
+        super("Track Raw Statistics", "track-raw-statistics", PackType.SURVIVAL, Material.PAPER, "Adds 100+ scoreboards that track many different statistics. Especially useful for multiplayer.");
     }
 
     public void init() {

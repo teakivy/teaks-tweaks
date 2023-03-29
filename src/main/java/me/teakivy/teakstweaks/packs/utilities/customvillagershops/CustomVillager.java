@@ -25,7 +25,7 @@ import java.util.List;
 public class CustomVillager extends BasePack {
 
     public CustomVillager() {
-        super("Custom Villager Shops", "custom-villager-shops", PackType.UTILITIES, Material.VILLAGER_SPAWN_EGG);
+        super("Custom Villager Shops", "custom-villager-shops", PackType.UTILITIES, Material.VILLAGER_SPAWN_EGG, "Allows you to easily setup Villager Trades in creative using chests.");
     }
 
     @EventHandler

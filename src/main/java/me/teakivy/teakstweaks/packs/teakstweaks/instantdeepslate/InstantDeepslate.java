@@ -18,7 +18,7 @@ public class InstantDeepslate extends BasePack {
     private final ArrayList<Material> instantMaterials = new ArrayList<>();
 
     public InstantDeepslate() {
-        super("Instant Deepslate", "instant-deepslate", PackType.TEAKSTWEAKS, Material.DEEPSLATE);
+        super("Instant Deepslate", "instant-deepslate", PackType.TEAKSTWEAKS, Material.DEEPSLATE, "Instantly mine deepslate blocks if you have a netherite pickaxe with efficiency 5 or higher, and haste 2 or higher.");
     }
 
     @Override

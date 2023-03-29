@@ -16,7 +16,7 @@ import org.bukkit.potion.PotionEffectType;
 public class Highlighter extends BasePack {
 
     public Highlighter() {
-        super("Workstation Highlights", "workstation-highlights", PackType.SURVIVAL, Material.SMITHING_TABLE);
+        super("Workstation Highlights", "workstation-highlights", PackType.SURVIVAL, Material.SMITHING_TABLE, "Allows you to find the workstation of any villager.");
     }
 
     @EventHandler

@@ -22,7 +22,7 @@ import java.util.UUID;
 public class DuraPing extends BasePack {
 
     public DuraPing() {
-        super("Durability Ping", "durability-ping", PackType.SURVIVAL, Material.DIAMOND_PICKAXE);
+        super("Durability Ping", "durability-ping", PackType.SURVIVAL, Material.DIAMOND_PICKAXE, "Get notified when you damage an item with 10% less durability.", "Fully Customizable per-player with '/duraping config'");
     }
 
     private final HashMap<UUID, Long> pingCooldown = new HashMap<>();

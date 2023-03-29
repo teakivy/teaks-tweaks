@@ -40,9 +40,19 @@ public class BasePack implements Listener {
 
 		if (description.length > 0) {
 			for (String line : description) {
-				lore.add(Component.text(line));
+				StringBuilder newLine = new StringBuilder();
+				for (String word : line.split(" ")) {
+					if (newLine.length() > 30) {
+						lore.add(Component.text(ChatColor.GRAY + newLine.toString()));
+						newLine = new StringBuilder();
+					}
+					newLine.append(word).append(" ");
+				}
+				lore.add(Component.text(ChatColor.GRAY + newLine.toString()));
+				lore.add(Component.text(""));
 			}
 		}
+		if (lore.size() >= 1) lore.remove(lore.size() - 1);
 
 		if (config.getKeys(false).size() > 1) {
 			lore.add(Component.text(""));

@@ -236,4 +236,8 @@ public class Register {
         return disabledPacks;
     }
 
+    public BasePack getPack(String pack) {
+        return packs.get(pack);
+    }
+
 }

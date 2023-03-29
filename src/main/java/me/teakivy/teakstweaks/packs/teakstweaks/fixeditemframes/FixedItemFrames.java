@@ -14,7 +14,7 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 public class FixedItemFrames extends BasePack {
 
 	public FixedItemFrames() {
-        super("Fixed Item Frames", "fixed-item-frames", PackType.TEAKSTWEAKS, Material.ITEM_FRAME);
+        super("Fixed Item Frames", "fixed-item-frames", PackType.TEAKSTWEAKS, Material.ITEM_FRAME, "Shift right-click an item frame with iron bars to make it fixed", "Shift right-click an item frame with shears to make it not fixed");
     }
 
 	@EventHandler

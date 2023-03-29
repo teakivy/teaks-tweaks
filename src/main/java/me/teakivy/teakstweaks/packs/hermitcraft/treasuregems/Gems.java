@@ -37,7 +37,7 @@ public class Gems extends BasePack {
             .collect(Collectors.toList());
 
     public Gems() {
-        super ("Treasure Gems", "treasure-gems", PackType.HERMITCRAFT, Material.EMERALD);
+        super ("Treasure Gems", "treasure-gems", PackType.HERMITCRAFT, Material.EMERALD, "Adds the chance for treasure gems to spawn inside loot chests. Used to trade with Gem Villagers.");
     }
 
     @EventHandler

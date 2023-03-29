@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 public class BatMembranes extends BasePack {
 
     public BatMembranes() {
-        super("Bat Membranes", "bat-membranes", PackType.MOBS, Material.PHANTOM_MEMBRANE);
+        super("Bat Membranes", "bat-membranes", PackType.MOBS, Material.PHANTOM_MEMBRANE, "Disable Phantoms to get membranes from Bats instead.");
     }
 
     @EventHandler

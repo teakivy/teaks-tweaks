@@ -21,7 +21,7 @@ import static org.bukkit.Color.RED;
 public class Sphere extends BasePack {
 
     public Sphere() {
-        super("Spawning Spheres", "spawning-spheres", PackType.UTILITIES, Material.WARDEN_SPAWN_EGG);
+        super("Spawning Spheres", "spawning-spheres", PackType.UTILITIES, Material.WARDEN_SPAWN_EGG, "Allows you to view the spawnable area around a center point through the use of glowing spheres. Useful for proofing farms");
     }
 
     @EventHandler

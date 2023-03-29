@@ -21,7 +21,7 @@ public class StatTracker extends BasePack {
     Objective swimKm;
 
     public StatTracker() {
-        super("Track Statistics", "track-statistics", PackType.SURVIVAL, Material.MAP);
+        super("Track Statistics", "track-statistics", PackType.SURVIVAL, Material.MAP, "Adds statistics that are processed before-hand. E.g. Km swam, Km flown, etc.");
     }
 
     @Override

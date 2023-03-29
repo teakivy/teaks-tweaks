@@ -22,7 +22,7 @@ import org.bukkit.persistence.PersistentDataType;
 public class EditSigns extends BasePack {
 
     public EditSigns() {
-        super("Editable Signs", "editable-signs", PackType.TEAKSTWEAKS, Material.OAK_SIGN);
+        super("Editable Signs", "editable-signs", PackType.TEAKSTWEAKS, Material.OAK_SIGN, "Allow players to edit signs by shift-right clicking them");
     }
 
     @Override

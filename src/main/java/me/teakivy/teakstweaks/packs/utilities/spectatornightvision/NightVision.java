@@ -13,7 +13,7 @@ import org.bukkit.potion.PotionEffectType;
 public class NightVision extends BasePack {
 
     public NightVision() {
-        super("Spectator Night Vision", "spectator-night-vision", PackType.UTILITIES, Material.ENDER_EYE);
+        super("Spectator Night Vision", "spectator-night-vision", PackType.UTILITIES, Material.ENDER_EYE, "Easily toggle night vision when in spectator.", "Command: /nv");
     }
 
     @EventHandler

@@ -24,7 +24,7 @@ import java.util.Objects;
 public class StairChairs extends BasePack {
 
     public StairChairs() {
-        super("Stair Chairs", "stair-chairs", PackType.TEAKSTWEAKS, Material.SMOOTH_QUARTZ_STAIRS);
+        super("Stair Chairs", "stair-chairs", PackType.TEAKSTWEAKS, Material.SMOOTH_QUARTZ_STAIRS, "Allow players to sit on chairs", "Right-click a stair with a saddle to make it a chair", "Break the stair to remove the chair and get the saddle back");
     }
 
 

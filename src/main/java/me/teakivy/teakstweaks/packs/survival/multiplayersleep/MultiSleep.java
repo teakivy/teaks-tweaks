@@ -26,7 +26,7 @@ public class MultiSleep extends BasePack {
     BossBar bar;
 
     public MultiSleep() {
-        super("Multiplayer Sleep", "multiplayer-sleep", PackType.SURVIVAL, Material.RED_BED);
+        super("Multiplayer Sleep", "multiplayer-sleep", PackType.SURVIVAL, Material.RED_BED, "Not all players in the overworld need to sleep to skip the night & the rain.");
         this.sleepingPercentage = getConfig().getInt("sleeping-percentage");
         this.bar = Bukkit.getServer().createBossBar("0 of 0 player(s) asleep", BarColor.WHITE, BarStyle.SOLID);
     }

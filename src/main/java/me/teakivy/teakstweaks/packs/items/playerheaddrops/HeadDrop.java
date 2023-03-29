@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class HeadDrop extends BasePack {
 
     public HeadDrop() {
-        super("Player Head Drops", "player-head-drops", PackType.ITEMS, Material.PLAYER_HEAD);
+        super("Player Head Drops", "player-head-drops", PackType.ITEMS, Material.PLAYER_HEAD, "A player will drop their head when killed by another player. The item displays who the killer is.");
     }
 
     @EventHandler
