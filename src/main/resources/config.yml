@@ -74,6 +74,7 @@ packs:
 
   # Sudoku
   # Allow players to commit sudoku
+  # Command: /sudoku
   sudoku:
     enabled: false
 
@@ -112,11 +113,10 @@ packs:
   dirt-to-grass:
     enabled: true
     # Chance to convert dirt to grass based on the seed type
-    chance:
-      wheat-seeds: 0.3
-      melon-seeds: 0.03
-      pumpkin-seeds: 0.03
-      beetroot-seeds: 0.03
+    wheat-seeds-chance: 0.3
+    melon-seeds-chance: 0.03
+    pumpkin-seeds-chance: 0.03
+    beetroot-seeds-chance: 0.03
 
 
   # Instant Deepslate
@@ -359,7 +359,6 @@ packs:
 
   # Player Head Drops
   # A player will drop their head when killed by another player. The item displays who the killer is.
-  # Be sure to check the data.yml file for more customizability!
   player-head-drops:
     enabled: false
     # Whether to display who killed the player in the items lore (default: true)
@@ -464,7 +463,7 @@ packs:
 
   # Back
   # Enter '/back' to go back to the last location you teleported from. (using Homes, Spawn, or TPA)
-  # You can also allow players to teleport back to their death location if thats enabled.
+  # You can also allow players to teleport back to their death location if that's enabled.
   back:
     enabled: false
     # Whether or not death locations should be saved in the back command
@@ -639,7 +638,7 @@ packs:
   # Elevators
   # Drop an ender pearl above a wool block to make it into an elevator.
   # Jump on it to warp onto an elevator of the same color directly above.
-  # Crouch on it to warp onto one directly above
+  # Crouch on it to warp onto one directly above.
   elevators:
     enabled: false
     # What Item/Block needs to be dropped to create an elevator
