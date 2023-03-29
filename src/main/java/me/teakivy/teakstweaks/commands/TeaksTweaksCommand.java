@@ -213,6 +213,12 @@ public class TeaksTweaksCommand extends AbstractCommand {
             return result;
         }
 
+        if (args.length == 2 && args[0].equalsIgnoreCase("update")) {
+            if ("confirm".startsWith(args[1].toLowerCase()))
+                result.add("confirm");
+            return result;
+        }
+
         if (args.length == 2 && args[0].equalsIgnoreCase("disable")) {
             for (String a : enabled) {
                 if (a.toLowerCase().startsWith(args[1].toLowerCase()))
