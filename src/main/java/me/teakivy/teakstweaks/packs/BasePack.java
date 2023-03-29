@@ -68,6 +68,10 @@ public class BasePack implements Listener {
 			lore.add(Component.text("  " + ChatColor.GRAY + transformKey(key) + ": " + ChatColor.RESET + packType.getColor() + config.get(key)));
 		}
 
+		lore.add(Component.text(""));
+
+		lore.add(Component.text(packType.getColor() + packType.getName()));
+
 		item.lore(lore);
 
 		item.editMeta(meta -> {

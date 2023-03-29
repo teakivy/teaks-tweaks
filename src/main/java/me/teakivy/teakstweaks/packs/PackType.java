@@ -32,7 +32,7 @@ public enum PackType {
             case ITEMS -> getColor() + "Items";
             case MOBS -> getColor() + "Mobs";
             case SURVIVAL -> getColor() + "Survival";
-            case TEAKSTWEAKS -> getColor() + "TeaksTweaks";
+            case TEAKSTWEAKS -> getColor() + "Teak's Tweaks Custom";
             case TELEPORTATION -> getColor() + "Teleportation";
             case UTILITIES -> getColor() + "Utilities";
         };

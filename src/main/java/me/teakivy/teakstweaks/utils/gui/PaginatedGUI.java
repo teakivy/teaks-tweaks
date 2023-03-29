@@ -18,9 +18,9 @@ public class PaginatedGUI {
     private final List<ItemStack> items;
     private final Inventory inv;
 
-    public PaginatedGUI(List<ItemStack> items) {
+    public PaginatedGUI(List<ItemStack> items, String title) {
         this.items = items;
-        this.inv = Bukkit.createInventory(null, 54, "Teak's Tweaks Mechanics");
+        this.inv = Bukkit.createInventory(null, 54, title);
     }
 
     public void open(Player player) {

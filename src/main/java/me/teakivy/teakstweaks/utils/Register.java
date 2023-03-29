@@ -187,12 +187,13 @@ public class Register {
     public static void registerCommands() {
         AbstractCommand[] cmds = {
             new TeaksTweaksCommand(),
+            new TestCommand(),
+            new MechanicsCommand(),
             new PortalCommand(),
             new CoordsHudCommand(),
             new NightVisionCommand(),
             new ConduitPowerCommand(),
             new KillBoatsCommand(),
-            new TestCommand(),
             new RealTimeClockCommand(),
             new SpawnCommand(),
             new TPACommand(),

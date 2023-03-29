@@ -54,6 +54,9 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     }
 
     public void register() {
+        if (this.command.equalsIgnoreCase("mechanics") &&
+                !Main.getInstance().getConfig().getBoolean("settings.mechanics-command")) return;
+
         if (this.parentPack != null &&
                 (!this.parentPack.equalsIgnoreCase("test")
                         && !Main.getPackConfig(parentPack).getBoolean("enabled")))

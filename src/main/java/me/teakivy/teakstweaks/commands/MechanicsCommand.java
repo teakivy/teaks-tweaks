@@ -1,0 +1,51 @@
+package me.teakivy.teakstweaks.commands;
+
+import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.utils.AbstractCommand;
+import me.teakivy.teakstweaks.utils.ErrorType;
+import me.teakivy.teakstweaks.utils.gui.PaginatedGUI;
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MechanicsCommand extends AbstractCommand {
+
+    public MechanicsCommand() {
+        super(null, "mechanics", "/mechanics [edit] ", "View Mechanics added by Teak's Tweaks");
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (!(sender instanceof Player)) {
+            sender.sendMessage(ErrorType.NOT_PLAYER.m());
+            return true;
+        }
+
+        Player player = (Player) sender;
+
+        if (args.length == 0 || (args.length == 1 && args[0].equalsIgnoreCase("list"))) {
+            List<ItemStack> items = new ArrayList<>();
+
+            for (String pk : Main.getRegister().getEnabledPacks()) {
+                items.add(Main.getRegister().getPack(pk).getItem());
+            }
+
+
+            PaginatedGUI gui = new PaginatedGUI(items, "Teak's Tweaks Mechanics");
+
+            gui.open(player);
+
+            return true;
+        }
+
+        player.sendMessage(ChatColor.RED + "Invalid arguments! Use /mechanics for a list of mechanics.");
+
+
+        return false;
+    }
+}

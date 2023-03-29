@@ -27,6 +27,10 @@ settings:
   # If enabled, the plugin will alert you when a new version is released. (Requires auto-update to be disabled)
   alert-on-new-version: true
 
+  # Mechanics Command
+  # If enabled, players will be able to use the /mechanics command to view a list of all enabled tweaks.
+  mechanics-command: true
+
 
 # Data Packs
 packs:
