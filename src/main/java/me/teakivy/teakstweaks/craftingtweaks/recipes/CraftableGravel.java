@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapedRecipe;
 public class CraftableGravel  extends AbstractRecipe {
 
     public CraftableGravel() {
-        super("CraftableGravel", "craftable-gravel");
+        super("CraftableGravel", "craftable-gravel", Material.GRAVEL, "Allows you to craft Gravel from Flint.");
     }
 
     @Override

@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class MorePackedMud extends AbstractRecipe {
 
      public MorePackedMud() {
-         super("More Packed Mud", "more-packed-mud");
+         super("More Packed Mud", "more-packed-mud", Material.PACKED_MUD, "Craft 2 Packed Mud instead of 1.");
      }
 
     @Override

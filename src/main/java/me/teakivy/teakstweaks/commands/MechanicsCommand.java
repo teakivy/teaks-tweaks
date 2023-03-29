@@ -1,6 +1,8 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
+import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.gui.PaginatedGUI;
@@ -33,6 +35,10 @@ public class MechanicsCommand extends AbstractCommand {
 
             for (String pk : Main.getRegister().getEnabledPacks()) {
                 items.add(Main.getRegister().getPack(pk).getItem());
+            }
+
+            for (AbstractRecipe recipe : CraftingRegister.getEnabledRecipes()) {
+                items.add(recipe.getItem());
             }
 
 

@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class DoubleSlabs extends AbstractRecipe {
 
     public DoubleSlabs() {
-        super("Double Slabs", "double-slabs");
+        super("Double Slabs", "double-slabs", Material.STONE_SLAB, "Allows you to craft 2 slabs from a single block.");
     }
 
     @Override

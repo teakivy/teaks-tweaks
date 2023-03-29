@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapedRecipe;
 public class CraftableBundlesRabbitHide extends AbstractRecipe {
 
     public CraftableBundlesRabbitHide() {
-        super("Craftable Bundles Rabbit Hide", "craftable-bundles-rabbit-hide");
+        super("Craftable Bundles Rabbit Hide", "craftable-bundles-rabbit-hide", Material.BUNDLE, "Allows you to craft 1.18's Bundles in 1.17.");
     }
 
     @Override

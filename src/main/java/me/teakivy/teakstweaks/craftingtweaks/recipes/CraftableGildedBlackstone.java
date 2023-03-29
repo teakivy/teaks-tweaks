@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class CraftableGildedBlackstone extends AbstractRecipe {
 
     public CraftableGildedBlackstone() {
-        super("Craftable Gilded Blackstone", "craftable-gilded-blackstone");
+        super("Craftable Gilded Blackstone", "craftable-gilded-blackstone", Material.GILDED_BLACKSTONE, "Allows you to craft Gilded Blackstone using Blackstone & Golden Nuggets");
     }
 
     @Override

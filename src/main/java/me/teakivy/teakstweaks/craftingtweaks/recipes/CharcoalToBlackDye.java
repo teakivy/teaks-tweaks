@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class CharcoalToBlackDye extends AbstractRecipe {
 
     public CharcoalToBlackDye() {
-        super("Charcoal To Black Dye", "charcoal-to-black-dye");
+        super("Charcoal To Black Dye", "charcoal-to-black-dye", Material.CHARCOAL, "Allows you to craft Charcoal into Black Dye.");
     }
 
     @Override

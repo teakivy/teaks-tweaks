@@ -14,7 +14,7 @@ import java.util.List;
 public class BlackstoneCobblestone extends AbstractRecipe {
 
     public BlackstoneCobblestone() {
-        super("Blackstone Cobblestone", "blackstone-cobblestone");
+        super("Blackstone Cobblestone", "blackstone-cobblestone", Material.BLACKSTONE, "Craft all items that require Cobblestone, using Blackstone.");
     }
 
     @Override

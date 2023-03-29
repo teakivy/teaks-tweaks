@@ -737,27 +737,27 @@ crafting-tweaks:
     enabled: false
 
   # More Trapdoors
-  # Created 12 Trapdoors instead of 3.
+  # Craft 12 Trapdoors instead of 3.
   more-trapdoors:
     enabled: false
 
   # More Bark
-  # Created 4 Bark instead of 3.
+  # Craft 4 Bark instead of 3.
   more-bark:
     enabled: false
 
   # More Stairs
-  # Creates 8 Stairs instead of 4.
+  # Craft 8 Stairs instead of 4.
   more-stairs:
     enabled: false
 
   # More Bricks
-  # Creates 4 Bricks instead of 1.
+  # Craft 4 Bricks instead of 1.
   more-bricks:
     enabled: false
 
   # More Packed Mud
-  # Creates 2 Packed Mud instead of 1.
+  # Craft 2 Packed Mud instead of 1.
   more-packed-mud:
     enabled: false
 

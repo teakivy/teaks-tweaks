@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class UnpackableNetherWart extends AbstractRecipe {
 
     public UnpackableNetherWart() {
-        super("Unpackable Nether Wart", "unpackable-nether-wart");
+        super("Unpackable Nether Wart", "unpackable-nether-wart", Material.NETHER_WART, "Allows you to break down nether Wart Blocks into 9 Nether Wart.");
     }
 
     @Override

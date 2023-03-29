@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class UnpackableIce extends AbstractRecipe {
 
     public UnpackableIce() {
-        super("Unpackable Ice", "unpackable-ice");
+        super("Unpackable Ice", "unpackable-ice", Material.PACKED_ICE, "Allows you to break down Ice into 9 pieces. 1 Blue Ice to 9 Packed Ice to 81 Ice.");
     }
 
     @Override

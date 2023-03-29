@@ -14,7 +14,7 @@ import java.util.List;
 public class LogChests extends AbstractRecipe {
 
     public LogChests() {
-        super("Log Chests", "log-chests");
+        super("Log Chests", "log-chests", Material.CHEST, "Allows you to craft Chests from Logs.");
     }
 
     @Override

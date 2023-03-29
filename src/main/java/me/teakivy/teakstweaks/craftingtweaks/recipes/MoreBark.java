@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapedRecipe;
 public class MoreBark extends AbstractRecipe {
 
     public MoreBark() {
-        super("More Bark", "more-bark");
+        super("More Bark", "more-bark", Material.OAK_WOOD, "Craft 4 Bark instead of 3.");
     }
 
     @Override

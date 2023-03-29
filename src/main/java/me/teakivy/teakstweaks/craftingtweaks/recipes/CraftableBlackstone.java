@@ -14,7 +14,7 @@ import java.util.List;
 public class CraftableBlackstone extends AbstractRecipe {
 
     public CraftableBlackstone() {
-        super("Craftable Blackstone", "craftable-blackstone");
+        super("Craftable Blackstone", "craftable-blackstone", Material.POLISHED_BLACKSTONE, "Allows you to craft Blackstone or Polished Blackstone using Basalt & Coal/Charcoal");
     }
 
     @Override

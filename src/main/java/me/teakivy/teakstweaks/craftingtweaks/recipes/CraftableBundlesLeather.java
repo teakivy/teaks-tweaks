@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapedRecipe;
 public class CraftableBundlesLeather extends AbstractRecipe {
 
     public CraftableBundlesLeather() {
-        super("Craftable Bundles Leather", "craftable-bundles-leather");
+        super("Craftable Bundles Leather", "craftable-bundles-leather", Material.BUNDLE, "Allows you to craft 1.18's Bundles in 1.17, using Leather instead of Rabbit Hide.");
     }
 
     @Override
