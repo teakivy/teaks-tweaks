@@ -314,6 +314,9 @@ packs:
     # Avaliable Placeholders:
     # https://github.com/teakivy/teaks-tweaks/blob/master/src/main/java/me/teakivy/vanillatweaks/Packs/Survival/CoordsHud/PLACEHOLDERS.md
     message: "&6XYZ: &f%x% %y% %z%  &6%direction_abbreviated%      %world_time%"
+    # Whether or not to use block position instead of player position
+    # This may have unwanted effects on negative values.
+    use-block-position: false
 
   # Classic Fishing Loot
   # Reverts the fishing loot back to its pre-1.16 loot table.

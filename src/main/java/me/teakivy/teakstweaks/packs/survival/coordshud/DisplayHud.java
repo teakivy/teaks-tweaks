@@ -23,9 +23,13 @@ public class DisplayHud {
     public static void showHud(Player player) {
         new Thread(() -> {
             String msg = ChatColor.translateAlternateColorCodes('&', hudMessage);
-            msg = msg.replace("%x%", ((int) player.getLocation().getX()) + "");
-            msg = msg.replace("%y%", ((int) player.getLocation().getY()) + "");
-            msg = msg.replace("%z%", ((int) player.getLocation().getZ()) + "");
+            Location loc = player.getLocation();
+            if (Main.getInstance().getConfig().getBoolean("packs.coords-hud.use-block-position")) {
+                loc = loc.getBlock().getLocation();
+            }
+            msg = msg.replace("%x%", ((int) loc.getX()) + "");
+            msg = msg.replace("%y%", ((int) loc.getY()) + "");
+            msg = msg.replace("%z%", ((int) loc.getZ()) + "");
 
             Location playerLocation = player.getLocation();
             float playerDirection = playerLocation.getYaw();
