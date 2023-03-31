@@ -16,10 +16,11 @@
         <java.version>14</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <url>https://youtube.com/teakivy</url>
+    <url>https://twitter.com/TeakIvyYT</url>
 
     <build>
-        <finalName>TeaksTweaks</finalName>
+        <finalName>TeaksTweaks - ${project.version}</finalName>
+<!--        <finalName>TeaksTweaks - DEV</finalName>-->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
