@@ -21,11 +21,11 @@ public class DisplayHud {
     }
 
     public static void showHud(Player player) {
-        new Thread(() -> {
+        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
             String msg = ChatColor.translateAlternateColorCodes('&', hudMessage);
-            Location loc = player.getLocation();
-            if (Main.getInstance().getConfig().getBoolean("packs.coords-hud.use-block-position")) {
-                loc = loc.getBlock().getLocation();
+            Location loc = player.getLocation().getBlock().getLocation();
+            if (Main.getInstance().getConfig().getBoolean("packs.coords-hud.use-player-position")) {
+                loc = player.getLocation();
             }
             msg = msg.replace("%x%", ((int) loc.getX()) + "");
             msg = msg.replace("%y%", ((int) loc.getY()) + "");
@@ -33,70 +33,85 @@ public class DisplayHud {
 
             Location playerLocation = player.getLocation();
             float playerDirection = playerLocation.getYaw();
+            String direction = getDirection(playerDirection);
+            String directionAbbr = getDirectionAbbr(playerDirection);
+            String twoPointDirection = get2PointDirection(playerDirection);
+            String twoPointDirectionAbbr = get2PointDirectionAbbr(playerDirection);
+            String worldTime = getWorldTime();
+            String worldTime12Hr = getWorldTime12Hr();
+            String worldTimeAmPm = getWorldTimeAmPm();
+            String biome = getBiome(player);
+            String slimeChunk = getSlimeChunk(player);
+            String durability = getDurability(player);
+            String durabilityMainHand = getDurabilityMainHand(player);
+            String durabilityOffHand = getDurabilityOffHand(player);
+            String durabilityHelmet = getDurabilityHelmet(player);
+            String durabilityChestplate = getDurabilityChestplate(player);
+            String durabilityLeggings = getDurabilityLeggings(player);
+            String durabilityBoots = getDurabilityBoots(player);
+            String targetBlock = getTargetBlock(player);
+            String world = getWorld(player);
+            String facingXZ = getFacingXZ(playerDirection);
 
-            msg = msg.replace("%direction%", getDirection(playerDirection));
-            msg = msg.replace("%direction_lower%", getDirectionLower(playerDirection));
-            msg = msg.replace("%direction_upper%", getDirectionUpper(playerDirection));
+            msg = msg.replace("%direction%", direction);
+            msg = msg.replace("%direction_lower%", direction.toLowerCase());
+            msg = msg.replace("%direction_upper%", direction.toUpperCase());
 
-            msg = msg.replace("%direction_abbreviated%", getDirectionAbbr(playerDirection));
-            msg = msg.replace("%direction_abbreviated_lower%", getDirectionAbbrLower(playerDirection));
-            msg = msg.replace("%direction_abbreviated_upper%", getDirectionAbbrUpper(playerDirection));
+            msg = msg.replace("%direction_abbreviated%", directionAbbr);
+            msg = msg.replace("%direction_abbreviated_lower%", directionAbbr.toLowerCase());
+            msg = msg.replace("%direction_abbreviated_upper%", directionAbbr.toUpperCase());
 
+            msg = msg.replace("%direction_two_point%", twoPointDirection);
+            msg = msg.replace("%direction_two_point_lower%", twoPointDirection.toLowerCase());
+            msg = msg.replace("%direction_two_point_upper%", twoPointDirection.toUpperCase());
 
-            msg = msg.replace("%direction_two_point%", get2PointDirection(playerDirection));
-            msg = msg.replace("%direction_two_point_lower%", get2PointDirectionLower(playerDirection));
-            msg = msg.replace("%direction_two_point_upper%", get2PointDirectionUpper(playerDirection));
+            msg = msg.replace("%direction_abbreviated_two_point%", twoPointDirectionAbbr);
+            msg = msg.replace("%direction_abbreviated_two_point_lower%", twoPointDirectionAbbr.toLowerCase());
+            msg = msg.replace("%direction_abbreviated_two_point_upper%", twoPointDirectionAbbr.toUpperCase());
 
-            msg = msg.replace("%direction_abbreviated_two_point%", get2PointDirectionAbbr(playerDirection));
-            msg = msg.replace("%direction_abbreviated_two_point_lower%", get2PointDirectionAbbrLower(playerDirection));
-            msg = msg.replace("%direction_abbreviated_two_point_upper%", get2PointDirectionAbbrUpper(playerDirection));
+            msg = msg.replace("%world_time%", worldTime);
+            msg = msg.replace("%world_time_12hr%", worldTime12Hr);
 
-
-            msg = msg.replace("%world_time%", getWorldTime());
-            msg = msg.replace("%world_time_12hr%", getWorldTime12Hr());
-
-            msg = msg.replace("%am_pm%", getWorldTimeAmPm());
-            msg = msg.replace("%am_pm_lower%", getWorldTimeAmPmLower());
-            msg = msg.replace("%am_pm_upper%", getWorldTimeAmPmUpper());
+            msg = msg.replace("%am_pm%", worldTimeAmPm);
+            msg = msg.replace("%am_pm_lower%", worldTimeAmPm.toLowerCase());
+            msg = msg.replace("%am_pm_upper%", worldTimeAmPm.toUpperCase());
 
             msg = msg.replace("%yaw%", getYaw(player));
             msg = msg.replace("%pitch%", getPitch(player));
 
-            msg = msg.replace("%biome%", getBiome(player));
-            msg = msg.replace("%biome_upper%", getBiomeUpper(player));
-            msg = msg.replace("%biome_lower%", getBiomeLower(player));
+            msg = msg.replace("%biome%", biome);
+            msg = msg.replace("%biome_lower%", biome.toLowerCase());
+            msg = msg.replace("%biome_upper%", biome.toUpperCase());
 
-            msg = msg.replace("%slime_chunk%", getSlimeChunk(player));
-            msg = msg.replace("%slime_chunk_lower%", getSlimeChunkLower(player));
-            msg = msg.replace("%slime_chunk_upper%", getSlimeChunkUpper(player));
+            msg = msg.replace("%slime_chunk%", slimeChunk);
+            msg = msg.replace("%slime_chunk_lower%", slimeChunk.toLowerCase());
+            msg = msg.replace("%slime_chunk_upper%", slimeChunk.toUpperCase());
 
-            msg = msg.replace("%item_durability%", getDurability(player));
-            msg = msg.replace("%item_durability_main_hand%", getDurabilityMainHand(player));
-            msg = msg.replace("%item_durability_off_hand%", getDurabilityOffHand(player));
+            msg = msg.replace("%item_durability%", durability);
+            msg = msg.replace("%item_durability_main_hand%", durabilityMainHand);
+            msg = msg.replace("%item_durability_off_hand%", durabilityOffHand);
+            msg = msg.replace("%item_durability_helmet%", durabilityHelmet);
+            msg = msg.replace("%item_durability_chestplate%", durabilityChestplate);
+            msg = msg.replace("%item_durability_leggings%", durabilityLeggings);
+            msg = msg.replace("%item_durability_boots%", durabilityBoots);
 
-            msg = msg.replace("%item_durability_helmet%", getDurabilityHelmet(player));
-            msg = msg.replace("%item_durability_chestplate%", getDurabilityChestplate(player));
-            msg = msg.replace("%item_durability_leggings%", getDurabilityLeggings(player));
-            msg = msg.replace("%item_durability_boots%", getDurabilityBoots(player));
-
-            msg = msg.replace("%target_block%", getTargetBlock(player));
-            msg = msg.replace("%target_block_lower%", getTargetBlockLower(player));
-            msg = msg.replace("%target_block_upper%", getTargetBlockUpper(player));
-
+            msg = msg.replace("%target_block%", targetBlock);
+            msg = msg.replace("%target_block_lower%", targetBlock.toLowerCase());
+            msg = msg.replace("%target_block_upper%", targetBlock.toUpperCase());
             msg = msg.replace("%target_block_x%", getTargetBlockX(player));
             msg = msg.replace("%target_block_y%", getTargetBlockY(player));
             msg = msg.replace("%target_block_z%", getTargetBlockZ(player));
 
-            msg = msg.replace("%world%", getWorld(player));
-            msg = msg.replace("%world_lower%", getWorldLower(player));
-            msg = msg.replace("%world_upper%", getWorldUpper(player));
+            msg = msg.replace("%world%", world);
+            msg = msg.replace("%world_lower%", world.toLowerCase());
+            msg = msg.replace("%world_upper%", world.toUpperCase());
 
-            msg = msg.replace("%facing%", getFacingXZ(playerDirection));
-            msg = msg.replace("%facing_lower%", getFacingXZLower(playerDirection));
-            msg = msg.replace("%facing_upper%", getFacingXZUpper(playerDirection));
+            msg = msg.replace("%facing%", facingXZ);
+            msg = msg.replace("%facing_lower%", facingXZ.toLowerCase());
+            msg = msg.replace("%facing_upper%", facingXZ.toUpperCase());
 
             player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(msg));
-        }).start();
+        });
     }
 
     public static String get2PointDirection(float direction) {
@@ -108,32 +123,6 @@ public class DisplayHud {
         if (direction >= -67.5 && direction <= -22.5) return "SouthEast";
         if (direction >= -112.5 && direction <= -67.5) return "East";
         if (direction >= -157.5 && direction <= -112.5) return "NorthEast";
-
-        return "N/A";
-    }
-
-    public static String get2PointDirectionUpper(float direction) {
-        if (direction <= -157.5 || direction >= 157.5) return "NORTH";
-        if (direction >= 112.5 && direction <= 157.5) return "NORTHWEST";
-        if (direction >= 67.5 && direction <= 112.5) return "WEST";
-        if (direction >= 22.5 && direction <= 67.5) return "SOUTHWEST";
-        if (direction >= -22.5 && direction <= 22.5) return "SOUTH";
-        if (direction >= -67.5 && direction <= -22.5) return "SOUTHEAST";
-        if (direction >= -112.5 && direction <= -67.5) return "EAST";
-        if (direction >= -157.5 && direction <= -112.5) return "NORTHEAST";
-
-        return "N/A";
-    }
-
-    public static String get2PointDirectionLower(float direction) {
-        if (direction <= -157.5 || direction >= 157.5) return "north";
-        if (direction >= 112.5 && direction <= 157.5) return "northwest";
-        if (direction >= 67.5 && direction <= 112.5) return "west";
-        if (direction >= 22.5 && direction <= 67.5) return "southwest";
-        if (direction >= -22.5 && direction <= 22.5) return "south";
-        if (direction >= -67.5 && direction <= -22.5) return "southeast";
-        if (direction >= -112.5 && direction <= -67.5) return "east";
-        if (direction >= -157.5 && direction <= -112.5) return "northeast";
 
         return "N/A";
     }
@@ -151,84 +140,17 @@ public class DisplayHud {
         return "N/A";
     }
 
-    public static String get2PointDirectionAbbrUpper(float direction) {
-        if (direction <= -157.5 || direction >= 157.5) return "N";
-        if (direction >= 112.5 && direction <= 157.5) return "NW";
-        if (direction >= 67.5 && direction <= 112.5) return "W";
-        if (direction >= 22.5 && direction <= 67.5) return "SW";
-        if (direction >= -22.5 && direction <= 22.5) return "S";
-        if (direction >= -67.5 && direction <= -22.5) return "SE";
-        if (direction >= -112.5 && direction <= -67.5) return "E";
-        if (direction >= -157.5 && direction <= -112.5) return "NE";
-
-        return "N/A";
-    }
-
-    public static String get2PointDirectionAbbrLower(float direction) {
-        if (direction <= -157.5 || direction >= 157.5) return "n";
-        if (direction >= 112.5 && direction <= 157.5) return "nw";
-        if (direction >= 67.5 && direction <= 112.5) return "w";
-        if (direction >= 22.5 && direction <= 67.5) return "sw";
-        if (direction >= -22.5 && direction <= 22.5) return "s";
-        if (direction >= -67.5 && direction <= -22.5) return "se";
-        if (direction >= -112.5 && direction <= -67.5) return "e";
-        if (direction >= -157.5 && direction <= -112.5) return "ne";
-
-        return "N/A";
-    }
-
     public static String getDirection(float direction) {
-        if (direction <= -135 || direction >= 135) return "North";
-        if (direction <= 135 && direction >= 45) return "West";
-        if (direction >= -45 && direction <= 45) return "South";
-        if (direction <= -45 && direction >= -135) return "East";
+        String dir = get2PointDirection(direction);
+        if (dir.length() > 5) {
+            return dir.replace("East", "").replace("West", "");
+        }
 
-        return "N/A";
-    }
-
-    public static String getDirectionLower(float direction) {
-        if (direction <= -135 || direction >= 135) return "north";
-        if (direction <= 135 && direction >= 45) return "west";
-        if (direction >= -45 && direction <= 45) return "south";
-        if (direction <= -45 && direction >= -135) return "east";
-
-        return "n/a";
-    }
-
-    public static String getDirectionUpper(float direction) {
-        if (direction <= -135 || direction >= 135) return "NORTH";
-        if (direction <= 135 && direction >= 45) return "WEST";
-        if (direction >= -45 && direction <= 45) return "SOUTH";
-        if (direction <= -45 && direction >= -135) return "EAST";
-
-        return "N/A";
+        return dir;
     }
 
     public static String getDirectionAbbr(float direction) {
-        if (direction <= -135 || direction >= 135) return "N";
-        if (direction <= 135 && direction >= 45) return "W";
-        if (direction >= -45 && direction <= 45) return "S";
-        if (direction <= -45 && direction >= -135) return "E";
-
-        return "N/A";
-    }
-
-    public static String getDirectionAbbrLower(float direction) {
-        if (direction <= -135 || direction >= 135) return "n";
-        if (direction <= 135 && direction >= 45) return "w";
-        if (direction >= -45 && direction <= 45) return "s";
-        if (direction <= -45 && direction >= -135) return "e";
-
-        return "n/a";
-    }
-
-    public static String getDirectionAbbrUpper(float direction) {
-        if (direction <= -135 || direction >= 135) return "N";
-        if (direction <= 135 && direction >= 45) return "W";
-        if (direction >= -45 && direction <= 45) return "S";
-        if (direction <= -45 && direction >= -135) return "E";
-
-        return "N/A";
+        return get2PointDirectionAbbr(direction).substring(0, 1);
     }
 
     public static String getWorldTime() {
@@ -256,24 +178,6 @@ public class DisplayHud {
         return "Pm";
     }
 
-    public static String getWorldTimeAmPmUpper() {
-        long ticks = world.getTime();
-        int hours = (int) (((ticks / 1000) + 6) % 24);
-        hours++;
-        boolean am = hours <= 12;
-        if (am) return "AM";
-        return "PM";
-    }
-
-    public static String getWorldTimeAmPmLower() {
-        long ticks = world.getTime();
-        int hours = (int) (((ticks / 1000) + 6) % 24);
-        hours++;
-        boolean am = hours <= 12;
-        if (am) return "am";
-        return "pm";
-    }
-
     public static String getYaw(Player player) {
         return ((int) player.getLocation().getYaw()) + "";
     }
@@ -286,24 +190,8 @@ public class DisplayHud {
         return player.getLocation().getBlock().getBiome().toString() + "";
     }
 
-    public static String getBiomeUpper(Player player) {
-        return player.getLocation().getBlock().getBiome().toString().toUpperCase() + "";
-    }
-
-    public static String getBiomeLower(Player player) {
-        return player.getLocation().getBlock().getBiome().toString().toLowerCase() + "";
-    }
-
     public static String getSlimeChunk(Player player) {
         return player.getLocation().getChunk().isSlimeChunk() + "";
-    }
-
-    public static String getSlimeChunkUpper(Player player) {
-        return (player.getLocation().getChunk().isSlimeChunk() + "").toUpperCase();
-    }
-
-    public static String getSlimeChunkLower(Player player) {
-        return (player.getLocation().getChunk().isSlimeChunk() + "").toLowerCase();
     }
 
     public static String getDurability(Player player) {
@@ -352,14 +240,6 @@ public class DisplayHud {
         return player.getTargetBlock(null, 5).getType().toString();
     }
 
-    public static String getTargetBlockUpper(Player player) {
-        return player.getTargetBlock(null, 5).getType().toString().toUpperCase();
-    }
-
-    public static String getTargetBlockLower(Player player) {
-        return player.getTargetBlock(null, 5).getType().toString().toLowerCase();
-    }
-
     public static String getTargetBlockX(Player player) {
         return player.getTargetBlock(null, 5).getX() + "";
     }
@@ -376,33 +256,7 @@ public class DisplayHud {
         return player.getWorld().getName();
     }
 
-    public static String getWorldUpper(Player player) {
-        return player.getWorld().getName().toUpperCase();
-    }
-
-    public static String getWorldLower(Player player) {
-        return player.getWorld().getName().toLowerCase();
-    }
-
     public static String getFacingXZ(float direction) {
-        if (direction <= -135 || direction >= 135) return "-Z";
-        if (direction <= 135 && direction >= 45) return "-X";
-        if (direction >= -45 && direction <= 45) return "+Z";
-        if (direction <= -45 && direction >= -135) return "+X";
-
-        return "N/A";
-    }
-
-    public static String getFacingXZLower(float direction) {
-        if (direction <= -135 || direction >= 135) return "-z";
-        if (direction <= 135 && direction >= 45) return "-x";
-        if (direction >= -45 && direction <= 45) return "+z";
-        if (direction <= -45 && direction >= -135) return "+x";
-
-        return "N/A";
-    }
-
-    public static String getFacingXZUpper(float direction) {
         if (direction <= -135 || direction >= 135) return "-Z";
         if (direction <= 135 && direction >= 45) return "-X";
         if (direction >= -45 && direction <= 45) return "+Z";
