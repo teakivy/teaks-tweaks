@@ -11,6 +11,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.InvalidDescriptionException;
 import org.bukkit.plugin.InvalidPluginException;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -69,6 +71,54 @@ public class TeaksTweaksCommand extends AbstractCommand {
 
             try {
                 Logger.log(Logger.LogLevel.INFO, "Starting Teak's Tweaks update sequence. This may take up to a minute.", true);
+
+                UpdateChecker.update();
+            } catch (IOException | InvalidPluginException | InvalidDescriptionException e) {
+                sender.sendMessage(ChatColor.RED + "An error occurred while updating Teak's Tweaks!");
+                throw new RuntimeException(e);
+            }
+
+            return false;
+        }
+
+
+        if (args[0].equalsIgnoreCase("devupdate")) {
+            if (!sender.hasPermission("teakstweaks.manage")) {
+                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+                return true;
+            }
+
+            if (args.length < 2) {
+                sender.sendMessage(ChatColor.RED + "This command will download the latest version of Teak's Tweaks from the Dev Branch and reload the plugin.");
+                sender.sendMessage(ChatColor.RED + "If you are sure you want to do this, please run " + ChatColor.GOLD + "/teakstweaks devupdate confirm");
+                return true;
+            }
+
+            if (!args[1].equalsIgnoreCase("confirm")) {
+                sender.sendMessage(ChatColor.RED + "This command will download the latest version of Teak's Tweaks from the Dev Branch and reload the plugin.");
+                sender.sendMessage(ChatColor.RED + "If you are sure you want to do this, please run /teakstweaks devupdate confirm");
+                return true;
+            }
+
+            try {
+                Logger.log(Logger.LogLevel.INFO, "Starting Teak's Tweaks update sequence. This may take up to a minute.", true);
+
+                File pluginsFolder = new File("plugins");
+                File teaksTweaksFolder = new File(pluginsFolder, "TeaksTweaks");
+
+                if (!teaksTweaksFolder.exists()) {
+                    teaksTweaksFolder.mkdir();
+                }
+
+                File devFile = new File(teaksTweaksFolder, "dev.txt");
+
+                if (!devFile.exists()) {
+                    devFile.createNewFile();
+                }
+
+                FileWriter writer = new FileWriter(devFile);
+                writer.write("true");
+                writer.close();
 
                 UpdateChecker.update();
             } catch (IOException | InvalidPluginException | InvalidDescriptionException e) {
@@ -187,6 +237,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
         if (arguments.isEmpty()) {
             arguments.add("info");
             arguments.add("version");
+            arguments.add("devupdate");
             arguments.add("update");
             arguments.add("reload");
             arguments.add("support");
