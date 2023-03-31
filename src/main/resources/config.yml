@@ -115,7 +115,7 @@ packs:
   # Dirt to Grass
   # Convert dirt to grass by right-clicking a dirt block with seeds
   dirt-to-grass:
-    enabled: true
+    enabled: false
     # Chance to convert dirt to grass based on the seed type
     wheat-seeds-chance: 0.3
     melon-seeds-chance: 0.03
