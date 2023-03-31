@@ -26,6 +26,7 @@ public class DirtToGrass extends BasePack {
         Block block = event.getClickedBlock();
         Player player = event.getPlayer();
         if (player.getInventory().getItemInMainHand().getType() == Material.AIR) return;
+        if (block.getType() != Material.DIRT) return;
         ItemStack item = player.getInventory().getItemInMainHand();
 
         double wheatChance = getConfig().getDouble("wheat-seeds-chance");
