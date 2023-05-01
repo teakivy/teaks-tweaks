@@ -17,7 +17,7 @@ settings:
   # Enable Auto-Update
   # If enabled, the plugin will automatically update itself when a new version is released.
   # If disabled, you will have to update the plugin manually.
-  auto-update: true
+  auto-update: false
 
   # Update Check Interval
   # How often the plugin should check for updates (in minutes)
