@@ -1,15 +1,19 @@
 package me.teakivy.teakstweaks.packs.survival.graves;
 
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.packs.items.armoredelytra.ArmoredElytras;
 import me.teakivy.teakstweaks.utils.Base64Serializer;
 import me.teakivy.teakstweaks.utils.Logger;
+import me.teakivy.teakstweaks.utils.ReflectionUtils;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
@@ -191,6 +195,15 @@ public class GraveCreator {
             toRemove.add(item);
         }
 
+        for (ItemStack item : items) {
+            if (item == null) continue;
+            if (!item.getType().equals(Material.PLAYER_HEAD)) continue;
+
+            if (Objects.equals(getSkullTexture(item), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGRjYzZlYjQwZjNiYWRhNDFlNDMzOTg4OGQ2ZDIwNzQzNzU5OGJkYmQxNzVjMmU3MzExOTFkNWE5YTQyZDNjOCJ9fX0=")) {
+                toRemove.add(item);
+            }
+        }
+
         items.addAll(items2);
 
         items.removeAll(toRemove);
@@ -222,4 +235,14 @@ public class GraveCreator {
         return str.substring(0, str.length() - chars);
     }
 
+
+    public static String getSkullTexture(ItemStack skull) {
+        SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
+        GameProfile profile = (GameProfile) ReflectionUtils.getFieldValue(skullMeta, "profile");
+        if (profile != null) {
+            Property property = profile.getProperties().get("textures").iterator().next();
+            return property.getValue();
+        }
+        return null;
+    }
 }
