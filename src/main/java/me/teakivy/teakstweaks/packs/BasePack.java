@@ -3,7 +3,6 @@ package me.teakivy.teakstweaks.packs;
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.datamanager.DataManager;
-import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -36,27 +35,27 @@ public class BasePack implements Listener {
 
 		item = new ItemStack(material);
 
-		List<Component> lore = new ArrayList<>();
+		List<String> lore = new ArrayList<>();
 
 		if (description.length > 0) {
 			for (String line : description) {
 				StringBuilder newLine = new StringBuilder();
 				for (String word : line.split(" ")) {
 					if (newLine.length() > 30) {
-						lore.add(Component.text(ChatColor.GRAY + newLine.toString()));
+						lore.add(ChatColor.GRAY + newLine.toString());
 						newLine = new StringBuilder();
 					}
 					newLine.append(word).append(" ");
 				}
-				lore.add(Component.text(ChatColor.GRAY + newLine.toString()));
-				lore.add(Component.text(""));
+				lore.add(ChatColor.GRAY + newLine.toString());
+				lore.add("");
 			}
 		}
 		if (lore.size() >= 1) lore.remove(lore.size() - 1);
 
 		if (config.getKeys(false).size() > 1) {
-			lore.add(Component.text(""));
-			lore.add(Component.text(packType.getColor() + "Config"));
+			lore.add("");
+			lore.add(packType.getColor() + "Config");
 		}
 
 		for (String key : config.getKeys(false)) {
@@ -65,17 +64,17 @@ public class BasePack implements Listener {
 				continue;
 			}
 
-			lore.add(Component.text("  " + ChatColor.GRAY + transformKey(key) + ": " + ChatColor.RESET + packType.getColor() + config.get(key)));
+			lore.add("  " + ChatColor.GRAY + transformKey(key) + ": " + ChatColor.RESET + packType.getColor() + config.get(key));
 		}
 
-		lore.add(Component.text(""));
+		lore.add("");
 
-		lore.add(Component.text(packType.getColor() + packType.getName()));
+		lore.add(packType.getColor() + packType.getName());
 
-		item.lore(lore);
+		item.setLore(lore);
 
 		item.editMeta(meta -> {
-			meta.displayName(Component.text(ChatColor.RESET + packType.getColor().toString() + name));
+			meta.setDisplayName(ChatColor.RESET + packType.getColor().toString() + name);
 		});
     }
 

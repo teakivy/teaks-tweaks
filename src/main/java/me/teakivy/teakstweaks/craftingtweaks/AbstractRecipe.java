@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.craftingtweaks;
 
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.utils.Logger;
-import net.kyori.adventure.text.Component;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -36,32 +35,32 @@ public class AbstractRecipe {
 
         item = new ItemStack(material);
 
-        List<Component> lore = new ArrayList<>();
+        List<String> lore = new ArrayList<>();
 
         if (description.length > 0) {
             for (String line : description) {
                 StringBuilder newLine = new StringBuilder();
                 for (String word : line.split(" ")) {
                     if (newLine.length() > 30) {
-                        lore.add(Component.text(ChatColor.GRAY + newLine.toString()));
+                        lore.add(ChatColor.GRAY + newLine.toString());
                         newLine = new StringBuilder();
                     }
                     newLine.append(word).append(" ");
                 }
-                lore.add(Component.text(ChatColor.GRAY + newLine.toString()));
-                lore.add(Component.text(""));
+                lore.add(ChatColor.GRAY + newLine.toString());
+                lore.add("");
             }
         }
         if (lore.size() >= 1) lore.remove(lore.size() - 1);
 
-        lore.add(Component.text(""));
+        lore.add("");
 
-        lore.add(Component.text(ChatColor.RED + "Crafting Tweaks"));
+        lore.add(ChatColor.RED + "Crafting Tweaks");
 
-        item.lore(lore);
+        item.setLore(lore);
 
         item.editMeta(meta -> {
-            meta.displayName(Component.text(ChatColor.RESET.toString() + ChatColor.RED + name));
+            meta.setDisplayName(ChatColor.RESET.toString() + ChatColor.RED + name);
         });
     }
 
