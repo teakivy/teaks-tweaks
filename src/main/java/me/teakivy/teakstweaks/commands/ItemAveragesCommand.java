@@ -39,10 +39,6 @@ public class ItemAveragesCommand extends AbstractCommand {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
-            if (main.getConfig().getBoolean("packs.item-averages.require-op") && !player.isOp()) {
-                player.sendMessage(ErrorType.NOT_OP.m());
-                return true;
-            }
             if (!ItemTracker.inUse) {
                 player.sendMessage(MessageHandler.getCmdMessage("itemaverages", "tracker-created")
                         .replace("%x%", "" + (int) player.getLocation().getX())
@@ -59,10 +55,6 @@ public class ItemAveragesCommand extends AbstractCommand {
             if (args[0].equalsIgnoreCase("create")) {
                 if (!sender.hasPermission("teakstweaks.itemaverages.create")) {
                     sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-                    return true;
-                }
-                if (main.getConfig().getBoolean("packs.item-averages.require-op") && !player.isOp()) {
-                    player.sendMessage(ErrorType.NOT_OP.m());
                     return true;
                 }
                 if (!ItemTracker.inUse) {

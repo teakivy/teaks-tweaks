@@ -121,7 +121,7 @@ public class GraveEvents extends BasePack {
 
         Location loc = GraveCreator.findGraveLocation(player.getLocation());
         if (loc == null) return;
-        if (GraveCreator.getAirTypes().contains(loc.getBlock().getType())) {
+        if (!GraveCreator.getAirTypes().contains(loc.getBlock().getType())) {
             loc.setY(loc.getWorld().getMaxHeight());
             loc = GraveCreator.findGraveLocation(loc);
         }

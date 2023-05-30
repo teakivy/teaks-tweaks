@@ -494,8 +494,6 @@ packs:
   # Allows you to view the spawnable area around a center point through the use of glowing spheres. Useful for proofing farms
   spawning-spheres:
     enabled: false
-    # Whether or not to require op to use the /spawningspheres command
-    require-op: true
 
   # Spectator Night Vision
   # Easily toggle night vision when in spectator.
@@ -515,8 +513,6 @@ packs:
   # Do not reload/restart the server while a tracker is in the world! In this case use /itemaverage remove to remove existing trackers.
   item-averages:
     enabled: false
-    # Whether or not creating an item average tracker requires OP
-    require-op: false
 
   # Kill Empty Boats
   # Adds an admin command to kill all boats without passengers.
