@@ -13,4 +13,15 @@ public class ReflectionUtils {
         }
         return null;
     }
+    public static Field getField(Class<?> clazz, String fieldName) {
+        try {
+            Field field = clazz.getDeclaredField(fieldName);
+            field.setAccessible(true);
+            return field;
+        } catch (NoSuchFieldException | SecurityException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
