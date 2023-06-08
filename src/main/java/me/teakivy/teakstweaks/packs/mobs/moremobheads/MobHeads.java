@@ -7,10 +7,7 @@ import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.packs.mobs.moremobheads.mobs.*;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
@@ -22,102 +19,173 @@ public class MobHeads extends BasePack {
 
     public MobHeads() {
         super("More Mob Heads", "more-mob-heads", PackType.MOBS, Material.ZOMBIE_HEAD, "Adds a chance to receive a mob head upon killing it.");
+
+        new AllayHead();
+        new AxolotlHead();
+        new BatHead();
+        new BeeHead();
+        new BlazeHead();
+        new CatHead();
+        new CaveSpiderHead();
+        new ChargedCreeperHead();
+        new ChickenHead();
+        new CodHead();
+        new CowHead();
+        new CreeperHead();
+        new DolphinHead();
+        new DonkeyHead();
+        new DrownedHead();
+        new ElderGuardianHead();
+        new EnderDragonHead();
+        new EndermanHead();
+        new EndermiteHead();
+        new EvokerHead();
+        new FoxHead();
+        new FrogHead();
+        new GhastHead();
+        new GlowSquidHead();
+        new GoatHead();
+        new GuardianHead();
+        new HoglinHead();
+        new HorseHead();
+        new HuskHead();
+        new IllusionerHead();
+        new IronGolemHead();
+        new LlamaHead();
+        new MagmaCubeHead();
+        new MooshroomHead();
+        new MuleHead();
+        new OcelotHead();
+        new PandaHead();
+        new ParrotHead();
+        new PhantomHead();
+        new PigHead();
+        new PiglinBruteHead();
+        new PiglinHead();
+        new PillagerHead();
+        new PolarBearHead();
+        new PufferfishHead();
+        new RabbitHead();
+        new RavagerHead();
+        new SalmonHead();
+        new SheepHead();
+        new ShulkerHead();
+        new SilverfishHead();
+        new SkeletonHead();
+        new SkeletonHorseHead();
+        new SlimeHead();
+        new SnowGolemHead();
+        new SpiderHead();
+        new SquidHead();
+        new StrayHead();
+        new StriderHead();
+        new TadpoleHead();
+        new TraderLlamaHead();
+        new TropicalFishHead();
+        new TurtleHead();
+        new VexHead();
+        new VillagerHead();
+        new VindicatorHead();
+        new WanderingTraderHead();
+        new WardenHead();
+        new WitchHead();
+        new WitherHead();
+        new WolfHead();
+        new ZoglinHead();
+        new ZombieHead();
+        new ZombieHorseHead();
+        new ZombieVillagerHead();
+        new ZombifiedPiglinHead();
     }
 
-    @EventHandler
-    public void onMobDeath(EntityDeathEvent event) {
-        if (event.getEntity().getKiller() == null) return;
-
-        Entity entity = event.getEntity();
-
-        String entityName = entity.getType().toString();
-
-
-        switch (entityName) {
-            case "ALLAY" -> Allay.onDeath(event);
-            case "AXOLOTL" -> Axolotl.onDeath(event);
-            case "BAT" -> Bat.onDeath(event);
-            case "BEE" -> Bee.onDeath(event);
-            case "BLAZE" -> Blaze.onDeath(event);
-            case "CAT" -> Cat.onDeath(event);
-            case "CAVE_SPIDER" -> CaveSpider.onDeath(event);
-            case "CHICKEN" -> Chicken.onDeath(event);
-            case "COD" -> Cod.onDeath(event);
-            case "COW" -> Cow.onDeath(event);
-            case "CREEPER" -> ChargedCreeper.onDeath(event);
-            case "DOLPHIN" -> Dolphin.onDeath(event);
-            case "DONKEY" -> Donkey.onDeath(event);
-            case "DROWNED" -> Drowned.onDeath(event);
-            case "ELDER_GUARDIAN" -> ElderGuardian.onDeath(event);
-            case "ENDER_DRAGON" -> EnderDragon.onDeath(event);
-            case "ENDERMAN" -> Enderman.onDeath(event);
-            case "ENDERMITE" -> Endermite.onDeath(event);
-            case "EVOKER" -> Evoker.onDeath(event);
-            case "FOX" -> Fox.onDeath(event);
-            case "FROG" -> Frog.onDeath(event);
-            case "GHAST" -> Ghast.onDeath(event);
-            case "GLOW_SQUID" -> GlowSquid.onDeath(event);
-            case "GOAT" -> Goat.onDeath(event);
-            case "GUARDIAN" -> Guardian.onDeath(event);
-            case "HOGLIN" -> Hoglin.onDeath(event);
-            case "HORSE" -> Horse.onDeath(event);
-            case "HUSK" -> Husk.onDeath(event);
-            case "ILLUSIONER" -> Illusioner.onDeath(event);
-            case "IRON_GOLEM" -> IronGolem.onDeath(event);
-            case "LLAMA" -> Llama.onDeath(event);
-            case "MAGMA_CUBE" -> MagmaCube.onDeath(event);
-            case "MUSHROOM_COW" -> Mooshroom.onDeath(event);
-            case "MULE" -> Mule.onDeath(event);
-            case "OCELOT" -> Ocelot.onDeath(event);
-            case "PANDA" -> Panda.onDeath(event);
-            case "PARROT" -> Parrot.onDeath(event);
-            case "PHANTOM" -> Phantom.onDeath(event);
-            case "PIG" -> Pig.onDeath(event);
-            case "PIGLIN" -> Piglin.onDeath(event);
-            case "PIGLIN_BRUTE" -> PiglinBrute.onDeath(event);
-            case "PILLAGER" -> Pillager.onDeath(event);
-            case "POLAR_BEAR" -> PolarBear.onDeath(event);
-            case "PUFFERFISH" -> Pufferfish.onDeath(event);
-            case "RABBIT" -> Rabbit.onDeath(event);
-            case "RAVAGER" -> Ravager.onDeath(event);
-            case "SALMON" -> Salmon.onDeath(event);
-            case "SHEEP" -> Sheep.onDeath(event);
-            case "SHULKER" -> Shulker.onDeath(event);
-            case "SILVERFISH" -> Silverfish.onDeath(event);
-            case "SKELETON_HORSE" -> SkeletonHorse.onDeath(event);
-            case "SLIME" -> Slime.onDeath(event);
-            case "SNOWMAN" -> SnowGolem.onDeath(event);
-            case "SPIDER" -> Spider.onDeath(event);
-            case "SQUID" -> Squid.onDeath(event);
-            case "STRAY" -> Stray.onDeath(event);
-            case "STRIDER" -> Strider.onDeath(event);
-            case "TADPOLE" -> Tadpole.onDeath(event);
-            case "TRADER_LLAMA" -> TraderLlama.onDeath(event);
-            case "TROPICAL_FISH" -> TropicalFish.onDeath(event);
-            case "TURTLE" -> Turtle.onDeath(event);
-            case "VEX" -> Vex.onDeath(event);
-            case "VILLAGER" -> Villager.onDeath(event);
-            case "VINDICATOR" -> Vindicator.onDeath(event);
-            case "WANDERING_TRADER" -> WanderingTrader.onDeath(event);
-            case "WARDEN" -> Warden.onDeath(event);
-            case "WITCH" -> Witch.onDeath(event);
-            case "WITHER" -> Wither.onDeath(event);
-            case "WOLF" -> Wolf.onDeath(event);
-            case "ZOGLIN" -> Zoglin.onDeath(event);
-            case "ZOMBIE_HORSE" -> ZombieHorse.onDeath(event);
-            case "ZOMBIE_VILLAGER" -> ZombieVillager.onDeath(event);
-            case "ZOMBIFIED_PIGLIN" -> ZombifiedPiglin.onDeath(event);
-        }
-
-        // Base Heads
-        if (getConfig().getBoolean("use-base-heads")) {
-            switch (entityName) {
-                case "SKELETON" -> Skeleton.onDeath(event);
-                case "ZOMBIE" -> Zombie.onDeath(event);
-                case "CREEPER" -> Creeper.onDeath(event);
-            }
-        }
-    }
+//    @EventHandler
+//    public void onMobDeath(EntityDeathEvent event) {
+//        if (event.getEntity().getKiller() == null) return;
+//
+//        Entity entity = event.getEntity();
+//
+//        String entityName = entity.getType().toString();
+//
+//
+//        switch (entityName) {
+//            case "BEE" -> BeeHead.onDeath(event);
+//            case "CAT" -> CatHead.onDeath(event);
+//            case "COD" -> CodHead.onDeath(event);
+//            case "COW" -> CowHead.onDeath(event);
+//            case "CREEPER" -> ChargedCreeperHead.onDeath(event);
+//            case "DOLPHIN" -> DolphinHead.onDeath(event);
+//            case "DONKEY" -> DonkeyHead.onDeath(event);
+//            case "DROWNED" -> DrownedHead.onDeath(event);
+//            case "ELDER_GUARDIAN" -> ElderGuardianHead.onDeath(event);
+//            case "ENDER_DRAGON" -> EnderDragonHead.onDeath(event);
+//            case "ENDERMAN" -> EndermanHead.onDeath(event);
+//            case "ENDERMITE" -> EndermiteHead.onDeath(event);
+//            case "EVOKER" -> EvokerHead.onDeath(event);
+//            case "FOX" -> FoxHead.onDeath(event);
+//            case "FROG" -> FrogHead.onDeath(event);
+//            case "GHAST" -> GhastHead.onDeath(event);
+//            case "GLOW_SQUID" -> GlowSquidHead.onDeath(event);
+//            case "GOAT" -> GoatHead.onDeath(event);
+//            case "GUARDIAN" -> GuardianHead.onDeath(event);
+//            case "HOGLIN" -> HoglinHead.onDeath(event);
+//            case "HORSE" -> HorseHead.onDeath(event);
+//            case "HUSK" -> HuskHead.onDeath(event);
+//            case "ILLUSIONER" -> IllusionerHead.onDeath(event);
+//            case "IRON_GOLEM" -> IronGolemHead.onDeath(event);
+//            case "LLAMA" -> LlamaHead.onDeath(event);
+//            case "MAGMA_CUBE" -> MagmaCubeHead.onDeath(event);
+//            case "MUSHROOM_COW" -> MooshroomHead.onDeath(event);
+//            case "MULE" -> MuleHead.onDeath(event);
+//            case "OCELOT" -> OcelotHead.onDeath(event);
+//            case "PANDA" -> PandaHead.onDeath(event);
+//            case "PARROT" -> ParrotHead.onDeath(event);
+//            case "PHANTOM" -> PhantomHead.onDeath(event);
+//            case "PIG" -> PigHead.onDeath(event);
+//            case "PIGLIN" -> PiglinHead.onDeath(event);
+//            case "PIGLIN_BRUTE" -> PiglinBruteHead.onDeath(event);
+//            case "PILLAGER" -> PillagerHead.onDeath(event);
+//            case "POLAR_BEAR" -> PolarBearHead.onDeath(event);
+//            case "PUFFERFISH" -> PufferfishHead.onDeath(event);
+//            case "RABBIT" -> RabbitHead.onDeath(event);
+//            case "RAVAGER" -> RavagerHead.onDeath(event);
+//            case "SALMON" -> SalmonHead.onDeath(event);
+//            case "SHEEP" -> SheepHead.onDeath(event);
+//            case "SHULKER" -> ShulkerHead.onDeath(event);
+//            case "SILVERFISH" -> SilverfishHead.onDeath(event);
+//            case "SKELETON_HORSE" -> SkeletonHorseHead.onDeath(event);
+//            case "SLIME" -> SlimeHead.onDeath(event);
+//            case "SNOWMAN" -> SnowGolemHead.onDeath(event);
+//            case "SPIDER" -> SpiderHead.onDeath(event);
+//            case "SQUID" -> SquidHead.onDeath(event);
+//            case "STRAY" -> StrayHead.onDeath(event);
+//            case "STRIDER" -> StriderHead.onDeath(event);
+//            case "TADPOLE" -> TadpoleHead.onDeath(event);
+//            case "TRADER_LLAMA" -> TraderLlamaHead.onDeath(event);
+//            case "TROPICAL_FISH" -> TropicalFishHead.onDeath(event);
+//            case "TURTLE" -> TurtleHead.onDeath(event);
+//            case "VEX" -> VexHead.onDeath(event);
+//            case "VILLAGER" -> VillagerHead.onDeath(event);
+//            case "VINDICATOR" -> VindicatorHead.onDeath(event);
+//            case "WANDERING_TRADER" -> WanderingTraderHead.onDeath(event);
+//            case "WARDEN" -> WardenHead.onDeath(event);
+//            case "WITCH" -> WitchHead.onDeath(event);
+//            case "WITHER" -> WitherHead.onDeath(event);
+//            case "WOLF" -> WolfHead.onDeath(event);
+//            case "ZOGLIN" -> ZoglinHead.onDeath(event);
+//            case "ZOMBIE_HORSE" -> ZombieHorseHead.onDeath(event);
+//            case "ZOMBIE_VILLAGER" -> ZombieVillagerHead.onDeath(event);
+//            case "ZOMBIFIED_PIGLIN" -> ZombifiedPiglinHead.onDeath(event);
+//        }
+//
+//        // Base Heads
+//        if (getConfig().getBoolean("use-base-heads")) {
+//            switch (entityName) {
+//                case "SKELETON" -> SkeletonHead.onDeath(event);
+//                case "ZOMBIE" -> ZombieHead.onDeath(event);
+//                case "CREEPER" -> CreeperHead.onDeath(event);
+//            }
+//        }
+//    }
 
     public static ItemStack getHead(String name, String texture) {
         ItemStack head = new ItemStack(Material.PLAYER_HEAD);
