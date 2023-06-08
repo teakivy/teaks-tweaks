@@ -1,15 +1,19 @@
 package me.teakivy.teakstweaks.packs.mobs.moremobheads.mobs;
 
-import me.teakivy.teakstweaks.packs.mobs.moremobheads.Head;
-import me.teakivy.teakstweaks.packs.mobs.moremobheads.MobHeads;
+import me.teakivy.teakstweaks.packs.mobs.moremobheads.BaseMobHead;
 import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class EnderDragonHead {
-    public static void onDeath(EntityDeathEvent event) {
-        if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("ender-dragon"))) return;
+public class EnderDragonHead extends BaseMobHead {
 
-        event.getDrops().add(new ItemStack(Material.DRAGON_HEAD));
+    public EnderDragonHead() {
+        super(EntityType.ENDER_DRAGON, "ender-dragon", null);
+    }
+
+    @Override
+    public ItemStack getHead(EntityDeathEvent event) {
+        return new ItemStack(Material.DRAGON_HEAD);
     }
 }

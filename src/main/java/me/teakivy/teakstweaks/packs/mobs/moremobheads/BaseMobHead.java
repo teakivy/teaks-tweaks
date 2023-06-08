@@ -77,6 +77,7 @@ public class BaseMobHead implements Listener {
 
     @EventHandler
     public void onNoteblockInteract(PlayerInteractEvent event) {
+        if (this.sound == null) return;
         if (!event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
         if (!Objects.requireNonNull(event.getClickedBlock()).getType().equals(Material.NOTE_BLOCK)) return;
 
@@ -85,6 +86,7 @@ public class BaseMobHead implements Listener {
 
     @EventHandler
     public void onNoteblockPlay(BlockRedstoneEvent event) {
+        if (this.sound == null) return;
         if (!event.getBlock().getType().equals(Material.NOTE_BLOCK)) return;
         if (event.getNewCurrent() >= 1 && event.getOldCurrent() == 0) {
             playNoteblock(event.getBlock());

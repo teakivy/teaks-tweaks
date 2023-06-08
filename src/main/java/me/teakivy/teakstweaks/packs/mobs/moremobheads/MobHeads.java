@@ -31,7 +31,6 @@ public class MobHeads extends BasePack {
         new ChickenHead();
         new CodHead();
         new CowHead();
-        new CreeperHead();
         new DolphinHead();
         new DonkeyHead();
         new DrownedHead();
@@ -61,7 +60,6 @@ public class MobHeads extends BasePack {
         new PhantomHead();
         new PigHead();
         new PiglinBruteHead();
-        new PiglinHead();
         new PillagerHead();
         new PolarBearHead();
         new PufferfishHead();
@@ -71,7 +69,6 @@ public class MobHeads extends BasePack {
         new SheepHead();
         new ShulkerHead();
         new SilverfishHead();
-        new SkeletonHead();
         new SkeletonHorseHead();
         new SlimeHead();
         new SnowGolemHead();
@@ -92,10 +89,16 @@ public class MobHeads extends BasePack {
         new WitherHead();
         new WolfHead();
         new ZoglinHead();
-        new ZombieHead();
         new ZombieHorseHead();
         new ZombieVillagerHead();
         new ZombifiedPiglinHead();
+
+        if (getConfig().getBoolean("use-base-heads")) {
+            new CreeperHead();
+            new PiglinHead();
+            new SkeletonHead();
+            new ZombieHead();
+        }
     }
 
 //    @EventHandler
@@ -178,13 +181,7 @@ public class MobHeads extends BasePack {
 //        }
 //
 //        // Base Heads
-//        if (getConfig().getBoolean("use-base-heads")) {
-//            switch (entityName) {
-//                case "SKELETON" -> SkeletonHead.onDeath(event);
-//                case "ZOMBIE" -> ZombieHead.onDeath(event);
-//                case "CREEPER" -> CreeperHead.onDeath(event);
-//            }
-//        }
+
 //    }
 
     public static ItemStack getHead(String name, String texture) {

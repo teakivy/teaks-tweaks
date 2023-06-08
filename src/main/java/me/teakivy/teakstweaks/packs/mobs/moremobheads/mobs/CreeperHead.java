@@ -1,15 +1,21 @@
 package me.teakivy.teakstweaks.packs.mobs.moremobheads.mobs;
 
+import me.teakivy.teakstweaks.packs.mobs.moremobheads.BaseMobHead;
 import me.teakivy.teakstweaks.packs.mobs.moremobheads.Head;
 import me.teakivy.teakstweaks.packs.mobs.moremobheads.MobHeads;
 import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class CreeperHead {
-    public static void onDeath(EntityDeathEvent event) {
-        if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance("creeper"))) return;
+public class CreeperHead extends BaseMobHead {
 
-        event.getDrops().add(new ItemStack(Material.CREEPER_HEAD, 1));
+    public CreeperHead() {
+        super(EntityType.CREEPER, "creeper", null);
+    }
+
+    @Override
+    public ItemStack getHead(EntityDeathEvent event) {
+        return new ItemStack(Material.CREEPER_HEAD);
     }
 }
