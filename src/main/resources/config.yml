@@ -522,15 +522,25 @@ packs:
   # Adds Mini Blocks to the Wandering Trader's trades.
   wandering-trades:
     enabled: false
-    # Whether or not Wandering Trader's have mini blocks
-    has-mini-blocks: true
-    # Player heads section of Wandering Trades (Hermit Edition)
+    # Mini Blocks section of Wandering Trades
+    mini-blocks:
+      # Whether or not Wandering Trader's have mini blocks
+      has-mini-blocks: true
+      # How many mini block trades a trader will have
+      amount-of-trades: 7
+      # How many of each mini block a trader will sell
+      per-trade: 8
+    # Player heads section of Wandering Trades
     player-heads:
-      # Whether it has player heads or not (Hermit Edition)
+      # Whether or not Wandering Trader's have player heads
       has-player-heads: false
-      # Read the server whitelist instead of the player name list (Hermit Edition)
+      # How many player head trades a trader will have
+      amount-of-trades: 3
+      # How many of each player head a trader will sell
+      per-trade: 3
+      # Read the server whitelist instead of the player name list
       read-from-whitelist: false
-      # What Players will be avaliable in the Wandering Trader shop. (Default: hermitcraft heads
+      # What Players will be avaliable in the Wandering Trader shop. (Default: hermitcraft heads)
       # To add your own set of heads, just make a list using ` - ` and put the ign of the players you want.
       players:
         - PythonGB
