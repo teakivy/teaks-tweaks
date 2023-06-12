@@ -55,7 +55,7 @@ public class Trades extends BasePack {
                 trades.add(newHeadRecipe(player));
             }
         } else {
-            int amount = getData().getConfig().getInt("wandering-trades.heads.amount-of-trades");
+            int amount = getConfig().getInt("player-heads.amount-of-trades");
             List<String> headNames = new ArrayList<>();
 
             Random rand = new Random();
@@ -80,7 +80,7 @@ public class Trades extends BasePack {
 
 
     private MerchantRecipe newHeadRecipe(String playerName) {
-        MerchantRecipe recipe = new MerchantRecipe(getHead(playerName), getData().getConfig().getInt("wandering-trades.heads.max-per-trade"));
+        MerchantRecipe recipe = new MerchantRecipe(getHead(playerName), getConfig().getInt("player-heads.per-trade"));
 
         recipe.addIngredient(new ItemStack(Material.valueOf(getData().getConfig().getString("wandering-trades.heads.trade-item")), getData().getConfig().getInt("wandering-trades.heads.trade-amount")));
 

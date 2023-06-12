@@ -3,7 +3,6 @@ package me.teakivy.teakstweaks.packs.hermitcraft.wanderingtrades;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import me.teakivy.teakstweaks.Main;
-import me.teakivy.teakstweaks.utils.datamanager.DataManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -18,19 +17,16 @@ import java.util.UUID;
 
 public class MiniBlocks {
 
-    static Main main = Main.getPlugin(Main.class);
-    static DataManager data = main.data;
-
     final static int TOTAL_MINI_BLOCKS = 191;
 
     public static List<MerchantRecipe> getBlockTrades() {
         List<MerchantRecipe> recipes = new ArrayList<>();
-        int amount = data.getConfig().getInt("wandering-trades.mini-blocks.amount-of-trades");
+        int amount = Main.getInstance().getConfig().getInt("packs.wandering-trades.mini-blocks.amount-of-trades");
         List<Integer> numbers = new ArrayList<>();
 
-        if (!main.getConfig().getBoolean("packs.wandering-trades.has-mini-blocks")) return recipes;
+        if (!Main.getInstance().getConfig().getBoolean("packs.wandering-trades.mini-blocks.has-mini-blocks")) return recipes;
 
-        if (main.getConfig().getBoolean("config.dev-mode")) {
+        if (Main.getInstance().getConfig().getBoolean("config.dev-mode")) {
             for (int i = 0; i < TOTAL_MINI_BLOCKS; i++) {
                 recipes.add(getMiniBlockTradeByNumber(i));
             }
@@ -635,9 +631,13 @@ public class MiniBlocks {
 
 
     private static MerchantRecipe newBlockTrade(String name, Material block, String texture) {
-        MerchantRecipe recipe = new MerchantRecipe(newMiniBlock(name, texture), data.getConfig().getInt("wandering-trades.mini-blocks.max-per-trade"));
+        MerchantRecipe recipe = new MerchantRecipe(newMiniBlock(name, texture), Main.getInstance().getConfig().getInt("packs.wandering-trades.mini-blocks.per-trade"));
 
-        recipe.addIngredient(new ItemStack(Material.valueOf(data.getConfig().getString("wandering-trades.mini-blocks.trade-item")), data.getConfig().getInt("wandering-trades.mini-blocks.trade-amount")));
+        recipe.addIngredient(new ItemStack(
+                Material.valueOf(Main.getInstance()
+                        .data.getConfig().getString("wandering-trades.mini-blocks.trade-item")),
+                Main.getInstance()
+                        .data.getConfig().getInt("wandering-trades.mini-blocks.trade-amount")));
         recipe.addIngredient(new ItemStack(block));
 
         return recipe;

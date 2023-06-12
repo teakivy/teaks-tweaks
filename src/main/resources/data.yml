@@ -739,13 +739,9 @@ mob-heads:
 
 wandering-trades:
   mini-blocks:
-    amount-of-trades: 7
-    max-per-trade: 8
     trade-item: "EMERALD"
     trade-amount: 1
   heads:
-    amount-of-trades: 3
-    max-per-trade: 3
     trade-item: "EMERALD"
     trade-amount: 1
 
