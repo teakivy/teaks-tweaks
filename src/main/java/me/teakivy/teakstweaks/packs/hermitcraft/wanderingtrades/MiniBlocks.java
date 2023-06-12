@@ -21,6 +21,8 @@ public class MiniBlocks {
     static Main main = Main.getPlugin(Main.class);
     static DataManager data = main.data;
 
+    final static int TOTAL_MINI_BLOCKS = 191;
+
     public static List<MerchantRecipe> getBlockTrades() {
         List<MerchantRecipe> recipes = new ArrayList<>();
         int amount = data.getConfig().getInt("wandering-trades.mini-blocks.amount-of-trades");
@@ -29,19 +31,19 @@ public class MiniBlocks {
         if (!main.getConfig().getBoolean("packs.wandering-trades.has-mini-blocks")) return recipes;
 
         if (main.getConfig().getBoolean("config.dev-mode")) {
-            for (int i = 0; i < 175; i++) {
+            for (int i = 0; i < TOTAL_MINI_BLOCKS; i++) {
                 recipes.add(getMiniBlockTradeByNumber(i));
             }
         } else {
 
             for (int i = 0; i < amount; i++) {
                 Random rand = new Random();
-                int num = rand.nextInt(175);
+                int num = rand.nextInt(TOTAL_MINI_BLOCKS);
                 if (!numbers.contains(num)) {
                     recipes.add(getMiniBlockTradeByNumber(num));
                     numbers.add(num);
                 } else {
-                    int num2 = rand.nextInt(175);
+                    int num2 = rand.nextInt(TOTAL_MINI_BLOCKS);
                     if (!numbers.contains(num2)) {
                         recipes.add(getMiniBlockTradeByNumber(num2));
                         numbers.add(num);
@@ -576,6 +578,54 @@ public class MiniBlocks {
             }
             case 174 -> {
                 return newBlockTrade("Moss Block", Material.MOSS_BLOCK, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2NhMWFlYWRhZDkyZmM4YTE4ZGVmMTQ4MmNlZjMwODhmZDdlMzlhMjAyMjA3ODFiNmU2ODUzZmNkMGQ5YjhjYSJ9fX0");
+            }
+            case 175 -> {
+                return newBlockTrade("Mangrove Planks", Material.MANGROVE_PLANKS, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTYzYWVjM2IyMDczODI2YjI5MjdhZTY0NmIzNDVmMTk3ZTdlMmYxNjFmMWE3Mzg3NjhjMGRmNGZhZTA2YjBjYSJ9fX0");
+            }
+            case 176 -> {
+                return newBlockTrade("Mangrove Log", Material.MANGROVE_LOG, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzFmYWY2NjM5ZWMwZGMzMDBkYzYzNDgyOGU3Y2M3YjFkYzU4ODMyZmIzNDI3NjQ4NmZjNTRjZDFhNWEwNGRmYiJ9fX0");
+            }
+            case 177 -> {
+                return newBlockTrade("Ochre Froglight", Material.OCHRE_FROGLIGHT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzEzMWUyZGFlNjkyMTg3ZWQzYTYyMTc1ZWU2YmYwOGUzYjg5MWFkMjBkZTk2YmVlMDNkNTQ4M2I0MDBlMmVhOSJ9fX0");
+            }
+            case 178 -> {
+                return newBlockTrade("Verdant Froglight", Material.VERDANT_FROGLIGHT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmIyMGI5MGY3OWZmYWRjZDdmM2NmMTlhNzNjMzcxZmQ0ZThmMjZkNjk4N2RkMjZhYzZjYjc0YWM2MTQ0NzZiMyJ9fX0");
+            }
+            case 179 -> {
+                return newBlockTrade("Pearlescent Froglight", Material.PEARLESCENT_FROGLIGHT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTVkNzIwM2UzNTlkM2NmYTE1OTU1ZmU2NDAyMDRlMTk3NTZhNGRkMGE3ZGJhNzQ2YTZhMzY2YTM1YzZiY2VlNCJ9fX0");
+            }
+            case 180 -> {
+                return newBlockTrade("Mud", Material.MUD, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQ3NmM0YjEzZGIwYzczY2ViYjVjODZlNDVjOWU1MjgyOTUwZDc1Mzk2YTcxYWVlZGQxOGNjNThmNzlhMGU5MCJ9fX0");
+            }
+            case 181 -> {
+                return newBlockTrade("Packed Mud", Material.PACKED_MUD, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTFiODE0ZWZkMzM4ZDM4YzRiYTAwMTJiMWVmNjUxZDI5YWE2MjhkNmRkYzgyMmQxZTFkYTEzZWFlYjFiZjNlYiJ9fX0");
+            }
+            case 182 -> {
+                return newBlockTrade("Mud Bricks", Material.MUD_BRICKS, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2I5NDkxYTAwMGNiMWIzYjJmYThhOWFlZTFlZTUyZGM4YTlkZWZmZjQ4OTdlYzRjZTQ4OGNjY2QxZTZiODNjYyJ9fX0");
+            }
+            case 183 -> {
+                return newBlockTrade("Sculk", Material.SCULK, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODQ2NzJkYjk0MTYwNWZhNjMzYzM1NDgwZDFlOTk2Nzc1ZmFmY2E1ZmM4NGRjMzFlNzUyNDcxNWJlMDUxNmQxOSJ9fX0");
+            }
+            case 184 -> {
+                return newBlockTrade("Bamboo Block", Material.BAMBOO_BLOCK, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTFmZGFjOGUyMzkzYzcwZjM1ZDk3MWIwZGRkMjY2ZmJmYWY1NjIxNDFjZjE1NjY2NWZlMjMwMmYyMWUzOGI2OSJ9fX0");
+            }
+            case 185 -> {
+                return newBlockTrade("Bamboo Planks", Material.BAMBOO_PLANKS, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmQwZWYzYTc3NzllMzNiYWMzZjVlYzM5NGIxMTVjZjIyN2NhMjA1ODJlNTZjZjNjYzBjMjNkNzhjMWUyN2U0NCJ9fX0");
+            }
+            case 186 -> {
+                return newBlockTrade("Cherry Planks", Material.CHERRY_PLANKS, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGJiMmY1NWZjOTM3MDQ0NTM4NTEwNzg0ZDZlZmM5ZTE4NjQxZDRiODRmNWNhMDdmOTk0YjJjN2Q2MjEyNGY5In19fQ");
+            }
+            case 187 -> {
+                return newBlockTrade("Cherry Log", Material.CHERRY_LOG, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2VjNmY4MjVjMDkxMjRiY2NiYjBkY2Q1MjJhOTQzZmYzNmY0N2I2MmVjNzcxM2UwN2JjNTIyODUwZGYxMWI0NSJ9fX0");
+            }
+            case 188 -> {
+                return newBlockTrade("Chiseled Bookshelf", Material.CHISELED_BOOKSHELF, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjlmNzE0OWM4Y2ViNzljMDQzNTBhYWMwMzRlZjcyNDUwN2E3M2ZhZjljNjM5OWU3OTc2YThkZTVhMTk3MGRkNCJ9fX0");
+            }
+            case 189 -> {
+                return newBlockTrade("Sniffer Egg", Material.SNIFFER_EGG, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWFjMDY4ZTA3YmFiNmM4MTM3MTIyOTZmZWEyMzZlZTcwM2ExY2Y2YzY3YmE0NjVmOTE1NWNmNWFmMWVkYTc3MCJ9fX0");
+            }
+            case 190 -> {
+                return newBlockTrade("Cherry Leaves", Material.CHERRY_LEAVES, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjk4YjM4YWViZTdjNGVkNWM4MTllZTQyM2YzYjQ2YzYwNjg0Y2JkM2VkMGZhNGE5ZmQ1OTNhY2E2M2MwYWM4NSJ9fX0");
             }
         }
 

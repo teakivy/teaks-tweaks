@@ -43,7 +43,6 @@ import me.teakivy.teakstweaks.packs.survival.unlockallrecipes.UnlockRecipes;
 import me.teakivy.teakstweaks.packs.survival.workstationhighlights.Highlighter;
 import me.teakivy.teakstweaks.packs.teakstweaks.chatcolors.ChatColors;
 import me.teakivy.teakstweaks.packs.teakstweaks.dirttograss.DirtToGrass;
-import me.teakivy.teakstweaks.packs.teakstweaks.editsigns.EditSigns;
 import me.teakivy.teakstweaks.packs.teakstweaks.fixeditemframes.FixedItemFrames;
 import me.teakivy.teakstweaks.packs.teakstweaks.instantdeepslate.InstantDeepslate;
 import me.teakivy.teakstweaks.packs.teakstweaks.invisibleitemframes.InvisibleItemFrames;
@@ -120,7 +119,6 @@ public class Register {
             new Sphere(),
             new KeepSmall(),
             new ChatColors(),
-            new EditSigns(),
             new LecternReset(),
             new Sudoku(),
             new StairChairs(),
