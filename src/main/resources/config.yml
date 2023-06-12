@@ -60,17 +60,6 @@ packs:
     # Enable Colors on items (Using anvils)
     items: true
 
-  # Editable Signs
-  # Allow players to edit signs by shift-right clicking them
-  # REQUIRES PAPER
-  editable-signs:
-    enabled: false
-    owner-only: true
-    # Bypass the check for paper servers.
-    # WARNING: Enabling this on a non-paper based server will cause errors!
-    # Only enable if you know what you're doing.
-    bypass-paper-check: false
-
   # Lectern Reset
   # Reset a lectern's book to the first page after closing it
   lectern-reset:
