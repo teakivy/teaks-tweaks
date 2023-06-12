@@ -212,17 +212,17 @@ public class TeaksTweaksCommand extends AbstractCommand {
         }
 
 
-        if (args[0].equalsIgnoreCase("reload")) {
-            if (!sender.hasPermission("teakstweaks.reload")) {
-                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-                return true;
-            }
-            Main.getInstance().reloadConfig();
-            main.getRegister().registerAll();
-
-            sender.sendMessage(ChatColor.GREEN + "Config reloaded!");
-            return true;
-        }
+//        if (args[0].equalsIgnoreCase("reload")) {
+//            if (!sender.hasPermission("teakstweaks.reload")) {
+//                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+//                return true;
+//            }
+//            Main.getInstance().reloadConfig();
+//            main.getRegister().registerAll();
+//
+//            sender.sendMessage(ChatColor.GREEN + "Config reloaded!");
+//            return true;
+//        }
         return false;
     }
 
@@ -239,7 +239,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
             arguments.add("version");
             arguments.add("devupdate");
             arguments.add("update");
-            arguments.add("reload");
+//            arguments.add("reload");
             arguments.add("support");
             arguments.add("enable");
             arguments.add("disable");
