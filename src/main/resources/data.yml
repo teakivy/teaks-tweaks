@@ -502,6 +502,9 @@ mob-heads:
   blaze:
     chance: .005
     looting-bonus: .0005
+  camel:
+    chance: 1
+    looting-bonus: 0
   cat:
     chance: .033
     looting-bonus: .02
@@ -664,6 +667,9 @@ mob-heads:
   slime:
     chance: .005
     looting-bonus: .001
+  sniffer:
+    chance: 1
+    looting-bonus: 0
   snow-golem:
     chance: .05
     looting-bonus: .01

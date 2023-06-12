@@ -6,6 +6,7 @@ import com.mojang.authlib.properties.PropertyMap;
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.utils.ReflectionUtils;
 import org.apache.commons.lang3.text.WordUtils;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
@@ -14,6 +15,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockRedstoneEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -21,10 +23,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.lang.reflect.Field;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 public class BaseMobHead implements Listener {
     protected EntityType entity;
@@ -33,6 +32,8 @@ public class BaseMobHead implements Listener {
 
     protected HashMap<String, String> textures;
 
+    protected static HashMap<String, String> names = new HashMap<>();
+
 
     public BaseMobHead(EntityType entity, String key, Sound sound, String texture) {
         this.entity = entity;
@@ -40,7 +41,7 @@ public class BaseMobHead implements Listener {
         this.sound = sound;
 
         this.textures = new HashMap<>();
-        if (texture != null) addHeadTexture(texture);
+        if (texture != null) addHeadTexture("default", getName() + " Head", texture);
 
 
         Main.getInstance().getServer().getPluginManager().registerEvents(this, Main.getInstance());
@@ -67,11 +68,23 @@ public class BaseMobHead implements Listener {
         return createHead(getName(event) + " Head", getTexture(event));
     }
 
+    public ItemStack getHead() {
+        return createHead(getName() + " Head", getTexture());
+    }
+
     public String getTexture(EntityDeathEvent event) {
         return textures.get("default");
     }
 
+    public String getTexture() {
+        return textures.get("default");
+    }
+
     public String getName(EntityDeathEvent event) {
+        return WordUtils.capitalizeFully(entity.toString().toLowerCase().replace("_", " "));
+    }
+
+    public String getName() {
         return WordUtils.capitalizeFully(entity.toString().toLowerCase().replace("_", " "));
     }
 
@@ -92,6 +105,22 @@ public class BaseMobHead implements Listener {
         if (event.getNewCurrent() >= 1 && event.getOldCurrent() == 0) {
             playNoteblock(event.getBlock());
         }
+    }
+
+    @EventHandler
+    public void onBreak(BlockBreakEvent event) {
+        if (event.getBlock().getType() != Material.PLAYER_HEAD) return;
+        try {
+            if (!compareHeadTextures(this.textures, event.getBlock())) return;
+
+            event.setDropItems(false);
+            List<String> headDetails = findTextureName(event.getBlock());
+            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), createHead(headDetails.get(0), headDetails.get(1)));
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public void playNoteblock(Block block) {
@@ -115,12 +144,9 @@ public class BaseMobHead implements Listener {
         return false;
     }
 
-    public void addHeadTexture(String key, String texture) {
+    public void addHeadTexture(String key, String name, String texture) {
         textures.put(key, texture);
-    }
-
-    public void addHeadTexture(String texture) {
-        addHeadTexture("default", texture);
+        names.put(texture, name);
     }
 
     public boolean compareHeadTexture(String texture, Block block) throws IllegalAccessException {
@@ -143,10 +169,30 @@ public class BaseMobHead implements Listener {
         return false;
     }
 
+    public List<String> findTextureName(Block block) throws IllegalAccessException {
+        if (block.getType() != Material.PLAYER_HEAD) return null;
+        Skull skull = (Skull) block.getState();
+
+        GameProfile profile = (GameProfile) ReflectionUtils.getField(skull.getClass(), "profile").get(skull);
+        if (profile == null) return null;
+
+        PropertyMap properties = profile.getProperties();
+        if (properties == null) return null;
+
+        Collection<Property> textures = properties.get("textures");
+        for (Property property : textures) {
+            if (names.containsKey(property.getValue())) {
+                return List.of(names.get(property.getValue()), property.getValue());
+            }
+        }
+
+        return null;
+    }
+
     public ItemStack createHead(String name, String texture) {
         ItemStack head = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) head.getItemMeta();
-        meta.setDisplayName(name);
+        meta.setDisplayName(ChatColor.RESET.toString() + ChatColor.YELLOW + name);
         GameProfile profile = new GameProfile(UUID.fromString("fdb5599c-1b14-440e-82df-d69719703d21"), null);
         profile.getProperties().put("textures", new Property("textures", texture));
         Field profileField;

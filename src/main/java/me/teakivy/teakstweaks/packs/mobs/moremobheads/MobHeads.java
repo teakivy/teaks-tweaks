@@ -25,6 +25,7 @@ public class MobHeads extends BasePack {
         new BatHead();
         new BeeHead();
         new BlazeHead();
+        new CamelHead();
         new CatHead();
         new CaveSpiderHead();
         new ChargedCreeperHead();
@@ -71,6 +72,7 @@ public class MobHeads extends BasePack {
         new SilverfishHead();
         new SkeletonHorseHead();
         new SlimeHead();
+        new SnifferHead();
         new SnowGolemHead();
         new SpiderHead();
         new SquidHead();
