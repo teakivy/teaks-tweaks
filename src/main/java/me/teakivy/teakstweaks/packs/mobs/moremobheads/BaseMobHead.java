@@ -91,7 +91,7 @@ public class BaseMobHead implements Listener {
     @EventHandler
     public void onNoteblockInteract(PlayerInteractEvent event) {
         if (this.sound == null) return;
-        if (!event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
+        if (!event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && !event.getAction().equals(Action.LEFT_CLICK_BLOCK)) return;
         if (!Objects.requireNonNull(event.getClickedBlock()).getType().equals(Material.NOTE_BLOCK)) return;
         if (event.getPlayer().isSneaking() && event.getPlayer().getInventory().getItemInMainHand().getType() != Material.AIR) return;
 
