@@ -16,6 +16,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.block.BlockRedstoneEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -61,6 +62,7 @@ public class BaseMobHead implements Listener {
     }
 
     public boolean dropHead(EntityDeathEvent event) {
+        if (Main.getInstance().getConfig().getBoolean("config.dev-mode")) return true;
         return MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance(key));
     }
 
@@ -90,11 +92,11 @@ public class BaseMobHead implements Listener {
 
     @EventHandler
     public void onBreak(BlockBreakEvent event) {
+        if (event.getPlayer().getGameMode() == org.bukkit.GameMode.CREATIVE) return;
         if (event.getBlock().getType() != Material.PLAYER_HEAD &&
                 event.getBlock().getType() != Material.PLAYER_WALL_HEAD) return;
         try {
             if (!compareHeadTextures(this.textures, event.getBlock())) return;
-            System.out.println("broken skull");
 
             event.setDropItems(false);
             List<String> headDetails = findTextureName(event.getBlock());
@@ -152,7 +154,7 @@ public class BaseMobHead implements Listener {
         Collection<Property> textures = properties.get("textures");
         for (Property property : textures) {
             if (names.containsKey(property.getValue())) {
-                return List.of(names.get(property.getValue()), property.getValue());
+                return List.of((profile.getName() != null && profile.getName().equalsIgnoreCase("TeakIvy")) ? names.get(property.getValue()) : profile.getName(), property.getValue());
             }
         }
 
@@ -167,7 +169,7 @@ public class BaseMobHead implements Listener {
 
         meta.setDisplayName(ChatColor.RESET.toString() + ChatColor.YELLOW + name);
 
-        GameProfile profile = new GameProfile(UUID.fromString("fdb5599c-1b14-440e-82df-d69719703d21"), null);
+        GameProfile profile = new GameProfile(UUID.fromString("fdb5599c-1b14-440e-82df-d69719703d21"), name);
         profile.getProperties().put("textures", new Property("textures", texture));
         Field profileField;
         try {
@@ -177,6 +179,8 @@ public class BaseMobHead implements Listener {
         } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException e) {
             e.printStackTrace();
         }
+
+//        meta.setOwner(name);
         head.setItemMeta(meta);
         return head;
     }
