@@ -24,6 +24,8 @@ public class MoreTrapdoors extends AbstractRecipe {
         newTrapdoorRecipe("CRIMSON");
         newTrapdoorRecipe("WARPED");
         newTrapdoorRecipe("MANGROVE");
+        newTrapdoorRecipe("CHERRY");
+        newTrapdoorRecipe("BAMBOO");
     }
 
     public static void newTrapdoorRecipe(String type) {

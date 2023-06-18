@@ -54,6 +54,7 @@ public class DoubleSlabs extends AbstractRecipe {
         newShapelessRecipe("deepslate_tiles", Material.DEEPSLATE_TILES, Material.DEEPSLATE_TILE_SLAB);
 
         newShapelessRecipe("mud_bricks", Material.MUD_BRICKS, Material.MUD_BRICK_SLAB);
+        newShapelessRecipe("bamboo_mosaic", Material.BAMBOO_MOSAIC, Material.BAMBOO_MOSAIC_SLAB);
     }
 
     public static void newShapelessRecipe(String keyName, Material ingredient, Material result) {

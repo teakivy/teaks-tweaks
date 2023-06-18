@@ -38,6 +38,8 @@ public class LogChests extends AbstractRecipe {
         logList.add(Material.STRIPPED_WARPED_STEM);
         logList.add(Material.MANGROVE_LOG);
         logList.add(Material.STRIPPED_MANGROVE_LOG);
+        logList.add(Material.CHERRY_LOG);
+        logList.add(Material.STRIPPED_CHERRY_LOG);
         logList.add(Material.OAK_WOOD);
         logList.add(Material.STRIPPED_OAK_WOOD);
         logList.add(Material.BIRCH_WOOD);
@@ -56,6 +58,8 @@ public class LogChests extends AbstractRecipe {
         logList.add(Material.STRIPPED_WARPED_HYPHAE);
         logList.add(Material.MANGROVE_WOOD);
         logList.add(Material.STRIPPED_MANGROVE_WOOD);
+        logList.add(Material.CHERRY_WOOD);
+        logList.add(Material.STRIPPED_CHERRY_WOOD);
 
 
 

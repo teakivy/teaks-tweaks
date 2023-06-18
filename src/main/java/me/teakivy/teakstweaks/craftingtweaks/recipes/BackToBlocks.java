@@ -49,6 +49,9 @@ public class BackToBlocks extends AbstractRecipe {
         newShapelessStairRecipe("stone_bricks", new ItemStack(Material.STONE_BRICKS, 3), Material.STONE_BRICK_STAIRS, 4);
         newShapelessStairRecipe("stone", new ItemStack(Material.STONE, 3), Material.STONE_STAIRS, 4);
         newShapelessStairRecipe("warped_planks", new ItemStack(Material.WARPED_PLANKS, 3), Material.WARPED_STAIRS, 4);
+        newShapelessStairRecipe("cherry_planks", new ItemStack(Material.CHERRY_PLANKS, 3), Material.CHERRY_STAIRS, 4);
+        newShapelessStairRecipe("bamboo_planks", new ItemStack(Material.BAMBOO_PLANKS, 3), Material.BAMBOO_STAIRS, 4);
+        newShapelessStairRecipe("bamboo_mosaic", new ItemStack(Material.BAMBOO_MOSAIC, 3), Material.BAMBOO_MOSAIC_STAIRS, 4);
 
         newShapelessStairRecipe("cut_copper", new ItemStack(Material.CUT_COPPER, 3), Material.CUT_COPPER_STAIRS, 4);
         newShapelessStairRecipe("exposed_cut_copper", new ItemStack(Material.EXPOSED_CUT_COPPER, 3), Material.EXPOSED_CUT_COPPER_STAIRS, 4);
@@ -107,11 +110,14 @@ public class BackToBlocks extends AbstractRecipe {
         newShapedSlabRecipe("stone_bricks", new ItemStack(Material.STONE_BRICKS, 1), Material.STONE_BRICK_SLAB);
         newShapedSlabRecipe("stone", new ItemStack(Material.STONE, 1), Material.STONE_SLAB);
         newShapedSlabRecipe("warped_planks", new ItemStack(Material.WARPED_PLANKS, 1), Material.WARPED_SLAB);
+        newShapedSlabRecipe("cherry_planks", new ItemStack(Material.CHERRY_PLANKS, 1), Material.CHERRY_SLAB);
+        newShapedSlabRecipe("bamboo_planks", new ItemStack(Material.BAMBOO_PLANKS, 1), Material.BAMBOO_SLAB);
+        newShapedSlabRecipe("bamboo_mosaic", new ItemStack(Material.BAMBOO_MOSAIC, 1), Material.BAMBOO_MOSAIC_SLAB);
 
         newShapedSlabRecipe("mangrove_planks", new ItemStack(Material.MANGROVE_PLANKS, 1), Material.MANGROVE_SLAB);
-        newShapelessStairRecipe("mangrove_planks", new ItemStack(Material.MANGROVE_PLANKS, 1), Material.MANGROVE_STAIRS, 4);
+        newShapelessStairRecipe("mangrove_planks", new ItemStack(Material.MANGROVE_PLANKS, 3), Material.MANGROVE_STAIRS, 4);
         newShapedSlabRecipe("mud_bricks", new ItemStack(Material.MUD_BRICKS, 1), Material.MUD_BRICK_SLAB);
-        newShapelessStairRecipe("mud_bricks", new ItemStack(Material.MUD_BRICKS, 1), Material.MUD_BRICK_STAIRS, 4);
+        newShapelessStairRecipe("mud_bricks", new ItemStack(Material.MUD_BRICKS, 3), Material.MUD_BRICK_STAIRS, 4);
 
     }
 
