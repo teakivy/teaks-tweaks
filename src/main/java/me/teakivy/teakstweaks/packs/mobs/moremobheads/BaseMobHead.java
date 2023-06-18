@@ -89,29 +89,12 @@ public class BaseMobHead implements Listener {
     }
 
     @EventHandler
-    public void onNoteblockInteract(PlayerInteractEvent event) {
-        if (this.sound == null) return;
-        if (!event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && !event.getAction().equals(Action.LEFT_CLICK_BLOCK)) return;
-        if (!Objects.requireNonNull(event.getClickedBlock()).getType().equals(Material.NOTE_BLOCK)) return;
-        if (event.getPlayer().isSneaking() && event.getPlayer().getInventory().getItemInMainHand().getType() != Material.AIR) return;
-
-        playNoteblock(event.getClickedBlock());
-    }
-
-    @EventHandler
-    public void onNoteblockPlay(BlockRedstoneEvent event) {
-        if (this.sound == null) return;
-        if (!event.getBlock().getType().equals(Material.NOTE_BLOCK)) return;
-        if (event.getNewCurrent() >= 1 && event.getOldCurrent() == 0) {
-            playNoteblock(event.getBlock());
-        }
-    }
-
-    @EventHandler
     public void onBreak(BlockBreakEvent event) {
-        if (event.getBlock().getType() != Material.PLAYER_HEAD) return;
+        if (event.getBlock().getType() != Material.PLAYER_HEAD &&
+                event.getBlock().getType() != Material.PLAYER_WALL_HEAD) return;
         try {
             if (!compareHeadTextures(this.textures, event.getBlock())) return;
+            System.out.println("broken skull");
 
             event.setDropItems(false);
             List<String> headDetails = findTextureName(event.getBlock());
@@ -121,19 +104,6 @@ public class BaseMobHead implements Listener {
         }
 
 
-    }
-
-    public void playNoteblock(Block block) {
-        if (block.getType() != Material.NOTE_BLOCK) return;
-        Block above = block.getLocation().add(0, 1, 0).getBlock();
-        if (above.getType() != Material.PLAYER_HEAD) return;
-
-        try {
-            if (!compareHeadTextures(this.textures, above)) return;
-            block.getLocation().getWorld().playSound(block.getLocation(), sound, 1, 1);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
     }
 
     public boolean compareHeadTextures(HashMap<String, String> texture, Block block) throws IllegalAccessException {
@@ -150,7 +120,7 @@ public class BaseMobHead implements Listener {
     }
 
     public boolean compareHeadTexture(String texture, Block block) throws IllegalAccessException {
-        if (block.getType() != Material.PLAYER_HEAD) return false;
+        if (block.getType() != Material.PLAYER_HEAD && block.getType() != Material.PLAYER_WALL_HEAD) return false;
         Skull skull = (Skull) block.getState();
 
         GameProfile profile = (GameProfile) ReflectionUtils.getField(skull.getClass(), "profile").get(skull);
@@ -170,7 +140,7 @@ public class BaseMobHead implements Listener {
     }
 
     public List<String> findTextureName(Block block) throws IllegalAccessException {
-        if (block.getType() != Material.PLAYER_HEAD) return null;
+        if (block.getType() != Material.PLAYER_HEAD && block.getType() != Material.PLAYER_WALL_HEAD) return null;
         Skull skull = (Skull) block.getState();
 
         GameProfile profile = (GameProfile) ReflectionUtils.getField(skull.getClass(), "profile").get(skull);
@@ -192,7 +162,11 @@ public class BaseMobHead implements Listener {
     public ItemStack createHead(String name, String texture) {
         ItemStack head = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) head.getItemMeta();
+
+        meta.setNoteBlockSound(this.sound.getKey());
+
         meta.setDisplayName(ChatColor.RESET.toString() + ChatColor.YELLOW + name);
+
         GameProfile profile = new GameProfile(UUID.fromString("fdb5599c-1b14-440e-82df-d69719703d21"), null);
         profile.getProperties().put("textures", new Property("textures", texture));
         Field profileField;
