@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.packs.teakstweaks.chatcolors.ChatColors;
 import me.teakivy.teakstweaks.packs.teleportation.back.Back;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
@@ -10,6 +11,7 @@ import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.chat.hover.content.Text;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -22,7 +24,7 @@ public class TPACommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
 
-    HashMap<Player, Player> requests = new HashMap<>();
+    List<TPARequest> requests = new ArrayList<>();
 
     public TPACommand() {
         super("tpa", MessageHandler.getCmdName("tpa"), MessageHandler.getCmdUsage("tpa"), MessageHandler.getCmdDescription("tpa"), MessageHandler.getCmdAliases("tpa"));
@@ -30,10 +32,6 @@ public class TPACommand extends AbstractCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!main.getConfig().getBoolean("packs.tpa.enabled")) {
-            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
-            return true;
-        }
         if (!(sender instanceof Player)) {
             sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;
@@ -46,54 +44,65 @@ public class TPACommand extends AbstractCommand {
         }
 
         if (args.length < 1) {
-            player.sendMessage(MessageHandler.getCmdMessage("tpa", "error.missing-player"));
+            player.sendMessage(ChatColor.RED + "Please specify a player to teleport to.");
             return true;
         }
 
-        if (args[0].equalsIgnoreCase("confirm")) {
+        if (args[0].equalsIgnoreCase("accept")) {
             if (args.length < 2) {
-                player.sendMessage(MessageHandler.getCmdMessage("tpa", "error.missing-player-confirm"));
+                TPARequest req = getRequest(player);
+                if (req == null || req.isExpired()) {
+                    player.sendMessage(ChatColor.RED + "You have no pending requests.");
+                    return true;
+                }
+
+                req.accept();
+                requests.remove(req);
+
                 return true;
             }
-            Player confirmant = Bukkit.getPlayer(args[1]);
-            if (confirmant == null) {
-                player.sendMessage(MessageHandler.getCmdMessage("tpa", "error.player-doesnt-exist").replace("%name%", args[1]));
+            Player from = Bukkit.getPlayer(args[1]);
+            if (from == null) {
+                player.sendMessage(ChatColor.RED + "That player is not online.");
                 return true;
             }
-            if (!requests.containsKey(player)) return true;
-            if (requests.get(player).getName().equals(confirmant.getName())) {
-                Back.backLoc.put(confirmant.getUniqueId(), confirmant.getLocation());
-                confirmant.teleport(player.getLocation());
-                requests.remove(player);
-                confirmant.sendMessage(MessageHandler.getCmdMessage("tpa", "teleporting-to").replace("%name%", player.getName()));
-                player.sendMessage(MessageHandler.getCmdMessage("tpa", "teleporting-from").replace("%name%", confirmant.getName()));
+
+            TPARequest req = getRequest(from, player);
+            if (req == null || req.isExpired()) {
+                player.sendMessage(ChatColor.RED + "That player has no pending requests.");
                 return true;
             }
+
+            req.accept();
+            requests.remove(req);
+
+            return true;
         }
 
         Player player2 = Bukkit.getPlayer(args[0]);
 
         if (player2 == null) {
-            player.sendMessage(MessageHandler.getCmdMessage("tpa", "error.player-doesnt-exist").replace("%name%", args[0]));
+            player.sendMessage(ChatColor.RED + "That player is not online.");
             return true;
         }
-        String tpCommand = MessageHandler.getCmdMessage("tpa", "teleport-request.click").replace("%name%", player.getName());
+        String tpCommand = "/tpa accept " + player.getName();
 
-        TextComponent text = new TextComponent(MessageHandler.getCmdMessage("tpa", "teleport-request.text").replace("%name%", player.getName()));
-        text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(MessageHandler.getCmdMessage("tpa", "teleport-request.hover"))));
+        TextComponent text = new TextComponent(ChatColor.GOLD + player.getName() + ChatColor.YELLOW + " has requested to teleport to you! " + ChatColor.GOLD + "Click to accept");
+        text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatColor.GOLD + "Click to accept")));
         text.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, tpCommand));
 
-        requests.put(player2, player);
+        TPARequest req = new TPARequest(player, player2);
+        requests.add(req);
 
         player2.spigot().sendMessage(text);
-        player.sendMessage(MessageHandler.getCmdMessage("tpa", "request-sent"));
+        player.sendMessage(ChatColor.YELLOW + "You have requested to teleport to " + ChatColor.GOLD + player2.getName() + ChatColor.YELLOW + ". They have 60 seconds to accept.");
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
-            if (requests.containsKey(player2)) {
-                player.sendMessage(MessageHandler.getCmdMessage("tpa", "request-cancelled"));
-                requests.remove(player2);
+            if (req.isExpired()) {
+                player.sendMessage(ChatColor.RED + "Your request to teleport to " + ChatColor.GOLD + player2.getName() + ChatColor.RED + " has expired.");
+                requests.remove(req);
             }
-        }, 60 * 20L);
+        }, 61 * 20L);
         return false;
     }
 
@@ -102,7 +111,8 @@ public class TPACommand extends AbstractCommand {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
 
-        if (arguments1.isEmpty() && sender.isOp()) {
+        if (arguments1.isEmpty()) {
+            arguments1.add("accept");
             for (Player player : Bukkit.getOnlinePlayers()) {
                 arguments1.add(player.getName());
             }
@@ -117,5 +127,65 @@ public class TPACommand extends AbstractCommand {
             return result;
         }
         return null;
+    }
+
+    private TPARequest getRequest(Player from, Player to) {
+        for (TPARequest request : requests) {
+            if (request.getFrom().getName().equals(from.getName()) && request.getTo().getName().equals(to.getName())) {
+                return request;
+            }
+        }
+        return null;
+    }
+
+    private TPARequest getRequest(Player to) {
+        TPARequest recent = null;
+        for (TPARequest request : requests) {
+            if (request.getTo().getName().equals(to.getName())) {
+                if (recent == null) {
+                    recent = request;
+                } else {
+                    if (request.getTime() > recent.getTime()) {
+                        recent = request;
+                    }
+                }
+            }
+        }
+        return recent;
+    }
+
+
+    class TPARequest {
+        private Player from;
+        private Player to;
+        private long time;
+        public TPARequest(Player from, Player to) {
+            this.from = from;
+            this.to = to;
+            this.time = System.currentTimeMillis();
+        }
+
+        public Player getFrom() {
+            return from;
+        }
+
+        public Player getTo() {
+            return to;
+        }
+
+        public long getTime() {
+            return time;
+        }
+
+        public boolean isExpired() {
+            return System.currentTimeMillis() - time > 60 * 1000L;
+        }
+
+        public void accept() {
+            Back.backLoc.put(to.getUniqueId(), to.getLocation());
+            to.teleport(from.getLocation());
+            to.sendMessage(ChatColor.YELLOW + "Teleporting " + ChatColor.GOLD + from.getName() + ChatColor.YELLOW + " to you...");
+            from.sendMessage(ChatColor.YELLOW + "Teleporting you to " + ChatColor.GOLD + to.getName() + ChatColor.YELLOW + "...");
+        }
     }
 }
