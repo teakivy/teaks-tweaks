@@ -5,6 +5,7 @@ import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.packs.mobs.moremobheads.Head;
 import me.teakivy.teakstweaks.packs.mobs.moremobheads.MobHeads;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -34,6 +35,8 @@ public class HeadDrop extends BasePack {
     public ItemStack getHead(Player player, String killer) {
         ItemStack item = new ItemStack(Material.PLAYER_HEAD, 1);
         SkullMeta skull = (SkullMeta) item.getItemMeta();
+        skull.setNoteBlockSound(Sound.ENTITY_PLAYER_HURT.getKey());
+
         ArrayList<String> lore = new ArrayList<>();
         if (getConfig().getBoolean("display-killer"))
             lore.add("Killed by " + killer);
