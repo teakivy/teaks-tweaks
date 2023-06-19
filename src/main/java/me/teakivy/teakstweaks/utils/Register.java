@@ -54,7 +54,7 @@ import me.teakivy.teakstweaks.packs.teakstweaks.stairchairs.StairChairs;
 import me.teakivy.teakstweaks.packs.teakstweaks.sudoku.Sudoku;
 import me.teakivy.teakstweaks.packs.teakstweaks.unstickypistons.UnstickyPistons;
 import me.teakivy.teakstweaks.packs.teleportation.back.Back;
-import me.teakivy.teakstweaks.packs.teleportation.homes.Homes;
+import me.teakivy.teakstweaks.packs.teleportation.homes.HomesPack;
 import me.teakivy.teakstweaks.packs.teleportation.spawn.Spawn;
 import me.teakivy.teakstweaks.packs.teleportation.tpa.TPA;
 import me.teakivy.teakstweaks.packs.utilities.customvillagershops.CustomVillager;
@@ -133,7 +133,7 @@ public class Register {
             new NetherPortalCoords(),
             new RealTimeClock(),
             new Spawn(),
-            new Homes(),
+            new HomesPack(),
             new TPA(),
             new KillBoats()
         ).collect(Collectors.toMap(BasePack::getPath, x -> x));
@@ -208,7 +208,8 @@ public class Register {
             new SpawningSpheresCommand(),
             new GemCommand(),
             new SudokuCommand(),
-            new PackListCommand()
+            new PackListCommand(),
+            new DeleteHomeCommand(),
         };
 
         for (AbstractCommand cmd : cmds) {
