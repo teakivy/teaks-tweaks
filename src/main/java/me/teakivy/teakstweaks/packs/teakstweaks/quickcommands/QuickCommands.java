@@ -9,7 +9,7 @@ import java.util.List;
 public class QuickCommands extends BasePack {
 
     public QuickCommands() {
-        super("Quick Commands", "quick-commands", PackType.TEAKSTWEAKS, Material.COMMAND_BLOCK, "Quickly execute long commands");
+        super("Quick Commands", "quick-commands", PackType.TEAKSTWEAKS, Material.COMMAND_BLOCK, "Quickly switch game modes, and reply to messages");
     }
 
     @Override
