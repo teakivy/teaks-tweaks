@@ -117,7 +117,27 @@ public class GraveEvents extends BasePack {
                 return;
             }
         }
+        if (event.getEntity().getGameMode() == GameMode.SPECTATOR) return;
+
         Player player = event.getEntity();
+
+        if (player.getLevel() < config.getInt("level-threshold")) return;
+
+        if (!config.getBoolean("creative-drops")) {
+            if (event.getEntity().getGameMode() == GameMode.CREATIVE) {
+                event.getEntity().getInventory().clear();
+                event.getEntity().setExp(0);
+                event.getEntity().setLevel(0);
+            }
+        }
+
+        if (!config.getBoolean("allow-empty-graves")) {
+            if (event.getDrops().isEmpty()) return;
+        }
+
+        if (!config.getBoolean("creative-graves")) {
+            if (event.getEntity().getGameMode() == GameMode.CREATIVE) return;
+        }
 
         Location loc = GraveCreator.findGraveLocation(player.getLocation());
         if (loc == null) return;
