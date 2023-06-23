@@ -133,6 +133,28 @@ packs:
     # This overrides minecraft's default message system
     reply: true
 
+  # Spectator Alts
+  # Allow players to add their own alt accounts as spectators
+  # Command: /alts <add/remove/list> <alt> [player]
+  spectator-alts:
+    enabled: false
+    # Which gamemode to put alts in when they join
+    # Options: spectator, creative, survival, adventure
+    gamemode: spectator
+    # Whether or not to force alts to stay in spectator mode
+    force-gamemode: true
+    # Maximum amount of alts a player can have
+    # OP players have no limit
+    # Set to 0 to only allow OP players to set alts
+    # Set to -1 to allow all players to set unlimited alts
+    # OP players can add alts to other players by using /alts add <alt> <player>
+    max-alts: 1
+    # Whether or not to allow alts to teleport to other players
+    allow-player-teleport: true
+
+
+
+
 
 
 

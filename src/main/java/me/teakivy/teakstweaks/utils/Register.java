@@ -51,6 +51,7 @@ import me.teakivy.teakstweaks.packs.teakstweaks.lecternreset.LecternReset;
 import me.teakivy.teakstweaks.packs.teakstweaks.quickcommands.QuickCommands;
 import me.teakivy.teakstweaks.packs.teakstweaks.sleepyspidereggs.SleepySpiderEggs;
 import me.teakivy.teakstweaks.packs.teakstweaks.slimecream.SlimeCream;
+import me.teakivy.teakstweaks.packs.teakstweaks.spectatoralts.SpectatorAlts;
 import me.teakivy.teakstweaks.packs.teakstweaks.stairchairs.StairChairs;
 import me.teakivy.teakstweaks.packs.teakstweaks.sudoku.Sudoku;
 import me.teakivy.teakstweaks.packs.teakstweaks.unstickypistons.UnstickyPistons;
@@ -88,6 +89,7 @@ public class Register {
             new ConcreteConverter(),
             new CountDeaths(),
             new QuickCommands(),
+            new SpectatorAlts(),
             new MultiSleep(),
             new HeadDrop(),
             new Silencer(),
@@ -212,6 +214,7 @@ public class Register {
             new SudokuCommand(),
             new PackListCommand(),
             new DeleteHomeCommand(),
+            new AltsCommand(),
         };
 
         for (AbstractCommand cmd : cmds) {
