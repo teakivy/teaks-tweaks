@@ -123,6 +123,45 @@ packs:
   sleepy-spider-eggs:
     enabled: false
 
+  # Quick Commands
+  # Quickly switch game modes, and reply to messages
+  # or create your own custom commands
+  quick-commands:
+    enabled: false
+    # Game mode switcher commands (/gmc, /gma, /gms, /gmsp)
+    gamemode: true
+    # Reply commands (/r, /reply)
+    # This overrides minecraft's default message system
+    reply: true
+    # Custom Commands
+    # To create a command, add a new entry below such as the example
+    # The commands will be run as the player who executed it
+    # To run a command as the console, prefix the command with [console]
+    custom-commands:
+      # An example command
+      # This will run the command "/say Hello World" when the player executes "/hello"
+      helloworld:
+        # Whether or not the command is enabled
+        # This is optional, and defaults to true
+        enabled: false
+        # The command description (This is shown when the player executes "/help")
+        # This is optional, and defaults to "A Teak's Tweaks custom command"
+        description: "Rickrolls the server"
+        # Whether or not the player must have OP to execute the command
+        # This is optional, and defaults to false
+        require-op: true
+        # The command aliases
+        # This is optional, and defaults to an empty list
+        aliases:
+          - hello
+        # The commands to run
+        # Each command will be run as the player who executed the command
+        # To run a command as the console, prefix the command with [console]
+        # This is required, at least one command must be specified
+        commands:
+          - "/say Hello, World!"
+          - "[console] /say Well hello there"
+
 
 
 

@@ -48,6 +48,7 @@ import me.teakivy.teakstweaks.packs.teakstweaks.instantdeepslate.InstantDeepslat
 import me.teakivy.teakstweaks.packs.teakstweaks.invisibleitemframes.InvisibleItemFrames;
 import me.teakivy.teakstweaks.packs.teakstweaks.keepsmall.KeepSmall;
 import me.teakivy.teakstweaks.packs.teakstweaks.lecternreset.LecternReset;
+import me.teakivy.teakstweaks.packs.teakstweaks.quickcommands.QuickCommands;
 import me.teakivy.teakstweaks.packs.teakstweaks.sleepyspidereggs.SleepySpiderEggs;
 import me.teakivy.teakstweaks.packs.teakstweaks.slimecream.SlimeCream;
 import me.teakivy.teakstweaks.packs.teakstweaks.stairchairs.StairChairs;
@@ -86,6 +87,7 @@ public class Register {
             new DuraPing(),
             new ConcreteConverter(),
             new CountDeaths(),
+            new QuickCommands(),
             new MultiSleep(),
             new HeadDrop(),
             new Silencer(),
