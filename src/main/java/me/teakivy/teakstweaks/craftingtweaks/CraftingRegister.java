@@ -46,12 +46,12 @@ public class CraftingRegister {
         recipes.add(new LogChests());
         recipes.add(new SmeltableRawOreBlocks());
         recipes.add(new MorePackedMud());
+        recipes.add(new MoreSherds());
         try {
             for (AbstractRecipe recipe : recipes) {
                 recipe.register();
             }
-        } catch (Exception e) {
-        }
+        } catch (Exception ignored) {}
     }
 
     public static void addEnabledRecipe(AbstractRecipe recipe) {

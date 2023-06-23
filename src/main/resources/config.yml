@@ -804,6 +804,11 @@ crafting-tweaks:
   more-packed-mud:
     enabled: false
 
+  # More Sherds
+  # Craft 2 Sherds when combining a Pottery Sherd with a Brick.
+  more-sherds:
+    enabled: false
+
   # Craftable Gravel
   # Allows you to craft Gravel from Flint.
   craftable-gravel:
