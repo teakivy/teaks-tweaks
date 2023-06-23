@@ -9,6 +9,7 @@ import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerGameModeChangeEvent;
@@ -132,6 +133,11 @@ public class SpectatorAlts extends BasePack {
         Player player = event.getPlayer();
         if (config.getBoolean("allow-player-teleport")) return;
         if (!alts.containsKey(player.getUniqueId())) return;
+
+        for (Entity entity : event.getTo().getNearbyEntities(10, 10, 10)) {
+            if (!(entity instanceof Player)) continue;
+            if (entity.getUniqueId().equals(alts.get(player.getUniqueId()))) return;
+        }
 
         if (event.getCause() == PlayerTeleportEvent.TeleportCause.SPECTATE) {
             event.setCancelled(true);

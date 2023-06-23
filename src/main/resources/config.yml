@@ -150,6 +150,7 @@ packs:
     # OP players can add alts to other players by using /alts add <alt> <player>
     max-alts: 1
     # Whether or not to allow alts to teleport to other players
+    # Alts will always be able to teleport to their main account
     allow-player-teleport: true
 
 
