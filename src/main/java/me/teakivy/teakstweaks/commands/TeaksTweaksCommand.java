@@ -20,8 +20,6 @@ import java.util.List;
 
 public class TeaksTweaksCommand extends AbstractCommand {
 
-    Main main = Main.getInstance();
-
     public TeaksTweaksCommand() {
         super(null, "teakstweaks", "/teakstweaks", "Teak's Tweaks Main Command!", Arrays.asList("tweaks", "tt"));
     }
@@ -139,28 +137,28 @@ public class TeaksTweaksCommand extends AbstractCommand {
                 return true;
             }
             if (args[1].equalsIgnoreCase("all")) {
-                main.getRegister().unregisterAll();
-                main.getRegister().registerAll(true);
+                Main.getRegister().unregisterAll();
+                Main.getRegister().registerAll(true);
 
-                for (String pack : main.getRegister().getAllPacks()) {
-                    main.getConfig().set("packs." + pack + ".enabled", true);
+                for (String pack : Main.getRegister().getAllPacks()) {
+                    Main.getInstance().getConfig().set("packs." + pack + ".enabled", true);
                 }
-                main.saveConfig();
+                Main.getInstance().saveConfig();
 
                 sender.sendMessage(ChatColor.GREEN + "All packs enabled!");
                 return true;
             }
 
-            if (!main.getRegister().getDisabledPacks().contains(args[1])) {
+            if (!Main.getRegister().getDisabledPacks().contains(args[1])) {
                 sender.sendMessage(ChatColor.RED + args[1] + " cannot be enabled!");
                 return true;
             }
 
-            if (main.getRegister().getDisabledPacks().contains(args[1])) {
-                main.getRegister().registerPack(args[1]);
+            if (Main.getRegister().getDisabledPacks().contains(args[1])) {
+                Main.getRegister().registerPack(args[1]);
 
-                main.getConfig().set("packs." + args[1] + ".enabled", true);
-                main.saveConfig();
+                Main.getInstance().getConfig().set("packs." + args[1] + ".enabled", true);
+                Main.getInstance().saveConfig();
 
                 sender.sendMessage(ChatColor.GREEN + args[1] + " enabled!");
                 return true;
@@ -180,27 +178,27 @@ public class TeaksTweaksCommand extends AbstractCommand {
                 return true;
             }
             if (args[1].equalsIgnoreCase("all")) {
-                main.getRegister().unregisterAll();
+                Main.getRegister().unregisterAll();
 
-                for (String pack : main.getRegister().getEnabledPacks()) {
-                    main.getConfig().set("packs." + pack + ".enabled", false);
+                for (String pack : Main.getRegister().getEnabledPacks()) {
+                    Main.getInstance().getConfig().set("packs." + pack + ".enabled", false);
                 }
-                main.saveConfig();
+                Main.getInstance().saveConfig();
 
                 sender.sendMessage(ChatColor.GREEN + "All packs disabled!");
                 return true;
             }
 
-            if (!main.getRegister().getEnabledPacks().contains(args[1])) {
+            if (!Main.getRegister().getEnabledPacks().contains(args[1])) {
                 sender.sendMessage(ChatColor.RED + args[1] + " cannot be disabled!");
                 return true;
             }
 
-            if (main.getRegister().getEnabledPacks().contains(args[1])) {
-                main.getRegister().unregisterPack(args[1]);
+            if (Main.getRegister().getEnabledPacks().contains(args[1])) {
+                Main.getRegister().unregisterPack(args[1]);
 
-                main.getConfig().set("packs." + args[1] + ".enabled", true);
-                main.saveConfig();
+                Main.getInstance().getConfig().set("packs." + args[1] + ".enabled", true);
+                Main.getInstance().saveConfig();
 
 
                 sender.sendMessage(ChatColor.GREEN + args[1] + " disabled!");
@@ -246,12 +244,12 @@ public class TeaksTweaksCommand extends AbstractCommand {
         }
 
         if (enabled.isEmpty()) {
-            enabled.addAll(main.getRegister().getEnabledPacks());
+            enabled.addAll(Main.getRegister().getEnabledPacks());
             enabled.add("all");
         }
 
         if (disabled.isEmpty()) {
-            disabled.addAll(main.getRegister().getDisabledPacks());
+            disabled.addAll(Main.getRegister().getDisabledPacks());
             disabled.add("all");
         }
 
@@ -297,7 +295,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
         sender.sendMessage(ChatColor.WHITE + "Author: " + ChatColor.GREEN + Main.getInstance().getDescription().getAuthors().get(0));
         sender.sendMessage(ChatColor.WHITE + "Config Version: " + ChatColor.GREEN + Main.getInstance().getConfig().getString("config.version"));
         sender.sendMessage(ChatColor.WHITE + "Config Generated: " + ChatColor.GREEN + Main.getInstance().getConfig().getString("config.plugin-version"));
-        if (main.getConfig().getBoolean("config.dev-mode")) {
+        if (Main.getInstance().getConfig().getBoolean("config.dev-mode")) {
             sender.sendMessage(ChatColor.WHITE + "Dev Mode: " + ChatColor.GREEN + "Enabled");
         }
         sender.sendMessage(ChatColor.WHITE + "Support Server: " + ChatColor.GREEN + "https://discord.gg/wfP4SkZx6s");
