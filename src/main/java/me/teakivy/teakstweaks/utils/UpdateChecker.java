@@ -56,26 +56,28 @@ public class UpdateChecker {
     }
 
     public static synchronized void deleteUpdater() {
-        Plugin plugin = Bukkit.getPluginManager().getPlugin("TeaksTweaksLoader");
-        if (plugin == null) return;
+        Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> {
+            Plugin plugin = Bukkit.getPluginManager().getPlugin("TeaksTweaksLoader");
+            if (plugin == null) return;
 
-        Logger.log(Logger.LogLevel.INFO, "Disabling Teak's Tweaks Loader...", true);
-        Bukkit.getServer().getPluginManager().disablePlugin(plugin);
+            Logger.log(Logger.LogLevel.INFO, "Disabling Teak's Tweaks Loader...", true);
+            Bukkit.getServer().getPluginManager().disablePlugin(plugin);
 
-        Logger.log(Logger.LogLevel.INFO, "Deleting TeaksTweaksLoader.jar...", true);
-        File file = new File("plugins/TeaksTweaksLoader.jar");
-        if (file.exists()) file.delete();
+            Logger.log(Logger.LogLevel.INFO, "Deleting TeaksTweaksLoader.jar...", true);
+            File file = new File("plugins/TeaksTweaksLoader.jar");
+            if (file.exists()) file.delete();
 
-        Logger.log(Logger.LogLevel.INFO, ChatColor.GREEN + "Teak's Tweaks has been updated to v" + Main.getInstance().getDescription().getVersion() + "!");
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            player.sendMessage(ChatColor.GREEN + "Teak's Tweaks has been updated to v" + Main.getInstance().getDescription().getVersion() + "!");
-        }
+            Logger.log(Logger.LogLevel.INFO, ChatColor.GREEN + "Teak's Tweaks has been updated to v" + Main.getInstance().getDescription().getVersion() + "!");
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                player.sendMessage(ChatColor.GREEN + "Teak's Tweaks has been updated to v" + Main.getInstance().getDescription().getVersion() + "!");
+            }
+        }, 20L);
     }
 
     public static void sendUpdateMessage() {
         if (hasUpdate()) {
             Logger.log(Logger.LogLevel.INFO, "A new version of Teak's Tweaks is available! (" + getLatestVersion() + ")");
-            Logger.log(Logger.LogLevel.INFO, "You can run " + ChatColor.GOLD + "/teakstweaks update" + ChatColor.WHITE + " to update to the latest version.");
+            Logger.log(Logger.LogLevel.INFO, "Visit https://modrinth.com/plugin/teaks-tweaks to download the latest version.");
         }
     }
 
