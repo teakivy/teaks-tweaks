@@ -6,12 +6,12 @@
 
     <groupId>me.teakivy</groupId>
     <artifactId>teakstweaks</artifactId>
-    <version>1.10.0-beta</version>
+    <version>1.10.1-beta</version>
     <packaging>jar</packaging>
 
     <name>TeaksTweaks</name>
 
-    <description>A Plugin recreation of the Vanilla Tweaks datapacks!</description>
+    <description>150+ Toggleable Tweaks &amp; Features including Vanilla Tweaks as a plugin, and more!</description>
     <properties>
         <java.version>14</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
