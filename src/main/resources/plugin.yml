@@ -4,8 +4,8 @@ main: me.teakivy.teakstweaks.Main
 api-version: 1.17
 prefix: TeaksTweaks
 authors: [ TeakIvy ]
-description: A Plugin recreation of the Vanilla Tweaks datapacks!
-website: https://youtube.com/teakivy
+description: 150+ Toggleable Tweaks & Features including Vanilla Tweaks as a plugin, and more!
+website: https://teakstweaks.com
 
 permissions:
   teakstweaks.*:
