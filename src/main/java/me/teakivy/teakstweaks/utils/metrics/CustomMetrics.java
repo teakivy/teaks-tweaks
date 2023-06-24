@@ -32,6 +32,9 @@ public class CustomMetrics {
                 valueMap.put("Fixed Item Frames", getPack("fixed-item-frames"));
                 valueMap.put("Better Foliage", getPack("better-foliage"));
                 valueMap.put("Instant Deepslate", getPack("instant-deepslate"));
+                valueMap.put("Sleepy Spider Eggs", getPack("sleepy-spider-eggs"));
+                valueMap.put("Quick Commands", getPack("quick-commands"));
+                valueMap.put("Spectator Alts", getPack("spectator-alts"));
 
                 valueMap.put("Unlock All Recipes", getPack("unlock-all-recipes"));
                 valueMap.put("Fast Leaf Decay", getPack("fast-leaf-decay"));
@@ -137,6 +140,7 @@ public class CustomMetrics {
                 valueMap.put("Log Chests", getCraftingTweak("log-chests"));
                 valueMap.put("Smeltable Raw Ore Blocks", getCraftingTweak("smeltable-raw-ore-blocks"));
                 valueMap.put("More Packed Mud", getCraftingTweak("more-packed-mud"));
+                valueMap.put("More Sherds Bricks", getCraftingTweak("more-sherds"));
                 return valueMap;
             }
         }));
