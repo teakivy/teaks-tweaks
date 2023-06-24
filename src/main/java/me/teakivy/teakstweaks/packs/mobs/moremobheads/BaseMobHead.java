@@ -14,17 +14,16 @@ import org.bukkit.block.Skull;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.block.BlockRedstoneEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
 
 public class BaseMobHead implements Listener {
     protected EntityType entity;
@@ -154,7 +153,7 @@ public class BaseMobHead implements Listener {
         Collection<Property> textures = properties.get("textures");
         for (Property property : textures) {
             if (names.containsKey(property.getValue())) {
-                return List.of((profile.getName() != null && profile.getName().equalsIgnoreCase("TeakIvy")) ? names.get(property.getValue()) : profile.getName(), property.getValue());
+                return List.of((profile.getName() != null && profile.getName().equalsIgnoreCase("TeakIvy")) ? profile.getName() : names.get(property.getValue()), property.getValue());
             }
         }
 
