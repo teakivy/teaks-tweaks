@@ -1,7 +1,7 @@
 name: TeaksTweaks
 version: ${project.version}
 main: me.teakivy.teakstweaks.Main
-api-version: 1.17
+api-version: 1.20
 prefix: TeaksTweaks
 authors: [ TeakIvy ]
 description: 150+ Toggleable Tweaks & Features including Vanilla Tweaks as a plugin, and more!
