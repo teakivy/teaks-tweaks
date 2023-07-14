@@ -81,10 +81,6 @@ public final class Main extends JavaPlugin implements Listener {
         // Packs
         register = new Register();
         register.registerAll();
-
-        UpdateChecker.deleteUpdater();
-
-        UpdateChecker.startLoop();
     }
 
     @Override

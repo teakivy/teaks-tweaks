@@ -14,17 +14,8 @@
 # Plugin Settings
 settings:
 
-  # Enable Auto-Update
-  # If enabled, the plugin will automatically update itself when a new version is released.
-  # If disabled, you will have to update the plugin manually.
-  auto-update: false
-
-  # Update Check Interval
-  # How often the plugin should check for updates (in minutes)
-  update-check-interval: 15
-
   # Alert on new version
-  # If enabled, the plugin will alert you when a new version is released. (Requires auto-update to be disabled)
+  # If enabled, the plugin will alert you when a new version is available.
   alert-on-new-version: true
 
   # Mechanics Command
