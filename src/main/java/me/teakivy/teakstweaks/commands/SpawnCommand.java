@@ -71,7 +71,7 @@ public class SpawnCommand extends AbstractCommand {
     }
 
     private void teleportToSpawn(Player player) {
-        World world = player.getWorld();
+        World world = Bukkit.getWorld("world");
 
         Back.backLoc.put(player.getUniqueId(), player.getLocation());
         player.teleport(world.getSpawnLocation());
