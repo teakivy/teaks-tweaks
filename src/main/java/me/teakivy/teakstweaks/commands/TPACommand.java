@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.Main;
-import me.teakivy.teakstweaks.packs.teakstweaks.chatcolors.ChatColors;
 import me.teakivy.teakstweaks.packs.teleportation.back.Back;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
@@ -17,7 +16,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class TPACommand extends AbstractCommand {
@@ -183,7 +181,7 @@ public class TPACommand extends AbstractCommand {
 
         public void accept() {
             Back.backLoc.put(to.getUniqueId(), to.getLocation());
-            to.teleport(from.getLocation());
+            from.teleport(to.getLocation());
             to.sendMessage(ChatColor.YELLOW + "Teleporting " + ChatColor.GOLD + from.getName() + ChatColor.YELLOW + " to you...");
             from.sendMessage(ChatColor.YELLOW + "Teleporting you to " + ChatColor.GOLD + to.getName() + ChatColor.YELLOW + "...");
         }
