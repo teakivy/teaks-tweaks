@@ -20,7 +20,7 @@ public class PackListCommand extends AbstractCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!sender.hasPermission("teakstweaks.packlist.execute")) {
+        if (!sender.hasPermission(permission)) {
             sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
         }

@@ -36,15 +36,16 @@ public class HomeCommand extends AbstractCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
+
         if (!(sender instanceof Player)) {
             sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;
         }
         Player player = (Player) sender;
-//        List<Home> h = HomesPack.getHomes(player);
-//        for (Home home : h) {
-//            System.out.println(home.getName() + " " + home.getLocString());
-//        }
 
         if (args.length < 1) {
             List<Home> homes = HomesPack.getHomes(player);
@@ -70,7 +71,7 @@ public class HomeCommand extends AbstractCommand {
                 player.sendMessage(ChatColor.RED + "You must specify a name for your home.");
                 return true;
             }
-            if (!sender.hasPermission("teakstweaks.homes.manage")) {
+            if (!sender.hasPermission(permission+".set")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
@@ -101,7 +102,7 @@ public class HomeCommand extends AbstractCommand {
                 player.sendMessage(ChatColor.RED + "You must specify a name for your home.");
                 return true;
             }
-            if (!sender.hasPermission("teakstweaks.homes.manage")) {
+            if (!sender.hasPermission(permission+".delete")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }

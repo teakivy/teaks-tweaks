@@ -78,6 +78,9 @@ public class Shrine extends BasePack {
 
     @EventHandler
     public void onDrop(PlayerDropItemEvent event) {
+        if (!hasPermission(event.getPlayer())) {
+            return;
+        }
         ItemStack item = event.getItemDrop().getItemStack();
         if (item.getType() == Material.getMaterial(main.getConfig().getString("packs.thunder-shrine.summoning.summoning-item"))) {
             new BukkitRunnable() {

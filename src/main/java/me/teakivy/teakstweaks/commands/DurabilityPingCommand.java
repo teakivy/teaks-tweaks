@@ -30,6 +30,10 @@ public class DurabilityPingCommand extends AbstractCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
 
         if (!main.getConfig().getBoolean("packs.durability-ping.enabled")) {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
@@ -53,7 +57,7 @@ public class DurabilityPingCommand extends AbstractCommand {
                 player.sendMessage(MessageHandler.getCmdMessage("durabilityping", "missing-preview-selection"));
                 return true;
             }
-            if (!sender.hasPermission("teakstweaks.durabilityping.preview")) {
+            if (!sender.hasPermission(permission+".preview")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
@@ -84,7 +88,7 @@ public class DurabilityPingCommand extends AbstractCommand {
                 player.sendMessage(MessageHandler.getCmdMessage("durabilityping", "missing-set-selection"));
                 return true;
             }
-            if (!sender.hasPermission("teakstweaks.durabilityping.set")) {
+            if (!sender.hasPermission(permission+".set")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }

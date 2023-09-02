@@ -24,13 +24,13 @@ public class PortalCommand extends AbstractCommand {
             return true;
         }
 
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(ErrorType.NOT_PLAYER.m());
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
         }
 
-        if (!sender.hasPermission("teakstweaks.netherportalcoords.execute")) {
-            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+        if (!(sender instanceof Player)) {
+            sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;
         }
 

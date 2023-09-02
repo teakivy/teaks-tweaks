@@ -36,6 +36,7 @@ public class Silencer extends BasePack {
 
     @EventHandler
     public void onSilence(PlayerInteractAtEntityEvent event) {
+        if (!hasPermission(event.getPlayer())) return;
         Entity entity = event.getRightClicked();
 
         if (minecartTypes.contains(entity.getType())) {

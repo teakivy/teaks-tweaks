@@ -34,6 +34,11 @@ public class ShrineCommand extends AbstractCommand {
             return true;
         }
 
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
+
         if (!(sender instanceof Player)) {
             sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;
@@ -46,7 +51,7 @@ public class ShrineCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("create")) {
-            if (!sender.hasPermission("teakstweaks.shrines.create")) {
+            if (!sender.hasPermission(permission+".create")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
@@ -71,7 +76,7 @@ public class ShrineCommand extends AbstractCommand {
 
         if (args[0].equalsIgnoreCase("remove")) {
 
-            if (!sender.hasPermission("teakstweaks.shrines.remove")) {
+            if (!sender.hasPermission(permission+".remove")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
@@ -96,7 +101,7 @@ public class ShrineCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("uninstall")) {
-            if (!sender.hasPermission("teakstweaks.shrines.uninstall")) {
+            if (!sender.hasPermission(permission+".uninstall")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }

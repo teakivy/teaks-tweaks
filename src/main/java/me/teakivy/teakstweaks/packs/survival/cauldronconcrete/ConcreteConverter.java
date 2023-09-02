@@ -19,6 +19,7 @@ public class ConcreteConverter extends BasePack {
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
         if (event.isCancelled()) return;
+        if (!hasPermission(event.getPlayer())) return;
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (event.getClickedBlock() == null) return;
         if (event.getClickedBlock().getType() != Material.WATER_CAULDRON) return;

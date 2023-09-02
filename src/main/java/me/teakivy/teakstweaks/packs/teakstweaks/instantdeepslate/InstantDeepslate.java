@@ -35,6 +35,7 @@ public class InstantDeepslate extends BasePack {
 
     @EventHandler
     public void onBeginBreak(BlockDamageEvent e) {
+        if (!hasPermission(e.getPlayer())) return;
         Player player = e.getPlayer();
         ItemStack item = e.getItemInHand();
         Block block = e.getBlock();

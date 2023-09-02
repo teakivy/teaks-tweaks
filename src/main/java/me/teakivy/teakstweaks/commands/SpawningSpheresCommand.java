@@ -32,6 +32,12 @@ public class SpawningSpheresCommand extends AbstractCommand {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
+
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
+
         if (!(sender instanceof Player)) {
             sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;
@@ -51,7 +57,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
                 return true;
             }
 
-            if (!sender.hasPermission("teakstweaks.spawningspheres.create")) {
+            if (!sender.hasPermission(permission+".create")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
@@ -84,7 +90,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
                 return true;
             }
 
-            if (!sender.hasPermission("teakstweaks.spawningspheres.remove")) {
+            if (!sender.hasPermission(permission+".remove")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
@@ -115,7 +121,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
                 return true;
             }
 
-            if (!sender.hasPermission("teakstweaks.spawningspheres.teleport")) {
+            if (!sender.hasPermission(permission+".teleport")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }

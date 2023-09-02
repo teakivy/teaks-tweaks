@@ -33,9 +33,14 @@ public class ItemAveragesCommand extends AbstractCommand {
             return true;
         }
 
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
+
         Player player = (Player) sender;
         if (args.length < 1) {
-            if (!sender.hasPermission("teakstweaks.itemaverages.create")) {
+            if (!sender.hasPermission(permission+".create")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
@@ -53,7 +58,7 @@ public class ItemAveragesCommand extends AbstractCommand {
         }
         if (args.length == 1) {
             if (args[0].equalsIgnoreCase("create")) {
-                if (!sender.hasPermission("teakstweaks.itemaverages.create")) {
+                if (!sender.hasPermission(permission+".create")) {
                     sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                     return true;
                 }
@@ -70,7 +75,7 @@ public class ItemAveragesCommand extends AbstractCommand {
                 return true;
             }
             if (args[0].equalsIgnoreCase("uninstall")) {
-                if (!sender.hasPermission("teakstweaks.itemaverages.uninstall")) {
+                if (!sender.hasPermission(permission+".uninstall")) {
                     sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                     return true;
                 }

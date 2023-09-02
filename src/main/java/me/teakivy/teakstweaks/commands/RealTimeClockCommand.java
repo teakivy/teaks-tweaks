@@ -26,7 +26,7 @@ public class RealTimeClockCommand extends AbstractCommand {
         }
 
 
-        if (!sender.hasPermission("teakstweaks.realtimeclock.execute")) {
+        if (!sender.hasPermission(permission)) {
             sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
         }

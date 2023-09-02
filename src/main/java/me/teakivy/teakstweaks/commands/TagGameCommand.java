@@ -29,6 +29,11 @@ public class TagGameCommand extends AbstractCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
+
         if (args.length == 1) {
             if (!(sender instanceof Player)) {
                 sender.sendMessage(ErrorType.NOT_PLAYER.m());
@@ -36,9 +41,8 @@ public class TagGameCommand extends AbstractCommand {
             }
             Player player = (Player) sender;
 
-
             if (args[0].equalsIgnoreCase("uninstall")) {
-                if (!sender.hasPermission("teakstweaks.taggame.uninstall")) {
+                if (!sender.hasPermission(permission+".uninstall")) {
                     sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                     return true;
                 }
@@ -61,7 +65,7 @@ public class TagGameCommand extends AbstractCommand {
 
 
         if (args.length < 1) {
-            if (!sender.hasPermission("teakstweaks.taggame.give")) {
+            if (!sender.hasPermission(permission+".give")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }

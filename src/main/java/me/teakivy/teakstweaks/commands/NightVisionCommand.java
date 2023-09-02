@@ -26,7 +26,7 @@ public class NightVisionCommand extends AbstractCommand {
             return true;
         }
 
-        if (!sender.hasPermission("teakstweaks.spectatornightvision.toggle")) {
+        if (!sender.hasPermission(permission)) {
             sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
         }

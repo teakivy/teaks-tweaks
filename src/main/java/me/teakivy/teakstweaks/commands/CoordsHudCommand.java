@@ -26,6 +26,11 @@ public class CoordsHudCommand extends AbstractCommand {
             return true;
         }
 
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
+
         if (args.length == 0) {
             sender.sendMessage(MessageHandler.getCmdMessage("coordshud", "proper-usage"));
             return true;
@@ -34,7 +39,7 @@ public class CoordsHudCommand extends AbstractCommand {
         if (sender instanceof Player) {
             Player player = (Player) sender;
             if (args[0].equalsIgnoreCase("toggle")) {
-                if (!player.hasPermission("teakstweaks.coordshud.toggle")) {
+                if (!player.hasPermission(permission+".toggle")) {
                     sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                     return true;
                 }

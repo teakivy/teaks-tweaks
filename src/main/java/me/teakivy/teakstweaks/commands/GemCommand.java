@@ -28,6 +28,10 @@ public class GemCommand extends AbstractCommand {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
         if (!(sender instanceof Player)) {
             sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;
@@ -44,7 +48,7 @@ public class GemCommand extends AbstractCommand {
                 player.sendMessage(MessageHandler.getCmdMessage("gem", "error.missing-villager-type"));
                 return true;
             }
-            if (!sender.hasPermission("teakstweaks.gem.villager")) {
+            if (!sender.hasPermission(permission+".villager")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
@@ -133,7 +137,7 @@ public class GemCommand extends AbstractCommand {
             if (args.length < 2) {
                 player.sendMessage(MessageHandler.getCmdMessage("gem", "error.missing-gem-type"));
             }
-            if (!sender.hasPermission("teakstweaks.gem.give")) {
+            if (!sender.hasPermission(permission+".give")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }

@@ -23,6 +23,11 @@ public class AltsCommand extends AbstractCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
+
         if (args.length < 1) {
             sender.sendMessage(ChatColor.RED + "Usage: " + this.usage);
             return true;

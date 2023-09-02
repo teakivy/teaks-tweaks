@@ -22,7 +22,7 @@ public class Back extends BasePack {
     public static HashMap<UUID, Location> backLoc = new HashMap<>();
 
     public static void tpBack(Player player) {
-        if (!player.hasPermission("teakstweaks.back.teleport")) {
+        if (!player.hasPermission("teakstweaks.back")) {
             player.sendMessage(ErrorType.MISSING_PERMISSION.m());
             return;
         }

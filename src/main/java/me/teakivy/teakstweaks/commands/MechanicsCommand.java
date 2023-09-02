@@ -28,6 +28,11 @@ public class MechanicsCommand extends AbstractCommand {
             return true;
         }
 
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
+
         Player player = (Player) sender;
 
         if (args.length == 0 || (args.length == 1 && args[0].equalsIgnoreCase("list"))) {

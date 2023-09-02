@@ -18,6 +18,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
 
     protected final String command;
     protected final String description;
+    protected final String permission;
     protected final List<String> alias;
     protected final String usage;
     protected final String permMessage;
@@ -51,6 +52,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         this.description = description;
         this.permMessage = permissionMessage;
         this.alias = aliases;
+        this.permission = "teakstweaks." + parentPack + ".command." + command;
     }
 
     public void register() {

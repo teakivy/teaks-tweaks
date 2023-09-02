@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.utils.AbstractCommand;
+import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -16,7 +17,10 @@ public class SudokuCommand extends AbstractCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player = (Player) sender;
-        if (!player.hasPermission("teakstweaks.sudoku.execute")) return false;
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
         player.getScoreboardTags().add("sudoku-message");
         player.sendMessage(ChatColor.GREEN + "Sudoku!");
         player.setHealth(0);

@@ -38,11 +38,6 @@ public class TPACommand extends AbstractCommand {
         }
         Player player = (Player) sender;
 
-        if (!sender.hasPermission("teakstweaks.tpa.use")) {
-            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-            return true;
-        }
-
         if (args.length < 1) {
             player.sendMessage(ChatColor.RED + "Please specify a player to teleport to.");
             return true;
@@ -76,6 +71,11 @@ public class TPACommand extends AbstractCommand {
             req.accept();
             requests.remove(req);
 
+            return true;
+        }
+
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
         }
 
