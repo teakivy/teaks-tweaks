@@ -18,6 +18,11 @@ settings:
   # If enabled, the plugin will alert you when a new version is available.
   alert-on-new-version: true
 
+  # Disable Update Checker
+  # If enabled, the plugin will not check for updates.
+  # Useful if you use a server with limited internet access.
+  disable-update-checker: false
+
   # Mechanics Command
   # If enabled, players will be able to use the /mechanics command to view a list of all enabled tweaks.
   mechanics-command: true
