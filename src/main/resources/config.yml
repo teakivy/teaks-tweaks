@@ -900,6 +900,6 @@ crafting-tweaks:
 # Leave these options alone unless you know what you're doing!
 # Changing these values may cause unexpected issues.
 config:
-  plugin-version: 1.10.4-beta
-  version: 48
+  plugin-version: 1.10.5-beta
+  version: 49
   dev-mode: false
