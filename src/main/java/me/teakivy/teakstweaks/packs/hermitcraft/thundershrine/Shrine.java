@@ -5,7 +5,7 @@ import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.*;
-import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Marker;
@@ -23,9 +23,6 @@ import java.util.UUID;
 
 public class Shrine extends BasePack {
 
-    static Main main = Main.getPlugin(Main.class);
-    static FileConfiguration data = main.data.getConfig();
-
     int particleTask = -1;
 
     public Shrine() {
@@ -39,13 +36,13 @@ public class Shrine extends BasePack {
     }
 
     public void register() {
-        if (main.getConfig().getBoolean("packs.thunder-shrine.idle-particles")) {
+        if (getConfig().getBoolean("idle-particles")) {
             particleTask = new BukkitRunnable() {
                 @Override
                 public void run() {
                     runParticles();
                 }
-            }.runTaskTimer(main, 0, 3L).getTaskId();
+            }.runTaskTimer(Main.getInstance(), 0, 3L).getTaskId();
         } else {
             particleTask = -1;
         }
@@ -67,19 +64,19 @@ public class Shrine extends BasePack {
     }
 
     public static void removeShrine(Entity shrine) {
-        data.set("thunder-shrines." + shrine.getUniqueId(), null);
+        getDataConfig().set("thunder-shrines." + shrine.getUniqueId(), null);
         try {
-            main.data.saveConfig();
+            getData().saveConfig();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        main.data.reloadConfig();
+        getData().reloadConfig();
     }
 
     @EventHandler
     public void onDrop(PlayerDropItemEvent event) {
         ItemStack item = event.getItemDrop().getItemStack();
-        if (item.getType() == Material.getMaterial(main.getConfig().getString("packs.thunder-shrine.summoning.summoning-item"))) {
+        if (item.getType() == Material.getMaterial(getConfig().getString("summoning.summoning-item"))) {
             new BukkitRunnable() {
                 @Override
                 public void run() {
@@ -89,42 +86,42 @@ public class Shrine extends BasePack {
                     }
                     if (event.getItemDrop().isDead() || event.getItemDrop().getItemStack().getAmount() != 1) this.cancel();
                 }
-            }.runTaskTimer(main, 0, 20L);
+            }.runTaskTimer(Main.getInstance(), 0, 20L);
         }
     }
 
     public static void startThunder(Player player, Location loc) {
-        FileConfiguration config = main.getConfig();
+        ConfigurationSection config = Main.getInstance().getConfig().getConfigurationSection("packs.thunder-shrine");
         World world = player.getWorld();
-        if (config.getBoolean("packs.thunder-shrine.summoning.strike-lightning")) {
+        if (config.getBoolean("summoning.strike-lightning")) {
             world.strikeLightning(loc.add(0, +1, 0));
         }
-        if (config.getBoolean("packs.thunder-shrine.summoning.show-particles")) {
+        if (config.getBoolean("summoning.show-particles")) {
             world.spawnParticle(Particle.FLAME, loc, 100, 0, 0, 0, .5);
         }
         world.setWeatherDuration(6000);
         world.setThunderDuration(6000);
         world.setStorm(true);
         world.setThundering(true);
-        if (config.getBoolean("packs.thunder-shrine.summoning.brodcast-message")) {
-            Bukkit.broadcastMessage(MessageHandler.getMessage("pack.thunder-shrine.storm-initialize"));
+        if (config.getBoolean("summoning.brodcast-message")) {
+            Bukkit.broadcastMessage(MessageHandler.getMessage("storm-initialize"));
         }
     }
 
     public static List<Entity> getShrines() {
-        if (!data.contains("thunder-shrines")) return null;
+        if (!getDataConfig().contains("thunder-shrines")) return null;
         List<Entity> shrines = new ArrayList<>();
-        for (String shrine : Objects.requireNonNull(data.getConfigurationSection("thunder-shrines")).getKeys(false)) {
-            if (Bukkit.getEntity(UUID.fromString(Objects.requireNonNull(data.getString("thunder-shrines." + shrine + ".id")))) == null) {
-                data.set("thunder-shrines." + shrine, null);
+        for (String shrine : Objects.requireNonNull(getDataConfig().getConfigurationSection("thunder-shrines")).getKeys(false)) {
+            if (Bukkit.getEntity(UUID.fromString(Objects.requireNonNull(getDataConfig().getString("thunder-shrines." + shrine + ".id")))) == null) {
+                getDataConfig().set("thunder-shrines." + shrine, null);
                 try {
-                    main.data.saveConfig();
+                    getData().saveConfig();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                main.data.reloadConfig();
+                getData().reloadConfig();
             } else {
-                shrines.add(Bukkit.getEntity(UUID.fromString(Objects.requireNonNull(data.getString("thunder-shrines." + shrine + ".id")))));
+                shrines.add(Bukkit.getEntity(UUID.fromString(Objects.requireNonNull(getDataConfig().getString("thunder-shrines." + shrine + ".id")))));
             }
         }
         return shrines;
@@ -139,8 +136,8 @@ public class Shrine extends BasePack {
 
     public static void createShrine(Location loc) throws IOException {
         Marker shrine = (Marker) Objects.requireNonNull(loc.getWorld()).spawnEntity(loc, EntityType.MARKER);
-        data.set("thunder-shrines." + shrine.getUniqueId() + ".id", shrine.getUniqueId().toString());
-        main.data.saveConfig();
+        getDataConfig().set("thunder-shrines." + shrine.getUniqueId() + ".id", shrine.getUniqueId().toString());
+        getData().saveConfig();
     }
 
     @Override

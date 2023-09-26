@@ -7,14 +7,16 @@ import me.teakivy.teakstweaks.utils.datamanager.DataManager;
 import me.teakivy.teakstweaks.utils.gui.GUIListener;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Objects;
+import java.util.UUID;
 
 import static me.teakivy.teakstweaks.utils.metrics.CustomMetrics.registerCustomMetrics;
 
@@ -88,23 +90,12 @@ public final class Main extends JavaPlugin implements Listener {
         // Plugin shutdown logic
         Logger.log(Logger.LogLevel.INFO, MessageHandler.getMessage("plugin.shutdown.plugin-shutdown"));
 
-        data.reloadConfig();
-        List<String> list = new ArrayList<>();
-        for (UUID uuid : chEnabled) {
-            list.add(uuid.toString());
-        }
-        data.getConfig().set("chEnabled", list);
         try {
             data.saveConfig();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-    }
-
-    public String getPackName(String pack) {
-        if (!data.getConfig().contains("messages.pack." + pack)) return pack;
-        return ChatColor.translateAlternateColorCodes('&', MessageHandler.getMessage("pack." + pack + ".name"));
     }
 
     public void clearPacks() {
