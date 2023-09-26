@@ -21,9 +21,9 @@ public class UpdateJoinAlert implements Listener {
         if (!Main.getInstance().getConfig().getBoolean("settings.alert-on-new-version")) return;
         if (!UpdateChecker.hasUpdate()) return;
 
-        TextComponent text = new TextComponent(ChatColor.YELLOW + "There is a new version of Teak's Tweaks available!\nClick here to update to " + ChatColor.GOLD + "Teak's Tweaks v" + UpdateChecker.getLatestVersion() + ChatColor.YELLOW + "!");
+        TextComponent text = new TextComponent(ChatColor.YELLOW + "There is a new version of Teak's Tweaks available!\nClick here to download " + ChatColor.GOLD + "Teak's Tweaks v" + UpdateChecker.getLatestVersion() + ChatColor.YELLOW + "!");
         text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatColor.GOLD + "Click here to download & install Teak's Tweaks v" + UpdateChecker.getLatestVersion() + "!")));
-        text.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/teakstweaks update confirm"));
+        text.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://modrinth.com/plugin/teaks-tweaks"));
 
         player.spigot().sendMessage(text);
 
