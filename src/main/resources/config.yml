@@ -340,10 +340,6 @@ packs:
     force-enable: false
     # What world (folder name) to get the world time from, if none exists it will take the first loaded world
     time-world: "world"
-    # What to display as the coords hud message
-    # Avaliable Placeholders:
-    # https://github.com/teakivy/teaks-tweaks/blob/master/src/main/java/me/teakivy/vanillatweaks/Packs/Survival/CoordsHud/PLACEHOLDERS.md
-    message: "&6XYZ: &f%x% %y% %z%  &6%direction_abbreviated%      %world_time%"
     # Whether or not to use player position instead of block position
     # This may have unwanted effects on negative values.
     use-player-position: false
