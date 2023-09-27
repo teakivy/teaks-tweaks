@@ -473,6 +473,8 @@ packs:
   # Enter '/spawn' to teleport to the world spawn point.
   spawn:
     enabled: false
+    # Name of the world to teleport to the spawn of (ex: 'world', 'world_nether', 'world_the_end', etc)
+    world: world
     # Enter the number of seconds required to stand still after running the spawn command
     teleport-delay: 0
     # Enter the number of seconds required to wait between uses of the spawn command
