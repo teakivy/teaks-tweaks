@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.utils.lang;
 
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.utils.Logger;
+import org.bukkit.ChatColor;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -58,6 +59,9 @@ public class Translatable {
     }
 
     public static String get(String key) {
-        return currentLanguage.get(key);
+        return ChatColor.translateAlternateColorCodes('&', currentLanguage.get(key));
+    }
+    public static String getError(String key) {
+        return ChatColor.translateAlternateColorCodes('&', currentLanguage.get("error." + key));
     }
 }
