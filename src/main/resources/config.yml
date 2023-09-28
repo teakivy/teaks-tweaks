@@ -129,7 +129,7 @@ packs:
 
   # Quick Commands
   # Quickly switch game modes, and reply to messages
-  quick-Command:
+  quick-commands:
     enabled: false
     # Game mode switcher commands (/gmc, /gma, /gms, /gmsp)
     gamemode: true
