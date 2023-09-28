@@ -18,6 +18,7 @@ public class Credits {
                         "Contributors:\n" +
                         " - evm0\n" +
                         " - RamrKorda\n" +
+                        " - MCCasper\n" +
                         "\n" +
                         "Thanks to Sachin Gorkar for some of the tweak's ideas\n" +
                         "\n" +
