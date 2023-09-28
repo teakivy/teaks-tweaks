@@ -111,7 +111,6 @@ public class SpectatorAlts extends BasePack {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        System.out.println(alts.containsKey(player.getUniqueId()));
         if (!alts.containsKey(player.getUniqueId())) return;
 
         player.setGameMode(getGameMode());

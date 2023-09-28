@@ -42,6 +42,11 @@ public class TeaksTweaksCommand extends AbstractCommand {
             return true;
         }
 
+        if (args[0].equalsIgnoreCase("update")) {
+            sender.sendMessage(ChatColor.GREEN + "https://modrinth.com/plugin/teaks-tweaks");
+            return true;
+        }
+
         if (args[0].equalsIgnoreCase("enable")) {
             if (!sender.hasPermission(permission)) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
@@ -124,18 +129,6 @@ public class TeaksTweaksCommand extends AbstractCommand {
             return true;
         }
 
-
-//        if (args[0].equalsIgnoreCase("reload")) {
-//            if (!sender.hasPermission("teakstweaks.reload")) {
-//                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-//                return true;
-//            }
-//            Main.getInstance().reloadConfig();
-//            main.getRegister().registerAll();
-//
-//            sender.sendMessage(ChatColor.GREEN + "Config reloaded!");
-//            return true;
-//        }
         return false;
     }
 
@@ -150,7 +143,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
         if (arguments.isEmpty()) {
             arguments.add("info");
             arguments.add("version");
-//            arguments.add("reload");
+            arguments.add("update");
             arguments.add("support");
             arguments.add("enable");
             arguments.add("disable");

@@ -104,8 +104,12 @@ public class BasePack implements Listener {
 		return path;
 	}
 
-	public DataManager getData() {
+	public static DataManager getData() {
 		return main.data;
+	}
+
+	public static ConfigurationSection getDataConfig() {
+		return main.data.getConfig();
 	}
 
 	public ConfigurationSection getConfig() {
@@ -122,8 +126,7 @@ public class BasePack implements Listener {
 
 	@EventHandler
 	public void onJoin(PlayerJoinEvent event) {
-//		if (!path.equalsIgnoreCase("graves")) return;
-//		event.getPlayer().getInventory().addItem(item);
+		// TODO
 	}
 
 	private String transformKey(String key) {

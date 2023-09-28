@@ -18,6 +18,11 @@ settings:
   # If enabled, the plugin will alert you when a new version is available.
   alert-on-new-version: true
 
+  # Disable Update Checker
+  # If enabled, the plugin will not check for updates.
+  # Useful if you use a server with limited internet access.
+  disable-update-checker: false
+
   # Mechanics Command
   # If enabled, players will be able to use the /mechanics command to view a list of all enabled tweaks.
   # Command: /mechanics (Permission: teakstweaks.mechanics.command)
@@ -135,7 +140,7 @@ packs:
   # Spectator Alts
   # Allow players to add their own alt accounts as spectators
   # Command: /alts <add/remove/list> <alt> [player] (Permission: teakstweaks.spectator-alts.command.alts)
-  
+
   spectator-alts:
     enabled: false
     # Which gamemode to put alts in when they join
@@ -362,10 +367,6 @@ packs:
     force-enable: false
     # What world (folder name) to get the world time from, if none exists it will take the first loaded world
     time-world: "world"
-    # What to display as the coords hud message
-    # Avaliable Placeholders:
-    # https://github.com/teakivy/teaks-tweaks/blob/master/src/main/java/me/teakivy/vanillatweaks/Packs/Survival/CoordsHud/PLACEHOLDERS.md
-    message: "&6XYZ: &f%x% %y% %z%  &6%direction_abbreviated%      %world_time%"
     # Whether or not to use player position instead of block position
     # This may have unwanted effects on negative values.
     use-player-position: false
@@ -508,6 +509,8 @@ packs:
   # Command: /spawn (Permission: teakstweaks.spawn.command.spawn)
   spawn:
     enabled: false
+    # Name of the world to teleport to the spawn of (ex: 'world', 'world_nether', 'world_the_end', etc)
+    world: world
     # Enter the number of seconds required to stand still after running the spawn command
     teleport-delay: 0
     # Enter the number of seconds required to wait between uses of the spawn command
@@ -967,6 +970,6 @@ crafting-tweaks:
 # Leave these options alone unless you know what you're doing!
 # Changing these values may cause unexpected issues.
 config:
-  plugin-version: 1.10.4-beta
+  plugin-version: 1.10.5-beta
   version: 49
   dev-mode: false

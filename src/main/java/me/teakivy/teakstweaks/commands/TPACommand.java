@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.Main;
-import me.teakivy.teakstweaks.packs.teakstweaks.chatcolors.ChatColors;
 import me.teakivy.teakstweaks.packs.teleportation.back.Back;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
@@ -17,7 +16,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class TPACommand extends AbstractCommand {
@@ -98,7 +96,7 @@ public class TPACommand extends AbstractCommand {
         player.sendMessage(ChatColor.YELLOW + "You have requested to teleport to " + ChatColor.GOLD + player2.getName() + ChatColor.YELLOW + ". They have 60 seconds to accept.");
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
-            if (req.isExpired()) {
+            if (req.isExpired() && !req.isAccepted()) {
                 player.sendMessage(ChatColor.RED + "Your request to teleport to " + ChatColor.GOLD + player2.getName() + ChatColor.RED + " has expired.");
                 requests.remove(req);
             }
@@ -159,6 +157,7 @@ public class TPACommand extends AbstractCommand {
         private Player from;
         private Player to;
         private long time;
+        private boolean accepted = false;
         public TPARequest(Player from, Player to) {
             this.from = from;
             this.to = to;
@@ -181,9 +180,14 @@ public class TPACommand extends AbstractCommand {
             return System.currentTimeMillis() - time > 60 * 1000L;
         }
 
+        public boolean isAccepted() {
+            return accepted;
+        }
+
         public void accept() {
+            accepted = true;
             Back.backLoc.put(to.getUniqueId(), to.getLocation());
-            to.teleport(from.getLocation());
+            from.teleport(to.getLocation());
             to.sendMessage(ChatColor.YELLOW + "Teleporting " + ChatColor.GOLD + from.getName() + ChatColor.YELLOW + " to you...");
             from.sendMessage(ChatColor.YELLOW + "Teleporting you to " + ChatColor.GOLD + to.getName() + ChatColor.YELLOW + "...");
         }

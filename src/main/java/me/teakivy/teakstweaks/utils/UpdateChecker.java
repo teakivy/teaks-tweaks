@@ -13,6 +13,7 @@ public class UpdateChecker {
     private final static int resourceId = 94021;
 
     public static String getLatestVersion() {
+        if (Main.getInstance().getConfig().getBoolean("settings.disable-update-checker")) return null;
         String url = "https://api.spiget.org/v2/resources/" + resourceId + "/versions/latest";
 
         try {

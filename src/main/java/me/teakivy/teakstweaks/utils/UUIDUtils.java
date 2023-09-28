@@ -18,7 +18,7 @@ public class UUIDUtils {
             uuid = uuid.replaceAll("(\\w{8})(\\w{4})(\\w{4})(\\w{4})(\\w{12})", "$1-$2-$3-$4-$5");
             in.close();
         } catch (Exception e) {
-            System.out.println("Unable to get UUID of: " + name + "!");
+            Logger.log(Logger.LogLevel.ERROR, "Unable to get UUID of: " + name + "!");
             uuid = "er";
         }
         return UUID.fromString(uuid);

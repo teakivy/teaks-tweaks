@@ -13,6 +13,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.UUID;
 
 public class SpawnCommand extends AbstractCommand {
@@ -71,7 +72,7 @@ public class SpawnCommand extends AbstractCommand {
     }
 
     private void teleportToSpawn(Player player) {
-        World world = player.getWorld();
+        World world = Bukkit.getWorld(Objects.requireNonNull(Main.getInstance().getConfig().getString("packs.spawn.world")));
 
         Back.backLoc.put(player.getUniqueId(), player.getLocation());
         player.teleport(world.getSpawnLocation());
