@@ -25,6 +25,7 @@ settings:
 
   # Mechanics Command
   # If enabled, players will be able to use the /mechanics command to view a list of all enabled tweaks.
+  # Command: /mechanics (Permission: teakstweaks.mechanics.command)
   mechanics-command: true
 
 
@@ -32,12 +33,12 @@ settings:
 packs:
   # Enable a pack by marking "enabled" as "true"
   # If a pack is not enabled, none of its effects will happen.
-  # You can reload these settings by running "/teakstweaks reload" in game.
 
   # Teak's Tweaks:
 
   # Keep Small
   # Keep a mob in its child form (if it has one)
+  # Permission: teakstweaks.keep-small
   keep-small:
     enabled: false
     # Allow the mob to be kept in its child form (By Naming a mob 'keep small')
@@ -47,6 +48,7 @@ packs:
 
   # Chat Colors
   # Use Chat Colors to make your messages, signs, and items look better (Using '&' for color codes)
+  # Permission: teakstweaks.chat-colors
   chat-colors:
     enabled: false
     # Enable Colors in the chat
@@ -63,7 +65,7 @@ packs:
 
   # Sudoku
   # Allow players to commit sudoku
-  # Command: /sudoku
+  # Command: /sudoku (Permission: teakstweaks.sudoku.command.sudoku)
   sudoku:
     enabled: false
 
@@ -77,28 +79,33 @@ packs:
   # Unsticky Pistons
   # Allow players to remove slime from pistons by right-clicking them with an axe
   # Right-click a piston with a slimeball to make it sticky
+  # Permission: teakstweaks.unsticky-pistons
   unsticky-pistons:
     enabled: false
 
   # Slime Cream
   # Convert Slime Balls to Magma Cream by right-clicking a lava cauldron
   # Convert Magma Cream to Slime Balls by right-clicking a water cauldron
+  # Permission: teakstweaks.slime-cream
   slime-cream:
     enabled: false
 
   # Invsible Item Frames
   # Shift right-click an item frame with shears to make it invisible
+  # Permission: teakstweaks.invisible-item-frames
   invisible-item-frames:
     enabled: false
 
   # Fixed Item Frames
   # Shift right-click an item frame with iron bars to make it fixed
   # Shift right-click an item frame with shears to make it not fixed
+  # Permission: teakstweaks.fixed-item-frames
   fixed-item-frames:
     enabled: false
 
   # Dirt to Grass
   # Convert dirt to grass by right-clicking a dirt block with seeds
+  # Permission: teakstweaks.dirt-to-grass
   dirt-to-grass:
     enabled: false
     # Chance to convert dirt to grass based on the seed type
@@ -110,6 +117,7 @@ packs:
 
   # Instant Deepslate
   # Instantly mine deepslate blocks if you have a netherite pickaxe with efficiency 5 or higher, and haste 2 or higher.
+  # Permission: teakstweaks.instant-deepslate
   instant-deepslate:
     enabled: false
 
@@ -121,7 +129,7 @@ packs:
 
   # Quick Commands
   # Quickly switch game modes, and reply to messages
-  quick-commands:
+  quick-Command:
     enabled: false
     # Game mode switcher commands (/gmc, /gma, /gms, /gmsp)
     gamemode: true
@@ -131,7 +139,8 @@ packs:
 
   # Spectator Alts
   # Allow players to add their own alt accounts as spectators
-  # Command: /alts <add/remove/list> <alt> [player]
+  # Command: /alts <add/remove/list> <alt> [player] (Permission: teakstweaks.spectator-alts.command.alts)
+
   spectator-alts:
     enabled: false
     # Which gamemode to put alts in when they join
@@ -182,13 +191,16 @@ packs:
 
   # AFK Display
   # Gray out a players name that is not moving for 5 minutes.
+  # Command: /afk (Permission: teakstweaks.afk.command.afk)
+  # /afk toggle (Permission: teakstweaks.afk.command.afk.toggle)
+  # /afk uninstall (Permission: teakstweaks.afk.command.afk.uninstall)
   afk-display:
     enabled: false
     # Whether or not to display [AFK] before an AFK players name
     display-afk-badge: true
     # Badge to show when afk
     afk-badge: '&7[AFK]'
-    # How long a player needs to be still before getting AFK'd
+    # How long a player needs to be still before getting AFK'
     afk-after: 5
     # How long (in minutes) a player needs to be AFK before they get kicked from the server
     # Use '-1' to never kick, use '0' to kick immediately, use '60' to kick after 1 hour, etc.
@@ -238,6 +250,12 @@ packs:
   # Get a grave key to unlock any grave: `/grave key`
   # Locate your last grave (if locatable is on): `/grave locate` or `/grave`
   # NOTE: If you are using EssentialsX back command, you must have `register-back-in-listener` set to true in the Essentials config.yml
+  # Permission: teakstweaks.graves
+  # Command:
+  # /grave (Permission: teakstweaks.graves.command.grave)
+  # /grave key (Permission: teakstweaks.graves.command.grave.key)
+  # /grave locate (Permission: teakstweaks.graves.command.grave.locate)
+  # /grave uninstall (Permission: teakstweaks.graves.command.grave.uninstall)
   graves:
     enabled: false
     # Whether or not graves hold the players xp
@@ -287,7 +305,13 @@ packs:
 
   # Durability Ping
   # Get notified when you damage an item with 10% less durability.
-  # Fully Customizable per-player with '/duraping config'
+  # Fully Customizable per-player with '/durabilityping config'
+  # Permission: teakstweaks.durability-ping
+  # Command:
+  # /durabilityping (Permission: teakstweaks.durability-ping.command.durabilityping)
+  # /durabilityping preview (Permission: teakstweaks.durability-ping.command.durabilityping)
+  # /durabilityping config (Permission: teakstweaks.durability-ping.command.durabilityping.config)
+  # /durabilityping set (Permission: teakstweaks.durability-ping.command.durabilityping.set)
   durability-ping:
     enabled: false
     # What percent to start pinging the player
@@ -308,6 +332,8 @@ packs:
 
   # Cauldron Concrete
   # Right click a cauldron with concrete powder to harden it.
+  #
+  # Permission: teakstweaks.cauldron-concrete
   cauldron-concrete:
     enabled: false
     # Whether or not hardening takes a water level from the cauldron
@@ -325,13 +351,14 @@ packs:
 
   # Nether Portal Coords
   # Adds a command that calculates where a nether portal must be placed in the other dimension. Useful for syncing up nether portals.
-  # Command: /portal
+  # Command: /portal (Permission: teakstweaks.nether-portal-coords.command.portal)
   nether-portal-coords:
     enabled: false
 
   # Coords HUD
   # Adds information to your actionbar. XYZ Coords and a 24hr clock.
-  # Command: /ch toggle
+  # Command: /coordshud (Permission: teakstweaks.coords-hud.command.coordshud)
+  # /coordshud toggle (Permission: teakstweaks.coords-hud.command.coordshud.toggle)
   coords-hud:
     enabled: false
     # Whether or not Coordinates Hud will be automatically enabled on join
@@ -351,11 +378,13 @@ packs:
 
   # Real Time Clock
   # Adds a command that allows you to view how long a world has been running in real time minutes and hours.
+  # Command: /realtimeclock (Permission: teakstweaks.real-time-clock.command.realtimeclock)
   real-time-clock:
     enabled: false
 
   # Workstation Highlights
   # Allows you to find the workstation of any villager.
+  # Command: /workstationhighlight (Permission: teakstweaks.workstation-highlights.command.workstationhighlight)
   workstation-highlights:
     enabled: false
 
@@ -387,11 +416,15 @@ packs:
   # Armored Elytra
   # Drop an elytra and a chestplate above an anvil to merge them into one item. Drop the item above a grindstone to separate them again.
   # Enchantments are kept safely between merging and separating. Burning netherite armored elytra will separate the items.
+  #
+  # Permission: teakstweaks.armored-elytra
   armored-elytra:
     enabled: false
 
   # Player Head Drops
   # A player will drop their head when killed by another player. The item displays who the killer is.
+  #
+  # Permission: teakstweaks.player-head-drops
   player-head-drops:
     enabled: false
     # Whether to display who killed the player in the items lore (default: true)
@@ -449,6 +482,8 @@ packs:
 
   # Silence Mobs
   # Adds the ability to silence mobs using a name tag. 'Silence Me'; 'Silence me'; 'silence me'; 'silence_me'; are all acceptable names.
+  #
+  # Permission: teakstweaks.silence-mobs
   silence-mobs:
     enabled: false
     # Whether or not you can silence minecart types
@@ -471,6 +506,7 @@ packs:
 
   # Spawn
   # Enter '/spawn' to teleport to the world spawn point.
+  # Command: /spawn (Permission: teakstweaks.spawn.command.spawn)
   spawn:
     enabled: false
     # Name of the world to teleport to the spawn of (ex: 'world', 'world_nether', 'world_the_end', etc)
@@ -482,6 +518,12 @@ packs:
 
   # Homes
   # Allows you to set homes ('/home set <name>') and teleport back to them ('/home <name>')
+  # Command:
+  # /deletehome <name> (Permission: teakstweaks.homes.command.deletehome)
+  # /sethome <name> (Permission: teakstweaks.homes.command.sethome)
+  # /home <name> (Permission: teakstweaks.homes.command.home)
+  # /home delete <name> (Permission: teakstweaks.homes.command.home.delete)
+  # /home set <name> (Permission: teakstweaks.homes.command.home.set)
   homes:
     enabled: false
     # Enter how many homes a player can have. Use 0 for unlimited homes.
@@ -493,12 +535,15 @@ packs:
 
   # TPA
   # Enter '/tpa <player>' to request to teleport to another player.
+  # Command: /tpa <player> (Permission: teakstweaks.tpa.command.tpa)
+  # /tpa accept (Permission: None)
   tpa:
     enabled: false
 
   # Back
   # Enter '/back' to go back to the last location you teleported from. (using Homes, Spawn, or TPA)
   # You can also allow players to teleport back to their death location if that's enabled.
+  # Command: /back (Permission: teakstweaks.back.command.back)
   back:
     enabled: false
     # Whether or not death locations should be saved in the back command
@@ -520,31 +565,37 @@ packs:
 
   # Spawning Spheres
   # Allows you to view the spawnable area around a center point through the use of glowing spheres. Useful for proofing farms
+  # Command: /spawnsphere (Permission: teakstweaks.spawning-spheres.command.spawningspheres)
+  # /spawnsphere create (Permission: teakstweaks.spawning-spheres.command.spawningspheres.create)
+  # /spawnsphere remove (Permission: teakstweaks.spawning-spheres.command.spawningspheres.remove)
+  # /spawnsphere teleport (Permission: teakstweaks.spawning-spheres.command.spawningspheres.teleport)
   spawning-spheres:
     enabled: false
 
   # Spectator Night Vision
   # Easily toggle night vision when in spectator.
-  # Command: /nv
+  # Command: /nv (Permission: teakstweaks.spectator-night-vision.command.nightvision)
   spectator-night-vision:
     enabled: false
 
   # Spectator Conduit Power
   # Easily toggle conduit power when in spectator.
-  # Command: /cp
+  # Command: /cp (Permission: teakstweaks.spectator-conduit-power.command.cp)
   spectator-conduit-power:
     enabled: false
 
   # Item Averages
   # Adds a marker that tracks items flowing past it for 2 minutes, then calculates how many of each item will run through per hour
-  # Command /itemaverage
+  # Command /itemaverage (Permission: teakstweaks.item-averages.command.itemaverage)
+  # /itemaverage create (Permission: teakstweaks.item-averages.command.itemaverage.create)
+  # /itemaverage uninstall (Permission: teakstweaks.item-averages.command.itemaverage.uninstall)
   # Do not reload/restart the server while a tracker is in the world! In this case use /itemaverage remove to remove existing trackers.
   item-averages:
     enabled: false
 
   # Kill Empty Boats
   # Adds an admin command to kill all boats without passengers.
-  # Command: /killboats
+  # Command: /killboats (Permission: teakstweaks.kill-boats.command.killboats)
   kill-boats:
     enabled: false
 
@@ -553,12 +604,17 @@ packs:
 
   # Treasure Gems
   # Adds the chance for treasure gems to spawn inside loot chests. Used to trade with Gem Villagers.
-  # /gem villager <type>
+  # Permission: None
+  # Command:
+  # /gem (Permission: teakstweaks.gem.command.gem)
+  # /gem villager (Permission: teakstweaks.gem.command.gem.villager)
+  # /gem give  (Permission: teakstweaks.gem.command.gem.give)
   treasure-gems:
     enabled: false
 
   # Wandering Trades / Wandering Trades (Hermit Edition)
   # Adds Mini Blocks to the Wandering Trader's trades.
+  # Permission: None
   wandering-trades:
     enabled: false
     # Mini Blocks section of Wandering Trades
@@ -614,6 +670,10 @@ packs:
 
   # Tag
   # Adds the Hermitcraft Tag game directly into your world! '/tag'
+  # Permission: None
+  # Command:
+  # /taggame (Permission: teakstweaks.tag.commmand.taggame)
+  # /taggame uninstall (Permission: teakstweaks.tag.commmand.taggame.uninstall)
   tag:
     enabled: false
     # Display in chat when someone is tagged.
@@ -623,6 +683,12 @@ packs:
 
   # Thunder Shrine
   # A shrine that allows you to create a thunder storm when offered a Nether Star
+  # Permission: teakstweaks.thunder-shrine
+  # Command:
+  #  /shrine (Permission: teakstweaks.thunder-shrine.commmand.shrine)
+  #  /shrine create (Permission: teakstweaks.thunder-shrine.commmand.shrine.create)
+  #  /shrine remove (Permission: teakstweaks.thunder-shrine.commmand.shrine.remove)
+  #  /shrine uninstall (Permission: teakstweaks.thunder-shrine.commmand.shrine.uninstall)
   thunder-shrine:
     enabled: false
     # Whether or not to show particles where shrines are
@@ -643,6 +709,8 @@ packs:
 
   # XP Management
   # Right-Click an enchanting table with an empty bottle to fill it with some of your XP.
+  #
+  # Permission: teakstweaks.xp-management
   xp-management:
     enabled: false
     # How much XP is taken when bottling XP
@@ -658,6 +726,8 @@ packs:
 
   # Chunk Loaders
   # Drop a Nether Star above a Lodestone to create a chunk loader (AKA a Loadstone) which keeps the chunk it's in loaded until it is broken.
+  #
+  # Permission: teakstweaks.chunk-loaders
   chunk-loaders:
     enabled: false
     # Whether or not the chunk loader will show particles
@@ -680,6 +750,8 @@ packs:
   # Drop an ender pearl above a wool block to make it into an elevator.
   # Jump on it to warp onto an elevator of the same color directly above.
   # Crouch on it to warp onto one directly above.
+  #
+  # Permission: teakstweaks.elevators
   elevators:
     enabled: false
     # What Item/Block needs to be dropped to create an elevator
@@ -706,10 +778,6 @@ packs:
       - GREEN_WOOL
       - RED_WOOL
       - BLACK_WOOL
-
-
-
-
 
 # Crafting Tweaks
 # https://vanillatweaks.net/picker/crafting-tweaks/

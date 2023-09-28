@@ -30,6 +30,12 @@ public class BackCommand extends AbstractCommand {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
+
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
+
         if (!(sender instanceof Player)) {
             sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;

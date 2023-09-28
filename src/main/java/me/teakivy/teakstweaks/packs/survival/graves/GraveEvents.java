@@ -34,6 +34,7 @@ public class GraveEvents extends BasePack {
 
     @EventHandler
     public void onInteract(PlayerInteractAtEntityEvent event) throws IOException {
+        if (!hasPermission(event.getPlayer())) return;
         Entity entity = event.getRightClicked();
         if (!entity.getScoreboardTags().contains("grave")) return;
 

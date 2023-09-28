@@ -33,6 +33,8 @@ public class ArmoredElytras extends BasePack {
 
     @EventHandler
     public void onDrop(PlayerDropItemEvent event) {
+        if (!hasPermission(event.getPlayer())) return;
+
         ItemStack item = event.getItemDrop().getItemStack();
         Item itemDrop = event.getItemDrop();
         Player player = event.getPlayer();

@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
@@ -20,6 +21,7 @@ public class BasePack implements Listener {
 	public String name;
 	public String path;
 	public PackType packType;
+	public String permission;
 
 	protected static Main main = Main.getPlugin(Main.class);
 
@@ -32,6 +34,7 @@ public class BasePack implements Listener {
 		this.path = path;
 		this.packType = packType;
 		this.config = main.getConfig().getConfigurationSection("packs." + path);
+		this.permission = "teakstweaks." + path;
 
 		item = new ItemStack(material);
 
@@ -115,6 +118,10 @@ public class BasePack implements Listener {
 
 	public ItemStack getItem() {
 		return item;
+	}
+
+	public boolean hasPermission(Player player) {
+		return player.hasPermission(permission);
 	}
 
 	@EventHandler

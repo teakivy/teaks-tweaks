@@ -75,6 +75,10 @@ public class XPManagement extends BasePack {
         Player player = event.getPlayer();
         ItemStack item = event.getItem();
 
+        if (!event.getPlayer().hasPermission(permission)) {
+            return;
+        }
+
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (event.getClickedBlock() == null) return;
         if (event.getClickedBlock().getType() != Material.ENCHANTING_TABLE) return;

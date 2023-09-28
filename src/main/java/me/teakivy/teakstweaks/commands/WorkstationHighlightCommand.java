@@ -49,7 +49,7 @@ public class WorkstationHighlightCommand extends AbstractCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!sender.hasPermission("teakstweaks.workstationhighlights.execute")) {
+        if (!sender.hasPermission(permission)) {
             sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
         }

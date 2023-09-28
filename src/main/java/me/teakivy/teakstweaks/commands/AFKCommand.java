@@ -22,6 +22,7 @@ public class AFKCommand extends AbstractCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+
         if (!main.getConfig().getBoolean("packs.afk-display.enabled")) {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
@@ -32,12 +33,17 @@ public class AFKCommand extends AbstractCommand {
         }
         Player player = (Player) sender;
 
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
+
         if (args.length < 1) {
             if (!main.getConfig().getBoolean("packs.afk-display.allow-afk-command")) {
                 sender.sendMessage(ErrorType.COMMAND_DISABLED.m());
                 return true;
             }
-            if (!player.hasPermission("teakstweaks.afk.toggle")) {
+            if (!player.hasPermission(permission+".toggle")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
@@ -52,7 +58,7 @@ public class AFKCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("uninstall")) {
-            if (player.hasPermission("teakstweaks.afk.uninstall")) {
+            if (player.hasPermission(permission+".uninstall")) {
                 AFK.uninstall();
             } else {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());

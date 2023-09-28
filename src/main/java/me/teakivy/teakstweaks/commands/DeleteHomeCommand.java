@@ -20,13 +20,14 @@ public class DeleteHomeCommand extends AbstractCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
+
         Player player = (Player) sender;
         if (args.length < 1 && HomesPack.getHome(player, "home") == null) {
             player.sendMessage(ChatColor.RED + "You must specify a name for your home.");
-            return true;
-        }
-        if (!sender.hasPermission("teakstweaks.homes.manage")) {
-            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
         }
         String name = args.length < 1 ? "home" : args[0].toLowerCase();

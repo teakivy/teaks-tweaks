@@ -37,6 +37,10 @@ public class Elevator extends BasePack {
 
     @EventHandler
     public void onDrop(PlayerDropItemEvent event) {
+        if (!hasPermission(event.getPlayer())) {
+            return;
+        }
+
         if (event.getItemDrop().getItemStack().getType() == Material.valueOf(getConfig().getString("activator"))) {
             if (event.getItemDrop().getItemStack().getAmount() != 1) return;
             if (isElevator(event.getItemDrop().getLocation().add(0, -1, 0).getBlock())) return;

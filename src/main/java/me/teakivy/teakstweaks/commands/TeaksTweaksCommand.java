@@ -48,7 +48,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("enable")) {
-            if (!sender.hasPermission("teakstweaks.manage")) {
+            if (!sender.hasPermission(permission)) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
@@ -89,7 +89,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("disable")) {
-            if (!sender.hasPermission("teakstweaks.manage")) {
+            if (!sender.hasPermission(permission)) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }

@@ -29,6 +29,11 @@ public class GraveCommand extends AbstractCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
+        }
+
         if (!main.getConfig().getBoolean("packs.graves.enabled")) {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
@@ -40,7 +45,7 @@ public class GraveCommand extends AbstractCommand {
         Player player = (Player) sender;
 
         if (args.length < 1) {
-            if (!sender.hasPermission("teakstweaks.grave.locate")) {
+            if (!sender.hasPermission(permission+".locate")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
@@ -58,7 +63,7 @@ public class GraveCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("locate")) {
-            if (!sender.hasPermission("teakstweaks.grave.locate")) {
+            if (!sender.hasPermission(permission+".locate")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
@@ -76,7 +81,7 @@ public class GraveCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("key")) {
-            if (!sender.hasPermission("teakstweaks.grave.key")) {
+            if (!sender.hasPermission(permission+".key")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
@@ -85,7 +90,7 @@ public class GraveCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("uninstall")) {
-            if (!sender.hasPermission("teakstweaks.grave.uninstall")) {
+            if (!sender.hasPermission(permission+".uninstall")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }

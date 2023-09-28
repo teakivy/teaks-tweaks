@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.experimental.chunkloaders;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -23,6 +24,10 @@ public class Loader extends BasePack {
 
     @EventHandler
     public void onItemDrop(PlayerDropItemEvent event) {
+        if (!event.getPlayer().hasPermission(permission)) {
+            return;
+        }
+
         Item item = event.getItemDrop();
         if (item.getItemStack().getType() == Material.valueOf(config.getString("cost"))) {
             new BukkitRunnable() {
