@@ -3,5 +3,31 @@
   "meta.modified": false,
   "meta.language_name": "United States English",
 
-  "plugin.name": "Teak's Tweaks"
+  "plugin.name": "Teak's Tweaks",
+
+  "commands.usage": "&cUsage: %command_usage%",
+
+  "error.unknown": "&cAn unknown error has occurred!",
+  "error.pack_not_enabled": "&cThis pack is not enabled!",
+  "error.not_player": "&cYou must be a player to use this command!",
+  "error.not_op": "&cYou must be an operator to use this command!",
+  "error.missing_command_permission": "&cYou do not have permission to use this command!",
+  "error.missing_permission": "&cYou do not have permission to do that!",
+  "error.cant_get_latest_version": "&cCould not get the latest version of Teak's Tweaks!",
+  "error.command_disabled": "&cThis command has been disabled by a server administrator!",
+  "error.missing_action": "&cPlease specify an action!",
+  "error.player_dne": "&cThat player does not exist!",
+
+  "alts.error.no_permission_list_others": "&cYou do not have permission to see other's alts!",
+  "alts.error.no_permission_modify_others": "&cYou do not have permission to modify other's alts!",
+  "alts.error.no_alts": "&c%player% does not have any alts!",
+  "alts.error.max_alts": "&cYou cannot add any more alts!",
+  "alts.error.self": "&cYou cannot add yourself as an alt!",
+  "alts.error.whitelisted": "&cYou cannot add a whitelisted player as an alt!",\
+  "alts.error.already_alt": "&c%alt% is already an alt!",
+  "alts.error.not_alt": "&c%alt% is not an alt!",
+  "alts.list_alts": "&6%player%&e's alts:",
+  "alts.listed_alt": "&7 - &e%alt%",
+  "alts.added_alt": "&a%alt% is now %player%'s alt!",
+    "alts.removed_alt": "&a%alt% is no longer %player%'s alt!",
 }
