@@ -2,20 +2,18 @@ package me.teakivy.teakstweaks.utils.lang;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonIOException;
-import com.google.gson.internal.LinkedTreeMap;
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.utils.Logger;
 
 import java.io.*;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Objects;
 
 public class TranslatableLanguage {
     private String lang;
     public static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    public HashMap<String, Object> map = new HashMap<>();
-    private HashMap<String, Object> resourceMap;
+    public LinkedHashMap<String, Object> map = new LinkedHashMap<>();
+    private LinkedHashMap<String, Object> resourceMap;
     public TranslatableLanguage(String lang) {
         this.lang = lang;
 
@@ -42,7 +40,7 @@ public class TranslatableLanguage {
         return new File(Main.getInstance().getDataFolder(), "lang/" + lang + ".json");
     }
 
-    public HashMap<String, Object> getResource() {
+    public LinkedHashMap<String, Object> getResource() {
         InputStream initialStream = Main.getInstance().getResource("lang/" + lang + ".json");
         if (initialStream == null) initialStream = Main.getInstance().getResource("lang/en_us.json");
 
@@ -54,7 +52,7 @@ public class TranslatableLanguage {
 
         Reader targetReader = new InputStreamReader(initialStream);
 
-        return gson.fromJson(targetReader, HashMap.class);
+        return gson.fromJson(targetReader, LinkedHashMap.class);
     }
 
     public String get(String key) {
@@ -81,7 +79,7 @@ public class TranslatableLanguage {
             Main.getInstance().saveResource("lang/" + lang + ".json", false);
         }
 
-        map = gson.fromJson(new FileReader(getFile()), HashMap.class);
+        map = gson.fromJson(new FileReader(getFile()), LinkedHashMap.class);
 
         if (shouldUpdate()) {
             map = update();
@@ -103,8 +101,8 @@ public class TranslatableLanguage {
         return true;
     }
 
-    public HashMap<String, Object> update() {
-        HashMap<String, Object> newMap = resourceMap;
+    public LinkedHashMap<String, Object> update() {
+        LinkedHashMap<String, Object> newMap = resourceMap;
         boolean modified = !isKnownLanguage();
         if (newMap.containsKey("meta.modified")) {
             modified = (boolean) newMap.get("meta.modified");
