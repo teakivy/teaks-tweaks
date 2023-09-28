@@ -1,15 +1,18 @@
 package me.teakivy.teakstweaks.utils;
 
+import me.teakivy.teakstweaks.utils.lang.Translatable;
+
 public enum ErrorType {
-    UNKNOWN_ERROR(MessageHandler.getMessage("plugin.error.unknown")),
-    PACK_NOT_ENABLED(MessageHandler.getMessage("plugin.error.pack-not-enabled")),
-    NOT_PLAYER(MessageHandler.getMessage("plugin.error.not-player")),
-    NOT_OP(MessageHandler.getMessage("plugin.error.no-op")),
-    MISSING_COMMAND_PERMISSION(MessageHandler.getMessage("plugin.error.missing-command-permission")),
-    MISSING_PERMISSION(MessageHandler.getMessage("plugin.error.missing-permission")),
-    CANT_GET_LATEST(MessageHandler.getMessage("plugin.error.cant-get-latest")),
-    COMMAND_DISABLED(MessageHandler.getMessage("plugin.error.command-disabled")),
-    MISSING_ACTION(MessageHandler.getMessage("plugin.error.missing-action"));
+    UNKNOWN_ERROR(Translatable.getError("unknown")),
+    PACK_NOT_ENABLED(Translatable.getError("pack_not_enabled")),
+    NOT_PLAYER(Translatable.getError("not_player")),
+    NOT_OP(Translatable.getError("not_op")),
+    MISSING_COMMAND_PERMISSION(Translatable.getError("missing_command_permission")),
+    MISSING_PERMISSION(Translatable.getError("missing_permission")),
+    CANT_GET_LATEST(Translatable.getError("cant_get_latest_version")),
+    COMMAND_DISABLED(Translatable.getError("command_disabled")),
+    MISSING_ACTION(Translatable.getError("missing_action")),
+    PLAYER_DNE(Translatable.getError("player_dne"));
 
 
     final String text;
