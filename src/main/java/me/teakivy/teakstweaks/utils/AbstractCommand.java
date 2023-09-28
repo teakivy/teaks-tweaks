@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.utils;
 
 import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.Bukkit;
 import org.bukkit.command.*;
 
@@ -114,5 +115,17 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
 
     public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
         return null;
+    }
+
+    public String getString(String key) {
+        return Translatable.get(parentPack + "." + key);
+    }
+
+    public static String get(String key) {
+        return Translatable.get(key);
+    }
+
+    public String getUsage() {
+        return get("commands.usage").replace("command_usage", this.usage);
     }
 }
