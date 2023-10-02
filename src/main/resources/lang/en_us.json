@@ -29,5 +29,10 @@
   "alts.list_alts": "&6%player%&e's alts:",
   "alts.listed_alt": "&7 - &e%alt%",
   "alts.added_alt": "&a%alt% is now %player%'s alt!",
-    "alts.removed_alt": "&a%alt% is no longer %player%'s alt!",
+  "alts.removed_alt": "&a%alt% is no longer %player%'s alt!",
+
+  "back.error.on_cooldown": "&cYou must wait %cooldown_seconds% seconds between uses of /back!",
+  "back.error.no_back_location": "&cYou have nowhere to go back to!",
+  "back.error.moved": "&cYou must stand still to teleport!",
+  "back.teleporting": "&eTeleporting Back..."
 }
