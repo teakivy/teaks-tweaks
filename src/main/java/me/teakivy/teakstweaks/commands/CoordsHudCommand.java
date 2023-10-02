@@ -16,7 +16,7 @@ public class CoordsHudCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public CoordsHudCommand() {
-        super("coords-hud", MessageHandler.getCmdName("coordshud"), MessageHandler.getCmdUsage("coordshud"), MessageHandler.getCmdDescription("coordshud"), MessageHandler.getCmdAliases("coordshud"));
+        super("coords-hud", "coordshud", "/coordshud toggle", "Coordinates Hud Main Command", List.of("ch"));
     }
 
     @Override
@@ -32,7 +32,7 @@ public class CoordsHudCommand extends AbstractCommand {
         }
 
         if (args.length == 0) {
-            sender.sendMessage(MessageHandler.getCmdMessage("coordshud", "proper-usage"));
+            sender.sendMessage(getUsage());
             return true;
         }
 
@@ -44,14 +44,14 @@ public class CoordsHudCommand extends AbstractCommand {
                     return true;
                 }
                 if (main.getConfig().getBoolean("packs.coords-hud.force-enable")) {
-                    player.sendMessage(MessageHandler.getCmdMessage("coordshud", "cant-toggle"));
+                    player.sendMessage(getString("error.force_enabled"));
                     return true;
                 }
                 if (!Main.chEnabled.contains(player.getUniqueId())) Main.chEnabled.add(player.getUniqueId());
                 else Main.chEnabled.remove(player.getUniqueId());
-                player.sendMessage(MessageHandler.getCmdMessage("coordshud", "toggled"));
+                player.sendMessage(getString("toggled"));
             } else {
-                sender.sendMessage(MessageHandler.getCmdMessage("coordshud", "proper-usage"));
+                sender.sendMessage(getUsage());
             }
         } else {
             sender.sendMessage(ErrorType.NOT_PLAYER.m());
@@ -59,7 +59,7 @@ public class CoordsHudCommand extends AbstractCommand {
         return false;
     }
 
-    List<String> arguments = new ArrayList<String>();
+    List<String> arguments = new ArrayList<>();
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
@@ -68,7 +68,7 @@ public class CoordsHudCommand extends AbstractCommand {
             arguments.add("toggle");
         }
 
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         if (args.length == 1) {
             for (String a : arguments) {
                 if (a.toLowerCase().startsWith(args[0].toLowerCase()))

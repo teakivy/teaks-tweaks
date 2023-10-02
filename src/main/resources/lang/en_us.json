@@ -37,5 +37,8 @@
   "back.teleporting": "&eTeleporting Back...",
 
   "conduitpower.error.wrong_gamemode": "&cYou must be in Spectator Mode to use this command!",
-  "conduitpower.toggled": "&aToggled Conduit Power"
+  "conduitpower.toggled": "&aToggled Conduit Power",
+
+  "coordshud.error.force_enabled": "&cCoordinates Hud is force enabled by a server administrator!",
+  "coordshud.toggled": "&aToggled Coordinates Hud",
 }
