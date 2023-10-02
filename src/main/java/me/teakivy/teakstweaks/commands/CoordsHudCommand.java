@@ -16,7 +16,7 @@ public class CoordsHudCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public CoordsHudCommand() {
-        super("coords-hud", "coordshud", "/coordshud toggle", "Coordinates Hud Main Command", List.of("ch"));
+        super("coords-hud", "coordshud", "/coordshud", "Coordinates Hud Main Command", List.of("ch"));
     }
 
     @Override
@@ -31,31 +31,30 @@ public class CoordsHudCommand extends AbstractCommand {
             return true;
         }
 
-        if (args.length == 0) {
-            sender.sendMessage(getUsage());
+        if (!(sender instanceof Player)) {
+            sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;
         }
 
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-            if (args[0].equalsIgnoreCase("toggle")) {
-                if (!player.hasPermission(permission+".toggle")) {
-                    sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-                    return true;
-                }
-                if (main.getConfig().getBoolean("packs.coords-hud.force-enable")) {
-                    player.sendMessage(getString("error.force_enabled"));
-                    return true;
-                }
-                if (!Main.chEnabled.contains(player.getUniqueId())) Main.chEnabled.add(player.getUniqueId());
-                else Main.chEnabled.remove(player.getUniqueId());
-                player.sendMessage(getString("toggled"));
-            } else {
-                sender.sendMessage(getUsage());
-            }
-        } else {
-            sender.sendMessage(ErrorType.NOT_PLAYER.m());
+        Player player = (Player) sender;
+
+        if (!player.hasPermission(permission+".toggle")) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
         }
+
+        if (main.getConfig().getBoolean("packs.coords-hud.force-enable")) {
+            player.sendMessage(getString("error.force_enabled"));
+            return true;
+        }
+
+        if (!Main.chEnabled.contains(player.getUniqueId())) {
+            Main.chEnabled.add(player.getUniqueId());
+        } else {
+            Main.chEnabled.remove(player.getUniqueId());
+        }
+
+        player.sendMessage(getString("toggled"));
         return false;
     }
 
