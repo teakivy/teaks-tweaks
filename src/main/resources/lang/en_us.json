@@ -34,5 +34,8 @@
   "back.error.on_cooldown": "&cYou must wait %cooldown_seconds% seconds between uses of /back!",
   "back.error.no_back_location": "&cYou have nowhere to go back to!",
   "back.error.moved": "&cYou must stand still to teleport!",
-  "back.teleporting": "&eTeleporting Back..."
+  "back.teleporting": "&eTeleporting Back...",
+
+  "conduitpower.error.wrong_gamemode": "&cYou must be in Spectator Mode to use this command!",
+  "conduitpower.toggled": "&aToggled Conduit Power"
 }
