@@ -4,7 +4,6 @@ import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.packs.survival.graves.GraveEvents;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
@@ -24,7 +23,7 @@ public class GraveCommand extends AbstractCommand {
 
 
     public GraveCommand() {
-        super("graves", MessageHandler.getCmdName("grave"), MessageHandler.getCmdUsage("grave"), MessageHandler.getCmdDescription("grave"), MessageHandler.getCmdAliases("grave"));
+        super("graves", "graves", "/graves", "Keep Inventory stands no chance!", List.of("grave"));
     }
 
     @Override
@@ -54,7 +53,7 @@ public class GraveCommand extends AbstractCommand {
                 if (data.has(new NamespacedKey(main, "graves_last"), PersistentDataType.STRING)) {
                     player.sendMessage(data.get(new NamespacedKey(main, "graves_last"), PersistentDataType.STRING));
                 } else {
-                    player.sendMessage(MessageHandler.getCmdMessage("grave", "no-grave"));
+                    player.sendMessage(getString("error.no_grave"));
                 }
             } else {
                 player.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
@@ -72,7 +71,7 @@ public class GraveCommand extends AbstractCommand {
                 if (data.has(new NamespacedKey(main, "graves_last"), PersistentDataType.STRING)) {
                     player.sendMessage(data.get(new NamespacedKey(main, "graves_last"), PersistentDataType.STRING));
                 } else {
-                    player.sendMessage(MessageHandler.getCmdMessage("grave", "no-grave"));
+                    player.sendMessage(getString("error.no_grave"));
                 }
             } else {
                 player.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
@@ -86,7 +85,7 @@ public class GraveCommand extends AbstractCommand {
                 return true;
             }
             player.getInventory().addItem(GraveEvents.getGraveKey());
-            player.sendMessage(MessageHandler.getCmdMessage("grave", "given-key"));
+            player.sendMessage(getString("given_key"));
         }
 
         if (args[0].equalsIgnoreCase("uninstall")) {
@@ -101,7 +100,7 @@ public class GraveCommand extends AbstractCommand {
                     }
                 }
             }
-            player.sendMessage(MessageHandler.getCmdMessage("grave", "removed-graves"));
+            player.sendMessage(getString("removed_graves"));
         }
         return false;
     }

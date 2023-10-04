@@ -87,4 +87,8 @@
   "gem.gems.amethyst": "&5Amethyst",
   "gem.gems.topaz": "&eTopaz",
   "gem.gems.sapphire": "&1Sapphire",
+
+  "graves.error.no_grave": "&cYou don't have a recent grave!",
+  "graves.given_key": "&aYou have been given a grave key!",
+  "graves.removed_graves": "&eRemoved all loaded Graves!"
 }
