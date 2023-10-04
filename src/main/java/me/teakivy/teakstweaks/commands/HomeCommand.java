@@ -5,8 +5,6 @@ import me.teakivy.teakstweaks.packs.teleportation.homes.Home;
 import me.teakivy.teakstweaks.packs.teleportation.homes.HomesPack;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -39,8 +37,8 @@ public class HomeCommand extends AbstractCommand {
         if (args.length < 1) {
             List<Home> homes = HomesPack.getHomes(player);
 
-            if (homes.size() == 0 && HomesPack.getHome(player, "home") == null) {
-                player.sendMessage(ChatColor.RED + "You have no homes set.");
+            if (homes.isEmpty() && HomesPack.getHome(player, "home") == null) {
+                player.sendMessage(getString("error.no_homes_yet"));
                 return true;
             }
 
@@ -57,7 +55,7 @@ public class HomeCommand extends AbstractCommand {
             List<Home> homes = HomesPack.getHomes(player);
 
             if (args.length < 2 && HomesPack.getHome(player, "home") != null) {
-                player.sendMessage(ChatColor.RED + "You must specify a name for your home.");
+                player.sendMessage(getString("error.missing_home_name"));
                 return true;
             }
             if (!sender.hasPermission(permission+".set")) {
@@ -67,20 +65,20 @@ public class HomeCommand extends AbstractCommand {
             String name = args.length < 2 ? "home" : args[1].toLowerCase();
 
             if (HomesPack.getHome(player, name) != null) {
-                player.sendMessage(ChatColor.RED + "You already have a home with that name.");
+                player.sendMessage(getString("error.home_already_exists").replace("%name%", name));
                 return true;
             }
 
             int maxHomes = main.getConfig().getInt("packs.homes.max-homes");
             if (maxHomes > 0 && homes.size() >= maxHomes) {
-                player.sendMessage(ChatColor.RED + "You have reached the maximum amount of homes you can set.");
+                player.sendMessage(getString("error.max_homes").replace("%max_homes%", String.valueOf(maxHomes)));
                 return true;
             }
 
             if (HomesPack.setHome(player, name, player.getLocation())) {
-                player.sendMessage(ChatColor.GREEN + "Home set!");
+                player.sendMessage(getString("set_home").replace("%name%", name));
             } else {
-                player.sendMessage(ChatColor.RED + "An error occurred while setting your home.");
+                player.sendMessage(getString("error.cant_set_home"));
             }
 
             return true;
@@ -88,7 +86,7 @@ public class HomeCommand extends AbstractCommand {
 
         if (args[0].equalsIgnoreCase("delete") || args[0].equalsIgnoreCase("remove")) {
             if (args.length < 2 && HomesPack.getHome(player, "home") == null) {
-                player.sendMessage(ChatColor.RED + "You must specify a name for your home.");
+                player.sendMessage(getString("error.missing_home_name"));
                 return true;
             }
             if (!sender.hasPermission(permission+".delete")) {
@@ -99,12 +97,12 @@ public class HomeCommand extends AbstractCommand {
 
             Home home = HomesPack.getHome(player, name);
             if (home == null) {
-                player.sendMessage(ChatColor.RED + "You do not have a home with that name.");
+                player.sendMessage(getString("error.home_dne").replace("%name%", name));
                 return true;
             }
 
             if (!HomesPack.removeHome(player, name)) {
-                player.sendMessage(ChatColor.RED + "An error occurred while removing your home.");
+                player.sendMessage(getString("error.cant_remove_home"));
             }
             return true;
         }
@@ -113,7 +111,7 @@ public class HomeCommand extends AbstractCommand {
         Home home = HomesPack.getHome(player, name);
 
         if (home == null) {
-            player.sendMessage(ChatColor.RED + "You do not have a home with that name.");
+            player.sendMessage(getString("error.home_dne").replace("%name%", name));
             return true;
         }
 
@@ -127,8 +125,8 @@ public class HomeCommand extends AbstractCommand {
 
         if (!(sender instanceof Player)) return null;
 
-        List<String> arguments1 = new ArrayList<String>();
-        List<String> arguments2 = new ArrayList<String>();
+        List<String> arguments1 = new ArrayList<>();
+        List<String> arguments2 = new ArrayList<>();
 
         Player player = (Player) sender;
 
