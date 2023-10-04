@@ -19,7 +19,7 @@ public class GemCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public GemCommand() {
-        super("treasure-gems", MessageHandler.getCmdName("gem"), MessageHandler.getCmdUsage("gem"), MessageHandler.getCmdDescription("gem"), MessageHandler.getCmdAliases("gem"));
+        super("treasure-gems", "gem", "/gem", "Gems, Villagers, & Gem Villagers!");
     }
 
     @Override
@@ -45,7 +45,7 @@ public class GemCommand extends AbstractCommand {
 
         if (args[0].equalsIgnoreCase("villager")) {
             if (args.length < 2) {
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "error.missing-villager-type"));
+                player.sendMessage(getString("error.missing_villager_type"));
                 return true;
             }
             if (!sender.hasPermission(permission+".villager")) {
@@ -56,86 +56,86 @@ public class GemCommand extends AbstractCommand {
 
             if (args[1].equalsIgnoreCase("aquatic")) {
                 gems.summonAquaticVillager(player.getLocation());
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.aquatic"));
+                player.sendMessage(getString("summoned_villager").replace("%type%", getString("villagers.aquatic")));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("concrete")) {
                 gems.summonConcreteVillager(player.getLocation());
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.concrete"));
+                player.sendMessage(getString("summoned_villager").replace("%type%", getString("villagers.concrete")));
                 return true;
             }
 
-            if (args[1].equalsIgnoreCase("gem_trading")) {
+            if (args[1].equalsIgnoreCase("gem_trader")) {
                 gems.summonGemTraderVillager(player.getLocation());
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.gem-trading"));
+                player.sendMessage(getString("summoned_villager").replace("%type%", getString("villagers.gem_trader")));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("functional")) {
                 gems.summonFunctionalVillager(player.getLocation());
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.functional"));
+                player.sendMessage(getString("summoned_villager").replace("%type%", getString("villagers.functional")));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("gem_collector")) {
                 gems.summonGemCollectorVillager(player.getLocation());
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.gem-collector"));
+                player.sendMessage(getString("summoned_villager").replace("%type%", getString("villagers.gem_collector")));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("more_blocks")) {
                 gems.summonMoreBlocksVillager(player.getLocation());
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.more-blocks"));
+                player.sendMessage(getString("summoned_villager").replace("%type%", getString("villagers.more_blocks")));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("natural")) {
                 gems.summonNaturalVillager(player.getLocation());
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.natural"));
+                player.sendMessage(getString("summoned_villager").replace("%type%", getString("villagers.natural")));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("nether")) {
                 gems.summonNetherVillager(player.getLocation());
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.nether"));
+                player.sendMessage(getString("summoned_villager").replace("%type%", getString("villagers.nether")));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("ores")) {
                 gems.summonOresVillager(player.getLocation());
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.ores"));
+                player.sendMessage(getString("summoned_villager").replace("%type%", getString("villagers.ores")));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("precious")) {
                 gems.summonPreciousVillager(player.getLocation());
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.precious"));
+                player.sendMessage(getString("summoned_villager").replace("%type%", getString("villagers.precious")));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("redstone")) {
                 gems.summonRedstoneVillager(player.getLocation());
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.redstone"));
+                player.sendMessage(getString("summoned_villager").replace("%type%", getString("villagers.redstone")));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("stones")) {
                 gems.summonStonesVillager(player.getLocation());
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.stones"));
+                player.sendMessage(getString("summoned_villager").replace("%type%", getString("villagers.stones")));
                 return true;
             }
 
             if (args[1].equalsIgnoreCase("wood")) {
                 gems.summonWoodVillager(player.getLocation());
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%type%", "villagers.wood"));
+                player.sendMessage(getString("summoned_villager").replace("%type%", getString("villagers.wood")));
                 return true;
             }
         }
 
         if (args[0].equalsIgnoreCase("give")) {
             if (args.length < 2) {
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "error.missing-gem-type"));
+                player.sendMessage(getString("error.missing_gem_type"));
             }
             if (!sender.hasPermission(permission+".give")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
@@ -150,45 +150,45 @@ public class GemCommand extends AbstractCommand {
                 }
             }
             if (amount > 64) {
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "error.amount-more-64"));
+                player.sendMessage(getString("error.amount_more_than_64"));
             }
             if (amount < 1) {
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "error.amount-less-1"));
+                player.sendMessage(getString("error.amount_less_than_1"));
             }
 
             if (args[1].equalsIgnoreCase("aquamarine")) {
                 ItemStack itemStack = Gems.getAquamarineGem();
                 itemStack.setAmount(amount);
                 player.getInventory().addItem(itemStack);
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%amount%", amount + "").replace("%type%", "gems.aquamarine"));
-            }
-
-            if (args[1].equalsIgnoreCase("ruby")) {
-                ItemStack itemStack = Gems.getRubyGem();
-                itemStack.setAmount(amount);
-                player.getInventory().addItem(itemStack);
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%amount%", amount + "").replace("%type%", "gems.ruby"));
+                player.sendMessage(getString("given_gem").replace("%amount%", amount + "").replace("%type%", getString("gems.aquamarine")));
             }
 
             if (args[1].equalsIgnoreCase("amethyst")) {
                 ItemStack itemStack = Gems.getAmethystGem();
                 itemStack.setAmount(amount);
                 player.getInventory().addItem(itemStack);
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%amount%", amount + "").replace("%type%", "gems.amethyst"));
+                player.sendMessage(getString("given_gem").replace("%amount%", amount + "").replace("%type%", getString("gems.amethyst")));
+            }
+
+            if (args[1].equalsIgnoreCase("ruby")) {
+                ItemStack itemStack = Gems.getRubyGem();
+                itemStack.setAmount(amount);
+                player.getInventory().addItem(itemStack);
+                player.sendMessage(getString("given_gem").replace("%amount%", amount + "").replace("%type%", getString("gems.ruby")));
             }
 
             if (args[1].equalsIgnoreCase("topaz")) {
                 ItemStack itemStack = Gems.getTopazGem();
                 itemStack.setAmount(amount);
                 player.getInventory().addItem(itemStack);
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%amount%", amount + "").replace("%type%", "gems.topaz"));
+                player.sendMessage(getString("given_gem").replace("%amount%", amount + "").replace("%type%", getString("gems.topaz")));
             }
 
             if (args[1].equalsIgnoreCase("sapphire")) {
                 ItemStack itemStack = Gems.getSapphireGem();
                 itemStack.setAmount(amount);
                 player.getInventory().addItem(itemStack);
-                player.sendMessage(MessageHandler.getCmdMessage("gem", "summoned-villager").replace("%amount%", amount + "").replace("%type%", "gems.sapphire"));
+                player.sendMessage(getString("given_gem").replace("%amount%", amount + "").replace("%type%", getString("gems.sapphire")));
             }
         }
 
@@ -200,12 +200,10 @@ public class GemCommand extends AbstractCommand {
 
         if (!(sender instanceof Player)) return null;
 
-        List<String> arguments1 = new ArrayList<String>();
+        List<String> arguments1 = new ArrayList<>();
 
-        List<String> villagerArgs = new ArrayList<String>();
-        List<String> gemArgs = new ArrayList<String>();
-
-        Player player = (Player) sender;
+        List<String> villagerArgs = new ArrayList<>();
+        List<String> gemArgs = new ArrayList<>();
 
         arguments1.add("villager");
         arguments1.add("give");
@@ -230,7 +228,7 @@ public class GemCommand extends AbstractCommand {
         gemArgs.add("topaz");
         gemArgs.add("sapphire");
 
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         if (args.length == 1) {
             for (String a : arguments1) {
                 if (a.toLowerCase().startsWith(args[0].toLowerCase()))
