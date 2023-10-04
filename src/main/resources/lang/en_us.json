@@ -90,5 +90,13 @@
 
   "graves.error.no_grave": "&cYou don't have a recent grave!",
   "graves.given_key": "&aYou have been given a grave key!",
-  "graves.removed_graves": "&eRemoved all loaded Graves!"
+  "graves.removed_graves": "&eRemoved all loaded Graves!",
+
+  "homes.error.missing_home": "&cPlease specify which home you would like to teleport to!",
+  "homes.error.missing_home_name": "&cPlease specify a name for your home!",
+  "homes.error.home_already_exists": "&cThe home %name% already exists!",
+  "homes.error.home_dne": "&cThe home %name% does not exist!",
+  "homes.error.max_homes": "&cYou cannot have more than %max_homes% homes!",
+  "homes.error.cant_set_home": "&cAn unknown error has occurred while setting your home!",
+  "homes.error.no_home_yet": "&cYou don't have any homes set! Use &6/home set <name>&c to set one!",
 }

@@ -20,7 +20,7 @@ public class HomeCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public HomeCommand() {
-        super("homes", MessageHandler.getCmdName("home"), MessageHandler.getCmdUsage("home"), MessageHandler.getCmdDescription("home"), MessageHandler.getCmdAliases("home"));
+        super("homes", "homes", "/homes", "Teleport, Set, or Delete your Homes!", List.of("home"));
     }
 
     @Override
