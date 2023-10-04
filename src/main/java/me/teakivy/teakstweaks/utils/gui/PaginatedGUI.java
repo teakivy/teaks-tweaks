@@ -56,12 +56,12 @@ public class PaginatedGUI {
         // Add navigation buttons
         ItemStack nextButton = new ItemStack(Material.ARROW);
         ItemMeta nextMeta = nextButton.getItemMeta();
-        nextMeta.setDisplayName(Translatable.get("mechanics.gui.next-page"));
+        nextMeta.setDisplayName(Translatable.get("mechanics.gui.next_page"));
         nextButton.setItemMeta(nextMeta);
 
         ItemStack prevButton = new ItemStack(Material.ARROW);
         ItemMeta prevMeta = prevButton.getItemMeta();
-        prevMeta.setDisplayName(Translatable.get("mechanics.gui.previous-page"));
+        prevMeta.setDisplayName(Translatable.get("mechanics.gui.previous_page"));
         prevButton.setItemMeta(prevMeta);
 
         if (page < items.size() / 45) inv.setItem(53, nextButton);

@@ -44,7 +44,7 @@ public class ItemAveragesCommand extends AbstractCommand {
                 return true;
             }
             if (!ItemTracker.inUse) {
-                player.sendMessage(getString("tracker-created")
+                player.sendMessage(getString("tracker_created")
                         .replace("%x%", "" + (int) player.getLocation().getX())
                         .replace("%y%", "" + (int) player.getLocation().getY())
                         .replace("%z%", "" + (int) player.getLocation().getZ())
@@ -62,7 +62,7 @@ public class ItemAveragesCommand extends AbstractCommand {
                     return true;
                 }
                 if (!ItemTracker.inUse) {
-                    player.sendMessage(getString("tracker-created")
+                    player.sendMessage(getString("tracker_created")
                             .replace("%x%", "" + (int) player.getLocation().getX())
                             .replace("%y%", "" + (int) player.getLocation().getY())
                             .replace("%z%", "" + (int) player.getLocation().getZ())
@@ -91,7 +91,7 @@ public class ItemAveragesCommand extends AbstractCommand {
         return false;
     }
 
-    List<String> arguments = new ArrayList<String>();
+    List<String> arguments = new ArrayList<>();
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
@@ -103,7 +103,7 @@ public class ItemAveragesCommand extends AbstractCommand {
             }
         }
 
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         if (args.length == 1) {
             for (String a : arguments) {
                 if (a.toLowerCase().startsWith(args[0].toLowerCase()))
