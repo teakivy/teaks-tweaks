@@ -105,5 +105,7 @@
 
   "itemaverages.error.tracker_in_use": "&cA tracker is already in use!",
   "itemaverages.tracker_created": "&eCreated a tracker source at XYZ: %x% %y% %z%",
-  "itemaverages.tracker_mass_removed": "&eRemoved %count% Tracker Sources!"
+  "itemaverages.tracker_mass_removed": "&eRemoved %count% Tracker Sources!",
+
+  "killboats.removed_boats": "&eRemoved %count% Boats!",
 }
