@@ -108,4 +108,8 @@
   "itemaverages.tracker_mass_removed": "&eRemoved %count% Tracker Sources!",
 
   "killboats.removed_boats": "&eRemoved %count% Boats!",
+
+  "mechanics.gui.title": "Teak's Tweaks Mechanics",
+  "mechanics.gui.next_page": "&6Next Page",
+  "mechanics.gui.previous_page": "&6Previous Page",
 }
