@@ -29,7 +29,7 @@
   "alts.list_alts": "&6%player%&e's alts:",
   "alts.listed_alt": "&7 - &e%alt%",
   "alts.added_alt": "&a%alt% is now %player%'s alt!",
-  "alts.removed_alt": "&a%alt% is no longer %player%'s alt!",
+    "alts.removed_alt": "&a%alt% is no longer %player%'s alt!",
 
   "back.error.on_cooldown": "&cYou must wait %cooldown_seconds% seconds between uses of /back!",
   "back.error.no_back_location": "&cYou have nowhere to go back to!",
@@ -41,4 +41,9 @@
 
   "coordshud.error.force_enabled": "&cCoordinates Hud is force enabled by a server administrator!",
   "coordshud.toggled": "&aToggled Coordinates Hud",
+
+  "delhome.error.specify_name": "&cPlease specify a name for your home!",
+  "delhome.error.no_home": "&cYou do not have a home with that name!",
+  "delhome.error.unknown": "&cAn unknown error has occurred while deleting your home!",
+  "delhome.deleted": "&aDeleted your home &6%home%&a!"
 }

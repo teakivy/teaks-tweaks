@@ -27,20 +27,22 @@ public class DeleteHomeCommand extends AbstractCommand {
 
         Player player = (Player) sender;
         if (args.length < 1 && HomesPack.getHome(player, "home") == null) {
-            player.sendMessage(ChatColor.RED + "You must specify a name for your home.");
+            player.sendMessage(getString("error.specify_name"));
             return true;
         }
         String name = args.length < 1 ? "home" : args[0].toLowerCase();
 
         Home home = HomesPack.getHome(player, name);
         if (home == null) {
-            player.sendMessage(ChatColor.RED + "You do not have a home with that name.");
+            player.sendMessage(getString("error.no_home"));
             return true;
         }
 
         if (!HomesPack.removeHome(player, name)) {
-            player.sendMessage(ChatColor.RED + "An error occurred while removing your home.");
+            player.sendMessage(getString("error.unknown"));
         }
+
+        player.sendMessage(getString("deleted").replace("%home%", name));
         return true;
     }
 }

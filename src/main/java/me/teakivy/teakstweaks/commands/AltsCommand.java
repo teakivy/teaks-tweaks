@@ -5,7 +5,6 @@ import me.teakivy.teakstweaks.packs.teakstweaks.spectatoralts.SpectatorAlts;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
