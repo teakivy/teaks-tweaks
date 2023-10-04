@@ -117,5 +117,8 @@
   "nightvision.toggled": "&aToggled Night Vision",
 
   "packlist.packs": "Packs (%count%): ",
-  "packlist.craftingtweaks": "Crafting Tweaks (%count%): "
+  "packlist.craftingtweaks": "Crafting Tweaks (%count%): ",
+
+  "portal.error.wrong_dimension": "&cYou cannot run this command in %world%!",
+  "portal.location": "&eX: %x% | Y: %y% | Z: %z%"
 }
