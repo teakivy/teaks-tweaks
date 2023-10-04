@@ -156,19 +156,6 @@ messages:
 
 commands:
 
-  shrine:
-    name: "shrine"
-    usage: "/shrine"
-    description: "Thunder Shrines!"
-    aliases: []
-    messages:
-      shrine-created: "&aA Shrine has been created at &6XYZ: &e%x% %y% %z% &ain &6World: &e%world%"
-      shrine-removed:
-        text: "Removed the shrine &6%uuid%&e!"
-        hover: "&eClick to teleport!"
-      no-shrine-nearby: "&cCould not find any Shrines nearby!"
-      mass-remove: "&cAll loaded Shrines have been removed!"
-
   spawn:
     name: "spawn"
     usage: "/spawn"

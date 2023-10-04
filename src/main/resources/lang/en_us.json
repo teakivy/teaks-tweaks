@@ -118,4 +118,9 @@
   "portal.location": "&eX: %x% | Y: %y% | Z: %z%",
 
   "realtimeclock.world_time": "&eThis world has been active for &6&l%days% &r&eDays, &6&l%hours% &r&eHours, and &6&l%minutes% &r&eMinutes!",
+
+  "shrine.error.none_nearby": "&cThere are no shrines nearby!",
+  "shrine.created": "&aA Shrine has been created at &6XYZ: &e%x% %y% %z% &ain &6World: &e%world%",
+  "shrine.removed": "&eA Shrine has been removed at &6XYZ: &e%x% %y% %z% &ain &6World: &e%world%",
+  "shrine.shrines_mass_removed": "&eAll loaded Shrines have been removed!",
 }
