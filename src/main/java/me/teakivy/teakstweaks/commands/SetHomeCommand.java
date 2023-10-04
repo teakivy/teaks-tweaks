@@ -17,7 +17,7 @@ import java.util.List;
 public class SetHomeCommand extends AbstractCommand {
 
     public SetHomeCommand() {
-        super("homes", MessageHandler.getCmdName("sethome"), MessageHandler.getCmdUsage("sethome"), MessageHandler.getCmdDescription("sethome"), MessageHandler.getCmdAliases("sethome"));
+        super("homes", "sethome", "/sethome", "Set a home to teleport to at a later date");
     }
 
     @Override
@@ -31,27 +31,27 @@ public class SetHomeCommand extends AbstractCommand {
         }
 
         if (args.length < 1 && HomesPack.getHome(player, "home") != null) {
-            player.sendMessage(ChatColor.RED + "You must specify a name for your home.");
+            player.sendMessage(get("homes.error.missing_home_name"));
             return true;
         }
 
         String name = args.length < 1 ? "home" : args[0].toLowerCase();
 
         if (HomesPack.getHome(player, name) != null) {
-            player.sendMessage(ChatColor.RED + "You already have a home with that name.");
+            player.sendMessage(get("homes.error.home_already_exists").replace("%name%", name));
             return true;
         }
 
         int maxHomes = Main.getInstance().getConfig().getInt("packs.homes.max-homes");
         if (maxHomes > 0 && homes.size() >= maxHomes) {
-            player.sendMessage(ChatColor.RED + "You have reached the maximum amount of homes you can set.");
+            player.sendMessage(get("homes.error.max_homes").replace("%max_homes%", maxHomes + ""));
             return true;
         }
 
         if (HomesPack.setHome(player, name, player.getLocation())) {
-            player.sendMessage(ChatColor.GREEN + "Home set!");
+            player.sendMessage(getString("homes.set_home").replace("%name%", name));
         } else {
-            player.sendMessage(ChatColor.RED + "An error occurred while setting your home.");
+            player.sendMessage(get("homes.error.cant_set_home"));
         }
         return true;
     }

@@ -156,19 +156,6 @@ messages:
 
 commands:
 
-  sethome:
-    name: "sethome"
-    usage: "/sethome"
-    description: "Set a home to teleport to at a later date"
-    aliases: []
-    messages:
-      error:
-        missing-home-name: "&cPlease specify a home name!"
-        home-already-exists: "&cThe home %name% already exists!"
-        max-homes-reached: "7cYou can set a Maximum of %amount% Homes!"
-        cant-set-home: "An Error has occurred! Could not set Home %name%!"
-      set-home: "&aSet Home %name%!"
-
   shrine:
     name: "shrine"
     usage: "/shrine"

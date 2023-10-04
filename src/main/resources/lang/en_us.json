@@ -42,11 +42,6 @@
   "coordshud.error.force_enabled": "&cCoordinates Hud is force enabled by a server administrator!",
   "coordshud.toggled": "&aToggled Coordinates Hud",
 
-  "delhome.error.specify_name": "&cPlease specify a name for your home!",
-  "delhome.error.no_home": "&cYou do not have a home with that name!",
-  "delhome.error.unknown": "&cAn unknown error has occurred while deleting your home!",
-  "delhome.deleted": "&aDeleted your home &6%home%&a!",
-
   "durabilityping.error.missing_preview_selection": "&cPlease enter which section to preview!",
   "durabilityping.error.missing_set_selection": "&cPlease enter which section to set!",
   "durabilityping.preview_panel.hover": "&7Click to preview &f%name%",
