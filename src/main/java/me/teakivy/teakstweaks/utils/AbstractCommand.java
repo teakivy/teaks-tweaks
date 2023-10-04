@@ -118,7 +118,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     }
 
     public String getString(String key) {
-        return Translatable.get(parentPack + "." + key);
+        return Translatable.get(command + "." + key);
     }
 
     public static String get(String key) {

@@ -23,13 +23,13 @@
   "alts.error.no_alts": "&c%player% does not have any alts!",
   "alts.error.max_alts": "&cYou cannot add any more alts!",
   "alts.error.self": "&cYou cannot add yourself as an alt!",
-  "alts.error.whitelisted": "&cYou cannot add a whitelisted player as an alt!",\
+  "alts.error.whitelisted": "&cYou cannot add a whitelisted player as an alt!",
   "alts.error.already_alt": "&c%alt% is already an alt!",
   "alts.error.not_alt": "&c%alt% is not an alt!",
   "alts.list_alts": "&6%player%&e's alts:",
   "alts.listed_alt": "&7 - &e%alt%",
   "alts.added_alt": "&a%alt% is now %player%'s alt!",
-    "alts.removed_alt": "&a%alt% is no longer %player%'s alt!",
+  "alts.removed_alt": "&a%alt% is no longer %player%'s alt!",
 
   "back.error.on_cooldown": "&cYou must wait %cooldown_seconds% seconds between uses of /back!",
   "back.error.no_back_location": "&cYou have nowhere to go back to!",
@@ -45,5 +45,21 @@
   "delhome.error.specify_name": "&cPlease specify a name for your home!",
   "delhome.error.no_home": "&cYou do not have a home with that name!",
   "delhome.error.unknown": "&cAn unknown error has occurred while deleting your home!",
-  "delhome.deleted": "&aDeleted your home &6%home%&a!"
+  "delhome.deleted": "&aDeleted your home &6%home%&a!",
+
+  "durabilityping.error.missing_preview_selection": "&cPlease enter which section to preview!",
+  "durabilityping.error.missing_set_selection": "&cPlease enter which section to set!",
+  "durabilityping.preview_panel.hover": "&7Click to preview &f%name%",
+  "durabilityping.checkbox.yes.hover": "&cClick to disable &f%name%",
+  "durabilityping.checkbox.no.hover": "&aClick to enable &f%name%",
+  "durabilityping.config.ping_for_hand_items.name": "Ping for Hand Items",
+  "durabilityping.config.ping_for_hand_items.description": "Inculdes any item with durability in the mainhand or offhand slots.",
+  "durabilityping.config.ping_for_armor_items.name": "Ping for Armor Items",
+  "durabilityping.config.ping_for_armor_items.description": "Inculdes any item with durability in armor slots.",
+  "durabilityping.config.ping_with_sound.name": "Ping with Sound",
+  "durabilityping.config.display.hidden.name": "Display: Hidden",
+  "durabilityping.config.display.subtitle.name": "Display: Subtitle",
+  "durabilityping.config.display.title.name": "Display: Title",
+  "durabilityping.config.display.chat.name": "Display: Chat",
+  "durabilityping.config.display.actionbar.name": "Display: Actionbar"
 }
