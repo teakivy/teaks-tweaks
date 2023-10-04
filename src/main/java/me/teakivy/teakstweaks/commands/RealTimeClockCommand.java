@@ -9,12 +9,14 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.List;
+
 public class RealTimeClockCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
 
     public RealTimeClockCommand() {
-        super("real-time-clock", MessageHandler.getCmdName("realtimeclock"), MessageHandler.getCmdUsage("realtimeclock"), MessageHandler.getCmdDescription("realtimeclock"), MessageHandler.getCmdAliases("realtimeclock"));
+        super("real-time-clock", "realtimeclock", "/realtimeclock", "View a world's real play time", List.of("rtc"));
     }
 
     @Override
@@ -37,7 +39,7 @@ public class RealTimeClockCommand extends AbstractCommand {
             int days = (int) ((world.getGameTime() / 20 / 60 / 60) / 24);
             int hours = (int) (world.getGameTime() / 20 / 60 / 60) % 24;
             int minutes = (int) (world.getGameTime() / 20 / 60 ) % 60;
-            player.sendMessage(MessageHandler.getCmdMessage("realtimeclock", "world-time")
+            player.sendMessage(getString("world_time")
                     .replace("%days%", days + "")
                     .replace("%hours%", hours + "")
                     .replace("%minutes%", minutes + "")

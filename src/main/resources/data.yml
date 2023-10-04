@@ -156,14 +156,6 @@ messages:
 
 commands:
 
-  realtimeclock:
-    name: "realtimeclock"
-    usage: "/realtimeclock"
-    description: "View a world's real time"
-    aliases: ["rtc"]
-    messages:
-      world-time: "&eThis world has been active for &6&l%days% &r&eDays, &6&l%hours% &r&eHours, and &6&l%minutes% &r&eMinutes!"
-
   sethome:
     name: "sethome"
     usage: "/sethome"

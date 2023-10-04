@@ -120,5 +120,7 @@
   "packlist.craftingtweaks": "Crafting Tweaks (%count%): ",
 
   "portal.error.wrong_dimension": "&cYou cannot run this command in %world%!",
-  "portal.location": "&eX: %x% | Y: %y% | Z: %z%"
+  "portal.location": "&eX: %x% | Y: %y% | Z: %z%",
+
+  "realtimeclock.world_time": "&eThis world has been active for &6&l%days% &r&eDays, &6&l%hours% &r&eHours, and &6&l%minutes% &r&eMinutes!",
 }
