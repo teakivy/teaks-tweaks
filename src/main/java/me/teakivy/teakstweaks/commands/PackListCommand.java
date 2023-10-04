@@ -9,13 +9,14 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PackListCommand extends AbstractCommand {
 
     Main main = Main.getPlugin(Main.class);
 
     public PackListCommand() {
-        super(null, MessageHandler.getCmdName("pack-list"), MessageHandler.getCmdUsage("pack-list"), MessageHandler.getCmdDescription("pack-list"), MessageHandler.getCmdAliases("pack-list"));
+        super(null, "packlist", "/packlist", "List all currently active Packs.", List.of("pkl"));
     }
 
     @Override
@@ -26,9 +27,9 @@ public class PackListCommand extends AbstractCommand {
         }
 
         ArrayList<String> packs = main.getPacks();
-        String str = ChatColor.WHITE + "Packs (" + packs.size() + "): " + arrayToString(packs);
+        String str = getString("packs").replace("%count%", packs.size() + "") + arrayToString(packs);
         ArrayList<String> ctweaks = main.getCraftingTweaks();
-        String str2 = ChatColor.WHITE + "Crafting Tweaks (" + ctweaks.size() + "): " + arrayToString(ctweaks);
+        String str2 = getString("craftingtweaks").replace("%count%", ctweaks.size() + "") + arrayToString(ctweaks);
 
         sender.sendMessage(str);
         sender.sendMessage(str2);
