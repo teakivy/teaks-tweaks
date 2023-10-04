@@ -92,7 +92,6 @@
   "graves.given_key": "&aYou have been given a grave key!",
   "graves.removed_graves": "&eRemoved all loaded Graves!",
 
-  "homes.error.missing_home": "&cPlease specify which home you would like to teleport to!",
   "homes.error.missing_home_name": "&cPlease specify a name for your home!",
   "homes.error.home_already_exists": "&cThe home %name% already exists!",
   "homes.error.home_dne": "&cThe home %name% does not exist!",
@@ -100,9 +99,11 @@
   "homes.error.cant_set_home": "&cAn unknown error has occurred while setting your home!",
   "homes.error.cant_remove_home": "&cAn unknown error has occurred while removing your home!",
   "homes.error.no_homes_yet": "&cYou don't have any homes set! Use &6/home set <name>&c to set one!",
-  "homes.error.on_cooldown": "&cYou must wait %time% seconds between uses of /home!",
-  "homes.error.moved": "&cYou must stand still to teleport!",
   "homes.set_home": "&aSet your home %name%!",
   "homes.removed_home": "&aRemoved your home %name%!",
-  "homes.teleporting": "&eTeleporting to %name%..."
+  "homes.teleporting": "&eTeleporting to %name%...",
+
+  "itemaverages.error.tracker_in_use": "&cA tracker is already in use!",
+  "itemaverages.tracker_created": "&eCreated a tracker source at XYZ: %x% %y% %z%",
+  "itemaverages.tracker_mass_removed": "&eRemoved %count% Tracker Sources!"
 }
