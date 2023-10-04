@@ -4,7 +4,6 @@ import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.packs.teleportation.back.Back;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -23,7 +22,7 @@ public class SpawnCommand extends AbstractCommand {
     HashMap<UUID, Long> cooldown = new HashMap<>();
 
     public SpawnCommand() {
-        super("spawn", MessageHandler.getCmdName("spawn"), MessageHandler.getCmdUsage("spawn"), MessageHandler.getCmdDescription("spawn"), MessageHandler.getCmdAliases("spawn"));
+        super("spawn", "spawn", "/spawn", "Teleport to the server's spawn point.");
     }
 
     @Override
@@ -47,27 +46,28 @@ public class SpawnCommand extends AbstractCommand {
         if (main.getConfig().getInt("packs.spawn.teleport-cooldown") > 0) {
             if (cooldown.containsKey(player.getUniqueId())) {
                 if (cooldown.get(player.getUniqueId()) + (main.getConfig().getInt("packs.spawn.teleport-cooldown") * 1000L) > System.currentTimeMillis()) {
-                    player.sendMessage(MessageHandler.getCmdMessage("spawn", "error.on-cooldown").replace("%time%",  + main.getConfig().getInt("packs.spawn.teleport-cooldown") + ""));
+                    player.sendMessage(getString("error.on_cooldown").replace("%time%", main.getConfig().getInt("packs.spawn.teleport-cooldown") + ""));
                     return true;
                 }
             }
             cooldown.put(player.getUniqueId(), System.currentTimeMillis());
         }
 
-        if (main.getConfig().getInt("packs.spawn.teleport-delay") == 0) {
-            player.sendMessage(MessageHandler.getCmdMessage("spawn", "teleporting"));
-            teleportToSpawn(player);
-        } else if (main.getConfig().getInt("packs.spawn.teleport-delay") > 0) {
+        player.sendMessage(getString("teleporting"));
+
+        if (main.getConfig().getInt("packs.spawn.teleport-delay") > 0) {
             Location loc = player.getLocation();
-            player.sendMessage(MessageHandler.getCmdMessage("spawn", "teleporting"));
             Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
                 if (player.getLocation().getX() == loc.getX() && player.getLocation().getY() == loc.getY() && player.getLocation().getZ() == loc.getZ()) {
                     teleportToSpawn(player);
                 } else {
-                    player.sendMessage(MessageHandler.getCmdMessage("spawn", "error.must-stand-still"));
+                    player.sendMessage(getString("error.moved"));
                 }
             }, main.getConfig().getInt("packs.spawn.teleport-delay") * 20L);
+            return false;
         }
+
+        teleportToSpawn(player);
         return false;
     }
 

@@ -156,17 +156,6 @@ messages:
 
 commands:
 
-  spawn:
-    name: "spawn"
-    usage: "/spawn"
-    description: "Teleport to a world's spawn!"
-    aliases: []
-    messages:
-      error:
-        on-cooldown: "&cYou must wait %time% seconds between uses of /spawn!"
-        must-stand-still: "&cYou must stand still to teleport!"
-      teleporting: "&eTeleporting to world spawn..."
-
   spawningspheres:
     name: "spawningspheres"
     usage: "/spawningspheres"

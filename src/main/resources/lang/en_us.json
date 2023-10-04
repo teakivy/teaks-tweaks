@@ -123,4 +123,8 @@
   "shrine.created": "&aA Shrine has been created at &6XYZ: &e%x% %y% %z% &ain &6World: &e%world%",
   "shrine.removed": "&eA Shrine has been removed at &6XYZ: &e%x% %y% %z% &ain &6World: &e%world%",
   "shrine.shrines_mass_removed": "&eAll loaded Shrines have been removed!",
+
+  "spawn.error.on_cooldown": "&cYou must wait %time% seconds between uses of /spawn!",
+  "spawn.error.moved": "&cYou must stand still to teleport!",
+  "spawn.teleporting": "&eTeleporting to Spawn...",
 }
