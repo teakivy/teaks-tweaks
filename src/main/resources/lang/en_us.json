@@ -179,4 +179,11 @@
   "tpa.teleporting": "&eTeleporting to &6%player%&e...",
   "tpa.teleporting_to_you": "&eTeleporting &6%player% &eto you...",
 
+  "workstationhighlight.error.invalid_profession": "&cInvalid profession type!",
+  "workstationhighlight.error.invalid_radius": "&cInvalid radius!",
+  "workstationhighlight.error.radius_out_of_bounds": "&cRadius must be between 1 and 16!",
+  "workstationhighlight.error.no_workstations_found": "&cNo villager workstations found nearby!",
+  "workstationhighlight.error.no_job_site": "&cThe nearest villager does not have a job site!",
+  "workstationhighlight.found": "&eThe workstation is located at &6[XYZ]: %x% %y% %z%"
+
 }
