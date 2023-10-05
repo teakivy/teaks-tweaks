@@ -4,6 +4,9 @@
   "meta.language_name": "United States English",
 
   "plugin.name": "Teak's Tweaks",
+  "plugin.discord": "https://discord.gg/wfP4SkZx6s",
+  "plugin.url": "https://modrinth.com/plugin/teaks-tweaks",
+  "plugin.author": "TeakIvy",
 
   "commands.usage": "&cUsage: %command_usage%",
 
@@ -143,4 +146,23 @@
   "taggame.item_name": "&eTag!",
   "taggame.begun": "&eLet the games begin!",
   "taggame.uninstalled": "&eThe Tag Game has been uninstalled!",
+
+  "teakstweakscommand.error.enable.specify_pack": "&cPlease specify a pack to enable!",
+  "teakstweakscommand.error.enable.cannot_enable": "&c%pack% cannot be enabled!",
+  "teakstweakscommand.error.disable.specify_pack": "&cPlease specify a pack to disable!",
+  "teakstweakscommand.error.disable.cannot_disable": "&c%pack% cannot be disabled!",
+  "teakstweakscommand.version": "&av%version%",
+  "teakstweakscommand.support": "&a%discord%",
+  "teakstweakscommand.update": "&a%url%",
+  "teakstweakscommand.enable.all": "&aAll packs enabled!",
+  "teakstweakscommand.enable.success": "&a%pack% enabled!",
+  "teakstweakscommand.disable.all": "&aAll packs disabled!",
+  "teakstweakscommand.disable.success": "&a%pack% disabled!",
+  "teakstweakscommand.info.dashed_line": "&7-----------------------------------------------------",
+  "teakstweakscommand.info.title": "&6Teak's Tweaks &ev%version%",
+  "teakstweakscommand.info.author": "&fAuthor: &a%author%",
+  "teakstweakscommand.info.config_version": "&fConfig Version: &a%config_version%",
+  "teakstweakscommand.info.config_generated": "&fConfig Generated: &a%config_generated%",
+  "teakstweakscommand.info.dev_mode_enabled": "&fDev Mode: &aEnabled",
+  "teakstweakscommand.info.support": "&fSupport Server: &a%discord%",
 }

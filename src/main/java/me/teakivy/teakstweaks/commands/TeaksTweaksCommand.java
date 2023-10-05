@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
+import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -33,17 +34,17 @@ public class TeaksTweaksCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("version") || args[0].equalsIgnoreCase("v") || args[0].equalsIgnoreCase("ver")) {
-            sender.sendMessage(ChatColor.GREEN + "v" + Main.getInstance().getDescription().getVersion());
+            sender.sendMessage(getString("version").replace("%version%", Main.getInstance().getDescription().getVersion()));
             return true;
         }
 
         if (args[0].equalsIgnoreCase("support")) {
-            sender.sendMessage(ChatColor.GREEN + "https://discord.gg/wfP4SkZx6s");
+            sender.sendMessage(getString("support").replace("%discord%", get("plugin.discord")));
             return true;
         }
 
         if (args[0].equalsIgnoreCase("update")) {
-            sender.sendMessage(ChatColor.GREEN + "https://modrinth.com/plugin/teaks-tweaks");
+            sender.sendMessage(getString("update").replace("%url%", get("plugin.url")));
             return true;
         }
 
@@ -53,7 +54,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
                 return true;
             }
             if (args.length < 2) {
-                sender.sendMessage(ChatColor.RED + "You must specify a pack to enable!");
+                sender.sendMessage(getString("error.enable.specify_pack"));
                 return true;
             }
             if (args[1].equalsIgnoreCase("all")) {
@@ -65,12 +66,12 @@ public class TeaksTweaksCommand extends AbstractCommand {
                 }
                 Main.getInstance().saveConfig();
 
-                sender.sendMessage(ChatColor.GREEN + "All packs enabled!");
+                sender.sendMessage(getString("enable.all"));
                 return true;
             }
 
             if (!Main.getRegister().getDisabledPacks().contains(args[1])) {
-                sender.sendMessage(ChatColor.RED + args[1] + " cannot be enabled!");
+                sender.sendMessage(getString("error.enable.cannot_enable").replace("%pack%", args[1]));
                 return true;
             }
 
@@ -80,11 +81,11 @@ public class TeaksTweaksCommand extends AbstractCommand {
                 Main.getInstance().getConfig().set("packs." + args[1] + ".enabled", true);
                 Main.getInstance().saveConfig();
 
-                sender.sendMessage(ChatColor.GREEN + args[1] + " enabled!");
+                sender.sendMessage(getString("enable.success").replace("%pack%", args[1]));
                 return true;
             }
 
-            sender.sendMessage(ChatColor.RED + args[1] + " cannot be enabled!");
+            sender.sendMessage(getString("error.enable.cannot_enable").replace("%pack%", args[1]));
             return true;
         }
 
@@ -94,7 +95,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
                 return true;
             }
             if (args.length < 2) {
-                sender.sendMessage(ChatColor.RED + "You must specify a pack to disable!");
+                sender.sendMessage(getString("error.disable.specify_pack"));
                 return true;
             }
             if (args[1].equalsIgnoreCase("all")) {
@@ -105,12 +106,12 @@ public class TeaksTweaksCommand extends AbstractCommand {
                 }
                 Main.getInstance().saveConfig();
 
-                sender.sendMessage(ChatColor.GREEN + "All packs disabled!");
+                sender.sendMessage(getString("disable.all"));
                 return true;
             }
 
             if (!Main.getRegister().getEnabledPacks().contains(args[1])) {
-                sender.sendMessage(ChatColor.RED + args[1] + " cannot be disabled!");
+                sender.sendMessage(getString("error.disable.cannot_disable").replace("%pack%", args[1]));
                 return true;
             }
 
@@ -121,11 +122,11 @@ public class TeaksTweaksCommand extends AbstractCommand {
                 Main.getInstance().saveConfig();
 
 
-                sender.sendMessage(ChatColor.GREEN + args[1] + " disabled!");
+                sender.sendMessage(getString("disable.success").replace("%pack%", args[1]));
                 return true;
             }
 
-            sender.sendMessage(ChatColor.RED + args[1] + " cannot be disabled!");
+            sender.sendMessage(getString("error.disable.cannot_disable").replace("%pack%", args[1]));
             return true;
         }
 
@@ -168,12 +169,6 @@ public class TeaksTweaksCommand extends AbstractCommand {
             return result;
         }
 
-        if (args.length == 2 && args[0].equalsIgnoreCase("update")) {
-            if ("confirm".startsWith(args[1].toLowerCase()))
-                result.add("confirm");
-            return result;
-        }
-
         if (args.length == 2 && args[0].equalsIgnoreCase("disable")) {
             for (String a : enabled) {
                 if (a.toLowerCase().startsWith(args[1].toLowerCase()))
@@ -194,18 +189,23 @@ public class TeaksTweaksCommand extends AbstractCommand {
     }
 
     public void sendInfoMessage(CommandSender sender) {
-        sender.sendMessage(ChatColor.GRAY + "-----------------------------------------------------");
+        sender.sendMessage(getString("info.dashed_line"));
         sender.sendMessage("");
-        sender.sendMessage(ChatColor.GOLD + "Teak's Tweaks " + ChatColor.YELLOW + "v" + Main.getInstance().getDescription().getVersion());
+        sender.sendMessage(getString("info.title").replace("%version%", Main.getInstance().getDescription().getVersion()));
         sender.sendMessage("");
-        sender.sendMessage(ChatColor.WHITE + "Author: " + ChatColor.GREEN + Main.getInstance().getDescription().getAuthors().get(0));
-        sender.sendMessage(ChatColor.WHITE + "Config Version: " + ChatColor.GREEN + Main.getInstance().getConfig().getString("config.version"));
-        sender.sendMessage(ChatColor.WHITE + "Config Generated: " + ChatColor.GREEN + Main.getInstance().getConfig().getString("config.plugin-version"));
+        sender.sendMessage(getString("info.author").replace("%author%", get("plugin.author")));
+        sender.sendMessage(getString("info.config_version").replace("%config_version%", Main.getInstance().getConfig().getString("config.version")));
+        sender.sendMessage(getString("info.config_generated").replace("%config_generated%", Main.getInstance().getConfig().getString("config.plugin-version")));
         if (Main.getInstance().getConfig().getBoolean("config.dev-mode")) {
-            sender.sendMessage(ChatColor.WHITE + "Dev Mode: " + ChatColor.GREEN + "Enabled");
+            sender.sendMessage(getString("info.dev_mode_enabled"));
         }
-        sender.sendMessage(ChatColor.WHITE + "Support Server: " + ChatColor.GREEN + "https://discord.gg/wfP4SkZx6s");
+        sender.sendMessage(getString("info.support").replace("%discord%", get("plugin.discord")));
         sender.sendMessage("");
-        sender.sendMessage(ChatColor.GRAY + "-----------------------------------------------------");
+        sender.sendMessage(getString("info.dashed_line"));
+    }
+
+    @Override
+    public String getString(String key) {
+        return Translatable.get("teakstweakscommand." + key);
     }
 }
