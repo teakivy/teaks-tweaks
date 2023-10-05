@@ -205,13 +205,6 @@ commands:
         no-jobsite: "&cThe nearest Villager does not have a job site!"
       jobsite-found: "&eThe workstation is located at &6[XYZ]: %x% %y% %z%"
 
-  sudoku:
-    name: "sudoku"
-    usage: "/sudoku"
-    description: "Commit Sudoku"
-    aliases: []
-    messages:
-
 
 mob-heads:
   allay:

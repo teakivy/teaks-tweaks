@@ -137,4 +137,6 @@
   "spawningspheres.color.red": "&cRed",
   "spawningspheres.color.blue": "&bBlue",
   "spawningspheres.color.green": "&aGreen",
+
+  "sudoku.committed": "&aThanks for playing sudoku!"
 }

@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 public class SudokuCommand extends AbstractCommand {
 
     public SudokuCommand() {
-        super("sudoku", MessageHandler.getCmdName("sudoku"), MessageHandler.getCmdUsage("sudoku"), MessageHandler.getCmdDescription("sudoku"), MessageHandler.getCmdAliases("sudoku"));
+        super("sudoku", "sudoku", "/sudoku", "Commit Sudoku!");
     }
 
     @Override
@@ -22,7 +22,7 @@ public class SudokuCommand extends AbstractCommand {
             return true;
         }
         player.getScoreboardTags().add("sudoku-message");
-        player.sendMessage(ChatColor.GREEN + "Sudoku!");
+        player.sendMessage(getString("committed"));
         player.setHealth(0);
         return false;
     }
