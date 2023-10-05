@@ -166,5 +166,17 @@
   "teakstweakscommand.info.dev_mode_enabled": "&fDev Mode: &aEnabled",
   "teakstweakscommand.info.support": "&fSupport Server: &a%discord%",
 
-  "test.test": "&eHey! Looks like you found my test command! :D"
+  "test.test": "&eHey! Looks like you found my test command! :D",
+
+  "tpa.error.specify_player": "&cPlease specify a player to teleport to!",
+  "tpa.error.no_pending_requests": "&cYou do not have any pending teleport requests!",
+  "tpa.error.player_not_online": "&cThat player is not online!",
+  "tpa.error.player_no_pending_requests": "&cThat player does not have any pending teleport requests!",
+  "tpa.request_message": "&6%player% &ehas requested to teleport to you! &6Click to accept!",
+  "tpa.request_message.hover": "&6Click to accept",
+  "tpa.request_sent": "&eYou have requested to teleport to &6%player%&e. &6They have 60 seconds to accept.",
+  "tpa.request_expired": "&cYour teleport request to &6%player% &chas expired!",
+  "tpa.teleporting": "&eTeleporting to &6%player%&e...",
+  "tpa.teleporting_to_you": "&eTeleporting &6%player% &eto you...",
+
 }

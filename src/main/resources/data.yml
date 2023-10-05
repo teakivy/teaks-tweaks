@@ -156,25 +156,6 @@ messages:
 
 commands:
 
-  tpa:
-    name: "tpa"
-    usage: "/tpa"
-    description: "Teleport to someone else (with permission!)"
-    aliases: []
-    messages:
-      error:
-        missing-player: "&cPlease specify who you would like to teleport to!"
-        missing-player-confirm: "&cPlease specify who you would like to teleport!"
-        player-doesnt-exist: "&cThe player %name% does not exist!"
-      teleporting-to: "&eTeleporting to &6%name%&e..."
-      teleporting-from: "&eTeleporting &6%name% &eto you..."
-      teleport-request:
-        text: "&6%name% &eHas requested to teleport to you! Click to accept"
-        hover: "&6Click to accept"
-        click: "/tpa confirm %name%"
-      request-sent: "&aTeleport request sent!"
-      request-cancelled: "&cTeleport request cancelled!"
-
   workstationhighlight:
     name: "workstationhighlight"
     usage: "/workstationhighlight"
