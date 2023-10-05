@@ -42,12 +42,27 @@ public class Translatable {
 
         if (currentLanguage == null) {
             currentLanguage = languages.get(0);
-            Logger.log(Logger.LogLevel.ERROR, "Could not find language file for " + lang + ". Using " + currentLanguage.getName() + " (" + currentLanguage.getLang() + ")" + " instead.");
+            Logger.log(
+                    Logger.LogLevel.ERROR,
+                    get("startup.lang.error.missing_language_file")
+                            .replace("%lang%", lang)
+                            .replace("%current_lang_name%", currentLanguage.getName())
+                            .replace("%current_lang_key%", currentLanguage.getLang())
+            );
         }
 
         if (Main.getInstance().devMode) {
-            Logger.log(Logger.LogLevel.INFO, "Loaded " + languages.size() + " language files.");
-            Logger.log(Logger.LogLevel.INFO, "Current language: " + currentLanguage.getName() + " (" + currentLanguage.getLang() + ").");
+            Logger.log(
+                    Logger.LogLevel.INFO,
+                    get("startup.lang.loaded")
+                            .replace("%count%", String.valueOf(languages.size()))
+            );
+            Logger.log(
+                    Logger.LogLevel.INFO,
+                    get("startup.lang.current")
+                            .replace("%current_lang_name%", currentLanguage.getName())
+                            .replace("%current_lang_key%", currentLanguage.getLang())
+            );
         }
     }
 

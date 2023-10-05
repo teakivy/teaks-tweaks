@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.utils;
 
 import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -21,9 +22,9 @@ public class UpdateJoinAlert implements Listener {
         if (!Main.getInstance().getConfig().getBoolean("settings.alert-on-new-version")) return;
         if (!UpdateChecker.hasUpdate()) return;
 
-        TextComponent text = new TextComponent(ChatColor.YELLOW + "There is a new version of Teak's Tweaks available!\nClick here to download " + ChatColor.GOLD + "Teak's Tweaks v" + UpdateChecker.getLatestVersion() + ChatColor.YELLOW + "!");
-        text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatColor.GOLD + "Click here to download & install Teak's Tweaks v" + UpdateChecker.getLatestVersion() + "!")));
-        text.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://modrinth.com/plugin/teaks-tweaks"));
+        TextComponent text = new TextComponent(Translatable.get("startup.update.join_alert").replace("%version%", UpdateChecker.getLatestVersion()));
+        text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(Translatable.get("startup.update.join_alert.hover").replace("%version%", UpdateChecker.getLatestVersion()))));
+        text.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, Translatable.get("plugin.url")));
 
         player.spigot().sendMessage(text);
 

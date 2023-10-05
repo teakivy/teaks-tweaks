@@ -57,7 +57,7 @@ public final class Main extends JavaPlugin implements Listener {
 
 
         // Language
-        Translatable.init("en_uk");
+        Translatable.init("en_us");
 
         // Update Checker
         getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
@@ -84,7 +84,7 @@ public final class Main extends JavaPlugin implements Listener {
 
         // Plugin startup logic
         Logger.log(Logger.LogLevel.INFO, "");
-        Logger.log(Logger.LogLevel.INFO, "Teak's Tweaks Started!");
+        Logger.log(Logger.LogLevel.INFO, Translatable.get("startup.plugin.started").replace("%version%", this.getDescription().getVersion()));
         Logger.log(Logger.LogLevel.INFO, "");
 
         // Packs
@@ -95,7 +95,7 @@ public final class Main extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        Logger.log(Logger.LogLevel.INFO, MessageHandler.getMessage("plugin.shutdown.plugin-shutdown"));
+        Logger.log(Logger.LogLevel.INFO, Translatable.get("startup.plugin.shutting_down"));
 
         try {
             data.saveConfig();

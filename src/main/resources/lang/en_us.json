@@ -1,5 +1,5 @@
 {
-  "meta.version": 1,
+  "meta.version": 4,
   "meta.modified": false,
   "meta.language_name": "United States English",
 
@@ -22,7 +22,19 @@
 
   "#comment.startup": "Startup Section: (this is a comment and will never be shown in-game)",
 
-  "startup.register.crafting_tweak": "Registering Crafting Tweak: %name%",
+  "startup.plugin.started": "Teak's Tweaks v%version% has started!",
+  "startup.plugin.shutting_down": "Teak's Tweaks Shutting Down...",
+  "startup.update.version_available": "A new version of Teak's Tweaks is available! v%version%",
+  "startup.update.download": "Visit %url% to download the latest version!",
+  "startup.update.join_alert": "&eThere is a new version of Teak's Tweaks available!\nClick here to download &6Teak's Tweaks v%version%&e!",
+  "startup.update.join_alert.hover": "&6Click to download Teak's Tweaks v%version%!",
+  "startup.register.crafting_tweak": "Registered Crafting Tweak: %name%",
+  "startup.register.command": "Registered Command: /%command%",
+  "startup.lang.error.missing_language_file": "&cCould not find language file for %lang%! Using %current_lang_name% (%current_lang_key%.json) instead.",
+  "startup.lang.loaded": "Loaded %count% language files.",
+  "startup.lang.current": "Current Language: %current_lang_name% (%current_lang_key%.json)",
+
+  "#comment.crafting_tweaks": "Crafting Tweaks Section: (this is a comment and will never be shown in-game)",
 
   "crafting_tweaks.name_display": "&c%name%",
 
