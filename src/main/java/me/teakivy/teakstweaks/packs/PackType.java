@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.packs;
 
+import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.ChatColor;
 
 public enum PackType {
@@ -10,7 +11,8 @@ public enum PackType {
     SURVIVAL,
     TEAKSTWEAKS,
     TELEPORTATION,
-    UTILITIES;
+    UTILITIES,
+    CRAFTING_TWEAKS;
 
     public Object getColor() {
         return switch (this) {
@@ -22,19 +24,25 @@ public enum PackType {
             case TEAKSTWEAKS -> ChatColor.DARK_PURPLE;
             case TELEPORTATION -> ChatColor.DARK_AQUA;
             case UTILITIES -> ChatColor.LIGHT_PURPLE;
+            case CRAFTING_TWEAKS -> ChatColor.RED;
         };
     }
 
     public String getName() {
         return switch (this) {
-            case EXPERIMENTAL -> getColor() + "Experimental";
-            case HERMITCRAFT -> getColor() + "Hermitcraft";
-            case ITEMS -> getColor() + "Items";
-            case MOBS -> getColor() + "Mobs";
-            case SURVIVAL -> getColor() + "Survival";
-            case TEAKSTWEAKS -> getColor() + "Teak's Tweaks Custom";
-            case TELEPORTATION -> getColor() + "Teleportation";
-            case UTILITIES -> getColor() + "Utilities";
+            case EXPERIMENTAL -> getColor() + get("experimental");
+            case HERMITCRAFT -> getColor() + get("hermitcraft");
+            case ITEMS -> getColor() + get("items");
+            case MOBS -> getColor() + get("mobs");
+            case SURVIVAL -> getColor() + get("survival");
+            case TEAKSTWEAKS -> getColor() + get("teaks_tweaks");
+            case TELEPORTATION -> getColor() + get("teleportation");
+            case UTILITIES -> getColor() + get("utilities");
+            case CRAFTING_TWEAKS -> getColor() + get("crafting_tweaks");
         };
+    }
+
+    private String get(String key) {
+        return Translatable.get("packtype." + key);
     }
 }

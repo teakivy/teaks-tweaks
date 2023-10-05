@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.craftingtweaks;
 
 import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.ChatColor;
@@ -52,7 +53,7 @@ public class AbstractRecipe {
 
         lore.add("");
 
-        lore.add(ChatColor.RED + "Crafting Tweaks");
+        lore.add(PackType.CRAFTING_TWEAKS.getName());
 
         item.setLore(lore);
 

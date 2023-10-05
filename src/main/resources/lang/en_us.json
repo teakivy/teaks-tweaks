@@ -10,7 +10,15 @@
 
   "#comment.metadata": "Pack Metadata Section: (this is a comment and will never be shown in-game)",
 
-  "packtype.crafting_tweak": "&cCrafting Tweak",
+  "packtype.experimental": "Experimental",
+  "packtype.hermitcraft": "Hermitcraft",
+  "packtype.items": "Items",
+  "packtype.mobs": "Mobs",
+  "packtype.survival": "Survival",
+  "packtype.teaks_tweaks": "Teak's Tweaks Custom",
+  "packtype.teleportation": "Teleportation",
+  "packtype.utilities": "Utilities",
+  "packtype.crafting_tweaks": "Crafting Tweaks",
 
   "#comment.startup": "Startup Section: (this is a comment and will never be shown in-game)",
 
