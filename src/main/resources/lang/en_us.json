@@ -138,5 +138,9 @@
   "spawningspheres.color.blue": "&bBlue",
   "spawningspheres.color.green": "&aGreen",
 
-  "sudoku.committed": "&aThanks for playing sudoku!"
+  "sudoku.committed": "&aThanks for playing sudoku!",
+
+  "taggame.item_name": "&eTag!",
+  "taggame.begun": "&eLet the games begin!",
+  "taggame.uninstalled": "&eThe Tag Game has been uninstalled!",
 }

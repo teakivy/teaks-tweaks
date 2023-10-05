@@ -3,7 +3,6 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -23,7 +22,7 @@ public class TagGameCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public TagGameCommand() {
-        super("tag", MessageHandler.getCmdName("taggame"), MessageHandler.getCmdUsage("taggame"), MessageHandler.getCmdDescription("taggame"), MessageHandler.getCmdAliases("taggame"));
+        super("tag", "taggame", "/taggame", "The classic game of tag.");
     }
 
     @Override
@@ -46,7 +45,7 @@ public class TagGameCommand extends AbstractCommand {
                     sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                     return true;
                 }
-                player.sendMessage(MessageHandler.getCmdMessage("taggame", "uninstalled"));
+                player.sendMessage(getString("uninstalled"));
                 main.getRegister().unregisterPack("tag");
                 return true;
             }
@@ -72,7 +71,7 @@ public class TagGameCommand extends AbstractCommand {
             main.getRegister().unregisterPack("tag");
             ItemStack tag = new ItemStack(Material.NAME_TAG);
             ItemMeta tagMeta = tag.getItemMeta();
-            tagMeta.setDisplayName(ChatColor.YELLOW + "Tag!");
+            tagMeta.setDisplayName(getString("item_name"));
             tagMeta.setUnbreakable(true);
             tag.setItemMeta(tagMeta);
 
@@ -87,13 +86,13 @@ public class TagGameCommand extends AbstractCommand {
             }
             Team taggedTeam = sb.getTeam("TaggedTeam");
             taggedTeam.addEntry(player.getName());
-            player.sendMessage(MessageHandler.getCmdMessage("taggame", "begun"));
+            player.sendMessage(getString("begun"));
             return true;
         }
         return false;
     }
 
-    List<String> arguments1 = new ArrayList<String>();
+    List<String> arguments1 = new ArrayList<>();
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
@@ -102,7 +101,7 @@ public class TagGameCommand extends AbstractCommand {
             arguments1.add("uninstall");
         }
 
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         if (args.length == 1) {
             for (String a : arguments1) {
                 if (a.toLowerCase().startsWith(args[0].toLowerCase()))

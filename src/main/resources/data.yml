@@ -156,15 +156,6 @@ messages:
 
 commands:
 
-  taggame:
-    name: "taggame"
-    usage: "/taggame"
-    description: "The classic game of tag"
-    aliases: []
-    messages:
-      uninstalled: "&cTag Uninstalled!"
-      begun: "&eLet the games begin!"
-
   test:
     name: "test"
     usage: "/test"
