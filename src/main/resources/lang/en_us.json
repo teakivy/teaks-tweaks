@@ -8,7 +8,125 @@
   "plugin.url": "https://modrinth.com/plugin/teaks-tweaks",
   "plugin.author": "TeakIvy",
 
-  "commands.usage": "&cUsage: %command_usage%",
+  "#comment.metadata": "Pack Metadata Section: (this is a comment and will never be shown in-game)",
+
+  "packtype.crafting_tweak": "&cCrafting Tweak",
+
+  "#comment.startup": "Startup Section: (this is a comment and will never be shown in-game)",
+
+  "startup.register.crafting_tweak": "Registering Crafting Tweak: %name%",
+
+  "crafting_tweaks.name_display": "&c%name%",
+
+  "back_to_blocks.name": "Back to Blocks",
+  "back_to_blocks.description": "Allows you to craft full blocks from stairs and slabs.",
+
+  "blackstone_cobblestone.name": "Blackstone Cobblestone",
+  "blackstone_cobblestone.description": "Craft all items that require Cobblestone, using Blackstone.",
+
+  "charcoal_to_black_dye.name": "Charcoal to Black Dye",
+  "charcoal_to_black_dye.description": "Allows you to craft Charcoal into Black Dye.",
+
+  "coal_to_black_dye.name": "Coal to Black Dye",
+  "coal_to_black_dye.description": "Allows you to craft Coal into Black Dye.",
+
+  "craftable_blackstone.name": "Craftable Blackstone",
+  "craftable_blackstone.description": "Allows you to craft Blackstone or Polished Blackstone using Basalt & Coal/Charcoal",
+
+  "craftable_bundles_leather.name": "Craftable Bundles (Leather)",
+  "craftable_bundles_leather.description": "Allows you to craft Bundles using Leather.",
+
+  "craftable_bundles_rabbit_hide.name": "Craftable Bundles (Rabbit Hide)",
+  "craftable_bundles_rabbit_hide.description": "Allows you to craft Bundles using Rabbit Hide.",
+
+  "craftable_coral_blocks_2x2.name": "Craftable Coral Blocks (2x2)",
+  "craftable_coral_blocks_2x2.description": "Allows you to craft Coral Blocks from their Coral Plant in a 2x2. Both Tubes and Fans may be used interchangeably.",
+
+  "craftable_coral_blocks_3x3.name": "Craftable Coral Blocks (3x3)",
+  "craftable_coral_blocks_3x3.description": "Allows you to craft Coral Blocks from their Coral Plant in a 3x3. Both Tubes and Fans may be used interchangeably.",
+
+  "craftable_enchanted_golden_apples.name": "Craftable Enchanted Golden Apples",
+  "craftable_enchanted_golden_apples.description": "Allows you to craft Enchanted Golden Apples using Gold Blocks.",
+
+  "craftable_gilded_blackstone.name": "Craftable Gilded Blackstone",
+  "craftable_gilded_blackstone.description": "Allows you to craft Gilded Blackstone using Golden Nuggets and Blackstone.",
+
+  "craftable_gravel.name": "Craftable Gravel",
+  "craftable_gravel.description": "Allows you to craft Gravel using Flint.",
+
+  "craftable_horse_armor.name": "Craftable Horse Armor",
+  "craftable_horse_armor.description": "Allows you to craft Horse Armor.",
+
+  "craftable_name_tags.name": "Craftable Name Tags",
+  "craftable_name_tags.description": "Allows you to craft Name Tags.",
+
+  "craftable_sculk_sensors.name": "Craftable Sculk Sensors",
+  "craftable_sculk_sensors.description": "Allows you to craft Sculk Sensors",
+
+  "craftable_small_dripleaf.name": "Craftable Small Dripleaf",
+  "craftable_small_dripleaf.description": "Allows you to craft Small Dripleaf from a Large Dripleaf.",
+
+  "craftable_spore_blossoms.name": "Craftable Spore Blossoms",
+  "craftable_spore_blossoms.description": "Allows you to craft Spore Blossoms using Lilacs, Azalea Leaves, and Honeycombs.",
+
+  "double_slabs.name": "Double Slabs",
+  "double_slabs.description": "Allows you to craft 2 slabs from a single block.",
+
+  "dropper_to_dispenser.name": "Dropper to Dispenser",
+  "dropper_to_dispenser.description": "Allows you to convert a Dropper to a Dispenser using a Bow, or by using String and Sticks.",
+
+  "log_chests.name": "Log Chests",
+  "log_chests.description": "Allows you to bulk craft Chests using Logs.",
+
+  "more_bark.name": "More Bark",
+  "more_bark.description": "Craft 4 Bark instead of 3.",
+
+  "more_bricks.name": "More Bricks",
+  "more_bricks.description": "Craft 4 Bricks instead of 1.",
+
+  "more_packed_mud.name": "More Packed Mud",
+  "more_packed_mud.description": "Craft 2 Packed Mud instead of 1.",
+
+  "more_sherds.name": "More Sherds",
+  "more_sherds.description": "Craft 2 Sherds when combining a Pottery Sherd with a Brick.",
+
+  "more_stairs.name": "More Stairs",
+  "more_stairs.description": "Craft 8 Stairs instead of 4.",
+
+  "more_trapdoors.name": "More Trapdoors",
+  "more_trapdoors.description": "Craft 12 Trapdoors instead of 3.",
+
+  "powder_to_glass.name": "Powder to Glass",
+  "powder_to_glass.description": "Smelt all colors of Concrete Powder into their respective Stained Glass color.",
+
+  "rotten_flesh_to_leather.name": "Rotten Flesh to Leather",
+  "rotten_flesh_to_leather.description": "Allows you to smelt Rotten Flesh into Leather.",
+
+  "sandstone_dyeing.name": "Sandstone Dyeing",
+  "sandstone_dyeing.description": "Allows you to craft Sandstone with Red Dye to get Red Sandstone",
+
+  "smeltable_raw_ore_blocks.name": "Smeltable Raw Ore Blocks",
+  "smeltable_raw_ore_blocks.description": "Smelt Raw Ore Blocks to Ore Blocks.",
+
+  "straight_to_shapeless.name": "Straight to Shapeless",
+  "straight_to_shapeless.description": "Craft items such as Paper, Bread, and Shulker Boxes directly in your 2x2.",
+
+  "universal_dyeing.name": "Universal Dyeing",
+  "universal_dyeing.description": "Allows you to dye any dyeable block to another color, no matter what color it is (does not include Concrete).",
+
+  "unpackable_ice.name": "Unpackable Ice",
+  "unpackable_ice.description": "Allows you to break down Ice into 9 pieces. 1 Blue Ice to 9 Packed Ice to 81 Ice.",
+
+  "unpackable_nether_wart.name": "Unpackable Nether Wart Blocks",
+  "unpackable_nether_wart.description": "Allows you to break down Nether Wart Blocks into 9 Nether Wart.",
+
+  "unpackable_quartz_blocks.name": "Unpackable Quartz Blocks",
+  "unpackable_quartz_blocks.description": "Allows you to break down Quartz Blocks into 4 Quartz.",
+
+  "unpackable_wool.name": "Unpackable Wool",
+  "unpackable_wool.description": "Allows you to break down Wool into 4 String.",
+
+  "#comment.errors": "Common Error Messages: (this is a comment and will never be shown in-game)",
 
   "error.unknown": "&cAn unknown error has occurred!",
   "error.pack_not_enabled": "&cThis pack is not enabled!",
@@ -20,6 +138,10 @@
   "error.command_disabled": "&cThis command has been disabled by a server administrator!",
   "error.missing_action": "&cPlease specify an action!",
   "error.player_dne": "&cThat player does not exist!",
+
+  "#comment.commands": "Commands Section: (this is a comment and will never be shown in-game)",
+
+  "plugin.commands.usage": "&cUsage: %command_usage%",
 
   "alts.error.no_permission_list_others": "&cYou do not have permission to see other's alts!",
   "alts.error.no_permission_modify_others": "&cYou do not have permission to modify other's alts!",
@@ -185,5 +307,4 @@
   "workstationhighlight.error.no_workstations_found": "&cNo villager workstations found nearby!",
   "workstationhighlight.error.no_job_site": "&cThe nearest villager does not have a job site!",
   "workstationhighlight.found": "&eThe workstation is located at &6[XYZ]: %x% %y% %z%"
-
 }

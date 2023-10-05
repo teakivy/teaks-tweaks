@@ -14,7 +14,7 @@ import java.util.List;
 public class CraftableCoral2x2 extends AbstractRecipe {
 
     public CraftableCoral2x2() {
-        super("Craftable Coral 2x2", "craftable-coral-blocks-2x2", Material.TUBE_CORAL_BLOCK, "Allows you to craft Coral Blocks from their Coral Plant in a 2x2. Both Tubes and Fans may be used interchangably.");
+        super("craftable-coral-blocks-2x2", Material.TUBE_CORAL_BLOCK);
     }
 
     @Override

@@ -11,7 +11,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class DropperToDispenser extends AbstractRecipe {
 
     public DropperToDispenser() {
-        super("Dropper To Dispenser", "dropper-to-dispenser", Material.DISPENSER, "Allows you to convert a Dropper to a Dispenser using a Bow, or by using String and Sticks.");
+        super("dropper-to-dispenser", Material.DISPENSER);
     }
 
     @Override

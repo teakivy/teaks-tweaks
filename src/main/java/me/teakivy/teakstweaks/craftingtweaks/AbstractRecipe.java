@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.craftingtweaks;
 
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.utils.Logger;
+import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -15,20 +16,21 @@ public class AbstractRecipe {
     protected static Main main = Main.getPlugin(Main.class);
 
     public Material material;
-    public String[] description;
+    public String description;
 
     public ItemStack item;
 
-    public AbstractRecipe(String name, String path, Material material, String... description) {
-        this.name = name;
+    public AbstractRecipe(String path, Material material) {
+        String langKey = path.replaceAll("-", "_");
+        this.name = Translatable.get(langKey + ".name");
         this.path = path;
 
         this.material = material;
-        this.description = description;
+        this.description = Translatable.get(langKey + ".description");
     }
 
     public void init() {
-        Logger.log(Logger.LogLevel.INFO, "Registering Crafting Tweak: " + name);
+        Logger.log(Logger.LogLevel.INFO, Translatable.get("startup.register.crafting_tweak").replace("%name%", this.name));
         main.addCraftingTweaks(this.name);
         CraftingRegister.addEnabledRecipe(this);
         this.registerRecipes();
@@ -36,21 +38,16 @@ public class AbstractRecipe {
         item = new ItemStack(material);
 
         List<String> lore = new ArrayList<>();
-
-        if (description.length > 0) {
-            for (String line : description) {
-                StringBuilder newLine = new StringBuilder();
-                for (String word : line.split(" ")) {
-                    if (newLine.length() > 30) {
-                        lore.add(ChatColor.GRAY + newLine.toString());
-                        newLine = new StringBuilder();
-                    }
-                    newLine.append(word).append(" ");
-                }
+        StringBuilder newLine = new StringBuilder();
+        for (String word : description.split(" ")) {
+            if (newLine.length() > 30) {
                 lore.add(ChatColor.GRAY + newLine.toString());
-                lore.add("");
+                newLine = new StringBuilder();
             }
+            newLine.append(word).append(" ");
         }
+        lore.add(ChatColor.GRAY + newLine.toString());
+        lore.add("");
         if (lore.size() >= 1) lore.remove(lore.size() - 1);
 
         lore.add("");
@@ -60,7 +57,7 @@ public class AbstractRecipe {
         item.setLore(lore);
 
         item.editMeta(meta -> {
-            meta.setDisplayName(ChatColor.RESET.toString() + ChatColor.RED + name);
+            meta.setDisplayName(ChatColor.RESET + Translatable.get("crafting_tweaks.name_display").replace("%name%", this.name));
         });
     }
 

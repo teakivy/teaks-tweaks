@@ -14,7 +14,7 @@ import java.util.List;
 public class UnpackableQuartz extends AbstractRecipe {
 
     public UnpackableQuartz() {
-        super("Unpackable Quartz", "unpackable-quartz-blocks", Material.QUARTZ, "Allows you to break quartz blocks down into 4 quartz");
+        super("unpackable-quartz-blocks", Material.QUARTZ);
     }
 
     @Override

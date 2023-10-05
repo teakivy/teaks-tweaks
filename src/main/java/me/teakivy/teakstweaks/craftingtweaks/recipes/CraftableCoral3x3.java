@@ -14,7 +14,7 @@ import java.util.List;
 public class CraftableCoral3x3 extends AbstractRecipe {
 
     public CraftableCoral3x3() {
-        super("Craftable Coral 3x3", "craftable-coral-blocks-3x3", Material.BRAIN_CORAL_BLOCK, "Allows you to craft Coral Blocks from their Coral Plant in a 3x3. Both Tubes and Fans may be used interchangably.");
+        super("craftable-coral-blocks-3x3", Material.BRAIN_CORAL_BLOCK);
     }
 
     @Override

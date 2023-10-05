@@ -14,7 +14,7 @@ import java.util.List;
 public class UnpackableWool extends AbstractRecipe {
 
     public UnpackableWool() {
-        super("Unpackable Wool", "unpackable-wool", Material.STRING, "Allows you to break down Wool into 4 String.");
+        super("unpackable-wool", Material.STRING);
     }
 
     @Override

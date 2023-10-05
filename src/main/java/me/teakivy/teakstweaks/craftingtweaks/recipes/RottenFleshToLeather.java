@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 public class RottenFleshToLeather extends AbstractRecipe {
 
     public RottenFleshToLeather() {
-        super("Rotten Flesh To Leather", "rotten-flesh-to-leather", Material.LEATHER, "Allows you to smelt Rotten Flesh into Leather.");
+        super("rotten-flesh-to-leather", Material.LEATHER);
     }
 
     @Override

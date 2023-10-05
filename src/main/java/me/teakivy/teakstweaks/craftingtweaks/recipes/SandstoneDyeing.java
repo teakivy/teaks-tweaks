@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class SandstoneDyeing extends AbstractRecipe {
 
     public SandstoneDyeing() {
-        super("Sandstone Dyeing", "sandstone-dyeing", Material.RED_SANDSTONE, "Allows you to craft Sandstone with Red Dye to get Red Sandstone");
+        super("sandstone-dyeing", Material.RED_SANDSTONE);
     }
 
     @Override

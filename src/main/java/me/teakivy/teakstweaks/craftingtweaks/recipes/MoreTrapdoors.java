@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapedRecipe;
 public class MoreTrapdoors extends AbstractRecipe {
 
     public MoreTrapdoors() {
-        super("More Trapdoors", "more-trapdoors", Material.SPRUCE_TRAPDOOR, "Craft 12 Trapdoors instead of 3.");
+        super("more-trapdoors", Material.SPRUCE_TRAPDOOR);
     }
 
     @Override

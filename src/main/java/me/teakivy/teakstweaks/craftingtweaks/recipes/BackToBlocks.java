@@ -11,7 +11,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class BackToBlocks extends AbstractRecipe {
 
     public BackToBlocks() {
-        super("Back To Blocks", "back-to-blocks", Material.BRICK_SLAB, "Allows you to craft full blocks from stairs and slabs.");
+        super("back-to-blocks", Material.BRICK_SLAB);
     }
 
     @Override

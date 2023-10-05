@@ -14,7 +14,7 @@ import java.util.List;
 public class CraftableSporeBlossoms extends AbstractRecipe {
 
     public CraftableSporeBlossoms() {
-        super("Craftable Spore Blossoms", "craftable-spore-blossoms", Material.SPORE_BLOSSOM, "Allows you to craft Spore Blossoms using Lilacs, Azalea Leaves, and Honeycombs");
+        super("craftable-spore-blossoms", Material.SPORE_BLOSSOM);
     }
 
     @Override

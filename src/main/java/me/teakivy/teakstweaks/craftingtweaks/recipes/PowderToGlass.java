@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 public class PowderToGlass extends AbstractRecipe {
 
     public PowderToGlass() {
-        super("Powder to Glass", "powder-to-glass", Material.RED_CONCRETE_POWDER, "Smelt all colors of Concrete Powder into their respective Stained Glass color.");
+        super("powder-to-glass", Material.RED_CONCRETE_POWDER);
     }
 
     @Override

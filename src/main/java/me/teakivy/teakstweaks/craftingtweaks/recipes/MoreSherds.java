@@ -9,7 +9,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 
 public class MoreSherds extends AbstractRecipe {
     public MoreSherds() {
-        super("More Sherds", "more-sherds", Material.SHEAF_POTTERY_SHERD, "Craft 2 Sherds when combining a Pottery Sherd with a Brick.");
+        super("more-sherds", Material.SHEAF_POTTERY_SHERD);
     }
 
     @Override

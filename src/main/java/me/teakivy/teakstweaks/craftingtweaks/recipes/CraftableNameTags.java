@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapedRecipe;
 public class CraftableNameTags extends AbstractRecipe {
 
     public CraftableNameTags() {
-        super("Craftable Name Tags", "craftable-name-tags", Material.NAME_TAG, "Allows you to craft Name Tags.");
+        super("craftable-name-tags", Material.NAME_TAG);
     }
 
     @Override

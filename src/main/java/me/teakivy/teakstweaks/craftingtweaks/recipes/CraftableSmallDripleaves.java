@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class CraftableSmallDripleaves extends AbstractRecipe {
 
     public CraftableSmallDripleaves() {
-        super("Craftable Small Dripleaves", "craftable-small-dripleaf", Material.SMALL_DRIPLEAF, "Allows you to craft Small dripleaves from a large dripleaf.");
+        super("craftable-small-dripleaf", Material.SMALL_DRIPLEAF);
     }
 
     @Override
