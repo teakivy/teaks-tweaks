@@ -156,25 +156,6 @@ messages:
 
 commands:
 
-  spawningspheres:
-    name: "spawningspheres"
-    usage: "/spawningspheres"
-    description: "Spawn a sphere to help with mob spawning"
-    aliases: ["ss", "sphere"]
-    messages:
-      error:
-        missing-color: "&cPlease specify a sphere color!"
-        sphere-in-use: "&cThe sphere %color% is already in use!"
-        sphere-not-in-use: "&cThe sphere %color% is not in use!"
-      sphere-summoned: "&aSummoned the %color% &aSphere!"
-      sphere-removed: "&aRemoved the %color% &aSphere!"
-      sphere-teleport: "&aTeleported to the %color% &aSphere!"
-      sphere:
-        red: "&cRed"
-        blue: "&bBlue"
-        green: "&aGreen"
-
-
   taggame:
     name: "taggame"
     usage: "/taggame"

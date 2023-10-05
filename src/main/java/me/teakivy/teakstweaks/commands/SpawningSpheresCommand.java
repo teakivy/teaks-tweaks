@@ -5,7 +5,6 @@ import me.teakivy.teakstweaks.packs.utilities.spawningspheres.Sphere;
 import me.teakivy.teakstweaks.packs.utilities.spawningspheres.SphereData;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -23,7 +22,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public SpawningSpheresCommand() {
-        super("spawning-spheres", MessageHandler.getCmdName("spawningspheres"), MessageHandler.getCmdUsage("spawningspheres"), MessageHandler.getCmdDescription("spawningspheres"), MessageHandler.getCmdAliases("spawningspheres"));
+        super("spawning-spheres", "spawningspheres", "/spawningspheres", "Spawn a sphere to help with mob spawning", List.of("ss", "sphere"));
     }
 
     @Override
@@ -53,7 +52,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
 
         if (args[0].equalsIgnoreCase("create")) {
             if (args.length < 2) {
-                player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "error.missing-color"));
+                player.sendMessage(getString("error.missing_color"));
                 return true;
             }
 
@@ -65,28 +64,28 @@ public class SpawningSpheresCommand extends AbstractCommand {
             if (args[1].equalsIgnoreCase("red")) {
                 if (checkSphere(Color.RED, player, sData, true)) return true;
                 Sphere.spawnSphere(player.getLocation(), Color.RED);
-                player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "sphere-summoned").replace("%color%", MessageHandler.getCmdMessage("spawningspheres", "sphere.red")));
+                player.sendMessage(getString("summoned").replace("%color%", getString("color.red")));
                 sData.setSphere(Color.RED, player.getLocation());
             }
 
             if (args[1].equalsIgnoreCase("blue")) {
                 if (checkSphere(Color.BLUE, player, sData, true)) return true;
                 Sphere.spawnSphere(player.getLocation(), Color.BLUE);
-                player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "sphere-summoned").replace("%color%", MessageHandler.getCmdMessage("spawningspheres", "sphere.blue")));
+                player.sendMessage(getString("summoned").replace("%color%", getString("color.blue")));
                 sData.setSphere(Color.BLUE, player.getLocation());
             }
 
             if (args[1].equalsIgnoreCase("green")) {
                 if (checkSphere(Color.GREEN, player, sData, true)) return true;
                 Sphere.spawnSphere(player.getLocation(), Color.GREEN);
-                player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "sphere-summoned").replace("%color%", MessageHandler.getCmdMessage("spawningspheres", "sphere.green")));
+                player.sendMessage(getString("summoned").replace("%color%", getString("color.green")));
                 sData.setSphere(Color.GREEN, player.getLocation());
             }
         }
 
         if (args[0].equalsIgnoreCase("remove")) {
             if (args.length < 2) {
-                player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "error.missing-color"));
+                player.sendMessage(getString("error.missing_color"));
                 return true;
             }
 
@@ -117,7 +116,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
 
         if (args[0].equalsIgnoreCase("tp") || args[0].equalsIgnoreCase("teleport")) {
             if (args.length < 2) {
-                player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "error.missing-color"));
+                player.sendMessage(getString("error.missing_color"));
                 return true;
             }
 
@@ -129,19 +128,19 @@ public class SpawningSpheresCommand extends AbstractCommand {
             if (args[1].equalsIgnoreCase("red")) {
                 if (checkSphere(Color.RED, player, sData, false)) return true;
                 player.teleport(sData.getSphereLocation(Color.RED));
-                player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "sphere-teleport").replace("%color%", MessageHandler.getCmdMessage("spawningspheres", "sphere.red")));
+                player.sendMessage(getString("teleporting").replace("%color%", getString("color.red")));
             }
 
             if (args[1].equalsIgnoreCase("blue")) {
                 if (checkSphere(Color.BLUE, player, sData, false)) return true;
                 player.teleport(sData.getSphereLocation(Color.BLUE));
-                player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "sphere-teleport").replace("%color%", MessageHandler.getCmdMessage("spawningspheres", "sphere.blue")));
+                player.sendMessage(getString("teleporting").replace("%color%", getString("color.blue")));
             }
 
             if (args[1].equalsIgnoreCase("green")) {
                 if (checkSphere(Color.GREEN, player, sData, false)) return true;
                 player.teleport(sData.getSphereLocation(Color.GREEN));
-                player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "sphere-teleport").replace("%color%", MessageHandler.getCmdMessage("spawningspheres", "sphere.green")));
+                player.sendMessage(getString("teleporting").replace("%color%", getString("color.green")));
             }
         }
         return false;
@@ -173,7 +172,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
                             count++;
                             if (count == entityList.size()) {
                                 player.teleport(pLoc);
-                                player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "sphere-removed").replace("%color%", MessageHandler.getCmdMessage("spawningspheres", "sphere.red")));
+                                player.sendMessage(getString("removed").replace("%color%", getString("color.red")));
                                 player.removeScoreboardTag("despawning_sphere");
                             }
                         }
@@ -202,7 +201,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
                             count++;
                             if (count == entityList.size()) {
                                 player.teleport(pLoc);
-                                player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "sphere-removed").replace("%color%", MessageHandler.getCmdMessage("spawningspheres", "sphere.blue")));
+                                player.sendMessage(getString("removed").replace("%color%", getString("color.blue")));
                                 player.removeScoreboardTag("despawning_sphere");
                             }
                         }
@@ -231,7 +230,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
                             count++;
                             if (count == entityList.size()) {
                                 player.teleport(pLoc);
-                                player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "sphere-removed").replace("%color%", MessageHandler.getCmdMessage("spawningspheres", "sphere.green")));
+                                player.sendMessage(getString("removed").replace("%color%", getString("color.green")));
                                 player.removeScoreboardTag("despawning_sphere");
                             }
                         }
@@ -246,21 +245,21 @@ public class SpawningSpheresCommand extends AbstractCommand {
         if (creating) {
             if (color == Color.RED) {
                 if (data.isSphereUsed(color)) {
-                    player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "error.sphere-in-use").replace("%color%", MessageHandler.getCmdMessage("spawningspheres", "sphere.red")));
+                    player.sendMessage(getString("error.in_use").replace("%color%", getString("color.red")));
                     return true;
                 }
                 return false;
             }
             if (color == Color.BLUE) {
                 if (data.isSphereUsed(color)) {
-                    player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "error.sphere-in-use").replace("%color%", MessageHandler.getCmdMessage("spawningspheres", "sphere.blue")));
+                    player.sendMessage(getString("error.in_use").replace("%color%", getString("color.blue")));
                     return true;
                 }
                 return false;
             }
             if (color == Color.GREEN) {
                 if (data.isSphereUsed(color)) {
-                    player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "error.sphere-in-use").replace("%color%", MessageHandler.getCmdMessage("spawningspheres", "sphere.green")));
+                    player.sendMessage(getString("error.in_use").replace("%color%", getString("color.green")));
                     return true;
                 }
                 return false;
@@ -268,21 +267,21 @@ public class SpawningSpheresCommand extends AbstractCommand {
         } else {
             if (color == Color.RED) {
                 if (!data.isSphereUsed(color)) {
-                    player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "error.sphere-not-in-use").replace("%color%", MessageHandler.getCmdMessage("spawningspheres", "sphere.red")));
+                    player.sendMessage(getString("error.not_in_use").replace("%color%", getString("color.red")));
                     return true;
                 }
                 return false;
             }
             if (color == Color.BLUE) {
                 if (!data.isSphereUsed(color)) {
-                    player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "error.sphere-not-in-use").replace("%color%", MessageHandler.getCmdMessage("spawningspheres", "sphere.blue")));
+                    player.sendMessage(getString("error.not_in_use").replace("%color%", getString("color.blue")));
                     return true;
                 }
                 return false;
             }
             if (color == Color.GREEN) {
                 if (!data.isSphereUsed(color)) {
-                    player.sendMessage(MessageHandler.getCmdMessage("spawningspheres", "error.sphere-not-in-use").replace("%color%", MessageHandler.getCmdMessage("spawningspheres", "sphere.green")));
+                    player.sendMessage(getString("error.not_in_use").replace("%color%", getString("color.green")));
                     return true;
                 }
                 return false;
@@ -291,8 +290,8 @@ public class SpawningSpheresCommand extends AbstractCommand {
         return true;
     }
 
-    List<String> arguments1 = new ArrayList<String>();
-    List<String> arguments2 = new ArrayList<String>();
+    List<String> arguments1 = new ArrayList<>();
+    List<String> arguments2 = new ArrayList<>();
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
@@ -306,7 +305,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
         arguments2.add("blue");
         arguments2.add("green");
 
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         if (args.length == 1) {
             for (String a : arguments1) {
                 if (a.toLowerCase().startsWith(args[0].toLowerCase()))

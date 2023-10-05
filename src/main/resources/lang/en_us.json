@@ -127,4 +127,14 @@
   "spawn.error.on_cooldown": "&cYou must wait %time% seconds between uses of /spawn!",
   "spawn.error.moved": "&cYou must stand still to teleport!",
   "spawn.teleporting": "&eTeleporting to Spawn...",
+
+  "spawningspheres.error.missing_color": "&cPlease specify a color!",
+  "spawningspheres.error.in_use": "&cThe sphere %color% is already in use!",
+  "spawningspheres.error.not_in_use": "&cThe sphere %color% is not in use!",
+  "spawningspheres.summoned": "&aSummoned the %color%&r &aspawning sphere!",
+  "spawningspheres.removed": "&aRemoved the %color%&r &aspawning sphere!",
+  "spawningspheres.teleporting": "&eTeleporting to the %color%&r &espawning sphere...",
+  "spawningspheres.color.red": "&cRed",
+  "spawningspheres.color.blue": "&bBlue",
+  "spawningspheres.color.green": "&aGreen",
 }
