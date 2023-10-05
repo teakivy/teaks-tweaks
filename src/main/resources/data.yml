@@ -156,16 +156,6 @@ messages:
 
 commands:
 
-  test:
-    name: "test"
-    usage: "/test"
-    description: "Teaks Tweaks Testing Command"
-    aliases: []
-    messages:
-      msg: "&eTest!"
-      test-command-found: "&eHey! Looks like you found my test command! :D"
-      enable-dev-mode: "&cThis command is used to test new features! Enable it by marking &7config.dev-mode: true &c!"
-
   tpa:
     name: "tpa"
     usage: "/tpa"

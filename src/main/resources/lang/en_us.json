@@ -165,4 +165,6 @@
   "teakstweakscommand.info.config_generated": "&fConfig Generated: &a%config_generated%",
   "teakstweakscommand.info.dev_mode_enabled": "&fDev Mode: &aEnabled",
   "teakstweakscommand.info.support": "&fSupport Server: &a%discord%",
+
+  "test.test": "&eHey! Looks like you found my test command! :D"
 }
