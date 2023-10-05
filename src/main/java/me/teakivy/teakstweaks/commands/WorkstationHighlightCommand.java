@@ -4,8 +4,6 @@ import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.packs.survival.workstationhighlights.Highlighter;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.command.Command;

@@ -154,20 +154,6 @@ messages:
     elevators:
       name: "Elevators"
 
-commands:
-
-  workstationhighlight:
-    name: "workstationhighlight"
-    usage: "/workstationhighlight"
-    description: "Find a villager's workstation!"
-    aliases: ["wh", "workstation"]
-    messages:
-      error:
-        no-villager: "&cCould not find a Villager nearby!"
-        no-jobsite: "&cThe nearest Villager does not have a job site!"
-      jobsite-found: "&eThe workstation is located at &6[XYZ]: %x% %y% %z%"
-
-
 mob-heads:
   allay:
     chance: .2
