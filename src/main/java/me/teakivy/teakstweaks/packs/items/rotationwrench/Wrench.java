@@ -30,7 +30,7 @@ public class Wrench extends BasePack {
     private final List<BlockFace> faces = Lists.newArrayList(BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST, BlockFace.NORTH, BlockFace.UP, BlockFace.DOWN);
 
     public Wrench() {
-        super("Rotation Wrench", "rotation-wrench", PackType.ITEMS, Material.CARROT_ON_A_STICK, "Adds a custom wrench in-game that allows you to rotate redstone components, & glazed terracotta when right-clicking.");
+        super("rotation-wrench", PackType.ITEMS, Material.CARROT_ON_A_STICK);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class Wrench extends BasePack {
         meta.setUnbreakable(true);
         meta.setCustomModelData(4321);
         result.setDurability((short) 1);
-        meta.setDisplayName(ChatColor.GOLD + "Wrench");
+        meta.setDisplayName(getString("item_name"));
         result.setItemMeta(meta);
 
         ShapedRecipe recipe = new ShapedRecipe(key, result);
@@ -69,7 +69,7 @@ public class Wrench extends BasePack {
         ItemStack item = event.getItem();
         if (item == null) return;
         if (!item.hasItemMeta()) return;
-        if (!Objects.requireNonNull(item.getItemMeta()).getDisplayName().equalsIgnoreCase(ChatColor.GOLD + "Wrench")) return;
+        if (!Objects.requireNonNull(item.getItemMeta()).getDisplayName().equalsIgnoreCase(getString("item_name"))) return;
         if (item.getType() != Material.CARROT_ON_A_STICK) return;
         if (!item.getItemMeta().isUnbreakable()) return;
         if (event.getPlayer().getVehicle() != null) event.setCancelled(true);

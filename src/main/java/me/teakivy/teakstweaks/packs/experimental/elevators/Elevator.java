@@ -22,7 +22,7 @@ import java.util.List;
 public class Elevator extends BasePack {
 
     public Elevator() {
-        super("Elevators", "elevators", PackType.EXPERIMENTAL, Material.ENDER_PEARL, "Drop an ender pearl above a wool block to make it into an elevator.", "Jump on it to warp onto an elevator of the same color directly above.", "Crouch on it to warp onto one directly above.");
+        super("elevators", PackType.EXPERIMENTAL, Material.ENDER_PEARL);
     }
 
     static List<Material> elevatorMaterials = new ArrayList<>();

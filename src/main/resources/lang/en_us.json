@@ -34,6 +34,47 @@
   "startup.lang.loaded": "Loaded %count% language files.",
   "startup.lang.current": "Current Language: %current_lang_name% (%current_lang_key%.json)",
 
+  "#comment.tweaks": "Tweaks Section: (this is a comment and will never be shown in-game)",
+
+  "chunk_loaders.name": "Chunk Loaders",
+  "chunk_loaders.description": "Drop a Nether Star above a Lodestone to create a chunk loader (AKA a Loadstone) which keeps the chunk it's in loaded until it is broken.",
+
+  "confetti_creepers.name": "Confetti Creepers",
+  "confetti_creepers.description": "There is a chance each creeper will explode into confetti and do no damage to blocks.",
+
+  "elevators.name": "Elevators",
+  "elevators.description": "Drop an ender pearl above a wool block to make it into an elevator.\nJump on it to warp onto an elevator of the same color directly above.\nCrouch on it to warp onto one directly above.",
+
+  "xp_management.name": "XP Management",
+  "xp_management.description": "Right-Click an enchanting table with an empty bottle to fill it with some of your XP.",
+
+  "tag.name": "Tag",
+  "tag.description": "Adds the Hermitcraft Tag game directly into your world! '/tag'",
+  "tag.error.cant_tag_afk": "&cYou can't Tag an AFK Player!",
+  "tag.tagged_message": "&c%tagged_name% &ewas tagged by &6%tagger_name%",
+
+  "thunder_shrine.name": "Thunder Shrine",
+  "thunder_shrine.description": "A shrine that allows you to create a thunder storm when offered a Nether Star.\nDrop a Nether Star on top of a shrine to create a thunder storm.",
+  "thunder_shrine.storm_initialize": "&cA great storm has been initiated by the ritual.",
+
+  "treasure_gems.name": "Treasure Gems",
+  "treasure_gems.description": "Adds the chance for treasure gems to spawn inside loot chests. Used to trade with Gem Villagers.",
+
+  "wandering_trades.name": "Wandering Trades",
+  "wandering_trades.description": "Adds Mini Blocks & Player heads to the Wandering Trader's trades.",
+
+  "armored_elytra.name": "Armored Elytra",
+  "armored_elytra.description": "Drop an elytra and a chestplate above an anvil to merge them into one item. Drop the item above a grindstone to separate them again.\nEnchantments are kept safely between merging and separating. Burning netherite armored elytra will separate the items.",
+  "armored_elytra.item_name": "&6Armored Elytra",
+
+  "player_head_drops.name": "Player Head Drops",
+  "player_head_drops.description": "A player will drop their head when killed by another player. The item displays who the killer is.",
+  "player_head_drops.lore": "Killed by %player%",
+
+  "rotation_wrench.name": "Rotation Wrench",
+  "rotation_wrench.description": "Adds a custom wrench in-game that allows you to rotate redstone components, & glazed terracotta when right-clicking.",
+  "rotation_wrench.item_name": "&6Wrench",
+
   "#comment.crafting_tweaks": "Crafting Tweaks Section: (this is a comment and will never be shown in-game)",
 
   "crafting_tweaks.name_display": "&c%name%",
