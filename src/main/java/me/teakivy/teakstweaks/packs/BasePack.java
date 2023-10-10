@@ -32,6 +32,14 @@ public class BasePack implements Listener {
 
 	public String translatableKey;
 
+	/**
+	 * *OLD* Set up the pack
+	 * @param name Name of the pack
+	 * @param path Config path
+	 * @param packType PackType
+	 * @param material Material for the item
+	 * @param description Description of the pack
+	 */
 	public BasePack(String name, String path, PackType packType, Material material, String... description) {
 		this.translatableKey = path.replaceAll("-", "_");
 		this.name = name;
@@ -83,6 +91,12 @@ public class BasePack implements Listener {
 	}
 
 
+	/**
+	 * Set up the pack
+	 * @param path Config path
+	 * @param packType PackType
+	 * @param material Material for the item
+	 */
 	public BasePack(String path, PackType packType, Material material) {
 		this.translatableKey = path.replaceAll("-", "_");
         this.name = Translatable.get(this.translatableKey + ".name");
@@ -135,49 +149,92 @@ public class BasePack implements Listener {
 		});
     }
 
+	/**
+	 * Initialize the pack
+	 */
 	public void init() {
 		registerEvents(this);
 		main.addPack(name);
 		Logger.log(Logger.LogLevel.INFO, "Registered Pack: " + packType.getColor() + name);
 	}
 
+	/**
+	 * Unregister & reregister all event handlers
+	 * @param listener Listener class
+	 */
 	public void registerEvents(Listener listener) {
         HandlerList.unregisterAll(listener);
         Bukkit.getServer().getPluginManager().registerEvents(listener, main);
     }
 
+	/**
+	 * Unregister all EventHandlers
+	 */
 	public void unregister() {
 		HandlerList.unregisterAll(this);
 	}
 
+	/**
+	 * Get the name of the pack
+	 * @return Pack name
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Get the pack's config path
+	 * @return [pack]
+	 */
 	public String getPath() {
 		return path;
 	}
 
+	/**
+	 * Get the data config manager
+	 * @return DataManager
+	 */
 	public static DataManager getData() {
 		return main.data;
 	}
 
+	/**
+	 * Get the data config file
+	 * @return Data config file
+	 */
 	public static ConfigurationSection getDataConfig() {
 		return main.data.getConfig();
 	}
 
+	/**
+	 * Get the config section for the pack
+	 * @return config.packs.[pack]
+	 */
 	public ConfigurationSection getConfig() {
 		return config;
 	}
 
+	/**
+	 * Get the item shown in the mechanics gui
+	 * @return ItemStack
+	 */
 	public ItemStack getItem() {
 		return item;
 	}
 
+	/**
+	 * Check if the player has the base pack permission
+	 * @param player Player to check
+	 * @return if the player has permission
+	 */
 	public boolean hasPermission(Player player) {
 		return player.hasPermission(permission);
 	}
 
+	/**
+	 * Player join event handler
+	 * @param event event
+	 */
 	@EventHandler
 	public void onJoin(PlayerJoinEvent event) {
 		// TODO
@@ -196,6 +253,11 @@ public class BasePack implements Listener {
 		return newKey.toString().trim();
 	}
 
+	/**
+	 * Get the translatable string from [pack].[key]
+	 * @param key Translatable key
+	 * @return Translated & colored string
+	 */
 	protected String getString(String key) {
 		return Translatable.get(translatableKey + "." + key);
 	}
