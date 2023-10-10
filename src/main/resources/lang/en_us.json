@@ -75,6 +75,42 @@
   "rotation_wrench.description": "Adds a custom wrench in-game that allows you to rotate redstone components, & glazed terracotta when right-clicking.",
   "rotation_wrench.item_name": "&6Wrench",
 
+  "anti_creeper_grief.name": "Anti Creeper Grief",
+  "anti_creeper_grief.description": "Prevents creepers from blowing up, blocks and players do not take damage.",
+
+  "anti_enderman_grief.name": "Anti Enderman Grief",
+  "anti_enderman_grief.description": "Prevents endermen from picking up blocks.",
+
+  "anti_ghast_grief.name": "Anti Ghast Grief",
+  "anti_ghast_grief.description": "Prevents ghasts from blowing up blocks.",
+
+  "bat_membranes.name": "Bat Membranes",
+  "bat_membranes.description": "Disable Phantoms to get membranes from Bats instead.",
+
+  "count_mob_deaths.name": "Count Mob Deaths",
+  "count_mob_deaths.description": "Adds the ability to count the mob deaths during the time the system has started.",
+  "count_mob_deaths.objective_name": "&6Mob Deaths",
+
+  "double_shulker_shells.name": "Double Shulker Shells",
+  "double_shulker_shells.description": "Makes all shulkers drop 2 shells.",
+
+  "dragon_drops.name": "Dragon Drops",
+  "dragon_drops.description": "Makes the Ender Dragon drop a dragon egg and elytra on death.",
+
+  "larger_phantoms.name": "Larger Phantoms",
+  "larger_phantoms.description": "Makes the naturally spawning phantoms larger and more powerful the longer you do not sleep.",
+
+  "more_mob_heads.name": "More Mob Heads",
+  "more_mob_heads.description": "Adds a chance to receive a mob's head upon killing it.",
+
+  "silence_mobs.name": "Silence Mobs",
+  "silence_mobs.description": "Adds the ability to silence mobs using a name tag. 'Silence Me'; 'Silence me'; 'silence me'; 'silence_me'; are all acceptable names.",
+  "silence_mobs.activation_name": "silence me",
+  "silence_mobs.silenced_name": "silenced",
+
+  "villager_death_messages.name": "Villager Death Messages",
+  "villager_death_messages.description": "Notifies the server in chat when a villager dies. Displays coordinates and dimension that it died in.",
+
   "#comment.crafting_tweaks": "Crafting Tweaks Section: (this is a comment and will never be shown in-game)",
 
   "crafting_tweaks.name_display": "&c%name%",

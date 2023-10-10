@@ -12,7 +12,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 public class VillagerDeath extends BasePack {
 
     public VillagerDeath() {
-        super("Villager Death Messages", "villager-death-messages", PackType.MOBS, Material.TORCH, "Notifies the server in chat when a villager dies. Displayes Coordinates and Dimension that it died in.");
+        super("villager-death-messages", PackType.MOBS, Material.TORCH);
     }
 
     @EventHandler

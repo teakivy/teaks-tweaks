@@ -15,7 +15,7 @@ import java.util.Objects;
 public class CountDeaths extends BasePack {
 
     public CountDeaths() {
-        super("Count Mob Deaths", "count-mob-deaths", PackType.MOBS, Material.ECHO_SHARD, "Adds the ability to count the mob deaths during the time the system has started.");
+        super("Count Mob Deaths", "count-mob-deaths", PackType.MOBS, Material.ECHO_SHARD);
     }
 
     Objective objective;
@@ -28,7 +28,7 @@ public class CountDeaths extends BasePack {
         if (objective == null) {
             Scoreboard board = Objects.requireNonNull(event.getEntity().getServer().getScoreboardManager()).getMainScoreboard();
             if (board.getObjective("mobDeathCount") == null) {
-                board.registerNewObjective("mobDeathCount", "dummy", ChatColor.GOLD + "Mob Deaths");
+                board.registerNewObjective("mobDeathCount", "dummy", getString("objective_name"));
             }
             objective = board.getObjective("mobDeathCount");
         }

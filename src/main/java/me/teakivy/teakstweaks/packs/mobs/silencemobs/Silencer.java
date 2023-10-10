@@ -19,7 +19,7 @@ import java.util.UUID;
 public class Silencer extends BasePack {
 
     public Silencer() {
-        super("Silence Mobs", "silence-mobs", PackType.MOBS, Material.SCULK_SHRIEKER, "Adds the ability to silence mobs using a name tag. 'Silence Me'; 'Silence me'; 'silence me'; 'silence_me'; are all acceptable names.");
+        super("silence-mobs", PackType.MOBS, Material.SCULK_SHRIEKER);
 
         if (minecartTypes.isEmpty()) {
             minecartTypes.add(EntityType.MINECART);
@@ -44,10 +44,14 @@ public class Silencer extends BasePack {
             ItemStack nametag = event.getPlayer().getInventory().getItem(event.getHand());
             if (nametag.getType() != Material.NAME_TAG) return;
             if (!nametag.hasItemMeta()) return;
-            if (!Objects.requireNonNull(nametag.getItemMeta()).getDisplayName().equalsIgnoreCase("silence me")
-                    && !Objects.requireNonNull(nametag.getItemMeta()).getDisplayName().equalsIgnoreCase("silence_me")) return;
+            if (!Objects.requireNonNull(nametag.getItemMeta()).getDisplayName()
+                    .replaceAll("_", " ")
+                    .replaceAll("-", " ")
+                    .trim()
+                    .equalsIgnoreCase(getString("activation_name")))
+                return;
             entity.setSilent(true);
-            entity.setCustomName("silenced");
+            entity.setCustomName(getString("silenced_name"));
             event.setCancelled(true);
 
             if (event.getPlayer().getGameMode() != GameMode.CREATIVE) {
@@ -61,9 +65,12 @@ public class Silencer extends BasePack {
                 Entity entity1 = getEntityByUniqueId(entity.getUniqueId());
                 if (entity1 == null) return;
                 if (entity1.getCustomName() == null) return;
-                if (entity1.getCustomName().equalsIgnoreCase("silence me") || entity1.getCustomName().equalsIgnoreCase("Silence me") || entity1.getCustomName().equalsIgnoreCase("Silence Me") || entity1.getCustomName().equalsIgnoreCase("silence_me")) {
+                if (entity1.getCustomName().replaceAll("_", " ")
+                        .replaceAll("-", " ")
+                        .trim()
+                        .equalsIgnoreCase(getString("activation_name"))) {
                     entity.setSilent(true);
-                    entity.setCustomName("silenced");
+                    entity.setCustomName(getString("silenced_name"));
                 }
             }, 10L);
         } catch (NoClassDefFoundError ignored) {
