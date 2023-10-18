@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 public class DirtToGrass extends BasePack {
 
     public DirtToGrass() {
-        super("Dirt to Grass", "dirt-to-grass", PackType.TEAKSTWEAKS, Material.GRASS, "Convert dirt to grass by right-clicking a dirt block with seeds");
+        super("dirt-to-grass", PackType.TEAKSTWEAKS, Material.GRASS);
     }
 
     @EventHandler

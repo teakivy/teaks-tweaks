@@ -15,7 +15,7 @@ import java.util.UUID;
 public class KeepSmall extends BasePack {
 
     public KeepSmall() {
-        super("Keep Small", "keep-small", PackType.TEAKSTWEAKS, Material.STONE_BUTTON, "Keep a mob in its child form (if it has one)");
+        super("keep-small", PackType.TEAKSTWEAKS, Material.STONE_BUTTON);
     }
 
     @EventHandler
@@ -27,21 +27,21 @@ public class KeepSmall extends BasePack {
                 Entity entity1 = getEntityByUniqueId(entity.getUniqueId());
                 if (entity1 == null) return;
                 if (entity1.getCustomName() == null) return;
-                if (entity1.getCustomName().equalsIgnoreCase("keep small") || entity1.getCustomName().equalsIgnoreCase("keep_small")) {
+                if (entity1.getCustomName().toLowerCase().replace("_", " ").equalsIgnoreCase(getString("smallify.activation_name"))) {
                     if (!getConfig().getBoolean("smallify")) return;
                     if (entity1 instanceof Ageable) {
                         Ageable ageable = (Ageable) entity1;
                         ageable.setAge(-Integer.MAX_VALUE);
                     }
-                    entity.setCustomName("Smallified");
+                    entity.setCustomName(getString("smallify.small_name"));
                 }
-                if (entity1.getCustomName().equalsIgnoreCase("grow")) {
+                if (entity1.getCustomName().equalsIgnoreCase(getString("grow.activation_name"))) {
                     if (!getConfig().getBoolean("grow")) return;
                     if (entity1 instanceof Ageable) {
                         Ageable ageable = (Ageable) entity1;
                         ageable.setAge(1);
                     }
-                    entity.setCustomName("Grown");
+                    entity.setCustomName(getString("grow.grown_name"));
                 }
             }, 10L);
         } catch (NoClassDefFoundError err) {

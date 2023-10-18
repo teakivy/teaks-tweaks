@@ -13,7 +13,7 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 public class InvisibleItemFrames extends BasePack {
 
     public InvisibleItemFrames() {
-        super("Invisible Item Frames", "invisible-item-frames", PackType.TEAKSTWEAKS, Material.GLOW_ITEM_FRAME, "Shift right-click an item frame with shears to make it invisible");
+        super("invisible-item-frames", PackType.TEAKSTWEAKS, Material.GLOW_ITEM_FRAME);
     }
 
     @EventHandler

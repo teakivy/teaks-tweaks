@@ -23,7 +23,7 @@ public class SpectatorAlts extends BasePack {
     private static HashMap<UUID, UUID> alts;
 
     public SpectatorAlts() {
-        super("Spectator Alts", "spectator-alts", PackType.TEAKSTWEAKS, Material.ENDER_EYE, "Allow players to add their own alt accounts as spectators", "Command: /alts <add/remove/list> <alt> [player]");
+        super("spectator-alts", PackType.TEAKSTWEAKS, Material.ENDER_EYE);
 
         alts = new HashMap<>();
     }

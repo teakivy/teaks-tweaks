@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.teakstweaks.quickcommands;
 
 import me.teakivy.teakstweaks.utils.AbstractCommand;
+import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -32,13 +33,13 @@ public class ReplyQuickCommand {
         @Override
         public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
             if (args.length < 2) {
-                sender.sendMessage(ChatColor.RED + "Usage: /message <player> <message>");
+                sender.sendMessage(getUsage());
                 return true;
             }
 
             Player target = sender.getServer().getPlayer(args[0]);
             if (target == null) {
-                sender.sendMessage(ChatColor.RED + "That player is not online!");
+                sender.sendMessage(ErrorType.PLAYER_DNE.m());
                 return true;
             }
 
@@ -47,8 +48,8 @@ public class ReplyQuickCommand {
                 message.append(args[i]).append(" ");
             }
 
-            target.sendMessage(ChatColor.GRAY + ChatColor.ITALIC.toString() + sender.getName() + " whispers to you: " + message);
-            sender.sendMessage(ChatColor.GRAY + ChatColor.ITALIC.toString() + "You whisper to " + target.getName() + ": " + message);
+            target.sendMessage(get("quick_commands.message.whisper_to_you").replace("%player%", sender.getName()).replace("%message%", message));
+            sender.sendMessage(get("quick_commands.message.whisper_to_player").replace("%player%", target.getName()).replace("%message%", message));
 
             lastMessage.put(((Player) sender).getUniqueId(), target.getUniqueId());
             lastMessage.put(target.getUniqueId(), ((Player) sender).getUniqueId());
@@ -87,19 +88,19 @@ public class ReplyQuickCommand {
         @Override
         public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
             if (args.length < 1) {
-                sender.sendMessage(ChatColor.RED + "Usage: /reply <message>");
+                sender.sendMessage(getUsage());
                 return true;
             }
 
             UUID targetUUID = lastMessage.get(((Player) sender).getUniqueId());
             if (targetUUID == null) {
-                sender.sendMessage(ChatColor.RED + "You have no one to reply to!");
+                sender.sendMessage(get("quick_commands.reply.error.no_reply"));
                 return true;
             }
 
             Player target = sender.getServer().getPlayer(targetUUID);
             if (target == null) {
-                sender.sendMessage(ChatColor.RED + "That player is not online!");
+                sender.sendMessage(ErrorType.PLAYER_DNE.m());
                 return true;
             }
 
@@ -108,8 +109,8 @@ public class ReplyQuickCommand {
                 message.append(args[i]).append(" ");
             }
 
-            target.sendMessage(ChatColor.GRAY + ChatColor.ITALIC.toString() + sender.getName() + " whispers to you: " + message);
-            sender.sendMessage(ChatColor.GRAY + ChatColor.ITALIC.toString() + "You whisper to " + target.getName() + ": " + message);
+            target.sendMessage(get("quick_commands.message.whisper_to_you").replace("%player%", sender.getName()).replace("%message%", message));
+            sender.sendMessage(get("quick_commands.message.whisper_to_player").replace("%player%", target.getName()).replace("%message%", message));
 
             lastMessage.put(((Player) sender).getUniqueId(), targetUUID);
             lastMessage.put(targetUUID, ((Player) sender).getUniqueId());

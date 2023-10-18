@@ -22,7 +22,7 @@ import java.util.Random;
 public class UnstickyPistons extends BasePack {
 
     public UnstickyPistons() {
-        super("Unsticky Pistons", "unsticky-pistons", PackType.TEAKSTWEAKS, Material.STICKY_PISTON, "Allow players to remove slime from pistons by right-clicking them with an axe", "Right-click a piston with a slimeball to make it sticky");
+        super("unsticky-pistons", PackType.TEAKSTWEAKS, Material.STICKY_PISTON);
     }
 
     @EventHandler

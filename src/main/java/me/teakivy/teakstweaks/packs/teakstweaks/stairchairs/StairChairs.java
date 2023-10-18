@@ -24,7 +24,7 @@ import java.util.Objects;
 public class StairChairs extends BasePack {
 
     public StairChairs() {
-        super("Stair Chairs", "stair-chairs", PackType.TEAKSTWEAKS, Material.SMOOTH_QUARTZ_STAIRS, "Allow players to sit on chairs", "Right-click a stair with a saddle to make it a chair", "Break the stair to remove the chair and get the saddle back");
+        super("stair-chairs", PackType.TEAKSTWEAKS, Material.SMOOTH_QUARTZ_STAIRS);
     }
 
 
@@ -48,7 +48,7 @@ public class StairChairs extends BasePack {
         Marker marker = (Marker) Objects.requireNonNull(loc.getWorld()).spawnEntity(loc, EntityType.MARKER);
         marker.addScoreboardTag("chair");
 
-        event.getPlayer().sendMessage("§r§aChair created!");
+        event.getPlayer().sendMessage(getString("chair_created"));
     }
 
     public boolean isChair(Location loc) {
@@ -70,7 +70,7 @@ public class StairChairs extends BasePack {
             }
         }
         event.getBlock().getWorld().dropItem(loc.add(.5, .5, .5), new ItemStack(Material.SADDLE));
-        event.getPlayer().sendMessage("§r§cRemoved Chair!");
+        event.getPlayer().sendMessage(getString("chair_destroyed"));
     }
 
     @EventHandler

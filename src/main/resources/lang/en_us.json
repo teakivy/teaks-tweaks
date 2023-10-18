@@ -177,6 +177,58 @@
   "workstation_highlights.name": "Workstation Highlights",
   "workstation_highlights.description": "Allows you to find the workstation of any villager by highlighting it.\nCommand: /workstation",
 
+  "chat_colors.name": "Chat Colors",
+  "chat_colors.description": "Use Chat Colors to make your messages, signs, and items look better (Using '&' for color codes)..",
+
+  "dirt_to_grass.name": "Dirt to Grass",
+  "dirt_to_grass.description": "Convert dirt to grass by right-clicking a dirt block with seeds.",
+
+  "fixed_item_frames.name": "Fixed Item Frames",
+  "fixed_item_frames.description": "Shift right-click an item frame with iron bars to make it fixed.\nShift right-click an item frame with shears to make it not fixed.",
+
+  "instant_deepslate.name": "Instant Deepslate",
+  "instant_deepslate.description": "Instantly mine deepslate blocks if you have a netherite pickaxe with efficiency 5 or higher, and haste 2 or higher.",
+
+  "invisible_item_frames.name": "Invisible Item Frames",
+  "invisible_item_frames.description": "Shift right-click an item frame with shears to make it invisible",
+
+  "keep_small.name": "Keep Small",
+  "keep_small.description": "Keep a mob in its child form (if it has one).",
+  "keep_small.smallify.activation_name":  "keep small",
+  "keep_small.smallify.small_name": "Smallified",
+  "keep_small.grow.activation_name": "grow",
+  "keep_small.grow.grown_name": "Grown",
+
+  "lectern_reset.name": "Lectern Reset",
+  "lectern_reset.description": "Reset a lectern's book to the first page after closing it.",
+
+  "quick_commands.name": "Quick Commands",
+  "quick_commands.description": "Quickly switch game modes, and reply to messages.",
+  "quick_commands.message.whisper_to_you": "&7&o%player% whispers to you: %message%",
+  "quick_commands.message.whisper_to_player": "&7&oYou whisper to %player%: %message%",
+  "quick_commands.reply.error.no_reply": "&cYou have no one to reply to!",
+
+  "sleepy_spider_eggs.name": "Sleepy Spider Eggs",
+  "sleepy_spider_eggs.description": "When you sleep with a spider nearby you have a chance to \"consume\" 1-5 spider eggs, which give xp.",
+
+  "slime_cream.name": "Slime Cream",
+  "slime_cream.description": "Convert Slime Balls to Magma Cream by right-clicking a lava cauldron.\nConvert Magma Cream to Slime Balls by right-clicking a water cauldron.",
+
+  "spectator_alts.name": "Spectator Alts",
+  "spectator_alts.description": "Allow players to add their own alt accounts as spectators.\nCommand: /alts <add/remove/list> <alt> [player]",
+
+  "stair_chairs.name": "Stair Chairs",
+  "stair_chairs.description": "Allows you to sit on stairs.\nRight-click a stair with a saddle to make it a chair.\nBreak the stair to remove the chair and get the saddle back.",
+  "stair_chairs.chair_created": "&aChair created!",
+  "stair_chairs.chair_destroyed": "&aChair removed!",
+
+  "sudoku.name": "Sudoku",
+  "sudoku.description": "Allow players to commit sudoku.\nCommand: /sudoku",
+  "sudoku.death_message": "%player% committed Sudoku",
+
+  "unsticky_pistons.name": "Unsticky Pistons",
+    "unsticky_pistons.description": "Allow players to remove slime from pistons by right-clicking them with an axe.\nRight-click a piston with a slimeball to make it sticky.",
+
   "#comment.crafting_tweaks": "Crafting Tweaks Section: (this is a comment and will never be shown in-game)",
 
   "crafting_tweaks.name_display": "&c%name%",
