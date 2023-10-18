@@ -3,7 +3,7 @@ package me.teakivy.teakstweaks.packs.teleportation.back;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
+import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -16,7 +16,7 @@ import java.util.UUID;
 public class Back extends BasePack {
 
     public Back() {
-        super("Back", "back", PackType.TELEPORTATION, Material.REDSTONE_TORCH, "Enter '/back' to go back to the last location you teleported from. (using Homes, Spawn, or TPA)", "You can also allow players to teleport back to their death location if that's enabled.");
+        super("back", PackType.TELEPORTATION, Material.REDSTONE_TORCH);
     }
 
     public static HashMap<UUID, Location> backLoc = new HashMap<>();
@@ -29,7 +29,7 @@ public class Back extends BasePack {
         if (backLoc.containsKey(player.getUniqueId())) {
             player.teleport(backLoc.get(player.getUniqueId()));
         } else {
-            player.sendMessage(MessageHandler.getMessage("pack.back.no-spot"));
+            player.sendMessage(Translatable.get("back.error.no_back_location"));
         }
     }
 

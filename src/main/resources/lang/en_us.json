@@ -227,7 +227,23 @@
   "sudoku.death_message": "%player% committed Sudoku",
 
   "unsticky_pistons.name": "Unsticky Pistons",
-    "unsticky_pistons.description": "Allow players to remove slime from pistons by right-clicking them with an axe.\nRight-click a piston with a slimeball to make it sticky.",
+  "unsticky_pistons.description": "Allow players to remove slime from pistons by right-clicking them with an axe.\nRight-click a piston with a slimeball to make it sticky.",
+
+  "back.name": "Back",
+  "back.description": "Allows you to teleport back to your previous location.\nCommand: /back",
+
+  "homes.name": "Homes",
+  "homes.description": "Allows you to set and teleport to homes.\nCommand: /home",
+  "homes.error.on_cooldown": "&cYou must wait %time% seconds before teleporting again!",
+  "homes.teleporting_in": "&eTeleporting in %time% seconds...",
+  "homes.teleported": "&aTeleported to home %home%!",
+  "homes.deleted": "&aHome %home% has been deleted!",
+
+  "spawn.name": "Spawn",
+  "spawn.description": "Allows you to teleport to the world spawn.\nCommand: /spawn",
+
+  "tpa.name": "TPA",
+    "tpa.description": "Allows you to request to teleport to another player.\nCommand: /tpa",
 
   "#comment.crafting_tweaks": "Crafting Tweaks Section: (this is a comment and will never be shown in-game)",
 

@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.teleportation.homes;
 
 import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -56,19 +57,19 @@ public class Home {
         if (player == null) return;
 
         if (HomesPack.onCooldown(player)) {
-            player.sendMessage(ChatColor.RED + "You must wait " + HomesPack.getCooldown(player) + " seconds before teleporting again!");
+            player.sendMessage(Translatable.get("homes.error.on_cooldown").replace("%time%", String.valueOf(HomesPack.getCooldown(player))));
             return;
         }
 
         if (Main.getInstance().getConfig().getInt("packs.homes.teleport-delay") > 0) {
-            player.sendMessage(ChatColor.GREEN + "Teleporting in " + Main.getInstance().getConfig().getInt("packs.homes.teleport-delay") + " seconds...");
+            player.sendMessage(Translatable.get("homes.teleporting_in").replace("%time%", Main.getInstance().getConfig().getInt("packs.homes.teleport-delay") + ""));
             Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), () -> {
                 player.teleport(loc);
-                player.sendMessage(ChatColor.GREEN + "Teleported to home " + name + ".");
+                player.sendMessage(Translatable.get("homes.teleported").replace("%home%", name));
             }, Main.getInstance().getConfig().getInt("packs.homes.teleport-delay") * 20L);
         } else {
             player.teleport(loc);
-            player.sendMessage(ChatColor.GREEN + "Teleported to home " + name + ".");
+            player.sendMessage(Translatable.get("homes.teleported").replace("%home%", name));
         }
     }
 
@@ -93,7 +94,7 @@ public class Home {
 
         data.remove(new NamespacedKey(Main.getInstance(), "home." + name));
 
-        player.sendMessage(ChatColor.GREEN + "Home " + name + " has been deleted.");
+        player.sendMessage(Translatable.get("homes.deleted").replace("%home%", name));
     }
 
 }
