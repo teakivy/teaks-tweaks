@@ -5,11 +5,8 @@ import me.teakivy.teakstweaks.packs.teleportation.homes.Home;
 import me.teakivy.teakstweaks.packs.teleportation.homes.HomesPack;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import java.util.List;

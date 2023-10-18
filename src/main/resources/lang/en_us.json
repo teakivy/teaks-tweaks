@@ -47,6 +47,7 @@
 
   "xp_management.name": "XP Management",
   "xp_management.description": "Right-Click an enchanting table with an empty bottle to fill it with some of your XP.",
+  "xp_management.bottle_contains": "&6Contains %return_amount% XP",
 
   "tag.name": "Tag",
   "tag.description": "Adds the Hermitcraft Tag game directly into your world! '/tag'",
@@ -110,6 +111,7 @@
 
   "villager_death_messages.name": "Villager Death Messages",
   "villager_death_messages.description": "Notifies the server in chat when a villager dies. Displays coordinates and dimension that it died in.",
+  "villager_death_messages.death_message": "&cA Villager has died! &r(&6XYZ: %x% %y% %z% &e%world%&r)",
 
   "afk_display.name": "AFK Display",
   "afk_display.description": "Gray out a players name that is not moving for 5 minutes.",
@@ -243,7 +245,33 @@
   "spawn.description": "Allows you to teleport to the world spawn.\nCommand: /spawn",
 
   "tpa.name": "TPA",
-    "tpa.description": "Allows you to request to teleport to another player.\nCommand: /tpa",
+  "tpa.description": "Allows you to request to teleport to another player.\nCommand: /tpa",
+
+  "custom_villager_shops.name": "Custom Villager Shops",
+  "custom_villager_shops.description": "Allows you to easily setup Villager Trades in creative using chests.",
+  "custom_villager_shops.trade_init",
+
+  "item_averages.name": "Item Averages",
+  "item_averages.description": "Adds a marker that tracks items flowing past it for 2 minutes, then calculates how many of each item will run through per hour.\nCommand: /itemavgerage",
+  "item_averages.source_production": "&eThis source produces ± per hour:",
+  "item_averages.item": "&6%amount% &r%item%",
+  "item_averages.no_items": "&eNo items passed through the source!",
+  "item_averages.log_finish": "Finished Tracking",
+
+  "kill_boats.name": "Kill Boats",
+  "kill_boats.description": "Adds an admin command to kill all boats without passengers.\nCommand: /killboats",
+
+  "spawning_spheres.name": "Spawning Spheres",
+  "spawning_spheres.description": "Adds a command that allows you to see where mobs can spawn.\nCommand: /spawningspheres",
+  "spawning_spheres.center_stand": "Center",
+
+  "spectator_conduit_power.name": "Spectator Conduit Power",
+  "spectator_conduit_power.description": "Easily toggle conduit power when in spectator.\nCommand: /conduitpower",
+  "spectator_conduit_power.error.game_mode_changed": "&cConduit Power removed because of Game Mode change!",
+
+  "spectator_night_vision.name": "Spectator Night Vision",
+  "spectator_night_vision.description": "Easily toggle night vision when in spectator.\nCommand: /nightvision",
+  "spectator_night_vision.error.game_mode_changed": "&cNight Vision removed because of Game Mode change!",
 
   "#comment.crafting_tweaks": "Crafting Tweaks Section: (this is a comment and will never be shown in-game)",
 

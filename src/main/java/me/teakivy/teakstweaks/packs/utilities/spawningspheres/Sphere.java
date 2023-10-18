@@ -2,7 +2,7 @@ package me.teakivy.teakstweaks.packs.utilities.spawningspheres;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
+import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.*;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
@@ -21,7 +21,7 @@ import static org.bukkit.Color.RED;
 public class Sphere extends BasePack {
 
     public Sphere() {
-        super("Spawning Spheres", "spawning-spheres", PackType.UTILITIES, Material.WARDEN_SPAWN_EGG, "Allows you to view the spawnable area around a center point through the use of glowing spheres. Useful for proofing farms");
+        super("spawning-spheres", PackType.UTILITIES, Material.WARDEN_SPAWN_EGG);
     }
 
     @EventHandler
@@ -82,7 +82,7 @@ public class Sphere extends BasePack {
             stand.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 999999, 0));
         }
         if (center) {
-            stand.setCustomName(MessageHandler.getMessage("pack.spawning-spheres.center-stand"));
+            stand.setCustomName(Translatable.get("spawning_spheres.center_stand"));
             stand.setCustomNameVisible(true);
         }
         stand.setMarker(true);

@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.packs.utilities.spectatornightvision;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -13,7 +12,7 @@ import org.bukkit.potion.PotionEffectType;
 public class NightVision extends BasePack {
 
     public NightVision() {
-        super("Spectator Night Vision", "spectator-night-vision", PackType.UTILITIES, Material.ENDER_EYE, "Easily toggle night vision when in spectator.", "Command: /nv");
+        super("spectator-night-vision", PackType.UTILITIES, Material.ENDER_EYE);
     }
 
     @EventHandler
@@ -22,7 +21,7 @@ public class NightVision extends BasePack {
         if (player.getGameMode().equals(GameMode.SPECTATOR)) {
             if (player.hasPotionEffect(PotionEffectType.NIGHT_VISION)) {
                 player.removePotionEffect(PotionEffectType.NIGHT_VISION);
-                player.sendMessage(MessageHandler.getMessage("pack.spectator-conduit-power.game-mode-change"));
+                player.sendMessage(getString("error.game_mode_changed"));
             }
         }
     }

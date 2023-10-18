@@ -7,6 +7,6 @@ import org.bukkit.Material;
 public class KillBoats extends BasePack {
 
         public KillBoats() {
-            super("Kill Boats", "kill-boats", PackType.UTILITIES, Material.OAK_BOAT, "Adds an admin command to kill all boats without passengers.", "Command: /killboats");
+            super("kill-boats", PackType.UTILITIES, Material.OAK_BOAT);
         }
 }

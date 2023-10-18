@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.packs.experimental.xpmanagement;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -121,7 +120,7 @@ public class XPManagement extends BasePack {
 
         if (getConfig().getBoolean("display-amount")) {
             List<String> lore = new ArrayList<>();
-            lore.add(MessageHandler.replace(MessageHandler.getMessage("pack.xp-management.bottle-contains"), "%return_amount%", String.valueOf(config.getInt("take-xp-amount"))));
+            lore.add(getString("bottle_contains").replace("%amount%", String.valueOf(config.getInt("take-xp-amount"))));
             xpMeta.setLore(lore);
         }
 

@@ -20,7 +20,7 @@ messages:
   pack:
     villager-death-messages:
       name: "Villager Death Messages"
-      death-message: "&c A Villager has died! &r(&6XYZ: %x% %y% %z% &e%world%&r)"
+      death-message: "&cA Villager has died! &r(&6XYZ: %x% %y% %z% &e%world%&r)"
 
     spawn:
       name: "Spawn"

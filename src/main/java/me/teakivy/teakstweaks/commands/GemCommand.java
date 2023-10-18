@@ -5,7 +5,6 @@ import me.teakivy.teakstweaks.packs.hermitcraft.gemvillagers.GemVllagers;
 import me.teakivy.teakstweaks.packs.hermitcraft.treasuregems.Gems;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
