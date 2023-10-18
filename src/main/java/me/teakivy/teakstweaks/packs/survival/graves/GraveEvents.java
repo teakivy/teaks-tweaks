@@ -2,8 +2,8 @@ package me.teakivy.teakstweaks.packs.survival.graves;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
 import me.teakivy.teakstweaks.utils.XPUtils;
+import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
@@ -29,7 +29,7 @@ import java.util.UUID;
 public class GraveEvents extends BasePack {
 
     public GraveEvents() {
-        super("Graves", "graves", PackType.SURVIVAL, Material.STONE_BRICK_WALL, "When a player dies, a grave is made at their location containing all their items. Right-click the grave to receive your items, and crouch to make it so only you can pick them up.", "Get a grave key to unlock any grave: `/grave key`", "Locate your last grave (if locatable is on): `/grave locate`");
+        super("graves", PackType.SURVIVAL, Material.STONE_BRICK_WALL);
     }
 
     @EventHandler
@@ -89,7 +89,7 @@ public class GraveEvents extends BasePack {
                 }
                 return;
             } else {
-                event.getPlayer().sendMessage(MessageHandler.getMessage("pack.graves.cant-rob-grave"));
+                event.getPlayer().sendMessage(getString("cant_rob_grave"));
             }
         }
         event.setCancelled(true);
@@ -156,11 +156,11 @@ public class GraveEvents extends BasePack {
         GraveCreator.createGrave(loc, player, xp);
 
         if (getConfig().getBoolean("locatable")) {
-            String lastGrave = MessageHandler.getMessage("pack.graves.last-grave")
-                    .replace("%grave_location_x%", String.valueOf((int) Math.floor(loc.getX())))
-                    .replace("%grave_location_y%", String.valueOf((int) Math.floor(loc.getY())))
-                    .replace("%grave_location_z%", String.valueOf((int) Math.floor(loc.getZ())))
-                    .replace("%grave_location_world%", loc.getWorld().getName());
+            String lastGrave = getString("pack.graves.last_grave")
+                    .replace("%x%", String.valueOf((int) Math.floor(loc.getX())))
+                    .replace("%y%", String.valueOf((int) Math.floor(loc.getY())))
+                    .replace("%z%", String.valueOf((int) Math.floor(loc.getZ())))
+                    .replace("%world%", loc.getWorld().getName());
             player.sendMessage(lastGrave);
             PersistentDataContainer playerData = player.getPersistentDataContainer();
             playerData.set(new NamespacedKey(main, "graves_last"), PersistentDataType.STRING, lastGrave);
@@ -189,11 +189,11 @@ public class GraveEvents extends BasePack {
     public static ItemStack getGraveKey() {
         ItemStack graveKey = new ItemStack(Material.TRIPWIRE_HOOK);
         ItemMeta keyMeta = graveKey.getItemMeta();
-        keyMeta.setDisplayName(ChatColor.GOLD + "Grave Key");
+        keyMeta.setDisplayName(Translatable.get("graves.key.item_name"));
         graveKey.addUnsafeEnchantment(Enchantment.CHANNELING, 1);
         keyMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.YELLOW + "Right-click any grave with this key to open it.");
+        lore.add(Translatable.get("graves.key.item_lore"));
         keyMeta.setLore(lore);
         graveKey.setItemMeta(keyMeta);
         return graveKey;

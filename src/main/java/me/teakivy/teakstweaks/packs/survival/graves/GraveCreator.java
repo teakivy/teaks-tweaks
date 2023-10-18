@@ -7,6 +7,7 @@ import me.teakivy.teakstweaks.packs.items.armoredelytra.ArmoredElytras;
 import me.teakivy.teakstweaks.utils.Base64Serializer;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.ReflectionUtils;
+import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.ArmorStand;
@@ -87,13 +88,23 @@ public class GraveCreator {
 
         if (!config.getBoolean("console-info")) return;
 
-        Logger.log(Logger.LogLevel.INFO, "Created grave for " + ChatColor.GOLD + player.getName() + ChatColor.WHITE + " at " + ChatColor.GOLD + loc.getBlockX() + " " + loc.getBlockY() + " " + loc.getBlockZ() + ChatColor.WHITE + " in " + ChatColor.GOLD + loc.getWorld().getName());
+        Logger.log(Logger.LogLevel.INFO, Translatable.get("graves.log.created")
+                .replace("%player%", player.getName())
+                .replace("%x%", loc.getBlockX() + "")
+                .replace("%y%", loc.getBlockY() + "")
+                .replace("%z%", loc.getBlockZ() + "")
+                .replace("%world%", loc.getWorld().getName())
+
+        );
         int items = 0;
         for (ItemStack item : player.getInventory().getContents()) {
             if (item == null) continue;
             items += item.getAmount();
         }
-        Logger.log(Logger.LogLevel.INFO, "Contains " + ChatColor.GOLD + items + ChatColor.WHITE + " items and " + ChatColor.GOLD + xp + ChatColor.WHITE + " XP");
+        Logger.log(Logger.LogLevel.INFO, Translatable.get("graves.log.contains")
+                .replace("%item_count%", items + "")
+                .replace("%xp_count%", xp + "")
+        );
         for (ItemStack item : player.getInventory().getContents()) {
             if (item == null) continue;
             Logger.log(Logger.LogLevel.INFO, " - " + ChatColor.GOLD + item.getType().name() + ChatColor.WHITE + " x " + ChatColor.GOLD + item.getAmount());

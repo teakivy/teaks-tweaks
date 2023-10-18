@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
 public class ConcreteConverter extends BasePack {
 
     public ConcreteConverter() {
-        super ("Cauldron Concrete", "cauldron-concrete", PackType.SURVIVAL, Material.CAULDRON, "Right click a cauldron with concrete powder to harden it.");
+        super ("cauldron-concrete", PackType.SURVIVAL, Material.CAULDRON);
     }
 
     @EventHandler

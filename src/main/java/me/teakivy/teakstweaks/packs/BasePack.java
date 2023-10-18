@@ -40,6 +40,7 @@ public class BasePack implements Listener {
 	 * @param material Material for the item
 	 * @param description Description of the pack
 	 */
+	@Deprecated
 	public BasePack(String name, String path, PackType packType, Material material, String... description) {
 		this.translatableKey = path.replaceAll("-", "_");
 		this.name = name;

@@ -20,7 +20,7 @@ public class Decay extends BasePack {
     // Thanks!
 
     public Decay() {
-        super("Fast Leaf Decay", "fast-leaf-decay", PackType.SURVIVAL, Material.OAK_LEAVES, "Leaves Decay much faster when trees are mined in survival mode.");
+        super("fast-leaf-decay", PackType.SURVIVAL, Material.OAK_LEAVES);
     }
 
     private final List<Block> scheduledBlocks = new ArrayList<>();

@@ -111,6 +111,72 @@
   "villager_death_messages.name": "Villager Death Messages",
   "villager_death_messages.description": "Notifies the server in chat when a villager dies. Displays coordinates and dimension that it died in.",
 
+  "afk_display.name": "AFK Display",
+  "afk_display.description": "Gray out a players name that is not moving for 5 minutes.",
+  "afk_display.self_now_afk": "&eYou are now AFK.",
+  "afk_display.self_not_afk": "&eYou are no longer AFK.",
+  "afk_display.other_now_afk": "&6%player%&e is now AFK.",
+  "afk_display.other_not_afk": "&6%player%&e is no longer AFK.",
+
+  "cauldron_concrete.name": "Cauldron Concrete",
+  "cauldron_concrete.description": "Right click a cauldron with concrete powder to harden it.",
+
+  "classic_fishing_loot.name": "Classic Fishing Loot",
+  "classic_fishing_loot.description": "Reverts the fishing loot back to its pre-1.16 loot table.",
+
+  "coords_hud.name": "Coords Hud",
+  "coords_hud.description": "Adds information to your actionbar. XYZ Coords and a 24hr clock.\nCommand: /ch toggle",
+
+  "custom_nether_portals.name": "Custom Nether Portals",
+  "custom_nether_portals.description": "Ignite nether portals of any size or shape you like, or using crying obsidian in the portal frame if enabled.",
+
+  "durability_ping.name": "Durability Ping",
+  "durability_ping.description": "Get notified when you damage an item with 10% less durability.\nFully Customizable per-player with '/duraping config'",
+  "durability_ping.ping.subtitle.title": " ",
+  "durability_ping.ping.subtitle.subtitle": "&6%item_type% &cdurability low! &6%item_durability% &cof &6%item_max_durability% &cremaining.",
+  "durability_ping.ping.title.title": "&6%item_type% &cdurability low!",
+  "durability_ping.ping.title.subtitle": "&6%item_durability% &cof &6%item_max_durability% &cremaining.",
+  "durability_ping.ping.chat.message": "&6%item_type% &cdurability low! &6%item_durability% &cof &6%item_max_durability% &cremaining.",
+  "durability_ping.ping.actionbar.message": "&6%item_type% &cdurability low! &6%item_durability% &cof &6%item_max_durability% &cremaining.",
+
+  "fast_leaf_decay.name": "Fast Leaf Decay",
+  "fast_leaf_decay.description": "Leaves Decay much faster when trees are mined in survival mode.",
+
+  "graves.name": "Graves",
+  "graves.description": "When a player dies, a grave is made at their location containing all their items. Right-click the grave to receive your items, and crouch to make it so only you can pick them up.\nGet a grave key to unlock any grave: '/grave key'\nLocate your last grave (if locatable is enabled): '/grave locate'",
+  "graves.cant_rob_grave": "&cYou are not allowed to rob graves!",
+  "graves.last_grave": "&eYour last grave was at XYZ: &6%x% %y% %z% &ein &6World: &e%world%",
+  "graves.key.item_name": "&6Grave Key",
+  "graves.key.item_lore": "Right-click any grave with this key to open it.",
+  "graves.log.created": "Created a grave for %player% at XYZ: %x% %y% %z% in World: %world%",
+  "graves.log.contains": "Contains &6%item_count% &ritems and &6%xp_count% &rXP.",
+
+  "multiplayer_sleep.name": "Multiplayer Sleep",
+  "multiplayer_sleep.description": "Not all players in the over world need to sleep to skip the night & the rain.",
+  "multiplayer_sleep.player_sleeping": "&e%player% &6went to sleep. Sweet dreams!",
+  "multiplayer_sleep.percent_message": "%sleeping% of %required% players asleep.",
+
+  "nether_portal_coords.name": "Nether Portal Coords",
+  "nether_portal_coords.description": "Adds a command that calculates where a nether portal must be placed in the other dimension. Useful for syncing up nether portals.\nCommand: /portal",
+
+  "pillager_tools.name": "Pillager Tools",
+  "pillager_tools.description": "Allows you do disable bad omen, patrols, or patrol leaders separately.",
+
+  "real_time_clock.name": "Real Time Clock",
+  "real_time_clock.description": "Adds a command that allows you to view how long a world has been running in real time minutes and hours.\nCommand: /rtc",
+
+  "track_raw_statistics.name": "Track Raw Statistics",
+  "track_raw_statistics.description": "Adds 100+ scoreboards that track many different statistics. Especially useful for multiplayer.",
+
+  "track_statistics.name": "Track Statistics",
+  "track_statistics.description": "Adds statistics that are processed before-hand. E.g. Km swam, Km flown, etc.",
+
+  "unlock_all_recipes.name": "Unlock All Recipes",
+  "unlock_all_recipes.description": "Automatically unlock all recipes as soon as you start playing.",
+
+  "workstation_highlights.name": "Workstation Highlights",
+  "workstation_highlights.description": "Allows you to find the workstation of any villager by highlighting it.\nCommand: /workstation",
+
   "#comment.crafting_tweaks": "Crafting Tweaks Section: (this is a comment and will never be shown in-game)",
 
   "crafting_tweaks.name_display": "&c%name%",

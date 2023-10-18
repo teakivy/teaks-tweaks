@@ -12,7 +12,7 @@ import org.bukkit.inventory.EquipmentSlot;
 public class Fishing extends BasePack {
 
     public Fishing() {
-        super("Classic Fishing Loot", "classic-fishing-loot", PackType.SURVIVAL, Material.FISHING_ROD, "Reverts the fishing loot back to its pre-1.16 loot table.");
+        super("classic-fishing-loot", PackType.SURVIVAL, Material.FISHING_ROD);
     }
 
     @EventHandler
