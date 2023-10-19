@@ -9,7 +9,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 public class TraderLlamaHead extends BaseMobHead {
 
     public TraderLlamaHead() {
-        super(EntityType.TRADER_LLAMA, "trader-llama", Sound.ENTITY_LLAMA_SPIT);
+        super(EntityType.TRADER_LLAMA, "trader_llama", Sound.ENTITY_LLAMA_SPIT);
 
         addHeadTexture("creamy", "Creamy Llama Head", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTg5YTJlYjE3NzA1ZmU3MTU0YWIwNDFlNWM3NmEwOGQ0MTU0NmEzMWJhMjBlYTMwNjBlM2VjOGVkYzEwNDEyYyJ9fX0");
         addHeadTexture("white", "White Llama Head", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzA4N2E1NTZkNGZmYTk1ZWNkMjg0NGYzNTBkYzQzZTI1NGU1ZDUzNWZhNTk2ZjU0MGQ3ZTc3ZmE2N2RmNDY5NiJ9fX0");

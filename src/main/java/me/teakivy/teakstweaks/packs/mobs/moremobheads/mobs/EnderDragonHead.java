@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 public class EnderDragonHead extends BaseMobHead {
 
     public EnderDragonHead() {
-        super(EntityType.ENDER_DRAGON, "ender-dragon", null);
+        super(EntityType.ENDER_DRAGON, "ender_dragon", null);
     }
 
     @Override
