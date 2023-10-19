@@ -1,7 +1,7 @@
 {
   "meta.version": 4,
   "meta.modified": false,
-  "meta.language_name": "United States English",
+  "meta.language_name": "English",
 
   "plugin.name": "Teak's Tweaks",
   "plugin.discord": "https://discord.gg/wfP4SkZx6s",
@@ -31,6 +31,7 @@
   "startup.register.crafting_tweak": "Registered Crafting Tweak: %name%",
   "startup.register.command": "Registered Command: /%command%",
   "startup.lang.error.missing_language_file": "&cCould not find language file for %lang%! Using %current_lang_name% (%current_lang_key%.json) instead.",
+  "startup.lang.error.fata_error_on_load": "A fatal error occurred while loading the language file for %lang%!",
   "startup.lang.loaded": "Loaded %count% language files.",
   "startup.lang.current": "Current Language: %current_lang_name% (%current_lang_key%.json)",
 
@@ -249,7 +250,7 @@
 
   "custom_villager_shops.name": "Custom Villager Shops",
   "custom_villager_shops.description": "Allows you to easily setup Villager Trades in creative using chests.",
-  "custom_villager_shops.trade_init",
+  "custom_villager_shops.trade_init": "&eVillager Trades Initialized",
 
   "item_averages.name": "Item Averages",
   "item_averages.description": "Adds a marker that tracks items flowing past it for 2 minutes, then calculates how many of each item will run through per hour.\nCommand: /itemavgerage",
@@ -547,7 +548,7 @@
   "teakstweakscommand.info.dev_mode_enabled": "&fDev Mode: &aEnabled",
   "teakstweakscommand.info.support": "&fSupport Server: &a%discord%",
 
-  "test.test": "&eHey! Looks like you found my test command! :D",
+  "test.test": "&eHallo! Looks like you found my test command! :D",
 
   "tpa.error.specify_player": "&cPlease specify a player to teleport to!",
   "tpa.error.no_pending_requests": "&cYou do not have any pending teleport requests!",
