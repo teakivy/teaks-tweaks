@@ -19,10 +19,6 @@ public class Translatable {
     public static void init(String lang) {
         languages.add(new TranslatableLanguage("en"));
 
-//        for (TranslatableLanguage language : languages) {
-//            language.update();
-//        }
-
         if (isPluginLanguage(lang)) {
             currentLanguage = getLanguage(lang);
             currentLanguage.load();
@@ -56,23 +52,11 @@ public class Translatable {
         return false;
     }
 
-    public static boolean isResourceLanguage(String lang) {
-        if (isResourceLanguage(lang)) return true;
-        for (String file : listFilesUsingJavaIO(Main.getInstance().getDataFolder() + "/lang")) {
-            if (file.replace(".json", "").equals(lang)) return true;
-        }
-        return false;
-    }
-
     public static TranslatableLanguage getLanguage(String lang) {
         for (TranslatableLanguage language : languages) {
             if (language.getLang().equals(lang)) return language;
         }
         return null;
-    }
-
-    public static File getLanguageFileFromResource(String lang) {
-        return new File(Main.getInstance().getDataFolder() + "/lang/" + lang + ".json");
     }
 
     public static LinkedHashMap<String, Object> getLanguageMapFromResource(String lang) {
@@ -90,7 +74,6 @@ public class Translatable {
 
     public static LinkedHashMap<String, Object> getLanguageMapFromPlugin(String lang) {
         InputStream initialStream = Main.getInstance().getResource("lang/" + lang + ".json");
-        System.out.println(initialStream);
         if (initialStream == null) initialStream = Main.getInstance().getResource("lang/en.json");
 
         try {

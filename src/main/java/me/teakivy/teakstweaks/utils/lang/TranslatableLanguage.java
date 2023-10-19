@@ -4,11 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.utils.Logger;
-import org.bukkit.Bukkit;
 
 import java.io.*;
 import java.util.LinkedHashMap;
-import java.util.Objects;
 
 public class TranslatableLanguage {
     private String lang;
@@ -72,7 +70,6 @@ public class TranslatableLanguage {
         boolean modified = (map.get("meta.modified") != null
                 && (boolean) map.get("meta.modified"))
                 || !Translatable.isPluginLanguage(this.lang);
-        System.out.println("Modified: " + modified);
 
         if (pluginMap == null) {
             pluginMap = Translatable.getLanguageMapFromPlugin("en");
@@ -88,8 +85,6 @@ public class TranslatableLanguage {
             map = pluginMap;
             return;
         }
-
-//        System.out.println(pluginMap.values());
 
         LinkedHashMap<String, Object> newMap = new LinkedHashMap<>();
 
@@ -116,12 +111,6 @@ public class TranslatableLanguage {
     }
 
     private void save(LinkedHashMap<String, Object> map) {
-        System.out.println(map.get("meta.version"));
-        System.out.println(map.get("meta.language_name"));
-        System.out.println("Saving language file: " + this.getFileName());
-        File file = new File(Main.getInstance().getDataFolder() + "/lang/" + this.lang + ".json");
-
-        System.out.println("Exists: " + file.exists());
         try {
             FileWriter writer = new FileWriter(Main.getInstance().getDataFolder() + "/lang/" + this.lang + ".json");
             gson.toJson(map, writer);
