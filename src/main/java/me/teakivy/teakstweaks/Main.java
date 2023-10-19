@@ -36,7 +36,6 @@ public final class Main extends JavaPlugin implements Listener {
 
     public Tag tagListener;
     public boolean devMode;
-    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     @Override
     public void onEnable() {
@@ -162,7 +161,7 @@ public final class Main extends JavaPlugin implements Listener {
     }
 
     public static Gson getGson() {
-        return gson;
+        return JsonManager.getGson();
     }
 
 }
