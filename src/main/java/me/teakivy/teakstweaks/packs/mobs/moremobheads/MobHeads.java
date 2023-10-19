@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.packs.mobs.moremobheads;
 
+import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.packs.mobs.moremobheads.mobs.*;
@@ -7,9 +8,15 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.HashMap;
 import java.util.Random;
 
 public class MobHeads extends BasePack {
+    private static HashMap<String, Object> chances = new HashMap<>();
+
 
     public MobHeads() {
         super("more-mob-heads", PackType.MOBS, Material.ZOMBIE_HEAD);
@@ -98,11 +105,13 @@ public class MobHeads extends BasePack {
             new SkeletonHead();
             new ZombieHead();
         }
+
+        loadJson();
     }
 
-    public static boolean dropChance(Player player, double[] chances) {
-        double chance = chances[0];
-        double lootingBonus = chances[1];
+    public static boolean shouldDrop(Player player, String key) {
+        double chance = (double) chances.get(key + ".chance");
+        double lootingBonus = (double) chances.get(key + ".looting_bonus");
         Random rand = new Random();
         if (player == null) return false;
         if (player.getInventory().getItemInMainHand().getItemMeta() != null) {
@@ -119,5 +128,20 @@ public class MobHeads extends BasePack {
         if (chance > 1) chance = 1;
         double num = rand.nextDouble();
         return num < chance;
+    }
+
+    public static void loadJson() {
+        Main.getInstance().saveResource("mob_heads.json", false);
+        java.io.File file = new File(Main.getInstance().getDataFolder() + "mob_heads.json");
+        if (!file.exists()) chances = new HashMap<>();
+
+        try {
+            chances =  Main.getGson().fromJson(new FileReader(file), HashMap.class);
+            return;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        chances = new HashMap<>();
     }
 }
