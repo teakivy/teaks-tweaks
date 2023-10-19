@@ -4,6 +4,7 @@ import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.packs.mobs.moremobheads.mobs.*;
+import me.teakivy.teakstweaks.utils.JsonManager;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -132,6 +133,13 @@ public class MobHeads extends BasePack {
     }
 
     public static void loadJson() {
+        JsonManager.saveToFile(
+                JsonManager.updateJson(
+                        JsonManager.getFromFile("mob_heads.json"),
+                        JsonManager.getFromResource("mob_heads.json"),
+                        true),
+                "mob_heads.json");
+
         File file = new File(Main.getInstance().getDataFolder() + "/mob_heads.json");
         if (!file.exists()) Main.getInstance().saveResource("mob_heads.json", false);
 
