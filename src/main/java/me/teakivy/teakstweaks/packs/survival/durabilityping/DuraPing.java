@@ -2,7 +2,7 @@ package me.teakivy.teakstweaks.packs.survival.durabilityping;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
+import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import org.apache.commons.lang3.text.WordUtils;
@@ -22,7 +22,7 @@ import java.util.UUID;
 public class DuraPing extends BasePack {
 
     public DuraPing() {
-        super("Durability Ping", "durability-ping", PackType.SURVIVAL, Material.DIAMOND_PICKAXE, "Get notified when you damage an item with 10% less durability.", "Fully Customizable per-player with '/duraping config'");
+        super("durability-ping", PackType.SURVIVAL, Material.DIAMOND_PICKAXE);
     }
 
     private final HashMap<UUID, Long> pingCooldown = new HashMap<>();
@@ -117,7 +117,7 @@ public class DuraPing extends BasePack {
     }
 
     private static String getDurabilityMessage(String path, ItemStack item, float durability, float maxDurability) {
-        String str = MessageHandler.getMessage("pack.durability-ping." + path);
+        String str = Translatable.get("durability_ping." + path);
         str = str.replace("%item_type%", getItemName(item));
         str = str.replace("%item_durability%", String.valueOf((int) Math.ceil(durability)));
         str = str.replace("%item_max_durability%", String.valueOf((int) maxDurability));

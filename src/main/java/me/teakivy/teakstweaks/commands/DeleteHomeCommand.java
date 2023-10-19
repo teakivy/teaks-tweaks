@@ -4,8 +4,6 @@ import me.teakivy.teakstweaks.packs.teleportation.homes.Home;
 import me.teakivy.teakstweaks.packs.teleportation.homes.HomesPack;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -27,20 +25,22 @@ public class DeleteHomeCommand extends AbstractCommand {
 
         Player player = (Player) sender;
         if (args.length < 1 && HomesPack.getHome(player, "home") == null) {
-            player.sendMessage(ChatColor.RED + "You must specify a name for your home.");
+            player.sendMessage(get("homes.error.missing_home_name"));
             return true;
         }
         String name = args.length < 1 ? "home" : args[0].toLowerCase();
 
         Home home = HomesPack.getHome(player, name);
         if (home == null) {
-            player.sendMessage(ChatColor.RED + "You do not have a home with that name.");
+            player.sendMessage(get("homes.error.home_dne").replace("%name%", name));
             return true;
         }
 
         if (!HomesPack.removeHome(player, name)) {
-            player.sendMessage(ChatColor.RED + "An error occurred while removing your home.");
+            player.sendMessage(get("homes.error.cant_remove_home"));
         }
+
+        player.sendMessage(get("homes.removed_home").replace("%name%", name));
         return true;
     }
 }

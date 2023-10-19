@@ -17,7 +17,7 @@ import org.bukkit.util.Vector;
 public class SlimeCream extends BasePack {
 
     public SlimeCream() {
-        super("Slime Cream", "slime-cream", PackType.TEAKSTWEAKS, Material.SLIME_BALL, "Convert Slime Balls to Magma Cream by right-clicking a lava cauldron", "Convert Magma Cream to Slime Balls by right-clicking a water cauldron");
+        super("slime-cream", PackType.TEAKSTWEAKS, Material.SLIME_BALL);
     }
 
     @EventHandler

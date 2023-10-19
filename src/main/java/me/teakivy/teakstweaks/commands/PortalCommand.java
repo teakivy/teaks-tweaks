@@ -3,7 +3,6 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -14,7 +13,7 @@ public class PortalCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public PortalCommand() {
-        super("nether-portal-coords", MessageHandler.getCmdName("portal"), MessageHandler.getCmdUsage("portal"), MessageHandler.getCmdDescription("portal"), MessageHandler.getCmdAliases("portal"));
+        super("nether-portal-coords", "portal", "/portal", "Calculate where a nether portal would link to.");
     }
 
     @Override
@@ -40,17 +39,15 @@ public class PortalCommand extends AbstractCommand {
         int z = (int) player.getLocation().getZ();
         if (player.getWorld().getEnvironment() == World.Environment.NORMAL) {
             x /= 8;
-            y /= 8;
             z /= 8;
         } else if (player.getWorld().getEnvironment() == World.Environment.NETHER) {
             x *= 8;
-            y *= 8;
             z *= 8;
         } else {
-            player.sendMessage(MessageHandler.getCmdMessage("portal", "unavaliable-dimension".replace("%world%", player.getWorld().getName())));
+            player.sendMessage(getString("error.wrong_dimension").replace("%world%", player.getWorld().getName()));
             return true;
         }
-        player.sendMessage(MessageHandler.getCmdMessage("portal", "location-found")
+        player.sendMessage(getString("location")
                 .replace("%x%", x + "")
                 .replace("%y%", y + "")
                 .replace("%z%", z + "")

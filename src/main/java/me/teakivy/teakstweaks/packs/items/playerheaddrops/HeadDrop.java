@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class HeadDrop extends BasePack {
 
     public HeadDrop() {
-        super("Player Head Drops", "player-head-drops", PackType.ITEMS, Material.PLAYER_HEAD, "A player will drop their head when killed by another player. The item displays who the killer is.");
+        super("player-head-drops", PackType.ITEMS, Material.PLAYER_HEAD);
     }
 
     @EventHandler
@@ -41,7 +41,7 @@ public class HeadDrop extends BasePack {
 
         ArrayList<String> lore = new ArrayList<>();
         if (getConfig().getBoolean("display-killer"))
-            lore.add("Killed by " + killer);
+            lore.add(getString("lore").replace("%player%", killer));
         skull.setLore(lore);
         skull.setOwner(player.getName());
         item.setItemMeta(skull);

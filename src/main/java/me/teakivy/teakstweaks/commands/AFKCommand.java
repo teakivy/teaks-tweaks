@@ -4,7 +4,6 @@ import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.packs.survival.afkdisplay.AFK;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -17,7 +16,7 @@ public class AFKCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public AFKCommand() {
-        super("afk-display", MessageHandler.getCmdName("afk"), MessageHandler.getCmdUsage("afk"), MessageHandler.getCmdDescription("afk"), MessageHandler.getCmdAliases("afk"));
+        super("afk-display", "afk", "/afk [uninstall]", "Toggles AFK mode. When enabled, you will be automatically set to AFK when you are idle for 5 minutes.");
     }
 
     @Override

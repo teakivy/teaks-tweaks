@@ -4,7 +4,6 @@ import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.packs.teleportation.back.Back;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -25,7 +24,7 @@ public class TPACommand extends AbstractCommand {
     List<TPARequest> requests = new ArrayList<>();
 
     public TPACommand() {
-        super("tpa", MessageHandler.getCmdName("tpa"), MessageHandler.getCmdUsage("tpa"), MessageHandler.getCmdDescription("tpa"), MessageHandler.getCmdAliases("tpa"));
+        super("tpa", "tpa", "/tpa", "Teleport to another player");
     }
 
     @Override
@@ -37,7 +36,7 @@ public class TPACommand extends AbstractCommand {
         Player player = (Player) sender;
 
         if (args.length < 1) {
-            player.sendMessage(ChatColor.RED + "Please specify a player to teleport to.");
+            player.sendMessage(getString("error.specify_player"));
             return true;
         }
 
@@ -45,7 +44,7 @@ public class TPACommand extends AbstractCommand {
             if (args.length < 2) {
                 TPARequest req = getRequest(player);
                 if (req == null || req.isExpired()) {
-                    player.sendMessage(ChatColor.RED + "You have no pending requests.");
+                    player.sendMessage(getString("error.no_pending_requests"));
                     return true;
                 }
 
@@ -62,7 +61,7 @@ public class TPACommand extends AbstractCommand {
 
             TPARequest req = getRequest(from, player);
             if (req == null || req.isExpired()) {
-                player.sendMessage(ChatColor.RED + "That player has no pending requests.");
+                player.sendMessage(getString("error.player_no_pending_requests"));
                 return true;
             }
 
@@ -80,31 +79,31 @@ public class TPACommand extends AbstractCommand {
         Player player2 = Bukkit.getPlayer(args[0]);
 
         if (player2 == null) {
-            player.sendMessage(ChatColor.RED + "That player is not online.");
+            player.sendMessage(getString("error.player_not_online"));
             return true;
         }
         String tpCommand = "/tpa accept " + player.getName();
 
-        TextComponent text = new TextComponent(ChatColor.GOLD + player.getName() + ChatColor.YELLOW + " has requested to teleport to you! " + ChatColor.GOLD + "Click to accept");
-        text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatColor.GOLD + "Click to accept")));
+        TextComponent text = new TextComponent(getString("request_message").replace("%player%", player.getName()));
+        text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(getString("request_message.hover"))));
         text.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, tpCommand));
 
         TPARequest req = new TPARequest(player, player2);
         requests.add(req);
 
         player2.spigot().sendMessage(text);
-        player.sendMessage(ChatColor.YELLOW + "You have requested to teleport to " + ChatColor.GOLD + player2.getName() + ChatColor.YELLOW + ". They have 60 seconds to accept.");
+        player.sendMessage(getString("request_sent").replace("%player%", player2.getName()));
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
             if (req.isExpired() && !req.isAccepted()) {
-                player.sendMessage(ChatColor.RED + "Your request to teleport to " + ChatColor.GOLD + player2.getName() + ChatColor.RED + " has expired.");
+                player.sendMessage(getString("request_expired").replace("%player%", player2.getName()));
                 requests.remove(req);
             }
         }, 61 * 20L);
         return false;
     }
 
-    List<String> arguments1 = new ArrayList<String>();
+    List<String> arguments1 = new ArrayList<>();
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
@@ -116,7 +115,7 @@ public class TPACommand extends AbstractCommand {
             }
         }
 
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         if (args.length == 1) {
             for (String a : arguments1) {
                 if (a.toLowerCase().startsWith(args[0].toLowerCase()))
@@ -188,8 +187,8 @@ public class TPACommand extends AbstractCommand {
             accepted = true;
             Back.backLoc.put(to.getUniqueId(), to.getLocation());
             from.teleport(to.getLocation());
-            to.sendMessage(ChatColor.YELLOW + "Teleporting " + ChatColor.GOLD + from.getName() + ChatColor.YELLOW + " to you...");
-            from.sendMessage(ChatColor.YELLOW + "Teleporting you to " + ChatColor.GOLD + to.getName() + ChatColor.YELLOW + "...");
+            to.sendMessage(getString("teleporting_to_you").replace("%player%", from.getName()));
+            from.sendMessage(getString("teleporting").replace("%player%", to.getName()));
         }
     }
 }

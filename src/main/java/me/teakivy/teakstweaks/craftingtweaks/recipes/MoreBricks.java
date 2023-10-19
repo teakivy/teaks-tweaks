@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapedRecipe;
 public class MoreBricks extends AbstractRecipe {
 
     public MoreBricks() {
-        super("More Bricks", "more-bricks", Material.BRICKS, "Craft 4 Bricks instead of 1.");
+        super("more-bricks", Material.BRICKS);
     }
 
     public void registerRecipes() {

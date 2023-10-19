@@ -28,7 +28,7 @@ import java.util.UUID;
 public class ArmoredElytras extends BasePack {
 
     public ArmoredElytras() {
-        super("Armored Elytra", "armored-elytra", PackType.ITEMS, Material.ELYTRA, "Drop an elytra and a chestplate above an anvil to merge them into one item. Drop the item above a grindstone to separate them again.", "Enchantments are kept safely between merging and separating. Burning netherite armored elytra will separate the items.");
+        super("armored-elytra", PackType.ITEMS, Material.ELYTRA);
     }
 
     @EventHandler
@@ -135,7 +135,7 @@ public class ArmoredElytras extends BasePack {
 
         HashMap<Enchantment, Integer> enchantmentStorage = new HashMap<>();
 
-        String name = ChatColor.GOLD + "Armored Elytra";
+        String name = getString("item_name");
         if (chestplate.hasItemMeta()) {
             if (chestplate.getItemMeta().hasDisplayName()) {
                 name = chestplate.getItemMeta().getDisplayName();

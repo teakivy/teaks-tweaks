@@ -3,11 +3,10 @@ package me.teakivy.teakstweaks.packs.hermitcraft.tag;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.packs.survival.afkdisplay.AFK;
-import me.teakivy.teakstweaks.utils.MessageHandler;
+import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -30,7 +29,7 @@ import java.util.Objects;
 public class Tag extends BasePack {
 
     public Tag() {
-        super ("Tag", "tag", PackType.HERMITCRAFT, Material.NAME_TAG, "Adds the Hermitcraft Tag game directly into your world! '/tag'");
+        super ("tag", PackType.HERMITCRAFT, Material.NAME_TAG);
     }
 
     @EventHandler
@@ -42,12 +41,12 @@ public class Tag extends BasePack {
         Player damager = (Player) event.getDamager();
         if (damager.getItemInHand().getType() == Material.AIR) return;
         if (damager.getItemInHand().getItemMeta() == null) return;
-        if (!damager.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.YELLOW + "Tag!") || !damager.getItemInHand().getItemMeta().isUnbreakable()) return;
+        if (!damager.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(getTagItemName()) || !damager.getItemInHand().getItemMeta().isUnbreakable()) return;
         if (!damager.getScoreboardTags().contains("tag_it")) return;
 
         if (AFK.afk.get(player.getUniqueId())) {
             if (!getConfig().getBoolean("allow-tagging-afk")) {
-                damager.sendMessage(MessageHandler.getMessage("pack.tag.cant-tag-afk"));
+                damager.sendMessage(getString("error.cant_tag_afk"));
                 event.setCancelled(true);
                 return;
             }
@@ -58,7 +57,7 @@ public class Tag extends BasePack {
 
         ItemStack tag = new ItemStack(Material.NAME_TAG);
         ItemMeta tagMeta = tag.getItemMeta();
-        tagMeta.setDisplayName(ChatColor.YELLOW + "Tag!");
+        tagMeta.setDisplayName(getTagItemName());
         tagMeta.setUnbreakable(true);
         tag.setItemMeta(tagMeta);
 
@@ -84,7 +83,7 @@ public class Tag extends BasePack {
             tagFullInventory(player);
         }
         if (getConfig().getBoolean("display-when-tagged")) {
-            Bukkit.broadcastMessage(MessageHandler.getMessage("pack.tag.tag-message").replace("%tagged_name%", player.getName()).replace("%tagger_name%", damager.getName()));
+            Bukkit.broadcastMessage(getString("tagged_message").replace("%tagged_name%", player.getName()).replace("%tagger_name%", damager.getName()));
         }
         event.setDamage(0);
     }
@@ -92,7 +91,7 @@ public class Tag extends BasePack {
     private void tagFullInventory(Player player) {
         ItemStack tag = new ItemStack(Material.NAME_TAG);
         ItemMeta tagMeta = tag.getItemMeta();
-        tagMeta.setDisplayName(ChatColor.YELLOW + "Tag!");
+        tagMeta.setDisplayName(getTagItemName());
         tagMeta.setUnbreakable(true);
         tag.setItemMeta(tagMeta);
 
@@ -104,7 +103,7 @@ public class Tag extends BasePack {
         ItemStack item = event.getItem().getItemStack();
         Entity entity = event.getEntity();
         if (item.hasItemMeta()) {
-            if (item.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.YELLOW + "Tag!") && item.getType() == Material.NAME_TAG && item.getItemMeta().isUnbreakable()) {
+            if (item.getItemMeta().getDisplayName().equalsIgnoreCase(getTagItemName()) && item.getType() == Material.NAME_TAG && item.getItemMeta().isUnbreakable()) {
                 if (!entity.getScoreboardTags().contains("tag_it")) event.setCancelled(true);
             }
         }
@@ -114,7 +113,7 @@ public class Tag extends BasePack {
     public void itemDespawn(ItemDespawnEvent event) {
         ItemStack item = event.getEntity().getItemStack();
         if (item.hasItemMeta()) {
-            if (item.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.YELLOW + "Tag!") && item.getType() == Material.NAME_TAG && item.getItemMeta().isUnbreakable()) {
+            if (item.getItemMeta().getDisplayName().equalsIgnoreCase(getTagItemName()) && item.getType() == Material.NAME_TAG && item.getItemMeta().isUnbreakable()) {
                 event.setCancelled(true);
             }
         }
@@ -125,7 +124,7 @@ public class Tag extends BasePack {
         ItemStack item = event.getItem().getItemStack();
         Player player = event.getPlayer();
         if (item.hasItemMeta()) {
-            if (item.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.YELLOW + "Tag!") && item.getType() == Material.NAME_TAG && item.getItemMeta().isUnbreakable()) {
+            if (item.getItemMeta().getDisplayName().equalsIgnoreCase(getTagItemName()) && item.getType() == Material.NAME_TAG && item.getItemMeta().isUnbreakable()) {
                 if (!player.getScoreboardTags().contains("tag_it")) event.setCancelled(true);
             }
         }
@@ -140,7 +139,7 @@ public class Tag extends BasePack {
 
             ItemStack tag = new ItemStack(Material.NAME_TAG);
             ItemMeta tagMeta = tag.getItemMeta();
-            tagMeta.setDisplayName(ChatColor.YELLOW + "Tag!");
+            tagMeta.setDisplayName(getTagItemName());
             tagMeta.setUnbreakable(true);
             tag.setItemMeta(tagMeta);
 
@@ -152,7 +151,7 @@ public class Tag extends BasePack {
     public void onDrop(PlayerDropItemEvent event) {
         ItemStack item = event.getItemDrop().getItemStack();
         if (item.hasItemMeta()) {
-            if (item.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.YELLOW + "Tag!") && item.getType() == Material.NAME_TAG && item.getItemMeta().isUnbreakable()) {
+            if (item.getItemMeta().getDisplayName().equalsIgnoreCase(getTagItemName()) && item.getType() == Material.NAME_TAG && item.getItemMeta().isUnbreakable()) {
                 event.setCancelled(true);
             }
         }
@@ -164,7 +163,7 @@ public class Tag extends BasePack {
         if (player.getScoreboardTags().contains("tag_it")) {
             ItemStack tag = new ItemStack(Material.NAME_TAG);
             ItemMeta tagMeta = tag.getItemMeta();
-            tagMeta.setDisplayName(ChatColor.YELLOW + "Tag!");
+            tagMeta.setDisplayName(getTagItemName());
             tagMeta.setUnbreakable(true);
             tag.setItemMeta(tagMeta);
 
@@ -176,29 +175,8 @@ public class Tag extends BasePack {
         HandlerList.unregisterAll(this);
     }
 
-    public void uninstall() {
-        Scoreboard sb = Bukkit.getScoreboardManager().getMainScoreboard();
-        if (sb.getTeam("TaggedTeam") == null) return;
-        for (String i : Objects.requireNonNull(sb.getTeam("TaggedTeam")).getEntries()) {
-            for (OfflinePlayer oPlayer : Bukkit.getOfflinePlayers()) {
-                if (Objects.requireNonNull(oPlayer.getName()).equalsIgnoreCase(i)) {
-                    Player player = Bukkit.getOfflinePlayer(oPlayer.getUniqueId()).getPlayer();
-                    if (player == null) return;
-                    player.removeScoreboardTag("tag_it");
-                    Objects.requireNonNull(sb.getTeam("TaggedTeam")).removeEntry(player.getName());
-
-                    ItemStack tag = new ItemStack(Material.NAME_TAG);
-                    ItemMeta tagMeta = tag.getItemMeta();
-                    tagMeta.setDisplayName(ChatColor.YELLOW + "Tag!");
-                    tagMeta.setUnbreakable(true);
-                    tag.setItemMeta(tagMeta);
-
-                    player.getInventory().removeItem(tag);
-                }
-            }
-
-        }
-        Objects.requireNonNull(sb.getTeam("TaggedTeam")).unregister();
+    private String getTagItemName() {
+        return Translatable.get("taggame.item_name");
     }
 
 }

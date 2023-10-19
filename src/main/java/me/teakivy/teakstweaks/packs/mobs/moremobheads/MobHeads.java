@@ -12,7 +12,7 @@ import java.util.Random;
 public class MobHeads extends BasePack {
 
     public MobHeads() {
-        super("More Mob Heads", "more-mob-heads", PackType.MOBS, Material.ZOMBIE_HEAD, "Adds a chance to receive a mob head upon killing it.");
+        super("more-mob-heads", PackType.MOBS, Material.ZOMBIE_HEAD);
     }
 
     @Override

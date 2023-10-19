@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.utils;
 
 import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.apache.commons.io.IOUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -35,8 +36,8 @@ public class UpdateChecker {
 
     public static void sendUpdateMessage() {
         if (hasUpdate()) {
-            Logger.log(Logger.LogLevel.INFO, "A new version of Teak's Tweaks is available! (" + getLatestVersion() + ")");
-            Logger.log(Logger.LogLevel.INFO, "Visit https://modrinth.com/plugin/teaks-tweaks to download the latest version.");
+            Logger.log(Logger.LogLevel.INFO, Translatable.get("startup.update.available").replace("%version%", getLatestVersion()));
+            Logger.log(Logger.LogLevel.INFO, Translatable.get("startup.update.download").replace("%url%", Translatable.get("plugin.url")));
         }
     }
 }

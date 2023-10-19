@@ -5,7 +5,6 @@ import me.teakivy.teakstweaks.packs.teakstweaks.spectatoralts.SpectatorAlts;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -29,7 +28,7 @@ public class AltsCommand extends AbstractCommand {
         }
 
         if (args.length < 1) {
-            sender.sendMessage(ChatColor.RED + "Usage: " + this.usage);
+            sender.sendMessage(getUsage());
             return true;
         }
 
@@ -44,14 +43,14 @@ public class AltsCommand extends AbstractCommand {
 
         if (action.equalsIgnoreCase("list") && args.length > 1) {
             if (!sender.isOp()) {
-                sender.sendMessage(ChatColor.RED + "You do not have permission to see other's alts!");
+                sender.sendMessage(getString("error.no_permission_list_others"));
                 return true;
             }
 
             main = Bukkit.getPlayerUniqueId(args[1]);
 
             if (main == null) {
-                sender.sendMessage(ChatColor.RED + "That player does not exist!");
+                sender.sendMessage(getString("player_dne"));
                 return true;
             }
         }
@@ -60,39 +59,39 @@ public class AltsCommand extends AbstractCommand {
             List<UUID> alts = SpectatorAlts.getAlts(main);
 
             if (alts.size() == 0) {
-                sender.sendMessage(ChatColor.RED + getName(main) + " does not have any alts!");
+                sender.sendMessage(getString("error.no_alts").replace("%player%", getName(main)));
                 return true;
             }
 
-            sender.sendMessage(ChatColor.GOLD + getName(main) + ChatColor.YELLOW + "'s Alts:");
+            sender.sendMessage(getString("list_alts").replace("%player%", getName(main)));
             for (UUID altAcc : alts) {
-                sender.sendMessage(ChatColor.GRAY + " - " + ChatColor.YELLOW + getName(altAcc));
+                sender.sendMessage(getString("listed_alt").replace("%alt%", getName(altAcc)));
             }
 
             return true;
         }
 
         if (args.length < 2) {
-            sender.sendMessage(ChatColor.RED + "Usage: " + this.usage);
+            sender.sendMessage(getUsage());
             return true;
         }
 
         alt = Bukkit.getPlayerUniqueId(args[1]);
 
         if (alt == null) {
-            sender.sendMessage(ChatColor.RED + "That player does not exist!");
+            sender.sendMessage(ErrorType.PLAYER_DNE.m());
             return true;
         }
 
         if (args.length > 2) {
             if (!sender.isOp()) {
-                sender.sendMessage(ChatColor.RED + "You do not have permission to modify other's alts!");
+                sender.sendMessage(getString("error.no_permission_modify_others"));
                 return true;
             }
             main = Bukkit.getPlayerUniqueId(args[2]);
 
             if (main == null) {
-                sender.sendMessage(ChatColor.RED + "That player does not exist!");
+                sender.sendMessage(ErrorType.PLAYER_DNE.m());
                 return true;
             }
         }
@@ -100,45 +99,45 @@ public class AltsCommand extends AbstractCommand {
         if (action.equalsIgnoreCase("add")) {
             if (!sender.isOp() && Main.getInstance().getConfig().getInt("packs.spectator-alts.max-alts") != -1) {
                 if (SpectatorAlts.getAlts(main).size() >= Main.getInstance().getConfig().getInt("packs.spectator-alts.max-alts")) {
-                    sender.sendMessage(ChatColor.RED + "You cannot add any more alts!");
+                    sender.sendMessage(getString("error.max_alts"));
                     return true;
                 }
             }
 
             if (main.equals(alt)) {
-                sender.sendMessage(ChatColor.RED + "You cannot add yourself as an alt!");
+                sender.sendMessage(getString("error.self"));
                 return true;
             }
 
             for (OfflinePlayer player : Bukkit.getWhitelistedPlayers()) {
                 if (player.getUniqueId().equals(alt)) {
-                    sender.sendMessage(ChatColor.RED + "You cannot add a whitelisted player as an alt!");
+                    sender.sendMessage(getString("error.whitelisted"));
                     return true;
                 }
             }
 
             if (SpectatorAlts.isAlt(alt)) {
-                sender.sendMessage(ChatColor.RED + getName(alt) + " is already an alt!");
+                sender.sendMessage(getString("error.already_alt").replace("%alt%", getName(alt)));
                 return true;
             }
 
             SpectatorAlts.addAlt(main, alt);
-            sender.sendMessage(ChatColor.GREEN + getName(alt) + " is now " + getName(main) + "'s alt!");
+            sender.sendMessage(getString("added_alt").replace("%alt%", getName(alt)).replace("%player%", getName(main)));
             return true;
         }
 
         if (action.equalsIgnoreCase("remove")) {
             if (!SpectatorAlts.isAlt(alt)) {
-                sender.sendMessage(ChatColor.RED + getName(alt) + " is not an alt!");
+                sender.sendMessage(getString("error.not_alt").replace("%alt%", getName(alt)));
                 return true;
             }
 
             SpectatorAlts.removeAlt(alt);
-            sender.sendMessage(ChatColor.GREEN + getName(alt) + " is no longer " + getName(main) + "'s alt!");
+            sender.sendMessage(getString("removed_alt").replace("%alt%", getName(alt)).replace("%player%", getName(main)));
             return true;
         }
 
-        sender.sendMessage(ChatColor.RED + "Usage: " + this.usage);
+        sender.sendMessage(getUsage());
         return true;
     }
 
@@ -174,7 +173,7 @@ public class AltsCommand extends AbstractCommand {
             }
         }
 
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         for (String a : arguments) {
             if (a.toLowerCase().startsWith(args[0].toLowerCase()))
                 result.add(a);

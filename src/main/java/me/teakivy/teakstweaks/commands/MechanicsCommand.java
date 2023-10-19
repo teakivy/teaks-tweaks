@@ -18,7 +18,7 @@ import java.util.List;
 public class MechanicsCommand extends AbstractCommand {
 
     public MechanicsCommand() {
-        super(null, "mechanics", "/mechanics [edit] ", "View Mechanics added by Teak's Tweaks");
+        super(null, "mechanics", "/mechanics", "View Mechanics added by Teak's Tweaks");
     }
 
     @Override
@@ -35,28 +35,21 @@ public class MechanicsCommand extends AbstractCommand {
 
         Player player = (Player) sender;
 
-        if (args.length == 0 || (args.length == 1 && args[0].equalsIgnoreCase("list"))) {
-            List<ItemStack> items = new ArrayList<>();
+        List<ItemStack> items = new ArrayList<>();
 
-            for (String pk : Main.getRegister().getEnabledPacks()) {
-                items.add(Main.getRegister().getPack(pk).getItem());
-            }
-
-            for (AbstractRecipe recipe : CraftingRegister.getEnabledRecipes()) {
-                items.add(recipe.getItem());
-            }
-
-
-            PaginatedGUI gui = new PaginatedGUI(items, "Teak's Tweaks Mechanics");
-
-            gui.open(player);
-
-            return true;
+        for (String pk : Main.getRegister().getEnabledPacks()) {
+            items.add(Main.getRegister().getPack(pk).getItem());
         }
 
-        player.sendMessage(ChatColor.RED + "Invalid arguments! Use /mechanics for a list of mechanics.");
+        for (AbstractRecipe recipe : CraftingRegister.getEnabledRecipes()) {
+            items.add(recipe.getItem());
+        }
 
 
-        return false;
+        PaginatedGUI gui = new PaginatedGUI(items, getString("gui.title"));
+
+        gui.open(player);
+
+        return true;
     }
 }

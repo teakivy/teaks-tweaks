@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 public class DragonDrops extends BasePack {
 
     public DragonDrops() {
-        super("Dragon Drops", "dragon-drops", PackType.MOBS, Material.DRAGON_EGG, "Makes the Ender Dragon drop a dragon egg and elytra on death.");
+        super("dragon-drops", PackType.MOBS, Material.DRAGON_EGG);
     }
 
     @EventHandler

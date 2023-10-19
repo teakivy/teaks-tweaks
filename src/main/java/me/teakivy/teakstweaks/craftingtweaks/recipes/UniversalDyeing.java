@@ -15,7 +15,7 @@ import java.util.List;
 public class UniversalDyeing extends AbstractRecipe {
 
     public UniversalDyeing() {
-        super("Universal Dyeing", "universal-dyeing", Material.PURPLE_TERRACOTTA, "Allows you to dye any dyeable block to another color, no matter what color it is (does not include Concrete).");
+        super("universal-dyeing", Material.PURPLE_TERRACOTTA);
     }
 
     @Override

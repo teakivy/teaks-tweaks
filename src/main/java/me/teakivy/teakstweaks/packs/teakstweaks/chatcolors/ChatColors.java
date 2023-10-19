@@ -15,7 +15,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class ChatColors extends BasePack {
 
     public ChatColors() {
-        super("Chat Colors", "chat-colors", PackType.TEAKSTWEAKS, Material.PURPLE_WOOL, "Use Chat Colors to make your messages, signs, and items look better (Using '&' for color codes)");
+        super("chat-colors", PackType.TEAKSTWEAKS, Material.PURPLE_WOOL);
     }
 
     @EventHandler

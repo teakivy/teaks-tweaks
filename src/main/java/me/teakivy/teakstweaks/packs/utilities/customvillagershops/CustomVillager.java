@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.packs.utilities.customvillagershops;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -25,7 +24,7 @@ import java.util.List;
 public class CustomVillager extends BasePack {
 
     public CustomVillager() {
-        super("Custom Villager Shops", "custom-villager-shops", PackType.UTILITIES, Material.VILLAGER_SPAWN_EGG, "Allows you to easily setup Villager Trades in creative using chests.");
+        super("custom-villager-shops", PackType.UTILITIES, Material.VILLAGER_SPAWN_EGG);
     }
 
     @EventHandler
@@ -54,7 +53,7 @@ public class CustomVillager extends BasePack {
             villager.addScoreboardTag("custom_villager");
 
             villager.setRecipes(recipes);
-            player.sendMessage(MessageHandler.getMessage("pack.custom-villager-shops.trade-init"));
+            player.sendMessage(getString("trade_init"));
             for (int i = 0; i < 8; i++) {
                 playHappyParticle(villager.getLocation());
             }

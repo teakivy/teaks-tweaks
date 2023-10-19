@@ -3,7 +3,6 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -16,7 +15,7 @@ public class KillBoatsCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public KillBoatsCommand() {
-        super("kill-boats", MessageHandler.getCmdName("killboats"), MessageHandler.getCmdUsage("killboats"), MessageHandler.getCmdDescription("killboats"), MessageHandler.getCmdAliases("killboats"));
+        super("kill-boats", "killboats", "/killboats", "Kill all empty boats");
     }
 
     @Override
@@ -40,7 +39,7 @@ public class KillBoatsCommand extends AbstractCommand {
                 }
             }
         }
-        sender.sendMessage(MessageHandler.getCmdMessage("killboats", "removed-boats").replace("%count%", boats + ""));
+        sender.sendMessage(getString("removed_boats").replace("%count%", boats + ""));
         return false;
     }
 }

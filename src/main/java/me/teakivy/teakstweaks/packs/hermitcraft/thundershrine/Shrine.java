@@ -3,7 +3,7 @@ package me.teakivy.teakstweaks.packs.hermitcraft.thundershrine;
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
+import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Entity;
@@ -26,7 +26,7 @@ public class Shrine extends BasePack {
     int particleTask = -1;
 
     public Shrine() {
-        super("Thunder Shrine", "thunder-shrine", PackType.HERMITCRAFT, Material.NETHER_STAR, "A shrine that allows you to create a thunder storm when offered a Nether Star.", "Drop a Nether Star on top of a shrine to create a thunder storm.");
+        super("thunder-shrine", PackType.HERMITCRAFT, Material.NETHER_STAR);
     }
 
     @Override
@@ -107,7 +107,7 @@ public class Shrine extends BasePack {
         world.setStorm(true);
         world.setThundering(true);
         if (config.getBoolean("summoning.brodcast-message")) {
-            Bukkit.broadcastMessage(MessageHandler.getMessage("storm-initialize"));
+            Bukkit.broadcastMessage(Translatable.get("storm_initialize"));
         }
     }
 

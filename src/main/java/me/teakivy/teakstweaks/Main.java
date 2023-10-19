@@ -5,6 +5,8 @@ import me.teakivy.teakstweaks.packs.hermitcraft.tag.Tag;
 import me.teakivy.teakstweaks.utils.*;
 import me.teakivy.teakstweaks.utils.datamanager.DataManager;
 import me.teakivy.teakstweaks.utils.gui.GUIListener;
+import me.teakivy.teakstweaks.utils.lang.Translatable;
+import me.teakivy.teakstweaks.utils.lang.TranslatableLanguage;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
@@ -12,6 +14,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,6 +55,10 @@ public final class Main extends JavaPlugin implements Listener {
         // Update Config.yml
         updateConfig();
 
+
+        // Language
+        Translatable.init(getConfig().getString("settings.language"));
+
         // Update Checker
         getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
         getServer().getPluginManager().registerEvents(new GUIListener(), this);
@@ -77,7 +84,7 @@ public final class Main extends JavaPlugin implements Listener {
 
         // Plugin startup logic
         Logger.log(Logger.LogLevel.INFO, "");
-        Logger.log(Logger.LogLevel.INFO, "Teak's Tweaks Started!");
+        Logger.log(Logger.LogLevel.INFO, Translatable.get("startup.plugin.started").replace("%version%", this.getDescription().getVersion()));
         Logger.log(Logger.LogLevel.INFO, "");
 
         // Packs
@@ -88,7 +95,7 @@ public final class Main extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        Logger.log(Logger.LogLevel.INFO, MessageHandler.getMessage("plugin.shutdown.plugin-shutdown"));
+        Logger.log(Logger.LogLevel.INFO, Translatable.get("startup.plugin.shutting_down"));
 
         try {
             data.saveConfig();

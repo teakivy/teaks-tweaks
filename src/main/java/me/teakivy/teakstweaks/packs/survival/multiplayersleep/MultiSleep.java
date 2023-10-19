@@ -3,7 +3,6 @@ package me.teakivy.teakstweaks.packs.survival.multiplayersleep;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Logger;
-import me.teakivy.teakstweaks.utils.MessageHandler;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -26,9 +25,9 @@ public class MultiSleep extends BasePack {
     BossBar bar;
 
     public MultiSleep() {
-        super("Multiplayer Sleep", "multiplayer-sleep", PackType.SURVIVAL, Material.RED_BED, "Not all players in the overworld need to sleep to skip the night & the rain.");
+        super("multiplayer-sleep", PackType.SURVIVAL, Material.RED_BED);
         this.sleepingPercentage = getConfig().getInt("sleeping-percentage");
-        this.bar = Bukkit.getServer().createBossBar("0 of 0 player(s) asleep", BarColor.WHITE, BarStyle.SOLID);
+        this.bar = Bukkit.getServer().createBossBar(getString("percent_message").replace("%sleeping%", "0").replace("%required%", "0"), BarColor.WHITE, BarStyle.SOLID);
     }
 
     @EventHandler
@@ -42,7 +41,7 @@ public class MultiSleep extends BasePack {
 
 
         if (Objects.equals(getConfig().getString("announce-type"), "bossbar")  && sleeping > 0) {
-            bar.setTitle(sleeping + " of " + getMaxSleeping() + " player(s) asleep");
+            bar.setTitle(getString("percent_message").replace("%sleeping%", String.valueOf(sleeping)).replace("%required%", String.valueOf(getMaxSleeping())));
             bar.setColor(getBossBarColor());
             bar.setProgress((100.0/getMaxSleeping() * sleeping) / 100);
             bar.setVisible(true);
@@ -71,7 +70,7 @@ public class MultiSleep extends BasePack {
         }
 
         if (Objects.equals(getConfig().getString("announce-type"), "bossbar") && sleeping > 0) {
-            bar.setTitle(sleeping + " of " + getMaxSleeping() + " player(s) asleep");
+            bar.setTitle(getString("percent_message").replace("%sleeping%", String.valueOf(sleeping)).replace("%required%", String.valueOf(getMaxSleeping())));
             bar.setColor(getBossBarColor());
             bar.setProgress((100.0/getMaxSleeping() * sleeping) / 100);
             bar.setVisible(true);
@@ -93,14 +92,20 @@ public class MultiSleep extends BasePack {
     }
 
     public void sleepMessage(Player player) {
-        Bukkit.broadcastMessage(MessageHandler.getMessage("pack.multiplayer-sleep.player-sleeping").replace("%player_name%", player.getName()));
+        Bukkit.broadcastMessage(getString("player_sleeping").replace("%player%", player.getDisplayName()));
     }
 
     public void actionbarMessage() {
         Bukkit.getScheduler().runTaskLater(main, () -> {
             if (sleeping <= 0) return;
             for (Player online : Bukkit.getOnlinePlayers()) {
-                online.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(MessageHandler.getMessage("pack.multiplayer-sleep.percentage-message").replace("%sleeping%", String.valueOf(sleeping)).replace("%max_sleeping%", String.valueOf(getMaxSleeping()))));
+                online.spigot().sendMessage(
+                        ChatMessageType.ACTION_BAR,
+                        TextComponent.fromLegacyText(
+                                getString("percent_message")
+                                        .replace("%sleeping%", String.valueOf(sleeping))
+                                        .replace("%required%", String.valueOf(getMaxSleeping())
+                                        )));
             }
         }, 1L);
     }

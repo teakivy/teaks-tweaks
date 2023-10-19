@@ -3,7 +3,6 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -16,7 +15,7 @@ public class CoordsHudCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public CoordsHudCommand() {
-        super("coords-hud", MessageHandler.getCmdName("coordshud"), MessageHandler.getCmdUsage("coordshud"), MessageHandler.getCmdDescription("coordshud"), MessageHandler.getCmdAliases("coordshud"));
+        super("coords-hud", "coordshud", "/coordshud", "Coordinates Hud Main Command", List.of("ch"));
     }
 
     @Override
@@ -31,35 +30,34 @@ public class CoordsHudCommand extends AbstractCommand {
             return true;
         }
 
-        if (args.length == 0) {
-            sender.sendMessage(MessageHandler.getCmdMessage("coordshud", "proper-usage"));
+        if (!(sender instanceof Player)) {
+            sender.sendMessage(ErrorType.NOT_PLAYER.m());
             return true;
         }
 
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-            if (args[0].equalsIgnoreCase("toggle")) {
-                if (!player.hasPermission(permission+".toggle")) {
-                    sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-                    return true;
-                }
-                if (main.getConfig().getBoolean("packs.coords-hud.force-enable")) {
-                    player.sendMessage(MessageHandler.getCmdMessage("coordshud", "cant-toggle"));
-                    return true;
-                }
-                if (!Main.chEnabled.contains(player.getUniqueId())) Main.chEnabled.add(player.getUniqueId());
-                else Main.chEnabled.remove(player.getUniqueId());
-                player.sendMessage(MessageHandler.getCmdMessage("coordshud", "toggled"));
-            } else {
-                sender.sendMessage(MessageHandler.getCmdMessage("coordshud", "proper-usage"));
-            }
-        } else {
-            sender.sendMessage(ErrorType.NOT_PLAYER.m());
+        Player player = (Player) sender;
+
+        if (!player.hasPermission(permission+".toggle")) {
+            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return true;
         }
+
+        if (main.getConfig().getBoolean("packs.coords-hud.force-enable")) {
+            player.sendMessage(getString("error.force_enabled"));
+            return true;
+        }
+
+        if (!Main.chEnabled.contains(player.getUniqueId())) {
+            Main.chEnabled.add(player.getUniqueId());
+        } else {
+            Main.chEnabled.remove(player.getUniqueId());
+        }
+
+        player.sendMessage(getString("toggled"));
         return false;
     }
 
-    List<String> arguments = new ArrayList<String>();
+    List<String> arguments = new ArrayList<>();
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
@@ -68,7 +66,7 @@ public class CoordsHudCommand extends AbstractCommand {
             arguments.add("toggle");
         }
 
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         if (args.length == 1) {
             for (String a : arguments) {
                 if (a.toLowerCase().startsWith(args[0].toLowerCase()))

@@ -3,7 +3,6 @@ package me.teakivy.teakstweaks.packs.mobs.villagerdeathmessages;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Logger;
-import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.*;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
@@ -12,14 +11,14 @@ import org.bukkit.event.entity.EntityDeathEvent;
 public class VillagerDeath extends BasePack {
 
     public VillagerDeath() {
-        super("Villager Death Messages", "villager-death-messages", PackType.MOBS, Material.TORCH, "Notifies the server in chat when a villager dies. Displayes Coordinates and Dimension that it died in.");
+        super("villager-death-messages", PackType.MOBS, Material.TORCH);
     }
 
     @EventHandler
     public void onMobDeath(EntityDeathEvent event) {
         if (event.getEntity().getType() == EntityType.VILLAGER) {
             Location loc = event.getEntity().getLocation();
-            String deathMessage = MessageHandler.getMessage("pack.villager-death-messages.death-message")
+            String deathMessage = getString("death_message")
                     .replace("%x%", Math.floor(loc.getX()) + "")
                     .replace("%y%", Math.floor(loc.getY()) + "")
                     .replace("%z%", Math.floor(loc.getZ()) + "")

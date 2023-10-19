@@ -28,6 +28,13 @@ settings:
   # Command: /mechanics (Permission: teakstweaks.mechanics.command)
   mechanics-command: true
 
+  # Language
+  # Change the language of the plugin
+  # Currently only supports English (en)
+  # If you would like to translate the plugin into your language,
+  # please contact me on discord! @teakivy (https://discord.gg/wfP4SkZx6s)
+  language: "en"
+
 
 # Data Packs
 packs:

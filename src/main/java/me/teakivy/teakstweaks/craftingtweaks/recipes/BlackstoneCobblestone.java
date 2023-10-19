@@ -14,19 +14,19 @@ import java.util.List;
 public class BlackstoneCobblestone extends AbstractRecipe {
 
     public BlackstoneCobblestone() {
-        super("Blackstone Cobblestone", "blackstone-cobblestone", Material.BLACKSTONE, "Craft all items that require Cobblestone, using Blackstone.");
+        super("blackstone-cobblestone", Material.BLACKSTONE);
     }
 
     @Override
     public void registerRecipes() {
-        List<Material> blackstoneList = new ArrayList<Material>();
+        List<Material> blackstoneList = new ArrayList<>();
         blackstoneList.add(Material.BLACKSTONE);
         blackstoneList.add(Material.COBBLESTONE);
 
         RecipeChoice blackstone = new RecipeChoice.MaterialChoice(blackstoneList);
 
 
-        List<Material> woodList = new ArrayList<Material>();
+        List<Material> woodList = new ArrayList<>();
         woodList.add(Material.OAK_PLANKS);
         woodList.add(Material.BIRCH_PLANKS);
         woodList.add(Material.ACACIA_PLANKS);

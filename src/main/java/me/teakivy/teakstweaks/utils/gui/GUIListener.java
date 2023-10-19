@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.utils.gui;
 
+import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -9,7 +10,7 @@ import org.bukkit.event.inventory.InventoryInteractEvent;
 public class GUIListener implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (event.getView().getTitle().equals("Teak's Tweaks Mechanics")) {
+        if (event.getView().getTitle().equals(Translatable.get("mechanics.gui.title"))) {
             event.setCancelled(true);
             if (event.getRawSlot() == 53) {
                 // Next page button clicked

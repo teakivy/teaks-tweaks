@@ -4,7 +4,6 @@ import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.packs.teleportation.back.Back;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -21,7 +20,7 @@ public class BackCommand extends AbstractCommand {
     HashMap<UUID, Long> cooldown = new HashMap<>();
 
     public BackCommand() {
-        super("back", MessageHandler.getCmdName("back"), MessageHandler.getCmdUsage("back"), MessageHandler.getCmdDescription("back"), MessageHandler.getCmdAliases("back"));
+        super("back", "back", "/back", "Teleport back to your last location.");
     }
 
     @Override
@@ -45,7 +44,7 @@ public class BackCommand extends AbstractCommand {
         if (main.getConfig().getInt("packs.back.teleport-cooldown") > 0) {
             if (cooldown.containsKey(player.getUniqueId())) {
                 if (cooldown.get(player.getUniqueId()) + (main.getConfig().getInt("packs.back.teleport-cooldown") * 1000L) > System.currentTimeMillis()) {
-                    player.sendMessage(MessageHandler.getCmdMessage("back", "on-cooldown").replace("%cooldown_seconds%", String.valueOf(main.getConfig().getInt("packs.back.teleport-cooldown"))));
+                    player.sendMessage(getString("error.on_cooldown").replace("%cooldown_seconds%", String.valueOf(main.getConfig().getInt("packs.back.teleport-cooldown"))));
                     return true;
                 }
             }
@@ -53,20 +52,20 @@ public class BackCommand extends AbstractCommand {
         }
 
         if (!Back.backLoc.containsKey(player.getUniqueId())) {
-            player.sendMessage(MessageHandler.getCmdMessage("back", "missing-location"));
+            player.sendMessage(getString("error.no_back_location"));
             return true;
         }
         if (main.getConfig().getInt("packs.back.teleport-delay") == 0) {
-            player.sendMessage(MessageHandler.getCmdMessage("back", "teleport"));
+            player.sendMessage(getString("teleporting"));
             Back.tpBack(player);
         } else if (main.getConfig().getInt("packs.back.teleport-delay") > 0) {
             Location loc = player.getLocation();
-            player.sendMessage(MessageHandler.getCmdMessage("back", "teleport"));
+            player.sendMessage(getString("teleporting"));
             Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
                 if (player.getLocation().getX() == loc.getX() && player.getLocation().getY() == loc.getY() && player.getLocation().getZ() == loc.getZ()) {
                     Back.tpBack(player);
                 } else {
-                    player.sendMessage(MessageHandler.getCmdMessage("back", "moved"));
+                    player.sendMessage(getString("error.moved"));
                 }
             }, main.getConfig().getInt("packs.back.teleport-delay") * 20L);
         }

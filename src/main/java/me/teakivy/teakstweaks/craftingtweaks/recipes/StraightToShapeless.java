@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class StraightToShapeless extends AbstractRecipe {
 
     public StraightToShapeless() {
-        super("Straight To Shapeless", "straight-to-shapeless", Material.BREAD, "Craft items such as Paper, Bread, and Shulker Boxes directly in your 2x2.");
+        super("straight-to-shapeless", Material.BREAD);
     }
 
     @Override

@@ -13,7 +13,7 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 public class AntiCreeper extends BasePack {
 
     public AntiCreeper() {
-        super("Anti Creeper Grief", "anti-creeper-grief", PackType.MOBS, Material.CREEPER_SPAWN_EGG, "Prevents creepers from blowing up, blocks and players do not take damage.");
+        super("anti-creeper-grief", PackType.MOBS, Material.CREEPER_SPAWN_EGG);
     }
 
     @EventHandler

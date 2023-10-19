@@ -3,7 +3,7 @@ package me.teakivy.teakstweaks.packs.utilities.itemaverages;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Logger;
-import me.teakivy.teakstweaks.utils.MessageHandler;
+import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -29,7 +29,7 @@ public class ItemTracker extends BasePack {
     static HashMap<Material, Integer> items = new HashMap<>();
 
     public ItemTracker() {
-        super("Item Averages", "item-averages", PackType.UTILITIES, Material.HOPPER, "Adds a marker that tracks items flowing past it for 2 minutes, then calculates how many of each item will run through per hour", "Command /itemaverage");
+        super("item-averages", PackType.UTILITIES, Material.HOPPER);
     }
 
     public static void spawnTracker(Location loc, Player player) {
@@ -96,14 +96,14 @@ public class ItemTracker extends BasePack {
 
         if (!totalItems.isEmpty()) {
             player.sendMessage(ChatColor.DARK_GRAY + "-------------------------");
-            player.sendMessage(MessageHandler.getMessage("pack.item-averages.source-production"));
+            player.sendMessage(Translatable.get("item_averages.source_production"));
             totalItems.forEach((item, amount) -> {
-                player.sendMessage(ChatColor.GOLD.toString() + amount + ChatColor.WHITE + " " + item.toString().toLowerCase());
+                player.sendMessage(Translatable.get("item_averages.item").replace("%amount%", String.valueOf(amount)).replace("%item%", item.toString().toLowerCase().replace("_", " ")));
             });
             player.sendMessage(ChatColor.DARK_GRAY + "-------------------------");
         } else {
             player.sendMessage(ChatColor.DARK_GRAY + "-------------------------");
-            player.sendMessage(MessageHandler.getMessage("pack.item-averages.no-items"));
+            player.sendMessage(Translatable.get("item_averages.no_items"));
             player.sendMessage(ChatColor.DARK_GRAY + "-------------------------");
         }
     }
@@ -123,7 +123,7 @@ public class ItemTracker extends BasePack {
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
             entity.remove();
-            Logger.log(Logger.LogLevel.INFO, MessageHandler.getMessage("pack.item-averages.log-finish"));
+            Logger.log(Logger.LogLevel.INFO, Translatable.get("item_averages.log_finish"));
             shouldStop = true;
         }, glowLength);
     }

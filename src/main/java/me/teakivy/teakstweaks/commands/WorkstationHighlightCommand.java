@@ -4,8 +4,6 @@ import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.packs.survival.workstationhighlights.Highlighter;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.command.Command;
@@ -26,7 +24,7 @@ public class WorkstationHighlightCommand extends AbstractCommand {
     final String[] professionTypes;
 
     public WorkstationHighlightCommand() {
-        super("workstation-highlights", MessageHandler.getCmdName("workstationhighlight"), MessageHandler.getCmdUsage("workstationhighlight"), MessageHandler.getCmdDescription("workstationhighlight"), MessageHandler.getCmdAliases("workstationhighlight"));
+        super("workstation-highlights", "workstationhighlight", "/workstationhighlight", "Find a villager's workstation.", List.of("workstation", "wh"));
 
         professionTypes = new String[] {
             "ARMORER",
@@ -64,7 +62,7 @@ public class WorkstationHighlightCommand extends AbstractCommand {
 
         if (args.length == 1) {
             if (!Arrays.toString(professionTypes).contains(args[0].toUpperCase())) {
-                sender.sendMessage(ChatColor.RED + "Invalid profession type!");
+                sender.sendMessage(getString("error.invalid_profession"));
                 return true;
             }
 
@@ -73,7 +71,7 @@ public class WorkstationHighlightCommand extends AbstractCommand {
 
         if (args.length == 2) {
             if (!Arrays.toString(professionTypes).contains(args[0].toUpperCase())) {
-                sender.sendMessage(ChatColor.RED + "Invalid profession type!");
+                sender.sendMessage(getString("error.invalid_profession"));
                 return true;
             }
 
@@ -82,7 +80,7 @@ public class WorkstationHighlightCommand extends AbstractCommand {
             try {
                 radius = Integer.parseInt(args[1]);
             } catch (NumberFormatException e) {
-                sender.sendMessage(ChatColor.RED + "Invalid radius!");
+                sender.sendMessage(getString("error.invalid_radius"));
                 return true;
             }
         }
@@ -90,7 +88,7 @@ public class WorkstationHighlightCommand extends AbstractCommand {
         if (profession.equalsIgnoreCase("armourer")) profession = "ARMORER";
 
         if (radius < 1 || radius > 16) {
-            sender.sendMessage(ChatColor.RED + "Radius must be between 1 and 16!");
+            sender.sendMessage(getString("error.radius_out_of_bounds"));
             return true;
         }
 
@@ -114,21 +112,21 @@ public class WorkstationHighlightCommand extends AbstractCommand {
         }
 
         if (entity == null) {
-            player.sendMessage(ChatColor.RED + "No villager workstation found nearby!");
+            player.sendMessage(getString("error.no_workstations_found"));
             return true;
         }
 
         Villager villager = (Villager) entity;
         Location jobSite = villager.getMemory(MemoryKey.JOB_SITE);
         if (jobSite == null) {
-            player.sendMessage(MessageHandler.getCmdMessage("workstationhighlight", "errpr.no-jobsite"));
+            player.sendMessage(getString("error.no_job_site"));
             return true;
         }
 
         villager.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 200, 0, false, false, false));
         Highlighter.glowingBlock(jobSite, 200);
         createParticles(jobSite.add(.5, 1, .5), 200);
-        player.sendMessage(MessageHandler.getCmdMessage("workstationhighlight", "jobsite-found")
+        player.sendMessage(getString("found")
                 .replace("%x%", ((int) jobSite.getX()) + "")
                 .replace("%y%", ((int) jobSite.getY()) + "")
                 .replace("%z%", ((int) jobSite.getZ()) + "")

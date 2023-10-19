@@ -6,7 +6,6 @@ import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -25,7 +24,7 @@ public class HomesPack extends BasePack {
     private static final HashMap<UUID, Long> cooldowns = new HashMap<>();
 
     public HomesPack() {
-        super("Homes", "homes", PackType.TELEPORTATION, Material.RECOVERY_COMPASS, "Allows you to set homes ('/home set <name>') and teleport back to them ('/home <name>')");
+        super("homes", PackType.TELEPORTATION, Material.RECOVERY_COMPASS);
     }
 
     @Override
@@ -33,7 +32,6 @@ public class HomesPack extends BasePack {
         super.init();
         for (Player player : main.getServer().getOnlinePlayers()) {
             loadHomes(player);
-            loadLegacyHomes(player);
         }
     }
 
@@ -131,34 +129,9 @@ public class HomesPack extends BasePack {
         }
     }
 
-    public static void loadLegacyHomes(Player player) {
-        FileConfiguration ldata = main.data.getConfig();
-
-        if (!ldata.contains("homes." + player.getUniqueId())) return;
-
-        for (String home : ldata.getConfigurationSection("homes." + player.getUniqueId()).getKeys(false)) {
-            String world = ldata.getString("homes." + player.getUniqueId() + "." + home + ".world");
-            double x = ldata.getDouble("homes." + player.getUniqueId() + "." + home + ".x");
-            double y = ldata.getDouble("homes." + player.getUniqueId() + "." + home + ".y");
-            double z = ldata.getDouble("homes." + player.getUniqueId() + "." + home + ".z");
-
-            Location loc = new Location(main.getServer().getWorld(world), x, y, z);
-
-            setHome(player, home, loc);
-        }
-
-        ldata.set("homes." + player.getUniqueId(), null);
-        try {
-            main.data.saveConfig();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         loadHomes(event.getPlayer());
-        loadLegacyHomes(event.getPlayer());
     }
 
     @EventHandler

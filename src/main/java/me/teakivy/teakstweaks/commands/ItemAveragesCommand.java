@@ -4,7 +4,6 @@ import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.packs.utilities.itemaverages.ItemTracker;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
@@ -19,7 +18,7 @@ public class ItemAveragesCommand extends AbstractCommand {
 
 
     public ItemAveragesCommand() {
-        super("item-averages", MessageHandler.getCmdName("itemaverages"), MessageHandler.getCmdUsage("itemaverages"), MessageHandler.getCmdDescription("itemaverages"), MessageHandler.getCmdAliases("itemaverages"));
+        super("item-averages", "itemaverages", "/itemaverages", "Calculate how many items flow through a source in 2 minutes!");
     }
 
     @Override
@@ -45,14 +44,14 @@ public class ItemAveragesCommand extends AbstractCommand {
                 return true;
             }
             if (!ItemTracker.inUse) {
-                player.sendMessage(MessageHandler.getCmdMessage("itemaverages", "tracker-created")
+                player.sendMessage(getString("tracker_created")
                         .replace("%x%", "" + (int) player.getLocation().getX())
                         .replace("%y%", "" + (int) player.getLocation().getY())
                         .replace("%z%", "" + (int) player.getLocation().getZ())
                 );
                 ItemTracker.spawnTracker(player.getLocation().getBlock().getLocation(), player);
             } else {
-                player.sendMessage(MessageHandler.getCmdMessage("itemaverages", "tracker-in-use"));
+                player.sendMessage(getString("error.tracker_in_use"));
             }
             return true;
         }
@@ -63,14 +62,14 @@ public class ItemAveragesCommand extends AbstractCommand {
                     return true;
                 }
                 if (!ItemTracker.inUse) {
-                    player.sendMessage(MessageHandler.getCmdMessage("itemaverages", "tracker-created")
+                    player.sendMessage(getString("tracker_created")
                             .replace("%x%", "" + (int) player.getLocation().getX())
                             .replace("%y%", "" + (int) player.getLocation().getY())
                             .replace("%z%", "" + (int) player.getLocation().getZ())
                     );
                     ItemTracker.spawnTracker(player.getLocation().getBlock().getLocation(), player);
                 } else {
-                    player.sendMessage(MessageHandler.getCmdMessage("itemaverages", "tracker-in-use"));
+                    player.sendMessage(getString("error.tracker_in_use"));
                 }
                 return true;
             }
@@ -86,13 +85,13 @@ public class ItemAveragesCommand extends AbstractCommand {
                         entity.remove();
                     }
                 }
-                player.sendMessage(MessageHandler.getCmdMessage("itemaverages", "tracker-mass-remove").replace("%count%", count + ""));
+                player.sendMessage(getString("tracker_mass_removed").replace("%count%", count + ""));
             }
         }
         return false;
     }
 
-    List<String> arguments = new ArrayList<String>();
+    List<String> arguments = new ArrayList<>();
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
@@ -104,7 +103,7 @@ public class ItemAveragesCommand extends AbstractCommand {
             }
         }
 
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         if (args.length == 1) {
             for (String a : arguments) {
                 if (a.toLowerCase().startsWith(args[0].toLowerCase()))

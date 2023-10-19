@@ -17,7 +17,7 @@ public class UnlockRecipes extends BasePack {
     ArrayList<NamespacedKey> recipes = new ArrayList<>();
 
     public UnlockRecipes() {
-        super("Unlock All Recipes", "unlock-all-recipes", PackType.SURVIVAL, Material.KNOWLEDGE_BOOK, "Automatically unlock all recipes as soon as you start playing.");
+        super("unlock-all-recipes", PackType.SURVIVAL, Material.KNOWLEDGE_BOOK);
 
         recipes.clear();
         Iterator<Recipe> it = main.getServer().recipeIterator();

@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 public class DoubleShulkers extends BasePack {
 
     public DoubleShulkers() {
-        super("Double Shulker Shells", "double-shulker-shells", PackType.MOBS, Material.SHULKER_SHELL, "Makes all shulkers drop 2 shells.");
+        super("double-shulker-shells", PackType.MOBS, Material.SHULKER_SHELL);
     }
 
     @EventHandler

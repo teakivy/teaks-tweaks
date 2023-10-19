@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 public class SmeltableRawOreBlocks extends AbstractRecipe {
 
     public SmeltableRawOreBlocks() {
-        super("Smeltable Raw Ore Blocks", "smeltable-raw-ore-blocks", Material.RAW_GOLD_BLOCK, "Smelt Raw Ore Blocks to Ore Blocks.");
+        super("smeltable-raw-ore-blocks", Material.RAW_GOLD_BLOCK);
     }
 
     @Override

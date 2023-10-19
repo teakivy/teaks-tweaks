@@ -4,11 +4,6 @@ import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.packs.hermitcraft.thundershrine.Shrine;
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
-import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.HoverEvent;
-import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.api.chat.hover.content.Text;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -24,7 +19,7 @@ public class ShrineCommand extends AbstractCommand {
     Main main = Main.getPlugin(Main.class);
 
     public ShrineCommand() {
-        super("thunder-shrine", MessageHandler.getCmdName("shrine"), MessageHandler.getCmdUsage("shrine"), MessageHandler.getCmdDescription("shrine"), MessageHandler.getCmdAliases("shrine"));
+        super("thunder-shrine", "shrine", "/shrine", "Thunder Shrines!");
     }
 
     @Override
@@ -62,7 +57,7 @@ public class ShrineCommand extends AbstractCommand {
                 int y = (int) Math.floor(loc.getY());
                 int z = (int) Math.floor(loc.getZ());
                 Shrine.createShrine(player.getLocation());
-                player.sendMessage(MessageHandler.getCmdMessage("shrine", "shrine-created")
+                player.sendMessage(getString("created")
                         .replace("%x%", x + "")
                         .replace("%y%", y + "")
                         .replace("%z%", z + "")
@@ -88,15 +83,17 @@ public class ShrineCommand extends AbstractCommand {
             }
 
             if (shrine == null) {
-                player.sendMessage(MessageHandler.getCmdMessage("shrine", "no-shrine-nearby"));
+                player.sendMessage(getString("error.none_nearby"));
                 return true;
             }
 
             shrine.remove();
-            TextComponent uuid = new TextComponent(MessageHandler.getCmdMessage("shrine", "shrine-removed.text").replace("%uuid%", shrine.getUniqueId().toString()));
-            uuid.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(MessageHandler.getCmdMessage("shrine", "shrine-removed.hover"))));
-            uuid.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tp " + shrine.getLocation().getX() + " " + shrine.getLocation().getY() + " " + shrine.getLocation().getZ()));
-            player.spigot().sendMessage(uuid);
+            player.sendMessage(getString("removed")
+                    .replace("%x%", (int) shrine.getLocation().getX() + "")
+                    .replace("%y%", (int) shrine.getLocation().getY() + "")
+                    .replace("%z%", (int) shrine.getLocation().getZ() + "")
+                    .replace("%world%", shrine.getLocation().getWorld().getName())
+            );
             return true;
         }
 
@@ -108,13 +105,13 @@ public class ShrineCommand extends AbstractCommand {
             for (Entity shrine : Shrine.getShrines()) {
                 shrine.remove();
             }
-            player.sendMessage(MessageHandler.getCmdMessage("shrine", "mass-remove"));
+            player.sendMessage(getString("shrines_mass_removed"));
             return true;
         }
         return false;
     }
 
-    List<String> arguments1 = new ArrayList<String>();
+    List<String> arguments1 = new ArrayList<>();
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
@@ -125,7 +122,7 @@ public class ShrineCommand extends AbstractCommand {
             arguments1.add("uninstall");
         }
 
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         if (args.length == 1) {
             for (String a : arguments1) {
                 if (a.toLowerCase().startsWith(args[0].toLowerCase()))

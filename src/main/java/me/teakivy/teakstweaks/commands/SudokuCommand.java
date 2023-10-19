@@ -2,8 +2,6 @@ package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MessageHandler;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -11,7 +9,7 @@ import org.bukkit.entity.Player;
 public class SudokuCommand extends AbstractCommand {
 
     public SudokuCommand() {
-        super("sudoku", MessageHandler.getCmdName("sudoku"), MessageHandler.getCmdUsage("sudoku"), MessageHandler.getCmdDescription("sudoku"), MessageHandler.getCmdAliases("sudoku"));
+        super("sudoku", "sudoku", "/sudoku", "Commit Sudoku!");
     }
 
     @Override
@@ -22,7 +20,7 @@ public class SudokuCommand extends AbstractCommand {
             return true;
         }
         player.getScoreboardTags().add("sudoku-message");
-        player.sendMessage(ChatColor.GREEN + "Sudoku!");
+        player.sendMessage(getString("committed"));
         player.setHealth(0);
         return false;
     }
