@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.utils.Logger;
+import org.bukkit.Bukkit;
 
 import java.io.*;
 import java.util.LinkedHashMap;
@@ -13,22 +14,11 @@ public class TranslatableLanguage {
     private String lang;
     public static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     public LinkedHashMap<String, Object> map = new LinkedHashMap<>();
-    private LinkedHashMap<String, Object> resourceMap;
     public TranslatableLanguage(String lang) {
         this.lang = lang;
 
-        resourceMap = getResource();
-
-        try {
-            load();
-        } catch (FileNotFoundException e) {
-            Logger.log(Logger.LogLevel.ERROR, "Could not find language file for " + lang + ". Using en_us.json instead.");
-            try {
-                this.lang = "en_us";
-                load();
-            } catch (FileNotFoundException e2) {
-                Logger.log(Logger.LogLevel.ERROR, "Could not find language file for en_us.json. Please report this to the plugin developer.");
-            }
+        if (!getFile().exists() && Translatable.isPluginLanguage(lang)) {
+            Main.getInstance().saveResource("lang/" + lang + ".json", false);
         }
     }
 
@@ -36,23 +26,12 @@ public class TranslatableLanguage {
         return lang;
     }
 
-    public File getFile() {
-        return new File(Main.getInstance().getDataFolder(), "lang/" + lang + ".json");
+    public String getFileName() {
+        return lang + ".json";
     }
 
-    public LinkedHashMap<String, Object> getResource() {
-        InputStream initialStream = Main.getInstance().getResource("lang/" + lang + ".json");
-        if (initialStream == null) initialStream = Main.getInstance().getResource("lang/en_us.json");
-
-        try {
-            initialStream = new ByteArrayInputStream(Objects.requireNonNull(initialStream).readAllBytes());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        Reader targetReader = new InputStreamReader(initialStream);
-
-        return gson.fromJson(targetReader, LinkedHashMap.class);
+    public File getFile() {
+        return new File(Main.getInstance().getDataFolder() + "/lang/" + this.lang + ".json");
     }
 
     public String get(String key) {
@@ -63,80 +42,110 @@ public class TranslatableLanguage {
         }
     }
 
-    public boolean isKnownLanguage() {
-        return Main.getInstance().getResource("lang/" + lang + ".json") != null;
-    }
-
     public String getName() {
         if (map.containsKey("meta.language_name")) return (String) map.get("meta.language_name");
 
         return lang;
     }
 
-    public void load() throws FileNotFoundException {
-        File langFile = getFile();
-        if (!langFile.exists()) {
-            Main.getInstance().saveResource("lang/" + lang + ".json", false);
-        }
+    public void load() {
+        map = Translatable.getLanguageMapFromResource(this.lang);
+        if (map == null) {
+            Logger.log(Logger.LogLevel.WARNING, "Failed to load language file: " + this.lang);
+            create();
 
-        map = gson.fromJson(new FileReader(getFile()), LinkedHashMap.class);
-
-        if (shouldUpdate()) {
-            map = update();
-
-            save();
-        }
-    }
-
-    public boolean shouldUpdate() {
-        if (Main.getInstance().devMode) return true;
-        if (resourceMap.containsKey("meta.version")) {
-            double version = (double) resourceMap.get("meta.version");
-            if (map.containsKey("meta.version")) {
-                double currentVersion = (double) map.get("meta.version");
-                return version > currentVersion;
+            if (map == null) {
+                Logger.log(Logger.LogLevel.ERROR, "Failed to create language file: " + this.lang);
+                return;
             }
+
+            Logger.log(Logger.LogLevel.SUCCESS, "Created language file " + this.lang + ".json using en.json as a template");
         }
 
-        return true;
+        Logger.log(Logger.LogLevel.INFO, "Loaded language file: " + this.getFileName());
+
+        update();
     }
 
-    public LinkedHashMap<String, Object> update() {
-        LinkedHashMap<String, Object> newMap = resourceMap;
-        boolean modified = !isKnownLanguage();
-        if (newMap.containsKey("meta.modified")) {
-            modified = (boolean) newMap.get("meta.modified");
+    public void update() {
+        LinkedHashMap<String, Object> pluginMap = Translatable.getLanguageMapFromPlugin(this.lang);
+        boolean modified = (map.get("meta.modified") != null
+                && (boolean) map.get("meta.modified"))
+                || !Translatable.isPluginLanguage(this.lang);
+        System.out.println("Modified: " + modified);
+
+        if (pluginMap == null) {
+            pluginMap = Translatable.getLanguageMapFromPlugin("en");
+
+            if (pluginMap == null) {
+                Logger.log(Logger.LogLevel.ERROR, "Failed to update language file: " + this.lang);
+                return;
+            }
         }
 
         if (!modified) {
-            for (String key : newMap.keySet()) {
-                if (map.containsKey(key)) {
-                    newMap.put(key, map.get(key));
-                }
+            Main.getInstance().saveResource("lang/" + this.lang + ".json", true);
+            map = pluginMap;
+            return;
+        }
+
+//        System.out.println(pluginMap.values());
+
+        LinkedHashMap<String, Object> newMap = new LinkedHashMap<>();
+
+        for (String key : pluginMap.keySet()) {
+            if (map.containsKey(key)) {
+                newMap.put(key, map.get(key));
+            } else {
+                newMap.put(key, pluginMap.get(key));
             }
         }
 
-        for (String s : newMap.keySet()) {
-            if (!map.containsKey(s)) {
-                map.put(s, newMap.get(s));
-            }
+        for (String key : map.keySet()) {
+            if (!pluginMap.containsKey(key)) continue;
+            if (newMap.containsKey(key)) continue;
+            newMap.put(key, map.get(key));
         }
 
-        for (String s : map.keySet()) {
-            if (!newMap.containsKey(s)) {
-                newMap.remove(s);
-            }
-        }
-        return newMap;
+        newMap.put("meta.version", pluginMap.get("meta.version"));
+
+        map = newMap;
+        save(map);
+
+        Logger.log(Logger.LogLevel.INFO, "Updated language file: " + this.getFileName());
     }
 
-    private void save() {
+    private void save(LinkedHashMap<String, Object> map) {
+        System.out.println(map.get("meta.version"));
+        System.out.println(map.get("meta.language_name"));
+        System.out.println("Saving language file: " + this.getFileName());
+        File file = new File(Main.getInstance().getDataFolder() + "/lang/" + this.lang + ".json");
+
+        System.out.println("Exists: " + file.exists());
         try {
-            FileWriter writer = new FileWriter(getFile());
+            FileWriter writer = new FileWriter(Main.getInstance().getDataFolder() + "/lang/" + this.lang + ".json");
             gson.toJson(map, writer);
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void create() {
+        if (isCreated()) return;
+        try {
+            FileWriter writer = new FileWriter(getFile());
+            map = Translatable.getLanguageMapFromPlugin("en");
+            map.put("meta.language_name", this.lang);
+            map.put("meta.modified", true);
+            gson.toJson(map, writer);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private boolean isCreated() {
+        return getFile().exists();
     }
 }
