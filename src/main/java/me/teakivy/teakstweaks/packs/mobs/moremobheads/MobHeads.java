@@ -110,6 +110,7 @@ public class MobHeads extends BasePack {
     }
 
     public static boolean shouldDrop(Player player, String key) {
+        if (!chances.containsKey(key + ".chance") || !chances.containsKey(key + ".looting_bonus")) return false;
         double chance = (double) chances.get(key + ".chance");
         double lootingBonus = (double) chances.get(key + ".looting_bonus");
         Random rand = new Random();
@@ -131,8 +132,11 @@ public class MobHeads extends BasePack {
     }
 
     public static void loadJson() {
-        Main.getInstance().saveResource("mob_heads.json", false);
-        java.io.File file = new File(Main.getInstance().getDataFolder() + "mob_heads.json");
+        File file = new File(Main.getInstance().getDataFolder() + "/mob_heads.json");
+        if (!file.exists()) Main.getInstance().saveResource("mob_heads.json", false);
+
+        file = new File(Main.getInstance().getDataFolder() + "/mob_heads.json");
+
         if (!file.exists()) chances = new HashMap<>();
 
         try {
