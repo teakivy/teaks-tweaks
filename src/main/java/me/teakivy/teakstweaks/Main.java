@@ -57,7 +57,7 @@ public final class Main extends JavaPlugin implements Listener {
 
 
         // Language
-        Translatable.init("en_us");
+        Translatable.init(getConfig().getString("settings.language"));
 
         // Update Checker
         getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
