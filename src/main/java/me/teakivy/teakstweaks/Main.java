@@ -146,10 +146,10 @@ public final class Main extends JavaPlugin implements Listener {
     }
 
     private void updateConfig() {
-        int configVersion = this.getConfig().getInt("config.version");
-        int pluginConfigVersion = Objects.requireNonNull(this.getConfig().getDefaults()).getInt("config.version");
+        String configVersion = this.getConfig().getString("config.version");
+        String pluginConfigVersion = Objects.requireNonNull(this.getConfig().getDefaults()).getString("config.version");
 
-        if (!devMode && configVersion < pluginConfigVersion) return;
+        if (!devMode && !configVersion.equalsIgnoreCase(pluginConfigVersion)) return;
 
         try {
             ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList(), true);
@@ -157,7 +157,7 @@ public final class Main extends JavaPlugin implements Listener {
             e.printStackTrace();
         }
 
-        Logger.log(Logger.LogLevel.INFO, "Updated Config to Version: " + this.getConfig().getInt("config.version"));
+        Logger.log(Logger.LogLevel.INFO, "Updated Plugin Config");
     }
 
 }

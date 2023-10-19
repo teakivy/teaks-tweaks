@@ -156,7 +156,7 @@ public class CustomMetrics {
             @Override
             public Map<String, Integer> call() throws Exception {
                 Map<String, Integer> valueMap = new HashMap<>();
-                valueMap.put(Main.getInstance().getConfig().getString("config.plugin-version"), 1);
+                valueMap.put(Main.getInstance().getConfig().getString("config.created-version"), 1);
 
                 return valueMap;
             }
