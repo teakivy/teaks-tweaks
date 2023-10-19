@@ -42,7 +42,7 @@ public class ConfigUpdater {
         FileConfiguration oldConfig = YamlConfiguration.loadConfiguration(toUpdate);
         FileConfiguration newConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(plugin.getResource(resourceName)));
         if (setVer) {
-            oldConfig.set("config.version", newConfig.getInt("config.version"));
+            oldConfig.set("config.version", newConfig.getString("config.version"));
         }
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(toUpdate), StandardCharsets.UTF_8));
 

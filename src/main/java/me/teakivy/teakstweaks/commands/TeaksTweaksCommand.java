@@ -194,7 +194,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
         sender.sendMessage("");
         sender.sendMessage(getString("info.author").replace("%author%", get("plugin.author")));
         sender.sendMessage(getString("info.config_version").replace("%config_version%", Main.getInstance().getConfig().getString("config.version")));
-        sender.sendMessage(getString("info.config_generated").replace("%config_generated%", Main.getInstance().getConfig().getString("config.plugin-version")));
+        sender.sendMessage(getString("info.config_generated").replace("%config_generated%", Main.getInstance().getConfig().getString("config.created-version")));
         if (Main.getInstance().getConfig().getBoolean("config.dev-mode")) {
             sender.sendMessage(getString("info.dev_mode_enabled"));
         }

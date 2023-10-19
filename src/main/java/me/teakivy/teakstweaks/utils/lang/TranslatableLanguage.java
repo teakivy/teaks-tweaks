@@ -102,7 +102,7 @@ public class TranslatableLanguage {
             newMap.put(key, map.get(key));
         }
 
-        newMap.put("meta.version", pluginMap.get("meta.version"));
+        newMap.put("meta.version", Main.getInstance().getConfig().getString("config.version"));
 
         map = newMap;
         save(map);
