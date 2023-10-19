@@ -8,7 +8,8 @@ public class Head {
     static DataManager data = main.data;
 
     public static double[] getChance(String path) {
-        double[] chances = {data.getConfig().getDouble("mob-heads." + path + ".chance"), data.getConfig().getDouble("mob-heads." + path + ".looting-bonus")};
+        double[] chances = {
+                data.getConfig().getDouble("mob-heads." + path + ".chance"), data.getConfig().getDouble("mob-heads." + path + ".looting-bonus")};
         return chances;
     }
 
