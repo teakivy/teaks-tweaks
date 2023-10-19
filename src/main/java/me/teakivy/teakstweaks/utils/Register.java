@@ -75,6 +75,9 @@ public class Register {
     private final Map<String, BasePack> packs;
     private final List<String> enabledPacks;
 
+    /**
+     * Creates a new Register object
+     */
     public Register() {
         enabledPacks = new ArrayList<>();
 
@@ -144,10 +147,17 @@ public class Register {
 
     }
 
+    /**
+     * Registers all packs in the config
+     */
     public void registerAll() {
         registerAll(false);
     }
 
+    /**
+     * Registers all packs in the config
+     * @param bypassEnabled If true, will register all packs regardless of if they are enabled or not
+     */
     public void registerAll(boolean bypassEnabled) {
         Main main = Main.getInstance();
         unregisterAll();
@@ -158,10 +168,17 @@ public class Register {
         }
     }
 
+    /**
+     * Unregisters all packs
+     */
     public void unregisterAll() {
         unregisterAll(false);
     }
 
+    /**
+     * Unregisters all packs
+     * @param bypassEnabled If true, will unregister all packs regardless of if they are enabled or not
+     */
     public void unregisterAll(boolean bypassEnabled) {
         Main main = Main.getInstance();
         main.clearPacks();
@@ -172,6 +189,10 @@ public class Register {
         }
     }
 
+    /**
+     * Unregisters a pack
+     * @param pack The pack to unregister
+     */
     public void unregisterPack(String pack) {
         BasePack pk = packs.get(pack);
         if (pk != null) pk.unregister();
@@ -179,6 +200,10 @@ public class Register {
         enabledPacks.remove(pack);
     }
 
+    /**
+     * Registers a pack
+     * @param pack The pack to register
+     */
     public void registerPack(String pack) {
         BasePack pk = packs.get(pack);
         if (pk != null) pk.init();
@@ -186,6 +211,9 @@ public class Register {
         enabledPacks.add(pack);
     }
 
+    /**
+     * Registers all commands
+     */
     public static void registerCommands() {
         AbstractCommand[] cmds = {
             new TeaksTweaksCommand(),
@@ -222,15 +250,27 @@ public class Register {
         }
     }
 
+    /**
+     * Gets all packs
+     * @return A set of all packs
+     */
     public Set<String> getAllPacks() {
         Main main = Main.getInstance();
         return Objects.requireNonNull(main.getConfig().getConfigurationSection("packs")).getKeys(false);
     }
 
+    /**
+     * Gets all enabled packs
+     * @return A list of all enabled packs
+     */
     public List<String> getEnabledPacks() {
         return enabledPacks;
     }
 
+    /**
+     * Gets all disabled packs
+     * @return A list of all disabled packs
+     */
     public List<String> getDisabledPacks() {
         List<String> disabledPacks = new ArrayList<>();
         for (String pack : getAllPacks()) {
@@ -241,6 +281,11 @@ public class Register {
         return disabledPacks;
     }
 
+    /**
+     * Gets a pack
+     * @param pack The pack to get
+     * @return The pack
+     */
     public BasePack getPack(String pack) {
         return packs.get(pack);
     }

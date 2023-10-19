@@ -143,7 +143,7 @@ public class AFK extends BasePack {
                 }
             }
             if (main.getConfig().getBoolean("packs.afk-display.message.display-to-console")) {
-                Logger.log(Logger.LogLevel.INFO, ChatColor.stripColor(Translatable.get("afk_display.other_now_afk").replace("%player%", player.getName())));
+                Logger.info(ChatColor.stripColor(Translatable.get("afk_display.other_now_afk").replace("%player%", player.getName())));
             }
         } else {
             if (main.getConfig().getBoolean("packs.afk-display.message.display-to-self")) {
@@ -157,7 +157,7 @@ public class AFK extends BasePack {
                 }
             }
             if (main.getConfig().getBoolean("packs.afk-display.message.display-to-console")) {
-                Logger.log(Logger.LogLevel.INFO, ChatColor.stripColor(Translatable.get("afk_display.other_not_afk").replace("%player%", player.getName())));
+                Logger.info(ChatColor.stripColor(Translatable.get("afk_display.other_not_afk").replace("%player%", player.getName())));
             }
         }
     }

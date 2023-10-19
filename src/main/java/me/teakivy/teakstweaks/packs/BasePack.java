@@ -156,7 +156,7 @@ public class BasePack implements Listener {
 	public void init() {
 		registerEvents(this);
 		main.addPack(name);
-		Logger.log(Logger.LogLevel.INFO, "Registered Pack: " + packType.getColor() + name);
+		Logger.info("Registered Pack: " + packType.getColor() + name);
 	}
 
 	/**

@@ -179,10 +179,10 @@ public class MultiSleep extends BasePack {
             }
         }
 
-        Logger.log(Logger.LogLevel.INFO, sleepAvaliable + "");
-        Logger.log(Logger.LogLevel.INFO, sleeping + "");
-        Logger.log(Logger.LogLevel.INFO, (100 / sleepAvaliable * sleeping) + "");
-        Logger.log(Logger.LogLevel.INFO, sleepingPercentage + "");
+        Logger.info(sleepAvaliable + "");
+        Logger.info(sleeping + "");
+        Logger.info((100 / sleepAvaliable * sleeping) + "");
+        Logger.info(sleepingPercentage + "");
     }
 
 }

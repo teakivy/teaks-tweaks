@@ -1,6 +1,7 @@
-package me.teakivy.teakstweaks.utils;
+package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.Bukkit;
 import org.bukkit.command.*;
@@ -81,7 +82,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
             }
         }
 
-        Logger.log(Logger.LogLevel.INFO, get("startup.register.command").replace("%command%", this.command));
+        Logger.info(get("startup.register.command").replace("%command%", this.command));
     }
 
     final CommandMap getCommandMap() {

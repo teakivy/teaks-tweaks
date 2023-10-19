@@ -8,6 +8,11 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryInteractEvent;
 
 public class GUIListener implements Listener {
+
+    /**
+     * Handles the GUI clicks
+     * @param event InventoryClickEvent
+     */
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         if (event.getView().getTitle().equals(Translatable.get("mechanics.gui.title"))) {
@@ -22,6 +27,10 @@ public class GUIListener implements Listener {
         }
     }
 
+    /**
+     * Prevents players from interacting with the GUI
+     * @param event InventoryInteractEvent
+     */
     @EventHandler
     public void onInv(InventoryInteractEvent event) {
         if (event.getView().getTitle().equals("Paginated GUI")) {

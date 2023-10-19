@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.packs.survival.durabilityping.DuraPing;
-import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import net.md_5.bungee.api.chat.*;
 import net.md_5.bungee.api.chat.hover.content.Text;

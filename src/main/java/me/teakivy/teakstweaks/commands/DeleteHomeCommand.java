@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.packs.teleportation.homes.Home;
 import me.teakivy.teakstweaks.packs.teleportation.homes.HomesPack;
-import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

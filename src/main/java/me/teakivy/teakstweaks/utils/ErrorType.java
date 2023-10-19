@@ -21,10 +21,18 @@ public enum ErrorType {
         this.text = error;
     }
 
+    /**
+     * Gets the error message
+     * @return The error message
+     */
     public String m() {
         return text;
     }
 
+    /**
+     * Converts the error message to a string
+     * @return The error message
+     */
     @Override
     public String toString() {
         return text;

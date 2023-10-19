@@ -8,6 +8,10 @@ import java.io.IOException;
 
 public class Credits {
 
+    /**
+     * Creates the credits.txt file
+     * @throws IOException If the file cannot be created
+     */
     public void createCredits() throws IOException {
         File credits = new File(Main.getInstance().getDataFolder(), "credits.txt");
         FileWriter writer = new FileWriter(credits);

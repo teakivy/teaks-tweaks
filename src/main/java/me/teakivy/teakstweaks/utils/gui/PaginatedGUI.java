@@ -19,11 +19,20 @@ public class PaginatedGUI {
     private final List<ItemStack> items;
     private final Inventory inv;
 
+    /**
+     * Creates a new PaginatedGUI
+     * @param items The items to display
+     * @param title The title of the GUI
+     */
     public PaginatedGUI(List<ItemStack> items, String title) {
         this.items = items;
         this.inv = Bukkit.createInventory(null, 54, title);
     }
 
+    /**
+     * Opens the GUI for a player
+     * @param player The player to open the GUI for
+     */
     public void open(Player player) {
         player.openInventory(inv);
         update();
@@ -31,6 +40,9 @@ public class PaginatedGUI {
         guis.put(player.getUniqueId(), this);
     }
 
+    /**
+     * Goes to the next page
+     */
     public void nextPage() {
         if (page < items.size() / 45) {
             page++;
@@ -38,6 +50,9 @@ public class PaginatedGUI {
         }
     }
 
+    /**
+     * Goes to the previous page
+     */
     public void previousPage() {
         if (page > 0) {
             page--;
@@ -45,6 +60,9 @@ public class PaginatedGUI {
         }
     }
 
+    /**
+     * Updates the GUI
+     */
     private void update() {
         inv.clear();
         for (int i = 0; i < 45; i++) {
@@ -68,15 +86,28 @@ public class PaginatedGUI {
         if (page > 0) inv.setItem(45, prevButton);
     }
 
+    /**
+     * Gets the GUI for a player
+     * @param player The player
+     * @return The GUI
+     */
     public static PaginatedGUI getGui(Player player) {
         return guis.get(player.getUniqueId());
     }
 
+    /**
+     * Goes to the next page
+     * @param player The player
+     */
     public static void next(Player player) {
         PaginatedGUI gui = getGui(player);
         gui.nextPage();
     }
 
+    /**
+     * Goes to the previous page
+     * @param player The player
+     */
     public static void previous(Player player) {
         PaginatedGUI gui = getGui(player);
         gui.previousPage();

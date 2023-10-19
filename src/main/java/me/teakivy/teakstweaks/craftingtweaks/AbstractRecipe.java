@@ -31,7 +31,7 @@ public class AbstractRecipe {
     }
 
     public void init() {
-        Logger.log(Logger.LogLevel.INFO, Translatable.get("startup.register.crafting_tweak").replace("%name%", this.name));
+        Logger.info(Translatable.get("startup.register.crafting_tweak").replace("%name%", this.name));
         main.addCraftingTweaks(this.name);
         CraftingRegister.addEnabledRecipe(this);
         this.registerRecipes();

@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.packs.teakstweaks.quickcommands;
 
-import me.teakivy.teakstweaks.utils.AbstractCommand;
+import me.teakivy.teakstweaks.commands.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

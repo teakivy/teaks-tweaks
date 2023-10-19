@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.packs.hermitcraft.thundershrine.Shrine;
-import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.Location;
 import org.bukkit.command.Command;

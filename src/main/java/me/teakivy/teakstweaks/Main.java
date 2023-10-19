@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
 import me.teakivy.teakstweaks.packs.hermitcraft.tag.Tag;
 import me.teakivy.teakstweaks.utils.*;
@@ -9,6 +8,8 @@ import me.teakivy.teakstweaks.utils.datamanager.DataManager;
 import me.teakivy.teakstweaks.utils.gui.GUIListener;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
+import me.teakivy.teakstweaks.utils.update.UpdateChecker;
+import me.teakivy.teakstweaks.utils.update.UpdateJoinAlert;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.Listener;
@@ -83,9 +84,9 @@ public final class Main extends JavaPlugin implements Listener {
         }
 
         // Plugin startup logic
-        Logger.log(Logger.LogLevel.INFO, "");
-        Logger.log(Logger.LogLevel.INFO, Translatable.get("startup.plugin.started").replace("%version%", this.getDescription().getVersion()));
-        Logger.log(Logger.LogLevel.INFO, "");
+        Logger.info("");
+        Logger.info(Translatable.get("startup.plugin.started").replace("%version%", this.getDescription().getVersion()));
+        Logger.info("");
 
         // Packs
         register = new Register();
@@ -95,7 +96,7 @@ public final class Main extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        Logger.log(Logger.LogLevel.INFO, Translatable.get("startup.plugin.shutting_down"));
+        Logger.info(Translatable.get("startup.plugin.shutting_down"));
 
         try {
             data.saveConfig();
@@ -157,7 +158,7 @@ public final class Main extends JavaPlugin implements Listener {
             e.printStackTrace();
         }
 
-        Logger.log(Logger.LogLevel.INFO, "Updated Plugin Config");
+        Logger.info("Updated Plugin Config");
     }
 
     public static Gson getGson() {

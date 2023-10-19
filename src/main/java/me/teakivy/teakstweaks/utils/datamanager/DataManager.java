@@ -15,11 +15,18 @@ public class DataManager {
     private FileConfiguration dataConfig = null;
     private File configFile = null;
 
+    /**
+     * Creates a new DataManager
+     * @param plugin The plugin
+     */
     public DataManager(Main plugin) {
         this.plugin = plugin;
         saveDefaultConfig();
     }
 
+    /**
+     * Reloads the config
+     */
     public void reloadConfig() {
         if (this.configFile == null)
             this.configFile = new File(this.plugin.getDataFolder(), "data.yml");
@@ -34,16 +41,27 @@ public class DataManager {
         }
     }
 
+    /**
+     * Gets the config
+     * @return
+     */
     public FileConfiguration getConfig() {
         if (this.dataConfig == null) reloadConfig();
         return this.dataConfig;
     }
 
+    /**
+     * Saves the config
+     * @throws IOException If the config cannot be saved
+     */
     public void saveConfig() throws IOException {
         if (this.dataConfig == null || this.configFile == null) return;
         this.getConfig().save(this.configFile);
     }
 
+    /**
+     * Saves the default config
+     */
     public void saveDefaultConfig() {
         if (this.configFile == null)
             this.configFile = new File(this.plugin.getDataFolder(), "data.yml");

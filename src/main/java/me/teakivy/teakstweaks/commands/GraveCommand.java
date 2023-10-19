@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.packs.survival.graves.GraveEvents;
-import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;

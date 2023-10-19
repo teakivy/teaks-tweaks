@@ -88,7 +88,7 @@ public class GraveCreator {
 
         if (!config.getBoolean("console-info")) return;
 
-        Logger.log(Logger.LogLevel.INFO, Translatable.get("graves.log.created")
+        Logger.info(Translatable.get("graves.log.created")
                 .replace("%player%", player.getName())
                 .replace("%x%", loc.getBlockX() + "")
                 .replace("%y%", loc.getBlockY() + "")
@@ -101,13 +101,13 @@ public class GraveCreator {
             if (item == null) continue;
             items += item.getAmount();
         }
-        Logger.log(Logger.LogLevel.INFO, Translatable.get("graves.log.contains")
+        Logger.info(Translatable.get("graves.log.contains")
                 .replace("%item_count%", items + "")
                 .replace("%xp_count%", xp + "")
         );
         for (ItemStack item : player.getInventory().getContents()) {
             if (item == null) continue;
-            Logger.log(Logger.LogLevel.INFO, " - " + ChatColor.GOLD + item.getType().name() + ChatColor.WHITE + " x " + ChatColor.GOLD + item.getAmount());
+            Logger.info(" - " + ChatColor.GOLD + item.getType().name() + ChatColor.WHITE + " x " + ChatColor.GOLD + item.getAmount());
         }
     }
 

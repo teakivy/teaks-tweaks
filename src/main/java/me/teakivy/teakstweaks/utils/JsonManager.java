@@ -49,6 +49,13 @@ public class JsonManager {
         }
     }
 
+    /**
+     * Updates a json object with another json object
+     * @param from The json object to update from
+     * @param to The json object to update to
+     * @param safe If the update should be safe (disable overriding existing values)
+     * @return The updated json object
+     */
     public static LinkedHashMap<String, Object> updateJson(LinkedHashMap<String, Object> from, LinkedHashMap<String, Object> to, boolean safe) {
         if (!safe) return to;
         LinkedHashMap<String, Object> newJson = new LinkedHashMap<>();
