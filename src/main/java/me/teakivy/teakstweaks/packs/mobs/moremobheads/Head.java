@@ -9,7 +9,8 @@ public class Head {
 
     public static double[] getChance(String path) {
         double[] chances = {
-                data.getConfig().getDouble("mob-heads." + path + ".chance"), data.getConfig().getDouble("mob-heads." + path + ".looting-bonus")};
+                data.getConfig().getDouble("mob-heads." + path + ".chance"), data.getConfig().getDouble("mob-heads." + path + ".looting-bonus")
+        };
         return chances;
     }
 
