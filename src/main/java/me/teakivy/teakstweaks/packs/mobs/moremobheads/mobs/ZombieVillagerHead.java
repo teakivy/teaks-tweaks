@@ -10,7 +10,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 public class ZombieVillagerHead extends BaseMobHead {
 
     public ZombieVillagerHead() {
-        super(EntityType.ZOMBIE_VILLAGER, "zombie-villager", Sound.ENTITY_ZOMBIE_VILLAGER_AMBIENT);
+        super(EntityType.ZOMBIE_VILLAGER, "zombie_villager", Sound.ENTITY_ZOMBIE_VILLAGER_AMBIENT);
 
         addHeadTexture("armorer", "Armorer Zombie Villager Head", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzg2NzllMDM0NzY3ZDUxODY2MGQ5NDE2ZGM1ZWFmMzE5ZDY5NzY4MmFjNDBjODg2ZTNjMmJjOGRmYTFkZTFkIn19fQ");
         addHeadTexture("butcher", "Butcher Zombie Villager Head", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWNjZThkNmNlNDEyNGNlYzNlODRhODUyZTcwZjUwMjkzZjI0NGRkYzllZTg1NzhmN2Q2ZDg5MjllMTZiYWQ2OSJ9fX0");

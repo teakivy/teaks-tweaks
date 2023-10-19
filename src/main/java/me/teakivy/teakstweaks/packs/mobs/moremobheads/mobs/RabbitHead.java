@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.mobs.moremobheads.mobs;
 
 import me.teakivy.teakstweaks.packs.mobs.moremobheads.BaseMobHead;
-import me.teakivy.teakstweaks.packs.mobs.moremobheads.Head;
 import me.teakivy.teakstweaks.packs.mobs.moremobheads.MobHeads;
 import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
@@ -28,10 +27,10 @@ public class RabbitHead extends BaseMobHead {
         Rabbit rabbit = (Rabbit) event.getEntity();
 
         String key = this.key;
-        if (getRabbitKey(event).equals("killer")) key = "killer-rabbit";
-        if (getRabbitKey(event).equals("toast")) key = "toast-rabbit";
+        if (getRabbitKey(event).equals("killer")) key = "killer_rabbit";
+        if (getRabbitKey(event).equals("toast")) key = "toast_rabbit";
 
-        return MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance(key));
+        return MobHeads.shouldDrop(event.getEntity().getKiller(), key);
     }
 
     @Override

@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.packs.items.playerheaddrops;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
-import me.teakivy.teakstweaks.packs.mobs.moremobheads.Head;
 import me.teakivy.teakstweaks.packs.mobs.moremobheads.MobHeads;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -27,7 +26,7 @@ public class HeadDrop extends BasePack {
         Player player = event.getEntity();
         if (player.isDead()) {
             if (player.getKiller() != null) {
-                if (!MobHeads.dropChance(event.getEntity().getKiller(), Head.getPlayerChance())) return;
+                if (!MobHeads.shouldDrop(event.getEntity().getKiller(), "player")) return;
                 Player killer = player.getKiller();
                 event.getDrops().add(getHead(player, killer.getName()));
             }

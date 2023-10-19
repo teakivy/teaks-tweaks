@@ -1,12 +1,13 @@
 package me.teakivy.teakstweaks;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
 import me.teakivy.teakstweaks.packs.hermitcraft.tag.Tag;
 import me.teakivy.teakstweaks.utils.*;
 import me.teakivy.teakstweaks.utils.datamanager.DataManager;
 import me.teakivy.teakstweaks.utils.gui.GUIListener;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
-import me.teakivy.teakstweaks.utils.lang.TranslatableLanguage;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
@@ -14,7 +15,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,6 +36,7 @@ public final class Main extends JavaPlugin implements Listener {
 
     public Tag tagListener;
     public boolean devMode;
+    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     @Override
     public void onEnable() {
@@ -158,6 +159,10 @@ public final class Main extends JavaPlugin implements Listener {
         }
 
         Logger.log(Logger.LogLevel.INFO, "Updated Plugin Config");
+    }
+
+    public static Gson getGson() {
+        return gson;
     }
 
 }

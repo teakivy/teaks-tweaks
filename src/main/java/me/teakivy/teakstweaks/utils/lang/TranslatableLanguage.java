@@ -1,7 +1,5 @@
 package me.teakivy.teakstweaks.utils.lang;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.utils.Logger;
 
@@ -10,7 +8,6 @@ import java.util.LinkedHashMap;
 
 public class TranslatableLanguage {
     private String lang;
-    public static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     public LinkedHashMap<String, Object> map = new LinkedHashMap<>();
     public TranslatableLanguage(String lang) {
         this.lang = lang;
@@ -113,7 +110,7 @@ public class TranslatableLanguage {
     private void save(LinkedHashMap<String, Object> map) {
         try {
             FileWriter writer = new FileWriter(Main.getInstance().getDataFolder() + "/lang/" + this.lang + ".json");
-            gson.toJson(map, writer);
+            Main.getGson().toJson(map, writer);
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -127,7 +124,7 @@ public class TranslatableLanguage {
             map = Translatable.getLanguageMapFromPlugin("en");
             map.put("meta.language_name", this.lang);
             map.put("meta.modified", true);
-            gson.toJson(map, writer);
+            Main.getGson().toJson(map, writer);
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();

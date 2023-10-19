@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.mobs.moremobheads.mobs;
 
 import me.teakivy.teakstweaks.packs.mobs.moremobheads.BaseMobHead;
-import me.teakivy.teakstweaks.packs.mobs.moremobheads.Head;
 import me.teakivy.teakstweaks.packs.mobs.moremobheads.MobHeads;
 import org.bukkit.Sound;
 import org.bukkit.entity.Axolotl;
@@ -24,9 +23,9 @@ public class AxolotlHead extends BaseMobHead {
         Axolotl axolotl = (Axolotl) event.getEntity();
 
         String key = this.key;
-        if (axolotl.getVariant() == Axolotl.Variant.BLUE) key = "blue-axolotl";
+        if (axolotl.getVariant() == Axolotl.Variant.BLUE) key = "blue_axolotl";
 
-        return MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance(key));
+        return MobHeads.shouldDrop(event.getEntity().getKiller(), key);
     }
 
     @Override

@@ -1,7 +1,5 @@
 package me.teakivy.teakstweaks.utils.lang;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import me.teakivy.teakstweaks.Main;
 import org.bukkit.ChatColor;
 
@@ -11,7 +9,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Translatable {
-    public static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final List<TranslatableLanguage> languages = new ArrayList<>();
 
     private static TranslatableLanguage currentLanguage;
@@ -64,7 +61,7 @@ public class Translatable {
         if (!file.exists()) return null;
 
         try {
-            return gson.fromJson(new FileReader(file), LinkedHashMap.class);
+            return Main.getGson().fromJson(new FileReader(file), LinkedHashMap.class);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -84,6 +81,6 @@ public class Translatable {
 
         Reader targetReader = new InputStreamReader(initialStream);
 
-        return gson.fromJson(targetReader, LinkedHashMap.class);
+        return Main.getGson().fromJson(targetReader, LinkedHashMap.class);
     }
 }

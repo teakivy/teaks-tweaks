@@ -12,6 +12,7 @@ import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.block.Skull;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -56,13 +57,12 @@ public class BaseMobHead implements Listener {
         if (event.getEntity().getType() != entity) return;
         if (!dropHead(event)) return;
 
-
         event.getDrops().add(getHead(event));
     }
 
     public boolean dropHead(EntityDeathEvent event) {
         if (Main.getInstance().getConfig().getBoolean("config.dev-mode")) return true;
-        return MobHeads.dropChance(event.getEntity().getKiller(), Head.getChance(key));
+        return shouldDrop(event.getEntity().getKiller());
     }
 
     public ItemStack getHead(EntityDeathEvent event) {
@@ -179,10 +179,11 @@ public class BaseMobHead implements Listener {
             e.printStackTrace();
         }
 
-//        meta.setOwner(name);
         head.setItemMeta(meta);
         return head;
     }
 
-
+    protected boolean shouldDrop(Player player) {
+        return MobHeads.shouldDrop(player, key);
+    }
 }
