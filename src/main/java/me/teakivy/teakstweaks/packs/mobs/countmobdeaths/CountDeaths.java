@@ -15,7 +15,7 @@ import java.util.Objects;
 public class CountDeaths extends BasePack {
 
     public CountDeaths() {
-        super("Count Mob Deaths", "count-mob-deaths", PackType.MOBS, Material.ECHO_SHARD);
+        super("count-mob-deaths", PackType.MOBS, Material.ECHO_SHARD);
     }
 
     Objective objective;

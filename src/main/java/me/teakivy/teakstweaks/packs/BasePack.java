@@ -33,66 +33,6 @@ public class BasePack implements Listener {
 	public String translatableKey;
 
 	/**
-	 * *OLD* Set up the pack
-	 * @param name Name of the pack
-	 * @param path Config path
-	 * @param packType PackType
-	 * @param material Material for the item
-	 * @param description Description of the pack
-	 */
-	@Deprecated
-	public BasePack(String name, String path, PackType packType, Material material, String... description) {
-		this.translatableKey = path.replaceAll("-", "_");
-		this.name = name;
-		this.path = path;
-		this.packType = packType;
-		this.config = main.getConfig().getConfigurationSection("packs." + path);
-		this.permission = "teakstweaks." + path;
-
-		item = new ItemStack(material);
-
-		List<String> lore = new ArrayList<>();
-		for (String line : description) {
-			StringBuilder newLine = new StringBuilder();
-			for (String word : line.split(" ")) {
-				if (newLine.length() > 30) {
-					lore.add(ChatColor.GRAY + newLine.toString());
-					newLine = new StringBuilder();
-				}
-				newLine.append(word).append(" ");
-			}
-			lore.add(ChatColor.GRAY + newLine.toString());
-			lore.add("");
-		}
-		if (lore.size() >= 1) lore.remove(lore.size() - 1);
-
-		if (config.getKeys(false).size() > 1) {
-			lore.add("");
-			lore.add(packType.getColor() + "Config");
-		}
-
-		for (String key : config.getKeys(false)) {
-			if (key.equals("enabled")) continue;
-			if (config.get(key).toString().startsWith("MemorySection")) {
-				continue;
-			}
-
-			lore.add("  " + ChatColor.GRAY + transformKey(key) + ": " + ChatColor.RESET + packType.getColor() + config.get(key));
-		}
-
-		lore.add("");
-
-		lore.add(packType.getColor() + packType.getName());
-
-		item.setLore(lore);
-
-		item.editMeta(meta -> {
-			meta.setDisplayName(ChatColor.RESET + packType.getColor().toString() + name);
-		});
-	}
-
-
-	/**
 	 * Set up the pack
 	 * @param path Config path
 	 * @param packType PackType
