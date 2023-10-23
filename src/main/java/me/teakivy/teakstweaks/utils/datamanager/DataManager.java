@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 
 public class DataManager {
 
-    private TeaksTweaks plugin;
+    private final TeaksTweaks plugin;
     private FileConfiguration dataConfig = null;
     private File configFile = null;
 

@@ -20,7 +20,7 @@ import java.util.UUID;
 
 public class HomesPack extends BasePack {
 
-    private static List<Home> homes = new ArrayList<>();
+    private static final List<Home> homes = new ArrayList<>();
     private static final HashMap<UUID, Long> cooldowns = new HashMap<>();
 
     public HomesPack() {

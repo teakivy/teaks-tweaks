@@ -45,7 +45,6 @@ public class KeepSmall extends BasePack {
                 }
             }, 10L);
         } catch (NoClassDefFoundError err) {
-            return;
         }
     }
     public Entity getEntityByUniqueId(UUID uniqueId) {

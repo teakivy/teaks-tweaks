@@ -150,9 +150,9 @@ public class TPACommand extends AbstractCommand {
 
 
     class TPARequest {
-        private Player from;
-        private Player to;
-        private long time;
+        private final Player from;
+        private final Player to;
+        private final long time;
         private boolean accepted = false;
         public TPARequest(Player from, Player to) {
             this.from = from;

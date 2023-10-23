@@ -234,7 +234,7 @@ public class ConfigUpdater {
             } else if (value instanceof List) {
                 builder.append(getListAsString((List) value, actualKey, prefixSpaces.toString(), yaml));
             } else {
-                builder.append(prefixSpaces.toString()).append(actualKey).append(": ").append(yaml.dump(value));
+                builder.append(prefixSpaces).append(actualKey).append(": ").append(yaml.dump(value));
             }
         }
     }

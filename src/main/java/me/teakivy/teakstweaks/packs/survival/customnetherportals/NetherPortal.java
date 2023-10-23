@@ -158,10 +158,10 @@ public class NetherPortal extends BasePack {
         Vector southVector = new Vector(0, 0, 1);
         Vector eastVector = new Vector(1, 0, 0);
         Vector westVector = new Vector(-1, 0, 0);
-        RayTraceResult northResult = world.rayTraceBlocks(location, northVector, (double)this.portalMaxWidth);
-        RayTraceResult southResult = world.rayTraceBlocks(location, southVector, (double)this.portalMaxWidth);
-        RayTraceResult eastResult = world.rayTraceBlocks(location, eastVector, (double)this.portalMaxWidth);
-        RayTraceResult westResult = world.rayTraceBlocks(location, westVector, (double)this.portalMaxWidth);
+        RayTraceResult northResult = world.rayTraceBlocks(location, northVector, this.portalMaxWidth);
+        RayTraceResult southResult = world.rayTraceBlocks(location, southVector, this.portalMaxWidth);
+        RayTraceResult eastResult = world.rayTraceBlocks(location, eastVector, this.portalMaxWidth);
+        RayTraceResult westResult = world.rayTraceBlocks(location, westVector, this.portalMaxWidth);
         if (this.rayTraceResultValid(northResult) && this.rayTraceResultValid(southResult)) {
             this.leftFace = BlockFace.NORTH;
             this.rightFace = BlockFace.SOUTH;

@@ -3,8 +3,8 @@ package me.teakivy.teakstweaks.utils;
 import java.util.HashMap;
 
 public class TriMap<K, V, T> {
-    private HashMap<K, V> leftMap = new HashMap<>();
-    private HashMap<K, T> rightMap = new HashMap<>();
+    private final HashMap<K, V> leftMap = new HashMap<>();
+    private final HashMap<K, T> rightMap = new HashMap<>();
 
     /**
      * Puts a value into the map

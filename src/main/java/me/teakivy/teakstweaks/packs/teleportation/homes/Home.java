@@ -12,9 +12,9 @@ import org.bukkit.persistence.PersistentDataType;
 import java.util.UUID;
 
 public class Home {
-    private String name;
-    private UUID owner;
-    private Location loc;
+    private final String name;
+    private final UUID owner;
+    private final Location loc;
 
     public Home(String name, UUID owner, Location loc) {
         this.name = name;

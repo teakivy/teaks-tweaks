@@ -71,7 +71,7 @@ public class FishingLootTable {
 
     public static ItemStack generateFishingLoot(int los, boolean inJungle) {
         Random rand = new Random();
-        double lootType = (double) ((rand.nextInt(10000) + 1) / 100);
+        double lootType = (rand.nextInt(10000) + 1) / 100;
         if (!inJungle) {
             if (los == 0) {
                 if (lootType <= 85) {

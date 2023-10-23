@@ -163,8 +163,7 @@ public class DuraPing extends BasePack {
         if (type == Material.NETHERITE_BOOTS) return true;
 
         if (type == Material.ELYTRA) return true;
-        if (type == Material.TURTLE_HELMET) return true;
-        return false;
+        return type == Material.TURTLE_HELMET;
     }
 
     public static String getSetting(Player player, String setting) {

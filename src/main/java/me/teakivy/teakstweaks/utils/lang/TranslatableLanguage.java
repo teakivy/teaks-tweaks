@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.LinkedHashMap;
 
 public class TranslatableLanguage {
-    private String lang;
+    private final String lang;
     public LinkedHashMap<String, Object> map = new LinkedHashMap<>();
 
     /**

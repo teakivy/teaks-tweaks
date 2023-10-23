@@ -261,7 +261,7 @@ public class DurabilityPingCommand extends AbstractCommand {
 
     public TextComponent createCheckBox(Boolean checked, String command, String loreName, String loreDescription) {
         TextComponent box;
-        final String replacement = "" + loreName + (loreDescription == null ? "" : "\n" + ChatColor.GRAY + loreDescription);
+        final String replacement = loreName + (loreDescription == null ? "" : "\n" + ChatColor.GRAY + loreDescription);
         if (checked) {
             box = new TextComponent(ChatColor.GREEN + "[ ✔ ]");
             box.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(getString("checkbox.yes.hover").replace("%name%", replacement))));
