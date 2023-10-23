@@ -27,26 +27,38 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
 
     protected static CommandMap cmap;
 
-    public AbstractCommand(String parentPack, String command) {
-        this(parentPack, command, null, null, null, null);
-    }
-
-    public AbstractCommand(String parentPack, String command, String usage) {
-        this(parentPack, command, usage, null, null, null);
-    }
-
+    /**
+     * Create a new AbstractCommand
+     * @param parentPack The pack this command belongs to
+     * @param command The command name
+     * @param usage The command usage
+     * @param description The command description
+     */
     public AbstractCommand(String parentPack, String command, String usage, String description) {
         this(parentPack, command, usage, description, null, null);
     }
 
-    public AbstractCommand(String parentPack, String command, String usage, String description, String permissionMessage) {
-        this(parentPack, command, usage, description, permissionMessage, null);
-    }
-
+    /**
+     * Create a new AbstractCommand
+     * @param parentPack The pack this command belongs to
+     * @param command The command name
+     * @param usage The command usage
+     * @param description The command description
+     * @param aliases The command aliases
+     */
     public AbstractCommand(String parentPack, String command, String usage, String description, List<String> aliases) {
         this(parentPack, command, usage, description, null, aliases);
     }
 
+    /**
+     * Create a new AbstractCommand
+     * @param parentPack The pack this command belongs to
+     * @param command The command name
+     * @param usage The command usage
+     * @param description The command description
+     * @param permissionMessage The permission message
+     * @param aliases The command aliases
+     */
     public AbstractCommand(String parentPack, String command, String usage, String description, String permissionMessage, List<String> aliases) {
         this.parentPack = parentPack;
         this.command = command.toLowerCase();
@@ -57,6 +69,9 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         this.permission = "teakstweaks." + parentPack + ".command." + command;
     }
 
+    /**
+     * Register the command
+     */
     public void register() {
         if (this.command.equalsIgnoreCase("mechanics") &&
                 !Main.getInstance().getConfig().getBoolean("settings.mechanics-command")) return;
@@ -85,6 +100,10 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         Logger.info(get("startup.register.command").replace("%command%", this.command));
     }
 
+    /**
+     * Get the bukkit command map
+     * @return
+     */
     final CommandMap getCommandMap() {
         if (cmap == null) {
             try {
@@ -97,36 +116,94 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         return getCommandMap();
     }
 
+    /**
+     * Reflection Commands
+     */
     private final class ReflectCommand extends Command {
         private AbstractCommand exe = null;
-        protected ReflectCommand(String command) { super(command); }
+
+        /**
+         * Create a new ReflectCommand instance
+         * @param command The command name
+         */
+        private ReflectCommand(String command) { super(command); }
+
+        /**
+         * Set the executor for the command
+         * @param exe The executor
+         */
         public void setExecutor(AbstractCommand exe) { this.exe = exe; }
+
+        /**
+         * Execute the command
+         * @param sender The command sender
+         * @param commandLabel The command label
+         * @param args The command arguments
+         * @return Whether or not the command was successful
+         */
         @Override public boolean execute(CommandSender sender, String commandLabel, String[] args) {
             if (exe != null) { return exe.onCommand(sender, this, commandLabel, args); }
             return false;
         }
 
+        /**
+         * Tab complete the command
+         * @param sender The command sender
+         * @param alais The command alias
+         * @param args The command arguments
+         * @return A list of possible tab completions
+         */
         @Override  public List<String> tabComplete(CommandSender sender, String alais, String[] args) {
             if (exe != null) { return exe.onTabComplete(sender, this, alais, args); }
             return null;
         }
     }
 
+    /**
+     * Command Executor
+     * @param sender The command sender
+     * @param cmd The command
+     * @param label The command label
+     * @param args The command arguments
+     * @return Whether or not the command was successful
+     */
     public abstract boolean onCommand(CommandSender sender, Command cmd, String label, String[] args);
 
+    /**
+     * Tab Completer
+     * @param sender The command sender
+     * @param cmd The command
+     * @param label The command label
+     * @param args The command arguments
+     * @return A list of possible tab completions
+     */
     public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
         return null;
     }
 
+    /**
+     * Get a string from the language file within the command's section
+     * @param key The key to get
+     * @return The string
+     */
     public String getString(String key) {
         return Translatable.get(command + "." + key);
     }
 
+    /**
+     * Get a string from the language file
+     * @param key The key to get
+     * @return The string
+     */
     public static String get(String key) {
         return Translatable.get(key);
     }
 
+    /**
+     * Get the command usage message
+     * @return The usage message
+     */
     public String getUsage() {
-        return get("commands.usage").replace("command_usage", this.usage);
+        return get("plugin.commands.usage").replace("%command_usage%", this.usage);
     }
 }

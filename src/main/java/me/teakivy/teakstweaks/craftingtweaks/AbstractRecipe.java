@@ -21,6 +21,11 @@ public class AbstractRecipe {
 
     public ItemStack item;
 
+    /**
+     * Set up the pack
+     * @param path Config path
+     * @param material Material for the item
+     */
     public AbstractRecipe(String path, Material material) {
         String langKey = path.replaceAll("-", "_");
         this.name = Translatable.get(langKey + ".name");
@@ -30,6 +35,9 @@ public class AbstractRecipe {
         this.description = Translatable.get(langKey + ".description");
     }
 
+    /**
+     * Initialize all recipes for the pack
+     */
     public void init() {
         Logger.info(Translatable.get("startup.register.crafting_tweak").replace("%name%", this.name));
         main.addCraftingTweaks(this.name);
@@ -62,14 +70,24 @@ public class AbstractRecipe {
         });
     }
 
+    /**
+     * Register the pack
+     */
     public void register() {
         if (main.getConfig().getBoolean("crafting-tweaks." + path + ".enabled")) init();
     }
 
+    /**
+     * Register all recipes for the pack
+     */
     public void registerRecipes() {
         // TODO : Implement
     }
 
+    /**
+     * Get the item for the pack
+     * @return item
+     */
     public ItemStack getItem() {
         return item;
     }
