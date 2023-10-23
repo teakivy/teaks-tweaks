@@ -15,7 +15,7 @@ public class RottenFleshToLeather extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        FurnaceRecipe recipe = new FurnaceRecipe(new NamespacedKey(main, "rotten_flesh_to_leather"), new ItemStack(Material.LEATHER), Material.ROTTEN_FLESH, 10, 100);
+        FurnaceRecipe recipe = new FurnaceRecipe(new NamespacedKey(teaksTweaks, "rotten_flesh_to_leather"), new ItemStack(Material.LEATHER), Material.ROTTEN_FLESH, 10, 100);
         Bukkit.addRecipe(recipe);
     }
 

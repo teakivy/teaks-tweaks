@@ -91,7 +91,7 @@ public class DuraPing extends BasePack {
                     pingPlayer(player, item, durability);
                 }
             }
-            pingCooldown.put(player.getUniqueId(), System.currentTimeMillis() + (main.getConfig().getInt("packs.durability-ping.ping-cooldown") * 1000L));
+            pingCooldown.put(player.getUniqueId(), System.currentTimeMillis() + (teaksTweaks.getConfig().getInt("packs.durability-ping.ping-cooldown") * 1000L));
         }
     }
 

@@ -38,7 +38,7 @@ public class MoreBark extends AbstractRecipe {
     }
 
     public static void newBarkedRecipe(String name, Material input, Material output) {
-        NamespacedKey key = new NamespacedKey(main, name + "_bark");
+        NamespacedKey key = new NamespacedKey(teaksTweaks, name + "_bark");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(output, 4));
 

@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
@@ -37,7 +36,7 @@ public class Wrench extends BasePack {
     public void init() {
         super.init();
 
-        NamespacedKey key = new NamespacedKey(main, "redstone_wrench");
+        NamespacedKey key = new NamespacedKey(teaksTweaks, "redstone_wrench");
 
         ItemStack result = new ItemStack(Material.CARROT_ON_A_STICK);
         ItemMeta meta = result.getItemMeta();

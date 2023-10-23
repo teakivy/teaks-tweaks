@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.utilities.spawningspheres.Sphere;
 import me.teakivy.teakstweaks.packs.utilities.spawningspheres.SphereData;
 import me.teakivy.teakstweaks.utils.ErrorType;
@@ -18,15 +18,13 @@ import java.util.Objects;
 
 public class SpawningSpheresCommand extends AbstractCommand {
 
-    Main main = Main.getPlugin(Main.class);
-
     public SpawningSpheresCommand() {
         super("spawning-spheres", "spawningspheres", "/spawningspheres", "Spawn a sphere to help with mob spawning", List.of("ss", "sphere"));
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!main.getConfig().getBoolean("packs.spawning-spheres.enabled")) {
+        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.spawning-spheres.enabled")) {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
@@ -153,7 +151,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
         if (color == Color.RED) {
             player.teleport(sLoc);
             player.addScoreboardTag("despawning_sphere");
-            Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
+            Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
                 List<Entity> entityList = (List<Entity>) Objects.requireNonNull(sLoc.getWorld()).getNearbyEntities(sLoc, 150, 150, 150);
                 int count = 0;
                 for (Entity entity : entityList) {
@@ -182,7 +180,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
         if (color == Color.BLUE) {
             player.teleport(sLoc);
             player.addScoreboardTag("despawning_sphere");
-            Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
+            Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
                 List<Entity> entityList = (List<Entity>) Objects.requireNonNull(sLoc.getWorld()).getNearbyEntities(sLoc, 150, 150, 150);
                 int count = 0;
                 for (Entity entity : entityList) {
@@ -211,7 +209,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
         if (color == Color.GREEN) {
             player.teleport(sLoc);
             player.addScoreboardTag("despawning_sphere");
-            Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
+            Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
                 List<Entity> entityList = (List<Entity>) Objects.requireNonNull(sLoc.getWorld()).getNearbyEntities(sLoc, 150, 150, 150);
                 int count = 0;
                 for (Entity entity : entityList) {

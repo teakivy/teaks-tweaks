@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.teleportation.back.Back;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -17,8 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TPACommand extends AbstractCommand {
-
-    Main main = Main.getPlugin(Main.class);
 
     List<TPARequest> requests = new ArrayList<>();
 
@@ -93,7 +91,7 @@ public class TPACommand extends AbstractCommand {
         player2.spigot().sendMessage(text);
         player.sendMessage(getString("request_sent").replace("%player%", player2.getName()));
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
             if (req.isExpired() && !req.isAccepted()) {
                 player.sendMessage(getString("request_expired").replace("%player%", player2.getName()));
                 requests.remove(req);

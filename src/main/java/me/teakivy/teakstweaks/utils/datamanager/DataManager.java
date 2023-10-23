@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.utils.datamanager;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 
 public class DataManager {
 
-    private Main plugin;
+    private TeaksTweaks plugin;
     private FileConfiguration dataConfig = null;
     private File configFile = null;
 
@@ -19,7 +19,7 @@ public class DataManager {
      * Creates a new DataManager
      * @param plugin The plugin
      */
-    public DataManager(Main plugin) {
+    public DataManager(TeaksTweaks plugin) {
         this.plugin = plugin;
         saveDefaultConfig();
     }

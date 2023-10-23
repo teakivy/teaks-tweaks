@@ -1,12 +1,10 @@
 package me.teakivy.teakstweaks.utils.lang;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import org.bukkit.ChatColor;
 
 import java.io.*;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Translatable {
     private static final List<TranslatableLanguage> languages = new ArrayList<>();
@@ -79,11 +77,11 @@ public class Translatable {
      * @return The language map
      */
     public static LinkedHashMap<String, Object> getLanguageMapFromResource(String lang) {
-        File file = new File(Main.getInstance().getDataFolder() + "/lang/" + lang + ".json");
+        File file = new File(TeaksTweaks.getInstance().getDataFolder() + "/lang/" + lang + ".json");
         if (!file.exists()) return null;
 
         try {
-            return Main.getGson().fromJson(new FileReader(file), LinkedHashMap.class);
+            return TeaksTweaks.getGson().fromJson(new FileReader(file), LinkedHashMap.class);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -97,8 +95,8 @@ public class Translatable {
      * @return The language map
      */
     public static LinkedHashMap<String, Object> getLanguageMapFromPlugin(String lang) {
-        InputStream initialStream = Main.getInstance().getResource("lang/" + lang + ".json");
-        if (initialStream == null) initialStream = Main.getInstance().getResource("lang/en.json");
+        InputStream initialStream = TeaksTweaks.getInstance().getResource("lang/" + lang + ".json");
+        if (initialStream == null) initialStream = TeaksTweaks.getInstance().getResource("lang/en.json");
 
         try {
             initialStream = new ByteArrayInputStream(Objects.requireNonNull(initialStream).readAllBytes());
@@ -108,6 +106,6 @@ public class Translatable {
 
         Reader targetReader = new InputStreamReader(initialStream);
 
-        return Main.getGson().fromJson(targetReader, LinkedHashMap.class);
+        return TeaksTweaks.getGson().fromJson(targetReader, LinkedHashMap.class);
     }
 }

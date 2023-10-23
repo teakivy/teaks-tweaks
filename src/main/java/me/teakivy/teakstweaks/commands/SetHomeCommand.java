@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.teleportation.homes.Home;
 import me.teakivy.teakstweaks.packs.teleportation.homes.HomesPack;
 import me.teakivy.teakstweaks.utils.ErrorType;
@@ -38,7 +38,7 @@ public class SetHomeCommand extends AbstractCommand {
             return true;
         }
 
-        int maxHomes = Main.getInstance().getConfig().getInt("packs.homes.max-homes");
+        int maxHomes = TeaksTweaks.getInstance().getConfig().getInt("packs.homes.max-homes");
         if (maxHomes > 0 && homes.size() >= maxHomes) {
             player.sendMessage(get("homes.error.max_homes").replace("%max_homes%", maxHomes + ""));
             return true;

@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.utils.update;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
@@ -22,7 +22,7 @@ public class UpdateJoinAlert implements Listener {
         Player player = event.getPlayer();
 
         if (!player.hasPermission("teakstweaks.manage")) return;
-        if (!Main.getInstance().getConfig().getBoolean("settings.alert-on-new-version")) return;
+        if (!TeaksTweaks.getInstance().getConfig().getBoolean("settings.alert-on-new-version")) return;
         if (!UpdateChecker.hasUpdate()) return;
 
         TextComponent text = new TextComponent(Translatable.get("startup.update.join_alert").replace("%version%", UpdateChecker.getLatestVersion()));

@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -11,8 +11,6 @@ import java.util.List;
 
 public class RealTimeClockCommand extends AbstractCommand {
 
-    Main main = Main.getPlugin(Main.class);
-
     public RealTimeClockCommand() {
         super("real-time-clock", "realtimeclock", "/realtimeclock", "View a world's real play time", List.of("rtc"));
     }
@@ -20,7 +18,7 @@ public class RealTimeClockCommand extends AbstractCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if (!main.getConfig().getBoolean("packs.real-time-clock.enabled")) {
+        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.real-time-clock.enabled")) {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }

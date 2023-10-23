@@ -15,7 +15,7 @@ public class CraftableBundlesRabbitHide extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        NamespacedKey key = new NamespacedKey(main, "bundle_rabbit_hide_bundles");
+        NamespacedKey key = new NamespacedKey(teaksTweaks, "bundle_rabbit_hide_bundles");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.BUNDLE));
 

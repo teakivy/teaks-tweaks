@@ -25,7 +25,7 @@ public class UnpackableQuartz extends AbstractRecipe {
         materials.add(Material.QUARTZ_BRICKS);
         materials.add(Material.CHISELED_QUARTZ_BLOCK);
 
-        NamespacedKey iceKey = new NamespacedKey(main, "unpackable_quartz");
+        NamespacedKey iceKey = new NamespacedKey(teaksTweaks, "unpackable_quartz");
         ShapelessRecipe iceRecipe = new ShapelessRecipe(iceKey, new ItemStack(Material.QUARTZ, 4));
         iceRecipe.addIngredient(new RecipeChoice.MaterialChoice(materials));
 

@@ -15,14 +15,14 @@ public class UnpackableIce extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        NamespacedKey iceKey = new NamespacedKey(main, "ice_unpackables");
+        NamespacedKey iceKey = new NamespacedKey(teaksTweaks, "ice_unpackables");
         ShapelessRecipe iceRecipe = new ShapelessRecipe(iceKey, new ItemStack(Material.ICE, 9));
         iceRecipe.addIngredient(Material.PACKED_ICE);
 
         Bukkit.addRecipe(iceRecipe);
 
 
-        NamespacedKey packedIceKey = new NamespacedKey(main, "packed_ice_unpackables");
+        NamespacedKey packedIceKey = new NamespacedKey(teaksTweaks, "packed_ice_unpackables");
         ShapelessRecipe packedIceRecipe = new ShapelessRecipe(packedIceKey, new ItemStack(Material.PACKED_ICE, 9));
         packedIceRecipe.addIngredient(Material.BLUE_ICE);
 

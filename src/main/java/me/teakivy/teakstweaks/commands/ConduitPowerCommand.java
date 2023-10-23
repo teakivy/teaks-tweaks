@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
@@ -13,15 +13,13 @@ import java.util.List;
 
 public class ConduitPowerCommand extends AbstractCommand {
 
-    Main main = Main.getPlugin(Main.class);
-
     public ConduitPowerCommand() {
         super("spectator-conduit-power", "conduitpower", "/conduitpower", "Toggle Conduit Power as a spectator.", List.of("cp"));
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!main.getConfig().getBoolean("packs.spectator-conduit-power.enabled")) {
+        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.spectator-conduit-power.enabled")) {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }

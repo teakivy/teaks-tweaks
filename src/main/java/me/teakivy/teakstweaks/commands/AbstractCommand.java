@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.Bukkit;
@@ -74,11 +74,11 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      */
     public void register() {
         if (this.command.equalsIgnoreCase("mechanics") &&
-                !Main.getInstance().getConfig().getBoolean("settings.mechanics-command")) return;
+                !TeaksTweaks.getInstance().getConfig().getBoolean("settings.mechanics-command")) return;
 
         if (this.parentPack != null &&
                 (!this.parentPack.equalsIgnoreCase("test")
-                        && !Main.getPackConfig(parentPack).getBoolean("enabled")))
+                        && !TeaksTweaks.getPackConfig(parentPack).getBoolean("enabled")))
             return;
 
         ReflectCommand cmd = new ReflectCommand(this.command);

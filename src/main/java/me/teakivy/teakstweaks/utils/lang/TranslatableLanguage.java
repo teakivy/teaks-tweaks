@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.utils.lang;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.Logger;
 
 import java.io.*;
@@ -18,7 +18,7 @@ public class TranslatableLanguage {
         this.lang = lang;
 
         if (!getFile().exists() && Translatable.isPluginLanguage(lang)) {
-            Main.getInstance().saveResource("lang/" + lang + ".json", false);
+            TeaksTweaks.getInstance().saveResource("lang/" + lang + ".json", false);
         }
     }
 
@@ -43,7 +43,7 @@ public class TranslatableLanguage {
      * @return The language file
      */
     public File getFile() {
-        return new File(Main.getInstance().getDataFolder() + "/lang/" + this.lang + ".json");
+        return new File(TeaksTweaks.getInstance().getDataFolder() + "/lang/" + this.lang + ".json");
     }
 
     /**
@@ -110,7 +110,7 @@ public class TranslatableLanguage {
         }
 
         if (!modified) {
-            Main.getInstance().saveResource("lang/" + this.lang + ".json", true);
+            TeaksTweaks.getInstance().saveResource("lang/" + this.lang + ".json", true);
             map = pluginMap;
             return;
         }
@@ -131,7 +131,7 @@ public class TranslatableLanguage {
             newMap.put(key, map.get(key));
         }
 
-        newMap.put("meta.version", Main.getInstance().getConfig().getString("config.version"));
+        newMap.put("meta.version", TeaksTweaks.getInstance().getConfig().getString("config.version"));
 
         map = newMap;
         save(map);
@@ -145,8 +145,8 @@ public class TranslatableLanguage {
      */
     private void save(LinkedHashMap<String, Object> map) {
         try {
-            FileWriter writer = new FileWriter(Main.getInstance().getDataFolder() + "/lang/" + this.lang + ".json");
-            Main.getGson().toJson(map, writer);
+            FileWriter writer = new FileWriter(TeaksTweaks.getInstance().getDataFolder() + "/lang/" + this.lang + ".json");
+            TeaksTweaks.getGson().toJson(map, writer);
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -163,7 +163,7 @@ public class TranslatableLanguage {
             map = Translatable.getLanguageMapFromPlugin("en");
             map.put("meta.language_name", this.lang);
             map.put("meta.modified", true);
-            Main.getGson().toJson(map, writer);
+            TeaksTweaks.getGson().toJson(map, writer);
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();

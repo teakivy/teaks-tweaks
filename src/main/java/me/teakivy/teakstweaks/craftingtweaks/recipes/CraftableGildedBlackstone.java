@@ -15,7 +15,7 @@ public class CraftableGildedBlackstone extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        NamespacedKey key = new NamespacedKey(main, "craftable_gilded_blackstone");
+        NamespacedKey key = new NamespacedKey(teaksTweaks, "craftable_gilded_blackstone");
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.GILDED_BLACKSTONE, 1));
 

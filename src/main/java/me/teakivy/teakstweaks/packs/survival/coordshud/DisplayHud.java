@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.packs.survival.coordshud;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -17,15 +17,15 @@ public class DisplayHud {
 
     public static void init() {
         hudMessage = "&6XYZ: &f%x% %y% %z%  &6%direction_abbreviated%      %world_time%";
-        world =  Bukkit.getWorld(Main.getInstance().getConfig().getString("packs.coords-hud.time-world"));
+        world =  Bukkit.getWorld(TeaksTweaks.getInstance().getConfig().getString("packs.coords-hud.time-world"));
         if (world == null) world = Bukkit.getWorlds().get(0);
     }
 
     public static void showHud(Player player) {
-        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
+        Bukkit.getScheduler().runTaskAsynchronously(TeaksTweaks.getInstance(), () -> {
             String msg = ChatColor.translateAlternateColorCodes('&', hudMessage);
             Location loc = player.getLocation().getBlock().getLocation();
-            if (Main.getInstance().getConfig().getBoolean("packs.coords-hud.use-player-position")) {
+            if (TeaksTweaks.getInstance().getConfig().getBoolean("packs.coords-hud.use-player-position")) {
                 loc = player.getLocation();
             }
             msg = msg.replace("%x%", ((int) loc.getX()) + "");
