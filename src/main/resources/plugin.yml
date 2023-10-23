@@ -1,6 +1,6 @@
 name: TeaksTweaks
 version: ${project.version}
-main: me.teakivy.teakstweaks.Main
+main: me.teakivy.teakstweaks.TeaksTweaks
 api-version: 1.17
 prefix: TeaksTweaks
 authors: [ TeakIvy ]
