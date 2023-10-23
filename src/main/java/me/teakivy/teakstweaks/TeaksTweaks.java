@@ -24,7 +24,7 @@ import java.util.UUID;
 
 import static me.teakivy.teakstweaks.utils.metrics.CustomMetrics.registerCustomMetrics;
 
-public final class Main extends JavaPlugin implements Listener {
+public final class TeaksTweaks extends JavaPlugin implements Listener {
 
     public static ArrayList<UUID> chEnabled = new ArrayList<>();
 
@@ -38,6 +38,9 @@ public final class Main extends JavaPlugin implements Listener {
     public Tag tagListener;
     public boolean devMode;
 
+    /**
+     * Called when the plugin is enabled
+     */
     @Override
     public void onEnable() {
         this.devMode = getConfig().getBoolean("config.dev-mode");
@@ -93,6 +96,9 @@ public final class Main extends JavaPlugin implements Listener {
         register.registerAll();
     }
 
+    /**
+     * Called when the plugin is disabled
+     */
     @Override
     public void onDisable() {
         // Plugin shutdown logic
@@ -106,38 +112,73 @@ public final class Main extends JavaPlugin implements Listener {
 
     }
 
+    /**
+     * Clear the active packs list
+     */
     public void clearPacks() {
         activePacks.clear();
     }
 
+    /**
+     * Add a pack to the active packs list
+     * @param name
+     */
     public void addPack(String name) {
         activePacks.add(name);
     }
 
+    /**
+     * Get the active packs list
+     * @return ArrayList<String> of active packs
+     */
     public ArrayList<String> getPacks() {
         return activePacks;
     }
 
+    /**
+     * Add a crafting tweak to the active crafting tweaks list
+     * @param name Crafting tweak name
+     */
     public void addCraftingTweaks(String name) {
         activeCraftingTweaks.add(name);
     }
 
+    /**
+     * Get the active crafting tweaks list
+     * @return ArrayList<String> of active crafting tweaks
+     */
     public ArrayList<String> getCraftingTweaks() {
         return activeCraftingTweaks;
     }
 
+    /**
+     * Get the register instance
+     * @return Register instance
+     */
     public static Register getRegister() {
-        return Main.getInstance().register;
+        return TeaksTweaks.getInstance().register;
     }
 
-    public static Main getInstance() {
-        return getPlugin(Main.class);
+    /**
+     * Get the main instance
+     * @return Main instance
+     */
+    public static TeaksTweaks getInstance() {
+        return getPlugin(TeaksTweaks.class);
     }
 
+    /**
+     * Get the config section for a pack
+     * @param pack Pack name
+     * @return config: packs.[pack]
+     */
     public static ConfigurationSection getPackConfig(String pack) {
         return getInstance().getConfig().getConfigurationSection("packs." + pack);
     }
 
+    /**
+     * Create the credits file
+     */
     private void createCredits() {
         try {
             new Credits().createCredits();
@@ -146,6 +187,9 @@ public final class Main extends JavaPlugin implements Listener {
         }
     }
 
+    /**
+     * Update the config.yml file
+     */
     private void updateConfig() {
         String configVersion = this.getConfig().getString("config.version");
         String pluginConfigVersion = Objects.requireNonNull(this.getConfig().getDefaults()).getString("config.version");
@@ -161,6 +205,10 @@ public final class Main extends JavaPlugin implements Listener {
         Logger.info("Updated Plugin Config");
     }
 
+    /**
+     * Get the Gson instance from JsonManager
+     * @return Gson instance
+     */
     public static Gson getGson() {
         return JsonManager.getGson();
     }

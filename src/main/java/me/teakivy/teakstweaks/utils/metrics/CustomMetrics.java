@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.utils.metrics;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -96,7 +96,7 @@ public class CustomMetrics {
     }
 
     public static int getPack(String pack) {
-        if (Main.getPackConfig(pack).getBoolean("enabled")) return 1;
+        if (TeaksTweaks.getPackConfig(pack).getBoolean("enabled")) return 1;
         return 0;
     }
 
@@ -147,7 +147,7 @@ public class CustomMetrics {
     }
 
     public static int getCraftingTweak(String tweak) {
-        if (Main.getInstance().getConfig().getBoolean("crafting-tweaks." + tweak + ".enabled")) return 1;
+        if (TeaksTweaks.getInstance().getConfig().getBoolean("crafting-tweaks." + tweak + ".enabled")) return 1;
         return 0;
     }
 
@@ -156,7 +156,7 @@ public class CustomMetrics {
             @Override
             public Map<String, Integer> call() throws Exception {
                 Map<String, Integer> valueMap = new HashMap<>();
-                valueMap.put(Main.getInstance().getConfig().getString("config.created-version"), 1);
+                valueMap.put(TeaksTweaks.getInstance().getConfig().getString("config.created-version"), 1);
 
                 return valueMap;
             }
@@ -168,7 +168,7 @@ public class CustomMetrics {
             @Override
             public Map<String, Integer> call() throws Exception {
                 Map<String, Integer> valueMap = new HashMap<>();
-                if (Main.getInstance().getConfig().getBoolean("config.dev-mode")) {
+                if (TeaksTweaks.getInstance().getConfig().getBoolean("config.dev-mode")) {
                     valueMap.put("Enabled", 1);
                 }
                 else {

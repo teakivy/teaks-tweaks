@@ -23,7 +23,7 @@ public class KeepSmall extends BasePack {
         if (!hasPermission(event.getPlayer())) return;
         Entity entity = event.getRightClicked();
         try {
-            Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
+            Bukkit.getScheduler().scheduleSyncDelayedTask(teaksTweaks, () -> {
                 Entity entity1 = getEntityByUniqueId(entity.getUniqueId());
                 if (entity1 == null) return;
                 if (entity1.getCustomName() == null) return;

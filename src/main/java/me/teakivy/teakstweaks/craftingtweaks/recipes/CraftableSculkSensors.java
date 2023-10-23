@@ -15,7 +15,7 @@ public class CraftableSculkSensors extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        NamespacedKey key = new NamespacedKey(main, "craftable_sculk_sensor");
+        NamespacedKey key = new NamespacedKey(teaksTweaks, "craftable_sculk_sensor");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.SCULK_SENSOR));
 

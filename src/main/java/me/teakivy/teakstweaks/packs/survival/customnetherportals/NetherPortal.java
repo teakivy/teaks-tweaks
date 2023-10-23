@@ -133,7 +133,7 @@ public class NetherPortal extends BasePack {
 
                         }
 
-                        Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
+                        Bukkit.getScheduler().scheduleSyncDelayedTask(teaksTweaks, () -> {
                             for (Block portalBlock : portalBlocks) {
                                 portalBlock.setType(Material.NETHER_PORTAL);
                                 if (portalAxis.equals("z")) {

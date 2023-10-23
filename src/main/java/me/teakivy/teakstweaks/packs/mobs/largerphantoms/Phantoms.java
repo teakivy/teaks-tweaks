@@ -24,7 +24,7 @@ public class Phantoms extends BasePack {
     @EventHandler
     public void onSpawn(CreatureSpawnEvent event) {
         Entity entity = event.getEntity();
-        if (entity.getType() != EntityType.PHANTOM || (event.getSpawnReason() != CreatureSpawnEvent.SpawnReason.NATURAL && !main.getConfig().getBoolean("config.dev-mode"))) return;
+        if (entity.getType() != EntityType.PHANTOM || (event.getSpawnReason() != CreatureSpawnEvent.SpawnReason.NATURAL && !teaksTweaks.getConfig().getBoolean("config.dev-mode"))) return;
         Phantom phantom = (Phantom) entity;
         Player player = null;
         double distance = Integer.MAX_VALUE;

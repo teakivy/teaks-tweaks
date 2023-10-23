@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -17,8 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TagGameCommand extends AbstractCommand {
-
-    Main main = Main.getPlugin(Main.class);
 
     public TagGameCommand() {
         super("tag", "taggame", "/taggame", "The classic game of tag.");
@@ -45,12 +43,12 @@ public class TagGameCommand extends AbstractCommand {
                     return true;
                 }
                 player.sendMessage(getString("uninstalled"));
-                main.getRegister().unregisterPack("tag");
+                TeaksTweaks.getInstance().getRegister().unregisterPack("tag");
                 return true;
             }
         }
 
-        if (!main.getConfig().getBoolean("packs.tag.enabled")) {
+        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.tag.enabled")) {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
@@ -67,7 +65,7 @@ public class TagGameCommand extends AbstractCommand {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
-            main.getRegister().unregisterPack("tag");
+            TeaksTweaks.getInstance().getRegister().unregisterPack("tag");
             ItemStack tag = new ItemStack(Material.NAME_TAG);
             ItemMeta tagMeta = tag.getItemMeta();
             tagMeta.setDisplayName(getString("item_name"));

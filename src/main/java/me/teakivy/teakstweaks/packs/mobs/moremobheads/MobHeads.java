@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.packs.mobs.moremobheads;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.packs.mobs.moremobheads.mobs.*;
@@ -140,15 +140,15 @@ public class MobHeads extends BasePack {
                         true),
                 "mob_heads.json");
 
-        File file = new File(Main.getInstance().getDataFolder() + "/mob_heads.json");
-        if (!file.exists()) Main.getInstance().saveResource("mob_heads.json", false);
+        File file = new File(TeaksTweaks.getInstance().getDataFolder() + "/mob_heads.json");
+        if (!file.exists()) TeaksTweaks.getInstance().saveResource("mob_heads.json", false);
 
-        file = new File(Main.getInstance().getDataFolder() + "/mob_heads.json");
+        file = new File(TeaksTweaks.getInstance().getDataFolder() + "/mob_heads.json");
 
         if (!file.exists()) chances = new HashMap<>();
 
         try {
-            chances =  Main.getGson().fromJson(new FileReader(file), HashMap.class);
+            chances =  TeaksTweaks.getGson().fromJson(new FileReader(file), HashMap.class);
             return;
         } catch (FileNotFoundException e) {
             e.printStackTrace();

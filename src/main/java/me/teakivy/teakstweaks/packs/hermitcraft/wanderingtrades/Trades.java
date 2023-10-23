@@ -50,7 +50,7 @@ public class Trades extends BasePack {
             }
         }
 
-        if (main.getConfig().getBoolean("config.dev-mode")) {
+        if (teaksTweaks.getConfig().getBoolean("config.dev-mode")) {
             for (String player : players) {
                 trades.add(newHeadRecipe(player));
             }

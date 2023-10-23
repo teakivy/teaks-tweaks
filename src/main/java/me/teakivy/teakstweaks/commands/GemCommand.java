@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.hermitcraft.gemvillagers.GemVllagers;
 import me.teakivy.teakstweaks.packs.hermitcraft.treasuregems.Gems;
 import me.teakivy.teakstweaks.utils.ErrorType;
@@ -14,15 +14,13 @@ import java.util.List;
 
 public class GemCommand extends AbstractCommand {
 
-    Main main = Main.getPlugin(Main.class);
-
     public GemCommand() {
         super("treasure-gems", "gem", "/gem", "Gems, Villagers, & Gem Villagers!");
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!main.getConfig().getBoolean("packs.treasure-gems.enabled")) {
+        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.treasure-gems.enabled")) {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }

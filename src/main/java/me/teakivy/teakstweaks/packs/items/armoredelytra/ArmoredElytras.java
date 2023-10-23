@@ -68,7 +68,7 @@ public class ArmoredElytras extends BasePack {
 
                 if (itemDrop.isDead()) this.cancel();
             }
-        }.runTaskTimer(main, 0, 20L);
+        }.runTaskTimer(teaksTweaks, 0, 20L);
     }
 
     private Material getBlockBelow(Location location) {
@@ -79,7 +79,7 @@ public class ArmoredElytras extends BasePack {
     public void onElytraDrop(PlayerDropItemEvent event) {
         ItemStack itemStack = event.getItemDrop().getItemStack();
         if (!itemStack.hasItemMeta()) return;
-        if (!itemStack.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(main, "armored_elytra"), PersistentDataType.STRING)) return;
+        if (!itemStack.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(teaksTweaks, "armored_elytra"), PersistentDataType.STRING)) return;
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -105,7 +105,7 @@ public class ArmoredElytras extends BasePack {
                 }
                 if (event.getItemDrop().isDead()) this.cancel();
             }
-        }.runTaskTimer(main, 0, 20L);
+        }.runTaskTimer(teaksTweaks, 0, 20L);
     }
 
     @EventHandler
@@ -118,7 +118,7 @@ public class ArmoredElytras extends BasePack {
         if (itemStack.getType() != Material.ELYTRA) return;
         if (!itemStack.hasItemMeta()) return;
 
-        if (itemStack.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(main, "armored_elytra"), PersistentDataType.STRING)) {
+        if (itemStack.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(teaksTweaks, "armored_elytra"), PersistentDataType.STRING)) {
             item.getWorld().dropItem(item.getLocation(), getB64ChestplateFromArmoredElytra(itemStack)).setVelocity(new Vector(0, 0, 0));
             item.getWorld().dropItem(item.getLocation(), getB64ElytraFromArmoredElytra(itemStack)).setVelocity(new Vector(0, 0, 0));
             item.remove();
@@ -148,13 +148,13 @@ public class ArmoredElytras extends BasePack {
         }
         meta.setDisplayName(name);
 
-        NamespacedKey key = new NamespacedKey(main, "armored_elytra");
+        NamespacedKey key = new NamespacedKey(teaksTweaks, "armored_elytra");
         meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "true");
 
-        NamespacedKey chestplate_storage_key = new NamespacedKey(main, "chestplate_storage");
+        NamespacedKey chestplate_storage_key = new NamespacedKey(teaksTweaks, "chestplate_storage");
         meta.getPersistentDataContainer().set(chestplate_storage_key, PersistentDataType.STRING, serializeItem(chestplate));
 
-        NamespacedKey elytra_storage_key = new NamespacedKey(main, "elytra_storage");
+        NamespacedKey elytra_storage_key = new NamespacedKey(teaksTweaks, "elytra_storage");
         meta.getPersistentDataContainer().set(elytra_storage_key, PersistentDataType.STRING, serializeItem(elytra));
 
 
@@ -218,15 +218,15 @@ public class ArmoredElytras extends BasePack {
 
     public static ItemStack getB64ChestplateFromArmoredElytra(ItemStack elytra) throws IOException {
         if (!elytra.hasItemMeta()) return null;
-        if (!elytra.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(main, "armored_elytra"), PersistentDataType.STRING)) return null;
-        String chestplate = elytra.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(main, "chestplate_storage"), PersistentDataType.STRING);
+        if (!elytra.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(teaksTweaks, "armored_elytra"), PersistentDataType.STRING)) return null;
+        String chestplate = elytra.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(teaksTweaks, "chestplate_storage"), PersistentDataType.STRING);
         return deserializeItem(chestplate);
     }
 
     public static ItemStack getB64ElytraFromArmoredElytra(ItemStack elytra) throws IOException {
         if (!elytra.hasItemMeta()) return null;
-        if (!elytra.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(main, "armored_elytra"), PersistentDataType.STRING)) return null;
-        String oldElytra = elytra.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(main, "elytra_storage"), PersistentDataType.STRING);
+        if (!elytra.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(teaksTweaks, "armored_elytra"), PersistentDataType.STRING)) return null;
+        String oldElytra = elytra.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(teaksTweaks, "elytra_storage"), PersistentDataType.STRING);
         return deserializeItem(oldElytra);
     }
 

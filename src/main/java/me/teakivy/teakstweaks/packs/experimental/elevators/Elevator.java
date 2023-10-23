@@ -53,7 +53,7 @@ public class Elevator extends BasePack {
                     }
                     if (event.getItemDrop().isDead()) this.cancel();
                 }
-            }.runTaskTimer(main, 0, 20L);
+            }.runTaskTimer(teaksTweaks, 0, 20L);
         }
     }
 
@@ -104,7 +104,7 @@ public class Elevator extends BasePack {
                 Block elevatorSpot = findNextElevatorUp(standingBlock, standingBlock.getWorld().getMaxHeight());
 
                 if (elevatorSpot != null) {
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
+                    Bukkit.getScheduler().scheduleSyncDelayedTask(teaksTweaks, () -> {
                         player.teleport(new Location(player.getWorld(), player.getLocation().getX(), elevatorSpot.getY() + 1, player.getLocation().getZ(), player.getLocation().getYaw(), player.getLocation().getPitch()));
                         if (getConfig().getBoolean("play-sound")) {
                             player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);

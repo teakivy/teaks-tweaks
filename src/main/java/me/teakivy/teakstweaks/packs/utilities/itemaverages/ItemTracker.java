@@ -72,7 +72,7 @@ public class ItemTracker extends BasePack {
             }
         }
         if (!shouldStop) {
-            Bukkit.getScheduler().runTaskLater(main, () -> {
+            Bukkit.getScheduler().runTaskLater(teaksTweaks, () -> {
                 trackItems(player);
             }, 1L);
             return;
@@ -121,7 +121,7 @@ public class ItemTracker extends BasePack {
         tracking = loc.getBlock().getLocation();
 
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(teaksTweaks, () -> {
             entity.remove();
             Logger.info(Translatable.get("item_averages.log_finish"));
             shouldStop = true;

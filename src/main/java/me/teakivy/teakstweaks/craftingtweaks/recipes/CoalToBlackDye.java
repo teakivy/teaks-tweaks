@@ -14,7 +14,7 @@ public class CoalToBlackDye extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        NamespacedKey key = new NamespacedKey(main, "black_dye_coal");
+        NamespacedKey key = new NamespacedKey(teaksTweaks, "black_dye_coal");
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.BLACK_DYE));
         recipe.addIngredient(Material.COAL);
 

@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.packs.teleportation.homes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Location;
@@ -30,7 +30,7 @@ public class HomesPack extends BasePack {
     @Override
     public void init() {
         super.init();
-        for (Player player : main.getServer().getOnlinePlayers()) {
+        for (Player player : teaksTweaks.getServer().getOnlinePlayers()) {
             loadHomes(player);
         }
     }
@@ -39,12 +39,12 @@ public class HomesPack extends BasePack {
         if (getHome(player, name) != null) return false;
 
         PersistentDataContainer data = player.getPersistentDataContainer();
-        NamespacedKey key = new NamespacedKey(main, "homes");
+        NamespacedKey key = new NamespacedKey(teaksTweaks, "homes");
         String homeString = data.get(key, PersistentDataType.STRING);
         homeString = homeString + "," + name;
         data.set(key, PersistentDataType.STRING, homeString);
 
-        NamespacedKey key2 = new NamespacedKey(main, "home." + name);
+        NamespacedKey key2 = new NamespacedKey(teaksTweaks, "home." + name);
 
         Home home = new Home(name, player.getUniqueId(), loc);
 
@@ -93,7 +93,7 @@ public class HomesPack extends BasePack {
     }
 
     public static int getCooldown(Player player) {
-        long cooldownTime = Main.getInstance().getConfig().getInt("packs.homes.teleport-cooldown") * 1000L;
+        long cooldownTime = TeaksTweaks.getInstance().getConfig().getInt("packs.homes.teleport-cooldown") * 1000L;
         if (!cooldowns.containsKey(player.getUniqueId())) {
             return 0;
         }
@@ -104,7 +104,7 @@ public class HomesPack extends BasePack {
 
     public static void loadHomes(Player player) {
         PersistentDataContainer data = player.getPersistentDataContainer();
-        NamespacedKey key = new NamespacedKey(main, "homes");
+        NamespacedKey key = new NamespacedKey(teaksTweaks, "homes");
         String homeString = data.get(key, PersistentDataType.STRING);
 
         if (homeString == null) return;
@@ -112,7 +112,7 @@ public class HomesPack extends BasePack {
         String[] homes = homeString.split(",");
 
         for (String home : homes) {
-            NamespacedKey key2 = new NamespacedKey(main, "home." + home);
+            NamespacedKey key2 = new NamespacedKey(teaksTweaks, "home." + home);
             String locString = data.get(key2, PersistentDataType.STRING);
             if (locString == null) continue;
 

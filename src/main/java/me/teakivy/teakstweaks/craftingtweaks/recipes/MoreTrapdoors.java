@@ -29,7 +29,7 @@ public class MoreTrapdoors extends AbstractRecipe {
     }
 
     public static void newTrapdoorRecipe(String type) {
-        NamespacedKey key = new NamespacedKey(main, type.toLowerCase() + "_trapdoors");
+        NamespacedKey key = new NamespacedKey(teaksTweaks, type.toLowerCase() + "_trapdoors");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.valueOf(type + "_TRAPDOOR"), 12));
 

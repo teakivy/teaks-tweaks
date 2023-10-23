@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
@@ -13,15 +13,13 @@ import java.util.List;
 
 public class NightVisionCommand extends AbstractCommand {
 
-    Main main = Main.getPlugin(Main.class);
-
     public NightVisionCommand() {
         super("spectator-night-vision", "nightvision", "/nightvision", "Toggle Night Vision as a spectator", List.of("nv"));
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!main.getConfig().getBoolean("packs.spectator-night-vision.enabled")) {
+        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.spectator-night-vision.enabled")) {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }

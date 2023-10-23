@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.utils.update;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.apache.commons.io.IOUtils;
@@ -19,7 +19,7 @@ public class UpdateChecker {
      * @return The latest version of the plugin
      */
     public static String getLatestVersion() {
-        if (Main.getInstance().getConfig().getBoolean("settings.disable-update-checker")) return null;
+        if (TeaksTweaks.getInstance().getConfig().getBoolean("settings.disable-update-checker")) return null;
         String url = "https://api.spiget.org/v2/resources/" + resourceId + "/versions/latest";
 
         try {
@@ -40,7 +40,7 @@ public class UpdateChecker {
     public static boolean hasUpdate() {
         String latestVersion = getLatestVersion();
         if (latestVersion == null) return false;
-        return !latestVersion.equals(Main.getInstance().getDescription().getVersion());
+        return !latestVersion.equals(TeaksTweaks.getInstance().getDescription().getVersion());
     }
 
     /**

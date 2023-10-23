@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.utilities.itemaverages.ItemTracker;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.command.Command;
@@ -13,8 +13,6 @@ import java.util.List;
 
 public class ItemAveragesCommand extends AbstractCommand {
 
-    Main main = Main.getPlugin(Main.class);
-
 
     public ItemAveragesCommand() {
         super("item-averages", "itemaverages", "/itemaverages", "Calculate how many items flow through a source in 2 minutes!");
@@ -22,7 +20,7 @@ public class ItemAveragesCommand extends AbstractCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!main.getConfig().getBoolean("packs.item-averages.enabled")) {
+        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.item-averages.enabled")) {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }

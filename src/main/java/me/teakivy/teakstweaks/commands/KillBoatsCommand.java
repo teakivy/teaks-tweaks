@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -11,15 +11,13 @@ import org.bukkit.entity.EntityType;
 
 public class KillBoatsCommand extends AbstractCommand {
 
-    Main main = Main.getPlugin(Main.class);
-
     public KillBoatsCommand() {
         super("kill-boats", "killboats", "/killboats", "Kill all empty boats");
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!main.getConfig().getBoolean("packs.kill-boats.enabled")) {
+        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.kill-boats.enabled")) {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }

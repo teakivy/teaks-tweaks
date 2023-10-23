@@ -38,7 +38,7 @@ public class XPManagement extends BasePack {
     public void registerRecipe() {
         if (getConfig().getBoolean("allow-smelting")) {
             FurnaceRecipe recipe = new FurnaceRecipe(new ItemStack(Material.GLASS_BOTTLE), Material.EXPERIENCE_BOTTLE);
-            recipe.setExperience(main.getConfig().getInt("packs.xp-management.take-xp-amount"));
+            recipe.setExperience(teaksTweaks.getConfig().getInt("packs.xp-management.take-xp-amount"));
             Bukkit.addRecipe(recipe);
         }
     }
@@ -48,7 +48,7 @@ public class XPManagement extends BasePack {
         if (event.getSource().getType() != Material.EXPERIENCE_BOTTLE) return;
         if (event.getSource().hasItemMeta()) {
             PersistentDataContainer data = event.getSource().getItemMeta().getPersistentDataContainer();
-            if (data.has(new NamespacedKey(main, "xp_amount"), PersistentDataType.INTEGER)) {
+            if (data.has(new NamespacedKey(teaksTweaks, "xp_amount"), PersistentDataType.INTEGER)) {
                 return;
             }
         }
@@ -62,7 +62,7 @@ public class XPManagement extends BasePack {
         if (furnace.getInventory().getSmelting().getType() != Material.EXPERIENCE_BOTTLE) return;
         if (furnace.getInventory().getSmelting().hasItemMeta()) {
             PersistentDataContainer data = furnace.getInventory().getSmelting().getItemMeta().getPersistentDataContainer();
-            if (data.has(new NamespacedKey(main, "xp_amount"), PersistentDataType.INTEGER)) {
+            if (data.has(new NamespacedKey(teaksTweaks, "xp_amount"), PersistentDataType.INTEGER)) {
                 return;
             }
         }
@@ -125,10 +125,10 @@ public class XPManagement extends BasePack {
         }
 
         PersistentDataContainer data = xpMeta.getPersistentDataContainer();
-        data.set(new NamespacedKey(main, "xp_amount"), PersistentDataType.INTEGER, main.getConfig().getInt("packs.xp-management.return-xp-amount"));
+        data.set(new NamespacedKey(teaksTweaks, "xp_amount"), PersistentDataType.INTEGER, teaksTweaks.getConfig().getInt("packs.xp-management.return-xp-amount"));
         xpBottle.setItemMeta(xpMeta);
 
-        data.set(new NamespacedKey(main, "xp_smelt_amount"), PersistentDataType.INTEGER, main.getConfig().getInt("packs.xp-management.take-xp-amount"));
+        data.set(new NamespacedKey(teaksTweaks, "xp_smelt_amount"), PersistentDataType.INTEGER, teaksTweaks.getConfig().getInt("packs.xp-management.take-xp-amount"));
         xpBottle.setItemMeta(xpMeta);
 
         if (getConfig().getBoolean("sneak-to-bottle-all") && player.isSneaking()) {
@@ -147,8 +147,8 @@ public class XPManagement extends BasePack {
 
         if (bottle.getItem().getItemMeta() != null) {
             PersistentDataContainer data = bottle.getItem().getItemMeta().getPersistentDataContainer();
-            if (data.has(new NamespacedKey(main, "xp_amount"), PersistentDataType.INTEGER)) {
-                event.setExperience(data.get(new NamespacedKey(main, "xp_amount"), PersistentDataType.INTEGER));
+            if (data.has(new NamespacedKey(teaksTweaks, "xp_amount"), PersistentDataType.INTEGER)) {
+                event.setExperience(data.get(new NamespacedKey(teaksTweaks, "xp_amount"), PersistentDataType.INTEGER));
             }
         }
     }

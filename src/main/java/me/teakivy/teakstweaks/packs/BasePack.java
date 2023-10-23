@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.packs;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.datamanager.DataManager;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
@@ -24,7 +24,7 @@ public class BasePack implements Listener {
 	public PackType packType;
 	public String permission;
 
-	protected static Main main = Main.getPlugin(Main.class);
+	protected static TeaksTweaks teaksTweaks = TeaksTweaks.getInstance();
 
 	public ConfigurationSection config;
 
@@ -43,7 +43,7 @@ public class BasePack implements Listener {
         this.name = Translatable.get(this.translatableKey + ".name");
 		this.path = path;
 		this.packType = packType;
-		this.config = main.getConfig().getConfigurationSection("packs." + path);
+		this.config = teaksTweaks.getConfig().getConfigurationSection("packs." + path);
 		this.permission = "teakstweaks." + path;
 
 		String[] description = Translatable.get(this.translatableKey + ".description").split("\n");
@@ -95,7 +95,7 @@ public class BasePack implements Listener {
 	 */
 	public void init() {
 		registerEvents(this);
-		main.addPack(name);
+		teaksTweaks.addPack(name);
 		Logger.info("Registered Pack: " + packType.getColor() + name);
 	}
 
@@ -105,7 +105,7 @@ public class BasePack implements Listener {
 	 */
 	public void registerEvents(Listener listener) {
         HandlerList.unregisterAll(listener);
-        Bukkit.getServer().getPluginManager().registerEvents(listener, main);
+        Bukkit.getServer().getPluginManager().registerEvents(listener, teaksTweaks);
     }
 
 	/**
@@ -136,7 +136,7 @@ public class BasePack implements Listener {
 	 * @return DataManager
 	 */
 	public static DataManager getData() {
-		return main.data;
+		return teaksTweaks.data;
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class BasePack implements Listener {
 	 * @return Data config file
 	 */
 	public static ConfigurationSection getDataConfig() {
-		return main.data.getConfig();
+		return teaksTweaks.data.getConfig();
 	}
 
 	/**

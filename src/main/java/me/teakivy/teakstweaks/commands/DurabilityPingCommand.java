@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.survival.durabilityping.DuraPing;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import net.md_5.bungee.api.chat.*;
@@ -20,8 +20,6 @@ import java.util.Set;
 
 public class DurabilityPingCommand extends AbstractCommand {
 
-    Main main = Main.getPlugin(Main.class);
-
     public DurabilityPingCommand() {
         super("durability-ping", "durabilityping", "/durabilityping", "Get pinged when your tools drop below 10% Durability!", List.of("duraping", "dp"));
     }
@@ -33,7 +31,7 @@ public class DurabilityPingCommand extends AbstractCommand {
             return true;
         }
 
-        if (!main.getConfig().getBoolean("packs.durability-ping.enabled")) {
+        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.durability-ping.enabled")) {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }

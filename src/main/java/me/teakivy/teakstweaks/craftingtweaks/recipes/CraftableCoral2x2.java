@@ -27,7 +27,7 @@ public class CraftableCoral2x2 extends AbstractRecipe {
     }
 
     private static void newCoralRecipe(String type) {
-        NamespacedKey key = new NamespacedKey(main, type.toLowerCase() + "_coral_2x2");
+        NamespacedKey key = new NamespacedKey(teaksTweaks, type.toLowerCase() + "_coral_2x2");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.valueOf(type.toUpperCase() + "_CORAL_BLOCK")));
 

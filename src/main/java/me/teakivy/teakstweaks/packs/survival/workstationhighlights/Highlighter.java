@@ -42,7 +42,7 @@ public class Highlighter extends BasePack {
         entity.addScoreboardTag("glowing");
 
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(teaksTweaks, () -> {
             entity.remove();
         }, glowLength);
     }

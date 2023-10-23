@@ -14,7 +14,7 @@ public class MoreBricks extends AbstractRecipe {
     }
 
     public void registerRecipes() {
-        NamespacedKey key = new NamespacedKey(main, "bricks_bricks");
+        NamespacedKey key = new NamespacedKey(teaksTweaks, "bricks_bricks");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.BRICKS, 4));
 
