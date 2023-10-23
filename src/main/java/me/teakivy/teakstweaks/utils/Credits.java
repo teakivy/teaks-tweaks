@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.utils;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -8,8 +8,12 @@ import java.io.IOException;
 
 public class Credits {
 
+    /**
+     * Creates the credits.txt file
+     * @throws IOException If the file cannot be created
+     */
     public void createCredits() throws IOException {
-        File credits = new File(Main.getInstance().getDataFolder(), "credits.txt");
+        File credits = new File(TeaksTweaks.getInstance().getDataFolder(), "credits.txt");
         FileWriter writer = new FileWriter(credits);
         writer.write("Plugin Creator: TeakIvy\n" +
                         " - https://twitter.com/TeakIvyYT\n" +

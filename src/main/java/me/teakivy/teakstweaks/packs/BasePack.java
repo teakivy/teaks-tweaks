@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.packs;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.datamanager.DataManager;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
@@ -24,73 +24,13 @@ public class BasePack implements Listener {
 	public PackType packType;
 	public String permission;
 
-	protected static Main main = Main.getPlugin(Main.class);
+	protected static TeaksTweaks teaksTweaks = TeaksTweaks.getInstance();
 
 	public ConfigurationSection config;
 
 	public ItemStack item;
 
 	public String translatableKey;
-
-	/**
-	 * *OLD* Set up the pack
-	 * @param name Name of the pack
-	 * @param path Config path
-	 * @param packType PackType
-	 * @param material Material for the item
-	 * @param description Description of the pack
-	 */
-	@Deprecated
-	public BasePack(String name, String path, PackType packType, Material material, String... description) {
-		this.translatableKey = path.replaceAll("-", "_");
-		this.name = name;
-		this.path = path;
-		this.packType = packType;
-		this.config = main.getConfig().getConfigurationSection("packs." + path);
-		this.permission = "teakstweaks." + path;
-
-		item = new ItemStack(material);
-
-		List<String> lore = new ArrayList<>();
-		for (String line : description) {
-			StringBuilder newLine = new StringBuilder();
-			for (String word : line.split(" ")) {
-				if (newLine.length() > 30) {
-					lore.add(ChatColor.GRAY + newLine.toString());
-					newLine = new StringBuilder();
-				}
-				newLine.append(word).append(" ");
-			}
-			lore.add(ChatColor.GRAY + newLine.toString());
-			lore.add("");
-		}
-		if (lore.size() >= 1) lore.remove(lore.size() - 1);
-
-		if (config.getKeys(false).size() > 1) {
-			lore.add("");
-			lore.add(packType.getColor() + "Config");
-		}
-
-		for (String key : config.getKeys(false)) {
-			if (key.equals("enabled")) continue;
-			if (config.get(key).toString().startsWith("MemorySection")) {
-				continue;
-			}
-
-			lore.add("  " + ChatColor.GRAY + transformKey(key) + ": " + ChatColor.RESET + packType.getColor() + config.get(key));
-		}
-
-		lore.add("");
-
-		lore.add(packType.getColor() + packType.getName());
-
-		item.setLore(lore);
-
-		item.editMeta(meta -> {
-			meta.setDisplayName(ChatColor.RESET + packType.getColor().toString() + name);
-		});
-	}
-
 
 	/**
 	 * Set up the pack
@@ -103,7 +43,7 @@ public class BasePack implements Listener {
         this.name = Translatable.get(this.translatableKey + ".name");
 		this.path = path;
 		this.packType = packType;
-		this.config = main.getConfig().getConfigurationSection("packs." + path);
+		this.config = teaksTweaks.getConfig().getConfigurationSection("packs." + path);
 		this.permission = "teakstweaks." + path;
 
 		String[] description = Translatable.get(this.translatableKey + ".description").split("\n");
@@ -155,8 +95,8 @@ public class BasePack implements Listener {
 	 */
 	public void init() {
 		registerEvents(this);
-		main.addPack(name);
-		Logger.log(Logger.LogLevel.INFO, "Registered Pack: " + packType.getColor() + name);
+		teaksTweaks.addPack(name);
+		Logger.info("Registered Pack: " + packType.getColor() + name);
 	}
 
 	/**
@@ -165,7 +105,7 @@ public class BasePack implements Listener {
 	 */
 	public void registerEvents(Listener listener) {
         HandlerList.unregisterAll(listener);
-        Bukkit.getServer().getPluginManager().registerEvents(listener, main);
+        Bukkit.getServer().getPluginManager().registerEvents(listener, teaksTweaks);
     }
 
 	/**
@@ -196,7 +136,7 @@ public class BasePack implements Listener {
 	 * @return DataManager
 	 */
 	public static DataManager getData() {
-		return main.data;
+		return teaksTweaks.data;
 	}
 
 	/**
@@ -204,7 +144,7 @@ public class BasePack implements Listener {
 	 * @return Data config file
 	 */
 	public static ConfigurationSection getDataConfig() {
-		return main.data.getConfig();
+		return teaksTweaks.data.getConfig();
 	}
 
 	/**

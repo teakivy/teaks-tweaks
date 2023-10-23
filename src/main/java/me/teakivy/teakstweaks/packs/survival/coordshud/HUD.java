@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.packs.survival.coordshud;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Bukkit;
@@ -25,13 +25,13 @@ public class HUD extends BasePack {
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         if (getConfig().getBoolean("force-enable")) {
-            if (!Main.chEnabled.contains(player.getUniqueId())) {
-                Main.chEnabled.add(player.getUniqueId());
+            if (!TeaksTweaks.chEnabled.contains(player.getUniqueId())) {
+                TeaksTweaks.chEnabled.add(player.getUniqueId());
             }
         }
         if (getConfig().getBoolean("auto-enable") && !player.getScoreboardTags().contains("ch")) {
             player.addScoreboardTag("ch");
-            Main.chEnabled.add(player.getUniqueId());
+            TeaksTweaks.chEnabled.add(player.getUniqueId());
         }
     }
 
@@ -40,8 +40,8 @@ public class HUD extends BasePack {
         running = true;
         DisplayHud.init();
         new Thread(() -> {
-            taskID = Bukkit.getScheduler().runTaskTimer(main, () -> {
-                for (UUID uuid : Main.chEnabled) {
+            taskID = Bukkit.getScheduler().runTaskTimer(teaksTweaks, () -> {
+                for (UUID uuid : TeaksTweaks.chEnabled) {
                     Player player = Bukkit.getPlayer(uuid);
                     if (player == null) continue;
                     if (player.isOnline()) DisplayHud.showHud(player);

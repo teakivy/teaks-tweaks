@@ -65,7 +65,7 @@ public class LogChests extends AbstractRecipe {
 
         RecipeChoice logs = new RecipeChoice.MaterialChoice(logList);
 
-        NamespacedKey key = new NamespacedKey(main, "log_to_chests");
+        NamespacedKey key = new NamespacedKey(teaksTweaks, "log_to_chests");
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.CHEST, 4));
         recipe.shape("xxx", "x x", "xxx");
         recipe.setIngredient('x', logs);

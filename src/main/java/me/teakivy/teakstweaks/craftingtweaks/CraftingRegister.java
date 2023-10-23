@@ -9,6 +9,9 @@ public class CraftingRegister {
 
     private static final List<AbstractRecipe> enabledRecipes = new ArrayList<>();
 
+    /**
+     * Register all recipes
+     */
     public static void registerAll() {
         List<AbstractRecipe> recipes = new ArrayList<>();
         recipes.add(new BackToBlocks());
@@ -54,10 +57,18 @@ public class CraftingRegister {
         } catch (Exception ignored) {}
     }
 
+    /**
+     * Add a recipe to the list of enabled recipes
+     * @param recipe AbstractRecipe
+     */
     public static void addEnabledRecipe(AbstractRecipe recipe) {
         enabledRecipes.add(recipe);
     }
 
+    /**
+     * Get the list of enabled recipes
+     * @return List<AbstractRecipe>
+     */
     public static List<AbstractRecipe> getEnabledRecipes() {
         return enabledRecipes;
     }

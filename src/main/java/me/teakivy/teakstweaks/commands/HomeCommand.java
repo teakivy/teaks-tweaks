@@ -1,9 +1,8 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.teleportation.homes.Home;
 import me.teakivy.teakstweaks.packs.teleportation.homes.HomesPack;
-import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -14,8 +13,6 @@ import java.util.List;
 
 
 public class HomeCommand extends AbstractCommand {
-
-    Main main = Main.getPlugin(Main.class);
 
     public HomeCommand() {
         super("homes", "homes", "/homes", "Teleport, Set, or Delete your Homes!", List.of("home"));
@@ -69,7 +66,7 @@ public class HomeCommand extends AbstractCommand {
                 return true;
             }
 
-            int maxHomes = main.getConfig().getInt("packs.homes.max-homes");
+            int maxHomes = TeaksTweaks.getInstance().getConfig().getInt("packs.homes.max-homes");
             if (maxHomes > 0 && homes.size() >= maxHomes) {
                 player.sendMessage(getString("error.max_homes").replace("%max_homes%", String.valueOf(maxHomes)));
                 return true;

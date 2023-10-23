@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
-import me.teakivy.teakstweaks.utils.AbstractCommand;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -11,8 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PackListCommand extends AbstractCommand {
-
-    Main main = Main.getPlugin(Main.class);
 
     public PackListCommand() {
         super(null, "packlist", "/packlist", "List all currently active Packs.", List.of("pkl"));
@@ -25,9 +22,9 @@ public class PackListCommand extends AbstractCommand {
             return true;
         }
 
-        ArrayList<String> packs = main.getPacks();
+        ArrayList<String> packs = TeaksTweaks.getInstance().getPacks();
         String str = getString("packs").replace("%count%", packs.size() + "") + arrayToString(packs);
-        ArrayList<String> ctweaks = main.getCraftingTweaks();
+        ArrayList<String> ctweaks = TeaksTweaks.getInstance().getCraftingTweaks();
         String str2 = getString("craftingtweaks").replace("%count%", ctweaks.size() + "") + arrayToString(ctweaks);
 
         sender.sendMessage(str);

@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
 import me.teakivy.teakstweaks.packs.hermitcraft.tag.Tag;
 import me.teakivy.teakstweaks.utils.*;
@@ -9,6 +8,8 @@ import me.teakivy.teakstweaks.utils.datamanager.DataManager;
 import me.teakivy.teakstweaks.utils.gui.GUIListener;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
+import me.teakivy.teakstweaks.utils.update.UpdateChecker;
+import me.teakivy.teakstweaks.utils.update.UpdateJoinAlert;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.Listener;
@@ -23,7 +24,7 @@ import java.util.UUID;
 
 import static me.teakivy.teakstweaks.utils.metrics.CustomMetrics.registerCustomMetrics;
 
-public final class Main extends JavaPlugin implements Listener {
+public final class TeaksTweaks extends JavaPlugin implements Listener {
 
     public static ArrayList<UUID> chEnabled = new ArrayList<>();
 
@@ -37,6 +38,9 @@ public final class Main extends JavaPlugin implements Listener {
     public Tag tagListener;
     public boolean devMode;
 
+    /**
+     * Called when the plugin is enabled
+     */
     @Override
     public void onEnable() {
         this.devMode = getConfig().getBoolean("config.dev-mode");
@@ -83,19 +87,22 @@ public final class Main extends JavaPlugin implements Listener {
         }
 
         // Plugin startup logic
-        Logger.log(Logger.LogLevel.INFO, "");
-        Logger.log(Logger.LogLevel.INFO, Translatable.get("startup.plugin.started").replace("%version%", this.getDescription().getVersion()));
-        Logger.log(Logger.LogLevel.INFO, "");
+        Logger.info("");
+        Logger.info(Translatable.get("startup.plugin.started").replace("%version%", this.getDescription().getVersion()));
+        Logger.info("");
 
         // Packs
         register = new Register();
         register.registerAll();
     }
 
+    /**
+     * Called when the plugin is disabled
+     */
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        Logger.log(Logger.LogLevel.INFO, Translatable.get("startup.plugin.shutting_down"));
+        Logger.info(Translatable.get("startup.plugin.shutting_down"));
 
         try {
             data.saveConfig();
@@ -105,38 +112,73 @@ public final class Main extends JavaPlugin implements Listener {
 
     }
 
+    /**
+     * Clear the active packs list
+     */
     public void clearPacks() {
         activePacks.clear();
     }
 
+    /**
+     * Add a pack to the active packs list
+     * @param name
+     */
     public void addPack(String name) {
         activePacks.add(name);
     }
 
+    /**
+     * Get the active packs list
+     * @return ArrayList<String> of active packs
+     */
     public ArrayList<String> getPacks() {
         return activePacks;
     }
 
+    /**
+     * Add a crafting tweak to the active crafting tweaks list
+     * @param name Crafting tweak name
+     */
     public void addCraftingTweaks(String name) {
         activeCraftingTweaks.add(name);
     }
 
+    /**
+     * Get the active crafting tweaks list
+     * @return ArrayList<String> of active crafting tweaks
+     */
     public ArrayList<String> getCraftingTweaks() {
         return activeCraftingTweaks;
     }
 
+    /**
+     * Get the register instance
+     * @return Register instance
+     */
     public static Register getRegister() {
-        return Main.getInstance().register;
+        return TeaksTweaks.getInstance().register;
     }
 
-    public static Main getInstance() {
-        return getPlugin(Main.class);
+    /**
+     * Get the main instance
+     * @return Main instance
+     */
+    public static TeaksTweaks getInstance() {
+        return getPlugin(TeaksTweaks.class);
     }
 
+    /**
+     * Get the config section for a pack
+     * @param pack Pack name
+     * @return config: packs.[pack]
+     */
     public static ConfigurationSection getPackConfig(String pack) {
         return getInstance().getConfig().getConfigurationSection("packs." + pack);
     }
 
+    /**
+     * Create the credits file
+     */
     private void createCredits() {
         try {
             new Credits().createCredits();
@@ -145,6 +187,9 @@ public final class Main extends JavaPlugin implements Listener {
         }
     }
 
+    /**
+     * Update the config.yml file
+     */
     private void updateConfig() {
         String configVersion = this.getConfig().getString("config.version");
         String pluginConfigVersion = Objects.requireNonNull(this.getConfig().getDefaults()).getString("config.version");
@@ -157,9 +202,13 @@ public final class Main extends JavaPlugin implements Listener {
             e.printStackTrace();
         }
 
-        Logger.log(Logger.LogLevel.INFO, "Updated Plugin Config");
+        Logger.info("Updated Plugin Config");
     }
 
+    /**
+     * Get the Gson instance from JsonManager
+     * @return Gson instance
+     */
     public static Gson getGson() {
         return JsonManager.getGson();
     }

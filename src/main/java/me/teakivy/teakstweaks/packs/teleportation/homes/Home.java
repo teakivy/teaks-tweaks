@@ -1,9 +1,8 @@
 package me.teakivy.teakstweaks.packs.teleportation.homes;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
@@ -61,12 +60,12 @@ public class Home {
             return;
         }
 
-        if (Main.getInstance().getConfig().getInt("packs.homes.teleport-delay") > 0) {
-            player.sendMessage(Translatable.get("homes.teleporting_in").replace("%time%", Main.getInstance().getConfig().getInt("packs.homes.teleport-delay") + ""));
-            Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), () -> {
+        if (TeaksTweaks.getInstance().getConfig().getInt("packs.homes.teleport-delay") > 0) {
+            player.sendMessage(Translatable.get("homes.teleporting_in").replace("%time%", TeaksTweaks.getInstance().getConfig().getInt("packs.homes.teleport-delay") + ""));
+            Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
                 player.teleport(loc);
                 player.sendMessage(Translatable.get("homes.teleported").replace("%home%", name));
-            }, Main.getInstance().getConfig().getInt("packs.homes.teleport-delay") * 20L);
+            }, TeaksTweaks.getInstance().getConfig().getInt("packs.homes.teleport-delay") * 20L);
         } else {
             player.teleport(loc);
             player.sendMessage(Translatable.get("homes.teleported").replace("%home%", name));
@@ -78,7 +77,7 @@ public class Home {
         if (player == null) return;
 
         PersistentDataContainer data = player.getPersistentDataContainer();
-        NamespacedKey key = new NamespacedKey(Main.getInstance(), "homes");
+        NamespacedKey key = new NamespacedKey(TeaksTweaks.getInstance(), "homes");
         String homes = data.get(key, PersistentDataType.STRING);
         if (homes == null) return;
 
@@ -92,7 +91,7 @@ public class Home {
 
         data.set(key, PersistentDataType.STRING, newHomes);
 
-        data.remove(new NamespacedKey(Main.getInstance(), "home." + name));
+        data.remove(new NamespacedKey(TeaksTweaks.getInstance(), "home." + name));
 
         player.sendMessage(Translatable.get("homes.deleted").replace("%home%", name));
     }

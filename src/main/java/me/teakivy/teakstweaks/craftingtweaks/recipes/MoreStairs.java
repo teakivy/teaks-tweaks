@@ -70,7 +70,7 @@ public class MoreStairs extends AbstractRecipe {
     }
 
     public static void newStairsRecipe(Material input, Material output) {
-        NamespacedKey key = new NamespacedKey(main, output.name().toLowerCase() + "_stairs");
+        NamespacedKey key = new NamespacedKey(teaksTweaks, output.name().toLowerCase() + "_stairs");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(output, 8));
 

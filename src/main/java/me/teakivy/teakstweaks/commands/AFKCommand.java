@@ -1,8 +1,7 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.survival.afkdisplay.AFK;
-import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -13,8 +12,6 @@ import java.util.List;
 
 public class AFKCommand extends AbstractCommand {
 
-    Main main = Main.getPlugin(Main.class);
-
     public AFKCommand() {
         super("afk-display", "afk", "/afk [uninstall]", "Toggles AFK mode. When enabled, you will be automatically set to AFK when you are idle for 5 minutes.");
     }
@@ -22,7 +19,7 @@ public class AFKCommand extends AbstractCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if (!main.getConfig().getBoolean("packs.afk-display.enabled")) {
+        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.afk-display.enabled")) {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
@@ -38,7 +35,7 @@ public class AFKCommand extends AbstractCommand {
         }
 
         if (args.length < 1) {
-            if (!main.getConfig().getBoolean("packs.afk-display.allow-afk-command")) {
+            if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.afk-display.allow-afk-command")) {
                 sender.sendMessage(ErrorType.COMMAND_DISABLED.m());
                 return true;
             }

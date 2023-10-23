@@ -3,7 +3,7 @@ package me.teakivy.teakstweaks.packs.mobs.moremobheads;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import com.mojang.authlib.properties.PropertyMap;
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.ReflectionUtils;
 import org.apache.commons.lang3.text.WordUtils;
 import org.bukkit.ChatColor;
@@ -45,7 +45,7 @@ public class BaseMobHead implements Listener {
         if (texture != null) addHeadTexture("default", getName() + " Head", texture);
 
 
-        Main.getInstance().getServer().getPluginManager().registerEvents(this, Main.getInstance());
+        TeaksTweaks.getInstance().getServer().getPluginManager().registerEvents(this, TeaksTweaks.getInstance());
     }
 
     public BaseMobHead(EntityType entity, String key, Sound sound) {
@@ -61,7 +61,7 @@ public class BaseMobHead implements Listener {
     }
 
     public boolean dropHead(EntityDeathEvent event) {
-        if (Main.getInstance().getConfig().getBoolean("config.dev-mode")) return true;
+        if (TeaksTweaks.getInstance().getConfig().getBoolean("config.dev-mode")) return true;
         return shouldDrop(event.getEntity().getKiller());
     }
 

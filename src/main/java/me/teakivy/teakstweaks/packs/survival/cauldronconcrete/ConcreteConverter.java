@@ -30,7 +30,7 @@ public class ConcreteConverter extends BasePack {
         Levelled levelled = (Levelled) event.getClickedBlock().getBlockData();
         if (levelled.getLevel() == 1 && !config.getBoolean("drops-water-level")) {
             event.getClickedBlock().setType(Material.BARRIER);
-            Bukkit.getScheduler().runTaskLater(main, () -> event.getClickedBlock().setType(Material.CAULDRON), 1L);
+            Bukkit.getScheduler().runTaskLater(teaksTweaks, () -> event.getClickedBlock().setType(Material.CAULDRON), 1L);
 
         }
 

@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
-import me.teakivy.teakstweaks.utils.AbstractCommand;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -10,15 +9,13 @@ import org.bukkit.entity.Player;
 
 public class PortalCommand extends AbstractCommand {
 
-    Main main = Main.getPlugin(Main.class);
-
     public PortalCommand() {
         super("nether-portal-coords", "portal", "/portal", "Calculate where a nether portal would link to.");
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!main.getConfig().getBoolean("packs.nether-portal-coords.enabled")) {
+        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.nether-portal-coords.enabled")) {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }

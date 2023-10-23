@@ -14,6 +14,10 @@ public enum PackType {
     UTILITIES,
     CRAFTING_TWEAKS;
 
+    /**
+     * Gets the color for the pack type
+     * @return chat color
+     */
     public Object getColor() {
         return switch (this) {
             case EXPERIMENTAL -> ChatColor.DARK_RED;
@@ -28,6 +32,10 @@ public enum PackType {
         };
     }
 
+    /**
+     * Gets the formatted name of the pack type
+     * @return formatted name
+     */
     public String getName() {
         return switch (this) {
             case EXPERIMENTAL -> getColor() + get("experimental");
@@ -42,6 +50,11 @@ public enum PackType {
         };
     }
 
+    /**
+     * Get a string from the lang file
+     * @param key the key to get
+     * @return the string
+     */
     private String get(String key) {
         return Translatable.get("packtype." + key);
     }

@@ -1,14 +1,11 @@
 package me.teakivy.teakstweaks.packs.teakstweaks.quickcommands;
 
-import me.teakivy.teakstweaks.utils.AbstractCommand;
+import me.teakivy.teakstweaks.commands.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 
 import java.util.ArrayList;
 import java.util.HashMap;

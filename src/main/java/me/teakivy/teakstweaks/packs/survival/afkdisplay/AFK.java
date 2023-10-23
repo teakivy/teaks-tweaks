@@ -61,7 +61,7 @@ public class AFK extends BasePack {
             }
         }
 
-        afkTimer = Bukkit.getScheduler().runTaskTimer(main, () -> {
+        afkTimer = Bukkit.getScheduler().runTaskTimer(teaksTweaks, () -> {
             afk.forEach((uuid, isAFK) -> {
                 Player player = Bukkit.getOfflinePlayer(uuid).getPlayer();
                 if (!isAFK) {
@@ -132,32 +132,32 @@ public class AFK extends BasePack {
 
     public static void displayAFKMessage(Player player, Boolean isAFK) {
         if (isAFK) {
-            if (main.getConfig().getBoolean("packs.afk-display.message.display-to-self")) {
+            if (teaksTweaks.getConfig().getBoolean("packs.afk-display.message.display-to-self")) {
                 player.sendMessage(Translatable.get("afk_display.self_now_afk"));
             }
-            if (main.getConfig().getBoolean("packs.afk-display.message.display-to-everyone")) {
+            if (teaksTweaks.getConfig().getBoolean("packs.afk-display.message.display-to-everyone")) {
                 for (Player player1 : Bukkit.getOnlinePlayers()) {
                     if (player1.getUniqueId() != player.getUniqueId()) {
                         player1.sendMessage(Translatable.get("afk_display.other_now_afk").replace("%player%", player.getName()));
                     }
                 }
             }
-            if (main.getConfig().getBoolean("packs.afk-display.message.display-to-console")) {
-                Logger.log(Logger.LogLevel.INFO, ChatColor.stripColor(Translatable.get("afk_display.other_now_afk").replace("%player%", player.getName())));
+            if (teaksTweaks.getConfig().getBoolean("packs.afk-display.message.display-to-console")) {
+                Logger.info(ChatColor.stripColor(Translatable.get("afk_display.other_now_afk").replace("%player%", player.getName())));
             }
         } else {
-            if (main.getConfig().getBoolean("packs.afk-display.message.display-to-self")) {
+            if (teaksTweaks.getConfig().getBoolean("packs.afk-display.message.display-to-self")) {
                 player.sendMessage(Translatable.get("afk_display.self_not_afk"));
             }
-            if (main.getConfig().getBoolean("packs.afk-display.message.display-to-everyone")) {
+            if (teaksTweaks.getConfig().getBoolean("packs.afk-display.message.display-to-everyone")) {
                 for (Player player1 : Bukkit.getOnlinePlayers()) {
                     if (player1.getUniqueId() != player.getUniqueId()) {
                         player1.sendMessage(Translatable.get("afk_display.other_not_afk").replace("%player%", player.getName()));
                     }
                 }
             }
-            if (main.getConfig().getBoolean("packs.afk-display.message.display-to-console")) {
-                Logger.log(Logger.LogLevel.INFO, ChatColor.stripColor(Translatable.get("afk_display.other_not_afk").replace("%player%", player.getName())));
+            if (teaksTweaks.getConfig().getBoolean("packs.afk-display.message.display-to-console")) {
+                Logger.info(ChatColor.stripColor(Translatable.get("afk_display.other_not_afk").replace("%player%", player.getName())));
             }
         }
     }

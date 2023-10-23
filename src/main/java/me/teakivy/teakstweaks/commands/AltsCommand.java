@@ -1,8 +1,7 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.teakstweaks.spectatoralts.SpectatorAlts;
-import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -97,8 +96,8 @@ public class AltsCommand extends AbstractCommand {
         }
 
         if (action.equalsIgnoreCase("add")) {
-            if (!sender.isOp() && Main.getInstance().getConfig().getInt("packs.spectator-alts.max-alts") != -1) {
-                if (SpectatorAlts.getAlts(main).size() >= Main.getInstance().getConfig().getInt("packs.spectator-alts.max-alts")) {
+            if (!sender.isOp() && TeaksTweaks.getInstance().getConfig().getInt("packs.spectator-alts.max-alts") != -1) {
+                if (SpectatorAlts.getAlts(main).size() >= TeaksTweaks.getInstance().getConfig().getInt("packs.spectator-alts.max-alts")) {
                     sender.sendMessage(getString("error.max_alts"));
                     return true;
                 }

@@ -1,12 +1,10 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
 import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
-import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.gui.PaginatedGUI;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -37,8 +35,8 @@ public class MechanicsCommand extends AbstractCommand {
 
         List<ItemStack> items = new ArrayList<>();
 
-        for (String pk : Main.getRegister().getEnabledPacks()) {
-            items.add(Main.getRegister().getPack(pk).getItem());
+        for (String pk : TeaksTweaks.getRegister().getEnabledPacks()) {
+            items.add(TeaksTweaks.getRegister().getPack(pk).getItem());
         }
 
         for (AbstractRecipe recipe : CraftingRegister.getEnabledRecipes()) {

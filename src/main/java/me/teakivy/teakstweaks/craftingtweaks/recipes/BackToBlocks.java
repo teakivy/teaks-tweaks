@@ -122,7 +122,7 @@ public class BackToBlocks extends AbstractRecipe {
     }
 
     public static void newShapelessStairRecipe(String keyName, ItemStack result, Material ingredient, int amount) {
-        NamespacedKey key = new NamespacedKey(main, keyName + "_stair");
+        NamespacedKey key = new NamespacedKey(teaksTweaks, keyName + "_stair");
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, result);
 
@@ -131,7 +131,7 @@ public class BackToBlocks extends AbstractRecipe {
         Bukkit.addRecipe(recipe);
     }
     public static void newShapedSlabRecipe(String keyName, ItemStack result, Material ingredient) {
-        NamespacedKey key = new NamespacedKey(main, keyName + "_slab");
+        NamespacedKey key = new NamespacedKey(teaksTweaks, keyName + "_slab");
 
         ShapedRecipe recipe = new ShapedRecipe(key, result);
 

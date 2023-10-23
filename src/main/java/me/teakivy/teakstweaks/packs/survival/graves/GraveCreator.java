@@ -2,7 +2,7 @@ package me.teakivy.teakstweaks.packs.survival.graves;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.items.armoredelytra.ArmoredElytras;
 import me.teakivy.teakstweaks.utils.Base64Serializer;
 import me.teakivy.teakstweaks.utils.Logger;
@@ -25,9 +25,7 @@ import java.util.Objects;
 
 public class GraveCreator {
 
-    public static Main main = Main.getPlugin(Main.class);
-
-    public static ConfigurationSection config = main.getConfig().getConfigurationSection("packs.graves");
+    public static ConfigurationSection config = TeaksTweaks.getInstance().getConfig().getConfigurationSection("packs.graves");
 
     public static Location findGraveLocation(Location loc) {
         Location ogLoc = loc.clone();
@@ -75,20 +73,20 @@ public class GraveCreator {
         as.setCustomNameVisible(true);
 
         PersistentDataContainer data = as.getPersistentDataContainer();
-        NamespacedKey key = new NamespacedKey(Main.getPlugin(Main.class), "grave_owner_uuid");
+        NamespacedKey key = new NamespacedKey(TeaksTweaks.getInstance(), "grave_owner_uuid");
         data.set(key, PersistentDataType.STRING, player.getUniqueId().toString());
 
         if (!Boolean.TRUE.equals(location.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY))) {
-            NamespacedKey key2 = new NamespacedKey(Main.getPlugin(Main.class), "grave_owner_items");
+            NamespacedKey key2 = new NamespacedKey(TeaksTweaks.getInstance(), "grave_owner_items");
             data.set(key2, PersistentDataType.STRING, serializeItems(player));
 
-            NamespacedKey key3 = new NamespacedKey(Main.getPlugin(Main.class), "grave_owner_xp");
+            NamespacedKey key3 = new NamespacedKey(TeaksTweaks.getInstance(), "grave_owner_xp");
             data.set(key3, PersistentDataType.INTEGER, xp);
         }
 
         if (!config.getBoolean("console-info")) return;
 
-        Logger.log(Logger.LogLevel.INFO, Translatable.get("graves.log.created")
+        Logger.info(Translatable.get("graves.log.created")
                 .replace("%player%", player.getName())
                 .replace("%x%", loc.getBlockX() + "")
                 .replace("%y%", loc.getBlockY() + "")
@@ -101,13 +99,13 @@ public class GraveCreator {
             if (item == null) continue;
             items += item.getAmount();
         }
-        Logger.log(Logger.LogLevel.INFO, Translatable.get("graves.log.contains")
+        Logger.info(Translatable.get("graves.log.contains")
                 .replace("%item_count%", items + "")
                 .replace("%xp_count%", xp + "")
         );
         for (ItemStack item : player.getInventory().getContents()) {
             if (item == null) continue;
-            Logger.log(Logger.LogLevel.INFO, " - " + ChatColor.GOLD + item.getType().name() + ChatColor.WHITE + " x " + ChatColor.GOLD + item.getAmount());
+            Logger.info(" - " + ChatColor.GOLD + item.getType().name() + ChatColor.WHITE + " x " + ChatColor.GOLD + item.getAmount());
         }
     }
 
@@ -198,7 +196,7 @@ public class GraveCreator {
             if (!item.getType().equals(Material.ELYTRA)) continue;
 
             if (!item.hasItemMeta()) continue;
-            if (!item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(main, "armored_elytra"), PersistentDataType.STRING)) continue;
+            if (!item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(TeaksTweaks.getInstance(), "armored_elytra"), PersistentDataType.STRING)) continue;
 
             items2.add(ArmoredElytras.getB64ChestplateFromArmoredElytra(item));
             items2.add(ArmoredElytras.getB64ElytraFromArmoredElytra(item));

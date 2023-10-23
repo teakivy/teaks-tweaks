@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.craftingtweaks;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
@@ -14,13 +14,18 @@ import java.util.List;
 public class AbstractRecipe {
     protected String name;
     protected String path;
-    protected static Main main = Main.getPlugin(Main.class);
+    protected static TeaksTweaks teaksTweaks = TeaksTweaks.getInstance();
 
     public Material material;
     public String description;
 
     public ItemStack item;
 
+    /**
+     * Set up the pack
+     * @param path Config path
+     * @param material Material for the item
+     */
     public AbstractRecipe(String path, Material material) {
         String langKey = path.replaceAll("-", "_");
         this.name = Translatable.get(langKey + ".name");
@@ -30,9 +35,12 @@ public class AbstractRecipe {
         this.description = Translatable.get(langKey + ".description");
     }
 
+    /**
+     * Initialize all recipes for the pack
+     */
     public void init() {
-        Logger.log(Logger.LogLevel.INFO, Translatable.get("startup.register.crafting_tweak").replace("%name%", this.name));
-        main.addCraftingTweaks(this.name);
+        Logger.info(Translatable.get("startup.register.crafting_tweak").replace("%name%", this.name));
+        teaksTweaks.addCraftingTweaks(this.name);
         CraftingRegister.addEnabledRecipe(this);
         this.registerRecipes();
 
@@ -62,14 +70,24 @@ public class AbstractRecipe {
         });
     }
 
+    /**
+     * Register the pack
+     */
     public void register() {
-        if (main.getConfig().getBoolean("crafting-tweaks." + path + ".enabled")) init();
+        if (teaksTweaks.getConfig().getBoolean("crafting-tweaks." + path + ".enabled")) init();
     }
 
+    /**
+     * Register all recipes for the pack
+     */
     public void registerRecipes() {
         // TODO : Implement
     }
 
+    /**
+     * Get the item for the pack
+     * @return item
+     */
     public ItemStack getItem() {
         return item;
     }

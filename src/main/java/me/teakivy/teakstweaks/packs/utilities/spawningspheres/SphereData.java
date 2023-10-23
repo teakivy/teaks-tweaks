@@ -1,15 +1,13 @@
 package me.teakivy.teakstweaks.packs.utilities.spawningspheres;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.datamanager.DataManager;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class SphereData {
-
-    Main main = Main.getPlugin(Main.class);
-    DataManager dataManager = main.data;
+    DataManager dataManager = TeaksTweaks.getInstance().data;
     FileConfiguration data = dataManager.getConfig();
 
     public boolean isSphereUsed(Color color) {

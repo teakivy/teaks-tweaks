@@ -16,7 +16,7 @@ public class CraftableSmallDripleaves extends AbstractRecipe {
     @Override
     public void registerRecipes() {
 
-        NamespacedKey key = new NamespacedKey(main, "craftable_dripleaf");
+        NamespacedKey key = new NamespacedKey(teaksTweaks, "craftable_dripleaf");
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.SMALL_DRIPLEAF, 1));
 

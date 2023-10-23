@@ -1,8 +1,7 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.survival.graves.GraveEvents;
-import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
@@ -19,8 +18,6 @@ import java.util.List;
 
 public class GraveCommand extends AbstractCommand {
 
-    Main main = Main.getPlugin(Main.class);
-
 
     public GraveCommand() {
         super("graves", "graves", "/graves", "Keep Inventory stands no chance!", List.of("grave"));
@@ -33,7 +30,7 @@ public class GraveCommand extends AbstractCommand {
             return true;
         }
 
-        if (!main.getConfig().getBoolean("packs.graves.enabled")) {
+        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.graves.enabled")) {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
@@ -48,10 +45,10 @@ public class GraveCommand extends AbstractCommand {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
-            if (main.getConfig().getBoolean("packs.graves.locatable")) {
+            if (TeaksTweaks.getInstance().getConfig().getBoolean("packs.graves.locatable")) {
                 PersistentDataContainer data = player.getPersistentDataContainer();
-                if (data.has(new NamespacedKey(main, "graves_last"), PersistentDataType.STRING)) {
-                    player.sendMessage(data.get(new NamespacedKey(main, "graves_last"), PersistentDataType.STRING));
+                if (data.has(new NamespacedKey(TeaksTweaks.getInstance(), "graves_last"), PersistentDataType.STRING)) {
+                    player.sendMessage(data.get(new NamespacedKey(TeaksTweaks.getInstance(), "graves_last"), PersistentDataType.STRING));
                 } else {
                     player.sendMessage(getString("error.no_grave"));
                 }
@@ -66,10 +63,10 @@ public class GraveCommand extends AbstractCommand {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
-            if (main.getConfig().getBoolean("packs.graves.locatable")) {
+            if (TeaksTweaks.getInstance().getConfig().getBoolean("packs.graves.locatable")) {
                 PersistentDataContainer data = player.getPersistentDataContainer();
-                if (data.has(new NamespacedKey(main, "graves_last"), PersistentDataType.STRING)) {
-                    player.sendMessage(data.get(new NamespacedKey(main, "graves_last"), PersistentDataType.STRING));
+                if (data.has(new NamespacedKey(TeaksTweaks.getInstance(), "graves_last"), PersistentDataType.STRING)) {
+                    player.sendMessage(data.get(new NamespacedKey(TeaksTweaks.getInstance(), "graves_last"), PersistentDataType.STRING));
                 } else {
                     player.sendMessage(getString("error.no_grave"));
                 }

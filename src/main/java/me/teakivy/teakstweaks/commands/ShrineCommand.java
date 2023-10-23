@@ -1,8 +1,7 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.hermitcraft.thundershrine.Shrine;
-import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -16,15 +15,13 @@ import java.util.List;
 
 public class ShrineCommand extends AbstractCommand {
 
-    Main main = Main.getPlugin(Main.class);
-
     public ShrineCommand() {
         super("thunder-shrine", "shrine", "/shrine", "Thunder Shrines!");
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!main.getConfig().getBoolean("packs.thunder-shrine.enabled")) {
+        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.thunder-shrine.enabled")) {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }

@@ -32,7 +32,7 @@ public class MultiSleep extends BasePack {
 
     @EventHandler
     public void onSleep(PlayerBedEnterEvent event) {
-        Bukkit.getScheduler().runTaskLater(main, () -> {
+        Bukkit.getScheduler().runTaskLater(teaksTweaks, () -> {
         sleeping++;
         if (event.isCancelled() || !event.getPlayer().isSleeping()) {
             sleeping--;
@@ -86,7 +86,7 @@ public class MultiSleep extends BasePack {
             }
         }
 
-        Bukkit.getScheduler().runTaskLater(main, () -> {
+        Bukkit.getScheduler().runTaskLater(teaksTweaks, () -> {
             event.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(" "));
         }, 1L);
     }
@@ -96,7 +96,7 @@ public class MultiSleep extends BasePack {
     }
 
     public void actionbarMessage() {
-        Bukkit.getScheduler().runTaskLater(main, () -> {
+        Bukkit.getScheduler().runTaskLater(teaksTweaks, () -> {
             if (sleeping <= 0) return;
             for (Player online : Bukkit.getOnlinePlayers()) {
                 online.spigot().sendMessage(
@@ -152,7 +152,7 @@ public class MultiSleep extends BasePack {
 
     public void triggerSleep(Player player) {
         Random rand = new Random();
-        Bukkit.getScheduler().runTaskLater(main, () -> {
+        Bukkit.getScheduler().runTaskLater(teaksTweaks, () -> {
             if (!canSleep()) return;
             for (World world : Bukkit.getWorlds()) {
                 if (world.getEnvironment() == World.Environment.NORMAL) {
@@ -179,10 +179,10 @@ public class MultiSleep extends BasePack {
             }
         }
 
-        Logger.log(Logger.LogLevel.INFO, sleepAvaliable + "");
-        Logger.log(Logger.LogLevel.INFO, sleeping + "");
-        Logger.log(Logger.LogLevel.INFO, (100 / sleepAvaliable * sleeping) + "");
-        Logger.log(Logger.LogLevel.INFO, sleepingPercentage + "");
+        Logger.info(sleepAvaliable + "");
+        Logger.info(sleeping + "");
+        Logger.info((100 / sleepAvaliable * sleeping) + "");
+        Logger.info(sleepingPercentage + "");
     }
 
 }

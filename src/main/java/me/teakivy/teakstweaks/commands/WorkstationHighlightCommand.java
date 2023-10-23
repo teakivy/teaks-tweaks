@@ -1,8 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
 import me.teakivy.teakstweaks.packs.survival.workstationhighlights.Highlighter;
-import me.teakivy.teakstweaks.utils.AbstractCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -18,8 +16,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class WorkstationHighlightCommand extends AbstractCommand {
-
-    static Main main = Main.getPlugin(Main.class);
 
     final String[] professionTypes;
 

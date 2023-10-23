@@ -56,11 +56,11 @@ public class Decay extends BasePack {
             if (scheduledBlocks.contains(block)) continue;
             if (getConfig().getBoolean("one-by-one")) {
                 if (scheduledBlocks.isEmpty()) {
-                    main.getServer().getScheduler().runTaskLater(main, this::decayOne, delay);
+                    teaksTweaks.getServer().getScheduler().runTaskLater(teaksTweaks, this::decayOne, delay);
                 }
                 scheduledBlocks.add(block);
             } else {
-                main.getServer().getScheduler().runTaskLater(main, () -> decay(block), delay);
+                teaksTweaks.getServer().getScheduler().runTaskLater(teaksTweaks, () -> decay(block), delay);
             }
             scheduledBlocks.add(block);
         }
@@ -74,7 +74,7 @@ public class Decay extends BasePack {
         if (leaves.isPersistent()) return false;
         if (leaves.getDistance() < 7) return false;
         LeavesDecayEvent event = new LeavesDecayEvent(block);
-        main.getServer().getPluginManager().callEvent(event);
+        teaksTweaks.getServer().getPluginManager().callEvent(event);
         if (event.isCancelled()) return false;
         if (getConfig().getBoolean("spawn-particles")) {
             block.getWorld()
@@ -101,7 +101,7 @@ public class Decay extends BasePack {
         if (!scheduledBlocks.isEmpty()) {
             long delay = getConfig().getLong("decay-delay");
             if (delay <= 0) delay = 1L;
-            main.getServer().getScheduler().runTaskLater(main, this::decayOne, delay);
+            teaksTweaks.getServer().getScheduler().runTaskLater(teaksTweaks, this::decayOne, delay);
         }
     }
 }

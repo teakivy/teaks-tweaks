@@ -1,6 +1,5 @@
 package me.teakivy.teakstweaks.packs.survival.classicfishingloot;
 
-import me.teakivy.teakstweaks.Main;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
@@ -16,8 +15,6 @@ import java.util.List;
 import java.util.Random;
 
 public class FishingLootTable {
-
-    Main main = Main.getPlugin(Main.class);
 
     static HashMap<Enchantment, Integer> enchants = new HashMap<>();
 

@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.packs.teakstweaks.spectatoralts;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.datamanager.DataManager;
@@ -31,7 +31,7 @@ public class SpectatorAlts extends BasePack {
     @Override
     public void init() {
         super.init();
-        DataManager data = Main.getInstance().data;
+        DataManager data = TeaksTweaks.getInstance().data;
         FileConfiguration config = data.getConfig();
 
         if (config.contains("alts")) {
@@ -62,7 +62,7 @@ public class SpectatorAlts extends BasePack {
         Bukkit.getOfflinePlayer(alt).setWhitelisted(true);
         alts.put(alt, owner);
 
-        DataManager data = Main.getInstance().data;
+        DataManager data = TeaksTweaks.getInstance().data;
 
         ConfigurationSection section = data.getConfig().getConfigurationSection("alts");
         if (section == null) {
@@ -86,7 +86,7 @@ public class SpectatorAlts extends BasePack {
         Bukkit.getOfflinePlayer(alt).setWhitelisted(false);
         alts.remove(alt);
 
-        DataManager data = Main.getInstance().data;
+        DataManager data = TeaksTweaks.getInstance().data;
 
         ConfigurationSection section = data.getConfig().getConfigurationSection("alts");
         if (section == null) {

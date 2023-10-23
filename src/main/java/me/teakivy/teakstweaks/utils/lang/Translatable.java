@@ -1,18 +1,20 @@
 package me.teakivy.teakstweaks.utils.lang;
 
-import me.teakivy.teakstweaks.Main;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import org.bukkit.ChatColor;
 
 import java.io.*;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Translatable {
     private static final List<TranslatableLanguage> languages = new ArrayList<>();
 
     private static TranslatableLanguage currentLanguage;
 
+    /**
+     * Initializes the language system
+     * @param lang The language code
+     */
     public static void init(String lang) {
         languages.add(new TranslatableLanguage("en"));
 
@@ -26,21 +28,29 @@ public class Translatable {
         currentLanguage.load();
     }
 
-    private static Set<String> listFilesUsingJavaIO(String dir) {
-        return Stream.of(new File(dir).listFiles())
-                .filter(file -> !file.isDirectory())
-                .map(File::getName)
-                .collect(Collectors.toSet());
-    }
-
+    /**
+     * Gets a string from the language map
+     * @param key The key
+     * @return The string
+     */
     public static String get(String key) {
         return ChatColor.translateAlternateColorCodes('&', currentLanguage.get(key));
     }
 
+    /**
+     * Gets an error message
+     * @param key The error key
+     * @return The error message
+     */
     public static String getError(String key) {
         return ChatColor.translateAlternateColorCodes('&', currentLanguage.get("error." + key));
     }
 
+    /**
+     * If the language is a built-in language
+     * @param lang The language code
+     * @return If the language is a built-in language
+     */
     public static boolean isPluginLanguage(String lang) {
         lang = lang.replace(".json", "");
         for (TranslatableLanguage language : languages) {
@@ -49,6 +59,11 @@ public class Translatable {
         return false;
     }
 
+    /**
+     * Gets a language object
+     * @param lang The language code
+     * @return The language object
+     */
     public static TranslatableLanguage getLanguage(String lang) {
         for (TranslatableLanguage language : languages) {
             if (language.getLang().equals(lang)) return language;
@@ -56,12 +71,17 @@ public class Translatable {
         return null;
     }
 
+    /**
+     * Gets the language map from the plugin's data folder
+     * @param lang The language code
+     * @return The language map
+     */
     public static LinkedHashMap<String, Object> getLanguageMapFromResource(String lang) {
-        File file = new File(Main.getInstance().getDataFolder() + "/lang/" + lang + ".json");
+        File file = new File(TeaksTweaks.getInstance().getDataFolder() + "/lang/" + lang + ".json");
         if (!file.exists()) return null;
 
         try {
-            return Main.getGson().fromJson(new FileReader(file), LinkedHashMap.class);
+            return TeaksTweaks.getGson().fromJson(new FileReader(file), LinkedHashMap.class);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -69,9 +89,14 @@ public class Translatable {
         return null;
     }
 
+    /**
+     * Gets the language map from the plugin's resources
+     * @param lang The language code
+     * @return The language map
+     */
     public static LinkedHashMap<String, Object> getLanguageMapFromPlugin(String lang) {
-        InputStream initialStream = Main.getInstance().getResource("lang/" + lang + ".json");
-        if (initialStream == null) initialStream = Main.getInstance().getResource("lang/en.json");
+        InputStream initialStream = TeaksTweaks.getInstance().getResource("lang/" + lang + ".json");
+        if (initialStream == null) initialStream = TeaksTweaks.getInstance().getResource("lang/en.json");
 
         try {
             initialStream = new ByteArrayInputStream(Objects.requireNonNull(initialStream).readAllBytes());
@@ -81,6 +106,6 @@ public class Translatable {
 
         Reader targetReader = new InputStreamReader(initialStream);
 
-        return Main.getGson().fromJson(targetReader, LinkedHashMap.class);
+        return TeaksTweaks.getGson().fromJson(targetReader, LinkedHashMap.class);
     }
 }

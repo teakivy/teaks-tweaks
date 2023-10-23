@@ -27,7 +27,7 @@ public class VillagerDeath extends BasePack {
             if (getConfig().getBoolean("show-in-chat")) {
                 Bukkit.broadcastMessage(deathMessage);
             } else {
-                Logger.log(Logger.LogLevel.INFO, deathMessage);
+                Logger.info(deathMessage);
             }
         }
     }

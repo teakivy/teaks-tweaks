@@ -20,7 +20,7 @@ public class UnlockRecipes extends BasePack {
         super("unlock-all-recipes", PackType.SURVIVAL, Material.KNOWLEDGE_BOOK);
 
         recipes.clear();
-        Iterator<Recipe> it = main.getServer().recipeIterator();
+        Iterator<Recipe> it = teaksTweaks.getServer().recipeIterator();
         while (it.hasNext()) {
             Recipe rec = it.next();
             if (rec instanceof Keyed) {

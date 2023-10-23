@@ -22,7 +22,7 @@ public class MoreSherds extends AbstractRecipe {
     }
 
     private void registerSherdRecipe(Material material) {
-        NamespacedKey key = new NamespacedKey(main, material.toString().toLowerCase() + "_more_sherds");
+        NamespacedKey key = new NamespacedKey(teaksTweaks, material.toString().toLowerCase() + "_more_sherds");
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(material, 2));
 

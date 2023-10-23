@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.Main;
-import me.teakivy.teakstweaks.utils.AbstractCommand;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -12,15 +11,13 @@ import java.util.List;
 
 public class CoordsHudCommand extends AbstractCommand {
 
-    Main main = Main.getPlugin(Main.class);
-
     public CoordsHudCommand() {
         super("coords-hud", "coordshud", "/coordshud", "Coordinates Hud Main Command", List.of("ch"));
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!main.getConfig().getBoolean("packs.coords-hud.enabled")) {
+        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.coords-hud.enabled")) {
             sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
             return true;
         }
@@ -42,15 +39,15 @@ public class CoordsHudCommand extends AbstractCommand {
             return true;
         }
 
-        if (main.getConfig().getBoolean("packs.coords-hud.force-enable")) {
+        if (TeaksTweaks.getInstance().getConfig().getBoolean("packs.coords-hud.force-enable")) {
             player.sendMessage(getString("error.force_enabled"));
             return true;
         }
 
-        if (!Main.chEnabled.contains(player.getUniqueId())) {
-            Main.chEnabled.add(player.getUniqueId());
+        if (!TeaksTweaks.chEnabled.contains(player.getUniqueId())) {
+            TeaksTweaks.chEnabled.add(player.getUniqueId());
         } else {
-            Main.chEnabled.remove(player.getUniqueId());
+            TeaksTweaks.chEnabled.remove(player.getUniqueId());
         }
 
         player.sendMessage(getString("toggled"));

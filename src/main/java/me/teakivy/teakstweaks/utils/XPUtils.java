@@ -3,7 +3,11 @@ package me.teakivy.teakstweaks.utils;
 import org.bukkit.entity.Player;
 
 public class XPUtils {
-    // Calculate amount of EXP needed to level up
+    /**
+     * Calculate the amount of experience needed to level up
+     * @param level The level to calculate from
+     * @return The amount of experience needed to level up
+     */
     public static int getExpToLevelUp(int level){
         if(level <= 15){
             return 2*level+7;
@@ -14,7 +18,11 @@ public class XPUtils {
         }
     }
 
-    // Calculate total experience up to a level
+    /**
+     * Calculate the total experience needed to get to a level
+     * @param level The level to calculate to
+     * @return The total amount of experience needed
+     */
     public static int getExpAtLevel(int level){
         if(level <= 16){
             return (int) (Math.pow(level,2) + 6*level);
@@ -25,7 +33,11 @@ public class XPUtils {
         }
     }
 
-    // Calculate player's current EXP amount
+    /**
+     * Calculate the amount of xp a player has
+     * @param player The player
+     * @return The amount of experience the player has
+     */
     public static int getPlayerExp(Player player){
         int exp = 0;
         int level = player.getLevel();
@@ -37,23 +49,6 @@ public class XPUtils {
         exp += Math.round(getExpToLevelUp(level) * player.getExp());
 
         return exp;
-    }
-
-    // Give or take EXP
-    public static int changePlayerExp(Player player, int exp){
-        // Get player's current exp
-        int currentExp = getPlayerExp(player);
-
-        // Reset player's current exp to 0
-        player.setExp(0);
-        player.setLevel(0);
-
-        // Give the player their exp back, with the difference
-        int newExp = currentExp + exp;
-        player.giveExp(newExp);
-
-        // Return the player's new exp amount
-        return newExp;
     }
 
 }
