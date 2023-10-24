@@ -31,6 +31,12 @@ public class JsonManager {
         return new LinkedHashMap<>();
     }
 
+    public static LinkedHashMap<String, Object> get(String path) {
+        LinkedHashMap<String, Object> json = getFromFile(path);
+        if (json == null) return getFromResource(path);
+        return json;
+    }
+
     public static LinkedHashMap<String, Object> getFromResource(String path) {
         return TeaksTweaks.getGson().fromJson(new InputStreamReader(TeaksTweaks.getInstance().getResource(path)), LinkedHashMap.class);
     }

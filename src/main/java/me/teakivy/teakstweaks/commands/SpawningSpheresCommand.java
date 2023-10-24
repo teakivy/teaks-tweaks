@@ -1,34 +1,24 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
-import me.teakivy.teakstweaks.packs.utilities.spawningspheresold.Sphere;
-import me.teakivy.teakstweaks.packs.utilities.spawningspheresold.SphereData;
+import me.teakivy.teakstweaks.packs.utilities.spawningspheres.SphereType;
+import me.teakivy.teakstweaks.packs.utilities.spawningspheres.SpheresPack;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import org.bukkit.Bukkit;
-import org.bukkit.Color;
-import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class SpawningSpheresCommand extends AbstractCommand {
 
     public SpawningSpheresCommand() {
-        super("spawning-spheres", "spawningspheres", "/spawningspheres", "Spawn a sphere to help with mob spawning", List.of("ss", "sphere"));
+        super("spawning-spheres", "spawningspheres", "/spawningspheres <create|remove|teleport> <red|blue|green>", "Spawn a sphere to help with mob spawning", List.of("ss", "sphere"));
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.spawning-spheres.enabled")) {
-            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
-            return true;
-        }
-
         if (!sender.hasPermission(permission)) {
             sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
             return true;
@@ -40,284 +30,91 @@ public class SpawningSpheresCommand extends AbstractCommand {
         }
         Player player = (Player) sender;
 
-        if (args.length < 1) {
-            player.sendMessage(ErrorType.MISSING_ACTION.m());
+        if (args.length < 2) {
+            player.sendMessage(getUsage());
             return true;
         }
 
-        SphereData sData = new SphereData();
+        SphereType type = SphereType.getSphereType(args[1]);
+        if (type == null) {
+            player.sendMessage(getString("error.invalid_color"));
+            return true;
+        }
 
         if (args[0].equalsIgnoreCase("create")) {
-            if (args.length < 2) {
-                player.sendMessage(getString("error.missing_color"));
-                return true;
-            }
-
             if (!sender.hasPermission(permission+".create")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
 
-            if (args[1].equalsIgnoreCase("red")) {
-                if (checkSphere(Color.RED, player, sData, true)) return true;
-                Sphere.spawnSphere(player.getLocation(), Color.RED);
-                player.sendMessage(getString("summoned").replace("%color%", getString("color.red")));
-                sData.setSphere(Color.RED, player.getLocation());
-            }
-
-            if (args[1].equalsIgnoreCase("blue")) {
-                if (checkSphere(Color.BLUE, player, sData, true)) return true;
-                Sphere.spawnSphere(player.getLocation(), Color.BLUE);
-                player.sendMessage(getString("summoned").replace("%color%", getString("color.blue")));
-                sData.setSphere(Color.BLUE, player.getLocation());
-            }
-
-            if (args[1].equalsIgnoreCase("green")) {
-                if (checkSphere(Color.GREEN, player, sData, true)) return true;
-                Sphere.spawnSphere(player.getLocation(), Color.GREEN);
-                player.sendMessage(getString("summoned").replace("%color%", getString("color.green")));
-                sData.setSphere(Color.GREEN, player.getLocation());
-            }
-        }
-
-        if (args[0].equalsIgnoreCase("remove")) {
-            if (args.length < 2) {
-                player.sendMessage(getString("error.missing_color"));
+            boolean success = SpheresPack.summonSphere(type, player.getLocation());
+            if (!success) {
+                player.sendMessage(getString("error.in_use").replace("%color%", type.getName()));
                 return true;
             }
 
+            player.sendMessage(getString("summoned").replace("%color%", type.getName()));
+            return true;
+        }
+
+        if (args[0].equalsIgnoreCase("remove")) {
             if (!sender.hasPermission(permission+".remove")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
 
-            if (args[1].equalsIgnoreCase("red")) {
-                if (checkSphere(Color.RED, player, sData, false)) return true;
-                removeSphere(Color.RED, player, sData);
-                sData.setSphere(Color.RED, null);
-            }
-
-            if (args[1].equalsIgnoreCase("blue")) {
-                if (checkSphere(Color.BLUE, player, sData, false)) return true;
-                removeSphere(Color.BLUE, player, sData);
-                sData.setSphere(Color.BLUE, null);
-            }
-
-            if (args[1].equalsIgnoreCase("green")) {
-                if (checkSphere(Color.GREEN, player, sData, false)) return true;
-                removeSphere(Color.GREEN, player, sData);
-                sData.setSphere(Color.GREEN, null);
-            }
-
-        }
-
-        if (args[0].equalsIgnoreCase("tp") || args[0].equalsIgnoreCase("teleport")) {
-            if (args.length < 2) {
-                player.sendMessage(getString("error.missing_color"));
+            boolean success = SpheresPack.removeSphere(type, player);
+            if (!success) {
+                player.sendMessage(getString("error.not_in_use").replace("%color%", type.getName()));
                 return true;
             }
 
+            player.sendMessage(getString("removing").replace("%color%", type.getName()));
+            return true;
+        }
+
+        if (args[0].equalsIgnoreCase("teleport") || args[0].equalsIgnoreCase("tp")) {
             if (!sender.hasPermission(permission+".teleport")) {
                 sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
                 return true;
             }
 
-            if (args[1].equalsIgnoreCase("red")) {
-                if (checkSphere(Color.RED, player, sData, false)) return true;
-                player.teleport(sData.getSphereLocation(Color.RED));
-                player.sendMessage(getString("teleporting").replace("%color%", getString("color.red")));
+            boolean success = SpheresPack.teleport(type, player);
+            if (!success) {
+                player.sendMessage(getString("error.not_in_use").replace("%color%", type.getName()));
+                return true;
             }
 
-            if (args[1].equalsIgnoreCase("blue")) {
-                if (checkSphere(Color.BLUE, player, sData, false)) return true;
-                player.teleport(sData.getSphereLocation(Color.BLUE));
-                player.sendMessage(getString("teleporting").replace("%color%", getString("color.blue")));
-            }
+            player.sendMessage(getString("teleporting").replace("%color%", type.getName()));
+            return true;
+        }
 
-            if (args[1].equalsIgnoreCase("green")) {
-                if (checkSphere(Color.GREEN, player, sData, false)) return true;
-                player.teleport(sData.getSphereLocation(Color.GREEN));
-                player.sendMessage(getString("teleporting").replace("%color%", getString("color.green")));
-            }
-        }
-        return false;
-    }
-
-    private void removeSphere(Color color, Player player, SphereData data) {
-        Location sLoc = data.getSphereLocation(color);
-        Location pLoc = player.getLocation();
-        long tpDelay = 60L;
-        long startDelay = 20L;
-        if (color == Color.RED) {
-            player.teleport(sLoc);
-            player.addScoreboardTag("despawning_sphere");
-            Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
-                List<Entity> entityList = (List<Entity>) Objects.requireNonNull(sLoc.getWorld()).getNearbyEntities(sLoc, 150, 150, 150);
-                int count = 0;
-                for (Entity entity : entityList) {
-                    if (entity.getScoreboardTags().contains("spawning_sphere") && entity.getScoreboardTags().contains("red_sphere")) {
-                        entity.remove();
-                    }
-                    count++;
-                    if (count == entityList.size()) {
-                        count = 0;
-                        entityList = (List<Entity>) Objects.requireNonNull(sLoc.getWorld()).getNearbyEntities(sLoc, 150, 150, 150);
-                        for (Entity entity1 : entityList) {
-                            if (entity1.getScoreboardTags().contains("spawning_sphere") && entity1.getScoreboardTags().contains("red_sphere")) {
-                                entity1.remove();
-                            }
-                            count++;
-                            if (count == entityList.size()) {
-                                player.teleport(pLoc);
-                                player.sendMessage(getString("removed").replace("%color%", getString("color.red")));
-                                player.removeScoreboardTag("despawning_sphere");
-                            }
-                        }
-                    }
-                }
-            }, startDelay + tpDelay);
-        }
-        if (color == Color.BLUE) {
-            player.teleport(sLoc);
-            player.addScoreboardTag("despawning_sphere");
-            Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
-                List<Entity> entityList = (List<Entity>) Objects.requireNonNull(sLoc.getWorld()).getNearbyEntities(sLoc, 150, 150, 150);
-                int count = 0;
-                for (Entity entity : entityList) {
-                    if (entity.getScoreboardTags().contains("spawning_sphere") && entity.getScoreboardTags().contains("blue_sphere")) {
-                        entity.remove();
-                    }
-                    count++;
-                    if (count == entityList.size()) {
-                        count = 0;
-                        entityList = (List<Entity>) Objects.requireNonNull(sLoc.getWorld()).getNearbyEntities(sLoc, 150, 150, 150);
-                        for (Entity entity1 : entityList) {
-                            if (entity1.getScoreboardTags().contains("spawning_sphere") && entity1.getScoreboardTags().contains("blue_sphere")) {
-                                entity1.remove();
-                            }
-                            count++;
-                            if (count == entityList.size()) {
-                                player.teleport(pLoc);
-                                player.sendMessage(getString("removed").replace("%color%", getString("color.blue")));
-                                player.removeScoreboardTag("despawning_sphere");
-                            }
-                        }
-                    }
-                }
-            }, startDelay + tpDelay);
-        }
-        if (color == Color.GREEN) {
-            player.teleport(sLoc);
-            player.addScoreboardTag("despawning_sphere");
-            Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
-                List<Entity> entityList = (List<Entity>) Objects.requireNonNull(sLoc.getWorld()).getNearbyEntities(sLoc, 150, 150, 150);
-                int count = 0;
-                for (Entity entity : entityList) {
-                    if (entity.getScoreboardTags().contains("spawning_sphere") && entity.getScoreboardTags().contains("green_sphere")) {
-                        entity.remove();
-                    }
-                    count++;
-                    if (count == entityList.size()) {
-                        count = 0;
-                        entityList = (List<Entity>) Objects.requireNonNull(sLoc.getWorld()).getNearbyEntities(sLoc, 150, 150, 150);
-                        for (Entity entity1 : entityList) {
-                            if (entity1.getScoreboardTags().contains("spawning_sphere") && entity1.getScoreboardTags().contains("green_sphere")) {
-                                entity1.remove();
-                            }
-                            count++;
-                            if (count == entityList.size()) {
-                                player.teleport(pLoc);
-                                player.sendMessage(getString("removed").replace("%color%", getString("color.green")));
-                                player.removeScoreboardTag("despawning_sphere");
-                            }
-                        }
-                    }
-                }
-            }, startDelay + tpDelay);
-        }
-        player.removeScoreboardTag("despawning_sphere");
-    }
-
-    private boolean checkSphere(Color color, Player player, SphereData data, boolean creating) {
-        if (creating) {
-            if (color == Color.RED) {
-                if (data.isSphereUsed(color)) {
-                    player.sendMessage(getString("error.in_use").replace("%color%", getString("color.red")));
-                    return true;
-                }
-                return false;
-            }
-            if (color == Color.BLUE) {
-                if (data.isSphereUsed(color)) {
-                    player.sendMessage(getString("error.in_use").replace("%color%", getString("color.blue")));
-                    return true;
-                }
-                return false;
-            }
-            if (color == Color.GREEN) {
-                if (data.isSphereUsed(color)) {
-                    player.sendMessage(getString("error.in_use").replace("%color%", getString("color.green")));
-                    return true;
-                }
-                return false;
-            }
-        } else {
-            if (color == Color.RED) {
-                if (!data.isSphereUsed(color)) {
-                    player.sendMessage(getString("error.not_in_use").replace("%color%", getString("color.red")));
-                    return true;
-                }
-                return false;
-            }
-            if (color == Color.BLUE) {
-                if (!data.isSphereUsed(color)) {
-                    player.sendMessage(getString("error.not_in_use").replace("%color%", getString("color.blue")));
-                    return true;
-                }
-                return false;
-            }
-            if (color == Color.GREEN) {
-                if (!data.isSphereUsed(color)) {
-                    player.sendMessage(getString("error.not_in_use").replace("%color%", getString("color.green")));
-                    return true;
-                }
-                return false;
-            }
-        }
+        player.sendMessage(getUsage());
         return true;
     }
 
-    List<String> arguments1 = new ArrayList<>();
-    List<String> arguments2 = new ArrayList<>();
-
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        List<String> tabComplete = new ArrayList<>();
 
-        arguments1.add("create");
-        arguments1.add("remove");
-        arguments1.add("teleport");
-        arguments1.add("tp");
+        if (args.length == 1) {
+            tabComplete.add("create");
+            tabComplete.add("remove");
+            tabComplete.add("teleport");
+        }
 
-        arguments2.add("red");
-        arguments2.add("blue");
-        arguments2.add("green");
+        if (args.length == 2) {
+            tabComplete.add("red");
+            tabComplete.add("blue");
+            tabComplete.add("green");
+        }
 
         List<String> result = new ArrayList<>();
-        if (args.length == 1) {
-            for (String a : arguments1) {
-                if (a.toLowerCase().startsWith(args[0].toLowerCase()))
-                    result.add(a);
-            }
-            return result;
-        }
-        if (args.length == 2) {
-            for (String a : arguments2) {
-                if (a.toLowerCase().startsWith(args[1].toLowerCase()))
-                    result.add(a);
-            }
-            return result;
+        for (String a : tabComplete) {
+            if (a.toLowerCase().startsWith(args[args.length - 1].toLowerCase()))
+                result.add(a);
         }
 
-        return null;
+        return result;
     }
 }

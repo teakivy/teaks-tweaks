@@ -12,6 +12,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.LinkedHashMap;
+
 public class SpawningSphere {
     private static final int INNER_RADIUS = 24;
     private static final int OUTER_RADIUS = 128;
@@ -27,6 +29,11 @@ public class SpawningSphere {
         center.setPitch(0);
     }
 
+    public SpawningSphere(LinkedHashMap<String, Object> map, SphereType type) {
+        this.type = type;
+        deserialize(map);
+    }
+
     public void createSphere() {
         if (inUse) return;
         createSphere(SphereIO.INNER);
@@ -35,6 +42,16 @@ public class SpawningSphere {
         summonStand(center, SphereIO.INNER, true);
 
         inUse = true;
+    }
+
+    public void setCenter(Location location) {
+        location.setYaw(0);
+        location.setPitch(0);
+        center = location;
+    }
+
+    public Location getCenter() {
+        return center;
     }
 
     private void createSphere(SphereIO sphereIO) {
@@ -85,6 +102,8 @@ public class SpawningSphere {
                 entity.remove();
             }
         }
+
+        inUse = false;
     }
 
     public void teleport(Player player) {
@@ -97,6 +116,35 @@ public class SpawningSphere {
 
     public boolean isInUse() {
         return inUse;
+    }
+
+    public LinkedHashMap<String, Object> serialize() {
+        LinkedHashMap<String, Object> map = new LinkedHashMap<>();
+
+        map.put(type.getColorName() + ".in_use", inUse);
+
+        if (!inUse) return map;
+
+        map.put(type.getColorName() + ".center.x", center.getX());
+        map.put(type.getColorName() + ".center.y", center.getY());
+        map.put(type.getColorName() + ".center.z", center.getZ());
+        map.put(type.getColorName() + ".center.world", center.getWorld().getName());
+
+        return map;
+    }
+
+    public void deserialize(LinkedHashMap<String, Object> map) {
+        Boolean inUse = (Boolean) map.get(type.getColorName() + ".in_use");
+        this.inUse = inUse != null && inUse;
+
+        if (!this.inUse) return;
+
+        double x = (double) map.get(type.getColorName() + ".center.x");
+        double y = (double) map.get(type.getColorName() + ".center.y");
+        double z = (double) map.get(type.getColorName() + ".center.z");
+        String world = (String) map.get(type.getColorName() + ".center.world");
+
+        center = new Location(Bukkit.getWorld(world), x, y, z);
     }
 
     public enum SphereIO {

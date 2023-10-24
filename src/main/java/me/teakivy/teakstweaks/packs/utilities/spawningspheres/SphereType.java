@@ -94,4 +94,13 @@ public enum SphereType {
             }
         };
     }
+
+    public static SphereType getSphereType(String name) {
+        return switch (name.toLowerCase()) {
+            case "red" -> RED;
+            case "blue" -> BLUE;
+            case "green" -> GREEN;
+            default -> null;
+        };
+    }
 }
