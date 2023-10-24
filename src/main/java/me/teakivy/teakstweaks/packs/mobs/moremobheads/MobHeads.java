@@ -25,6 +25,7 @@ public class MobHeads extends BasePack {
 
     @Override
     public void init() {
+        super.init();
         new AllayHead();
         new AxolotlHead();
         new BatHead();
