@@ -265,6 +265,9 @@
   "spawning_spheres.name": "Spawning Spheres",
   "spawning_spheres.description": "Adds a command that allows you to see where mobs can spawn.\nCommand: /spawningspheres",
   "spawning_spheres.center_stand": "Center",
+  "spawning_spheres.sphere.red": "Red",
+  "spawning_spheres.sphere.blue": "Blue",
+  "spawning_spheres.sphere.green": "Green",
 
   "spectator_conduit_power.name": "Spectator Conduit Power",
   "spectator_conduit_power.description": "Easily toggle conduit power when in spectator.\nCommand: /conduitpower",
@@ -513,15 +516,12 @@
   "spawn.error.moved": "&cYou must stand still to teleport!",
   "spawn.teleporting": "&eTeleporting to Spawn...",
 
-  "spawningspheres.error.missing_color": "&cPlease specify a color!",
+  "spawningspheres.error.invalid_color": "&cPlease specify a valid color! (red, blue, green)",
   "spawningspheres.error.in_use": "&cThe sphere %color% is already in use!",
   "spawningspheres.error.not_in_use": "&cThe sphere %color% is not in use!",
   "spawningspheres.summoned": "&aSummoned the %color%&r &aspawning sphere!",
-  "spawningspheres.removed": "&aRemoved the %color%&r &aspawning sphere!",
+  "spawningspheres.removing": "&aRemoving the %color%&r &aspawning sphere...",
   "spawningspheres.teleporting": "&eTeleporting to the %color%&r &espawning sphere...",
-  "spawningspheres.color.red": "&cRed",
-  "spawningspheres.color.blue": "&bBlue",
-  "spawningspheres.color.green": "&aGreen",
 
   "sudoku.committed": "&aThanks for playing sudoku!",
 

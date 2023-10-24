@@ -136,15 +136,15 @@ public class MobHeads extends BasePack {
     public static void loadJson() {
         JsonManager.saveToFile(
                 JsonManager.updateJson(
-                        JsonManager.getFromFile("mob_heads.json"),
-                        JsonManager.getFromResource("mob_heads.json"),
+                        JsonManager.getFromFile("data/mob_heads.json"),
+                        JsonManager.getFromResource("data/mob_heads.json"),
                         true),
-                "mob_heads.json");
+                "data/mob_heads.json");
 
-        File file = new File(TeaksTweaks.getInstance().getDataFolder() + "/mob_heads.json");
-        if (!file.exists()) TeaksTweaks.getInstance().saveResource("mob_heads.json", false);
+        File file = new File(TeaksTweaks.getInstance().getDataFolder() + "/data/mob_heads.json");
+        if (!file.exists()) TeaksTweaks.getInstance().saveResource("data/mob_heads.json", false);
 
-        file = new File(TeaksTweaks.getInstance().getDataFolder() + "/mob_heads.json");
+        file = new File(TeaksTweaks.getInstance().getDataFolder() + "/data/mob_heads.json");
 
         if (!file.exists()) chances = new HashMap<>();
 

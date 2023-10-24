@@ -15,6 +15,8 @@ public class TestCommand extends AbstractCommand {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player = (Player) sender;
 
+
+
         player.sendMessage(getString("test"));
         return false;
     }

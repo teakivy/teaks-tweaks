@@ -62,7 +62,7 @@ import me.teakivy.teakstweaks.packs.teleportation.tpa.TPA;
 import me.teakivy.teakstweaks.packs.utilities.customvillagershops.CustomVillager;
 import me.teakivy.teakstweaks.packs.utilities.itemaverages.ItemTracker;
 import me.teakivy.teakstweaks.packs.utilities.killboats.KillBoats;
-import me.teakivy.teakstweaks.packs.utilities.spawningspheres.Sphere;
+import me.teakivy.teakstweaks.packs.utilities.spawningspheres.SpheresPack;
 import me.teakivy.teakstweaks.packs.utilities.spectatorconduitpower.ConduitPower;
 import me.teakivy.teakstweaks.packs.utilities.spectatornightvision.NightVision;
 
@@ -123,7 +123,7 @@ public class Register {
             new GraveEvents(),
             new HUD(),
             new CustomVillager(),
-            new Sphere(),
+            new SpheresPack(),
             new KeepSmall(),
             new ChatColors(),
             new LecternReset(),
