@@ -1,8 +1,8 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
-import me.teakivy.teakstweaks.packs.utilities.spawningspheres.Sphere;
-import me.teakivy.teakstweaks.packs.utilities.spawningspheres.SphereData;
+import me.teakivy.teakstweaks.packs.utilities.spawningspheresold.Sphere;
+import me.teakivy.teakstweaks.packs.utilities.spawningspheresold.SphereData;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;

@@ -1,4 +1,4 @@
-package me.teakivy.teakstweaks.packs.utilities.spawningspheres;
+package me.teakivy.teakstweaks.packs.utilities.spawningspheresold;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
