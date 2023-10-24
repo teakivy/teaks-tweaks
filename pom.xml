@@ -77,7 +77,7 @@
         </plugins>
         <resources>
             <resource>
-                <directory>src/teaksTweaks/resources</directory>
+                <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
