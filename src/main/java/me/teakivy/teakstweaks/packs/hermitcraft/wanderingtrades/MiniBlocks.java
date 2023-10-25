@@ -634,10 +634,10 @@ public class MiniBlocks {
     private static MerchantRecipe newBlockTrade(String name, Material block, String texture) {
         MerchantRecipe recipe = new MerchantRecipe(newMiniBlock(name, texture), TeaksTweaks.getInstance().getConfig().getInt("packs.wandering-trades.mini-blocks.per-trade"));
 
-        ConfigurationSection data = TeaksTweaks.getInstance().data.getConfig();
         recipe.addIngredient(new ItemStack(
-                Material.valueOf(data.getString("wandering-trades.mini-blocks.trade-item")),
-                data.getInt("wandering-trades.mini-blocks.trade-amount")));
+                Material.EMERALD,
+                1
+        ));
         recipe.addIngredient(new ItemStack(block));
 
         return recipe;
