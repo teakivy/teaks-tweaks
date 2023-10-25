@@ -79,6 +79,8 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         // Packs
         register = new Register();
         register.registerAll();
+
+        removeDataFile();
     }
 
     /**
@@ -189,6 +191,16 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
      */
     public static Gson getGson() {
         return JsonManager.getGson();
+    }
+
+    /**
+     * Remove the data.yml file as it is deprecated
+     */
+    private void removeDataFile() {
+        File file = new File(getDataFolder(), "data.yml");
+        if (file.exists()) {
+            file.delete();
+        }
     }
 
 }
