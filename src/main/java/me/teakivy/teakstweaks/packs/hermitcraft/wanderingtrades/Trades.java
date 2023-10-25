@@ -82,7 +82,7 @@ public class Trades extends BasePack {
     private MerchantRecipe newHeadRecipe(String playerName) {
         MerchantRecipe recipe = new MerchantRecipe(getHead(playerName), getConfig().getInt("player-heads.per-trade"));
 
-        recipe.addIngredient(new ItemStack(Material.valueOf(getData().getConfig().getString("wandering-trades.heads.trade-item")), getData().getConfig().getInt("wandering-trades.heads.trade-amount")));
+        recipe.addIngredient(new ItemStack(Material.EMERALD, 1));
 
         return recipe;
     }
