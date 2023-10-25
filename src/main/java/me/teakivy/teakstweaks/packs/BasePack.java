@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.packs;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.Logger;
-import me.teakivy.teakstweaks.utils.datamanager.DataManager;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -129,22 +128,6 @@ public class BasePack implements Listener {
 	 */
 	public String getPath() {
 		return path;
-	}
-
-	/**
-	 * Get the data config manager
-	 * @return DataManager
-	 */
-	public static DataManager getData() {
-		return teaksTweaks.data;
-	}
-
-	/**
-	 * Get the data config file
-	 * @return Data config file
-	 */
-	public static ConfigurationSection getDataConfig() {
-		return teaksTweaks.data.getConfig();
 	}
 
 	/**

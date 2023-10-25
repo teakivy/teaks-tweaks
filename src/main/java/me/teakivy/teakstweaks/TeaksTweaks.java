@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
 import me.teakivy.teakstweaks.packs.hermitcraft.tag.Tag;
 import me.teakivy.teakstweaks.utils.*;
-import me.teakivy.teakstweaks.utils.datamanager.DataManager;
 import me.teakivy.teakstweaks.utils.gui.GUIListener;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
@@ -25,8 +24,6 @@ import java.util.UUID;
 import static me.teakivy.teakstweaks.utils.metrics.CustomMetrics.registerCustomMetrics;
 
 public final class TeaksTweaks extends JavaPlugin implements Listener {
-    public DataManager data;
-
     private final ArrayList<String> activePacks = new ArrayList<>();
     private final ArrayList<String> activeCraftingTweaks = new ArrayList<>();
 
@@ -41,10 +38,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         this.devMode = getConfig().getBoolean("config.dev-mode");
-
-        // Data Manager
-        this.data = new DataManager(this);
-        data.saveDefaultConfig();
 
         // Credits
         createCredits();
@@ -95,13 +88,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     public void onDisable() {
         // Plugin shutdown logic
         Logger.info(Translatable.get("startup.plugin.shutting_down"));
-
-        try {
-            data.saveConfig();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
     /**
