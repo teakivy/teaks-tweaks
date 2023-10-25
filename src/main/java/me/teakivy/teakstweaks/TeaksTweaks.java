@@ -25,9 +25,6 @@ import java.util.UUID;
 import static me.teakivy.teakstweaks.utils.metrics.CustomMetrics.registerCustomMetrics;
 
 public final class TeaksTweaks extends JavaPlugin implements Listener {
-
-    public static ArrayList<UUID> chEnabled = new ArrayList<>();
-
     public DataManager data;
 
     private final ArrayList<String> activePacks = new ArrayList<>();
@@ -80,11 +77,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         this.saveDefaultConfig();
 
         tagListener = new Tag();
-
-        // Coords HUD
-        for (String uuid : data.getConfig().getStringList("chEnabled")) {
-            chEnabled.add(UUID.fromString(uuid));
-        }
 
         // Plugin startup logic
         Logger.info("");
