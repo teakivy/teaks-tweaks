@@ -9,7 +9,7 @@
 # NOTE: This project is not ran by the Vanilla Tweaks Team.
 # For support, please use my Discord: https://dsc.gg/teakivy or the project's GitHub: https://github.com/teakivy/teaks-tweaks
 
-# Be sure to check the data.yml file for more customizability!
+# Be sure to check the data folder for more customizability!
 
 # Plugin Settings
 settings:
@@ -481,7 +481,7 @@ packs:
 
   # More Mob Heads
   # Adds a chance to receive a mob head upon killing it.
-  # Be sure to check the data.yml file for more customizability!
+  # Be sure to check the data/mob_heads.json file for more customizability!
   more-mob-heads:
     enabled: false
     # Allow creepers, skeletons, and zombies to drop their heads & skulls

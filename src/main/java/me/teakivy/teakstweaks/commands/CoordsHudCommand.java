@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.packs.survival.coordshud.HUD;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -44,11 +45,7 @@ public class CoordsHudCommand extends AbstractCommand {
             return true;
         }
 
-        if (!TeaksTweaks.chEnabled.contains(player.getUniqueId())) {
-            TeaksTweaks.chEnabled.add(player.getUniqueId());
-        } else {
-            TeaksTweaks.chEnabled.remove(player.getUniqueId());
-        }
+        HUD.setEnabled(player, !HUD.isEnabled(player));
 
         player.sendMessage(getString("toggled"));
         return false;

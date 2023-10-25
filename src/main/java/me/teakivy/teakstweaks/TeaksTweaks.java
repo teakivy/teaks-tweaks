@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
 import me.teakivy.teakstweaks.packs.hermitcraft.tag.Tag;
 import me.teakivy.teakstweaks.utils.*;
-import me.teakivy.teakstweaks.utils.datamanager.DataManager;
 import me.teakivy.teakstweaks.utils.gui.GUIListener;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
@@ -25,11 +24,6 @@ import java.util.UUID;
 import static me.teakivy.teakstweaks.utils.metrics.CustomMetrics.registerCustomMetrics;
 
 public final class TeaksTweaks extends JavaPlugin implements Listener {
-
-    public static ArrayList<UUID> chEnabled = new ArrayList<>();
-
-    public DataManager data;
-
     private final ArrayList<String> activePacks = new ArrayList<>();
     private final ArrayList<String> activeCraftingTweaks = new ArrayList<>();
 
@@ -44,10 +38,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         this.devMode = getConfig().getBoolean("config.dev-mode");
-
-        // Data Manager
-        this.data = new DataManager(this);
-        data.saveDefaultConfig();
 
         // Credits
         createCredits();
@@ -81,11 +71,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
 
         tagListener = new Tag();
 
-        // Coords HUD
-        for (String uuid : data.getConfig().getStringList("chEnabled")) {
-            chEnabled.add(UUID.fromString(uuid));
-        }
-
         // Plugin startup logic
         Logger.info("");
         Logger.info(Translatable.get("startup.plugin.started").replace("%version%", this.getDescription().getVersion()));
@@ -94,6 +79,8 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         // Packs
         register = new Register();
         register.registerAll();
+
+        removeDataFile();
     }
 
     /**
@@ -103,13 +90,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     public void onDisable() {
         // Plugin shutdown logic
         Logger.info(Translatable.get("startup.plugin.shutting_down"));
-
-        try {
-            data.saveConfig();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
     /**
@@ -211,6 +191,16 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
      */
     public static Gson getGson() {
         return JsonManager.getGson();
+    }
+
+    /**
+     * Remove the data.yml file as it is deprecated
+     */
+    private void removeDataFile() {
+        File file = new File(getDataFolder(), "data.yml");
+        if (file.exists()) {
+            file.delete();
+        }
     }
 
 }

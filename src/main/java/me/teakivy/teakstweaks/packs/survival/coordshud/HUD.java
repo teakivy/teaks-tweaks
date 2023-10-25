@@ -5,9 +5,14 @@ import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataHolder;
+import org.bukkit.persistence.PersistentDataType;
 
 import java.util.UUID;
 
@@ -21,30 +26,15 @@ public class HUD extends BasePack {
     static boolean running = false;
     static int taskID = -1;
 
-    @EventHandler
-    public void onJoin(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-        if (getConfig().getBoolean("force-enable")) {
-            if (!TeaksTweaks.chEnabled.contains(player.getUniqueId())) {
-                TeaksTweaks.chEnabled.add(player.getUniqueId());
-            }
-        }
-        if (getConfig().getBoolean("auto-enable") && !player.getScoreboardTags().contains("ch")) {
-            player.addScoreboardTag("ch");
-            TeaksTweaks.chEnabled.add(player.getUniqueId());
-        }
-    }
-
     public static void startHUD() {
         if (taskID != -1) return;
         running = true;
         DisplayHud.init();
         new Thread(() -> {
             taskID = Bukkit.getScheduler().runTaskTimer(teaksTweaks, () -> {
-                for (UUID uuid : TeaksTweaks.chEnabled) {
-                    Player player = Bukkit.getPlayer(uuid);
-                    if (player == null) continue;
-                    if (player.isOnline()) DisplayHud.showHud(player);
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    if (!isEnabled(player)) continue;
+                    DisplayHud.showHud(player);
                 }
                 if (!running) {
                     Bukkit.getScheduler().cancelTask(taskID);
@@ -63,5 +53,24 @@ public class HUD extends BasePack {
     public void unregister() {
         super.unregister();
         stopHUD();
+    }
+
+    public static boolean isEnabled(Player player) {
+        PersistentDataContainer data = player.getPersistentDataContainer();
+
+        if (data.has(new NamespacedKey(TeaksTweaks.getInstance(), "ch_enabled"), PersistentDataType.BOOLEAN)) {
+            return data.get(new NamespacedKey(TeaksTweaks.getInstance(), "ch_enabled"), PersistentDataType.BOOLEAN);
+        }
+        FileConfiguration config = TeaksTweaks.getInstance().getConfig();
+
+        setEnabled(player, config.getBoolean("packs.coords-hud.auto-enable") || config.getBoolean("packs.coords-hud.force-enable"));
+        return isEnabled(player);
+    }
+
+    public static void setEnabled(Player player, boolean enabled) {
+        if (TeaksTweaks.getInstance().getConfig().getBoolean("force-enable")) enabled = true;
+        PersistentDataContainer data = player.getPersistentDataContainer();
+
+        data.set(new NamespacedKey(TeaksTweaks.getInstance(), "ch_enabled"), PersistentDataType.BOOLEAN, enabled);
     }
 }

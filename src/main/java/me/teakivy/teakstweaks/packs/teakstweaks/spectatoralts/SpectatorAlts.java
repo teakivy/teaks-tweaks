@@ -1,14 +1,11 @@
 package me.teakivy.teakstweaks.packs.teakstweaks.spectatoralts;
 
-import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
-import me.teakivy.teakstweaks.utils.datamanager.DataManager;
+import me.teakivy.teakstweaks.utils.JsonManager;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
-import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -31,17 +28,21 @@ public class SpectatorAlts extends BasePack {
     @Override
     public void init() {
         super.init();
-        DataManager data = TeaksTweaks.getInstance().data;
-        FileConfiguration config = data.getConfig();
 
-        if (config.contains("alts")) {
-            ConfigurationSection section = config.getConfigurationSection("alts");
-            for (String owner : section.getKeys(false)) {
-                for (String alt : section.getStringList(owner)) {
-                    alts.put(UUID.fromString(alt), UUID.fromString(owner));
-                }
+        LinkedHashMap<String, Object> map = JsonManager.getFromFile("data/alts.json");
+        if (map == null) {
+            map = new LinkedHashMap<>();
+
+            JsonManager.saveToFile(map, "data/alts.json");
+        }
+
+        for (String owner : map.keySet()) {
+            List<String> alts = (List<String>) map.get(owner);
+            for (String alt : alts) {
+                SpectatorAlts.alts.put(UUID.fromString(alt), UUID.fromString(owner));
             }
         }
+
     }
 
     public static List<UUID> getAlts(UUID owner) {
@@ -62,46 +63,41 @@ public class SpectatorAlts extends BasePack {
         Bukkit.getOfflinePlayer(alt).setWhitelisted(true);
         alts.put(alt, owner);
 
-        DataManager data = TeaksTweaks.getInstance().data;
-
-        ConfigurationSection section = data.getConfig().getConfigurationSection("alts");
-        if (section == null) {
-            section = data.getConfig().createSection("alts");
+        LinkedHashMap<String, Object> map = JsonManager.getFromFile("data/alts.json");
+        if (map == null) {
+            map = new LinkedHashMap<>();
         }
 
-        if (!section.contains(owner.toString())) {
-            section.set(owner.toString(), new ArrayList<>());
+        List<String> alts = (List<String>) map.get(owner.toString());
+        if (alts == null) {
+            alts = new ArrayList<>();
         }
+        if (!alts.contains(alt.toString())) {
+            alts.add(alt.toString());
+        }
+        map.put(owner.toString(), alts);
 
-        List<String> alts = section.getStringList(owner.toString());
-        alts.add(alt.toString());
-        section.set(owner.toString(), alts);
-
-        try {
-            data.saveConfig();
-        } catch (Exception ignored) {}
+        JsonManager.saveToFile(map, "data/alts.json");
     }
 
     public static void removeAlt(UUID alt) {
         Bukkit.getOfflinePlayer(alt).setWhitelisted(false);
         alts.remove(alt);
 
-        DataManager data = TeaksTweaks.getInstance().data;
-
-        ConfigurationSection section = data.getConfig().getConfigurationSection("alts");
-        if (section == null) {
-            section = data.getConfig().createSection("alts");
+        LinkedHashMap<String, Object> map = JsonManager.getFromFile("data/alts.json");
+        if (map == null) {
+            map = new LinkedHashMap<>();
         }
 
-        for (String owner : section.getKeys(false)) {
-            List<String> alts = section.getStringList(owner);
-            alts.remove(alt.toString());
-            section.set(owner, alts);
+        for (String owner : map.keySet()) {
+            List<String> alts = (List<String>) map.get(owner);
+            if (alts.contains(alt.toString())) {
+                alts.remove(alt.toString());
+                map.put(owner, alts);
+            }
         }
 
-        try {
-            data.saveConfig();
-        } catch (Exception ignored) {}
+        JsonManager.saveToFile(map, "data/alts.json");
 
         if (Bukkit.getPlayer(alt) != null) {
             Bukkit.getPlayer(alt).kick();
