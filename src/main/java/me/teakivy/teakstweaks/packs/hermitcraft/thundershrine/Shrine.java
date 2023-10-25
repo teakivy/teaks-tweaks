@@ -13,13 +13,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 public class Shrine extends BasePack {
 
@@ -49,28 +50,13 @@ public class Shrine extends BasePack {
     }
 
     public static void runParticles() {
-        List<Entity> shrines = getShrines();
-        if (shrines == null) return;
         for (Entity shrine : getShrines()) {
-            if (shrine == null) {
-                removeShrine(shrine);
-            } else if (shrine.isDead()) {
-                removeShrine(shrine);
-            } else {
-                shrine.getWorld().spawnParticle(Particle.ENCHANTMENT_TABLE, shrine.getLocation().add(0, 1, 0), 1, 0.1, 0.1, 0.1, 1);
-            }
+            shrine.getWorld().spawnParticle(Particle.ENCHANTMENT_TABLE, shrine.getLocation().add(0, 1, 0), 1, 0.1, 0.1, 0.1, 1);
         }
-
     }
 
     public static void removeShrine(Entity shrine) {
-        getDataConfig().set("thunder-shrines." + shrine.getUniqueId(), null);
-        try {
-            getData().saveConfig();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        getData().reloadConfig();
+        shrine.remove();
     }
 
     @EventHandler
@@ -112,35 +98,27 @@ public class Shrine extends BasePack {
     }
 
     public static List<Entity> getShrines() {
-        if (!getDataConfig().contains("thunder-shrines")) return null;
         List<Entity> shrines = new ArrayList<>();
-        for (String shrine : Objects.requireNonNull(getDataConfig().getConfigurationSection("thunder-shrines")).getKeys(false)) {
-            if (Bukkit.getEntity(UUID.fromString(Objects.requireNonNull(getDataConfig().getString("thunder-shrines." + shrine + ".id")))) == null) {
-                getDataConfig().set("thunder-shrines." + shrine, null);
-                try {
-                    getData().saveConfig();
-                } catch (IOException e) {
-                    e.printStackTrace();
+        Bukkit.getWorlds().forEach(world -> {
+            world.getEntities().forEach(entity -> {
+                if (isShrine(entity)) {
+                    shrines.add(entity);
                 }
-                getData().reloadConfig();
-            } else {
-                shrines.add(Bukkit.getEntity(UUID.fromString(Objects.requireNonNull(getDataConfig().getString("thunder-shrines." + shrine + ".id")))));
-            }
-        }
+            });
+        });
         return shrines;
     }
 
     public static boolean isShrine(Entity entity) {
-        for (Entity shrine : Objects.requireNonNull(getShrines())) {
-            if (shrine.getNearbyEntities(.5, .5, .5).contains(entity)) return true;
-        }
-        return false;
+        if (!(entity instanceof Marker)) return false;
+        return entity.getPersistentDataContainer().has(new NamespacedKey(TeaksTweaks.getInstance(), "thunder-shrine"), PersistentDataType.BOOLEAN);
     }
 
     public static void createShrine(Location loc) throws IOException {
         Marker shrine = (Marker) Objects.requireNonNull(loc.getWorld()).spawnEntity(loc, EntityType.MARKER);
-        getDataConfig().set("thunder-shrines." + shrine.getUniqueId() + ".id", shrine.getUniqueId().toString());
-        getData().saveConfig();
+
+        PersistentDataContainer container = shrine.getPersistentDataContainer();
+        container.set(new NamespacedKey(TeaksTweaks.getInstance(), "thunder-shrine"), PersistentDataType.BOOLEAN, true);
     }
 
     @Override
