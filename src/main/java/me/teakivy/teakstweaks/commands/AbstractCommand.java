@@ -191,6 +191,15 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     }
 
     /**
+     * Get an error string from the language file within the command's section
+     * @param key The key to get
+     * @return The string
+     */
+    public String getError(String key) {
+        return Translatable.get(command + ".error." + key);
+    }
+
+    /**
      * Get a string from the language file
      * @param key The key to get
      * @return The string
