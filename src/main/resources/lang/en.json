@@ -406,6 +406,8 @@
 
   "plugin.commands.usage": "&cUsage: %command_usage%",
 
+  "afk.description": "Toggles AFK mode. When enabled, you will be automatically set to AFK when you are idle for 5 minutes.",
+
   "alts.error.no_permission_list_others": "&cYou do not have permission to see other's alts!",
   "alts.error.no_permission_modify_others": "&cYou do not have permission to modify other's alts!",
   "alts.error.no_alts": "&c%player% does not have any alts!",
