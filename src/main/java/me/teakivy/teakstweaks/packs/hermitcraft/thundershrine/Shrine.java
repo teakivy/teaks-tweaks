@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.hermitcraft.thundershrine;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
@@ -111,14 +112,14 @@ public class Shrine extends BasePack {
 
     public static boolean isShrine(Entity entity) {
         if (!(entity instanceof Marker)) return false;
-        return entity.getPersistentDataContainer().has(new NamespacedKey(TeaksTweaks.getInstance(), "thunder-shrine"), PersistentDataType.BOOLEAN);
+        return entity.getPersistentDataContainer().has(Key.get("thunder-shrine"), PersistentDataType.BOOLEAN);
     }
 
     public static void createShrine(Location loc) throws IOException {
         Marker shrine = (Marker) Objects.requireNonNull(loc.getWorld()).spawnEntity(loc, EntityType.MARKER);
 
         PersistentDataContainer container = shrine.getPersistentDataContainer();
-        container.set(new NamespacedKey(TeaksTweaks.getInstance(), "thunder-shrine"), PersistentDataType.BOOLEAN, true);
+        container.set(Key.get("thunder-shrine"), PersistentDataType.BOOLEAN, true);
     }
 
     @Override

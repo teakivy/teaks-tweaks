@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
+import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -22,7 +23,7 @@ public class SandstoneDyeing extends AbstractRecipe {
 
     public static void newRedRecipe(String name, Material input, Material output) {
 
-        NamespacedKey key = new NamespacedKey(teaksTweaks, name + "_sandstone_dyeing");
+        NamespacedKey key = Key.get(name + "_sandstone_dyeing");
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(output, 2));
 

@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.teleportation.homes;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -39,12 +40,12 @@ public class HomesPack extends BasePack {
         if (getHome(player, name) != null) return false;
 
         PersistentDataContainer data = player.getPersistentDataContainer();
-        NamespacedKey key = new NamespacedKey(teaksTweaks, "homes");
+        NamespacedKey key = Key.get("homes");
         String homeString = data.get(key, PersistentDataType.STRING);
         homeString = homeString + "," + name;
         data.set(key, PersistentDataType.STRING, homeString);
 
-        NamespacedKey key2 = new NamespacedKey(teaksTweaks, "home." + name);
+        NamespacedKey key2 = Key.get("home." + name);
 
         Home home = new Home(name, player.getUniqueId(), loc);
 
@@ -104,7 +105,7 @@ public class HomesPack extends BasePack {
 
     public static void loadHomes(Player player) {
         PersistentDataContainer data = player.getPersistentDataContainer();
-        NamespacedKey key = new NamespacedKey(teaksTweaks, "homes");
+        NamespacedKey key = Key.get("homes");
         String homeString = data.get(key, PersistentDataType.STRING);
 
         if (homeString == null) return;
@@ -112,7 +113,7 @@ public class HomesPack extends BasePack {
         String[] homes = homeString.split(",");
 
         for (String home : homes) {
-            NamespacedKey key2 = new NamespacedKey(teaksTweaks, "home." + home);
+            NamespacedKey key2 = Key.get("home." + home);
             String locString = data.get(key2, PersistentDataType.STRING);
             if (locString == null) continue;
 

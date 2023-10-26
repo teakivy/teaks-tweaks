@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
+import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -27,11 +28,11 @@ public class CraftableCoral2x2 extends AbstractRecipe {
     }
 
     private static void newCoralRecipe(String type) {
-        NamespacedKey key = new NamespacedKey(teaksTweaks, type.toLowerCase() + "_coral_2x2");
+        NamespacedKey key = Key.get(type.toLowerCase() + "_coral_2x2");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.valueOf(type.toUpperCase() + "_CORAL_BLOCK")));
 
-        List<Material> choiceList = new ArrayList<Material>();
+        List<Material> choiceList = new ArrayList<>();
         choiceList.add(Material.valueOf(type + "_CORAL"));
         choiceList.add(Material.valueOf(type + "_CORAL_FAN"));
 

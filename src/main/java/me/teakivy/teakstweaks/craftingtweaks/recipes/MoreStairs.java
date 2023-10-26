@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
+import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -70,7 +71,7 @@ public class MoreStairs extends AbstractRecipe {
     }
 
     public static void newStairsRecipe(Material input, Material output) {
-        NamespacedKey key = new NamespacedKey(teaksTweaks, output.name().toLowerCase() + "_stairs");
+        NamespacedKey key = Key.get(output.name().toLowerCase() + "_stairs");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(output, 8));
 

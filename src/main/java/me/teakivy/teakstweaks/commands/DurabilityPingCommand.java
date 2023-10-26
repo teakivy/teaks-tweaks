@@ -318,7 +318,7 @@ public class DurabilityPingCommand extends AbstractCommand {
             displayArguments.add("actionbar");
         }
 
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         if (args.length == 1) {
             for (String a : arguments1) {
                 if (a.toLowerCase().startsWith(args[0].toLowerCase()))

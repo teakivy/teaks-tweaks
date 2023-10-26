@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
+import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -23,7 +24,7 @@ public class CraftableHorseArmor extends AbstractRecipe {
 
     private static void newHorseArmor(String name, Material input, Material output) {
 
-        NamespacedKey key = new NamespacedKey(teaksTweaks, name + "_horse_armor");
+        NamespacedKey key = Key.get(name + "_horse_armor");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(output));
 
