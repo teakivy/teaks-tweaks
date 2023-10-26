@@ -5,6 +5,7 @@ import com.mojang.authlib.properties.Property;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.items.armoredelytra.ArmoredElytras;
 import me.teakivy.teakstweaks.utils.Base64Serializer;
+import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.ReflectionUtils;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
@@ -73,14 +74,14 @@ public class GraveCreator {
         as.setCustomNameVisible(true);
 
         PersistentDataContainer data = as.getPersistentDataContainer();
-        NamespacedKey key = new NamespacedKey(TeaksTweaks.getInstance(), "grave_owner_uuid");
+        NamespacedKey key = Key.get("grave_owner_uuid");
         data.set(key, PersistentDataType.STRING, player.getUniqueId().toString());
 
         if (!Boolean.TRUE.equals(location.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY))) {
-            NamespacedKey key2 = new NamespacedKey(TeaksTweaks.getInstance(), "grave_owner_items");
+            NamespacedKey key2 = Key.get("grave_owner_items");
             data.set(key2, PersistentDataType.STRING, serializeItems(player));
 
-            NamespacedKey key3 = new NamespacedKey(TeaksTweaks.getInstance(), "grave_owner_xp");
+            NamespacedKey key3 = Key.get("grave_owner_xp");
             data.set(key3, PersistentDataType.INTEGER, xp);
         }
 
@@ -196,7 +197,7 @@ public class GraveCreator {
             if (!item.getType().equals(Material.ELYTRA)) continue;
 
             if (!item.hasItemMeta()) continue;
-            if (!item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(TeaksTweaks.getInstance(), "armored_elytra"), PersistentDataType.STRING)) continue;
+            if (!item.getItemMeta().getPersistentDataContainer().has(Key.get("armored_elytra"), PersistentDataType.STRING)) continue;
 
             items2.add(ArmoredElytras.getB64ChestplateFromArmoredElytra(item));
             items2.add(ArmoredElytras.getB64ElytraFromArmoredElytra(item));

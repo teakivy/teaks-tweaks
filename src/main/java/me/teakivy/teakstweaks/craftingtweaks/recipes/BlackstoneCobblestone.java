@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
+import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -38,7 +39,7 @@ public class BlackstoneCobblestone extends AbstractRecipe {
 
         RecipeChoice wood = new RecipeChoice.MaterialChoice(woodList);
 
-        NamespacedKey pistonKey = new NamespacedKey(teaksTweaks, "piston_blackstone");
+        NamespacedKey pistonKey = Key.get("piston_blackstone");
         ShapedRecipe pistonRecipe = new ShapedRecipe(pistonKey, new ItemStack(Material.PISTON));
 
         pistonRecipe.shape("---", "bob", "bab");
@@ -49,7 +50,7 @@ public class BlackstoneCobblestone extends AbstractRecipe {
 
         Bukkit.addRecipe(pistonRecipe);
 
-        NamespacedKey observerKey = new NamespacedKey(teaksTweaks, "observer_blackstone");
+        NamespacedKey observerKey = Key.get("observer_blackstone");
         ShapedRecipe observerRecipe = new ShapedRecipe(observerKey, new ItemStack(Material.OBSERVER));
 
         observerRecipe.shape("bbb", "aaq", "bbb");
@@ -59,7 +60,7 @@ public class BlackstoneCobblestone extends AbstractRecipe {
 
         Bukkit.addRecipe(observerRecipe);
 
-        NamespacedKey dropperKey = new NamespacedKey(teaksTweaks, "dropper_blackstone");
+        NamespacedKey dropperKey = Key.get("dropper_blackstone");
         ShapedRecipe dropperRecipe = new ShapedRecipe(dropperKey, new ItemStack(Material.DROPPER));
 
         dropperRecipe.shape("bbb", "b b", "bab");
@@ -68,7 +69,7 @@ public class BlackstoneCobblestone extends AbstractRecipe {
 
         Bukkit.addRecipe(dropperRecipe);
 
-        NamespacedKey dispenserKey = new NamespacedKey(teaksTweaks, "dispenser_blackstone");
+        NamespacedKey dispenserKey = Key.get("dispenser_blackstone");
         ShapedRecipe dispenserRecipe = new ShapedRecipe(dispenserKey, new ItemStack(Material.DISPENSER));
 
         dispenserRecipe.shape("bbb", "b=b", "bab");
@@ -78,7 +79,7 @@ public class BlackstoneCobblestone extends AbstractRecipe {
 
         Bukkit.addRecipe(dispenserRecipe);
 
-        NamespacedKey brewingStandKey = new NamespacedKey(teaksTweaks, "brewing_stand_blackstone");
+        NamespacedKey brewingStandKey = Key.get("brewing_stand_blackstone");
         ShapedRecipe brewingStandRecipe = new ShapedRecipe(brewingStandKey, new ItemStack(Material.BREWING_STAND));
 
         brewingStandRecipe.shape(" | ", "bbb");
@@ -87,7 +88,7 @@ public class BlackstoneCobblestone extends AbstractRecipe {
 
         Bukkit.addRecipe(brewingStandRecipe);
 
-        NamespacedKey leverKey = new NamespacedKey(teaksTweaks, "lever_blackstone");
+        NamespacedKey leverKey = Key.get("lever_blackstone");
         ShapedRecipe leverRecipe = new ShapedRecipe(leverKey, new ItemStack(Material.LEVER));
 
         leverRecipe.shape("/", "b");

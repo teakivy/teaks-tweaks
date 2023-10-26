@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
+import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -39,7 +40,7 @@ public class UnpackableWool extends AbstractRecipe {
 
         RecipeChoice wool = new RecipeChoice.MaterialChoice(woolList);
 
-        NamespacedKey key = new NamespacedKey(teaksTweaks, "wool_unpackables");
+        NamespacedKey key = Key.get("wool_unpackables");
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.STRING, 4));
         recipe.addIngredient(wool);
 

@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
+import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -16,7 +17,7 @@ public class DropperToDispenser extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        NamespacedKey bowRecipeKey = new NamespacedKey(teaksTweaks, "dispenser_bow");
+        NamespacedKey bowRecipeKey = Key.get("dispenser_bow");
 
         ShapelessRecipe bowRecipe = new ShapelessRecipe(bowRecipeKey, new ItemStack(Material.DISPENSER));
 
@@ -27,7 +28,7 @@ public class DropperToDispenser extends AbstractRecipe {
 
 
 
-        NamespacedKey craftRecipeKey = new NamespacedKey(teaksTweaks, "dispenser_craft");
+        NamespacedKey craftRecipeKey = Key.get("dispenser_craft");
 
         ShapedRecipe craftRecipe = new ShapedRecipe(craftRecipeKey, new ItemStack(Material.DISPENSER));
         craftRecipe.shape(" ls", "los", " ls");

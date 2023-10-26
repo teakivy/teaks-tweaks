@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
+import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -15,18 +16,18 @@ public class StraightToShapeless extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        NamespacedKey breadKey = new NamespacedKey(teaksTweaks, "bread_shapeless");
+        NamespacedKey breadKey = Key.get("bread_shapeless");
         ShapelessRecipe breadRecipe = new ShapelessRecipe(breadKey, new ItemStack(Material.BREAD));
         breadRecipe.addIngredient(3, Material.WHEAT);
         Bukkit.addRecipe(breadRecipe);
 
-        NamespacedKey shulkerBoxKey = new NamespacedKey(teaksTweaks, "shulker_box_shapeless");
+        NamespacedKey shulkerBoxKey = Key.get("shulker_box_shapeless");
         ShapelessRecipe shulkerBoxRecipe = new ShapelessRecipe(shulkerBoxKey, new ItemStack(Material.SHULKER_BOX));
         shulkerBoxRecipe.addIngredient(2, Material.SHULKER_SHELL);
         shulkerBoxRecipe.addIngredient(Material.CHEST);
         Bukkit.addRecipe(shulkerBoxRecipe);
 
-        NamespacedKey paperKey = new NamespacedKey(teaksTweaks, "paper_shapeless");
+        NamespacedKey paperKey = Key.get("paper_shapeless");
         ShapelessRecipe paperRecipe = new ShapelessRecipe(paperKey, new ItemStack(Material.PAPER, 3));
         paperRecipe.addIngredient(3, Material.SUGAR_CANE);
         Bukkit.addRecipe(paperRecipe);

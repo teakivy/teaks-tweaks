@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
+import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -65,7 +66,7 @@ public class LogChests extends AbstractRecipe {
 
         RecipeChoice logs = new RecipeChoice.MaterialChoice(logList);
 
-        NamespacedKey key = new NamespacedKey(teaksTweaks, "log_to_chests");
+        NamespacedKey key = Key.get("log_to_chests");
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.CHEST, 4));
         recipe.shape("xxx", "x x", "xxx");
         recipe.setIngredient('x', logs);

@@ -3,8 +3,8 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.survival.graves.GraveEvents;
 import me.teakivy.teakstweaks.utils.ErrorType;
+import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
-import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -47,8 +47,8 @@ public class GraveCommand extends AbstractCommand {
             }
             if (TeaksTweaks.getInstance().getConfig().getBoolean("packs.graves.locatable")) {
                 PersistentDataContainer data = player.getPersistentDataContainer();
-                if (data.has(new NamespacedKey(TeaksTweaks.getInstance(), "graves_last"), PersistentDataType.STRING)) {
-                    player.sendMessage(data.get(new NamespacedKey(TeaksTweaks.getInstance(), "graves_last"), PersistentDataType.STRING));
+                if (data.has(Key.get("graves_last"), PersistentDataType.STRING)) {
+                    player.sendMessage(data.get(Key.get("graves_last"), PersistentDataType.STRING));
                 } else {
                     player.sendMessage(getString("error.no_grave"));
                 }
@@ -65,8 +65,8 @@ public class GraveCommand extends AbstractCommand {
             }
             if (TeaksTweaks.getInstance().getConfig().getBoolean("packs.graves.locatable")) {
                 PersistentDataContainer data = player.getPersistentDataContainer();
-                if (data.has(new NamespacedKey(TeaksTweaks.getInstance(), "graves_last"), PersistentDataType.STRING)) {
-                    player.sendMessage(data.get(new NamespacedKey(TeaksTweaks.getInstance(), "graves_last"), PersistentDataType.STRING));
+                if (data.has(Key.get("graves_last"), PersistentDataType.STRING)) {
+                    player.sendMessage(data.get(Key.get("graves_last"), PersistentDataType.STRING));
                 } else {
                     player.sendMessage(getString("error.no_grave"));
                 }

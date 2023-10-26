@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.items.rotationwrench;
 import com.google.common.collect.Lists;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -36,7 +37,7 @@ public class Wrench extends BasePack {
     public void init() {
         super.init();
 
-        NamespacedKey key = new NamespacedKey(teaksTweaks, "redstone_wrench");
+        NamespacedKey key = Key.get("redstone_wrench");
 
         ItemStack result = new ItemStack(Material.CARROT_ON_A_STICK);
         ItemMeta meta = result.getItemMeta();

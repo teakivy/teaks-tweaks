@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
+import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -54,7 +55,7 @@ public class UniversalDyeing extends AbstractRecipe {
     }
 
     public static void newDyeingRecipe(String colorType, String inputName, Material inputDye, Material output) {
-        NamespacedKey key = new NamespacedKey(teaksTweaks, colorType + inputName.toLowerCase() + "_universal");
+        NamespacedKey key = Key.get(colorType + inputName.toLowerCase() + "_universal");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(output, 8));
 
@@ -85,7 +86,7 @@ public class UniversalDyeing extends AbstractRecipe {
     }
 
     public static void newBedRecipe(String colorType, String inputName, Material inputDye, Material output) {
-        NamespacedKey key = new NamespacedKey(teaksTweaks, colorType + inputName.toLowerCase() + "_universal");
+        NamespacedKey key = Key.get(colorType + inputName.toLowerCase() + "_universal");
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(output));
 
@@ -136,7 +137,7 @@ public class UniversalDyeing extends AbstractRecipe {
 
 
     public static void newClearRecipe(String inputName) {
-        NamespacedKey key = new NamespacedKey(teaksTweaks, "clear_" + inputName.toLowerCase() + "_universal");
+        NamespacedKey key = Key.get("clear_" + inputName.toLowerCase() + "_universal");
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.valueOf(inputName)));
 
@@ -166,7 +167,7 @@ public class UniversalDyeing extends AbstractRecipe {
     }
 
     public static void newClearStainedRecipe(String inputName) {
-        NamespacedKey key = new NamespacedKey(teaksTweaks, "clear_" + inputName.toLowerCase() + "_universal");
+        NamespacedKey key = Key.get("clear_" + inputName.toLowerCase() + "_universal");
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.valueOf(inputName)));
 

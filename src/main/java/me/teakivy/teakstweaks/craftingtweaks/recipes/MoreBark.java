@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
+import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -38,7 +39,7 @@ public class MoreBark extends AbstractRecipe {
     }
 
     public static void newBarkedRecipe(String name, Material input, Material output) {
-        NamespacedKey key = new NamespacedKey(teaksTweaks, name + "_bark");
+        NamespacedKey key = Key.get(name + "_bark");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(output, 4));
 

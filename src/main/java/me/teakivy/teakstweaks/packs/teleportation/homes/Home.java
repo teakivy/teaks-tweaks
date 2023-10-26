@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.teleportation.homes;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -77,7 +78,7 @@ public class Home {
         if (player == null) return;
 
         PersistentDataContainer data = player.getPersistentDataContainer();
-        NamespacedKey key = new NamespacedKey(TeaksTweaks.getInstance(), "homes");
+        NamespacedKey key = Key.get("homes");
         String homes = data.get(key, PersistentDataType.STRING);
         if (homes == null) return;
 
@@ -91,7 +92,7 @@ public class Home {
 
         data.set(key, PersistentDataType.STRING, newHomes);
 
-        data.remove(new NamespacedKey(TeaksTweaks.getInstance(), "home." + name));
+        data.remove(Key.get("home." + name));
 
         player.sendMessage(Translatable.get("homes.deleted").replace("%home%", name));
     }

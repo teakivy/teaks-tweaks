@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.survival.coordshud;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -58,8 +59,8 @@ public class HUD extends BasePack {
     public static boolean isEnabled(Player player) {
         PersistentDataContainer data = player.getPersistentDataContainer();
 
-        if (data.has(new NamespacedKey(TeaksTweaks.getInstance(), "ch_enabled"), PersistentDataType.BOOLEAN)) {
-            return data.get(new NamespacedKey(TeaksTweaks.getInstance(), "ch_enabled"), PersistentDataType.BOOLEAN);
+        if (data.has(Key.get("ch_enabled"), PersistentDataType.BOOLEAN)) {
+            return data.get(Key.get("ch_enabled"), PersistentDataType.BOOLEAN);
         }
         FileConfiguration config = TeaksTweaks.getInstance().getConfig();
 
@@ -71,6 +72,6 @@ public class HUD extends BasePack {
         if (TeaksTweaks.getInstance().getConfig().getBoolean("force-enable")) enabled = true;
         PersistentDataContainer data = player.getPersistentDataContainer();
 
-        data.set(new NamespacedKey(TeaksTweaks.getInstance(), "ch_enabled"), PersistentDataType.BOOLEAN, enabled);
+        data.set(Key.get("ch_enabled"), PersistentDataType.BOOLEAN, enabled);
     }
 }
