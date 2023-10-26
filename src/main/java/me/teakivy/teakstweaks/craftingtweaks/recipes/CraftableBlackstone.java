@@ -20,13 +20,13 @@ public class CraftableBlackstone extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        List<Material> coalList = new ArrayList<Material>();
+        List<Material> coalList = new ArrayList<>();
         coalList.add(Material.COAL);
         coalList.add(Material.CHARCOAL);
 
         RecipeChoice coal = new RecipeChoice.MaterialChoice(coalList);
 
-        List<Material> basaltList = new ArrayList<Material>();
+        List<Material> basaltList = new ArrayList<>();
         basaltList.add(Material.BASALT);
         basaltList.add(Material.SMOOTH_BASALT);
 

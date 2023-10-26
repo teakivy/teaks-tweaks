@@ -59,7 +59,7 @@ public class UniversalDyeing extends AbstractRecipe {
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(output, 8));
 
-        List<Material> materials = new ArrayList<Material>();
+        List<Material> materials = new ArrayList<>();
         materials.add(Material.valueOf("BLACK_" + inputName));
         materials.add(Material.valueOf("BLUE_" + inputName));
         materials.add(Material.valueOf("BROWN_" + inputName));

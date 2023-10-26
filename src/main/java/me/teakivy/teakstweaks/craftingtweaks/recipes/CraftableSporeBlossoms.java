@@ -24,7 +24,7 @@ public class CraftableSporeBlossoms extends AbstractRecipe {
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.SPORE_BLOSSOM, 4));
 
-        List<Material> leavesList = new ArrayList<Material>();
+        List<Material> leavesList = new ArrayList<>();
         leavesList.add(Material.FLOWERING_AZALEA_LEAVES);
         leavesList.add(Material.AZALEA_LEAVES);
 

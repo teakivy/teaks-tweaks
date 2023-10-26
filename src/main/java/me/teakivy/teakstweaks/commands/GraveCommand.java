@@ -102,7 +102,7 @@ public class GraveCommand extends AbstractCommand {
         return false;
     }
 
-    List<String> arguments = new ArrayList<String>();
+    List<String> arguments = new ArrayList<>();
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
@@ -115,7 +115,7 @@ public class GraveCommand extends AbstractCommand {
             }
         }
 
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         if (args.length == 1) {
             for (String a : arguments) {
                 if (a.toLowerCase().startsWith(args[0].toLowerCase()))

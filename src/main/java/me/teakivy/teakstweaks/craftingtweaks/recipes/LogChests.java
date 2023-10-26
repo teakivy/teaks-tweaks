@@ -20,7 +20,7 @@ public class LogChests extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        List<Material> logList = new ArrayList<Material>();
+        List<Material> logList = new ArrayList<>();
         logList.add(Material.OAK_LOG);
         logList.add(Material.STRIPPED_OAK_LOG);
         logList.add(Material.BIRCH_LOG);

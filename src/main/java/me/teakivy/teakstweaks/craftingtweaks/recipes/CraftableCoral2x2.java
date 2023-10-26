@@ -32,7 +32,7 @@ public class CraftableCoral2x2 extends AbstractRecipe {
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.valueOf(type.toUpperCase() + "_CORAL_BLOCK")));
 
-        List<Material> choiceList = new ArrayList<Material>();
+        List<Material> choiceList = new ArrayList<>();
         choiceList.add(Material.valueOf(type + "_CORAL"));
         choiceList.add(Material.valueOf(type + "_CORAL_FAN"));
 

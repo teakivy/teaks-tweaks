@@ -20,7 +20,7 @@ public class UnpackableWool extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        List<Material> woolList = new ArrayList<Material>();
+        List<Material> woolList = new ArrayList<>();
         woolList.add(Material.WHITE_WOOL);
         woolList.add(Material.ORANGE_WOOL);
         woolList.add(Material.MAGENTA_WOOL);
