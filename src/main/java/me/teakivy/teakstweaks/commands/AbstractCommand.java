@@ -1,12 +1,16 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.Bukkit;
 import org.bukkit.command.*;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,6 +30,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     protected final String permMessage;
 
     protected static CommandMap cmap;
+    protected final CommandType commandType;
 
     /**
      * Create a new AbstractCommand
@@ -34,8 +39,33 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param usage The command usage
      * @param description The command description
      */
+    @Deprecated
     public AbstractCommand(String parentPack, String command, String usage, String description) {
-        this(parentPack, command, usage, description, null, null);
+        this(parentPack, command, usage, description, null, null, CommandType.ALL);
+    }
+
+    /**
+     * Create a new AbstractCommand
+     * @param parentPack The pack this command belongs to
+     * @param command The command name
+     * @param usage The command usage
+     * @param commandType The command type
+     */
+    public AbstractCommand(String parentPack, String command, String usage, CommandType commandType) {
+        this(parentPack, command, usage, Translatable.get(command + ".description"), null, null, commandType);
+    }
+
+    /**
+     * Create a new AbstractCommand
+     * @param parentPack The pack this command belongs to
+     * @param command The command name
+     * @param usage The command usage
+     * @param description The command description
+     * @param aliases The command aliases
+     * @param commandType The command type
+     */
+    public AbstractCommand(String parentPack, String command, String usage, String description, List<String> aliases, CommandType commandType) {
+        this(parentPack, command, usage, description, null, aliases, commandType);
     }
 
     /**
@@ -46,8 +76,30 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param description The command description
      * @param aliases The command aliases
      */
+    @Deprecated
     public AbstractCommand(String parentPack, String command, String usage, String description, List<String> aliases) {
-        this(parentPack, command, usage, description, null, aliases);
+        this(parentPack, command, usage, description, null, aliases, CommandType.ALL);
+    }
+
+    /**
+     * Create a new AbstractCommand
+     * @param parentPack The pack this command belongs to
+     * @param command The command name
+     * @param usage The command usage
+     * @param description The command description
+     * @param permissionMessage The permission message
+     * @param aliases The command aliases
+     * @param commandType The command type
+     */
+    public AbstractCommand(String parentPack, String command, String usage, String description, String permissionMessage, List<String> aliases, CommandType commandType) {
+        this.parentPack = parentPack;
+        this.command = command.toLowerCase();
+        this.usage = usage;
+        this.description = description;
+        this.permMessage = permissionMessage;
+        this.alias = aliases;
+        this.permission = "teakstweaks." + parentPack + ".command." + command;
+        this.commandType = commandType;
     }
 
     /**
@@ -59,6 +111,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param permissionMessage The permission message
      * @param aliases The command aliases
      */
+    @Deprecated
     public AbstractCommand(String parentPack, String command, String usage, String description, String permissionMessage, List<String> aliases) {
         this.parentPack = parentPack;
         this.command = command.toLowerCase();
@@ -67,6 +120,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         this.permMessage = permissionMessage;
         this.alias = aliases;
         this.permission = "teakstweaks." + parentPack + ".command." + command;
+        this.commandType = CommandType.ALL;
     }
 
     /**
@@ -167,7 +221,61 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param args The command arguments
      * @return Whether or not the command was successful
      */
-    public abstract boolean onCommand(CommandSender sender, Command cmd, String label, String[] args);
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (checkPermission(sender)) return true;
+
+        if (commandType == CommandType.PLAYER_ONLY) {
+            Player player = checkPlayer(sender);
+            if (player == null) return true;
+
+            playerCommand(player, args);
+            return true;
+        }
+
+        command(sender, args);
+        return true;
+    }
+
+    /**
+     * Command Executor
+     * @param sender The command sender
+     * @param args The command arguments
+     */
+    public void command(CommandSender sender, String[] args) {
+        sender.sendMessage(getUsage());
+    }
+
+    /**
+     * Player Command Executor
+     * @param player The command sender
+     * @param args The command arguments
+     */
+    public void playerCommand(Player player, String[] args) {
+        player.sendMessage(getUsage());
+    }
+
+    /**
+     * Check if the sender has permission
+     * @param sender The command sender
+     * @param permission The permission to check
+     * @return false if the sender does not have permission
+     */
+    public boolean checkPermission(CommandSender sender, String permission) {
+        if (sender.hasPermission(this.permission + "." + permission)) return true;
+
+        sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+        return false;
+    }
+
+    /**
+     * Check if the sender has permission without sending a message
+     * @param sender The command sender
+     * @param permission The permission to check
+     * @return
+     */
+    public boolean silentCheckPermission(CommandSender sender, String permission) {
+        return sender.hasPermission(this.permission + "." + permission);
+    }
 
     /**
      * Tab Completer
@@ -178,7 +286,41 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @return A list of possible tab completions
      */
     public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
+        return tabComplete(args);
+    }
+
+    /**
+     * Get a list of possible tab completions
+     * @param arg The argument to complete
+     * @param options The possible options
+     * @return A list of possible tab completions
+     */
+    public List<String> getArgsList(String arg, List<String> options) {
+        List<String> result = new ArrayList<>();
+        for (String option : options) {
+            if (option.toLowerCase().startsWith(arg.toLowerCase())) {
+                result.add(option);
+            }
+        }
+        return result;
+    }
+
+    public List<String> tabComplete(String[] args) {
         return null;
+    }
+
+    public Player checkPlayer(CommandSender sender) {
+        if (sender instanceof Player) return (Player) sender;
+
+        sender.sendMessage(ErrorType.NOT_PLAYER.m());
+        return null;
+    }
+
+    public boolean checkPermission(CommandSender sender) {
+        if (sender.hasPermission(permission)) return false;
+
+        sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+        return true;
     }
 
     /**
@@ -214,5 +356,9 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      */
     public String getUsage() {
         return get("plugin.commands.usage").replace("%command_usage%", this.usage);
+    }
+
+    public FileConfiguration getConfig() {
+        return TeaksTweaks.getInstance().getConfig();
     }
 }
