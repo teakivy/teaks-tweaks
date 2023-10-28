@@ -298,6 +298,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     public List<String> getArgsList(String arg, List<String> options) {
         List<String> result = new ArrayList<>();
         for (String option : options) {
+            if (option == null) continue;
             if (option.toLowerCase().startsWith(arg.toLowerCase())) {
                 result.add(option);
             }
@@ -356,6 +357,10 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      */
     public String getUsage() {
         return get("plugin.commands.usage").replace("%command_usage%", this.usage);
+    }
+
+    public void sendUsage(CommandSender sender) {
+        sender.sendMessage(getUsage());
     }
 
     public FileConfiguration getConfig() {
