@@ -59,6 +59,16 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     public AbstractCommand(String parentPack, String command, String usage, CommandType commandType) {
         this(parentPack, command, usage, Translatable.get(command + ".command_description"), null, null, commandType);
     }
+    /**
+     * Create a new AbstractCommand
+     * @param parentPack The pack this command belongs to
+     * @param command The command name
+     * @param usage The command usage
+     * @param commandType The command type
+     */
+    public AbstractCommand(String parentPack, String command, String usage, List<String> alias, CommandType commandType) {
+        this(parentPack, command, usage, Translatable.get(command + ".command_description"), null, alias, commandType);
+    }
 
     /**
      * Create a new AbstractCommand
