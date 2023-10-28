@@ -8,6 +8,19 @@
   "plugin.url": "https://modrinth.com/plugin/teaks-tweaks",
   "plugin.author": "TeakIvy",
 
+  "#comment.errors": "Common Error Messages: (this is a comment and will never be shown in-game)",
+
+  "error.unknown": "&cAn unknown error has occurred!",
+  "error.pack_not_enabled": "&cThis pack is not enabled!",
+  "error.not_player": "&cYou must be a player to use this command!",
+  "error.not_op": "&cYou must be an operator to use this command!",
+  "error.missing_command_permission": "&cYou do not have permission to use this command!",
+  "error.missing_permission": "&cYou do not have permission to do that!",
+  "error.cant_get_latest_version": "&cCould not get the latest version of Teak's Tweaks!",
+  "error.command_disabled": "&cThis command has been disabled by a server administrator!",
+  "error.missing_action": "&cPlease specify an action!",
+  "error.player_dne": "&cThat player does not exist!",
+
   "#comment.metadata": "Pack Metadata Section: (this is a comment and will never be shown in-game)",
 
   "packtype.experimental": "Experimental",
@@ -389,19 +402,6 @@
   "unpackable_wool.name": "Unpackable Wool",
   "unpackable_wool.description": "Allows you to break down Wool into 4 String.",
 
-  "#comment.errors": "Common Error Messages: (this is a comment and will never be shown in-game)",
-
-  "error.unknown": "&cAn unknown error has occurred!",
-  "error.pack_not_enabled": "&cThis pack is not enabled!",
-  "error.not_player": "&cYou must be a player to use this command!",
-  "error.not_op": "&cYou must be an operator to use this command!",
-  "error.missing_command_permission": "&cYou do not have permission to use this command!",
-  "error.missing_permission": "&cYou do not have permission to do that!",
-  "error.cant_get_latest_version": "&cCould not get the latest version of Teak's Tweaks!",
-  "error.command_disabled": "&cThis command has been disabled by a server administrator!",
-  "error.missing_action": "&cPlease specify an action!",
-  "error.player_dne": "&cThat player does not exist!",
-
   "#comment.commands": "Commands Section: (this is a comment and will never be shown in-game)",
 
   "plugin.commands.usage": "&cUsage: %command_usage%",
@@ -432,7 +432,7 @@
   "conduitpower.error.wrong_gamemode": "&cYou must be in Spectator Mode to use this command!",
   "conduitpower.toggled": "&aToggled Conduit Power",
 
-  "coordshud.error.force_enabled": "&cCoordinates Hud is force enabled by a server administrator!",
+  "coordshud.command_description": "Coordinates Hud Main Command",
   "coordshud.toggled": "&aToggled Coordinates Hud",
 
   "durabilityping.error.missing_preview_selection": "&cPlease enter which section to preview!",
