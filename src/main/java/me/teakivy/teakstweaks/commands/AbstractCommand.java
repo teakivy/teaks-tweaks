@@ -11,7 +11,9 @@ import org.bukkit.entity.Player;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * For a How-To on how to use AbstractCommand see this post @ http://forums.bukkit.org/threads/195990/
@@ -31,6 +33,9 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
 
     protected static CommandMap cmap;
     protected final CommandType commandType;
+
+    protected int cooldownTime;
+    protected HashMap<UUID, Long> cooldownMap;
 
     /**
      * Create a new AbstractCommand
@@ -52,7 +57,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param commandType The command type
      */
     public AbstractCommand(String parentPack, String command, String usage, CommandType commandType) {
-        this(parentPack, command, usage, Translatable.get(command + ".description"), null, null, commandType);
+        this(parentPack, command, usage, Translatable.get(command + ".command_description"), null, null, commandType);
     }
 
     /**
@@ -100,6 +105,10 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         this.alias = aliases;
         this.permission = "teakstweaks." + parentPack + ".command." + command;
         this.commandType = commandType;
+
+        this.cooldownTime = 0;
+        this.cooldownMap = new HashMap<>();
+
     }
 
     /**
@@ -121,6 +130,9 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         this.alias = aliases;
         this.permission = "teakstweaks." + parentPack + ".command." + command;
         this.commandType = CommandType.ALL;
+
+        this.cooldownTime = 0;
+        this.cooldownMap = new HashMap<>();
     }
 
     /**
@@ -365,5 +377,27 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
 
     public FileConfiguration getConfig() {
         return TeaksTweaks.getInstance().getConfig();
+    }
+
+    public void setCooldownTime(int time) {
+        this.cooldownTime = time;
+    }
+
+    public int getCooldownTime() {
+        return this.cooldownTime;
+    }
+
+    public void setCooldown(Player player) {
+        this.cooldownMap.put(player.getUniqueId(), System.currentTimeMillis());
+    }
+
+    public boolean isOnCooldown(Player player) {
+        if (!this.cooldownMap.containsKey(player.getUniqueId())) return false;
+        return this.cooldownMap.get(player.getUniqueId()) + (this.cooldownTime * 1000L) > System.currentTimeMillis();
+    }
+
+    public int getCooldown(Player player) {
+        if (!this.cooldownMap.containsKey(player.getUniqueId())) return 0;
+        return (int) ((this.cooldownMap.get(player.getUniqueId()) + (this.cooldownTime * 1000L) - System.currentTimeMillis()) / 1000L);
     }
 }
