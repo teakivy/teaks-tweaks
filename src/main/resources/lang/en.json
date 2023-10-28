@@ -408,6 +408,7 @@
 
   "afk.description": "Toggles AFK mode. When enabled, you will be automatically set to AFK when you are idle for 5 minutes.",
 
+  "alts.description": "Manage spectator alt accounts.",
   "alts.error.no_permission_list_others": "&cYou do not have permission to see other's alts!",
   "alts.error.no_permission_modify_others": "&cYou do not have permission to modify other's alts!",
   "alts.error.no_alts": "&c%player% does not have any alts!",
@@ -421,6 +422,7 @@
   "alts.added_alt": "&a%alt% is now %player%'s alt!",
   "alts.removed_alt": "&a%alt% is no longer %player%'s alt!",
 
+  "back.description": "Teleport back to your previous location.",
   "back.error.on_cooldown": "&cYou must wait %cooldown_seconds% seconds between uses of /back!",
   "back.error.no_back_location": "&cYou have nowhere to go back to!",
   "back.error.moved": "&cYou must stand still to teleport!",
