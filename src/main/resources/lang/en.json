@@ -428,6 +428,7 @@
   "back.error.moved": "&cYou must stand still to teleport!",
   "back.teleporting": "&eTeleporting Back...",
 
+  "conduitpower.command_description": "Toggle Conduit Power as a spectator.",
   "conduitpower.error.wrong_gamemode": "&cYou must be in Spectator Mode to use this command!",
   "conduitpower.toggled": "&aToggled Conduit Power",
 

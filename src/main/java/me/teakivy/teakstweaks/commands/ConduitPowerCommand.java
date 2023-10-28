@@ -1,10 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.TeaksTweaks;
-import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.GameMode;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -14,32 +10,22 @@ import java.util.List;
 public class ConduitPowerCommand extends AbstractCommand {
 
     public ConduitPowerCommand() {
-        super("spectator-conduit-power", "conduitpower", "/conduitpower", "Toggle Conduit Power as a spectator.", List.of("cp"));
+        super("spectator-conduit-power", "conduitpower", "/conduitpower", List.of("cp"), CommandType.PLAYER_ONLY);
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.spectator-conduit-power.enabled")) {
-            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
-            return true;
+    public void playerCommand(Player player, String[] args) {
+        if (player.getGameMode() != GameMode.SPECTATOR) {
+            player.sendMessage(getError("wrong_gamemode"));
+            return;
         }
 
-        if (!sender.hasPermission(permission+".toggle")) {
-            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-            return true;
+        player.sendMessage(getString("toggled"));
+        if (player.hasPotionEffect(PotionEffectType.CONDUIT_POWER)) {
+            player.removePotionEffect(PotionEffectType.CONDUIT_POWER);
+            return;
         }
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-            if (player.getGameMode().equals(GameMode.SPECTATOR)) {
-                if (player.hasPotionEffect(PotionEffectType.CONDUIT_POWER)) player.removePotionEffect(PotionEffectType.CONDUIT_POWER);
-                else player.addPotionEffect(new PotionEffect(PotionEffectType.CONDUIT_POWER, 10000000, 0, true, true));
-                player.sendMessage(getString("toggled"));
-            } else {
-                player.sendMessage(getString("error.wrong_gamemode"));
-            }
-        } else {
-            sender.sendMessage(ErrorType.NOT_PLAYER.m());
-        }
-        return false;
+
+        player.addPotionEffect(new PotionEffect(PotionEffectType.CONDUIT_POWER, 10000000, 0, true, true));
     }
 }
