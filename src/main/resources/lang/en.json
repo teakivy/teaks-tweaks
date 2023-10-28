@@ -435,6 +435,8 @@
   "coordshud.command_description": "Coordinates Hud Main Command",
   "coordshud.toggled": "&aToggled Coordinates Hud",
 
+  "deletehome.command_description": "Delete a home.",
+
   "durabilityping.error.missing_preview_selection": "&cPlease enter which section to preview!",
   "durabilityping.error.missing_set_selection": "&cPlease enter which section to set!",
   "durabilityping.preview_panel.hover": "&7Click to preview &f%name%",
