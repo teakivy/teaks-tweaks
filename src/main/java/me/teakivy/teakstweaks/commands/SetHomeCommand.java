@@ -41,4 +41,11 @@ public class SetHomeCommand extends AbstractCommand {
 
         player.sendMessage(getString("home.set_home").replace("%name%", name));
     }
+
+    @Override
+    public List<String> tabComplete(Player player, String[] args) {
+        if (args.length != 1) return null;
+
+        return List.of("[name]");
+    }
 }

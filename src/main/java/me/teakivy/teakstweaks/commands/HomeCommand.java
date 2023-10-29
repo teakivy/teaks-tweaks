@@ -115,7 +115,7 @@ public class HomeCommand extends AbstractCommand {
         }
 
         if (args.length == 2 && args[0].equalsIgnoreCase("set")) {
-            return List.of("<name>");
+            return List.of("[name]");
         }
 
         return null;

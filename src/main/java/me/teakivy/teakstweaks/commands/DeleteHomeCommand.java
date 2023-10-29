@@ -4,12 +4,13 @@ import me.teakivy.teakstweaks.packs.teleportation.homes.Home;
 import me.teakivy.teakstweaks.packs.teleportation.homes.HomesPack;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DeleteHomeCommand extends AbstractCommand {
 
     public DeleteHomeCommand() {
-        super("homes", "deletehome", "/deletehome <home>", List.of("rmhome", "delhome"), CommandType.PLAYER_ONLY);
+        super("homes", "deletehome", "/deletehome [name]", List.of("rmhome", "delhome"), CommandType.PLAYER_ONLY);
     }
 
     @Override
@@ -32,5 +33,17 @@ public class DeleteHomeCommand extends AbstractCommand {
         }
 
         player.sendMessage(get("home.deleted_home").replace("%name%", name));
+    }
+
+    @Override
+    public List<String> tabComplete(Player player, String[] args) {
+        if (args.length != 1) return null;
+
+        List<String> arguments = new ArrayList<>();
+
+        for (Home home : HomesPack.getHomes(player)) {
+            arguments.add(home.getName());
+        }
+        return arguments;
     }
 }
