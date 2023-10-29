@@ -509,6 +509,7 @@
   "mechanics.gui.next_page": "&6Next Page",
   "mechanics.gui.previous_page": "&6Previous Page",
 
+  "nightvision.command_description": "Toggle Night Vision as a spectator.",
   "nightvision.error.wrong_gamemode": "&cYou must be in Spectator Mode to use this command!",
   "nightvision.toggled": "&aToggled Night Vision",
 

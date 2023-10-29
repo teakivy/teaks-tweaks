@@ -26,6 +26,6 @@ public class ConduitPowerCommand extends AbstractCommand {
             return;
         }
 
-        player.addPotionEffect(new PotionEffect(PotionEffectType.CONDUIT_POWER, 10000000, 0, true, true));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.CONDUIT_POWER, PotionEffect.INFINITE_DURATION, 0, true, true));
     }
 }
