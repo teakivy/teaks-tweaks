@@ -521,6 +521,7 @@
   "portal.error.wrong_dimension": "&cYou cannot run this command in %world%!",
   "portal.location": "&eX: %x% | Y: %y% | Z: %z%",
 
+  "realtimeclock.command_description": "View how long a world has been running in real time minutes and hours.",
   "realtimeclock.world_time": "&eThis world has been active for &6&l%days% &r&eDays, &6&l%hours% &r&eHours, and &6&l%minutes% &r&eMinutes!",
 
   "shrine.error.none_nearby": "&cThere are no shrines nearby!",
