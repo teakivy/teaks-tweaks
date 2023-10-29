@@ -39,7 +39,7 @@ public class SetHomeCommand extends AbstractCommand {
             return;
         }
 
-        player.sendMessage(getString("home.set_home").replace("%name%", name));
+        player.sendMessage(get("home.set_home").replace("%name%", name));
     }
 
     @Override
