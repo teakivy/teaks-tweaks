@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
-import java.util.UUID;
 
 import static me.teakivy.teakstweaks.utils.metrics.CustomMetrics.registerCustomMetrics;
 
@@ -30,7 +29,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     private Register register;
 
     public Tag tagListener;
-    public boolean devMode;
+    private static boolean devMode;
 
     /**
      * Called when the plugin is enabled
@@ -201,6 +200,14 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         if (file.exists()) {
             file.delete();
         }
+    }
+
+    /**
+     * Check if the plugin is in dev mode
+     * @return Boolean
+     */
+    public static boolean isDevMode() {
+        return devMode;
     }
 
 }

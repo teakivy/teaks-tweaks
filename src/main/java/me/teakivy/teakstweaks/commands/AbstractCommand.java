@@ -149,13 +149,10 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * Register the command
      */
     public void register() {
-        if (this.command.equalsIgnoreCase("mechanics") &&
-                !TeaksTweaks.getInstance().getConfig().getBoolean("settings.mechanics-command")) return;
+        if (this.command.equals("mechanics") && !getConfig().getBoolean("settings.mechanics-command")) return;
+        if (this.command.equals("test") && !TeaksTweaks.isDevMode()) return;
 
-        if (this.parentPack != null &&
-                (!this.parentPack.equalsIgnoreCase("test")
-                        && !TeaksTweaks.getPackConfig(parentPack).getBoolean("enabled")))
-            return;
+        if (this.parentPack != null && !TeaksTweaks.getPackConfig(parentPack).getBoolean("enabled")) return;
 
         ReflectCommand cmd = new ReflectCommand(this.command);
         if (this.alias != null) cmd.setAliases(this.alias);

@@ -573,6 +573,7 @@
   "teakstweakscommand.info.dev_mode_enabled": "&fDev Mode: &aEnabled",
   "teakstweakscommand.info.support": "&fSupport Server: &a%discord%",
 
+  "test.command_description": "Teak's Tweaks Testing Command.",
   "test.test": "&eHallo! Looks like you found my test command! :D",
 
   "tpa.error.specify_player": "&cPlease specify a player to teleport to!",
