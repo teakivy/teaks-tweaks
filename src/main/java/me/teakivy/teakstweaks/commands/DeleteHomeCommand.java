@@ -15,7 +15,7 @@ public class DeleteHomeCommand extends AbstractCommand {
     @Override
     public void playerCommand(Player player, String[] args) {
         if (args.length < 1 && HomesPack.getHome(player, "home") == null) {
-            player.sendMessage(get("homes.error.missing_home_name"));
+            player.sendMessage(get("home.error.missing_home_name"));
             return;
         }
 
@@ -23,14 +23,14 @@ public class DeleteHomeCommand extends AbstractCommand {
 
         Home home = HomesPack.getHome(player, name);
         if (home == null) {
-            player.sendMessage(get("homes.error.home_dne").replace("%name%", name));
+            player.sendMessage(get("home.error.home_dne").replace("%name%", name));
             return;
         }
 
         if (!HomesPack.removeHome(player, name)) {
-            player.sendMessage(get("homes.error.cant_remove_home"));
+            player.sendMessage(get("home.error.cant_delete_home"));
         }
 
-        player.sendMessage(get("homes.removed_home").replace("%name%", name));
+        player.sendMessage(get("home.deleted_home").replace("%name%", name));
     }
 }
