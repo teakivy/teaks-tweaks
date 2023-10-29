@@ -526,6 +526,7 @@
 
   "sethome.command_description": "Set a home to teleport to at a later date.",
 
+  "shrine.command_description": "Create thunder shrines that can be used to summon lightning storms.",
   "shrine.error.none_nearby": "&cThere are no shrines nearby!",
   "shrine.created": "&aA Shrine has been created at &6XYZ: &e%x% %y% %z% &ain &6World: &e%world%",
   "shrine.removed": "&eA Shrine has been removed at &6XYZ: &e%x% %y% %z% &ain &6World: &e%world%",
