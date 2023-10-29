@@ -548,6 +548,7 @@
   "sudoku.command_description": "Commit Sudoku.",
   "sudoku.committed": "&aThanks for playing sudoku!",
 
+  "taggame.command_description": "The classic game of tag.",
   "taggame.item_name": "&eTag!",
   "taggame.begun": "&eLet the games begin!",
   "taggame.uninstalled": "&eThe Tag Game has been uninstalled!",

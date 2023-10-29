@@ -1,71 +1,30 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.TeaksTweaks;
-import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TagGameCommand extends AbstractCommand {
 
     public TagGameCommand() {
-        super("tag", "taggame", "/taggame", "The classic game of tag.");
+        super("tag", "taggame", "/taggame", CommandType.PLAYER_ONLY);
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
-        if (!sender.hasPermission(permission)) {
-            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-            return true;
-        }
-
-        if (args.length == 1) {
-            if (!(sender instanceof Player)) {
-                sender.sendMessage(ErrorType.NOT_PLAYER.m());
-                return true;
-            }
-            Player player = (Player) sender;
-
-            if (args[0].equalsIgnoreCase("uninstall")) {
-                if (!sender.hasPermission(permission+".uninstall")) {
-                    sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-                    return true;
-                }
-                player.sendMessage(getString("uninstalled"));
-                TeaksTweaks.getInstance().getRegister().unregisterPack("tag");
-                return true;
-            }
-        }
-
-        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.tag.enabled")) {
-            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
-            return true;
-        }
-
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(ErrorType.NOT_PLAYER.m());
-            return true;
-        }
-        Player player = (Player) sender;
-
+    public void playerCommand(Player player, String[] args) {
+        Scoreboard sb = Bukkit.getScoreboardManager().getMainScoreboard();
+        Team team = Bukkit.getScoreboardManager().getMainScoreboard().getTeam("TaggedTeam");
 
         if (args.length < 1) {
-            if (!sender.hasPermission(permission+".give")) {
-                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-                return true;
-            }
-            TeaksTweaks.getInstance().getRegister().unregisterPack("tag");
+            if (!checkPermission(player, "give")) return;
+
             ItemStack tag = new ItemStack(Material.NAME_TAG);
             ItemMeta tagMeta = tag.getItemMeta();
             tagMeta.setDisplayName(getString("item_name"));
@@ -76,36 +35,29 @@ public class TagGameCommand extends AbstractCommand {
 
             player.addScoreboardTag("tag_it");
 
-            Scoreboard sb = Bukkit.getScoreboardManager().getMainScoreboard();
-            if (sb.getTeam("TaggedTeam") == null) {
-                Team taggedTeam = sb.registerNewTeam("TaggedTeam");
-                taggedTeam.setColor(ChatColor.RED);
+            if (team == null) {
+                team = sb.registerNewTeam("TaggedTeam");
+                team.setColor(ChatColor.RED);
             }
-            Team taggedTeam = sb.getTeam("TaggedTeam");
-            taggedTeam.addEntry(player.getName());
+
+            team.addEntry(player.getName());
             player.sendMessage(getString("begun"));
-            return true;
+            return;
         }
-        return false;
+
+        if (args[0].equalsIgnoreCase("uninstall")) {
+            if (!checkPermission(player, "uninstall")) return;
+
+            if (team == null) return;
+            team.unregister();
+            player.sendMessage(getString("uninstalled"));
+        }
     }
 
-    List<String> arguments1 = new ArrayList<>();
-
     @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+    public List<String> tabComplete(String[] args) {
+        if (args.length == 1) return List.of("uninstall");
 
-        if (arguments1.isEmpty() && sender.isOp()) {
-            arguments1.add("uninstall");
-        }
-
-        List<String> result = new ArrayList<>();
-        if (args.length == 1) {
-            for (String a : arguments1) {
-                if (a.toLowerCase().startsWith(args[0].toLowerCase()))
-                    result.add(a);
-            }
-            return result;
-        }
         return null;
     }
 }
