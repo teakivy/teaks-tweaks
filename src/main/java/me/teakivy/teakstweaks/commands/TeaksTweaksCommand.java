@@ -1,189 +1,48 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
-import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
-import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class TeaksTweaksCommand extends AbstractCommand {
 
     public TeaksTweaksCommand() {
-        super(null, "teakstweaks", "/teakstweaks", "Teak's Tweaks Main Command!", Arrays.asList("tweaks", "tt"));
+        super(null, "teakstweaks", "/teakstweaks <info|version|support|update>", Arrays.asList("tweaks", "tt"), CommandType.ALL);
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        enabled.clear();
-        disabled.clear();
-
+    public void command(CommandSender sender, String[] args) {
         if (args.length < 1) {
-            sendInfoMessage(sender);
-            return true;
+            sendUsage(sender);
+            return;
         }
 
-        if (args[0].equalsIgnoreCase("info")) {
-            sendInfoMessage(sender);
-            return true;
+        switch (args[0].toLowerCase()) {
+            case "info":
+                sendInfoMessage(sender);
+                return;
+            case "version":
+                sender.sendMessage(getString("version").replace("%version%", TeaksTweaks.getInstance().getDescription().getVersion()));
+                return;
+            case "support":
+                sender.sendMessage(getString("support").replace("%discord%", get("plugin.discord")));
+                return;
+            case "update":
+                sender.sendMessage(getString("update").replace("%url%", get("plugin.url")));
+                return;
+            default:
+                sendUsage(sender);
         }
-
-        if (args[0].equalsIgnoreCase("version") || args[0].equalsIgnoreCase("v") || args[0].equalsIgnoreCase("ver")) {
-            sender.sendMessage(getString("version").replace("%version%", TeaksTweaks.getInstance().getDescription().getVersion()));
-            return true;
-        }
-
-        if (args[0].equalsIgnoreCase("support")) {
-            sender.sendMessage(getString("support").replace("%discord%", get("plugin.discord")));
-            return true;
-        }
-
-        if (args[0].equalsIgnoreCase("update")) {
-            sender.sendMessage(getString("update").replace("%url%", get("plugin.url")));
-            return true;
-        }
-
-        if (args[0].equalsIgnoreCase("enable")) {
-            if (!sender.hasPermission(permission)) {
-                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-                return true;
-            }
-            if (args.length < 2) {
-                sender.sendMessage(getString("error.enable.specify_pack"));
-                return true;
-            }
-            if (args[1].equalsIgnoreCase("all")) {
-                TeaksTweaks.getRegister().unregisterAll();
-                TeaksTweaks.getRegister().registerAll(true);
-
-                for (String pack : TeaksTweaks.getRegister().getAllPacks()) {
-                    TeaksTweaks.getInstance().getConfig().set("packs." + pack + ".enabled", true);
-                }
-                TeaksTweaks.getInstance().saveConfig();
-
-                sender.sendMessage(getString("enable.all"));
-                return true;
-            }
-
-            if (!TeaksTweaks.getRegister().getDisabledPacks().contains(args[1])) {
-                sender.sendMessage(getString("error.enable.cannot_enable").replace("%pack%", args[1]));
-                return true;
-            }
-
-            if (TeaksTweaks.getRegister().getDisabledPacks().contains(args[1])) {
-                TeaksTweaks.getRegister().registerPack(args[1]);
-
-                TeaksTweaks.getInstance().getConfig().set("packs." + args[1] + ".enabled", true);
-                TeaksTweaks.getInstance().saveConfig();
-
-                sender.sendMessage(getString("enable.success").replace("%pack%", args[1]));
-                return true;
-            }
-
-            sender.sendMessage(getString("error.enable.cannot_enable").replace("%pack%", args[1]));
-            return true;
-        }
-
-        if (args[0].equalsIgnoreCase("disable")) {
-            if (!sender.hasPermission(permission)) {
-                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-                return true;
-            }
-            if (args.length < 2) {
-                sender.sendMessage(getString("error.disable.specify_pack"));
-                return true;
-            }
-            if (args[1].equalsIgnoreCase("all")) {
-                TeaksTweaks.getRegister().unregisterAll();
-
-                for (String pack : TeaksTweaks.getRegister().getEnabledPacks()) {
-                    TeaksTweaks.getInstance().getConfig().set("packs." + pack + ".enabled", false);
-                }
-                TeaksTweaks.getInstance().saveConfig();
-
-                sender.sendMessage(getString("disable.all"));
-                return true;
-            }
-
-            if (!TeaksTweaks.getRegister().getEnabledPacks().contains(args[1])) {
-                sender.sendMessage(getString("error.disable.cannot_disable").replace("%pack%", args[1]));
-                return true;
-            }
-
-            if (TeaksTweaks.getRegister().getEnabledPacks().contains(args[1])) {
-                TeaksTweaks.getRegister().unregisterPack(args[1]);
-
-                TeaksTweaks.getInstance().getConfig().set("packs." + args[1] + ".enabled", true);
-                TeaksTweaks.getInstance().saveConfig();
-
-
-                sender.sendMessage(getString("disable.success").replace("%pack%", args[1]));
-                return true;
-            }
-
-            sender.sendMessage(getString("error.disable.cannot_disable").replace("%pack%", args[1]));
-            return true;
-        }
-
-        return false;
     }
 
-    List<String> arguments = new ArrayList<>();
-
-    List<String> enabled = new ArrayList<>();
-    List<String> disabled = new ArrayList<>();
-
     @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+    public List<String> tabComplete(String[] args) {
+        if (args.length != 1) return null;
 
-        if (arguments.isEmpty()) {
-            arguments.add("info");
-            arguments.add("version");
-            arguments.add("update");
-            arguments.add("support");
-            arguments.add("enable");
-            arguments.add("disable");
-        }
-
-        if (enabled.isEmpty()) {
-            enabled.addAll(TeaksTweaks.getRegister().getEnabledPacks());
-            enabled.add("all");
-        }
-
-        if (disabled.isEmpty()) {
-            disabled.addAll(TeaksTweaks.getRegister().getDisabledPacks());
-            disabled.add("all");
-        }
-
-        List<String> result = new ArrayList<>();
-        if (args.length == 1) {
-            for (String a : arguments) {
-                if (a.toLowerCase().startsWith(args[0].toLowerCase()))
-                    result.add(a);
-            }
-            return result;
-        }
-
-        if (args.length == 2 && args[0].equalsIgnoreCase("disable")) {
-            for (String a : enabled) {
-                if (a.toLowerCase().startsWith(args[1].toLowerCase()))
-                    result.add(a);
-            }
-            return result;
-        }
-
-        if (args.length == 2 && args[0].equalsIgnoreCase("enable")) {
-            for (String a : disabled) {
-                if (a.toLowerCase().startsWith(args[1].toLowerCase()))
-                    result.add(a);
-            }
-            return result;
-        }
-
-        return null;
+        return List.of("info", "version", "support", "update");
     }
 
     public void sendInfoMessage(CommandSender sender) {

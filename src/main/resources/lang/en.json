@@ -553,6 +553,7 @@
   "taggame.begun": "&eLet the games begin!",
   "taggame.uninstalled": "&eThe Tag Game has been uninstalled!",
 
+  "teakstweakscommand.command_description": "Main Command for Teak's Tweaks.",
   "teakstweakscommand.error.enable.specify_pack": "&cPlease specify a pack to enable!",
   "teakstweakscommand.error.enable.cannot_enable": "&c%pack% cannot be enabled!",
   "teakstweakscommand.error.disable.specify_pack": "&cPlease specify a pack to disable!",
