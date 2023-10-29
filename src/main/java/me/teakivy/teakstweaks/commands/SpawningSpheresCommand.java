@@ -25,7 +25,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
             return;
         }
 
-        if (args[0].equalsIgnoreCase("create")) {
+        if (args[0].equals("create")) {
             if (!checkPermission(player, "create")) return;
 
             boolean success = SpheresPack.summonSphere(type, player.getLocation());
@@ -38,7 +38,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
             return;
         }
 
-        if (args[0].equalsIgnoreCase("remove")) {
+        if (args[0].equals("remove")) {
             if (!checkPermission(player, "remove")) return;
 
             boolean success = SpheresPack.removeSphere(type, player);
@@ -51,7 +51,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
             return;
         }
 
-        if (args[0].equalsIgnoreCase("teleport")) {
+        if (args[0].equals("teleport")) {
             if (!checkPermission(player, "teleport")) return;
 
             boolean success = SpheresPack.teleport(type, player);

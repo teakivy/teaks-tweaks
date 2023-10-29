@@ -14,7 +14,7 @@ public class AFKCommand extends AbstractCommand {
 
     @Override
     public void playerCommand(Player player, String[] args) {
-        if (args.length == 1 && args[0].equalsIgnoreCase("uninstall")) {
+        if (args.length == 1 && args[0].equals("uninstall")) {
             if (!checkPermission(player, "uninstall")) return;
 
             AFK.uninstall();

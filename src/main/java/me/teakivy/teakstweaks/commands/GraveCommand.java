@@ -21,7 +21,7 @@ public class GraveCommand extends AbstractCommand {
 
     @Override
     public void playerCommand(Player player, String[] args) {
-        if (args.length < 1 || args[0].equalsIgnoreCase("locate")) {
+        if (args.length < 1 || args[0].equals("locate")) {
             if (!checkPermission(player, "locate")) return;
             if (!getConfig().getBoolean("packs.graves.locatable")) {
                 player.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
@@ -38,14 +38,14 @@ public class GraveCommand extends AbstractCommand {
             return;
         }
 
-        if (args[0].equalsIgnoreCase("key")) {
+        if (args[0].equals("key")) {
             if (!checkPermission(player, "key")) return;
 
             player.getInventory().addItem(GraveEvents.getGraveKey());
             player.sendMessage(getString("given_key"));
         }
 
-        if (args[0].equalsIgnoreCase("uninstall")) {
+        if (args[0].equals("uninstall")) {
             if (!checkPermission(player, "uninstall")) return;
             for (World world : Bukkit.getWorlds()) {
                 for (Entity entity : world.getEntities()) {

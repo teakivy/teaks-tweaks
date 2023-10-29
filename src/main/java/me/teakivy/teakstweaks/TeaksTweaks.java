@@ -36,7 +36,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
      */
     @Override
     public void onEnable() {
-        this.devMode = getConfig().getBoolean("config.dev-mode");
+        devMode = getConfig().getBoolean("config.dev-mode");
 
         // Credits
         createCredits();

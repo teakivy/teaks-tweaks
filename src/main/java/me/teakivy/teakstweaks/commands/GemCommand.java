@@ -1,16 +1,12 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.hermitcraft.gemvillagers.GemVllagers;
 import me.teakivy.teakstweaks.packs.hermitcraft.treasuregems.Gems;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.Location;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GemCommand extends AbstractCommand {
@@ -26,7 +22,7 @@ public class GemCommand extends AbstractCommand {
             return;
         }
 
-        if (args[0].equalsIgnoreCase("villager")) {
+        if (args[0].equals("villager")) {
             if (!checkPermission(player, "villager")) return;
             if (args.length < 2) {
                 player.sendMessage(getError("missing_villager_type"));
@@ -35,7 +31,7 @@ public class GemCommand extends AbstractCommand {
 
             GemVllagers gems = new GemVllagers();
             Location location = player.getLocation();
-            switch (args[1].toLowerCase()) {
+            switch (args[1]) {
                 case "aquatic":
                     gems.summonAquaticVillager(location);
                     break;
@@ -80,11 +76,11 @@ public class GemCommand extends AbstractCommand {
                     return;
             }
 
-            player.sendMessage(getString("summoned_villager").replace("%type%", getString("villagers." + args[1].toLowerCase())));
+            player.sendMessage(getString("summoned_villager").replace("%type%", getString("villagers." + args[1])));
             return;
         }
 
-        if (args[0].equalsIgnoreCase("give")) {
+        if (args[0].equals("give")) {
             if (!checkPermission(player, "give")) return;
             if (args.length < 2) {
                 player.sendMessage(getError("missing_gem_type"));
@@ -107,7 +103,7 @@ public class GemCommand extends AbstractCommand {
             }
 
             ItemStack item = null;
-            switch (args[1].toLowerCase()) {
+            switch (args[1]) {
                 case "aquamarine":
                     item = Gems.getAquamarineGem();
                     break;
@@ -130,7 +126,7 @@ public class GemCommand extends AbstractCommand {
 
             item.setAmount(amount);
             player.getInventory().addItem(item);
-            player.sendMessage(getString("given_gem").replace("%amount%", amount + "").replace("%type%", getString("gems." + args[1].toLowerCase())));
+            player.sendMessage(getString("given_gem").replace("%amount%", amount + "").replace("%type%", getString("gems." + args[1])));
         }
     }
 
@@ -139,10 +135,10 @@ public class GemCommand extends AbstractCommand {
         if (args.length == 1) return List.of("villager", "give");
 
         if (args.length == 2) {
-            if (args[0].equalsIgnoreCase("villager")) {
+            if (args[0].equals("villager")) {
                 return List.of("aquatic", "concrete", "gem_trader", "functional", "gem_collector", "more_blocks", "natural", "nether", "ores", "precious", "redstone", "stones", "wood");
             }
-            if (args[0].equalsIgnoreCase("give")) {
+            if (args[0].equals("give")) {
                 return List.of("aquamarine", "amethyst", "ruby", "topaz", "sapphire");
             }
         }

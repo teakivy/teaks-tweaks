@@ -34,7 +34,7 @@ public class HomeCommand extends AbstractCommand {
             return;
         }
 
-        if (args[0].equalsIgnoreCase("set")) {
+        if (args[0].equals("set")) {
             if (args.length < 2 && HomesPack.getHome(player, "home") != null) {
                 player.sendMessage(getError("missing_home_name"));
                 return;
@@ -62,7 +62,7 @@ public class HomeCommand extends AbstractCommand {
             return;
         }
 
-        if (args[0].equalsIgnoreCase("delete")) {
+        if (args[0].equals("delete")) {
             if (args.length < 2 && HomesPack.getHome(player, "home") == null) {
                 player.sendMessage(getError("missing_home_name"));
                 return;
@@ -106,7 +106,7 @@ public class HomeCommand extends AbstractCommand {
             return arguments;
         }
 
-        if (args.length == 2 && args[0].equalsIgnoreCase("delete")) {
+        if (args.length == 2 && args[0].equals("delete")) {
             List<String> homes = new ArrayList<>();
             for (Home home : HomesPack.getHomes(player)) {
                 homes.add(home.getName());
@@ -114,7 +114,7 @@ public class HomeCommand extends AbstractCommand {
             return homes;
         }
 
-        if (args.length == 2 && args[0].equalsIgnoreCase("set")) {
+        if (args.length == 2 && args[0].equals("set")) {
             return List.of("[name]");
         }
 

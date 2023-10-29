@@ -21,7 +21,7 @@ public class ShrineCommand extends AbstractCommand {
             return;
         }
 
-        if (args[0].equalsIgnoreCase("create")) {
+        if (args[0].equals("create")) {
             if (!checkPermission(player, "create")) return;
 
             Location loc = player.getLocation();
@@ -42,7 +42,7 @@ public class ShrineCommand extends AbstractCommand {
             );
         }
 
-        if (args[0].equalsIgnoreCase("remove")) {
+        if (args[0].equals("remove")) {
             if (!checkPermission(player, "remove")) return;
 
             Entity shrine = null;
@@ -66,7 +66,7 @@ public class ShrineCommand extends AbstractCommand {
             );
         }
 
-        if (args[0].equalsIgnoreCase("uninstall")) {
+        if (args[0].equals("uninstall")) {
             if (!checkPermission(player, "uninstall")) return;
 
             for (Entity shrine : Shrine.getShrines()) {

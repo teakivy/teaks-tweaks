@@ -28,7 +28,7 @@ public class TPACommand extends AbstractCommand {
             return;
         }
 
-        if (args[0].equalsIgnoreCase("accept")) {
+        if (args[0].equals("accept")) {
             if (args.length < 2) {
                 TPARequest req = getRequest(player);
                 if (req == null || req.isExpired()) {
@@ -101,7 +101,7 @@ public class TPACommand extends AbstractCommand {
             return arguments;
         }
 
-        if (args.length == 2 && args[0].equalsIgnoreCase("accept")) {
+        if (args.length == 2 && args[0].equals("accept")) {
             List<String> arguments = new ArrayList<>();
             for (TPARequest request : requests) {
                 if (!request.getTo().getUniqueId().equals(player.getUniqueId())) continue;

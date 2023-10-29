@@ -45,7 +45,7 @@ public class TagGameCommand extends AbstractCommand {
             return;
         }
 
-        if (args[0].equalsIgnoreCase("uninstall")) {
+        if (args[0].equals("uninstall")) {
             if (!checkPermission(player, "uninstall")) return;
 
             if (team == null) return;

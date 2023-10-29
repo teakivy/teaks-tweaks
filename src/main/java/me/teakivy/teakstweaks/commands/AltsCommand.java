@@ -51,7 +51,7 @@ public class AltsCommand extends AbstractCommand {
             }
         }
 
-        if (action.equalsIgnoreCase("list")) {
+        if (action.equals("list")) {
             if (secondary != null) main = secondary;
 
             sendList(main, player);
@@ -63,7 +63,7 @@ public class AltsCommand extends AbstractCommand {
             return;
         }
 
-        if (action.equalsIgnoreCase("add")) {
+        if (action.equals("add")) {
             if (!canAddAlt(player)) {
                 player.sendMessage(getError("max_alts"));
                 return;
@@ -110,14 +110,14 @@ public class AltsCommand extends AbstractCommand {
         if (args.length == 1) return List.of("add", "remove", "list");
 
         if (args.length == 2) {
-            if (args[0].equalsIgnoreCase("list")) {
+            if (args[0].equals("list")) {
                 return List.of("<player>");
             }
             return List.of("<alt>");
         }
 
         if (args.length == 3) {
-            if (args[0].equalsIgnoreCase("add") || args[0].equalsIgnoreCase("remove")) {
+            if (args[0].equals("add") || args[0].equals("remove")) {
                 return List.of("<player>");
             }
         }

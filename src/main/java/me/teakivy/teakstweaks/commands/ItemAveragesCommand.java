@@ -20,7 +20,7 @@ public class ItemAveragesCommand extends AbstractCommand {
             return;
         }
 
-        if (args[0].equalsIgnoreCase("create")) {
+        if (args[0].equals("create")) {
             if (!checkPermission(player, "create")) return;
 
             if (ItemTracker.inUse) {
@@ -36,7 +36,7 @@ public class ItemAveragesCommand extends AbstractCommand {
             ItemTracker.spawnTracker(player.getLocation().getBlock().getLocation(), player);
         }
 
-        if (args[0].equalsIgnoreCase("uninstall")) {
+        if (args[0].equals("uninstall")) {
             if (!checkPermission(player, "uninstall")) return;
             int count = 0;
             for (Entity entity : player.getWorld().getEntities()) {

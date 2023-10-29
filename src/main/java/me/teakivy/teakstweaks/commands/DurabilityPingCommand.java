@@ -26,7 +26,7 @@ public class DurabilityPingCommand extends AbstractCommand {
             return;
         }
 
-        if (args[0].equalsIgnoreCase("preview")) {
+        if (args[0].equals("preview")) {
             if (args.length < 2) {
                 player.sendMessage(getError("missing_preview_selection"));
                 return;
@@ -34,7 +34,7 @@ public class DurabilityPingCommand extends AbstractCommand {
 
             if (!checkPermission(player, "preview")) return;
 
-            switch (args[1].toLowerCase()) {
+            switch (args[1]) {
                 case "ping_with_sound":
                     player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 1, 2);
                     break;
@@ -53,7 +53,7 @@ public class DurabilityPingCommand extends AbstractCommand {
             }
         }
 
-        if (args[0].equalsIgnoreCase("set")) {
+        if (args[0].equals("set")) {
             if (args.length < 3) {
                 player.sendMessage(getError("missing_set_selection"));
                 return;
@@ -71,7 +71,7 @@ public class DurabilityPingCommand extends AbstractCommand {
                     setScoreboardTag(player, DuraPingOption.fromString(args[1]), args[2]);
                     break;
                 case DISPLAY:
-                    setDisplayTag(player, args[2].toLowerCase());
+                    setDisplayTag(player, args[2]);
                     break;
                 default:
                     player.sendMessage(getError("missing_set_selection"));
@@ -87,20 +87,20 @@ public class DurabilityPingCommand extends AbstractCommand {
         if (args.length == 1) return List.of("preview", "set");
 
         if (args.length == 2) {
-            if (args[0].equalsIgnoreCase("preview")) {
+            if (args[0].equals("preview")) {
                 return List.of("ping_with_sound", "display_subtitle", "display_title", "display_chat", "display_actionbar");
             }
-            if (args[0].equalsIgnoreCase("set")) {
+            if (args[0].equals("set")) {
                 return List.of("ping_for_hand_items", "ping_for_armor_items", "ping_with_sound", "display");
             }
         }
 
         if (args.length == 3) {
-            if (args[0].equalsIgnoreCase("set")) {
-                if (args[1].equalsIgnoreCase("display")) {
+            if (args[0].equals("set")) {
+                if (args[1].equals("display")) {
                     return List.of("hidden", "subtitle", "title", "chat", "actionbar");
                 }
-                if (args[1].equalsIgnoreCase("ping_for_hand_items") || args[1].equalsIgnoreCase("ping_for_armor_items") || args[1].equalsIgnoreCase("ping_with_sound")) {
+                if (args[1].equals("ping_for_hand_items") || args[1].equals("ping_for_armor_items") || args[1].equals("ping_with_sound")) {
                     return List.of("true", "false");
                 }
             }
@@ -153,7 +153,7 @@ public class DurabilityPingCommand extends AbstractCommand {
     }
 
     private void setScoreboardTag(Player player, DuraPingOption option, String value) {
-        if (value.equalsIgnoreCase("true")) {
+        if (value.equals("true")) {
             player.addScoreboardTag(option.getScoreboardTag());
             return;
         }

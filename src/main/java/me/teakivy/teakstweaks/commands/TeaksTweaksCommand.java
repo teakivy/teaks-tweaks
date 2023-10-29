@@ -20,7 +20,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
             return;
         }
 
-        switch (args[0].toLowerCase()) {
+        switch (args[0]) {
             case "info":
                 sendInfoMessage(sender);
                 return;
