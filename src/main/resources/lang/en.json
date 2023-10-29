@@ -513,6 +513,7 @@
   "nightvision.error.wrong_gamemode": "&cYou must be in Spectator Mode to use this command!",
   "nightvision.toggled": "&aToggled Night Vision",
 
+  "packlist.command_description": "List all currently active Packs.",
   "packlist.packs": "Packs (%count%): ",
   "packlist.craftingtweaks": "Crafting Tweaks (%count%): ",
 
