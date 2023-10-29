@@ -537,6 +537,7 @@
   "spawn.error.moved": "&cYou must stand still to teleport!",
   "spawn.teleporting": "&eTeleporting to Spawn...",
 
+  "spawningspheres.command_description": "Spawn a sphere to help with mob spawning.",
   "spawningspheres.error.invalid_color": "&cPlease specify a valid color! (red, blue, green)",
   "spawningspheres.error.in_use": "&cThe sphere %color% is already in use!",
   "spawningspheres.error.not_in_use": "&cThe sphere %color% is not in use!",
