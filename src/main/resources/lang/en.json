@@ -504,6 +504,7 @@
   "killboats.command_description": "Kill all empty boats.",
   "killboats.removed_boats": "&eRemoved %count% Boats!",
 
+  "mechanics.command_description": "View Mechanics added by Teak's Tweaks.",
   "mechanics.gui.title": "Teak's Tweaks Mechanics",
   "mechanics.gui.next_page": "&6Next Page",
   "mechanics.gui.previous_page": "&6Previous Page",

@@ -16,23 +16,11 @@ import java.util.List;
 public class MechanicsCommand extends AbstractCommand {
 
     public MechanicsCommand() {
-        super(null, "mechanics", "/mechanics", "View Mechanics added by Teak's Tweaks");
+        super(null, "mechanics", "/mechanics", CommandType.PLAYER_ONLY);
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(ErrorType.NOT_PLAYER.m());
-            return true;
-        }
-
-        if (!sender.hasPermission(permission)) {
-            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-            return true;
-        }
-
-        Player player = (Player) sender;
-
+    public void playerCommand(Player player, String[] args) {
         List<ItemStack> items = new ArrayList<>();
 
         for (String pk : TeaksTweaks.getRegister().getEnabledPacks()) {
@@ -47,7 +35,5 @@ public class MechanicsCommand extends AbstractCommand {
         PaginatedGUI gui = new PaginatedGUI(items, getString("gui.title"));
 
         gui.open(player);
-
-        return true;
     }
 }
