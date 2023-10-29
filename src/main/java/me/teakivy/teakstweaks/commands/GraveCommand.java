@@ -1,95 +1,52 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.survival.graves.GraveEvents;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GraveCommand extends AbstractCommand {
 
 
     public GraveCommand() {
-        super("graves", "graves", "/graves", "Keep Inventory stands no chance!", List.of("grave"));
+        super("graves", "graves", "/graves", List.of("grave"), CommandType.PLAYER_ONLY);
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!sender.hasPermission(permission)) {
-            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-            return true;
-        }
-
-        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.graves.enabled")) {
-            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
-            return true;
-        }
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(ErrorType.NOT_PLAYER.m());
-            return true;
-        }
-        Player player = (Player) sender;
-
-        if (args.length < 1) {
-            if (!sender.hasPermission(permission+".locate")) {
-                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-                return true;
-            }
-            if (TeaksTweaks.getInstance().getConfig().getBoolean("packs.graves.locatable")) {
-                PersistentDataContainer data = player.getPersistentDataContainer();
-                if (data.has(Key.get("graves_last"), PersistentDataType.STRING)) {
-                    player.sendMessage(data.get(Key.get("graves_last"), PersistentDataType.STRING));
-                } else {
-                    player.sendMessage(getString("error.no_grave"));
-                }
-            } else {
+    public void playerCommand(Player player, String[] args) {
+        if (args.length < 1 || args[0].equalsIgnoreCase("locate")) {
+            if (!checkPermission(player, "locate")) return;
+            if (!getConfig().getBoolean("packs.graves.locatable")) {
                 player.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+                return;
             }
-            return true;
-        }
 
-        if (args[0].equalsIgnoreCase("locate")) {
-            if (!sender.hasPermission(permission+".locate")) {
-                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-                return true;
+            PersistentDataContainer data = player.getPersistentDataContainer();
+            if (!data.has(Key.get("graves_last"), PersistentDataType.STRING)) {
+                player.sendMessage(getString("error.no_grave"));
+                return;
             }
-            if (TeaksTweaks.getInstance().getConfig().getBoolean("packs.graves.locatable")) {
-                PersistentDataContainer data = player.getPersistentDataContainer();
-                if (data.has(Key.get("graves_last"), PersistentDataType.STRING)) {
-                    player.sendMessage(data.get(Key.get("graves_last"), PersistentDataType.STRING));
-                } else {
-                    player.sendMessage(getString("error.no_grave"));
-                }
-            } else {
-                player.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-            }
-            return true;
+
+            player.sendMessage(data.get(Key.get("graves_last"), PersistentDataType.STRING));
+            return;
         }
 
         if (args[0].equalsIgnoreCase("key")) {
-            if (!sender.hasPermission(permission+".key")) {
-                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-                return true;
-            }
+            if (!checkPermission(player, "key")) return;
+
             player.getInventory().addItem(GraveEvents.getGraveKey());
             player.sendMessage(getString("given_key"));
         }
 
         if (args[0].equalsIgnoreCase("uninstall")) {
-            if (!sender.hasPermission(permission+".uninstall")) {
-                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-                return true;
-            }
+            if (!checkPermission(player, "uninstall")) return;
             for (World world : Bukkit.getWorlds()) {
                 for (Entity entity : world.getEntities()) {
                     if (entity.getScoreboardTags().contains("grave")) {
@@ -99,30 +56,10 @@ public class GraveCommand extends AbstractCommand {
             }
             player.sendMessage(getString("removed_graves"));
         }
-        return false;
     }
-
-    List<String> arguments = new ArrayList<>();
-
     @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-
-        if (arguments.isEmpty()) {
-            arguments.add("locate");
-            if (sender.isOp()) {
-                arguments.add("key");
-                arguments.add("uninstall");
-            }
-        }
-
-        List<String> result = new ArrayList<>();
-        if (args.length == 1) {
-            for (String a : arguments) {
-                if (a.toLowerCase().startsWith(args[0].toLowerCase()))
-                    result.add(a);
-            }
-            return result;
-        }
+    public List<String> tabComplete(String[] args) {
+        if (args.length == 1) return List.of("locate", "key", "uninstall");
 
         return null;
     }
