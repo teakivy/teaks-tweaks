@@ -16,7 +16,7 @@ public class GraveCommand extends AbstractCommand {
 
 
     public GraveCommand() {
-        super("graves", "graves", "/graves <locate|key|uninstall>", List.of("grave"), CommandType.PLAYER_ONLY);
+        super("graves", "grave", "/grave <locate|key|uninstall>", CommandType.PLAYER_ONLY);
     }
 
     @Override
