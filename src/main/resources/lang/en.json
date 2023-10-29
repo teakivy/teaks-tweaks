@@ -545,6 +545,7 @@
   "spawningspheres.removing": "&aRemoving the %color%&r &aspawning sphere...",
   "spawningspheres.teleporting": "&eTeleporting to the %color%&r &espawning sphere...",
 
+  "sudoku.command_description": "Commit Sudoku.",
   "sudoku.committed": "&aThanks for playing sudoku!",
 
   "taggame.item_name": "&eTag!",
