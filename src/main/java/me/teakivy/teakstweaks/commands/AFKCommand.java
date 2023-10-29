@@ -39,9 +39,8 @@ public class AFKCommand extends AbstractCommand {
 
     @Override
     public List<String> tabComplete(String[] args) {
-        List<String> arguments = List.of("uninstall");
+        if (args.length == 1) return List.of("uninstall");
 
-        if (args.length != 1) return null;
-        return getArgsList(args[0], arguments);
+        return null;
     }
 }

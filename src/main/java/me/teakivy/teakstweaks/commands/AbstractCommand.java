@@ -293,7 +293,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * Check if the sender has permission without sending a message
      * @param sender The command sender
      * @param permission The permission to check
-     * @return
+     * @return false if the sender does not have permission
      */
     public boolean silentCheckPermission(CommandSender sender, String permission) {
         return sender.hasPermission(this.permission + "." + permission);
@@ -308,7 +308,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @return A list of possible tab completions
      */
     public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
-        return tabComplete(args);
+        return getArgsList(args[args.length - 1], tabComplete(args));
     }
 
     /**
@@ -319,6 +319,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      */
     public List<String> getArgsList(String arg, List<String> options) {
         List<String> result = new ArrayList<>();
+        if (options == null) return result;
         for (String option : options) {
             if (option == null) continue;
             if (option.toLowerCase().startsWith(arg.toLowerCase())) {

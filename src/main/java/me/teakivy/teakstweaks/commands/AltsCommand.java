@@ -15,7 +15,7 @@ import java.util.UUID;
 public class AltsCommand extends AbstractCommand {
 
     public AltsCommand() {
-        super("spectator-alts", "alts", "/alts <add/remove/list> <alt> [player]", CommandType.PLAYER_ONLY);
+        super("spectator-alts", "alts", "/alts <add|remove|list> <alt> [player]", CommandType.PLAYER_ONLY);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class AltsCommand extends AbstractCommand {
             }
         }
 
-        if (action.equals("list")) {
+        if (action.equalsIgnoreCase("list")) {
             if (secondary != null) main = secondary;
 
             sendList(main, player);
@@ -64,7 +64,7 @@ public class AltsCommand extends AbstractCommand {
             return;
         }
 
-        if (action.equals("add")) {
+        if (action.equalsIgnoreCase("add")) {
             if (!canAddAlt(player)) {
                 player.sendMessage(getError("max_alts"));
                 return;
@@ -108,20 +108,13 @@ public class AltsCommand extends AbstractCommand {
 
     @Override
     public List<String> tabComplete(String[] args) {
-        List<String> tabComplete = new ArrayList<>();
-
-        if (args.length == 1) {
-            tabComplete.add("list");
-            tabComplete.add("add");
-            tabComplete.add("remove");
-        }
+        if (args.length == 1) return List.of("add", "remove", "list");
 
         if (args.length == 2) {
             if (args[0].equalsIgnoreCase("list")) {
                 return List.of("<player>");
-            } else {
-                return List.of("<alt>");
             }
+            return List.of("<alt>");
         }
 
         if (args.length == 3) {
@@ -130,7 +123,7 @@ public class AltsCommand extends AbstractCommand {
             }
         }
 
-        return getArgsList(args[0], tabComplete);
+        return null;
     }
 
     /**
