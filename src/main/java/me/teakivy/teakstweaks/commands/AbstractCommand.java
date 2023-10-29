@@ -308,7 +308,9 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @return A list of possible tab completions
      */
     public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
-        return getArgsList(args[args.length - 1], tabComplete(args));
+        List<String> result = tabComplete(sender, args);
+        if (result == null) result = tabComplete(args);
+        return getArgsList(args[args.length - 1], result);
     }
 
     /**
@@ -330,6 +332,15 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     }
 
     public List<String> tabComplete(String[] args) {
+        return null;
+    }
+
+    public List<String> tabComplete(CommandSender sender, String[] args) {
+        if (!(sender instanceof Player)) return null;
+        return tabComplete((Player) sender, args);
+    }
+
+    public List<String> tabComplete(Player player, String[] args) {
         return null;
     }
 
