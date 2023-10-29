@@ -1,19 +1,15 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.survival.durabilityping.DuraPing;
-import me.teakivy.teakstweaks.utils.ErrorType;
+import me.teakivy.teakstweaks.packs.survival.durabilityping.DuraPingOption;
 import net.md_5.bungee.api.chat.*;
 import net.md_5.bungee.api.chat.hover.content.Text;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -21,228 +17,112 @@ import java.util.Set;
 public class DurabilityPingCommand extends AbstractCommand {
 
     public DurabilityPingCommand() {
-        super("durability-ping", "durabilityping", "/durabilityping", "Get pinged when your tools drop below 10% Durability!", List.of("duraping", "dp"));
+        super("durability-ping", "durabilityping", "/durabilityping [preview|set] [option] [value]", List.of("duraping", "dp"), CommandType.PLAYER_ONLY);
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!sender.hasPermission(permission)) {
-            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-            return true;
-        }
-
-        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.durability-ping.enabled")) {
-            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
-            return true;
-        }
-
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(ErrorType.NOT_PLAYER.m());
-            return true;
-        }
-
-        Player player = (Player) sender;
-
+    public void playerCommand(Player player, String[] args) {
         if (args.length < 1) {
             sendDuraPingConfig(player);
-            return true;
+            return;
         }
 
         if (args[0].equalsIgnoreCase("preview")) {
             if (args.length < 2) {
                 player.sendMessage(getString("error.missing_preview_selection"));
-                return true;
-            }
-            if (!sender.hasPermission(permission+".preview")) {
-                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-                return true;
+                return;
             }
 
-            if (args[1].equalsIgnoreCase("sound")) {
-                player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 1, 2);
-            }
+            if (!checkPermission(player, "preview")) return;
 
-            if (args[1].equalsIgnoreCase("display_subtitle")) {
-                DuraPing.pingPlayer(player, new ItemStack(Material.DIAMOND_PICKAXE), 156, "subtitle", false);
-            }
-
-            if (args[1].equalsIgnoreCase("display_title")) {
-                DuraPing.pingPlayer(player, new ItemStack(Material.DIAMOND_PICKAXE), 156, "title", false);
-            }
-
-            if (args[1].equalsIgnoreCase("display_chat")) {
-                DuraPing.pingPlayer(player, new ItemStack(Material.DIAMOND_PICKAXE), 156, "chat", false);
-            }
-
-            if (args[1].equalsIgnoreCase("display_actionbar")) {
-                DuraPing.pingPlayer(player, new ItemStack(Material.DIAMOND_PICKAXE), 156, "actionbar", false);
+            switch (args[1].toLowerCase()) {
+                case "ping_with_sound":
+                    player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 1, 2);
+                    break;
+                case "display_subtitle":
+                    DuraPing.pingPlayer(player, new ItemStack(Material.DIAMOND_PICKAXE), 156, "subtitle", false);
+                    break;
+                case "display_title":
+                    DuraPing.pingPlayer(player, new ItemStack(Material.DIAMOND_PICKAXE), 156, "title", false);
+                    break;
+                case "display_chat":
+                    DuraPing.pingPlayer(player, new ItemStack(Material.DIAMOND_PICKAXE), 156, "chat", false);
+                    break;
+                case "display_actionbar":
+                    DuraPing.pingPlayer(player, new ItemStack(Material.DIAMOND_PICKAXE), 156, "actionbar", false);
+                    break;
             }
         }
 
         if (args[0].equalsIgnoreCase("set")) {
             if (args.length < 3) {
                 player.sendMessage(getString("error.missing_set_selection"));
-                return true;
-            }
-            if (!sender.hasPermission(permission+".set")) {
-                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-                return true;
+                return;
             }
 
-            if (args[1].equalsIgnoreCase("ping_for_hand_items")) {
-                if (args[2].equalsIgnoreCase("false")) player.removeScoreboardTag("dp_ping_for_hand_items");
-                if (args[2].equalsIgnoreCase("true")) player.addScoreboardTag("dp_ping_for_hand_items");
+            if (!checkPermission(player, "set")) return;
+
+            if (DuraPingOption.fromString(args[1]) == null) {
+                player.sendMessage(getString("error.missing_set_selection"));
+                return;
             }
 
-            if (args[1].equalsIgnoreCase("ping_for_armor_items")) {
-                if (args[2].equalsIgnoreCase("false")) player.removeScoreboardTag("dp_ping_for_armor_items");
-                if (args[2].equalsIgnoreCase("true")) player.addScoreboardTag("dp_ping_for_armor_items");
+            switch (DuraPingOption.fromString(args[1])) {
+                case PING_FOR_HAND_ITEMS, PING_FOR_ARMOR_ITEMS, PING_WITH_SOUND:
+                    setScoreboardTag(player, DuraPingOption.fromString(args[1]), args[2]);
+                    break;
+                case DISPLAY:
+                    setDisplayTag(player, args[2].toLowerCase());
+                    break;
+                default:
+                    player.sendMessage(getString("error.missing_set_selection"));
+                    break;
             }
 
-            if (args[1].equalsIgnoreCase("ping_with_sound")) {
-                if (args[2].equalsIgnoreCase("false")) player.removeScoreboardTag("dp_ping_with_sound");
-                if (args[2].equalsIgnoreCase("true")) player.addScoreboardTag("dp_ping_with_sound");
-            }
-
-            if (args[1].equalsIgnoreCase("display")) {
-                if (args[2].equalsIgnoreCase("hidden")) {
-                    player.removeScoreboardTag("dp_display_hidden");
-                    player.removeScoreboardTag("dp_display_subtitle");
-                    player.removeScoreboardTag("dp_display_title");
-                    player.removeScoreboardTag("dp_display_chat");
-                    player.removeScoreboardTag("dp_display_actionbar");
-
-                    player.addScoreboardTag("dp_display_hidden");
-                }
-                if (args[2].equalsIgnoreCase("subtitle")) {
-                    player.removeScoreboardTag("dp_display_hidden");
-                    player.removeScoreboardTag("dp_display_subtitle");
-                    player.removeScoreboardTag("dp_display_title");
-                    player.removeScoreboardTag("dp_display_chat");
-                    player.removeScoreboardTag("dp_display_actionbar");
-
-                    player.addScoreboardTag("dp_display_subtitle");
-                }
-                if (args[2].equalsIgnoreCase("title")) {
-                    player.removeScoreboardTag("dp_display_hidden");
-                    player.removeScoreboardTag("dp_display_subtitle");
-                    player.removeScoreboardTag("dp_display_title");
-                    player.removeScoreboardTag("dp_display_chat");
-                    player.removeScoreboardTag("dp_display_actionbar");
-
-                    player.addScoreboardTag("dp_display_title");
-                }
-                if (args[2].equalsIgnoreCase("chat")) {
-                    player.removeScoreboardTag("dp_display_hidden");
-                    player.removeScoreboardTag("dp_display_subtitle");
-                    player.removeScoreboardTag("dp_display_title");
-                    player.removeScoreboardTag("dp_display_chat");
-                    player.removeScoreboardTag("dp_display_actionbar");
-
-                    player.addScoreboardTag("dp_display_chat");
-                }
-                if (args[2].equalsIgnoreCase("actionbar")) {
-                    player.removeScoreboardTag("dp_display_hidden");
-                    player.removeScoreboardTag("dp_display_subtitle");
-                    player.removeScoreboardTag("dp_display_title");
-                    player.removeScoreboardTag("dp_display_chat");
-                    player.removeScoreboardTag("dp_display_actionbar");
-
-                    player.addScoreboardTag("dp_display_actionbar");
-                }
-            }
             sendDuraPingConfig(player);
         }
-        return false;
+    }
+
+    @Override
+    public List<String> tabComplete(String[] args) {
+        if (args.length == 1) return List.of("preview", "set");
+
+        if (args.length == 2) {
+            if (args[0].equalsIgnoreCase("preview")) {
+                return List.of("ping_with_sound", "display_subtitle", "display_title", "display_chat", "display_actionbar");
+            }
+            if (args[0].equalsIgnoreCase("set")) {
+                return List.of("ping_for_hand_items", "ping_for_armor_items", "ping_with_sound", "display");
+            }
+        }
+
+        if (args.length == 3) {
+            if (args[0].equalsIgnoreCase("set")) {
+                if (args[1].equalsIgnoreCase("display")) {
+                    return List.of("hidden", "subtitle", "title", "chat", "actionbar");
+                }
+                if (args[1].equalsIgnoreCase("ping_for_hand_items") || args[1].equalsIgnoreCase("ping_for_armor_items") || args[1].equalsIgnoreCase("ping_with_sound")) {
+                    return List.of("true", "false");
+                }
+            }
+        }
+
+        return null;
     }
 
     public void sendDuraPingConfig(Player player) {
-        Set<String> tags = player.getScoreboardTags();
+        sendStrike(player);
 
-        BaseComponent[] pingForHandItems =
-                new ComponentBuilder(createCheckBox(tags.contains("dp_ping_for_hand_items"),
-                        "/duraping set ping_for_hand_items " + (tags.contains("dp_ping_for_hand_items") ? "false" : "true"),
-                        getString("config.ping_for_hand_items.name"),
-                        getString("config.ping_for_hand_items.description")))
-                        .append(newText(" " + getString("config.ping_for_hand_items.name")))
-                        .create();
-        BaseComponent[] pingForArmorItems =
-                new ComponentBuilder(createCheckBox(tags.contains("dp_ping_for_armor_items"),
-                        "/duraping set ping_for_armor_items " + (tags.contains("dp_ping_for_armor_items") ? "false" : "true"),
-                        getString("config.ping_for_armor_items.name"),
-                        getString("config.ping_for_armor_items.description"))).
-                        append(newText(" " + getString("config.ping_for_armor_items.name"))).
-                        create();
-        BaseComponent[] pingWithSound =
-                new ComponentBuilder(createCheckBox(tags.contains("dp_ping_with_sound"),
-                        "/duraping set ping_with_sound " + (tags.contains("dp_ping_with_sound") ? "false" : "true"),
-                        getString("config.ping_with_sound.name"),
-                        null))
-                        .append(newText(" "))
-                        .append(newPreviewPanel("/duraping preview sound",
-                                getString("config.ping_with_sound.name")))
-                        .append(newText(" " + getString("config.ping_with_sound.name")))
-                        .create();
-        BaseComponent[] pingDisplayHidden =
-                new ComponentBuilder(createCheckBox(tags.contains("dp_display_hidden"),
-                        "/duraping set display hidden",
-                        getString("config.display.hidden.name"),
-                        null))
-                        .append(newText(" " + getString("config.display.hidden.name")))
-                        .create();
-        BaseComponent[] pingDisplaySubtitle =
-                new ComponentBuilder(createCheckBox(tags.contains("dp_display_subtitle"),
-                        "/duraping set display subtitle",
-                        getString("config.display.subtitle.name"),
-                        null))
-                        .append(newText(" "))
-                        .append(newPreviewPanel("/duraping preview display_subtitle",
-                                getString("config.display.subtitle.name")))
-                        .append(newText(" " + getString("config.display.subtitle.name")))
-                        .create();
-        BaseComponent[] pingDisplayTitle =
-                new ComponentBuilder(createCheckBox(tags.contains("dp_display_title"),
-                        "/duraping set display title",
-                        getString("config.display.title.name"),
-                        null))
-                        .append(newText(" "))
-                        .append(newPreviewPanel("/duraping preview display_title",
-                                getString("config.display.title.name")))
-                        .append(newText(" " + getString("config.display.title.name")))
-                        .create();
-        BaseComponent[] pingDisplayChat =
-                new ComponentBuilder(createCheckBox(tags.contains("dp_display_chat"),
-                        "/duraping set display chat",
-                        getString("config.display.chat.name"),
-                        null))
-                        .append(newText(" "))
-                        .append(newPreviewPanel("/duraping preview display_chat",
-                                getString("config.display.chat.name")))
-                        .append(newText(" " + getString("config.display.chat.name")))
-                        .create();
-        BaseComponent[] pingDisplayActionbar =
-                new ComponentBuilder(createCheckBox(tags.contains("dp_display_actionbar"),
-                        "/duraping set display actionbar",
-                        getString("config.display.actionbar.name"),
-                        null))
-                        .append(newText(" "))
-                        .append(newPreviewPanel("/duraping preview display_actionbar",
-                                getString("config.display.actionbar.name")))
-                        .append(newText(" " + getString("config.display.actionbar.name")))
-                        .create();
+        sendOption(player, "ping_for_hand_items", false);
+        sendOption(player, "ping_for_armor_items", false);
+        sendOption(player, "ping_with_sound", true);
+        sendOption(player, "display_hidden", false);
+        sendOption(player, "display_subtitle", true);
+        sendOption(player, "display_title", true);
+        sendOption(player, "display_chat", true);
+        sendOption(player, "display_actionbar", true);
 
-        player.sendMessage(ChatColor.DARK_GRAY.toString() + ChatColor.STRIKETHROUGH
-                + "                                                                                ");
-        player.spigot().sendMessage(pingForHandItems);
-        player.spigot().sendMessage(pingForArmorItems);
-        player.spigot().sendMessage(pingWithSound);
-        player.spigot().sendMessage(pingDisplayHidden);
-        player.spigot().sendMessage(pingDisplaySubtitle);
-        player.spigot().sendMessage(pingDisplayTitle);
-        player.spigot().sendMessage(pingDisplayChat);
-        player.spigot().sendMessage(pingDisplayActionbar);
-        player.sendMessage(ChatColor.DARK_GRAY.toString() + ChatColor.STRIKETHROUGH
-                + "                                                                                ");
+        sendStrike(player);
     }
 
     public TextComponent newText(String text) {
@@ -273,90 +153,53 @@ public class DurabilityPingCommand extends AbstractCommand {
         return box;
     }
 
-    List<String> arguments1 = new ArrayList<>();
-    List<String> previewArguments = new ArrayList<>();
-    List<String> setArguments = new ArrayList<>();
-    List<String> displayArguments = new ArrayList<>();
-    List<String> tfArguments = new ArrayList<>();
+    private void setScoreboardTag(Player player, DuraPingOption option, String value) {
+        if (value.equalsIgnoreCase("true")) {
+            player.addScoreboardTag(option.getScoreboardTag());
+            return;
+        }
+        player.removeScoreboardTag(option.getScoreboardTag());
+    }
 
-    @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+    private void setDisplayTag(Player player, String type) {
+        player.removeScoreboardTag("dp_display_hidden");
+        player.removeScoreboardTag("dp_display_subtitle");
+        player.removeScoreboardTag("dp_display_title");
+        player.removeScoreboardTag("dp_display_chat");
+        player.removeScoreboardTag("dp_display_actionbar");
 
-        if (!(sender instanceof Player)) return null;
+        player.addScoreboardTag("dp_display_" + type);
+    }
 
-        if (arguments1.isEmpty()) {
-            arguments1.add("config");
-            arguments1.add("preview");
-            arguments1.add("set");
+    private void sendOption(Player player, String option, boolean preview) {
+        Set<String> tags = player.getScoreboardTags();
+        ComponentBuilder builder = new ComponentBuilder();
+
+        String setCommand = "/duraping set " + option + " " + (tags.contains("dp_" + option) ? "false" : "true");
+
+        if (option.contains("display_")) {
+            setCommand = "/duraping set display " + option.replace("display_", "");
         }
 
-        if (previewArguments.isEmpty()) {
-            previewArguments.add("sound");
-            previewArguments.add("display_subtitle");
-            previewArguments.add("display_title");
-            previewArguments.add("display_chat");
-            previewArguments.add("display_actionbar");
+        builder.append(createCheckBox(tags.contains("dp_" + option),
+                setCommand,
+                getString("config." + option + ".name"),
+                getString("config." + option + ".description")));
+
+        if (preview) {
+            builder.append(newText(" "));
+            builder.append(newPreviewPanel("/duraping preview " + option,
+                    getString("config." + option + ".name")));
         }
 
-        if (setArguments.isEmpty()) {
-            setArguments.add("ping_for_hand_items");
-            setArguments.add("ping_for_armor_items");
-            setArguments.add("ping_with_sound");
-            setArguments.add("display");
-        }
+        builder.append(newText(" " + getString("config." + option + ".name")));
 
-        if (tfArguments.isEmpty()) {
-            tfArguments.add("true");
-            tfArguments.add("false");
-        }
+        player.spigot().sendMessage(builder.create());
+    }
 
-        if (displayArguments.isEmpty()) {
-            displayArguments.add("hidden");
-            displayArguments.add("subtitle");
-            displayArguments.add("title");
-            displayArguments.add("chat");
-            displayArguments.add("actionbar");
-        }
-
-        List<String> result = new ArrayList<>();
-        if (args.length == 1) {
-            for (String a : arguments1) {
-                if (a.toLowerCase().startsWith(args[0].toLowerCase()))
-                    result.add(a);
-            }
-            return result;
-        }
-        if (args[0].equalsIgnoreCase("preview") && args.length == 2) {
-            for (String a : previewArguments) {
-                if (a.toLowerCase().startsWith(args[1].toLowerCase()))
-                    result.add(a);
-            }
-            return result;
-        }
-        if (args[0].equalsIgnoreCase("set") && args.length == 2) {
-            for (String a : setArguments) {
-                if (a.toLowerCase().startsWith(args[1].toLowerCase()))
-                    result.add(a);
-            }
-            return result;
-        }
-
-        if (args[0].equalsIgnoreCase("set") && args[1].equalsIgnoreCase("display")) {
-            for (String a : displayArguments) {
-                if (a.toLowerCase().startsWith(args[2].toLowerCase()))
-                    result.add(a);
-            }
-            return result;
-        }
-        if (args[0].equalsIgnoreCase("set") && (args[1].equalsIgnoreCase("ping_for_hand_items") || args[1].equalsIgnoreCase("ping_for_armor_items") || args[1].equalsIgnoreCase("ping_with_sound"))) {
-            for (String a : tfArguments) {
-                if (a.toLowerCase().startsWith(args[2].toLowerCase()))
-                    result.add(a);
-            }
-            return result;
-        }
-
-
-        return null;
+    private void sendStrike(Player player) {
+        player.sendMessage(ChatColor.DARK_GRAY.toString() + ChatColor.STRIKETHROUGH
+                + "                                                                                "
+        );
     }
 }
