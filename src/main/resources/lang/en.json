@@ -524,6 +524,8 @@
   "realtimeclock.command_description": "View how long a world has been running in real time minutes and hours.",
   "realtimeclock.world_time": "&eThis world has been active for &6&l%days% &r&eDays, &6&l%hours% &r&eHours, and &6&l%minutes% &r&eMinutes!",
 
+  "sethome.command_description": "Set a home to teleport to at a later date.",
+
   "shrine.error.none_nearby": "&cThere are no shrines nearby!",
   "shrine.created": "&aA Shrine has been created at &6XYZ: &e%x% %y% %z% &ain &6World: &e%world%",
   "shrine.removed": "&eA Shrine has been removed at &6XYZ: &e%x% %y% %z% &ain &6World: &e%world%",
