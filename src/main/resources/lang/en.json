@@ -496,11 +496,12 @@
   "home.set_home": "&aSet your home %name%!",
   "home.delete_home": "&aDeleted your home %name%!",
 
-  "itemaverages.command_description": "Calculate how many items flow through a source in 2 minutes!",
+  "itemaverages.command_description": "Calculate how many items flow through a source in 2 minutes.",
   "itemaverages.error.tracker_in_use": "&cA tracker is already in use!",
   "itemaverages.tracker_created": "&eCreated a tracker source at XYZ: %x% %y% %z%",
   "itemaverages.tracker_mass_removed": "&eRemoved %count% Tracker Sources!",
 
+  "killboats.command_description": "Kill all empty boats.",
   "killboats.removed_boats": "&eRemoved %count% Boats!",
 
   "mechanics.gui.title": "Teak's Tweaks Mechanics",
