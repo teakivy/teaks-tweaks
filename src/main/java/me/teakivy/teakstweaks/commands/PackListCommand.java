@@ -1,9 +1,7 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
-import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import java.util.ArrayList;

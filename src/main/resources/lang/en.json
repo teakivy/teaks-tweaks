@@ -517,6 +517,7 @@
   "packlist.packs": "Packs (%count%): ",
   "packlist.craftingtweaks": "Crafting Tweaks (%count%): ",
 
+  "portal.command_description": "Calculate where a Nether Portal must be placed in the other dimension.",
   "portal.error.wrong_dimension": "&cYou cannot run this command in %world%!",
   "portal.location": "&eX: %x% | Y: %y% | Z: %z%",
 
