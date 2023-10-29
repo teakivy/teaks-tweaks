@@ -13,7 +13,6 @@ import org.bukkit.inventory.ItemStack;
 import java.util.List;
 import java.util.Set;
 
-
 public class DurabilityPingCommand extends AbstractCommand {
 
     public DurabilityPingCommand() {
@@ -29,7 +28,7 @@ public class DurabilityPingCommand extends AbstractCommand {
 
         if (args[0].equalsIgnoreCase("preview")) {
             if (args.length < 2) {
-                player.sendMessage(getString("error.missing_preview_selection"));
+                player.sendMessage(getError("missing_preview_selection"));
                 return;
             }
 
@@ -56,14 +55,14 @@ public class DurabilityPingCommand extends AbstractCommand {
 
         if (args[0].equalsIgnoreCase("set")) {
             if (args.length < 3) {
-                player.sendMessage(getString("error.missing_set_selection"));
+                player.sendMessage(getError("missing_set_selection"));
                 return;
             }
 
             if (!checkPermission(player, "set")) return;
 
             if (DuraPingOption.fromString(args[1]) == null) {
-                player.sendMessage(getString("error.missing_set_selection"));
+                player.sendMessage(getError("missing_set_selection"));
                 return;
             }
 
@@ -75,7 +74,7 @@ public class DurabilityPingCommand extends AbstractCommand {
                     setDisplayTag(player, args[2].toLowerCase());
                     break;
                 default:
-                    player.sendMessage(getString("error.missing_set_selection"));
+                    player.sendMessage(getError("missing_set_selection"));
                     break;
             }
 

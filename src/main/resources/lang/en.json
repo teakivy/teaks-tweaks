@@ -454,6 +454,7 @@
   "durabilityping.config.display_chat.name": "Display: Chat",
   "durabilityping.config.display_actionbar.name": "Display: Actionbar",
 
+  "gem.command_description": "Gems, Villagers, & Gem Villagers.",
   "gem.error.missing_villager_type": "&cPlease specify a villager type!",
   "gem.error.missing_gem_type": "&cPlease choose a gem to give!",
   "gem.error.amount_more_than_64": "&cYou cannot give yourself more than 64 gems!",
@@ -479,6 +480,7 @@
   "gem.gems.topaz": "&eTopaz",
   "gem.gems.sapphire": "&1Sapphire",
 
+  "graves.command_description": "Keep Inventory stands no chance.",
   "graves.error.no_grave": "&cYou don't have a recent grave!",
   "graves.given_key": "&aYou have been given a grave key!",
   "graves.removed_graves": "&eRemoved all loaded Graves!",
