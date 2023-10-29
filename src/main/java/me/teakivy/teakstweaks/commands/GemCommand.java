@@ -16,7 +16,7 @@ import java.util.List;
 public class GemCommand extends AbstractCommand {
 
     public GemCommand() {
-        super("treasure-gems", "gem", "/gem", CommandType.PLAYER_ONLY);
+        super("treasure-gems", "gem", "/gem <gem|villager> <type>", CommandType.PLAYER_ONLY);
     }
 
     @Override

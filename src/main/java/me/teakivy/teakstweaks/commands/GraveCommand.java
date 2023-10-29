@@ -16,7 +16,7 @@ public class GraveCommand extends AbstractCommand {
 
 
     public GraveCommand() {
-        super("graves", "graves", "/graves", List.of("grave"), CommandType.PLAYER_ONLY);
+        super("graves", "graves", "/graves <locate|key|uninstall>", List.of("grave"), CommandType.PLAYER_ONLY);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class GraveCommand extends AbstractCommand {
 
             PersistentDataContainer data = player.getPersistentDataContainer();
             if (!data.has(Key.get("graves_last"), PersistentDataType.STRING)) {
-                player.sendMessage(getString("error.no_grave"));
+                player.sendMessage(getError("no_grave"));
                 return;
             }
 
