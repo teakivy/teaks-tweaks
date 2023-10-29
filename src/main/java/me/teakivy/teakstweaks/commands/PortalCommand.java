@@ -21,7 +21,7 @@ public class PortalCommand extends AbstractCommand {
             x *= 8;
             z *= 8;
         } else {
-            player.sendMessage(getString("error.wrong_dimension").replace("%world%", player.getWorld().getName()));
+            player.sendMessage(getError("wrong_dimension").replace("%world%", player.getWorld().getName()));
             return;
         }
         player.sendMessage(getString("location")

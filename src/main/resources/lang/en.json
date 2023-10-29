@@ -576,6 +576,7 @@
   "test.command_description": "Teak's Tweaks Testing Command.",
   "test.test": "&eHallo! Looks like you found my test command! :D",
 
+  "tpa.command_description": "Request to teleport to another player.",
   "tpa.error.specify_player": "&cPlease specify a player to teleport to!",
   "tpa.error.no_pending_requests": "&cYou do not have any pending teleport requests!",
   "tpa.error.player_not_online": "&cThat player is not online!",

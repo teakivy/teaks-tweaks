@@ -53,7 +53,7 @@ public class ShrineCommand extends AbstractCommand {
             }
 
             if (shrine == null) {
-                player.sendMessage(getString("error.none_nearby"));
+                player.sendMessage(getError("none_nearby"));
                 return;
             }
 

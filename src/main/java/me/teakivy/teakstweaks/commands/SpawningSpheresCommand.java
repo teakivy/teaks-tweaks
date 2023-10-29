@@ -30,7 +30,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
 
             boolean success = SpheresPack.summonSphere(type, player.getLocation());
             if (!success) {
-                player.sendMessage(getString("error.in_use").replace("%color%", type.getName()));
+                player.sendMessage(getError("in_use").replace("%color%", type.getName()));
                 return;
             }
 
@@ -43,7 +43,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
 
             boolean success = SpheresPack.removeSphere(type, player);
             if (!success) {
-                player.sendMessage(getString("error.not_in_use").replace("%color%", type.getName()));
+                player.sendMessage(getError("not_in_use").replace("%color%", type.getName()));
                 return;
             }
 
@@ -56,7 +56,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
 
             boolean success = SpheresPack.teleport(type, player);
             if (!success) {
-                player.sendMessage(getString("error.not_in_use").replace("%color%", type.getName()));
+                player.sendMessage(getError("not_in_use").replace("%color%", type.getName()));
                 return;
             }
 

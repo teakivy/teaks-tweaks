@@ -24,7 +24,7 @@ public class ItemAveragesCommand extends AbstractCommand {
             if (!checkPermission(player, "create")) return;
 
             if (ItemTracker.inUse) {
-                player.sendMessage(getString("error.tracker_in_use"));
+                player.sendMessage(getError("tracker_in_use"));
                 return;
             }
 
