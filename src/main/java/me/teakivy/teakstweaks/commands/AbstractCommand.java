@@ -42,23 +42,12 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param parentPack The pack this command belongs to
      * @param command The command name
      * @param usage The command usage
-     * @param description The command description
-     */
-    @Deprecated
-    public AbstractCommand(String parentPack, String command, String usage, String description) {
-        this(parentPack, command, usage, description, null, null, CommandType.ALL);
-    }
-
-    /**
-     * Create a new AbstractCommand
-     * @param parentPack The pack this command belongs to
-     * @param command The command name
-     * @param usage The command usage
      * @param commandType The command type
      */
     public AbstractCommand(String parentPack, String command, String usage, CommandType commandType) {
         this(parentPack, command, usage, Translatable.get(command + ".command_description"), null, null, commandType);
     }
+
     /**
      * Create a new AbstractCommand
      * @param parentPack The pack this command belongs to
@@ -89,19 +78,6 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param command The command name
      * @param usage The command usage
      * @param description The command description
-     * @param aliases The command aliases
-     */
-    @Deprecated
-    public AbstractCommand(String parentPack, String command, String usage, String description, List<String> aliases) {
-        this(parentPack, command, usage, description, null, aliases, CommandType.ALL);
-    }
-
-    /**
-     * Create a new AbstractCommand
-     * @param parentPack The pack this command belongs to
-     * @param command The command name
-     * @param usage The command usage
-     * @param description The command description
      * @param permissionMessage The permission message
      * @param aliases The command aliases
      * @param commandType The command type
@@ -119,30 +95,6 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         this.cooldownTime = 0;
         this.cooldownMap = new HashMap<>();
 
-    }
-
-    /**
-     * Create a new AbstractCommand
-     * @param parentPack The pack this command belongs to
-     * @param command The command name
-     * @param usage The command usage
-     * @param description The command description
-     * @param permissionMessage The permission message
-     * @param aliases The command aliases
-     */
-    @Deprecated
-    public AbstractCommand(String parentPack, String command, String usage, String description, String permissionMessage, List<String> aliases) {
-        this.parentPack = parentPack;
-        this.command = command.toLowerCase();
-        this.usage = usage;
-        this.description = description;
-        this.permMessage = permissionMessage;
-        this.alias = aliases;
-        this.permission = "teakstweaks." + parentPack + ".command." + command;
-        this.commandType = CommandType.ALL;
-
-        this.cooldownTime = 0;
-        this.cooldownMap = new HashMap<>();
     }
 
     /**
@@ -175,7 +127,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
 
     /**
      * Get the bukkit command map
-     * @return
+     * @return The command map
      */
     final CommandMap getCommandMap() {
         if (cmap == null) {
