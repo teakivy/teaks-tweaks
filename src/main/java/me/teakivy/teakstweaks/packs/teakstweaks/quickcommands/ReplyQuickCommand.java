@@ -1,10 +1,10 @@
 package me.teakivy.teakstweaks.packs.teakstweaks.quickcommands;
 
 import me.teakivy.teakstweaks.commands.AbstractCommand;
+import me.teakivy.teakstweaks.commands.CommandType;
 import me.teakivy.teakstweaks.utils.ErrorType;
+import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -24,20 +24,20 @@ public class ReplyQuickCommand {
 
     class MessageCommand extends AbstractCommand {
         public MessageCommand() {
-            super("quick-commands", "message", "/message <player> <message>", "Send a private message to a player", null, List.of("msg", "tell", "whisper", "w"));
+            super("quick-commands", "message", "/message <player> <message>", Translatable.get("quick_commands.message.command_description"), null, List.of("msg", "tell", "whisper", "w"), CommandType.PLAYER_ONLY);
         }
 
         @Override
-        public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        public void playerCommand(Player player, String[] args) {
             if (args.length < 2) {
-                sender.sendMessage(getUsage());
-                return true;
+                sendUsage(player);
+                return;
             }
 
-            Player target = sender.getServer().getPlayer(args[0]);
+            Player target = Bukkit.getPlayer(args[0]);
             if (target == null) {
-                sender.sendMessage(ErrorType.PLAYER_DNE.m());
-                return true;
+                player.sendMessage(ErrorType.PLAYER_DNE.m());
+                return;
             }
 
             StringBuilder message = new StringBuilder();
@@ -45,78 +45,71 @@ public class ReplyQuickCommand {
                 message.append(args[i]).append(" ");
             }
 
-            target.sendMessage(get("quick_commands.message.whisper_to_you").replace("%player%", sender.getName()).replace("%message%", message));
-            sender.sendMessage(get("quick_commands.message.whisper_to_player").replace("%player%", target.getName()).replace("%message%", message));
+            target.sendMessage(get("quick_commands.message.whisper_to_you").replace("%player%", player.getName()).replace("%message%", message));
+            player.sendMessage(get("quick_commands.message.whisper_to_player").replace("%player%", target.getName()).replace("%message%", message));
 
-            lastMessage.put(((Player) sender).getUniqueId(), target.getUniqueId());
-            lastMessage.put(target.getUniqueId(), ((Player) sender).getUniqueId());
-            return false;
+            lastMessage.put(player.getUniqueId(), target.getUniqueId());
+            lastMessage.put(target.getUniqueId(), player.getUniqueId());
         }
 
-        List<String> arguments1 = new ArrayList<>();
-
         @Override
-        public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-
-            if (arguments1.isEmpty()) {
-                for (Player player : Bukkit.getOnlinePlayers()) {
-                    arguments1.add(player.getName());
-                }
-            }
-
-            List<String> result = new ArrayList<>();
+        public List<String> tabComplete(Player player, String[] args) {
             if (args.length == 1) {
-                for (String a : arguments1) {
-                    if (a.toLowerCase().startsWith(args[0].toLowerCase()))
-                        result.add(a);
+                List<String> result = new ArrayList<>();
+                for (Player p : Bukkit.getOnlinePlayers()) {
+                    if (p.getUniqueId().equals(player.getUniqueId())) continue;
+                    result.add(p.getName());
                 }
                 return result;
             }
 
-            return List.of("<message>");
+            if (args.length == 2) return List.of("<message>");
+
+            return null;
         }
     }
 
     class ReplyCommand extends AbstractCommand {
         public ReplyCommand() {
-            super("quick-commands", "reply", "/reply <message>", "Reply to the most recent message", null, List.of("r"));
+            super("quick-commands", "reply", "/reply <message>", Translatable.get("quick_commands.reply.command_description"), null, List.of("r"), CommandType.PLAYER_ONLY);
         }
 
         @Override
-        public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        public void playerCommand(Player player, String[] args) {
             if (args.length < 1) {
-                sender.sendMessage(getUsage());
-                return true;
+                sendUsage(player);
+                return;
             }
 
-            UUID targetUUID = lastMessage.get(((Player) sender).getUniqueId());
+            UUID targetUUID = lastMessage.get(player.getUniqueId());
             if (targetUUID == null) {
-                sender.sendMessage(get("quick_commands.reply.error.no_reply"));
-                return true;
+                player.sendMessage(get("quick_commands.reply.error.no_reply"));
+                return;
             }
 
-            Player target = sender.getServer().getPlayer(targetUUID);
+            Player target = player.getServer().getPlayer(targetUUID);
             if (target == null) {
-                sender.sendMessage(ErrorType.PLAYER_DNE.m());
-                return true;
+                player.sendMessage(ErrorType.PLAYER_DNE.m());
+                return;
             }
 
             StringBuilder message = new StringBuilder();
-            for (int i = 0; i < args.length; i++) {
-                message.append(args[i]).append(" ");
+            for (String arg : args) {
+                message.append(arg).append(" ");
             }
 
-            target.sendMessage(get("quick_commands.message.whisper_to_you").replace("%player%", sender.getName()).replace("%message%", message));
-            sender.sendMessage(get("quick_commands.message.whisper_to_player").replace("%player%", target.getName()).replace("%message%", message));
+            target.sendMessage(get("quick_commands.message.whisper_to_you").replace("%player%", player.getName()).replace("%message%", message));
+            player.sendMessage(get("quick_commands.message.whisper_to_player").replace("%player%", target.getName()).replace("%message%", message));
 
-            lastMessage.put(((Player) sender).getUniqueId(), targetUUID);
-            lastMessage.put(targetUUID, ((Player) sender).getUniqueId());
-            return false;
+            lastMessage.put(player.getUniqueId(), targetUUID);
+            lastMessage.put(targetUUID, player.getUniqueId());
         }
 
         @Override
-        public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-            return List.of("<message>");
+        public List<String> tabComplete(Player player, String[] args) {
+            if (args.length == 1) return List.of("<message>");
+
+            return null;
         }
 
     }

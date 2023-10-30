@@ -1,58 +1,41 @@
 package me.teakivy.teakstweaks.packs.teakstweaks.quickcommands;
 
 import me.teakivy.teakstweaks.commands.AbstractCommand;
+import me.teakivy.teakstweaks.commands.CommandType;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import org.bukkit.command.Command;
+import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.List;
 
 public class AQuickCommand extends AbstractCommand {
-    String command;
-    String description;
-    String usage;
-    String permission;
-    boolean requireOp;
-    List<String> aliases;
-    List<String> toRun;
+    private static final String CONSOLE_PREFIX = "[console]";
+    private final List<String> toRun;
 
-    public AQuickCommand(String command, String description, String permission, boolean requireOp, List<String> aliases, List<String> toRun) {
-        super("quick-commands", command, "/" + command, description, aliases);
-
-        this.command = command;
-        this.description = description;
-        this.usage = "/" + command;
-        this.permission = permission;
-        this.requireOp = requireOp;
-        this.aliases = aliases;
+    public AQuickCommand(String command, List<String> toRun) {
+        super("quick-commands", command, "/" + command, Translatable.get("quick_commands." + command + ".command_description"), null, CommandType.PLAYER_ONLY);
         this.toRun = toRun;
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (this.requireOp && !sender.isOp()) {
-            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-            return true;
-        }
-
-        if (this.permission != null && !sender.hasPermission(this.permission)) {
-            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-            return true;
+    public void playerCommand(Player player, String[] args) {
+        if (!player.isOp()) {
+            player.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+            return;
         }
 
         for (String command : this.toRun) {
-            if (command.toLowerCase().startsWith("[console]")) {
-                command = command.substring(9).trim();
-                if (command.startsWith("/")) command = command.substring(1);
-                sender.getServer().dispatchCommand(sender.getServer().getConsoleSender(), command);
-                continue;
+            CommandSender sender = player;
+
+            if (command.toLowerCase().startsWith(CONSOLE_PREFIX)) {
+                command = command.substring(CONSOLE_PREFIX.length()).trim();
+                sender = player.getServer().getConsoleSender();
             }
 
             if (command.startsWith("/")) command = command.substring(1);
 
-            sender.getServer().dispatchCommand(sender, command);
+            player.getServer().dispatchCommand(sender, command);
         }
-
-        return true;
     }
 }

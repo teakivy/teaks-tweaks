@@ -220,9 +220,15 @@
 
   "quick_commands.name": "Quick Commands",
   "quick_commands.description": "Quickly switch game modes, and reply to messages.",
+  "quick_commands.message.command_description": "Send a private message to a player.",
   "quick_commands.message.whisper_to_you": "&7&o%player% whispers to you: %message%",
   "quick_commands.message.whisper_to_player": "&7&oYou whisper to %player%: %message%",
+  "quick_commands.reply.command_description": "Reply to the last person who messaged you.",
   "quick_commands.reply.error.no_reply": "&cYou have no one to reply to!",
+  "quick_commands.gmc.command_description": "Change your gamemode to creative.",
+  "quick_commands.gms.command_description": "Change your gamemode to survival.",
+  "quick_commands.gmsp.command_description": "Change your gamemode to spectator.",
+  "quick_commands.gma.command_description": "Change your gamemode to adventure.",
 
   "sleepy_spider_eggs.name": "Sleepy Spider Eggs",
   "sleepy_spider_eggs.description": "When you sleep with a spider nearby you have a chance to \"consume\" 1-5 spider eggs, which give xp.",
