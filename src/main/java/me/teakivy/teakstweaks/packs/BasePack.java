@@ -39,13 +39,13 @@ public class BasePack implements Listener {
 	 */
 	public BasePack(String path, PackType packType, Material material) {
 		this.translatableKey = path.replaceAll("-", "_");
-        this.name = Translatable.get(this.translatableKey + ".name");
+        this.name = Translatable.getLegacy(this.translatableKey + ".name");
 		this.path = path;
 		this.packType = packType;
 		this.config = teaksTweaks.getConfig().getConfigurationSection("packs." + path);
 		this.permission = "teakstweaks." + path;
 
-		String[] description = Translatable.get(this.translatableKey + ".description").split("\n");
+		String[] description = Translatable.getLegacy(this.translatableKey + ".description").split("\n");
 
 		item = new ItemStack(material);
 
@@ -183,7 +183,7 @@ public class BasePack implements Listener {
 	 * @return Translated & colored string
 	 */
 	protected String getString(String key) {
-		return Translatable.get(translatableKey + "." + key);
+		return Translatable.getLegacy(translatableKey + "." + key);
 	}
 
 }

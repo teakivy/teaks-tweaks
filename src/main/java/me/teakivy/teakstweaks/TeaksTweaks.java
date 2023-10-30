@@ -72,7 +72,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
 
         // Plugin startup logic
         Logger.info("");
-        Logger.info(Translatable.get("startup.plugin.started").replace("%version%", this.getDescription().getVersion()));
+        Logger.info(Translatable.getLegacy("startup.plugin.started").replace("%version%", this.getDescription().getVersion()));
         Logger.info("");
 
         // Packs
@@ -88,7 +88,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        Logger.info(Translatable.get("startup.plugin.shutting_down"));
+        Logger.info(Translatable.getLegacy("startup.plugin.shutting_down"));
     }
 
     /**

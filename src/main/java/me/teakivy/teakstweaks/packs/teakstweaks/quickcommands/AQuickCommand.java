@@ -14,7 +14,7 @@ public class AQuickCommand extends AbstractCommand {
     private final List<String> toRun;
 
     public AQuickCommand(String command, List<String> toRun) {
-        super("quick-commands", command, "/" + command, Translatable.get("quick_commands." + command + ".command_description"), null, CommandType.PLAYER_ONLY);
+        super("quick-commands", command, "/" + command, Translatable.getLegacy("quick_commands." + command + ".command_description"), null, CommandType.PLAYER_ONLY);
         this.toRun = toRun;
     }
 

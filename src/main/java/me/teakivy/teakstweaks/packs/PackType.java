@@ -56,6 +56,6 @@ public enum PackType {
      * @return the string
      */
     private String get(String key) {
-        return Translatable.get("packtype." + key);
+        return Translatable.getLegacy("packtype." + key);
     }
 }

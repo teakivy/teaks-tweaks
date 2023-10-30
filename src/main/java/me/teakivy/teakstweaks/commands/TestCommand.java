@@ -1,5 +1,7 @@
 package me.teakivy.teakstweaks.commands;
 
+import me.teakivy.teakstweaks.utils.lang.Translatable;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.entity.Player;
 
 public class TestCommand extends AbstractCommand {
@@ -10,6 +12,6 @@ public class TestCommand extends AbstractCommand {
 
     @Override
     public void playerCommand(Player player, String[] args) {
-        player.sendMessage(getString("test"));
+        player.sendMessage(Translatable.get("stair_chairs.chair_created", Placeholder.parsed("name", player.getName())));
     }
 }

@@ -28,18 +28,18 @@ public class AbstractRecipe {
      */
     public AbstractRecipe(String path, Material material) {
         String langKey = path.replaceAll("-", "_");
-        this.name = Translatable.get(langKey + ".name");
+        this.name = Translatable.getLegacy(langKey + ".name");
         this.path = path;
 
         this.material = material;
-        this.description = Translatable.get(langKey + ".description");
+        this.description = Translatable.getLegacy(langKey + ".description");
     }
 
     /**
      * Initialize all recipes for the pack
      */
     public void init() {
-        Logger.info(Translatable.get("startup.register.crafting_tweak").replace("%name%", this.name));
+        Logger.info(Translatable.getLegacy("startup.register.crafting_tweak").replace("%name%", this.name));
         teaksTweaks.addCraftingTweaks(this.name);
         CraftingRegister.addEnabledRecipe(this);
         this.registerRecipes();
@@ -66,7 +66,7 @@ public class AbstractRecipe {
         item.setLore(lore);
 
         item.editMeta(meta -> {
-            meta.setDisplayName(ChatColor.RESET + Translatable.get("crafting_tweaks.name_display").replace("%name%", this.name));
+            meta.setDisplayName(ChatColor.RESET + Translatable.getLegacy("crafting_tweaks.name_display").replace("%name%", this.name));
         });
     }
 

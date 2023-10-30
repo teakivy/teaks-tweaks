@@ -96,14 +96,14 @@ public class ItemTracker extends BasePack {
 
         if (!totalItems.isEmpty()) {
             player.sendMessage(ChatColor.DARK_GRAY + "-------------------------");
-            player.sendMessage(Translatable.get("item_averages.source_production"));
+            player.sendMessage(Translatable.getLegacy("item_averages.source_production"));
             totalItems.forEach((item, amount) -> {
-                player.sendMessage(Translatable.get("item_averages.item").replace("%amount%", String.valueOf(amount)).replace("%item%", item.toString().toLowerCase().replace("_", " ")));
+                player.sendMessage(Translatable.getLegacy("item_averages.item").replace("%amount%", String.valueOf(amount)).replace("%item%", item.toString().toLowerCase().replace("_", " ")));
             });
             player.sendMessage(ChatColor.DARK_GRAY + "-------------------------");
         } else {
             player.sendMessage(ChatColor.DARK_GRAY + "-------------------------");
-            player.sendMessage(Translatable.get("item_averages.no_items"));
+            player.sendMessage(Translatable.getLegacy("item_averages.no_items"));
             player.sendMessage(ChatColor.DARK_GRAY + "-------------------------");
         }
     }
@@ -123,7 +123,7 @@ public class ItemTracker extends BasePack {
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(teaksTweaks, () -> {
             entity.remove();
-            Logger.info(Translatable.get("item_averages.log_finish"));
+            Logger.info(Translatable.getLegacy("item_averages.log_finish"));
             shouldStop = true;
         }, glowLength);
     }

@@ -24,8 +24,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
-import java.util.Objects;
-
 public class Tag extends BasePack {
 
     public Tag() {
@@ -176,7 +174,7 @@ public class Tag extends BasePack {
     }
 
     private String getTagItemName() {
-        return Translatable.get("taggame.item_name");
+        return Translatable.getLegacy("taggame.item_name");
     }
 
 }

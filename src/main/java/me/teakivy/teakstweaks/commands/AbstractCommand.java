@@ -45,7 +45,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param commandType The command type
      */
     public AbstractCommand(String parentPack, String command, String usage, CommandType commandType) {
-        this(parentPack, command, usage, Translatable.get(command + ".command_description"), null, null, commandType);
+        this(parentPack, command, usage, Translatable.getLegacy(command + ".command_description"), null, null, commandType);
     }
 
     /**
@@ -56,7 +56,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param commandType The command type
      */
     public AbstractCommand(String parentPack, String command, String usage, List<String> alias, CommandType commandType) {
-        this(parentPack, command, usage, Translatable.get(command + ".command_description"), null, alias, commandType);
+        this(parentPack, command, usage, Translatable.getLegacy(command + ".command_description"), null, alias, commandType);
     }
 
     /**
@@ -313,7 +313,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @return The string
      */
     public String getString(String key) {
-        return Translatable.get(command + "." + key);
+        return Translatable.getLegacy(command + "." + key);
     }
 
     /**
@@ -322,7 +322,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @return The string
      */
     public String getError(String key) {
-        return Translatable.get(command + ".error." + key);
+        return Translatable.getLegacy(command + ".error." + key);
     }
 
     /**
@@ -331,7 +331,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @return The string
      */
     public static String get(String key) {
-        return Translatable.get(key);
+        return Translatable.getLegacy(key);
     }
 
     /**

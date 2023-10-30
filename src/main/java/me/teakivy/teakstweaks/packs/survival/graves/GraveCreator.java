@@ -87,7 +87,7 @@ public class GraveCreator {
 
         if (!config.getBoolean("console-info")) return;
 
-        Logger.info(Translatable.get("graves.log.created")
+        Logger.info(Translatable.getLegacy("graves.log.created")
                 .replace("%player%", player.getName())
                 .replace("%x%", loc.getBlockX() + "")
                 .replace("%y%", loc.getBlockY() + "")
@@ -100,7 +100,7 @@ public class GraveCreator {
             if (item == null) continue;
             items += item.getAmount();
         }
-        Logger.info(Translatable.get("graves.log.contains")
+        Logger.info(Translatable.getLegacy("graves.log.contains")
                 .replace("%item_count%", items + "")
                 .replace("%xp_count%", xp + "")
         );

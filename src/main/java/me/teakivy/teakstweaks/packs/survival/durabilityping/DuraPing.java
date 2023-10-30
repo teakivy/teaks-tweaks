@@ -117,7 +117,7 @@ public class DuraPing extends BasePack {
     }
 
     private static String getDurabilityMessage(String path, ItemStack item, float durability, float maxDurability) {
-        String str = Translatable.get("durability_ping." + path);
+        String str = Translatable.getLegacy("durability_ping." + path);
         str = str.replace("%item_type%", getItemName(item));
         str = str.replace("%item_durability%", String.valueOf((int) Math.ceil(durability)));
         str = str.replace("%item_max_durability%", String.valueOf((int) maxDurability));

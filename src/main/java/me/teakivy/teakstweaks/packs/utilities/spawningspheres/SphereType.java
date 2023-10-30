@@ -62,9 +62,9 @@ public enum SphereType {
 
     public String getName() {
         return switch (this) {
-            case RED -> getChatColor() + Translatable.get("spawning_spheres.sphere.red");
-            case BLUE -> getChatColor() + Translatable.get("spawning_spheres.sphere.blue");
-            case GREEN -> getChatColor() + Translatable.get("spawning_spheres.sphere.green");
+            case RED -> getChatColor() + Translatable.getLegacy("spawning_spheres.sphere.red");
+            case BLUE -> getChatColor() + Translatable.getLegacy("spawning_spheres.sphere.blue");
+            case GREEN -> getChatColor() + Translatable.getLegacy("spawning_spheres.sphere.green");
         };
     }
 

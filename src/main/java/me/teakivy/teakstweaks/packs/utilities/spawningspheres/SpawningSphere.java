@@ -87,7 +87,7 @@ public class SpawningSphere {
         stand.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 999999, 0));
 
         if (isCenter) {
-            stand.setCustomName(Translatable.get("spawning_spheres.center_stand"));
+            stand.setCustomName(Translatable.getLegacy("spawning_spheres.center_stand"));
             stand.setCustomNameVisible(true);
         }
 

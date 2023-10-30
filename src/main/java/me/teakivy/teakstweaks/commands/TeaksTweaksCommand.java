@@ -63,6 +63,6 @@ public class TeaksTweaksCommand extends AbstractCommand {
 
     @Override
     public String getString(String key) {
-        return Translatable.get("teakstweakscommand." + key);
+        return Translatable.getLegacy("teakstweakscommand." + key);
     }
 }

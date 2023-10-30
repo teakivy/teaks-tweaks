@@ -190,11 +190,11 @@ public class GraveEvents extends BasePack {
     public static ItemStack getGraveKey() {
         ItemStack graveKey = new ItemStack(Material.TRIPWIRE_HOOK);
         ItemMeta keyMeta = graveKey.getItemMeta();
-        keyMeta.setDisplayName(Translatable.get("graves.key.item_name"));
+        keyMeta.setDisplayName(Translatable.getLegacy("graves.key.item_name"));
         graveKey.addUnsafeEnchantment(Enchantment.CHANNELING, 1);
         keyMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         List<String> lore = new ArrayList<>();
-        lore.add(Translatable.get("graves.key.item_lore"));
+        lore.add(Translatable.getLegacy("graves.key.item_lore"));
         keyMeta.setLore(lore);
         graveKey.setItemMeta(keyMeta);
         return graveKey;

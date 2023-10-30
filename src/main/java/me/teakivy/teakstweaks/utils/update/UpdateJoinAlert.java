@@ -25,9 +25,9 @@ public class UpdateJoinAlert implements Listener {
         if (!TeaksTweaks.getInstance().getConfig().getBoolean("settings.alert-on-new-version")) return;
         if (!UpdateChecker.hasUpdate()) return;
 
-        TextComponent text = new TextComponent(Translatable.get("startup.update.join_alert").replace("%version%", UpdateChecker.getLatestVersion()));
-        text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(Translatable.get("startup.update.join_alert.hover").replace("%version%", UpdateChecker.getLatestVersion()))));
-        text.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, Translatable.get("plugin.url")));
+        TextComponent text = new TextComponent(Translatable.getLegacy("startup.update.join_alert").replace("%version%", UpdateChecker.getLatestVersion()));
+        text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(Translatable.getLegacy("startup.update.join_alert.hover").replace("%version%", UpdateChecker.getLatestVersion()))));
+        text.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, Translatable.getLegacy("plugin.url")));
 
         player.spigot().sendMessage(text);
 

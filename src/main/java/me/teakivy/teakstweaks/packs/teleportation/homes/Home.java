@@ -57,19 +57,19 @@ public class Home {
         if (player == null) return;
 
         if (HomesPack.onCooldown(player)) {
-            player.sendMessage(Translatable.get("homes.error.on_cooldown").replace("%time%", String.valueOf(HomesPack.getCooldown(player))));
+            player.sendMessage(Translatable.getLegacy("homes.error.on_cooldown").replace("%time%", String.valueOf(HomesPack.getCooldown(player))));
             return;
         }
 
         if (TeaksTweaks.getInstance().getConfig().getInt("packs.homes.teleport-delay") > 0) {
-            player.sendMessage(Translatable.get("homes.teleporting_in").replace("%time%", TeaksTweaks.getInstance().getConfig().getInt("packs.homes.teleport-delay") + ""));
+            player.sendMessage(Translatable.getLegacy("homes.teleporting_in").replace("%time%", TeaksTweaks.getInstance().getConfig().getInt("packs.homes.teleport-delay") + ""));
             Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
                 player.teleport(loc);
-                player.sendMessage(Translatable.get("homes.teleported").replace("%home%", name));
+                player.sendMessage(Translatable.getLegacy("homes.teleported").replace("%home%", name));
             }, TeaksTweaks.getInstance().getConfig().getInt("packs.homes.teleport-delay") * 20L);
         } else {
             player.teleport(loc);
-            player.sendMessage(Translatable.get("homes.teleported").replace("%home%", name));
+            player.sendMessage(Translatable.getLegacy("homes.teleported").replace("%home%", name));
         }
     }
 
@@ -94,7 +94,7 @@ public class Home {
 
         data.remove(Key.get("home." + name));
 
-        player.sendMessage(Translatable.get("homes.deleted").replace("%home%", name));
+        player.sendMessage(Translatable.getLegacy("homes.deleted").replace("%home%", name));
     }
 
 }

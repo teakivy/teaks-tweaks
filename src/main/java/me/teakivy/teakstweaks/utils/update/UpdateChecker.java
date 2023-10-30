@@ -48,8 +48,8 @@ public class UpdateChecker {
      */
     public static void sendUpdateMessage() {
         if (hasUpdate()) {
-            Logger.info(Translatable.get("startup.update.available").replace("%version%", getLatestVersion()));
-            Logger.info(Translatable.get("startup.update.download").replace("%url%", Translatable.get("plugin.url")));
+            Logger.info(Translatable.getLegacy("startup.update.available").replace("%version%", getLatestVersion()));
+            Logger.info(Translatable.getLegacy("startup.update.download").replace("%url%", Translatable.getLegacy("plugin.url")));
         }
     }
 }

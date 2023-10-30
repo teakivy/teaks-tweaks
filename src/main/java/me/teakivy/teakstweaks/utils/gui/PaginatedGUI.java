@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.utils.gui;
 
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -74,12 +73,12 @@ public class PaginatedGUI {
         // Add navigation buttons
         ItemStack nextButton = new ItemStack(Material.ARROW);
         ItemMeta nextMeta = nextButton.getItemMeta();
-        nextMeta.setDisplayName(Translatable.get("mechanics.gui.next_page"));
+        nextMeta.setDisplayName(Translatable.getLegacy("mechanics.gui.next_page"));
         nextButton.setItemMeta(nextMeta);
 
         ItemStack prevButton = new ItemStack(Material.ARROW);
         ItemMeta prevMeta = prevButton.getItemMeta();
-        prevMeta.setDisplayName(Translatable.get("mechanics.gui.previous_page"));
+        prevMeta.setDisplayName(Translatable.getLegacy("mechanics.gui.previous_page"));
         prevButton.setItemMeta(prevMeta);
 
         if (page < items.size() / 45) inv.setItem(53, nextButton);
