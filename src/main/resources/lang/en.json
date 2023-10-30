@@ -580,7 +580,7 @@
   "teakstweakscommand.info.support": "&fSupport Server: &a%discord%",
 
   "test.command_description": "Teak's Tweaks Testing Command.",
-  "test.test": "Hello! Looks like you found my test command! :D",
+  "test.test": "&eHallo! Looks like you found my test command! :D",
 
   "tpa.command_description": "Request to teleport to another player.",
   "tpa.error.specify_player": "&cPlease specify a player to teleport to!",

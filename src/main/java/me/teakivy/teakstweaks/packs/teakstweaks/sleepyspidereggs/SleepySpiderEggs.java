@@ -17,9 +17,9 @@ public class SleepySpiderEggs extends BasePack {
     @EventHandler
     public void onSleep(PlayerBedLeaveEvent event) {
         Player player = event.getPlayer();
-        if (player.getWorld().getTime() > 10000) return;
+        if (!player.getWorld().isDayTime()) return;
 
-        player.getWorld().getNearbyEntities(player.getLocation(), 10, 10, 10).forEach(entity -> {
+        player.getLocation().getNearbyEntities(10, 10, 10).forEach(entity -> {
             if (entity.getType() != EntityType.SPIDER) return;
 
             player.setExp(player.getExp() + (int) (Math.random() * 5) + 1);

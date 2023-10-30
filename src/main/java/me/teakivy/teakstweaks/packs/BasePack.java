@@ -13,7 +13,6 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,10 +82,11 @@ public class BasePack implements Listener {
 
 		lore.add(packType.getColor() + packType.getName());
 
-		ItemMeta meta = item.getItemMeta();
-		meta.setLore(lore);
-		meta.setDisplayName(ChatColor.RESET + packType.getColor().toString() + name);
-		item.setItemMeta(meta);
+		item.setLore(lore);
+
+		item.editMeta(meta -> {
+			meta.setDisplayName(ChatColor.RESET + packType.getColor().toString() + name);
+		});
     }
 
 	/**
