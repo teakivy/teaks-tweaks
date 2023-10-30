@@ -115,7 +115,7 @@ public class GraveEvents extends BasePack {
     @EventHandler
     public void onDeath(PlayerDeathEvent event) throws IOException {
         if (!config.getBoolean("generate-in-lava")) {
-            if (event.getPlayer().getLocation().getBlock().getType() == Material.LAVA || event.getPlayer().getLocation().getBlock().getType() == Material.LAVA_CAULDRON) {
+            if (event.getEntity().getLocation().getBlock().getType() == Material.LAVA || event.getEntity().getLocation().getBlock().getType() == Material.LAVA_CAULDRON) {
                 return;
             }
         }

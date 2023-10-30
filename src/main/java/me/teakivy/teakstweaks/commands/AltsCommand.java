@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.teakstweaks.spectatoralts.SpectatorAlts;
 import me.teakivy.teakstweaks.utils.ErrorType;
+import me.teakivy.teakstweaks.utils.UUIDUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
@@ -29,7 +30,7 @@ public class AltsCommand extends AbstractCommand {
         UUID secondary = null;
 
         if (args.length > 1) {
-            secondary = Bukkit.getPlayerUniqueId(args[1]);
+            secondary = UUIDUtils.getUUID(args[1]);
 
             if (secondary == null) {
                 player.sendMessage(ErrorType.PLAYER_DNE.m());
@@ -43,7 +44,7 @@ public class AltsCommand extends AbstractCommand {
                 return;
             }
 
-            main = Bukkit.getPlayerUniqueId(args[2]);
+            main = UUIDUtils.getUUID(args[2]);
 
             if (main == null) {
                 player.sendMessage(ErrorType.PLAYER_DNE.m());
