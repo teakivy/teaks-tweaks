@@ -7,7 +7,6 @@ import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,10 +63,11 @@ public class AbstractRecipe {
 
         lore.add(PackType.CRAFTING_TWEAKS.getName());
 
-        ItemMeta meta = item.getItemMeta();
-        meta.setLore(lore);
-        meta.setDisplayName(ChatColor.RESET + Translatable.get("crafting_tweaks.name_display").replace("%name%", this.name));
-        item.setItemMeta(meta);
+        item.setLore(lore);
+
+        item.editMeta(meta -> {
+            meta.setDisplayName(ChatColor.RESET + Translatable.get("crafting_tweaks.name_display").replace("%name%", this.name));
+        });
     }
 
     /**

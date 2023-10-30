@@ -100,7 +100,7 @@ public class SpectatorAlts extends BasePack {
         JsonManager.saveToFile(map, "data/alts.json");
 
         if (Bukkit.getPlayer(alt) != null) {
-            Bukkit.getPlayer(alt).kickPlayer("");
+            Bukkit.getPlayer(alt).kick();
         }
     }
 
@@ -129,7 +129,7 @@ public class SpectatorAlts extends BasePack {
         if (config.getBoolean("allow-player-teleport")) return;
         if (!alts.containsKey(player.getUniqueId())) return;
 
-        for (Entity entity : event.getTo().getWorld().getNearbyEntities(event.getTo(), 10, 10, 10)) {
+        for (Entity entity : event.getTo().getNearbyEntities(10, 10, 10)) {
             if (!(entity instanceof Player)) continue;
             if (entity.getUniqueId().equals(alts.get(player.getUniqueId()))) return;
         }

@@ -8,9 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -116,27 +114,15 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         getCommandMap().register("", cmd);
         cmd.setExecutor(this);
 
-        PluginCommand command = getCommand(this.command, TeaksTweaks.getInstance());
+        Bukkit.getCommandMap().getKnownCommands().put(this.command, cmd);
 
-        if (alias != null) command.setAliases(this.alias);
-        getCommandMap().register(TeaksTweaks.getInstance().getDescription().getName(), command);
-
-        Logger.info(get("startup.register.command").replace("%command%", this.command));
-    }
-
-    private PluginCommand getCommand(String name, Plugin plugin) {
-        PluginCommand command = null;
-
-        try {
-            Constructor<PluginCommand> c = PluginCommand.class.getDeclaredConstructor(String.class, Plugin.class);
-            c.setAccessible(true);
-
-            command = c.newInstance(name, plugin);
-        } catch (Exception e) {
-            Logger.error("Failed to create command " + name + " for plugin " + plugin.getName());
+        if (this.alias != null) {
+            for (String alias : this.alias) {
+                Bukkit.getCommandMap().getKnownCommands().put(alias, cmd);
+            }
         }
 
-        return command;
+        Logger.info(get("startup.register.command").replace("%command%", this.command));
     }
 
     /**
