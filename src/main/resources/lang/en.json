@@ -588,6 +588,7 @@
   "tpa.teleporting": "&eTeleporting to &6%player%&e...",
   "tpa.teleporting_to_you": "&eTeleporting &6%player% &eto you...",
 
+  "workstationhighlight.command_description": "Find the workstation of any villager.",
   "workstationhighlight.error.invalid_profession": "&cInvalid profession type!",
   "workstationhighlight.error.invalid_radius": "&cInvalid radius!",
   "workstationhighlight.error.radius_out_of_bounds": "&cRadius must be between 1 and 16!",

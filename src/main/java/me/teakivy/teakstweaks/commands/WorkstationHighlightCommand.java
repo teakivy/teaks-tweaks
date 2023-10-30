@@ -1,94 +1,67 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.packs.survival.workstationhighlights.Highlighter;
-import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.Location;
 import org.bukkit.Particle;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.*;
 import org.bukkit.entity.memory.MemoryKey;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class WorkstationHighlightCommand extends AbstractCommand {
 
-    final String[] professionTypes;
+    private static final String[] professionTypes = new String[] {
+            "any",
+            "armorer",
+            "butcher",
+            "cartographer",
+            "cleric",
+            "farmer",
+            "fisherman",
+            "fletcher",
+            "leatherworker",
+            "librarian",
+            "mason",
+            "shepherd",
+            "toolsmith",
+            "weaponsmith"
+    };
 
     public WorkstationHighlightCommand() {
-        super("workstation-highlights", "workstationhighlight", "/workstationhighlight", "Find a villager's workstation.", List.of("workstation", "wh"));
-
-        professionTypes = new String[] {
-            "ARMORER",
-            "ARMOURER",
-            "BUTCHER",
-            "CARTOGRAPHER",
-            "CLERIC",
-            "FARMER",
-            "FISHERMAN",
-            "FLETCHER",
-            "LEATHERWORKER",
-            "LIBRARIAN",
-            "MASON",
-            "SHEPHERD",
-            "TOOLSMITH",
-            "WEAPONSMITH",
-            "ANY"
-        };
+        super("workstation-highlights", "workstationhighlight", "/workstationhighlight", CommandType.PLAYER_ONLY);
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!sender.hasPermission(permission)) {
-            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-            return true;
-        }
-
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(ErrorType.NOT_PLAYER.m());
-            return true;
-        }
-
-        String profession = "ANY";
+    public void playerCommand(Player player, String[] args) {
+        String profession = professionTypes[0];
         int radius = 3;
 
-        if (args.length == 1) {
-            if (!Arrays.toString(professionTypes).contains(args[0].toUpperCase())) {
-                sender.sendMessage(getString("error.invalid_profession"));
-                return true;
+        if (args.length >= 1) {
+            if (!Arrays.toString(professionTypes).contains(args[0])) {
+                player.sendMessage(getString("error.invalid_profession"));
+                return;
             }
 
-            profession = args[0].toUpperCase();
+            profession = args[0];
         }
 
         if (args.length == 2) {
-            if (!Arrays.toString(professionTypes).contains(args[0].toUpperCase())) {
-                sender.sendMessage(getString("error.invalid_profession"));
-                return true;
-            }
-
-            profession = args[0].toUpperCase();
-
             try {
                 radius = Integer.parseInt(args[1]);
             } catch (NumberFormatException e) {
-                sender.sendMessage(getString("error.invalid_radius"));
-                return true;
+                player.sendMessage(getString("error.invalid_radius"));
+                return;
             }
         }
 
-        if (profession.equalsIgnoreCase("armourer")) profession = "ARMORER";
-
         if (radius < 1 || radius > 16) {
-            sender.sendMessage(getString("error.radius_out_of_bounds"));
-            return true;
+            player.sendMessage(getString("error.radius_out_of_bounds"));
+            return;
         }
 
-        Player player = (Player) sender;
         Entity entity = null;
         double distance = Integer.MAX_VALUE;
         for (Entity e : player.getNearbyEntities(radius, radius, radius)) {
@@ -97,7 +70,7 @@ public class WorkstationHighlightCommand extends AbstractCommand {
                 if (villager.getProfession() == Villager.Profession.NONE) continue;
                 if (villager.getProfession() == Villager.Profession.NITWIT) continue;
 
-                if (!profession.equals("ANY") && !villager.getProfession().toString().equals(profession)) continue;
+                if (!profession.equals("any") && !villager.getProfession().toString().toLowerCase().equals(profession)) continue;
 
                 double d = e.getLocation().distanceSquared(player.getLocation());
                 if (d < distance) {
@@ -109,61 +82,41 @@ public class WorkstationHighlightCommand extends AbstractCommand {
 
         if (entity == null) {
             player.sendMessage(getString("error.no_workstations_found"));
-            return true;
+            return;
         }
 
         Villager villager = (Villager) entity;
         Location jobSite = villager.getMemory(MemoryKey.JOB_SITE);
         if (jobSite == null) {
             player.sendMessage(getString("error.no_job_site"));
-            return true;
+            return;
         }
 
         villager.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 200, 0, false, false, false));
         Highlighter.glowingBlock(jobSite, 200);
-        createParticles(jobSite.add(.5, 1, .5), 200);
+        createParticles(jobSite.add(.5, 1, .5));
         player.sendMessage(getString("found")
                 .replace("%x%", ((int) jobSite.getX()) + "")
                 .replace("%y%", ((int) jobSite.getY()) + "")
                 .replace("%z%", ((int) jobSite.getZ()) + "")
         );
-        return false;
     }
 
-    public static void createParticles(Location location, int length) {
+    @Override
+    public List<String> tabComplete(String[] args) {
+        if (args.length == 1) return Arrays.asList(professionTypes);
+        if (args.length == 2) return List.of("[radius]");
+
+        return null;
+    }
+
+    private void createParticles(Location location) {
         AreaEffectCloud e = (AreaEffectCloud) location.getWorld().spawnEntity(location, EntityType.AREA_EFFECT_CLOUD);
         e.setParticle(Particle.HEART);
         e.setRadius(.001F);
         e.setRadiusPerTick(0);
         e.setRadiusOnUse(0);
-        e.setDuration(length);
+        e.setDuration(200);
         e.setWaitTime(10);
     }
-
-List<String> arguments1 = new ArrayList<>();
-
-@Override
-public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-
-    if (arguments1.isEmpty()) {
-        for (String s : professionTypes) {
-            if (s.equalsIgnoreCase("armourer")) continue;
-            arguments1.add(s.toLowerCase());
-        }
-    }
-
-    List<String> result = new ArrayList<>();
-    if (args.length == 1) {
-        if ("armourer".startsWith(args[0].toLowerCase()) && args[0].contains("u")) result.add("armourer");
-
-        for (String a : arguments1) {
-            if (a.toLowerCase().startsWith(args[0].toLowerCase()))
-                result.add(a);
-        }
-
-        return result;
-    }
-
-    return null;
-}
 }

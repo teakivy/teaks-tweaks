@@ -18,7 +18,7 @@ public class TPACommand extends AbstractCommand {
     private final List<TPARequest> requests = new ArrayList<>();
 
     public TPACommand() {
-        super("tpa", "tpa", "/tpa", CommandType.PLAYER_ONLY);
+        super("tpa", "tpa", "/tpa <accept|player> [player]", CommandType.PLAYER_ONLY);
     }
 
     @Override
