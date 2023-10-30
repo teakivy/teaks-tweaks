@@ -118,13 +118,14 @@ public class AFK extends BasePack {
     }
 
     public static void afk(Player player, boolean fromCommand) {
-        if (!fromCommand && lastMove.get(player.getUniqueId()) +  + (afkMinutes * 60 * 1000) > System.currentTimeMillis()) return;
+        if (!fromCommand && lastMove.get(player.getUniqueId()) + (afkMinutes * 60 * 1000) > System.currentTimeMillis()) return;
         afkTeam.addEntry(player.getName());
         afk.put(player.getUniqueId(), true);
         displayAFKMessage(player, true);
     }
 
     public static void unAFK(Player player) {
+        if (!afkTeam.getEntries().contains(player.getName())) return;
         afkTeam.removeEntry(player.getName());
         afk.put(player.getUniqueId(), false);
         displayAFKMessage(player, false);

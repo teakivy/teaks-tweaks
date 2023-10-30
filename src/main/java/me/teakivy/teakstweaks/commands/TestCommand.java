@@ -1,30 +1,15 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.TeaksTweaks;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class TestCommand extends AbstractCommand {
 
     public TestCommand() {
-        super("test", "test", "/test", "Teak's Tweaks Testing Command.");
+        super(null, "test", "/test", CommandType.PLAYER_ONLY);
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        Player player = (Player) sender;
-
-
-
+    public void playerCommand(Player player, String[] args) {
         player.sendMessage(getString("test"));
-        return false;
-    }
-
-    @Override
-    public void register() {
-        if (TeaksTweaks.getInstance().getConfig().getBoolean("config.dev-mode")) {
-            super.register();
-        }
     }
 }

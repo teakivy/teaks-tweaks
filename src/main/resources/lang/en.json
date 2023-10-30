@@ -8,6 +8,19 @@
   "plugin.url": "https://modrinth.com/plugin/teaks-tweaks",
   "plugin.author": "TeakIvy",
 
+  "#comment.errors": "Common Error Messages: (this is a comment and will never be shown in-game)",
+
+  "error.unknown": "&cAn unknown error has occurred!",
+  "error.pack_not_enabled": "&cThis pack is not enabled!",
+  "error.not_player": "&cYou must be a player to use this command!",
+  "error.not_op": "&cYou must be an operator to use this command!",
+  "error.missing_command_permission": "&cYou do not have permission to use this command!",
+  "error.missing_permission": "&cYou do not have permission to do that!",
+  "error.cant_get_latest_version": "&cCould not get the latest version of Teak's Tweaks!",
+  "error.command_disabled": "&cThis command has been disabled by a server administrator!",
+  "error.missing_action": "&cPlease specify an action!",
+  "error.player_dne": "&cThat player does not exist!",
+
   "#comment.metadata": "Pack Metadata Section: (this is a comment and will never be shown in-game)",
 
   "packtype.experimental": "Experimental",
@@ -207,9 +220,15 @@
 
   "quick_commands.name": "Quick Commands",
   "quick_commands.description": "Quickly switch game modes, and reply to messages.",
+  "quick_commands.message.command_description": "Send a private message to a player.",
   "quick_commands.message.whisper_to_you": "&7&o%player% whispers to you: %message%",
   "quick_commands.message.whisper_to_player": "&7&oYou whisper to %player%: %message%",
+  "quick_commands.reply.command_description": "Reply to the last person who messaged you.",
   "quick_commands.reply.error.no_reply": "&cYou have no one to reply to!",
+  "quick_commands.gmc.command_description": "Change your gamemode to creative.",
+  "quick_commands.gms.command_description": "Change your gamemode to survival.",
+  "quick_commands.gmsp.command_description": "Change your gamemode to spectator.",
+  "quick_commands.gma.command_description": "Change your gamemode to adventure.",
 
   "sleepy_spider_eggs.name": "Sleepy Spider Eggs",
   "sleepy_spider_eggs.description": "When you sleep with a spider nearby you have a chance to \"consume\" 1-5 spider eggs, which give xp.",
@@ -389,23 +408,13 @@
   "unpackable_wool.name": "Unpackable Wool",
   "unpackable_wool.description": "Allows you to break down Wool into 4 String.",
 
-  "#comment.errors": "Common Error Messages: (this is a comment and will never be shown in-game)",
-
-  "error.unknown": "&cAn unknown error has occurred!",
-  "error.pack_not_enabled": "&cThis pack is not enabled!",
-  "error.not_player": "&cYou must be a player to use this command!",
-  "error.not_op": "&cYou must be an operator to use this command!",
-  "error.missing_command_permission": "&cYou do not have permission to use this command!",
-  "error.missing_permission": "&cYou do not have permission to do that!",
-  "error.cant_get_latest_version": "&cCould not get the latest version of Teak's Tweaks!",
-  "error.command_disabled": "&cThis command has been disabled by a server administrator!",
-  "error.missing_action": "&cPlease specify an action!",
-  "error.player_dne": "&cThat player does not exist!",
-
   "#comment.commands": "Commands Section: (this is a comment and will never be shown in-game)",
 
   "plugin.commands.usage": "&cUsage: %command_usage%",
 
+  "afk.command_description": "Toggles AFK mode. When enabled, you will be automatically set to AFK when you are idle for 5 minutes.",
+
+  "alts.command_description": "Manage spectator alt accounts.",
   "alts.error.no_permission_list_others": "&cYou do not have permission to see other's alts!",
   "alts.error.no_permission_modify_others": "&cYou do not have permission to modify other's alts!",
   "alts.error.no_alts": "&c%player% does not have any alts!",
@@ -419,17 +428,22 @@
   "alts.added_alt": "&a%alt% is now %player%'s alt!",
   "alts.removed_alt": "&a%alt% is no longer %player%'s alt!",
 
+  "back.command_description": "Teleport back to your previous location.",
   "back.error.on_cooldown": "&cYou must wait %cooldown_seconds% seconds between uses of /back!",
   "back.error.no_back_location": "&cYou have nowhere to go back to!",
   "back.error.moved": "&cYou must stand still to teleport!",
   "back.teleporting": "&eTeleporting Back...",
 
+  "conduitpower.command_description": "Toggle Conduit Power as a spectator.",
   "conduitpower.error.wrong_gamemode": "&cYou must be in Spectator Mode to use this command!",
   "conduitpower.toggled": "&aToggled Conduit Power",
 
-  "coordshud.error.force_enabled": "&cCoordinates Hud is force enabled by a server administrator!",
+  "coordshud.command_description": "Coordinates Hud Main Command",
   "coordshud.toggled": "&aToggled Coordinates Hud",
 
+  "deletehome.command_description": "Delete a home.",
+
+  "durabilityping.command_description": "Get pinged when your tools drop below 10% Durability.",
   "durabilityping.error.missing_preview_selection": "&cPlease enter which section to preview!",
   "durabilityping.error.missing_set_selection": "&cPlease enter which section to set!",
   "durabilityping.preview_panel.hover": "&7Click to preview &f%name%",
@@ -440,12 +454,13 @@
   "durabilityping.config.ping_for_armor_items.name": "Ping for Armor Items",
   "durabilityping.config.ping_for_armor_items.description": "Inculdes any item with durability in armor slots.",
   "durabilityping.config.ping_with_sound.name": "Ping with Sound",
-  "durabilityping.config.display.hidden.name": "Display: Hidden",
-  "durabilityping.config.display.subtitle.name": "Display: Subtitle",
-  "durabilityping.config.display.title.name": "Display: Title",
-  "durabilityping.config.display.chat.name": "Display: Chat",
-  "durabilityping.config.display.actionbar.name": "Display: Actionbar",
+  "durabilityping.config.display_hidden.name": "Display: Hidden",
+  "durabilityping.config.display_subtitle.name": "Display: Subtitle",
+  "durabilityping.config.display_title.name": "Display: Title",
+  "durabilityping.config.display_chat.name": "Display: Chat",
+  "durabilityping.config.display_actionbar.name": "Display: Actionbar",
 
+  "gem.command_description": "Gems, Villagers, & Gem Villagers.",
   "gem.error.missing_villager_type": "&cPlease specify a villager type!",
   "gem.error.missing_gem_type": "&cPlease choose a gem to give!",
   "gem.error.amount_more_than_64": "&cYou cannot give yourself more than 64 gems!",
@@ -471,51 +486,64 @@
   "gem.gems.topaz": "&eTopaz",
   "gem.gems.sapphire": "&1Sapphire",
 
+  "graves.command_description": "Keep Inventory stands no chance.",
   "graves.error.no_grave": "&cYou don't have a recent grave!",
   "graves.given_key": "&aYou have been given a grave key!",
   "graves.removed_graves": "&eRemoved all loaded Graves!",
 
-  "homes.error.missing_home_name": "&cPlease specify a name for your home!",
-  "homes.error.home_already_exists": "&cThe home %name% already exists!",
-  "homes.error.home_dne": "&cThe home %name% does not exist!",
-  "homes.error.max_homes": "&cYou cannot have more than %max_homes% homes!",
-  "homes.error.cant_set_home": "&cAn unknown error has occurred while setting your home!",
-  "homes.error.cant_remove_home": "&cAn unknown error has occurred while removing your home!",
-  "homes.error.no_homes_yet": "&cYou don't have any homes set! Use &6/home set <name>&c to set one!",
-  "homes.set_home": "&aSet your home %name%!",
-  "homes.removed_home": "&aRemoved your home %name%!",
-  "homes.teleporting": "&eTeleporting to %name%...",
+  "home.command_description": "Teleport, Set, or Delete your Homes!",
+  "home.error.missing_home_name": "&cPlease specify a name for your home!",
+  "home.error.home_already_exists": "&cThe home %name% already exists!",
+  "home.error.home_dne": "&cThe home %name% does not exist!",
+  "home.error.max_homes": "&cYou cannot have more than %max_homes% homes!",
+  "home.error.cant_set_home": "&cAn unknown error has occurred while setting your home!",
+  "home.error.cant_delete_home": "&cAn unknown error has occurred while deleting your home!",
+  "home.error.no_homes_yet": "&cYou don't have any homes set! Use &6/home set <name>&c to set one!",
+  "home.set_home": "&aSet your home %name%!",
+  "home.deleted_home": "&aDeleted your home %name%!",
 
+  "itemaverages.command_description": "Calculate how many items flow through a source in 2 minutes.",
   "itemaverages.error.tracker_in_use": "&cA tracker is already in use!",
   "itemaverages.tracker_created": "&eCreated a tracker source at XYZ: %x% %y% %z%",
   "itemaverages.tracker_mass_removed": "&eRemoved %count% Tracker Sources!",
 
+  "killboats.command_description": "Kill all empty boats.",
   "killboats.removed_boats": "&eRemoved %count% Boats!",
 
+  "mechanics.command_description": "View Mechanics added by Teak's Tweaks.",
   "mechanics.gui.title": "Teak's Tweaks Mechanics",
   "mechanics.gui.next_page": "&6Next Page",
   "mechanics.gui.previous_page": "&6Previous Page",
 
+  "nightvision.command_description": "Toggle Night Vision as a spectator.",
   "nightvision.error.wrong_gamemode": "&cYou must be in Spectator Mode to use this command!",
   "nightvision.toggled": "&aToggled Night Vision",
 
+  "packlist.command_description": "List all currently active Packs.",
   "packlist.packs": "Packs (%count%): ",
   "packlist.craftingtweaks": "Crafting Tweaks (%count%): ",
 
+  "portal.command_description": "Calculate where a Nether Portal must be placed in the other dimension.",
   "portal.error.wrong_dimension": "&cYou cannot run this command in %world%!",
   "portal.location": "&eX: %x% | Y: %y% | Z: %z%",
 
+  "realtimeclock.command_description": "View how long a world has been running in real time minutes and hours.",
   "realtimeclock.world_time": "&eThis world has been active for &6&l%days% &r&eDays, &6&l%hours% &r&eHours, and &6&l%minutes% &r&eMinutes!",
 
+  "sethome.command_description": "Set a home to teleport to at a later date.",
+
+  "shrine.command_description": "Create thunder shrines that can be used to summon lightning storms.",
   "shrine.error.none_nearby": "&cThere are no shrines nearby!",
   "shrine.created": "&aA Shrine has been created at &6XYZ: &e%x% %y% %z% &ain &6World: &e%world%",
   "shrine.removed": "&eA Shrine has been removed at &6XYZ: &e%x% %y% %z% &ain &6World: &e%world%",
   "shrine.shrines_mass_removed": "&eAll loaded Shrines have been removed!",
 
+  "spawn.command_description": "Teleport to the server spawn.",
   "spawn.error.on_cooldown": "&cYou must wait %time% seconds between uses of /spawn!",
   "spawn.error.moved": "&cYou must stand still to teleport!",
   "spawn.teleporting": "&eTeleporting to Spawn...",
 
+  "spawningspheres.command_description": "Spawn a sphere to help with mob spawning.",
   "spawningspheres.error.invalid_color": "&cPlease specify a valid color! (red, blue, green)",
   "spawningspheres.error.in_use": "&cThe sphere %color% is already in use!",
   "spawningspheres.error.not_in_use": "&cThe sphere %color% is not in use!",
@@ -523,12 +551,15 @@
   "spawningspheres.removing": "&aRemoving the %color%&r &aspawning sphere...",
   "spawningspheres.teleporting": "&eTeleporting to the %color%&r &espawning sphere...",
 
+  "sudoku.command_description": "Commit Sudoku.",
   "sudoku.committed": "&aThanks for playing sudoku!",
 
+  "taggame.command_description": "The classic game of tag.",
   "taggame.item_name": "&eTag!",
   "taggame.begun": "&eLet the games begin!",
   "taggame.uninstalled": "&eThe Tag Game has been uninstalled!",
 
+  "teakstweakscommand.command_description": "Main Command for Teak's Tweaks.",
   "teakstweakscommand.error.enable.specify_pack": "&cPlease specify a pack to enable!",
   "teakstweakscommand.error.enable.cannot_enable": "&c%pack% cannot be enabled!",
   "teakstweakscommand.error.disable.specify_pack": "&cPlease specify a pack to disable!",
@@ -548,8 +579,10 @@
   "teakstweakscommand.info.dev_mode_enabled": "&fDev Mode: &aEnabled",
   "teakstweakscommand.info.support": "&fSupport Server: &a%discord%",
 
+  "test.command_description": "Teak's Tweaks Testing Command.",
   "test.test": "&eHallo! Looks like you found my test command! :D",
 
+  "tpa.command_description": "Request to teleport to another player.",
   "tpa.error.specify_player": "&cPlease specify a player to teleport to!",
   "tpa.error.no_pending_requests": "&cYou do not have any pending teleport requests!",
   "tpa.error.player_not_online": "&cThat player is not online!",
@@ -561,6 +594,7 @@
   "tpa.teleporting": "&eTeleporting to &6%player%&e...",
   "tpa.teleporting_to_you": "&eTeleporting &6%player% &eto you...",
 
+  "workstationhighlight.command_description": "Find the workstation of any villager.",
   "workstationhighlight.error.invalid_profession": "&cInvalid profession type!",
   "workstationhighlight.error.invalid_radius": "&cInvalid radius!",
   "workstationhighlight.error.radius_out_of_bounds": "&cRadius must be between 1 and 16!",

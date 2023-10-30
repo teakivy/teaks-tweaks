@@ -1,13 +1,19 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.Bukkit;
 import org.bukkit.command.*;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * For a How-To on how to use AbstractCommand see this post @ http://forums.bukkit.org/threads/195990/
@@ -26,16 +32,31 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     protected final String permMessage;
 
     protected static CommandMap cmap;
+    protected final CommandType commandType;
+
+    protected int cooldownTime;
+    protected HashMap<UUID, Long> cooldownMap;
 
     /**
      * Create a new AbstractCommand
      * @param parentPack The pack this command belongs to
      * @param command The command name
      * @param usage The command usage
-     * @param description The command description
+     * @param commandType The command type
      */
-    public AbstractCommand(String parentPack, String command, String usage, String description) {
-        this(parentPack, command, usage, description, null, null);
+    public AbstractCommand(String parentPack, String command, String usage, CommandType commandType) {
+        this(parentPack, command, usage, Translatable.get(command + ".command_description"), null, null, commandType);
+    }
+
+    /**
+     * Create a new AbstractCommand
+     * @param parentPack The pack this command belongs to
+     * @param command The command name
+     * @param usage The command usage
+     * @param commandType The command type
+     */
+    public AbstractCommand(String parentPack, String command, String usage, List<String> alias, CommandType commandType) {
+        this(parentPack, command, usage, Translatable.get(command + ".command_description"), null, alias, commandType);
     }
 
     /**
@@ -45,9 +66,10 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param usage The command usage
      * @param description The command description
      * @param aliases The command aliases
+     * @param commandType The command type
      */
-    public AbstractCommand(String parentPack, String command, String usage, String description, List<String> aliases) {
-        this(parentPack, command, usage, description, null, aliases);
+    public AbstractCommand(String parentPack, String command, String usage, String description, List<String> aliases, CommandType commandType) {
+        this(parentPack, command, usage, description, null, aliases, commandType);
     }
 
     /**
@@ -58,8 +80,9 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param description The command description
      * @param permissionMessage The permission message
      * @param aliases The command aliases
+     * @param commandType The command type
      */
-    public AbstractCommand(String parentPack, String command, String usage, String description, String permissionMessage, List<String> aliases) {
+    public AbstractCommand(String parentPack, String command, String usage, String description, String permissionMessage, List<String> aliases, CommandType commandType) {
         this.parentPack = parentPack;
         this.command = command.toLowerCase();
         this.usage = usage;
@@ -67,19 +90,21 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         this.permMessage = permissionMessage;
         this.alias = aliases;
         this.permission = "teakstweaks." + parentPack + ".command." + command;
+        this.commandType = commandType;
+
+        this.cooldownTime = 0;
+        this.cooldownMap = new HashMap<>();
+
     }
 
     /**
      * Register the command
      */
     public void register() {
-        if (this.command.equalsIgnoreCase("mechanics") &&
-                !TeaksTweaks.getInstance().getConfig().getBoolean("settings.mechanics-command")) return;
+        if (this.command.equals("mechanics") && !getConfig().getBoolean("settings.mechanics-command")) return;
+        if (this.command.equals("test") && !TeaksTweaks.isDevMode()) return;
 
-        if (this.parentPack != null &&
-                (!this.parentPack.equalsIgnoreCase("test")
-                        && !TeaksTweaks.getPackConfig(parentPack).getBoolean("enabled")))
-            return;
+        if (this.parentPack != null && !TeaksTweaks.getPackConfig(parentPack).getBoolean("enabled")) return;
 
         ReflectCommand cmd = new ReflectCommand(this.command);
         if (this.alias != null) cmd.setAliases(this.alias);
@@ -102,7 +127,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
 
     /**
      * Get the bukkit command map
-     * @return
+     * @return The command map
      */
     final CommandMap getCommandMap() {
         if (cmap == null) {
@@ -167,7 +192,61 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param args The command arguments
      * @return Whether or not the command was successful
      */
-    public abstract boolean onCommand(CommandSender sender, Command cmd, String label, String[] args);
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (checkPermission(sender)) return true;
+
+        if (commandType == CommandType.PLAYER_ONLY) {
+            Player player = checkPlayer(sender);
+            if (player == null) return true;
+
+            playerCommand(player, args);
+            return true;
+        }
+
+        command(sender, args);
+        return true;
+    }
+
+    /**
+     * Command Executor
+     * @param sender The command sender
+     * @param args The command arguments
+     */
+    public void command(CommandSender sender, String[] args) {
+        sender.sendMessage(getUsage());
+    }
+
+    /**
+     * Player Command Executor
+     * @param player The command sender
+     * @param args The command arguments
+     */
+    public void playerCommand(Player player, String[] args) {
+        player.sendMessage(getUsage());
+    }
+
+    /**
+     * Check if the sender has permission
+     * @param sender The command sender
+     * @param permission The permission to check
+     * @return false if the sender does not have permission
+     */
+    public boolean checkPermission(CommandSender sender, String permission) {
+        if (sender.hasPermission(this.permission + "." + permission)) return true;
+
+        sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+        return false;
+    }
+
+    /**
+     * Check if the sender has permission without sending a message
+     * @param sender The command sender
+     * @param permission The permission to check
+     * @return false if the sender does not have permission
+     */
+    public boolean silentCheckPermission(CommandSender sender, String permission) {
+        return sender.hasPermission(this.permission + "." + permission);
+    }
 
     /**
      * Tab Completer
@@ -178,7 +257,54 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @return A list of possible tab completions
      */
     public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
+        List<String> result = tabComplete(sender, args);
+        if (result == null) result = tabComplete(args);
+        return getArgsList(args[args.length - 1], result);
+    }
+
+    /**
+     * Get a list of possible tab completions
+     * @param arg The argument to complete
+     * @param options The possible options
+     * @return A list of possible tab completions
+     */
+    public List<String> getArgsList(String arg, List<String> options) {
+        List<String> result = new ArrayList<>();
+        if (options == null) return result;
+        for (String option : options) {
+            if (option == null) continue;
+            if (option.toLowerCase().startsWith(arg.toLowerCase())) {
+                result.add(option);
+            }
+        }
+        return result;
+    }
+
+    public List<String> tabComplete(String[] args) {
         return null;
+    }
+
+    public List<String> tabComplete(CommandSender sender, String[] args) {
+        if (!(sender instanceof Player)) return null;
+        return tabComplete((Player) sender, args);
+    }
+
+    public List<String> tabComplete(Player player, String[] args) {
+        return null;
+    }
+
+    public Player checkPlayer(CommandSender sender) {
+        if (sender instanceof Player) return (Player) sender;
+
+        sender.sendMessage(ErrorType.NOT_PLAYER.m());
+        return null;
+    }
+
+    public boolean checkPermission(CommandSender sender) {
+        if (sender.hasPermission(permission)) return false;
+
+        sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+        return true;
     }
 
     /**
@@ -188,6 +314,15 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      */
     public String getString(String key) {
         return Translatable.get(command + "." + key);
+    }
+
+    /**
+     * Get an error string from the language file within the command's section
+     * @param key The key to get
+     * @return The string
+     */
+    public String getError(String key) {
+        return Translatable.get(command + ".error." + key);
     }
 
     /**
@@ -205,5 +340,35 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      */
     public String getUsage() {
         return get("plugin.commands.usage").replace("%command_usage%", this.usage);
+    }
+
+    public void sendUsage(CommandSender sender) {
+        sender.sendMessage(getUsage());
+    }
+
+    public FileConfiguration getConfig() {
+        return TeaksTweaks.getInstance().getConfig();
+    }
+
+    public void setCooldownTime(int time) {
+        this.cooldownTime = time;
+    }
+
+    public int getCooldownTime() {
+        return this.cooldownTime;
+    }
+
+    public void setCooldown(Player player) {
+        this.cooldownMap.put(player.getUniqueId(), System.currentTimeMillis());
+    }
+
+    public boolean isOnCooldown(Player player) {
+        if (!this.cooldownMap.containsKey(player.getUniqueId())) return false;
+        return this.cooldownMap.get(player.getUniqueId()) + (this.cooldownTime * 1000L) > System.currentTimeMillis();
+    }
+
+    public int getCooldown(Player player) {
+        if (!this.cooldownMap.containsKey(player.getUniqueId())) return 0;
+        return (int) ((this.cooldownMap.get(player.getUniqueId()) + (this.cooldownTime * 1000L) - System.currentTimeMillis()) / 1000L);
     }
 }

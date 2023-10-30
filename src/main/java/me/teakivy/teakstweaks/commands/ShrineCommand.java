@@ -1,77 +1,50 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.hermitcraft.thundershrine.Shrine;
-import me.teakivy.teakstweaks.utils.ErrorType;
 import org.bukkit.Location;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ShrineCommand extends AbstractCommand {
 
     public ShrineCommand() {
-        super("thunder-shrine", "shrine", "/shrine", "Thunder Shrines!");
+        super("thunder-shrine", "shrine", "/shrine <create|remove|uninstall>", CommandType.PLAYER_ONLY);
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.thunder-shrine.enabled")) {
-            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
-            return true;
-        }
-
-        if (!sender.hasPermission(permission)) {
-            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-            return true;
-        }
-
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(ErrorType.NOT_PLAYER.m());
-            return true;
-        }
-        Player player = (Player) sender;
-
+    public void playerCommand(Player player, String[] args) {
         if (args.length < 1) {
-            player.sendMessage(ErrorType.MISSING_ACTION.m());
-            return true;
+            sendUsage(player);
+            return;
         }
 
-        if (args[0].equalsIgnoreCase("create")) {
-            if (!sender.hasPermission(permission+".create")) {
-                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-                return true;
-            }
+        if (args[0].equals("create")) {
+            if (!checkPermission(player, "create")) return;
+
+            Location loc = player.getLocation();
+            String world = loc.getWorld().getName();
+            int x = (int) Math.floor(loc.getX());
+            int y = (int) Math.floor(loc.getY());
+            int z = (int) Math.floor(loc.getZ());
             try {
-                Location loc = player.getLocation();
-                String world = loc.getWorld().getName();
-                int x = (int) Math.floor(loc.getX());
-                int y = (int) Math.floor(loc.getY());
-                int z = (int) Math.floor(loc.getZ());
                 Shrine.createShrine(player.getLocation());
-                player.sendMessage(getString("created")
-                        .replace("%x%", x + "")
-                        .replace("%y%", y + "")
-                        .replace("%z%", z + "")
-                        .replace("%world%", world)
-                );
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
-            return true;
+            player.sendMessage(getString("created")
+                    .replace("%x%", x + "")
+                    .replace("%y%", y + "")
+                    .replace("%z%", z + "")
+                    .replace("%world%", world)
+            );
         }
 
-        if (args[0].equalsIgnoreCase("remove")) {
+        if (args[0].equals("remove")) {
+            if (!checkPermission(player, "remove")) return;
 
-            if (!sender.hasPermission(permission+".remove")) {
-                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-                return true;
-            }
             Entity shrine = null;
             for (Entity entity : player.getNearbyEntities(3, 3, 3)) {
                 if (Shrine.getShrines().contains(entity)) {
@@ -80,8 +53,8 @@ public class ShrineCommand extends AbstractCommand {
             }
 
             if (shrine == null) {
-                player.sendMessage(getString("error.none_nearby"));
-                return true;
+                player.sendMessage(getError("none_nearby"));
+                return;
             }
 
             shrine.remove();
@@ -91,42 +64,22 @@ public class ShrineCommand extends AbstractCommand {
                     .replace("%z%", (int) shrine.getLocation().getZ() + "")
                     .replace("%world%", shrine.getLocation().getWorld().getName())
             );
-            return true;
         }
 
-        if (args[0].equalsIgnoreCase("uninstall")) {
-            if (!sender.hasPermission(permission+".uninstall")) {
-                sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-                return true;
-            }
+        if (args[0].equals("uninstall")) {
+            if (!checkPermission(player, "uninstall")) return;
+
             for (Entity shrine : Shrine.getShrines()) {
                 shrine.remove();
             }
             player.sendMessage(getString("shrines_mass_removed"));
-            return true;
         }
-        return false;
     }
 
-    List<String> arguments1 = new ArrayList<>();
-
     @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+    public List<String> tabComplete(String[] args) {
+        if (args.length == 1) return List.of("create", "remove", "uninstall");
 
-        if (arguments1.isEmpty()) {
-            arguments1.add("create");
-            arguments1.add("remove");
-            arguments1.add("uninstall");
-        }
-
-        List<String> result = new ArrayList<>();
-        if (args.length == 1) {
-            for (String a : arguments1) {
-                if (a.toLowerCase().startsWith(args[0].toLowerCase()))
-                    result.add(a);
-            }
-            return result;
-        }
         return null;
     }
 }

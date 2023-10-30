@@ -1,74 +1,28 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.survival.coordshud.HUD;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CoordsHudCommand extends AbstractCommand {
 
     public CoordsHudCommand() {
-        super("coords-hud", "coordshud", "/coordshud", "Coordinates Hud Main Command", List.of("ch"));
+        super("coords-hud", "coordshud", "/coordshud", List.of("ch"), CommandType.PLAYER_ONLY);
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.coords-hud.enabled")) {
-            sender.sendMessage(ErrorType.PACK_NOT_ENABLED.m());
-            return true;
-        }
+    public void playerCommand(Player player, String[] args) {
+        if (!checkPermission(player, "toggle")) return;
 
-        if (!sender.hasPermission(permission)) {
-            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-            return true;
-        }
-
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(ErrorType.NOT_PLAYER.m());
-            return true;
-        }
-
-        Player player = (Player) sender;
-
-        if (!player.hasPermission(permission+".toggle")) {
-            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-            return true;
-        }
-
-        if (TeaksTweaks.getInstance().getConfig().getBoolean("packs.coords-hud.force-enable")) {
-            player.sendMessage(getString("error.force_enabled"));
-            return true;
+        if (getConfig().getBoolean("packs.coords-hud.force-enable")) {
+            player.sendMessage(ErrorType.COMMAND_DISABLED.m());
+            return;
         }
 
         HUD.setEnabled(player, !HUD.isEnabled(player));
 
         player.sendMessage(getString("toggled"));
-        return false;
-    }
-
-    List<String> arguments = new ArrayList<>();
-
-    @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-
-        if (arguments.isEmpty()) {
-            arguments.add("toggle");
-        }
-
-        List<String> result = new ArrayList<>();
-        if (args.length == 1) {
-            for (String a : arguments) {
-                if (a.toLowerCase().startsWith(args[0].toLowerCase()))
-                    result.add(a);
-            }
-            return result;
-        }
-
-        return null;
     }
 }

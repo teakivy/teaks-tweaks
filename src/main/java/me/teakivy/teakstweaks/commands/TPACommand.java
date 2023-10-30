@@ -8,9 +8,6 @@ import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.chat.hover.content.Text;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -18,116 +15,111 @@ import java.util.List;
 
 public class TPACommand extends AbstractCommand {
 
-    List<TPARequest> requests = new ArrayList<>();
+    private final List<TPARequest> requests = new ArrayList<>();
 
     public TPACommand() {
-        super("tpa", "tpa", "/tpa", "Teleport to another player");
+        super("tpa", "tpa", "/tpa <accept|player> [player]", CommandType.PLAYER_ONLY);
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(ErrorType.NOT_PLAYER.m());
-            return true;
-        }
-        Player player = (Player) sender;
-
+    public void playerCommand(Player player, String[] args) {
         if (args.length < 1) {
-            player.sendMessage(getString("error.specify_player"));
-            return true;
+            player.sendMessage(getError("specify_player"));
+            return;
         }
 
-        if (args[0].equalsIgnoreCase("accept")) {
+        if (args[0].equals("accept")) {
             if (args.length < 2) {
                 TPARequest req = getRequest(player);
                 if (req == null || req.isExpired()) {
-                    player.sendMessage(getString("error.no_pending_requests"));
-                    return true;
+                    player.sendMessage(getError("no_pending_requests"));
+                    return;
                 }
 
                 req.accept();
                 requests.remove(req);
 
-                return true;
+                return;
             }
+
             Player from = Bukkit.getPlayer(args[1]);
             if (from == null) {
-                player.sendMessage(ChatColor.RED + "That player is not online.");
-                return true;
+                player.sendMessage(ErrorType.PLAYER_DNE.m());
+                return;
             }
 
             TPARequest req = getRequest(from, player);
             if (req == null || req.isExpired()) {
-                player.sendMessage(getString("error.player_no_pending_requests"));
-                return true;
+                player.sendMessage(getError("player_no_pending_requests"));
+                return;
             }
 
             req.accept();
             requests.remove(req);
 
-            return true;
+            return;
         }
 
-        if (!sender.hasPermission(permission)) {
-            sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-            return true;
-        }
+        Player to = Bukkit.getPlayer(args[0]);
 
-        Player player2 = Bukkit.getPlayer(args[0]);
-
-        if (player2 == null) {
-            player.sendMessage(getString("error.player_not_online"));
-            return true;
+        if (to == null) {
+            player.sendMessage(ErrorType.PLAYER_DNE.m());
+            return;
         }
-        String tpCommand = "/tpa accept " + player.getName();
 
         TextComponent text = new TextComponent(getString("request_message").replace("%player%", player.getName()));
         text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(getString("request_message.hover"))));
-        text.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, tpCommand));
+        text.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tpa accept " + player.getName()));
 
-        TPARequest req = new TPARequest(player, player2);
+        TPARequest req = new TPARequest(player, to);
         requests.add(req);
 
-        player2.spigot().sendMessage(text);
-        player.sendMessage(getString("request_sent").replace("%player%", player2.getName()));
+        to.spigot().sendMessage(text);
+        player.sendMessage(getString("request_sent").replace("%player%", to.getName()));
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
-            if (req.isExpired() && !req.isAccepted()) {
-                player.sendMessage(getString("request_expired").replace("%player%", player2.getName()));
-                requests.remove(req);
-            }
+            if (req.isAccepted()) return;
+
+            player.sendMessage(getString("request_expired").replace("%player%", to.getName()));
+            requests.remove(req);
         }, 61 * 20L);
-        return false;
     }
 
-    List<String> arguments1 = new ArrayList<>();
-
     @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+    public List<String> tabComplete(Player player, String[] args) {
+        if (args.length == 1) {
+            if (args[0].isEmpty()) return List.of("accept", "<player>");
 
-        if (arguments1.isEmpty()) {
-            arguments1.add("accept");
-            for (Player player : Bukkit.getOnlinePlayers()) {
-                arguments1.add(player.getName());
+            List<String> arguments = new ArrayList<>();
+            arguments.add("accept");
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                if (p.getUniqueId().equals(player.getUniqueId())) continue;
+
+                arguments.add(p.getName());
             }
+
+            return arguments;
         }
 
-        List<String> result = new ArrayList<>();
-        if (args.length == 1) {
-            for (String a : arguments1) {
-                if (a.toLowerCase().startsWith(args[0].toLowerCase()))
-                    result.add(a);
+        if (args.length == 2 && args[0].equals("accept")) {
+            List<String> arguments = new ArrayList<>();
+            for (TPARequest request : requests) {
+                if (!request.getTo().getUniqueId().equals(player.getUniqueId())) continue;
+
+                arguments.add(request.getFrom().getName());
             }
-            return result;
+
+            return arguments;
         }
         return null;
     }
 
     private TPARequest getRequest(Player from, Player to) {
         for (TPARequest request : requests) {
-            if (request.getFrom().getName().equals(from.getName()) && request.getTo().getName().equals(to.getName())) {
-                return request;
-            }
+            if (!request.getFrom().getUniqueId().equals(from.getUniqueId())) continue;
+            if (!request.getTo().getUniqueId().equals(to.getUniqueId())) continue;
+
+            return request;
         }
         return null;
     }
@@ -135,15 +127,10 @@ public class TPACommand extends AbstractCommand {
     private TPARequest getRequest(Player to) {
         TPARequest recent = null;
         for (TPARequest request : requests) {
-            if (request.getTo().getName().equals(to.getName())) {
-                if (recent == null) {
-                    recent = request;
-                } else {
-                    if (request.getTime() > recent.getTime()) {
-                        recent = request;
-                    }
-                }
-            }
+            if (!request.getTo().getUniqueId().equals(to.getUniqueId())) continue;
+            if (recent != null && request.getTime() <= recent.getTime()) continue;
+
+            recent = request;
         }
         return recent;
     }
