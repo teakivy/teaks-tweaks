@@ -3,9 +3,13 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.teakstweaks.spectatoralts.SpectatorAlts;
 import me.teakivy.teakstweaks.utils.ErrorType;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandType;
+import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
+import me.teakivy.teakstweaks.utils.command.TabCompleteEvent;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -14,39 +18,40 @@ import java.util.UUID;
 public class AltsCommand extends AbstractCommand {
 
     public AltsCommand() {
-        super("spectator-alts", "alts", "/alts <add|remove|list> <alt> [player]", CommandType.PLAYER_ONLY);
+        super("spectator-alts", "alts", "<add|remove|list> <alt> [player]", CommandType.PLAYER_ONLY);
     }
 
     @Override
-    public void playerCommand(Player player, String[] args) {
-        if (args.length < 1) {
-            sendUsage(player);
+    public void playerCommand(PlayerCommandEvent event) {
+        Player player = event.getPlayer();
+        if (event.getArgsLength() < 1) {
+            sendUsage();
             return;
         }
 
-        String action = args[0];
+        String action = event.getArg(0);
         UUID main = player.getUniqueId();
         UUID secondary = null;
 
-        if (args.length > 1) {
-            secondary = Bukkit.getPlayerUniqueId(args[1]);
+        if (event.getArgsLength() > 1) {
+            secondary = Bukkit.getPlayerUniqueId(event.getArg(1));
 
             if (secondary == null) {
-                player.sendMessage(ErrorType.PLAYER_DNE.m());
+                sendError(ErrorType.PLAYER_DNE);
                 return;
             }
         }
 
-        if (args.length > 2) {
+        if (event.getArgsLength() > 2) {
             if (!player.isOp()) {
-                player.sendMessage(getError("no_permission_modify_others"));
+                sendError("no_permission_modify_others");
                 return;
             }
 
-            main = Bukkit.getPlayerUniqueId(args[2]);
+            main = Bukkit.getPlayerUniqueId(event.getArg(2));
 
             if (main == null) {
-                player.sendMessage(ErrorType.PLAYER_DNE.m());
+                sendError(ErrorType.PLAYER_DNE);
                 return;
             }
         }
@@ -54,70 +59,70 @@ public class AltsCommand extends AbstractCommand {
         if (action.equals("list")) {
             if (secondary != null) main = secondary;
 
-            sendList(main, player);
+            sendList(main);
             return;
         }
 
-        if (args.length < 2) {
-            sendUsage(player);
+        if (event.getArgsLength() < 2) {
+            sendUsage();
             return;
         }
 
         if (action.equals("add")) {
             if (!canAddAlt(player)) {
-                player.sendMessage(getError("max_alts"));
+                sendError("max_alts");
                 return;
             }
 
             if (main.equals(secondary)) {
-                player.sendMessage(getError("self"));
+                sendError("self");
                 return;
             }
 
             for (OfflinePlayer whitelisted : Bukkit.getWhitelistedPlayers()) {
                 if (whitelisted.getUniqueId().equals(secondary)) {
-                    player.sendMessage(getError("whitelisted"));
+                    sendError("whitelisted");
                     return;
                 }
             }
 
             if (SpectatorAlts.isAlt(secondary)) {
-                player.sendMessage(getError("already_alt").replace("%alt%", getName(secondary)));
+                sendError("already_alt", Placeholder.parsed("alt", getName(secondary)));
                 return;
             }
 
             SpectatorAlts.addAlt(main, secondary);
-            player.sendMessage(getString("added_alt").replace("%alt%", getName(secondary)).replace("%player%", getName(main)));
+            sendMessage("added_alt", Placeholder.parsed("alt", getName(secondary)), Placeholder.parsed("player", getName(main)));
             return;
         }
 
         if (action.equals("remove")) {
             if (!SpectatorAlts.isAlt(secondary)) {
-                player.sendMessage(getError("not_alt").replace("%alt%", getName(secondary)));
+                sendError("not_alt", Placeholder.parsed("alt", getName(secondary)));
                 return;
             }
 
             SpectatorAlts.removeAlt(secondary);
-            player.sendMessage(getString("removed_alt").replace("%alt%", getName(secondary)).replace("%player%", getName(main)));
+            sendMessage("removed_alt", Placeholder.parsed("alt", getName(secondary)), Placeholder.parsed("player", getName(main)));
             return;
         }
 
-        sendUsage(player);
+        sendUsage();
     }
 
     @Override
-    public List<String> tabComplete(String[] args) {
-        if (args.length == 1) return List.of("add", "remove", "list");
+    public List<String> tabComplete(TabCompleteEvent event) {
+        if (event.getArgsLength() == 1) return List.of("add", "remove", "list");
 
-        if (args.length == 2) {
-            if (args[0].equals("list")) {
+        if (event.getArgsLength() == 2) {
+            if (event.getArg(0).equals("list")) {
                 return List.of("<player>");
             }
             return List.of("<alt>");
         }
 
-        if (args.length == 3) {
-            if (args[0].equals("add") || args[0].equals("remove")) {
+        if (event.getArgsLength() == 3) {
+            if (event.getArg(0).equals("add") || event.getArg(0).equals("remove")) {
                 return List.of("<player>");
             }
         }
@@ -139,25 +144,23 @@ public class AltsCommand extends AbstractCommand {
     /**
      * Sends a list of alts for the given account to the given sender
      * @param account The account to list the alts of
-     * @param sender The sender to send the list to
      */
-    private void sendList(UUID account, CommandSender sender) {
+    private void sendList(UUID account) {
         List<UUID> alts = SpectatorAlts.getAlts(account);
 
-        if (alts.size() == 0) {
-            sender.sendMessage(getError("no_alts").replace("%player%", getName(account)));
+        if (alts.isEmpty()) {
+            sendError("no_alts", Placeholder.parsed("player", getName(account)));
             return;
         }
 
-        sender.sendMessage(getString("list_alts").replace("%player%", getName(account)));
+        sendMessage("list_alts", Placeholder.parsed("player", getName(account)));
         for (UUID altAcc : alts) {
-            sender.sendMessage(getString("listed_alt").replace("%alt%", getName(altAcc)));
+            sendMessage("listed_alt", Placeholder.parsed("alt", getName(altAcc)));
         }
     }
 
     /**
      * Checks if the given player can add another alt
-     * @param player The player to check
      * @return Whether or not the player can add another alt
      */
     public boolean canAddAlt(Player player) {

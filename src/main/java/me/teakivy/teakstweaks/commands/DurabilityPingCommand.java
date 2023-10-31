@@ -2,9 +2,10 @@ package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.packs.survival.durabilityping.DuraPing;
 import me.teakivy.teakstweaks.packs.survival.durabilityping.DuraPingOption;
-import net.md_5.bungee.api.chat.*;
-import net.md_5.bungee.api.chat.hover.content.Text;
-import org.bukkit.ChatColor;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandType;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -124,32 +125,18 @@ public class DurabilityPingCommand extends AbstractCommand {
         sendStrike(player);
     }
 
-    public TextComponent newText(String text) {
-        TextComponent comp = new TextComponent(text);
-        comp.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, ""));
-        comp.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("")));
-        return comp;
+    public Component newPreviewPanel(String command, String name) {
+        return newText(" <hover:show_text:<hover_text>><click:run_command:"+ command + "><gray>[ ℹ ]", Placeholder.parsed("name", name), Placeholder.parsed("command", command), Placeholder.parsed("hover_text", getString("preview_panel.hover")));
     }
 
-    public TextComponent newPreviewPanel(String command, String name) {
-        TextComponent comp = new TextComponent(ChatColor.GRAY + "[ ℹ ]");
-        comp.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, command));
-        comp.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(getString("preview_panel.hover").replace("%name%", name))));
-        return comp;
-    }
+    public Component createCheckBox(boolean checked, String command, String loreName, String loreDescription) {
+        String replacement = loreName + (loreDescription == null ? "" : "<newline><gray>" + loreDescription);
 
-    public TextComponent createCheckBox(Boolean checked, String command, String loreName, String loreDescription) {
-        TextComponent box;
-        final String replacement = loreName + (loreDescription == null ? "" : "\n" + ChatColor.GRAY + loreDescription);
-        if (checked) {
-            box = new TextComponent(ChatColor.GREEN + "[ ✔ ]");
-            box.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(getString("checkbox.yes.hover").replace("%name%", replacement))));
-        } else {
-            box = new TextComponent(ChatColor.RED + "[ ❌ ]");
-            box.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(getString("checkbox.no.hover").replace("%name%", replacement))));
-        }
-        box.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, command));
-        return box;
+        String hover = "<hover:show_text:" + getText("checkbox." + (checked ? "yes" : "no") + ".hover",
+                Placeholder.parsed("name", replacement)) + ">";
+
+        String click = "<click:run_command:" + command + ">";
+        return newText(hover + click + (checked ? "<green>[ ✔ ]" : "<red>[ ❌ ]"));
     }
 
     private void setScoreboardTag(Player player, DuraPingOption option, String value) {
@@ -172,7 +159,6 @@ public class DurabilityPingCommand extends AbstractCommand {
 
     private void sendOption(Player player, String option, boolean preview) {
         Set<String> tags = player.getScoreboardTags();
-        ComponentBuilder builder = new ComponentBuilder();
 
         String setCommand = "/duraping set " + option + " " + (tags.contains("dp_" + option) ? "false" : "true");
 
@@ -180,24 +166,23 @@ public class DurabilityPingCommand extends AbstractCommand {
             setCommand = "/duraping set display " + option.replace("display_", "");
         }
 
-        builder.append(createCheckBox(tags.contains("dp_" + option),
-                setCommand,
+        Component component = createCheckBox(tags.contains("dp_" + option), setCommand,
                 getString("config." + option + ".name"),
-                getString("config." + option + ".description")));
+                getString("config." + option + ".description"));
+
 
         if (preview) {
-            builder.append(newText(" "));
-            builder.append(newPreviewPanel("/duraping preview " + option,
+            component = component.append(newPreviewPanel("/duraping preview " + option,
                     getString("config." + option + ".name")));
         }
 
-        builder.append(newText(" " + getString("config." + option + ".name")));
+        component = component.append(newText(" " + getString("config." + option + ".name")));
 
-        player.spigot().sendMessage(builder.create());
+        player.sendMessage(component);
     }
 
     private void sendStrike(Player player) {
-        player.sendMessage(ChatColor.DARK_GRAY.toString() + ChatColor.STRIKETHROUGH
+        player.sendMessage("<dark_gray><strikethrough>"
                 + "                                                                                "
         );
     }

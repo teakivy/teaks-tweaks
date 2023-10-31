@@ -65,6 +65,7 @@ import me.teakivy.teakstweaks.packs.utilities.killboats.KillBoats;
 import me.teakivy.teakstweaks.packs.utilities.spawningspheres.SpheresPack;
 import me.teakivy.teakstweaks.packs.utilities.spectatorconduitpower.ConduitPower;
 import me.teakivy.teakstweaks.packs.utilities.spectatornightvision.NightVision;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 
 import java.util.*;
 import java.util.stream.Collectors;

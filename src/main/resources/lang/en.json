@@ -57,7 +57,7 @@
   "confetti_creepers.description": "There is a chance each creeper will explode into confetti and do no damage to blocks.",
 
   "elevators.name": "Elevators",
-  "elevators.description": "Drop an ender pearl above a wool block to make it into an elevator.\nJump on it to warp onto an elevator of the same color directly above.\nCrouch on it to warp onto one directly above.",
+  "elevators.description": "Drop an ender pearl above a wool block to make it into an elevator.<newline>Jump on it to warp onto an elevator of the same color directly above.<newline>Crouch on it to warp onto one directly above.",
 
   "xp_management.name": "XP Management",
   "xp_management.description": "Right-Click an enchanting table with an empty bottle to fill it with some of your XP.",
@@ -69,7 +69,7 @@
   "tag.tagged_message": "<red><tagged_name> <yellow>was tagged by <gold><tagger_name>",
 
   "thunder_shrine.name": "Thunder Shrine",
-  "thunder_shrine.description": "A shrine that allows you to create a thunder storm when offered a Nether Star.\nDrop a Nether Star on top of a shrine to create a thunder storm.",
+  "thunder_shrine.description": "A shrine that allows you to create a thunder storm when offered a Nether Star.<newline>Drop a Nether Star on top of a shrine to create a thunder storm.",
   "thunder_shrine.storm_initialize": "<red>A great storm has been initiated by the ritual.",
 
   "treasure_gems.name": "Treasure Gems",
@@ -79,7 +79,7 @@
   "wandering_trades.description": "Adds Mini Blocks & Player heads to the Wandering Trader's trades.",
 
   "armored_elytra.name": "Armored Elytra",
-  "armored_elytra.description": "Drop an elytra and a chestplate above an anvil to merge them into one item. Drop the item above a grindstone to separate them again.\nEnchantments are kept safely between merging and separating. Burning netherite armored elytra will separate the items.",
+  "armored_elytra.description": "Drop an elytra and a chestplate above an anvil to merge them into one item. Drop the item above a grindstone to separate them again.<newline>Enchantments are kept safely between merging and separating. Burning netherite armored elytra will separate the items.",
   "armored_elytra.item_name": "<gold>Armored Elytra",
 
   "player_head_drops.name": "Player Head Drops",
@@ -141,13 +141,13 @@
   "classic_fishing_loot.description": "Reverts the fishing loot back to its pre-1.16 loot table.",
 
   "coords_hud.name": "Coords Hud",
-  "coords_hud.description": "Adds information to your actionbar. XYZ Coords and a 24hr clock.\nCommand: /ch toggle",
+  "coords_hud.description": "Adds information to your actionbar. XYZ Coords and a 24hr clock.<newline>Command: /ch toggle",
 
   "custom_nether_portals.name": "Custom Nether Portals",
   "custom_nether_portals.description": "Ignite nether portals of any size or shape you like, or using crying obsidian in the portal frame if enabled.",
 
   "durability_ping.name": "Durability Ping",
-  "durability_ping.description": "Get notified when you damage an item with 10% less durability.\nFully Customizable per-player with '/duraping config'",
+  "durability_ping.description": "Get notified when you damage an item with 10% less durability.<newline>Fully Customizable per-player with '/duraping config'",
   "durability_ping.ping.subtitle.title": " ",
   "durability_ping.ping.subtitle.subtitle": "<gold><item_type> <red>durability low!</red> <item_durability> <red>of</red> <item_max_durability> <red>remaining.",
   "durability_ping.ping.title.title": "<gold><item_type> <red>durability low!",
@@ -159,7 +159,7 @@
   "fast_leaf_decay.description": "Leaves Decay much faster when trees are mined in survival mode.",
 
   "graves.name": "Graves",
-  "graves.description": "When a player dies, a grave is made at their location containing all their items. Right-click the grave to receive your items, and crouch to make it so only you can pick them up.\nGet a grave key to unlock any grave: '/grave key'\nLocate your last grave (if locatable is enabled): '/grave locate'",
+  "graves.description": "When a player dies, a grave is made at their location containing all their items. Right-click the grave to receive your items, and crouch to make it so only you can pick them up.<newline>Get a grave key to unlock any grave: '/grave key'<newline>Locate your last grave (if locatable is enabled): '/grave locate'",
   "graves.cant_rob_grave": "<red>You are not allowed to rob graves!",
   "graves.last_grave": "<yellow>Your last grave was at XYZ: <gold><x> <y> <z></gold< in <gold>World: <world>",
   "graves.key.item_name": "<gold>Grave Key",
@@ -173,13 +173,13 @@
   "multiplayer_sleep.percent_message": "<sleeping> of <required> players asleep.",
 
   "nether_portal_coords.name": "Nether Portal Coords",
-  "nether_portal_coords.description": "Adds a command that calculates where a nether portal must be placed in the other dimension. Useful for syncing up nether portals.\nCommand: /portal",
+  "nether_portal_coords.description": "Adds a command that calculates where a nether portal must be placed in the other dimension. Useful for syncing up nether portals.<newline>Command: /portal",
 
   "pillager_tools.name": "Pillager Tools",
   "pillager_tools.description": "Allows you do disable bad omen, patrols, or patrol leaders separately.",
 
   "real_time_clock.name": "Real Time Clock",
-  "real_time_clock.description": "Adds a command that allows you to view how long a world has been running in real time minutes and hours.\nCommand: /rtc",
+  "real_time_clock.description": "Adds a command that allows you to view how long a world has been running in real time minutes and hours.<newline>Command: /rtc",
 
   "track_raw_statistics.name": "Track Raw Statistics",
   "track_raw_statistics.description": "Adds 100+ scoreboards that track many different statistics. Especially useful for multiplayer.",
@@ -191,7 +191,7 @@
   "unlock_all_recipes.description": "Automatically unlock all recipes as soon as you start playing.",
 
   "workstation_highlights.name": "Workstation Highlights",
-  "workstation_highlights.description": "Allows you to find the workstation of any villager by highlighting it.\nCommand: /workstation",
+  "workstation_highlights.description": "Allows you to find the workstation of any villager by highlighting it.<newline>Command: /workstation",
 
   "chat_colors.name": "Chat Colors",
   "chat_colors.description": "Use Chat Colors to make your messages, signs, and items look better (Using '&' for color codes)..",
@@ -200,7 +200,7 @@
   "dirt_to_grass.description": "Convert dirt to grass by right-clicking a dirt block with seeds.",
 
   "fixed_item_frames.name": "Fixed Item Frames",
-  "fixed_item_frames.description": "Shift right-click an item frame with iron bars to make it fixed.\nShift right-click an item frame with shears to make it not fixed.",
+  "fixed_item_frames.description": "Shift right-click an item frame with iron bars to make it fixed.<newline>Shift right-click an item frame with shears to make it not fixed.",
 
   "instant_deepslate.name": "Instant Deepslate",
   "instant_deepslate.description": "Instantly mine deepslate blocks if you have a netherite pickaxe with efficiency 5 or higher, and haste 2 or higher.",
@@ -234,66 +234,66 @@
   "sleepy_spider_eggs.description": "When you sleep with a spider nearby you have a chance to \"consume\" 1-5 spider eggs, which give xp.",
 
   "slime_cream.name": "Slime Cream",
-  "slime_cream.description": "Convert Slime Balls to Magma Cream by right-clicking a lava cauldron.\nConvert Magma Cream to Slime Balls by right-clicking a water cauldron.",
+  "slime_cream.description": "Convert Slime Balls to Magma Cream by right-clicking a lava cauldron.<newline>Convert Magma Cream to Slime Balls by right-clicking a water cauldron.",
 
   "spectator_alts.name": "Spectator Alts",
-  "spectator_alts.description": "Allow players to add their own alt accounts as spectators.\nCommand: /alts <add/remove/list> <alt> [player]",
+  "spectator_alts.description": "Allow players to add their own alt accounts as spectators.<newline>Command: /alts <add/remove/list> <alt> [player]",
 
   "stair_chairs.name": "Stair Chairs",
-  "stair_chairs.description": "Allows you to sit on stairs.\nRight-click a stair with a saddle to make it a chair.\nBreak the stair to remove the chair and get the saddle back.",
+  "stair_chairs.description": "Allows you to sit on stairs.<newline>Right-click a stair with a saddle to make it a chair.<newline>Break the stair to remove the chair and get the saddle back.",
   "stair_chairs.chair_created": "<green>Chair created!",
   "stair_chairs.chair_destroyed": "<green>Chair removed!",
 
   "sudoku.name": "Sudoku",
-  "sudoku.description": "Allow players to commit sudoku.\nCommand: /sudoku",
+  "sudoku.description": "Allow players to commit sudoku.<newline>Command: /sudoku",
   "sudoku.death_message": "<player> committed Sudoku",
 
   "unsticky_pistons.name": "Unsticky Pistons",
-  "unsticky_pistons.description": "Allow players to remove slime from pistons by right-clicking them with an axe.\nRight-click a piston with a slimeball to make it sticky.",
+  "unsticky_pistons.description": "Allow players to remove slime from pistons by right-clicking them with an axe.<newline>Right-click a piston with a slimeball to make it sticky.",
 
   "back.name": "Back",
-  "back.description": "Allows you to teleport back to your previous location.\nCommand: /back",
+  "back.description": "Allows you to teleport back to your previous location.<newline>Command: /back",
 
   "homes.name": "Homes",
-  "homes.description": "Allows you to set and teleport to homes.\nCommand: /home",
+  "homes.description": "Allows you to set and teleport to homes.<newline>Command: /home",
   "homes.error.on_cooldown": "<red>You must wait <time> seconds before teleporting again!",
   "homes.teleporting_in": "<yellow>Teleporting in <time> seconds...",
   "homes.teleported": "<green>Teleported to home <home>!",
   "homes.deleted": "<green>Home <home> has been deleted!",
 
   "spawn.name": "Spawn",
-  "spawn.description": "Allows you to teleport to the world spawn.\nCommand: /spawn",
+  "spawn.description": "Allows you to teleport to the world spawn.<newline>Command: /spawn",
 
   "tpa.name": "TPA",
-  "tpa.description": "Allows you to request to teleport to another player.\nCommand: /tpa",
+  "tpa.description": "Allows you to request to teleport to another player.<newline>Command: /tpa",
 
   "custom_villager_shops.name": "Custom Villager Shops",
   "custom_villager_shops.description": "Allows you to easily setup Villager Trades in creative using chests.",
   "custom_villager_shops.trade_init": "<yellow>Villager Trades Initialized.",
 
   "item_averages.name": "Item Averages",
-  "item_averages.description": "Adds a marker that tracks items flowing past it for 2 minutes, then calculates how many of each item will run through per hour.\nCommand: /itemavgerage",
+  "item_averages.description": "Adds a marker that tracks items flowing past it for 2 minutes, then calculates how many of each item will run through per hour.<newline>Command: /itemavgerage",
   "item_averages.source_production": "<yellow>This source produces ± per hour:",
   "item_averages.item": "<gold><amount></gold> <item>",
   "item_averages.no_items": "<yellow>No items passed through the source!",
   "item_averages.log_finish": "Finished Tracking",
 
   "kill_boats.name": "Kill Boats",
-  "kill_boats.description": "Adds an admin command to kill all boats without passengers.\nCommand: /killboats",
+  "kill_boats.description": "Adds an admin command to kill all boats without passengers.<newline>Command: /killboats",
 
   "spawning_spheres.name": "Spawning Spheres",
-  "spawning_spheres.description": "Adds a command that allows you to see where mobs can spawn.\nCommand: /spawningspheres",
+  "spawning_spheres.description": "Adds a command that allows you to see where mobs can spawn.<newline>Command: /spawningspheres",
   "spawning_spheres.center_stand": "Center",
   "spawning_spheres.sphere.red": "Red",
   "spawning_spheres.sphere.blue": "Blue",
   "spawning_spheres.sphere.green": "Green",
 
   "spectator_conduit_power.name": "Spectator Conduit Power",
-  "spectator_conduit_power.description": "Easily toggle conduit power when in spectator.\nCommand: /conduitpower",
+  "spectator_conduit_power.description": "Easily toggle conduit power when in spectator.<newline>Command: /conduitpower",
   "spectator_conduit_power.error.game_mode_changed": "<red>Conduit Power removed because of Game Mode change!",
 
   "spectator_night_vision.name": "Spectator Night Vision",
-  "spectator_night_vision.description": "Easily toggle night vision when in spectator.\nCommand: /nightvision",
+  "spectator_night_vision.description": "Easily toggle night vision when in spectator.<newline>Command: /nightvision",
   "spectator_night_vision.error.game_mode_changed": "<red>Night Vision removed because of Game Mode change!",
 
   "#comment.crafting_tweaks": "Crafting Tweaks Section: (this is a comment and will never be shown in-game)",

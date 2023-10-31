@@ -1,6 +1,8 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.packs.survival.workstationhighlights.Highlighter;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandType;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.*;

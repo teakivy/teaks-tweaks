@@ -33,14 +33,29 @@ public class Translatable {
         currentLanguage.load();
     }
 
+    /**
+     * Gets a component from the language map
+     * @param key The key
+     * @param resolvers The resolvers
+     * @return The component
+     */
     public static Component get(String key, TagResolver... resolvers) {
         MiniMessage miniMessage = MiniMessage.miniMessage();
         return miniMessage.deserialize(currentLanguage.get(key), resolvers);
     }
 
+    /**
+     * Gets an error message
+     * @param key The error key
+     * @param resolvers The resolvers
+     * @return The error message
+     */
     public static Component getError(String key, TagResolver... resolvers) {
-        MiniMessage miniMessage = MiniMessage.miniMessage();
-        return miniMessage.deserialize(currentLanguage.get("error." + key), resolvers);
+        return get("error." + key, resolvers);
+    }
+
+    public static String getString(String key) {
+        return currentLanguage.get(key);
     }
 
     /**

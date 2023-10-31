@@ -2,6 +2,10 @@ package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.packs.survival.afkdisplay.AFK;
 import me.teakivy.teakstweaks.utils.ErrorType;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandType;
+import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
+import me.teakivy.teakstweaks.utils.command.TabCompleteEvent;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -9,23 +13,24 @@ import java.util.List;
 public class AFKCommand extends AbstractCommand {
 
     public AFKCommand() {
-        super("afk-display", "afk", "/afk [uninstall]", CommandType.PLAYER_ONLY);
+        super("afk-display", "afk", "[uninstall]", CommandType.PLAYER_ONLY);
     }
 
     @Override
-    public void playerCommand(Player player, String[] args) {
-        if (args.length == 1 && args[0].equals("uninstall")) {
-            if (!checkPermission(player, "uninstall")) return;
+    public void playerCommand(PlayerCommandEvent event) {
+        Player player = event.getPlayer();
+        if (event.getArgsLength() == 1 && event.getArg(0).equals("uninstall")) {
+            if (!checkPermission("uninstall")) return;
 
             AFK.uninstall();
         }
 
         if (!getConfig().getBoolean("packs.afk-display.allow-afk-command")) {
-            player.sendMessage(ErrorType.COMMAND_DISABLED.m());
+            sendError(ErrorType.COMMAND_DISABLED);
             return;
         }
 
-        if (!checkPermission(player, "toggle")) return;
+        if (!checkPermission("toggle")) return;
 
         if (AFK.afk.containsKey(player.getUniqueId())) {
             if (AFK.afk.get(player.getUniqueId())) {
@@ -38,8 +43,8 @@ public class AFKCommand extends AbstractCommand {
     }
 
     @Override
-    public List<String> tabComplete(String[] args) {
-        if (args.length == 1) return List.of("uninstall");
+    public List<String> tabComplete(TabCompleteEvent event) {
+        if (event.getArgsLength() == 1) return List.of("uninstall");
 
         return null;
     }

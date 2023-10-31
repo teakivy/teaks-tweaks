@@ -3,6 +3,9 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.teleportation.homes.Home;
 import me.teakivy.teakstweaks.packs.teleportation.homes.HomesPack;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandType;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -43,13 +46,13 @@ public class HomeCommand extends AbstractCommand {
             String name = args.length < 2 ? "home" : args[1].toLowerCase();
 
             if (HomesPack.getHome(player, name) != null) {
-                player.sendMessage(getError("home_already_exists").replace("%name%", name));
+                player.sendMessage(getError("home_already_exists", Placeholder.parsed("name", name)));
                 return;
             }
 
             int maxHomes = TeaksTweaks.getInstance().getConfig().getInt("packs.homes.max-homes");
             if (maxHomes > 0 && homes.size() >= maxHomes) {
-                player.sendMessage(getError("max_homes").replace("%max_homes%", String.valueOf(maxHomes)));
+                player.sendMessage(getError("max_homes", Placeholder.parsed("max_homes", String.valueOf(maxHomes))));
                 return;
             }
 
@@ -72,7 +75,7 @@ public class HomeCommand extends AbstractCommand {
 
             Home home = HomesPack.getHome(player, name);
             if (home == null) {
-                player.sendMessage(getError("home_dne").replace("%name%", name));
+                player.sendMessage(getError("home_dne", Placeholder.parsed("name", name)));
                 return;
             }
 
@@ -88,7 +91,7 @@ public class HomeCommand extends AbstractCommand {
 
         Home home = HomesPack.getHome(player, name);
         if (home == null) {
-            player.sendMessage(getError("home_dne").replace("%name%", name));
+            player.sendMessage(getError("home_dne", Placeholder.parsed("name", name)));
             return;
         }
 

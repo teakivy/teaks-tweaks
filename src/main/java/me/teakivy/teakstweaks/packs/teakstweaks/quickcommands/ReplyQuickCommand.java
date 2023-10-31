@@ -1,9 +1,10 @@
 package me.teakivy.teakstweaks.packs.teakstweaks.quickcommands;
 
-import me.teakivy.teakstweaks.commands.AbstractCommand;
-import me.teakivy.teakstweaks.commands.CommandType;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -45,8 +46,8 @@ public class ReplyQuickCommand {
                 message.append(args[i]).append(" ");
             }
 
-            target.sendMessage(get("quick_commands.message.whisper_to_you").replace("%player%", player.getName()).replace("%message%", message));
-            player.sendMessage(get("quick_commands.message.whisper_to_player").replace("%player%", target.getName()).replace("%message%", message));
+            target.sendMessage(get("quick_commands.message.whisper_to_you", Placeholder.parsed("player", player.getName()), Placeholder.parsed("message", message.toString())));
+            player.sendMessage(get("quick_commands.message.whisper_to_player", Placeholder.parsed("player", player.getName()), Placeholder.parsed("message", message.toString())));
 
             lastMessage.put(player.getUniqueId(), target.getUniqueId());
             lastMessage.put(target.getUniqueId(), player.getUniqueId());
@@ -98,8 +99,8 @@ public class ReplyQuickCommand {
                 message.append(arg).append(" ");
             }
 
-            target.sendMessage(get("quick_commands.message.whisper_to_you").replace("%player%", player.getName()).replace("%message%", message));
-            player.sendMessage(get("quick_commands.message.whisper_to_player").replace("%player%", target.getName()).replace("%message%", message));
+            target.sendMessage(get("quick_commands.message.whisper_to_you", Placeholder.parsed("player", player.getName()), Placeholder.parsed("message", message.toString())));
+            player.sendMessage(get("quick_commands.message.whisper_to_player", Placeholder.parsed("player", player.getName()), Placeholder.parsed("message", message.toString())));
 
             lastMessage.put(player.getUniqueId(), targetUUID);
             lastMessage.put(targetUUID, player.getUniqueId());

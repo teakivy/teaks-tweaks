@@ -1,5 +1,8 @@
 package me.teakivy.teakstweaks.commands;
 
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandType;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
@@ -21,7 +24,7 @@ public class PortalCommand extends AbstractCommand {
             x *= 8;
             z *= 8;
         } else {
-            player.sendMessage(getError("wrong_dimension").replace("%world%", player.getWorld().getName()));
+            player.sendMessage(getError("wrong_dimension", Placeholder.parsed("world", player.getWorld().getName())));
             return;
         }
         player.sendMessage(getString("location")

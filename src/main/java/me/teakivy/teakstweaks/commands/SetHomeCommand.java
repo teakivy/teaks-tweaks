@@ -2,6 +2,9 @@ package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.packs.teleportation.homes.Home;
 import me.teakivy.teakstweaks.packs.teleportation.homes.HomesPack;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandType;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -24,13 +27,13 @@ public class SetHomeCommand extends AbstractCommand {
         String name = args.length < 1 ? "home" : args[0].toLowerCase();
 
         if (HomesPack.getHome(player, name) != null) {
-            player.sendMessage(get("home.error.home_already_exists").replace("%name%", name));
+            player.sendMessage(get("home.error.home_already_exists", Placeholder.parsed("name", name)));
             return;
         }
 
         int maxHomes = getConfig().getInt("packs.homes.max-homes");
         if (maxHomes > 0 && homes.size() >= maxHomes) {
-            player.sendMessage(get("home.error.max_homes").replace("%max_homes%", maxHomes + ""));
+            player.sendMessage(get("home.error.max_homes", Placeholder.parsed("max_homes", maxHomes + "")));
             return;
         }
 
@@ -39,7 +42,7 @@ public class SetHomeCommand extends AbstractCommand {
             return;
         }
 
-        player.sendMessage(get("home.set_home").replace("%name%", name));
+        player.sendMessage(get("home.set_home", Placeholder.parsed("name", name)));
     }
 
     @Override

@@ -2,6 +2,9 @@ package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.packs.utilities.spawningspheres.SphereType;
 import me.teakivy.teakstweaks.packs.utilities.spawningspheres.SpheresPack;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandType;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -30,7 +33,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
 
             boolean success = SpheresPack.summonSphere(type, player.getLocation());
             if (!success) {
-                player.sendMessage(getError("in_use").replace("%color%", type.getName()));
+                player.sendMessage(getError("in_use", Placeholder.parsed("color", type.getName())));
                 return;
             }
 
@@ -43,7 +46,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
 
             boolean success = SpheresPack.removeSphere(type, player);
             if (!success) {
-                player.sendMessage(getError("not_in_use").replace("%color%", type.getName()));
+                player.sendMessage(getError("not_in_use", Placeholder.parsed("color", type.getName())));
                 return;
             }
 
@@ -56,7 +59,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
 
             boolean success = SpheresPack.teleport(type, player);
             if (!success) {
-                player.sendMessage(getError("not_in_use").replace("%color%", type.getName()));
+                player.sendMessage(getError("not_in_use", Placeholder.parsed("color", type.getName())));
                 return;
             }
 

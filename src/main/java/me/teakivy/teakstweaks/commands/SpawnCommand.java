@@ -2,6 +2,9 @@ package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.teleportation.back.Back;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandType;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -20,7 +23,7 @@ public class SpawnCommand extends AbstractCommand {
     @Override
     public void playerCommand(Player player, String[] args) {
         if (isOnCooldown(player)) {
-            player.sendMessage(getError("on_cooldown").replace("%time%", getCooldownTime() + ""));
+            player.sendMessage(getError("on_cooldown", Placeholder.parsed("time", getCooldownTime() + "")));
             return;
         }
 

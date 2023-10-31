@@ -3,6 +3,8 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.packs.hermitcraft.gemvillagers.GemVllagers;
 import me.teakivy.teakstweaks.packs.hermitcraft.treasuregems.Gems;
 import me.teakivy.teakstweaks.utils.ErrorType;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandType;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

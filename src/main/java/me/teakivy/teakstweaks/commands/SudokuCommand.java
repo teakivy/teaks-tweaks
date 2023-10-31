@@ -1,5 +1,7 @@
 package me.teakivy.teakstweaks.commands;
 
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandType;
 import org.bukkit.entity.Player;
 
 public class SudokuCommand extends AbstractCommand {

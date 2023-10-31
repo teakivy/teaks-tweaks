@@ -1,5 +1,8 @@
 package me.teakivy.teakstweaks.commands;
 
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandType;
+import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
@@ -10,17 +13,18 @@ import java.util.List;
 public class ConduitPowerCommand extends AbstractCommand {
 
     public ConduitPowerCommand() {
-        super("spectator-conduit-power", "conduitpower", "/conduitpower", List.of("cp"), CommandType.PLAYER_ONLY);
+        super("spectator-conduit-power", "conduitpower", List.of("cp"), CommandType.PLAYER_ONLY);
     }
 
     @Override
-    public void playerCommand(Player player, String[] args) {
+    public void playerCommand(PlayerCommandEvent event) {
+        Player player = event.getPlayer();
         if (player.getGameMode() != GameMode.SPECTATOR) {
-            player.sendMessage(getError("wrong_gamemode"));
+            sendError("wrong_gamemode");
             return;
         }
 
-        player.sendMessage(getString("toggled"));
+        sendMessage("toggled");
         if (player.hasPotionEffect(PotionEffectType.CONDUIT_POWER)) {
             player.removePotionEffect(PotionEffectType.CONDUIT_POWER);
             return;

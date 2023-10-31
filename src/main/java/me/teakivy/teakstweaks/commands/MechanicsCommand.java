@@ -3,6 +3,8 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
 import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.gui.PaginatedGUI;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

@@ -9,6 +9,7 @@ import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
 import me.teakivy.teakstweaks.utils.update.UpdateChecker;
 import me.teakivy.teakstweaks.utils.update.UpdateJoinAlert;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.Listener;
@@ -36,50 +37,52 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
      */
     @Override
     public void onEnable() {
-        devMode = getConfig().getBoolean("config.dev-mode");
+        try {
+            devMode = getConfig().getBoolean("config.dev-mode");
 
-        // Credits
-        createCredits();
+            // Credits
+            createCredits();
 
-        // Metrics
-        Metrics metrics = new Metrics(this, 12001);
-        registerCustomMetrics(metrics);
+            // Metrics
+            Metrics metrics = new Metrics(this, 12001);
+            registerCustomMetrics(metrics);
 
-        // Update Config.yml
-        updateConfig();
-
-
-        // Language
-        Translatable.init(getConfig().getString("settings.language"));
-
-        // Update Checker
-        getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
-        getServer().getPluginManager().registerEvents(new GUIListener(), this);
-
-        Bukkit.getScheduler().runTaskLater(this, UpdateChecker::sendUpdateMessage, 20L * 3);
+            // Update Config.yml
+            updateConfig();
 
 
-        // Crafting Tweaks
-        CraftingRegister.registerAll();
+            // Language
+            Translatable.init(getConfig().getString("settings.language"));
 
-        // Commands
-        Register.registerCommands();
+            // Update Checker
+            getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
+            getServer().getPluginManager().registerEvents(new GUIListener(), this);
 
-        // Config
-        this.saveDefaultConfig();
+            Bukkit.getScheduler().runTaskLater(this, UpdateChecker::sendUpdateMessage, 20L * 3);
 
-        tagListener = new Tag();
 
-        // Plugin startup logic
-        Logger.info("");
-        Logger.info(Translatable.getLegacy("startup.plugin.started").replace("%version%", this.getDescription().getVersion()));
-        Logger.info("");
+            // Crafting Tweaks
+            CraftingRegister.registerAll();
 
-        // Packs
-        register = new Register();
-        register.registerAll();
+            // Commands
+            Register.registerCommands();
 
-        removeDataFile();
+            // Config
+            this.saveDefaultConfig();
+
+            tagListener = new Tag();
+
+            // Plugin startup logic
+            Logger.info("");
+            Logger.info(Translatable.getLegacy("startup.plugin.started").replace("%version%", this.getDescription().getVersion()));
+            Logger.info("");
+
+            // Packs
+            register = new Register();
+            register.registerAll();
+
+            removeDataFile();
+        } catch (Exception e) {}
     }
 
     /**

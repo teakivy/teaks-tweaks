@@ -3,6 +3,8 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.packs.survival.graves.GraveEvents;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandType;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;

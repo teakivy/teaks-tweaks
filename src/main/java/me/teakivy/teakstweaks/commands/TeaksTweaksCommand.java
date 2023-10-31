@@ -1,7 +1,10 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.command.CommandSender;
 
 import java.util.Arrays;
@@ -28,10 +31,10 @@ public class TeaksTweaksCommand extends AbstractCommand {
                 sender.sendMessage(getString("version").replace("%version%", TeaksTweaks.getInstance().getDescription().getVersion()));
                 return;
             case "support":
-                sender.sendMessage(getString("support").replace("%discord%", get("plugin.discord")));
+                sender.sendMessage(getString("support", Placeholder.parsed("discord", getString("plugin.discord"))));
                 return;
             case "update":
-                sender.sendMessage(getString("update").replace("%url%", get("plugin.url")));
+                sender.sendMessage(getString("update", Placeholder.parsed("url", getString("plugin.url"))));
                 return;
             default:
                 sendUsage(sender);
@@ -50,18 +53,17 @@ public class TeaksTweaksCommand extends AbstractCommand {
         sender.sendMessage("");
         sender.sendMessage(getString("info.title").replace("%version%", TeaksTweaks.getInstance().getDescription().getVersion()));
         sender.sendMessage("");
-        sender.sendMessage(getString("info.author").replace("%author%", get("plugin.author")));
+        sender.sendMessage(getString("info.author", Placeholder.parsed("author", getString("plugin.author"))));
         sender.sendMessage(getString("info.config_version").replace("%config_version%", TeaksTweaks.getInstance().getConfig().getString("config.version")));
         sender.sendMessage(getString("info.config_generated").replace("%config_generated%", TeaksTweaks.getInstance().getConfig().getString("config.created-version")));
         if (TeaksTweaks.getInstance().getConfig().getBoolean("config.dev-mode")) {
             sender.sendMessage(getString("info.dev_mode_enabled"));
         }
-        sender.sendMessage(getString("info.support").replace("%discord%", get("plugin.discord")));
+        sender.sendMessage(getString("info.support", Placeholder.parsed("discord", getString("plugin.discord"))));
         sender.sendMessage("");
         sender.sendMessage(getString("info.dashed_line"));
     }
 
-    @Override
     public String getString(String key) {
         return Translatable.getLegacy("teakstweakscommand." + key);
     }

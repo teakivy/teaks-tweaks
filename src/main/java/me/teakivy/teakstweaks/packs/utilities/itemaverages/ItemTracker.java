@@ -123,7 +123,7 @@ public class ItemTracker extends BasePack {
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(teaksTweaks, () -> {
             entity.remove();
-            Logger.info(Translatable.getLegacy("item_averages.log_finish"));
+//            Logger.info(Translatable.getLegacy("item_averages.log_finish"));
             shouldStop = true;
         }, glowLength);
     }

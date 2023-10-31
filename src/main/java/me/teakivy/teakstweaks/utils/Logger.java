@@ -1,7 +1,9 @@
 package me.teakivy.teakstweaks.utils;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
+import org.jetbrains.annotations.NotNull;
 
 public class Logger {
     /**
@@ -10,28 +12,38 @@ public class Logger {
      * @param message The message
      * @param toAdmins If the message should be sent to admins in-game
      */
-    public static void log(LogLevel level, String message, boolean toAdmins) {
+    public static void log(LogLevel level, Component message, boolean toAdmins) {
         if (message == null) return;
 
-        String prefix = "";
-        switch (level) {
-            case ERROR ->
-                    prefix = "&8[&c&lERROR&r&8]";
-            case WARNING ->
-                    prefix = "&8[&6&lWARNING&r&8]";
-            case INFO ->
-                    prefix = "&8[&e&lINFO&r&8]";
-            case SUCCESS ->
-                    prefix = "&8[&a&lSUCCESS&r&8]";
-            case OUTLINE ->
-                    prefix = "&8[&7&lOUTLINE&r&8]";
-        }
+        String text = "<dark_gray>[<gold><bold>TeaksTweaks</bold></gold>]<reset> " + getPrefix(level) + " <reset>" + message;
 
-        Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[&6&lTeaksTweaks&r&8] " + prefix + " &f" + message));
+        Bukkit.getConsoleSender().sendMessage(MiniMessage.miniMessage().deserialize(text));
 
         if (!toAdmins) return;
 
-        Bukkit.getOnlinePlayers().stream().filter(player -> player.hasPermission("teakstweaks.manage")).forEach(player -> player.sendMessage(ChatColor.YELLOW + message));
+        Bukkit.getOnlinePlayers().stream().filter(player -> player.hasPermission("teakstweaks.manage")).forEach(player -> player.sendMessage(message));
+    }
+
+    public static void log(LogLevel level, String message, boolean toAdmins) {
+        log(level, MiniMessage.miniMessage().deserialize(message), toAdmins);
+    }
+
+    @NotNull
+    private static String getPrefix(LogLevel level) {
+        String prefix = "";
+        switch (level) {
+            case ERROR ->
+                    prefix = "<dark_gray>[<red><bold>ERROR</bold></red>]";
+            case WARNING ->
+                    prefix = "<dark_gray>[<gold><bold>WARNING</bold></gold>]";
+            case INFO ->
+                    prefix = "<dark_gray>[<yellow><bold>INFO</bold></yellow>]";
+            case SUCCESS ->
+                    prefix = "<dark_gray>[<green><bold>SUCCESS</bold></green>]";
+            case OUTLINE ->
+                    prefix = "<dark_gray>[<gray><bold>OUTLINE</bold></gray>]";
+        }
+        return prefix;
     }
 
     /**
@@ -39,6 +51,16 @@ public class Logger {
      * @param level The log level
      * @param message The message
      */
+    public static void log(LogLevel level, Component message) {
+        log(level, message, false);
+    }
+
+    /**
+     * Logs a message to the console
+     * @param level The log level
+     * @param message The message
+     */
+    @Deprecated
     public static void log(LogLevel level, String message) {
         log(level, message, false);
     }
@@ -47,6 +69,16 @@ public class Logger {
      * Logs an error message to the console
      * @param message The message
      */
+    public static void error(Component message) {
+        log(LogLevel.ERROR, message);
+    }
+
+
+    /**
+     * Logs an error message to the console
+     * @param message The message
+     */
+    @Deprecated
     public static void error(String message) {
         log(LogLevel.ERROR, message);
     }
@@ -55,6 +87,15 @@ public class Logger {
      * Logs a warning message to the console
      * @param message The message
      */
+    public static void warning(Component message) {
+        log(LogLevel.WARNING, message);
+    }
+
+    /**
+     * Logs a warning message to the console
+     * @param message The message
+     */
+    @Deprecated
     public static void warning(String message) {
         log(LogLevel.WARNING, message);
     }
@@ -63,6 +104,15 @@ public class Logger {
      * Logs an info message to the console
      * @param message The message
      */
+    public static void info(Component message) {
+        log(LogLevel.INFO, message);
+    }
+
+    /**
+     * Logs an info message to the console
+     * @param message The message
+     */
+    @Deprecated
     public static void info(String message) {
         log(LogLevel.INFO, message);
     }
@@ -71,6 +121,15 @@ public class Logger {
      * Logs a success message to the console
      * @param message The message
      */
+    public static void success(Component message) {
+        log(LogLevel.SUCCESS, message);
+    }
+
+    /**
+     * Logs a success message to the console
+     * @param message The message
+     */
+    @Deprecated
     public static void success(String message) {
         log(LogLevel.SUCCESS, message);
     }
@@ -79,6 +138,15 @@ public class Logger {
      * Logs an outline message to the console
      * @param message The message
      */
+    public static void outline(Component message) {
+        log(LogLevel.OUTLINE, message);
+    }
+
+    /**
+     * Logs an outline message to the console
+     * @param message The message
+     */
+    @Deprecated
     public static void outline(String message) {
         log(LogLevel.OUTLINE, message);
     }

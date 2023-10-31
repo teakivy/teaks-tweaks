@@ -2,6 +2,9 @@ package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.packs.teleportation.homes.Home;
 import me.teakivy.teakstweaks.packs.teleportation.homes.HomesPack;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandType;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -24,7 +27,7 @@ public class DeleteHomeCommand extends AbstractCommand {
 
         Home home = HomesPack.getHome(player, name);
         if (home == null) {
-            player.sendMessage(get("home.error.home_dne").replace("%name%", name));
+            player.sendMessage(get("home.error.home_dne", Placeholder.parsed("name", name)));
             return;
         }
 
@@ -32,7 +35,7 @@ public class DeleteHomeCommand extends AbstractCommand {
             player.sendMessage(get("home.error.cant_delete_home"));
         }
 
-        player.sendMessage(get("home.deleted_home").replace("%name%", name));
+        player.sendMessage(get("home.deleted_home", Placeholder.parsed("name", name)));
     }
 
     @Override

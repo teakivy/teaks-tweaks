@@ -1,6 +1,8 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.packs.hermitcraft.thundershrine.Shrine;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandType;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
