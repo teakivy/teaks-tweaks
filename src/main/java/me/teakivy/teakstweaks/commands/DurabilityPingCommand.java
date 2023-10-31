@@ -4,6 +4,8 @@ import me.teakivy.teakstweaks.packs.survival.durabilityping.DuraPing;
 import me.teakivy.teakstweaks.packs.survival.durabilityping.DuraPingOption;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.CommandType;
+import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
+import me.teakivy.teakstweaks.utils.command.TabCompleteEvent;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
@@ -17,25 +19,26 @@ import java.util.Set;
 public class DurabilityPingCommand extends AbstractCommand {
 
     public DurabilityPingCommand() {
-        super("durability-ping", "durabilityping", "/durabilityping [preview|set] [option] [value]", List.of("duraping", "dp"), CommandType.PLAYER_ONLY);
+        super("durability-ping", "durabilityping", "[preview | set] [option] [value]", List.of("duraping", "dp"), CommandType.PLAYER_ONLY);
     }
 
     @Override
-    public void playerCommand(Player player, String[] args) {
-        if (args.length < 1) {
+    public void playerCommand(PlayerCommandEvent event) {
+        Player player = event.getPlayer();
+        if (!event.hasArgs()) {
             sendDuraPingConfig(player);
             return;
         }
 
-        if (args[0].equals("preview")) {
-            if (args.length < 2) {
+        if (event.isArg(0, "preview")) {
+            if (!event.hasArgs(2)) {
                 player.sendMessage(getError("missing_preview_selection"));
                 return;
             }
 
-            if (!checkPermission(player, "preview")) return;
+            if (!checkPermission("preview")) return;
 
-            switch (args[1]) {
+            switch (event.getArg(1)) {
                 case "ping_with_sound":
                     player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 1, 2);
                     break;
@@ -54,28 +57,28 @@ public class DurabilityPingCommand extends AbstractCommand {
             }
         }
 
-        if (args[0].equals("set")) {
-            if (args.length < 3) {
-                player.sendMessage(getError("missing_set_selection"));
+        if (event.isArg(0, "set")) {
+            if (!event.hasArgs(3)) {
+                sendError("missing_set_selection");
                 return;
             }
 
-            if (!checkPermission(player, "set")) return;
+            if (!checkPermission("set")) return;
 
-            if (DuraPingOption.fromString(args[1]) == null) {
-                player.sendMessage(getError("missing_set_selection"));
+            if (DuraPingOption.fromString(event.getArg(1)) == null) {
+                sendError("missing_set_selection");
                 return;
             }
 
-            switch (DuraPingOption.fromString(args[1])) {
+            switch (DuraPingOption.fromString(event.getArg(1))) {
                 case PING_FOR_HAND_ITEMS, PING_FOR_ARMOR_ITEMS, PING_WITH_SOUND:
-                    setScoreboardTag(player, DuraPingOption.fromString(args[1]), args[2]);
+                    setScoreboardTag(player, DuraPingOption.fromString(event.getArg(1)), event.getArg(2));
                     break;
                 case DISPLAY:
-                    setDisplayTag(player, args[2]);
+                    setDisplayTag(player, event.getArg(2));
                     break;
                 default:
-                    player.sendMessage(getError("missing_set_selection"));
+                    sendError("missing_set_selection");
                     break;
             }
 
@@ -84,24 +87,24 @@ public class DurabilityPingCommand extends AbstractCommand {
     }
 
     @Override
-    public List<String> tabComplete(String[] args) {
-        if (args.length == 1) return List.of("preview", "set");
+    public List<String> tabComplete(TabCompleteEvent event) {
+        if (event.isArgsSize(1)) return List.of("preview", "set");
 
-        if (args.length == 2) {
-            if (args[0].equals("preview")) {
+        if (event.isArgsSize(2)) {
+            if (event.isArg(0, "preview")) {
                 return List.of("ping_with_sound", "display_subtitle", "display_title", "display_chat", "display_actionbar");
             }
-            if (args[0].equals("set")) {
+            if (event.isArg(0, "set")) {
                 return List.of("ping_for_hand_items", "ping_for_armor_items", "ping_with_sound", "display");
             }
         }
 
-        if (args.length == 3) {
-            if (args[0].equals("set")) {
-                if (args[1].equals("display")) {
+        if (event.isArgsSize(3)) {
+            if (event.isArg(0, "set")) {
+                if (event.isArg(1, "display")) {
                     return List.of("hidden", "subtitle", "title", "chat", "actionbar");
                 }
-                if (args[1].equals("ping_for_hand_items") || args[1].equals("ping_for_armor_items") || args[1].equals("ping_with_sound")) {
+                if (event.isArg(1, "ping_for_hand_items") || event.isArg(1, "ping_for_armor_items") || event.isArg(1, "ping_with_sound")) {
                     return List.of("true", "false");
                 }
             }
@@ -178,11 +181,11 @@ public class DurabilityPingCommand extends AbstractCommand {
 
         component = component.append(newText(" " + getString("config." + option + ".name")));
 
-        player.sendMessage(component);
+        sendMessage(component);
     }
 
     private void sendStrike(Player player) {
-        player.sendMessage("<dark_gray><strikethrough>"
+        sendString("<dark_gray><strikethrough>"
                 + "                                                                                "
         );
     }

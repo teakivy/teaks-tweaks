@@ -4,27 +4,27 @@ import me.teakivy.teakstweaks.packs.survival.coordshud.HUD;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.CommandType;
-import org.bukkit.entity.Player;
+import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
 
 import java.util.List;
 
 public class CoordsHudCommand extends AbstractCommand {
 
     public CoordsHudCommand() {
-        super("coords-hud", "coordshud", "/coordshud", List.of("ch"), CommandType.PLAYER_ONLY);
+        super("coords-hud", "coordshud", List.of("ch"), CommandType.PLAYER_ONLY);
     }
 
     @Override
-    public void playerCommand(Player player, String[] args) {
-        if (!checkPermission(player, "toggle")) return;
+    public void playerCommand(PlayerCommandEvent event) {
+        if (!checkPermission("toggle")) return;
 
         if (getConfig().getBoolean("packs.coords-hud.force-enable")) {
-            player.sendMessage(ErrorType.COMMAND_DISABLED.m());
+            sendError(ErrorType.COMMAND_DISABLED);
             return;
         }
 
-        HUD.setEnabled(player, !HUD.isEnabled(player));
+        HUD.setEnabled(event.getPlayer(), !HUD.isEnabled(event.getPlayer()));
 
-        player.sendMessage(getText("toggled"));
+        sendMessage("toggled");
     }
 }

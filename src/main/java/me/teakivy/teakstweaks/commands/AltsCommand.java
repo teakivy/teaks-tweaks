@@ -18,7 +18,7 @@ import java.util.UUID;
 public class AltsCommand extends AbstractCommand {
 
     public AltsCommand() {
-        super("spectator-alts", "alts", "<add|remove|list> <alt> [player]", CommandType.PLAYER_ONLY);
+        super("spectator-alts", "alts", "<add | remove | list> <alt> [player]", CommandType.PLAYER_ONLY);
     }
 
     @Override

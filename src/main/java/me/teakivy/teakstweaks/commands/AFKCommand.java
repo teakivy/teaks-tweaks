@@ -19,7 +19,7 @@ public class AFKCommand extends AbstractCommand {
     @Override
     public void playerCommand(PlayerCommandEvent event) {
         Player player = event.getPlayer();
-        if (event.getArgsLength() == 1 && event.getArg(0).equals("uninstall")) {
+        if (event.isArgsSize(1) && event.isArg(0, "uninstall")) {
             if (!checkPermission("uninstall")) return;
 
             AFK.uninstall();
@@ -44,7 +44,7 @@ public class AFKCommand extends AbstractCommand {
 
     @Override
     public List<String> tabComplete(TabCompleteEvent event) {
-        if (event.getArgsLength() == 1) return List.of("uninstall");
+        if (event.isArgsSize(1)) return List.of("uninstall");
 
         return null;
     }
