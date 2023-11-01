@@ -31,7 +31,7 @@ public class SetHomeCommand extends AbstractCommand {
             return;
         }
 
-        int maxHomes = getConfig().getInt("packs.homes.max-homes");
+        int maxHomes = getPackConfig().getInt("packs.homes.max-homes");
         if (maxHomes > 0 && homes.size() >= maxHomes) {
             player.sendMessage(get("home.error.max_homes", Placeholder.parsed("max_homes", maxHomes + "")));
             return;

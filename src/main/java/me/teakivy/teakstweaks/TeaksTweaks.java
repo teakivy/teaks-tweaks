@@ -82,7 +82,11 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
             register.registerAll();
 
             removeDataFile();
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            e.printStackTrace();
+            Logger.error("An error occurred while enabling the plugin. Please report this to the developer.");
+//            Bukkit.getPluginManager().disablePlugin(this);
+        }
     }
 
     /**

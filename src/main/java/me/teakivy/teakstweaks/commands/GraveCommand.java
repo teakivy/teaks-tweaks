@@ -24,7 +24,7 @@ public class GraveCommand extends AbstractCommand {
     public void playerCommand(PlayerCommandEvent event) {
         if (event.isArg(0, "locate")) {
             if (!checkPermission("locate")) return;
-            if (!getConfig().getBoolean("packs.graves.locatable")) {
+            if (!getPackConfig().getBoolean("locatable")) {
                 sendError(ErrorType.COMMAND_DISABLED);
                 return;
             }

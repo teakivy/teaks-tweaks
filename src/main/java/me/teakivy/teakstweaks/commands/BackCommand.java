@@ -14,7 +14,7 @@ public class BackCommand extends AbstractCommand {
     public BackCommand() {
         super(CommandType.PLAYER_ONLY, "back", "back");
 
-        setCooldownTime(getConfig().getInt("packs.back.teleport-cooldown"));
+        setCooldownTime(getPackConfig().getInt("teleport-cooldown"));
     }
 
     @Override
@@ -33,7 +33,7 @@ public class BackCommand extends AbstractCommand {
         setCooldown();
         sendMessage("teleporting");
 
-        if (getConfig().getInt("packs.back.teleport-delay") > 0) {
+        if (getPackConfig().getInt("teleport-delay") > 0) {
             Location loc = player.getLocation();
             Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
                 if (!player.getLocation().equals(loc)) {
@@ -41,7 +41,7 @@ public class BackCommand extends AbstractCommand {
                     return;
                 }
                 Back.tpBack(player);
-            }, getConfig().getInt("packs.back.teleport-delay") * 20L);
+            }, getPackConfig().getInt("teleport-delay") * 20L);
 
             return;
         }

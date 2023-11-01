@@ -10,6 +10,7 @@ import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.Bukkit;
 import org.bukkit.command.*;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.intellij.lang.annotations.Subst;
@@ -592,6 +593,10 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
 
     public void sendUsage() {
         sendMessage(getUsage());
+    }
+
+    public ConfigurationSection getPackConfig() {
+        return TeaksTweaks.getInstance().getConfig().getConfigurationSection("packs." + parentPack);
     }
 
     public FileConfiguration getConfig() {

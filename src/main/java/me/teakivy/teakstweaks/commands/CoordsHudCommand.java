@@ -18,7 +18,7 @@ public class CoordsHudCommand extends AbstractCommand {
     public void playerCommand(PlayerCommandEvent event) {
         if (!checkPermission("toggle")) return;
 
-        if (getConfig().getBoolean("packs.coords-hud.force-enable")) {
+        if (getPackConfig().getBoolean("force-enable")) {
             sendError(ErrorType.COMMAND_DISABLED);
             return;
         }

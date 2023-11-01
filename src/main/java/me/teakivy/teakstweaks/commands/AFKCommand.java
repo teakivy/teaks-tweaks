@@ -20,7 +20,7 @@ public class AFKCommand extends AbstractCommand {
             AFK.uninstall();
         }
 
-        if (!getConfig().getBoolean("packs.afk-display.allow-afk-command")) {
+        if (!getPackConfig().getBoolean("allow-afk-command")) {
             sendError(ErrorType.COMMAND_DISABLED);
             return;
         }

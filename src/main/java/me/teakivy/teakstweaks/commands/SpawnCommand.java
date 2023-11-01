@@ -17,7 +17,7 @@ public class SpawnCommand extends AbstractCommand {
     public SpawnCommand() {
         super("spawn", "spawn", "/spawn", CommandType.PLAYER_ONLY);
 
-        setCooldownTime(getConfig().getInt("packs.spawn.teleport-cooldown"));
+        setCooldownTime(getPackConfig().getInt("packs.spawn.teleport-cooldown"));
     }
 
     @Override
@@ -29,7 +29,7 @@ public class SpawnCommand extends AbstractCommand {
 
         player.sendMessage(getString("teleporting"));
 
-        if (getConfig().getInt("packs.spawn.teleport-delay") > 0) {
+        if (getPackConfig().getInt("packs.spawn.teleport-delay") > 0) {
             Location loc = player.getLocation();
             Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
                 if (!player.getLocation().equals(loc)) {
@@ -37,7 +37,7 @@ public class SpawnCommand extends AbstractCommand {
                     return;
                 }
                 teleportToSpawn(player);
-            }, getConfig().getInt("packs.spawn.teleport-delay") * 20L);
+            }, getPackConfig().getInt("packs.spawn.teleport-delay") * 20L);
 
             return;
         }
@@ -46,7 +46,7 @@ public class SpawnCommand extends AbstractCommand {
     }
 
     private void teleportToSpawn(Player player) {
-        World world = Bukkit.getWorld(Objects.requireNonNull(getConfig().getString("packs.spawn.world")));
+        World world = Bukkit.getWorld(Objects.requireNonNull(getPackConfig().getString("packs.spawn.world")));
 
         Back.backLoc.put(player.getUniqueId(), player.getLocation());
         player.teleport(world.getSpawnLocation());

@@ -1,6 +1,5 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.teakstweaks.spectatoralts.SpectatorAlts;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.command.*;
@@ -157,7 +156,7 @@ public class AltsCommand extends AbstractCommand {
      */
     public boolean canAddAlt(Player player) {
         if (player.isOp()) return true;
-        if (TeaksTweaks.getInstance().getConfig().getInt("packs.spectator-alts.max-alts") == -1) return true;
-        return SpectatorAlts.getAlts(player.getUniqueId()).size() < TeaksTweaks.getInstance().getConfig().getInt("packs.spectator-alts.max-alts");
+        if (getPackConfig().getInt("max-alts") == -1) return true;
+        return SpectatorAlts.getAlts(player.getUniqueId()).size() < getPackConfig().getInt("max-alts");
     }
 }
