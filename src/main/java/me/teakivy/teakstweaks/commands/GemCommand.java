@@ -5,8 +5,9 @@ import me.teakivy.teakstweaks.packs.hermitcraft.treasuregems.Gems;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.CommandType;
+import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
+import me.teakivy.teakstweaks.utils.command.TabCompleteEvent;
 import org.bukkit.Location;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
@@ -14,26 +15,26 @@ import java.util.List;
 public class GemCommand extends AbstractCommand {
 
     public GemCommand() {
-        super("treasure-gems", "gem", "/gem <gem|villager> <type>", CommandType.PLAYER_ONLY);
+        super("treasure-gems", "gem", "<gem | villager> <type>", CommandType.PLAYER_ONLY);
     }
 
     @Override
-    public void playerCommand(Player player, String[] args) {
-        if (args.length < 1) {
-            player.sendMessage(ErrorType.MISSING_ACTION.m());
+    public void playerCommand(PlayerCommandEvent event) {
+        if (!event.hasArgs()) {
+            sendError(ErrorType.MISSING_ACTION);
             return;
         }
 
-        if (args[0].equals("villager")) {
-            if (!checkPermission(player, "villager")) return;
-            if (args.length < 2) {
-                player.sendMessage(getError("missing_villager_type"));
+        if (event.isArg(0, "villager")) {
+            if (!checkPermission("villager")) return;
+            if (!event.hasArgs(2)) {
+                sendError("missing_villager_type");
                 return;
             }
 
             GemVllagers gems = new GemVllagers();
-            Location location = player.getLocation();
-            switch (args[1]) {
+            Location location = event.getPlayer().getLocation();
+            switch (event.getArg(1)) {
                 case "aquatic":
                     gems.summonAquaticVillager(location);
                     break;
@@ -74,38 +75,36 @@ public class GemCommand extends AbstractCommand {
                     gems.summonWoodVillager(location);
                     break;
                 default:
-                    player.sendMessage(getError("missing_villager_type"));
+                    sendError("missing_villager_type");
                     return;
             }
 
-            player.sendMessage(getString("summoned_villager").replace("%type%", getString("villagers." + args[1])));
+            sendMessage("summoned_villager", insert("type", getString("villagers." + event.getArg(1))));
             return;
         }
 
-        if (args[0].equals("give")) {
-            if (!checkPermission(player, "give")) return;
-            if (args.length < 2) {
-                player.sendMessage(getError("missing_gem_type"));
+        if (event.isArg(0, "give")) {
+            if (!checkPermission("give")) return;
+            if (!event.hasArgs(2)) {
+                sendError("missing_gem_type");
                 return;
             }
 
             int amount = 1;
-            if (args.length > 2) {
+            if (event.getArgsLength() > 2) {
                 try {
-                    amount = Integer.parseInt(args[2]);
-                } catch (NumberFormatException e) {
-                    amount = 1;
-                }
+                    amount = Integer.parseInt(event.getArg(2));
+                } catch (NumberFormatException ignored) {}
             }
             if (amount > 64) {
-                player.sendMessage(getString("error.amount_more_than_64"));
+               sendError("amount_more_than_64");
             }
             if (amount < 1) {
-                player.sendMessage(getString("error.amount_less_than_1"));
+                sendError("amount_less_than_1");
             }
 
-            ItemStack item = null;
-            switch (args[1]) {
+            ItemStack item;
+            switch (event.getArg(1)) {
                 case "aquamarine":
                     item = Gems.getAquamarineGem();
                     break;
@@ -122,25 +121,25 @@ public class GemCommand extends AbstractCommand {
                     item = Gems.getSapphireGem();
                     break;
                 default:
-                    player.sendMessage(getError("missing_gem_type"));
+                    sendError("missing_gem_type");
                     return;
             }
 
             item.setAmount(amount);
-            player.getInventory().addItem(item);
-            player.sendMessage(getString("given_gem").replace("%amount%", amount + "").replace("%type%", getString("gems." + args[1])));
+            event.getPlayer().getInventory().addItem(item);
+            sendMessage("given_gem", insert("amount", amount), insert("type", getString("gems." + event.getArg(1))));
         }
     }
 
     @Override
-    public List<String> tabComplete(String[] args) {
-        if (args.length == 1) return List.of("villager", "give");
+    public List<String> tabComplete(TabCompleteEvent event) {
+        if (event.isArgsSize(1)) return List.of("villager", "give");
 
-        if (args.length == 2) {
-            if (args[0].equals("villager")) {
+        if (event.isArgsSize(2)) {
+            if (event.isArg(0, "villager")) {
                 return List.of("aquatic", "concrete", "gem_trader", "functional", "gem_collector", "more_blocks", "natural", "nether", "ores", "precious", "redstone", "stones", "wood");
             }
-            if (args[0].equals("give")) {
+            if (event.isArg(0, "give")) {
                 return List.of("aquamarine", "amethyst", "ruby", "topaz", "sapphire");
             }
         }
