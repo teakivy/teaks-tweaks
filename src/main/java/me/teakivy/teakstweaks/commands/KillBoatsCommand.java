@@ -1,21 +1,21 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandEvent;
 import me.teakivy.teakstweaks.utils.command.CommandType;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 
 public class KillBoatsCommand extends AbstractCommand {
 
     public KillBoatsCommand() {
-        super("kill-boats", "killboats", "/killboats", CommandType.ALL);
+        super(CommandType.ALL, "kill-boats", "killboats");
     }
 
     @Override
-    public void command(CommandSender sender, String[] args) {
+    public void command(CommandEvent event) {
         int boats = 0;
         for (World world : Bukkit.getWorlds()) {
             for (Entity entity : world.getEntities()) {
@@ -27,6 +27,6 @@ public class KillBoatsCommand extends AbstractCommand {
             }
         }
 
-        sender.sendMessage(getString("removed_boats").replace("%count%", boats + ""));
+        sendMessage("removed_boats", insert("count", boats));
     }
 }
