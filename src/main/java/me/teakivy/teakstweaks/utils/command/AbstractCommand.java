@@ -193,6 +193,10 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         this.args = new Arg[]{};
     }
 
+    public AbstractCommand(CommandType type, String command, Arg... args) {
+        this(type, null, command, args);
+    }
+
     /**
      * Create a new AbstractCommand
      * @param type The command type
