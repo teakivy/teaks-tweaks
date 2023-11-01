@@ -1,11 +1,8 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.teleportation.homes.Home;
 import me.teakivy.teakstweaks.packs.teleportation.homes.HomesPack;
-import me.teakivy.teakstweaks.utils.command.AbstractCommand;
-import me.teakivy.teakstweaks.utils.command.CommandType;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import me.teakivy.teakstweaks.utils.command.*;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -15,16 +12,17 @@ import java.util.List;
 public class HomeCommand extends AbstractCommand {
 
     public HomeCommand() {
-        super("homes", "home", "/home [set|delete|name] [name]", CommandType.PLAYER_ONLY);
+        super(CommandType.PLAYER_ONLY, "homes", "home", Arg.optional("set", "delete", "home"), Arg.optional("home"));
     }
 
     @Override
-    public void playerCommand(Player player, String[] args) {
+    public void playerCommand(PlayerCommandEvent event) {
+        Player player = event.getPlayer();
         List<Home> homes = HomesPack.getHomes(player);
 
-        if (args.length < 1) {
+        if (!event.hasArgs()) {
             if (homes.isEmpty() && HomesPack.getHome(player, "home") == null) {
-                player.sendMessage(getError("no_homes_yet"));
+                sendError("no_homes_yet");
                 return;
             }
 
@@ -37,61 +35,61 @@ public class HomeCommand extends AbstractCommand {
             return;
         }
 
-        if (args[0].equals("set")) {
-            if (args.length < 2 && HomesPack.getHome(player, "home") != null) {
-                player.sendMessage(getError("missing_home_name"));
+        if (event.isArg(0, "set")) {
+            if (!event.hasArgs(2) && HomesPack.getHome(player, "home") != null) {
+                sendError("missing_home_name");
                 return;
             }
-            if (!checkPermission(player, "set")) return;
-            String name = args.length < 2 ? "home" : args[1].toLowerCase();
+            if (!checkPermission("set")) return;
+            String name = !event.hasArgs(2) ? "home" : event.getArg(1).toLowerCase();
 
             if (HomesPack.getHome(player, name) != null) {
-                player.sendMessage(getError("home_already_exists", Placeholder.parsed("name", name)));
+                sendError("home_already_exists", insert("name", name));
                 return;
             }
 
-            int maxHomes = TeaksTweaks.getInstance().getConfig().getInt("packs.homes.max-homes");
+            int maxHomes = getPackConfig().getInt("max-homes");
             if (maxHomes > 0 && homes.size() >= maxHomes) {
-                player.sendMessage(getError("max_homes", Placeholder.parsed("max_homes", String.valueOf(maxHomes))));
+                sendError("max_homes", insert("max_homes", maxHomes));
                 return;
             }
 
             if (HomesPack.setHome(player, name, player.getLocation())) {
-                player.sendMessage(getString("set_home").replace("%name%", name));
+                sendMessage("set_home", insert("name", name));
             } else {
-                player.sendMessage(getError("cant_set_home"));
+                sendError("cant_set_home");
             }
 
             return;
         }
 
-        if (args[0].equals("delete")) {
-            if (args.length < 2 && HomesPack.getHome(player, "home") == null) {
-                player.sendMessage(getError("missing_home_name"));
+        if (event.isArg(0, "delete")) {
+            if (!event.hasArgs(2) && HomesPack.getHome(player, "home") == null) {
+                sendError("missing_home_name");
                 return;
             }
-            if (!checkPermission(player, "delete")) return;
-            String name = args.length < 2 ? "home" : args[1].toLowerCase();
+            if (!checkPermission("delete")) return;
+            String name = !event.hasArgs(2) ? "home" : event.getArg(1).toLowerCase();
 
             Home home = HomesPack.getHome(player, name);
             if (home == null) {
-                player.sendMessage(getError("home_dne", Placeholder.parsed("name", name)));
+                sendError("home_dne", insert("name", name));
                 return;
             }
 
             if (!HomesPack.removeHome(player, name)) {
-                player.sendMessage(getError("cant_delete_home"));
-            } else {
-                player.sendMessage(getString("deleted_home").replace("%name%", name));
+                sendError("cant_delete_home");
+                return;
             }
+            sendMessage("deleted_home", insert("name", name));
             return;
         }
 
-        String name = args[0].toLowerCase();
+        String name = event.getArg(0).toLowerCase();
 
         Home home = HomesPack.getHome(player, name);
         if (home == null) {
-            player.sendMessage(getError("home_dne", Placeholder.parsed("name", name)));
+            sendError("home_dne", insert("name", name));
             return;
         }
 
@@ -99,25 +97,25 @@ public class HomeCommand extends AbstractCommand {
     }
 
     @Override
-    public List<String> tabComplete(Player player, String[] args) {
-        if (args.length == 1) {
+    public List<String> tabComplete(TabCompleteEvent event) {
+        if (event.isArg(0)) {
             List<String> arguments = new ArrayList<>(List.of("set", "delete"));
 
-            for (Home home : HomesPack.getHomes(player)) {
+            for (Home home : HomesPack.getHomes(event.getPlayer())) {
                 arguments.add(home.getName());
             }
             return arguments;
         }
 
-        if (args.length == 2 && args[0].equals("delete")) {
+        if (event.isArg(1) && event.isArg(0, "delete")) {
             List<String> homes = new ArrayList<>();
-            for (Home home : HomesPack.getHomes(player)) {
+            for (Home home : HomesPack.getHomes(event.getPlayer())) {
                 homes.add(home.getName());
             }
             return homes;
         }
 
-        if (args.length == 2 && args[0].equals("set")) {
+        if (event.isArg(1) && event.isArg(0, "set")) {
             return List.of("[name]");
         }
 
