@@ -5,7 +5,6 @@ import me.teakivy.teakstweaks.packs.teleportation.back.Back;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -22,7 +21,7 @@ public class BackCommand extends AbstractCommand {
     public void playerCommand(PlayerCommandEvent event) {
         Player player = event.getPlayer();
         if (isOnCooldown()) {
-           sendError("on_cooldown", Placeholder.parsed("cooldown_seconds", getCooldownTime() + ""));
+           sendError("on_cooldown", insert("cooldown_seconds", getCooldownTime()));
             return;
         }
 

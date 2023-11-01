@@ -12,6 +12,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.intellij.lang.annotations.Subst;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -35,12 +36,14 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     protected final List<String> alias;
     protected final String usage;
     protected final String permMessage;
+    protected final String translationKey;
 
     protected static CommandMap cmap;
     protected final CommandType commandType;
 
     protected int cooldownTime;
     protected HashMap<UUID, Long> cooldownMap;
+
 
     private CommandSender sender;
     private Player player;
@@ -52,7 +55,18 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param commandType The command type
      */
     public AbstractCommand(String parentPack, String command, CommandType commandType) {
-        this(parentPack, command, null, Translatable.getLegacy(command + ".command_description"), null, null, commandType);
+        this(parentPack, command, null, Translatable.getLegacy(command + ".command_description"), null, null, commandType, null);
+    }
+
+    /**
+     * Create a new AbstractCommand
+     * @param parentPack The pack this command belongs to
+     * @param command The command name
+     * @param commandType The command type
+     * @param translationKey The translation key
+     */
+    public AbstractCommand(String parentPack, String command, CommandType commandType, String translationKey) {
+        this(parentPack, command, null, Translatable.getLegacy(command + ".command_description"), null, null, commandType, translationKey);
     }
 
     /**
@@ -63,7 +77,19 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param commandType The command type
      */
     public AbstractCommand(String parentPack, String command, String args, CommandType commandType) {
-        this(parentPack, command, args, Translatable.getLegacy(command + ".command_description"), null, null, commandType);
+        this(parentPack, command, args, Translatable.getLegacy(command + ".command_description"), null, null, commandType, null);
+    }
+
+    /**
+     * Create a new AbstractCommand
+     * @param parentPack The pack this command belongs to
+     * @param command The command name
+     * @param args The command arguments
+     * @param commandType The command type
+     * @param translationKey The translation key
+     */
+    public AbstractCommand(String parentPack, String command, String args, CommandType commandType, String translationKey) {
+        this(parentPack, command, args, Translatable.getLegacy(command + ".command_description"), null, null, commandType, translationKey);
     }
 
     /**
@@ -74,7 +100,19 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param commandType The command type
      */
     public AbstractCommand(String parentPack, String command, List<String> alias, CommandType commandType) {
-        this(parentPack, command, null, Translatable.getLegacy(command + ".command_description"), null, alias, commandType);
+        this(parentPack, command, null, Translatable.getLegacy(command + ".command_description"), null, alias, commandType, null);
+    }
+
+    /**
+     * Create a new AbstractCommand
+     * @param parentPack The pack this command belongs to
+     * @param command The command name
+     * @param alias The command aliases
+     * @param commandType The command type
+     * @param translationKey The translation key
+     */
+    public AbstractCommand(String parentPack, String command, List<String> alias, CommandType commandType, String translationKey) {
+        this(parentPack, command, null, Translatable.getLegacy(command + ".command_description"), null, alias, commandType, translationKey);
     }
 
     /**
@@ -86,7 +124,20 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param commandType The command type
      */
     public AbstractCommand(String parentPack, String command, String args, List<String> alias, CommandType commandType) {
-        this(parentPack, command, args, Translatable.getLegacy(command + ".command_description"), null, alias, commandType);
+        this(parentPack, command, args, Translatable.getLegacy(command + ".command_description"), null, alias, commandType, null);
+    }
+
+    /**
+     * Create a new AbstractCommand
+     * @param parentPack The pack this command belongs to
+     * @param command The command name
+     * @param args The command arguments
+     * @param alias The command aliases
+     * @param commandType The command type
+     * @param translationKey The translation key
+     */
+    public AbstractCommand(String parentPack, String command, String args, List<String> alias, CommandType commandType, String translationKey) {
+        this(parentPack, command, args, Translatable.getString(command + ".command_description"), null, alias, commandType, translationKey);
     }
 
     /**
@@ -99,7 +150,21 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param commandType The command type
      */
     public AbstractCommand(String parentPack, String command, String args, String description, List<String> aliases, CommandType commandType) {
-        this(parentPack, command, args, description, null, aliases, commandType);
+        this(parentPack, command, args, description, null, aliases, commandType, null);
+    }
+
+    /**
+     * Create a new AbstractCommand
+     * @param parentPack The pack this command belongs to
+     * @param command The command name
+     * @param args The command arguments
+     * @param description The command description
+     * @param aliases The command aliases
+     * @param commandType The command type
+     * @param translationKey The translation key
+     */
+    public AbstractCommand(String parentPack, String command, String args, String description, List<String> aliases, CommandType commandType, String translationKey) {
+        this(parentPack, command, args, description, null, aliases, commandType, translationKey);
     }
 
     /**
@@ -111,8 +176,9 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param permissionMessage The permission message
      * @param aliases The command aliases
      * @param commandType The command type
+     * @param translationKey The translation key
      */
-    public AbstractCommand(String parentPack, String command, String args, String description, String permissionMessage, List<String> aliases, CommandType commandType) {
+    public AbstractCommand(String parentPack, String command, String args, String description, String permissionMessage, List<String> aliases, CommandType commandType, String translationKey) {
         this.parentPack = parentPack;
         this.command = command.toLowerCase();
         this.usage = "/" + command + " " + (args == null ? "" : args);
@@ -121,6 +187,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         this.alias = aliases;
         this.permission = "teakstweaks." + parentPack + ".command." + command;
         this.commandType = commandType;
+        this.translationKey = translationKey == null ? command : translationKey;
 
         this.cooldownTime = 0;
         this.cooldownMap = new HashMap<>();
@@ -275,7 +342,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param event The command event
      */
     public void playerCommand(PlayerCommandEvent event) {
-        player.sendMessage(getUsage());
+        sender.sendMessage(getUsage());
     }
 
     /**
@@ -383,6 +450,11 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         return Translatable.get(command + "." + key, resolvers);
     }
 
+    public String getString(String key) {
+        return Translatable.getString(command + "." + key);
+    }
+
+    @Deprecated
     public String getString(String key, TagResolver... resolvers) {
         return Translatable.getString(command + "." + key);
     }
@@ -488,5 +560,16 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
 
     public void sendString(String message) {
         this.sender.sendMessage(newText(message));
+    }
+
+    public TagResolver.Single insert(@Subst("") String key, String value) {
+        return Placeholder.parsed(key, value);
+    }
+    public TagResolver.Single insert(@Subst("") String key, int value) {
+        return Placeholder.parsed(key, value + "");
+    }
+
+    public TagResolver.Single insert(@Subst("") String key, Component value) {
+        return Placeholder.component(key, value);
     }
 }

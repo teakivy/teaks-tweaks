@@ -6,8 +6,6 @@ import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
 import me.teakivy.teakstweaks.utils.command.TabCompleteEvent;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -32,7 +30,7 @@ public class DurabilityPingCommand extends AbstractCommand {
 
         if (event.isArg(0, "preview")) {
             if (!event.hasArgs(2)) {
-                player.sendMessage(getError("missing_preview_selection"));
+                sendError("missing_preview_selection");
                 return;
             }
 
@@ -58,17 +56,12 @@ public class DurabilityPingCommand extends AbstractCommand {
         }
 
         if (event.isArg(0, "set")) {
-            if (!event.hasArgs(3)) {
+            if (!event.hasArgs(3) || DuraPingOption.fromString(event.getArg(1)) == null) {
                 sendError("missing_set_selection");
                 return;
             }
 
             if (!checkPermission("set")) return;
-
-            if (DuraPingOption.fromString(event.getArg(1)) == null) {
-                sendError("missing_set_selection");
-                return;
-            }
 
             switch (DuraPingOption.fromString(event.getArg(1))) {
                 case PING_FOR_HAND_ITEMS, PING_FOR_ARMOR_ITEMS, PING_WITH_SOUND:
@@ -114,7 +107,7 @@ public class DurabilityPingCommand extends AbstractCommand {
     }
 
     public void sendDuraPingConfig(Player player) {
-        sendStrike(player);
+        sendStrike();
 
         sendOption(player, "ping_for_hand_items", false);
         sendOption(player, "ping_for_armor_items", false);
@@ -125,21 +118,24 @@ public class DurabilityPingCommand extends AbstractCommand {
         sendOption(player, "display_chat", true);
         sendOption(player, "display_actionbar", true);
 
-        sendStrike(player);
+        sendStrike();
     }
 
-    public Component newPreviewPanel(String command, String name) {
-        return newText(" <hover:show_text:<hover_text>><click:run_command:"+ command + "><gray>[ ℹ ]", Placeholder.parsed("name", name), Placeholder.parsed("command", command), Placeholder.parsed("hover_text", getString("preview_panel.hover")));
+    public String newPreviewPanel(String command, String name) {
+        return "<hover:show_text:\""
+                + getString("preview_panel.hover").replace("<name>", name)
+                + "\"><click:run_command:"
+                + command
+                + "><gray>[ ℹ ]</click></hover><reset> ";
     }
 
-    public Component createCheckBox(boolean checked, String command, String loreName, String loreDescription) {
-        String replacement = loreName + (loreDescription == null ? "" : "<newline><gray>" + loreDescription);
+    public String createCheckBox(boolean checked, String command, String loreName, String loreDescription) {
+        String replacement = loreName + (loreDescription.contains("durabilityping.") ? "" : "<newline><gray>" + loreDescription);
 
-        String hover = "<hover:show_text:" + getText("checkbox." + (checked ? "yes" : "no") + ".hover",
-                Placeholder.parsed("name", replacement)) + ">";
+        String hover = "<hover:show_text:\"" + getString("checkbox." + (checked ? "yes" : "no") + ".hover") + "\">";
 
         String click = "<click:run_command:" + command + ">";
-        return newText(hover + click + (checked ? "<green>[ ✔ ]" : "<red>[ ❌ ]"));
+        return (hover + click + (checked ? "<green>[ ✔ ]" : "<red>[ ❌ ]")).replace("<name>", replacement) + "</click></hover><reset> ";
     }
 
     private void setScoreboardTag(Player player, DuraPingOption option, String value) {
@@ -169,22 +165,21 @@ public class DurabilityPingCommand extends AbstractCommand {
             setCommand = "/duraping set display " + option.replace("display_", "");
         }
 
-        Component component = createCheckBox(tags.contains("dp_" + option), setCommand,
+        String message = createCheckBox(tags.contains("dp_" + option), setCommand,
                 getString("config." + option + ".name"),
                 getString("config." + option + ".description"));
 
-
         if (preview) {
-            component = component.append(newPreviewPanel("/duraping preview " + option,
-                    getString("config." + option + ".name")));
+            message += newPreviewPanel("/duraping preview " + option,
+                    getString("config." + option + ".name"));
         }
 
-        component = component.append(newText(" " + getString("config." + option + ".name")));
+        message += getString("config." + option + ".name");
 
-        sendMessage(component);
+        sendMessage(newText(message));
     }
 
-    private void sendStrike(Player player) {
+    private void sendStrike() {
         sendString("<dark_gray><strikethrough>"
                 + "                                                                                "
         );

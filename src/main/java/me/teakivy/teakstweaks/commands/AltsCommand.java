@@ -7,7 +7,6 @@ import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
 import me.teakivy.teakstweaks.utils.command.TabCompleteEvent;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -87,23 +86,23 @@ public class AltsCommand extends AbstractCommand {
             }
 
             if (SpectatorAlts.isAlt(secondary)) {
-                sendError("already_alt", Placeholder.parsed("alt", getName(secondary)));
+                sendError("already_alt", insert("alt", getName(secondary)));
                 return;
             }
 
             SpectatorAlts.addAlt(main, secondary);
-            sendMessage("added_alt", Placeholder.parsed("alt", getName(secondary)), Placeholder.parsed("player", getName(main)));
+            sendMessage("added_alt", insert("alt", getName(secondary)), insert("player", getName(main)));
             return;
         }
 
         if (action.equals("remove")) {
             if (!SpectatorAlts.isAlt(secondary)) {
-                sendError("not_alt", Placeholder.parsed("alt", getName(secondary)));
+                sendError("not_alt", insert("alt", getName(secondary)));
                 return;
             }
 
             SpectatorAlts.removeAlt(secondary);
-            sendMessage("removed_alt", Placeholder.parsed("alt", getName(secondary)), Placeholder.parsed("player", getName(main)));
+            sendMessage("removed_alt", insert("alt", getName(secondary)), insert("player", getName(main)));
             return;
         }
 
@@ -149,13 +148,13 @@ public class AltsCommand extends AbstractCommand {
         List<UUID> alts = SpectatorAlts.getAlts(account);
 
         if (alts.isEmpty()) {
-            sendError("no_alts", Placeholder.parsed("player", getName(account)));
+            sendError("no_alts", insert("player", getName(account)));
             return;
         }
 
-        sendMessage("list_alts", Placeholder.parsed("player", getName(account)));
+        sendMessage("list_alts", insert("player", getName(account)));
         for (UUID altAcc : alts) {
-            sendMessage("listed_alt", Placeholder.parsed("alt", getName(altAcc)));
+            sendMessage("listed_alt", insert("alt", getName(altAcc)));
         }
     }
 

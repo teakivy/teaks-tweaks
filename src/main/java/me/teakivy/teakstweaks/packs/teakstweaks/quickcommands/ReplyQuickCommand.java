@@ -25,7 +25,7 @@ public class ReplyQuickCommand {
 
     class MessageCommand extends AbstractCommand {
         public MessageCommand() {
-            super("quick-commands", "message", "/message <player> <message>", Translatable.getLegacy("quick_commands.message.command_description"), null, List.of("msg", "tell", "whisper", "w"), CommandType.PLAYER_ONLY);
+            super("quick-commands", "message", "/message <player> <message>", Translatable.getLegacy("quick_commands.message.command_description"), null, List.of("msg", "tell", "whisper", "w"), CommandType.PLAYER_ONLY, null);
         }
 
         @Override
@@ -72,7 +72,7 @@ public class ReplyQuickCommand {
 
     class ReplyCommand extends AbstractCommand {
         public ReplyCommand() {
-            super("quick-commands", "reply", "/reply <message>", Translatable.getLegacy("quick_commands.reply.command_description"), null, List.of("r"), CommandType.PLAYER_ONLY);
+            super("quick-commands", "reply", "/reply <message>", Translatable.getLegacy("quick_commands.reply.command_description"), null, List.of("r"), CommandType.PLAYER_ONLY, null);
         }
 
         @Override
