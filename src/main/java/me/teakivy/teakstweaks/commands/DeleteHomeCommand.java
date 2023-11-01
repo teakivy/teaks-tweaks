@@ -2,10 +2,7 @@ package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.packs.teleportation.homes.Home;
 import me.teakivy.teakstweaks.packs.teleportation.homes.HomesPack;
-import me.teakivy.teakstweaks.utils.command.AbstractCommand;
-import me.teakivy.teakstweaks.utils.command.CommandType;
-import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
-import me.teakivy.teakstweaks.utils.command.TabCompleteEvent;
+import me.teakivy.teakstweaks.utils.command.*;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -14,13 +11,13 @@ import java.util.List;
 public class DeleteHomeCommand extends AbstractCommand {
 
     public DeleteHomeCommand() {
-        super("homes", "deletehome", "[name]", List.of("rmhome", "delhome"), CommandType.PLAYER_ONLY, "home");
+        super(CommandType.PLAYER_ONLY, "homes", "deletehome", List.of("rmhome", "delhome"), "home", Arg.optional("home"));
     }
 
     @Override
     public void playerCommand(PlayerCommandEvent event) {
         Player player = event.getPlayer();
-        if (event.getArgsLength() < 1 && HomesPack.getHome(player, "home") == null) {
+        if (!event.hasArgs() && HomesPack.getHome(player, "home") == null) {
             sendError("missing_home_name");
             return;
         }

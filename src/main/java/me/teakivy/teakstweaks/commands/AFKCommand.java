@@ -2,18 +2,13 @@ package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.packs.survival.afkdisplay.AFK;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.command.AbstractCommand;
-import me.teakivy.teakstweaks.utils.command.CommandType;
-import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
-import me.teakivy.teakstweaks.utils.command.TabCompleteEvent;
+import me.teakivy.teakstweaks.utils.command.*;
 import org.bukkit.entity.Player;
-
-import java.util.List;
 
 public class AFKCommand extends AbstractCommand {
 
     public AFKCommand() {
-        super("afk-display", "afk", "[uninstall]", CommandType.PLAYER_ONLY);
+        super(CommandType.PLAYER_ONLY, "afk-display", "afk", Arg.optional("uninstall"));
     }
 
     @Override
@@ -40,12 +35,5 @@ public class AFKCommand extends AbstractCommand {
 
             AFK.afk(player, true);
         }
-    }
-
-    @Override
-    public List<String> tabComplete(TabCompleteEvent event) {
-        if (event.isArgsSize(1)) return List.of("uninstall");
-
-        return null;
     }
 }

@@ -3,10 +3,7 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.packs.hermitcraft.gemvillagers.GemVllagers;
 import me.teakivy.teakstweaks.packs.hermitcraft.treasuregems.Gems;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.command.AbstractCommand;
-import me.teakivy.teakstweaks.utils.command.CommandType;
-import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
-import me.teakivy.teakstweaks.utils.command.TabCompleteEvent;
+import me.teakivy.teakstweaks.utils.command.*;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 
@@ -15,16 +12,11 @@ import java.util.List;
 public class GemCommand extends AbstractCommand {
 
     public GemCommand() {
-        super("treasure-gems", "gem", "<gem | villager> <type>", CommandType.PLAYER_ONLY);
+        super(CommandType.PLAYER_ONLY, "treasure-gems", "gem", Arg.required("villager", "give"), Arg.required("type"), Arg.optional("amount"));
     }
 
     @Override
     public void playerCommand(PlayerCommandEvent event) {
-        if (!event.hasArgs()) {
-            sendError(ErrorType.MISSING_ACTION);
-            return;
-        }
-
         if (event.isArg(0, "villager")) {
             if (!checkPermission("villager")) return;
             if (!event.hasArgs(2)) {

@@ -486,10 +486,10 @@
   "gem.gems.topaz": "<yellow>Topaz",
   "gem.gems.sapphire": "<dark_blue>Sapphire",
 
-  "graves.command_description": "Keep Inventory stands no chance.",
-  "graves.error.no_grave": "<red>You don't have a recent grave!",
-  "graves.given_key": "<green>You have been given a grave key!",
-  "graves.removed_graves": "<yellow>Removed all loaded Graves!",
+  "grave.command_description": "Keep Inventory stands no chance.",
+  "grave.error.no_grave": "<red>You don't have a recent grave!",
+  "grave.given_key": "<green>You have been given a grave key!",
+  "grave.removed_graves": "<yellow>Removed all loaded Graves!",
 
   "home.command_description": "Teleport, Set, or Delete your Homes!",
   "home.error.missing_home_name": "<red>Please specify a name for your home!",

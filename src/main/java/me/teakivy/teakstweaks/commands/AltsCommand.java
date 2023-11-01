@@ -3,10 +3,7 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.teakstweaks.spectatoralts.SpectatorAlts;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.command.AbstractCommand;
-import me.teakivy.teakstweaks.utils.command.CommandType;
-import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
-import me.teakivy.teakstweaks.utils.command.TabCompleteEvent;
+import me.teakivy.teakstweaks.utils.command.*;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -17,22 +14,18 @@ import java.util.UUID;
 public class AltsCommand extends AbstractCommand {
 
     public AltsCommand() {
-        super("spectator-alts", "alts", "<add | remove | list> <alt> [player]", CommandType.PLAYER_ONLY);
+        super(CommandType.PLAYER_ONLY, "spectator-alts", "alts", Arg.required("add", "remove", "list"), Arg.optional("alt"), Arg.optional("player"));
     }
 
     @Override
     public void playerCommand(PlayerCommandEvent event) {
         Player player = event.getPlayer();
-        if (event.getArgsLength() < 1) {
-            sendUsage();
-            return;
-        }
-
-        String action = event.getArg(0);
         UUID main = player.getUniqueId();
         UUID secondary = null;
 
-        if (event.getArgsLength() > 1) {
+        String action = event.getArg(0);
+
+        if (event.hasArgs(2)) {
             secondary = Bukkit.getPlayerUniqueId(event.getArg(1));
 
             if (secondary == null) {
@@ -41,7 +34,7 @@ public class AltsCommand extends AbstractCommand {
             }
         }
 
-        if (event.getArgsLength() > 2) {
+        if (event.hasArgs(3)) {
             if (!player.isOp()) {
                 sendError("no_permission_modify_others");
                 return;
@@ -62,7 +55,7 @@ public class AltsCommand extends AbstractCommand {
             return;
         }
 
-        if (event.getArgsLength() < 2) {
+        if (!event.hasArgs(3)) {
             sendUsage();
             return;
         }
@@ -111,18 +104,18 @@ public class AltsCommand extends AbstractCommand {
 
     @Override
     public List<String> tabComplete(TabCompleteEvent event) {
-        if (event.getArgsLength() == 1) return List.of("add", "remove", "list");
+        if (event.isArg(1)) return List.of("add", "remove", "list");
 
-        if (event.getArgsLength() == 2) {
-            if (event.getArg(0).equals("list")) {
-                return List.of("<player>");
+        if (event.isArg(2)) {
+            if (event.isArg(0, "list")) {
+                return List.of("[player]");
             }
             return List.of("<alt>");
         }
 
-        if (event.getArgsLength() == 3) {
-            if (event.getArg(0).equals("add") || event.getArg(0).equals("remove")) {
-                return List.of("<player>");
+        if (event.isArg(3)) {
+            if (event.isArg(0, "add") || event.isArg(0, "remove")) {
+                return List.of("[player]");
             }
         }
 

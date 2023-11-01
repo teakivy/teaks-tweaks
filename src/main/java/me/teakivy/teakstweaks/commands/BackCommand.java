@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 public class BackCommand extends AbstractCommand {
 
     public BackCommand() {
-        super("back", "back", CommandType.PLAYER_ONLY);
+        super(CommandType.PLAYER_ONLY, "back", "back");
 
         setCooldownTime(getConfig().getInt("packs.back.teleport-cooldown"));
     }

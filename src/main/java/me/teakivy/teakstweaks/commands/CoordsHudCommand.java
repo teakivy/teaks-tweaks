@@ -11,7 +11,7 @@ import java.util.List;
 public class CoordsHudCommand extends AbstractCommand {
 
     public CoordsHudCommand() {
-        super("coords-hud", "coordshud", List.of("ch"), CommandType.PLAYER_ONLY);
+        super(CommandType.PLAYER_ONLY, "coords-hud", "coordshud", List.of("ch"));
     }
 
     @Override

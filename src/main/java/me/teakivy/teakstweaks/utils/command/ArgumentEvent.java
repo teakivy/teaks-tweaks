@@ -28,6 +28,9 @@ public class ArgumentEvent {
     public boolean isArg(int index, String arg) {
         return args[index].equals(arg);
     }
+    public boolean isArg(int index) {
+        return args.length - 1 == index;
+    }
 
     public boolean hasArgs() {
         return args.length > 0;

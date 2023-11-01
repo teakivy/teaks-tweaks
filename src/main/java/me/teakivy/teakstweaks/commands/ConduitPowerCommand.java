@@ -13,7 +13,7 @@ import java.util.List;
 public class ConduitPowerCommand extends AbstractCommand {
 
     public ConduitPowerCommand() {
-        super("spectator-conduit-power", "conduitpower", List.of("cp"), CommandType.PLAYER_ONLY);
+        super(CommandType.PLAYER_ONLY, "spectator-conduit-power", "conduitpower", List.of("cp"));
     }
 
     @Override

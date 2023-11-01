@@ -2,10 +2,7 @@ package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.packs.survival.durabilityping.DuraPing;
 import me.teakivy.teakstweaks.packs.survival.durabilityping.DuraPingOption;
-import me.teakivy.teakstweaks.utils.command.AbstractCommand;
-import me.teakivy.teakstweaks.utils.command.CommandType;
-import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
-import me.teakivy.teakstweaks.utils.command.TabCompleteEvent;
+import me.teakivy.teakstweaks.utils.command.*;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -17,7 +14,7 @@ import java.util.Set;
 public class DurabilityPingCommand extends AbstractCommand {
 
     public DurabilityPingCommand() {
-        super("durability-ping", "durabilityping", "[preview | set] [option] [value]", List.of("duraping", "dp"), CommandType.PLAYER_ONLY);
+        super(CommandType.PLAYER_ONLY, "durability-ping", "durabilityping", List.of("duraping", "dp"), Arg.optional("preview", "set"), Arg.optional("option"), Arg.optional("value"));
     }
 
     @Override

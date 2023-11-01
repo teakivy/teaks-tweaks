@@ -34,8 +34,8 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     protected final String description;
     protected final String permission;
     protected final List<String> alias;
-    protected final String usage;
-    protected final String permMessage;
+
+    protected final Arg[] args;
     protected final String translationKey;
 
     protected static CommandMap cmap;
@@ -181,9 +181,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     public AbstractCommand(String parentPack, String command, String args, String description, String permissionMessage, List<String> aliases, CommandType commandType, String translationKey) {
         this.parentPack = parentPack;
         this.command = command.toLowerCase();
-        this.usage = "/" + command + " " + (args == null ? "" : args);
         this.description = description;
-        this.permMessage = permissionMessage;
         this.alias = aliases;
         this.permission = "teakstweaks." + parentPack + ".command." + command;
         this.commandType = commandType;
@@ -191,7 +189,77 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
 
         this.cooldownTime = 0;
         this.cooldownMap = new HashMap<>();
+        this.args = new Arg[]{};
+    }
 
+    /**
+     * Create a new AbstractCommand
+     * @param type The command type
+     * @param parentPack The pack this command belongs to
+     * @param command The command name
+     */
+    public AbstractCommand(CommandType type, String parentPack, String command) {
+        this(type, parentPack, command, null, null, null, new Arg[]{});
+    }
+
+    /**
+     * Create a new AbstractCommand
+     * @param type The command type
+     * @param parentPack The pack this command belongs to
+     * @param command The command name
+     * @param args The command arguments
+     */
+    public AbstractCommand(CommandType type, String parentPack, String command, Arg... args) {
+        this(type, parentPack, command, null, null, null, args);
+    }
+
+    /**
+     * Create a new AbstractCommand
+     * @param type The command type
+     * @param parentPack The pack this command belongs to
+     * @param command The command name
+     * @param aliases The command aliases
+     * @param args The command arguments
+     */
+    public AbstractCommand(CommandType type, String parentPack, String command, List<String> aliases, Arg... args) {
+        this(type, parentPack, command, null, aliases, null, args);
+    }
+
+    /**
+     * Create a new AbstractCommand
+     * @param type The command type
+     * @param parentPack The pack this command belongs to
+     * @param command The command name
+     * @param aliases The command aliases
+     * @param translationKey The translation key
+     * @param args The command arguments
+     */
+    public AbstractCommand(CommandType type, String parentPack, String command, List<String> aliases, String translationKey, Arg... args) {
+        this(type, parentPack, command, null, aliases, translationKey, args);
+    }
+
+    /**
+     * Create a new AbstractCommand
+     * @param type The command type
+     * @param parentPack The pack this command belongs to
+     * @param command The command name
+     * @param description The command description
+     * @param aliases The command aliases
+     * @param translationKey The translation key
+     * @param args The command arguments
+     */
+    public AbstractCommand(CommandType type, String parentPack, String command, String description, List<String> aliases, String translationKey, Arg... args) {
+        this.parentPack = parentPack;
+        this.command = command.toLowerCase();
+        this.args = args;
+        this.description = description == null ? Translatable.getString(command + ".command_description") : description;
+        this.alias = aliases;
+        this.permission = "teakstweaks." + parentPack + ".command." + command;
+        this.commandType = type;
+        this.translationKey = translationKey == null ? command : translationKey;
+
+        this.cooldownTime = 0;
+        this.cooldownMap = new HashMap<>();
     }
 
     /**
@@ -206,8 +274,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         ReflectCommand cmd = new ReflectCommand(this.command);
         if (this.alias != null) cmd.setAliases(this.alias);
         if (this.description != null) cmd.setDescription(this.description);
-        if (this.usage != null) cmd.setUsage(this.usage);
-        if (this.permMessage != null) cmd.setPermissionMessage(this.permMessage);
+        cmd.setUsage(getUsageString());
         getCommandMap().register("", cmd);
         cmd.setExecutor(this);
 
@@ -290,6 +357,16 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @return Whether or not the command was successful
      */
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        int requiredArgs = 0;
+        for (Arg arg : this.args) {
+            if (arg == null) continue;
+            if (arg.isRequired()) requiredArgs++;
+        }
+        if (args.length < requiredArgs) {
+            sender.sendMessage(getUsage());
+            return true;
+        }
+
         this.sender = sender;
         if (checkPermission()) return true;
 
@@ -408,6 +485,13 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @return A list of possible tab completions
      */
     public List<String> tabComplete(TabCompleteEvent event) {
+        for (int i = 0; i < args.length; i++) {
+            Arg arg = args[i];
+            if (arg == null) continue;
+            if (event.getArgsLength() - 1 == i) {
+                return List.of(arg.getOptions());
+            }
+        }
         return null;
     }
 
@@ -447,16 +531,16 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @return The string
      */
     public Component getText(String key, TagResolver... resolvers) {
-        return Translatable.get(command + "." + key, resolvers);
+        return Translatable.get(translationKey + "." + key, resolvers);
     }
 
     public String getString(String key) {
-        return Translatable.getString(command + "." + key);
+        return Translatable.getString(translationKey + "." + key);
     }
 
     @Deprecated
     public String getString(String key, TagResolver... resolvers) {
-        return Translatable.getString(command + "." + key);
+        return Translatable.getString(translationKey + "." + key);
     }
 
     /**
@@ -465,7 +549,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @return The string
      */
     public Component getError(String key, TagResolver... resolvers) {
-        return Translatable.get(command + ".error." + key, resolvers);
+        return Translatable.get(translationKey + ".error." + key, resolvers);
     }
 
     public Component newText(String text, TagResolver... resolvers) {
@@ -482,12 +566,23 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         return Translatable.get(key, resolvers);
     }
 
+    public String getUsageString() {
+        StringBuilder usage = new StringBuilder("/" + command);
+        if (args != null) {
+            for (Arg arg : args) {
+                usage.append(" ").append(arg.toString());
+            }
+        }
+
+        return usage.toString();
+    }
+
     /**
      * Get the command usage message
      * @return The usage message
      */
     public Component getUsage() {
-        return get("plugin.commands.usage", Placeholder.parsed("command_usage", this.usage));
+        return get("plugin.commands.usage", Placeholder.parsed("command_usage", getUsageString()));
     }
 
     @Deprecated
