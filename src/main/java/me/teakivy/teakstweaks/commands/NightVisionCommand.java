@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.CommandType;
+import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
@@ -12,22 +13,23 @@ import java.util.List;
 public class NightVisionCommand extends AbstractCommand {
 
     public NightVisionCommand() {
-        super("spectator-night-vision", "nightvision", "/nightvision", List.of("nv"), CommandType.PLAYER_ONLY);
+        super(CommandType.PLAYER_ONLY, "spectator-night-vision", "nightvision", List.of("nv"));
     }
 
     @Override
-    public void playerCommand(Player player, String[] args) {
+    public void playerCommand(PlayerCommandEvent event) {
+        Player player = event.getPlayer();
         if (player.getGameMode() != GameMode.SPECTATOR) {
-            player.sendMessage(getError("wrong_gamemode"));
+            sendError("wrong_gamemode");
             return;
         }
 
-        player.sendMessage(getString("toggled"));
+        sendMessage("toggled");
         if (player.hasPotionEffect(PotionEffectType.NIGHT_VISION)) {
             player.removePotionEffect(PotionEffectType.NIGHT_VISION);
             return;
         }
 
-        player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, PotionEffect.INFINITE_DURATION, 0, true, true));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, PotionEffect.INFINITE_DURATION, 0, false, true));
     }
 }
