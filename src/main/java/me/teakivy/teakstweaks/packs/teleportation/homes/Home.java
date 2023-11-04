@@ -1,6 +1,5 @@
 package me.teakivy.teakstweaks.packs.teleportation.homes;
 
-import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.Bukkit;
@@ -61,16 +60,9 @@ public class Home {
             return;
         }
 
-        if (TeaksTweaks.getInstance().getConfig().getInt("packs.homes.teleport-delay") > 0) {
-            player.sendMessage(Translatable.getLegacy("homes.teleporting_in").replace("%time%", TeaksTweaks.getInstance().getConfig().getInt("packs.homes.teleport-delay") + ""));
-            Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
-                player.teleport(loc);
-                player.sendMessage(Translatable.getLegacy("homes.teleported").replace("%home%", name));
-            }, TeaksTweaks.getInstance().getConfig().getInt("packs.homes.teleport-delay") * 20L);
-        } else {
-            player.teleport(loc);
-            player.sendMessage(Translatable.getLegacy("homes.teleported").replace("%home%", name));
-        }
+
+        player.teleport(loc);
+        player.sendMessage(Translatable.getLegacy("homes.teleported").replace("%home%", name));
     }
 
     public void delete() {

@@ -3,8 +3,9 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.packs.utilities.spawningspheres.SphereType;
 import me.teakivy.teakstweaks.packs.utilities.spawningspheres.SpheresPack;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.Arg;
 import me.teakivy.teakstweaks.utils.command.CommandType;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -12,68 +13,57 @@ import java.util.List;
 public class SpawningSpheresCommand extends AbstractCommand {
 
     public SpawningSpheresCommand() {
-        super("spawning-spheres", "spawningspheres", "/spawningspheres <create|remove|teleport> <red|blue|green>", List.of("ss", "sphere"), CommandType.PLAYER_ONLY);
+        super(CommandType.PLAYER_ONLY, "spawning-spheres", "spawningspheres", List.of("ss", "sphere"), Arg.required("create", "remove", "teleport"), Arg.required("red", "blue", "green"));
     }
 
     @Override
-    public void playerCommand(Player player, String[] args) {
-        if (args.length < 2) {
-            sendUsage(player);
-            return;
-        }
-
-        SphereType type = SphereType.getSphereType(args[1]);
+    public void playerCommand(PlayerCommandEvent event) {
+        SphereType type = SphereType.getSphereType(event.getArg(1));
         if (type == null) {
-            player.sendMessage(getError("invalid_color"));
+            sendError("invalid_color");
             return;
         }
 
-        if (args[0].equals("create")) {
-            if (!checkPermission(player, "create")) return;
+        Player player = event.getPlayer();
+        if (event.isArg(0, "create")) {
+            if (!checkPermission("create")) return;
 
             boolean success = SpheresPack.summonSphere(type, player.getLocation());
             if (!success) {
-                player.sendMessage(getError("in_use", Placeholder.parsed("color", type.getName())));
+                sendError("in_use", insert("color", type.getName()));
                 return;
             }
 
-            player.sendMessage(getString("summoned").replace("%color%", type.getName()));
+            sendMessage("summoned", insert("color", type.getName()));
             return;
         }
 
-        if (args[0].equals("remove")) {
-            if (!checkPermission(player, "remove")) return;
+        if (event.isArg(0, "remove")) {
+            if (!checkPermission("remove")) return;
 
             boolean success = SpheresPack.removeSphere(type, player);
             if (!success) {
-                player.sendMessage(getError("not_in_use", Placeholder.parsed("color", type.getName())));
+                sendError("not_in_use", insert("color", type.getName()));
                 return;
             }
 
-            player.sendMessage(getString("removing").replace("%color%", type.getName()));
+            sendMessage("removing", insert("color", type.getName()));
             return;
         }
 
-        if (args[0].equals("teleport")) {
-            if (!checkPermission(player, "teleport")) return;
+        if (event.isArg(0, "teleport")) {
+            if (!checkPermission("teleport")) return;
 
             boolean success = SpheresPack.teleport(type, player);
             if (!success) {
-                player.sendMessage(getError("not_in_use", Placeholder.parsed("color", type.getName())));
+                sendError("not_in_use", insert("color", type.getName()));
                 return;
             }
 
-            player.sendMessage(getString("teleporting").replace("%color%", type.getName()));
+            sendMessage("teleporting", insert("color", type.getName()));
             return;
         }
 
-        sendUsage(player);
-    }
-
-    @Override
-    public List<String> tabComplete(String[] args) {
-        if (args.length == 1) return List.of("create", "remove", "teleport");
-        if (args.length == 2) return List.of("red", "blue", "green");
-        return null;
+        sendUsage();
     }
 }

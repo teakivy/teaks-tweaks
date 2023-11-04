@@ -29,21 +29,21 @@ import java.util.UUID;
  */
 public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
 
-    protected final String parentPack;
+    private final String parentPack;
 
-    protected final String command;
-    protected final String description;
-    protected final String permission;
-    protected final List<String> alias;
+    private final String command;
+    private final String description;
+    private final String permission;
+    private final List<String> alias;
 
-    protected final Arg[] args;
-    protected final String translationKey;
+    private final Arg[] args;
+    private final String translationKey;
 
-    protected static CommandMap cmap;
-    protected final CommandType commandType;
+    private static CommandMap cmap;
+    private final CommandType commandType;
 
-    protected int cooldownTime;
-    protected HashMap<UUID, Long> cooldownMap;
+    private int cooldownTime;
+    private HashMap<UUID, Long> cooldownMap;
 
 
     private CommandSender sender;
@@ -193,6 +193,10 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         this.args = new Arg[]{};
     }
 
+    public AbstractCommand(CommandType type, String command, List<String> aliases, Arg... args) {
+        this(type, null, command, aliases, args);
+    }
+
     public AbstractCommand(CommandType type, String command, Arg... args) {
         this(type, null, command, args);
     }
@@ -205,6 +209,18 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      */
     public AbstractCommand(CommandType type, String parentPack, String command) {
         this(type, parentPack, command, null, null, null, new Arg[]{});
+    }
+
+    /**
+     * Create a new AbstractCommand
+     * @param type The command type
+     * @param parentPack The pack this command belongs to
+     * @param command The command name
+     * @param translationKey The translation key
+     * @param args The command arguments
+     */
+    public AbstractCommand(CommandType type, String parentPack, String command, String translationKey, Arg... args) {
+        this(type, parentPack, command, null, null, translationKey, args);
     }
 
     /**
@@ -664,6 +680,10 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
 
     public void sendString(String message) {
         this.sender.sendMessage(newText(message));
+    }
+
+    public void sendText(String message, TagResolver... resolvers) {
+        this.sender.sendMessage(newText(message, resolvers));
     }
 
     public TagResolver.Single insert(@Subst("") String key, String value) {

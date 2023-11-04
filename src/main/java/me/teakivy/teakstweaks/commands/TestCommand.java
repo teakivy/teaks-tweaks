@@ -8,11 +8,11 @@ import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 public class TestCommand extends AbstractCommand {
 
     public TestCommand() {
-        super(null, "test", CommandType.PLAYER_ONLY);
+        super(CommandType.PLAYER_ONLY, "test");
     }
 
     @Override
     public void playerCommand(PlayerCommandEvent event) {
-        sendMessage("test", Placeholder.parsed("name", event.getPlayer().getName()));
+        sendMessage("test", insert("name", event.getPlayer().getName()));
     }
 }

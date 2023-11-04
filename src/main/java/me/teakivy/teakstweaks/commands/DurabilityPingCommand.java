@@ -173,7 +173,7 @@ public class DurabilityPingCommand extends AbstractCommand {
 
         message += getString("config." + option + ".name");
 
-        sendMessage(newText(message));
+        sendText(message);
     }
 
     private void sendStrike() {

@@ -518,8 +518,6 @@ packs:
     enabled: false
     # Name of the world to teleport to the spawn of (ex: 'world', 'world_nether', 'world_the_end', etc)
     world: world
-    # Enter the number of seconds required to stand still after running the spawn command
-    teleport-delay: 0
     # Enter the number of seconds required to wait between uses of the spawn command
     teleport-cooldown: 0
 
@@ -535,8 +533,6 @@ packs:
     enabled: false
     # Enter how many homes a player can have. Use 0 for unlimited homes.
     max-homes: 0
-    # Enter the number of seconds required to stand still after running the home command
-    teleport-delay: 0
     # Enter the number of seconds required to wait between uses of the home command
     teleport-cooldown: 0
 
@@ -555,8 +551,6 @@ packs:
     enabled: false
     # Whether or not death locations should be saved in the back command
     save-death-location: false
-    # Enter the number of seconds required to stand still after running the back command
-    teleport-delay: 0
     # Enter the number of seconds required to wait between uses of the back command
     teleport-cooldown: 0
 

@@ -1,8 +1,7 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.packs.survival.workstationhighlights.Highlighter;
-import me.teakivy.teakstweaks.utils.command.AbstractCommand;
-import me.teakivy.teakstweaks.utils.command.CommandType;
+import me.teakivy.teakstweaks.utils.command.*;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.*;
@@ -33,34 +32,35 @@ public class WorkstationHighlightCommand extends AbstractCommand {
     };
 
     public WorkstationHighlightCommand() {
-        super("workstation-highlights", "workstationhighlight", "/workstationhighlight", CommandType.PLAYER_ONLY);
+        super(CommandType.PLAYER_ONLY, "workstation-highlights", "workstationhighlight", Arg.optional("profession"), Arg.optional("radius"));
     }
 
     @Override
-    public void playerCommand(Player player, String[] args) {
+    public void playerCommand(PlayerCommandEvent event) {
+        Player player = event.getPlayer();
         String profession = professionTypes[0];
         int radius = 3;
 
-        if (args.length >= 1) {
-            if (!Arrays.toString(professionTypes).contains(args[0])) {
-                player.sendMessage(getString("error.invalid_profession"));
+        if (event.hasArgs(1)) {
+            if (!Arrays.toString(professionTypes).contains(event.getArg(0))) {
+                sendError("invalid_profession");
                 return;
             }
 
-            profession = args[0];
+            profession = event.getArg(0);
         }
 
-        if (args.length == 2) {
+        if (event.hasArgs(2)) {
             try {
-                radius = Integer.parseInt(args[1]);
+                radius = Integer.parseInt(event.getArg(1));
             } catch (NumberFormatException e) {
-                player.sendMessage(getString("error.invalid_radius"));
+                sendError("invalid_radius");
                 return;
             }
         }
 
         if (radius < 1 || radius > 16) {
-            player.sendMessage(getString("error.radius_out_of_bounds"));
+            sendError("error.radius_out_of_bounds");
             return;
         }
 
@@ -83,31 +83,27 @@ public class WorkstationHighlightCommand extends AbstractCommand {
         }
 
         if (entity == null) {
-            player.sendMessage(getString("error.no_workstations_found"));
+           sendError("no_workstations_found");
             return;
         }
 
         Villager villager = (Villager) entity;
         Location jobSite = villager.getMemory(MemoryKey.JOB_SITE);
         if (jobSite == null) {
-            player.sendMessage(getString("error.no_job_site"));
+            sendError("no_job_site");
             return;
         }
 
         villager.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 200, 0, false, false, false));
         Highlighter.glowingBlock(jobSite, 200);
         createParticles(jobSite.add(.5, 1, .5));
-        player.sendMessage(getString("found")
-                .replace("%x%", ((int) jobSite.getX()) + "")
-                .replace("%y%", ((int) jobSite.getY()) + "")
-                .replace("%z%", ((int) jobSite.getZ()) + "")
-        );
+        sendMessage("found", insert("x", jobSite.getBlockX()), insert("y", jobSite.getBlockY()), insert("z", jobSite.getBlockZ()));
     }
 
     @Override
-    public List<String> tabComplete(String[] args) {
-        if (args.length == 1) return Arrays.asList(professionTypes);
-        if (args.length == 2) return List.of("[radius]");
+    public List<String> tabComplete(TabCompleteEvent event) {
+        if (event.isArg(0)) return Arrays.asList(professionTypes);
+        if (event.isArg(1)) return List.of("[radius]");
 
         return null;
     }

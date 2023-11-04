@@ -39,7 +39,7 @@ public class DeleteHomeCommand extends AbstractCommand {
 
     @Override
     public List<String> tabComplete(TabCompleteEvent event) {
-        if (event.getArgsLength() != 1) return null;
+        if (!event.isArgsSize(1)) return null;
 
         List<String> arguments = new ArrayList<>();
 
