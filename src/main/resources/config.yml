@@ -165,12 +165,6 @@ packs:
     # Alts will always be able to teleport to their main account
     allow-player-teleport: true
 
-
-
-
-
-
-
   # Vanilla Tweaks:
 
   # Survival:
@@ -224,32 +218,6 @@ packs:
       display-to-everyone: false
       # Whether or not to display the AFK message to Server Console
       display-to-console: true
-
-  # Multiplayer Sleep
-  # Not all players in the overworld need to sleep to skip the night & the rain.
-  multiplayer-sleep:
-    enabled: false
-    # Announce Type
-    # Where to announce that a player is sleeping
-    # Types: hidden, bossbar, actionbar, chat (default: chat)
-    announce-type: chat
-    # Immediate Chat Display
-    # Whether to display when a player sleeps immediately
-    immediate-chat-display: false
-    # Sleeping Percentage
-    # Percent of online players that need to sleep in order to skip the night
-    # Use 0 to only need 1 player
-    sleeping-percentage: 0
-    # Boss Bar Color
-    # What color to use for the bossbar display type
-    # Accepts blue, green, pink, purple, red, white, yellow (default: white)
-    boss-bar-color: blue
-    # Always Reset Weather Cycle
-    # When enabled the weather cycle will reset to clear upon sleeping, whether or not the weather is clear already
-    # When sleeping occurs, this may cause rain to briefly appear, and the weather will not rain for a while afterward.
-    # This setting is incompatible with gamerule doWeatherCycle false
-    # When disabled, the weather cycle will only reset to clear upon sleeping if its already raining, just like in vanilla.
-    always-reset-weather-cycle: false
 
   # Graves
   # When a player dies, a grave is made at their location containing all their items. Right-click the grave to receive your items,
@@ -557,13 +525,6 @@ packs:
 
   # Utilities:
 
-  # Custom Villager Shops
-  # Allows you to easily setup Villager Trades in creative using chests.
-  custom-villager-shops:
-    enabled: false
-    # Whether or not creating villager shops requires op
-    require-op: true
-
   # Spawning Spheres
   # Allows you to view the spawnable area around a center point through the use of glowing spheres. Useful for proofing farms
   # Command: /spawnsphere (Permission: teakstweaks.spawning-spheres.command.spawningspheres)
@@ -601,17 +562,6 @@ packs:
     enabled: false
 
   # Hermitcraft:
-
-
-  # Treasure Gems
-  # Adds the chance for treasure gems to spawn inside loot chests. Used to trade with Gem Villagers.
-  # Permission: None
-  # Command:
-  # /gem (Permission: teakstweaks.gem.command.gem)
-  # /gem villager (Permission: teakstweaks.gem.command.gem.villager)
-  # /gem give  (Permission: teakstweaks.gem.command.gem.give)
-  treasure-gems:
-    enabled: false
 
   # Wandering Trades / Wandering Trades (Hermit Edition)
   # Adds Mini Blocks to the Wandering Trader's trades.

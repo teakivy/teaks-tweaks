@@ -73,9 +73,6 @@
   "thunder_shrine.description": "A shrine that allows you to create a thunder storm when offered a Nether Star.<newline>Drop a Nether Star on top of a shrine to create a thunder storm.",
   "thunder_shrine.storm_initialize": "<red>A great storm has been initiated by the ritual.",
 
-  "treasure_gems.name": "Treasure Gems",
-  "treasure_gems.description": "Adds the chance for treasure gems to spawn inside loot chests. Used to trade with Gem Villagers.",
-
   "wandering_trades.name": "Wandering Trades",
   "wandering_trades.description": "Adds Mini Blocks & Player heads to the Wandering Trader's trades.",
 
@@ -167,11 +164,6 @@
   "graves.key.item_lore": "Right-click any grave with this key to open it.",
   "graves.log.created": "Created a grave for <player> at XYZ: <x> <y> <z> in World: <world>",
   "graves.log.contains": "Contains <gold><item_count></gold> items and <gold><xp_count></gold> XP.",
-
-  "multiplayer_sleep.name": "Multiplayer Sleep",
-  "multiplayer_sleep.description": "Not all players in the over world need to sleep to skip the night & the rain.",
-  "multiplayer_sleep.player_sleeping": "<yellow><player> <gold>went to sleep. Sweet dreams!",
-  "multiplayer_sleep.percent_message": "<sleeping> of <required> players asleep.",
 
   "nether_portal_coords.name": "Nether Portal Coords",
   "nether_portal_coords.description": "Adds a command that calculates where a nether portal must be placed in the other dimension. Useful for syncing up nether portals.<newline>Command: /portal",
@@ -267,10 +259,6 @@
 
   "tpa.name": "TPA",
   "tpa.description": "Allows you to request to teleport to another player.<newline>Command: /tpa",
-
-  "custom_villager_shops.name": "Custom Villager Shops",
-  "custom_villager_shops.description": "Allows you to easily setup Villager Trades in creative using chests.",
-  "custom_villager_shops.trade_init": "<yellow>Villager Trades Initialized.",
 
   "item_averages.name": "Item Averages",
   "item_averages.description": "Adds a marker that tracks items flowing past it for 2 minutes, then calculates how many of each item will run through per hour.<newline>Command: /itemavgerage",
@@ -460,32 +448,6 @@
   "durabilityping.config.display_title.name": "Display: Title",
   "durabilityping.config.display_chat.name": "Display: Chat",
   "durabilityping.config.display_actionbar.name": "Display: Actionbar",
-
-  "gem.command_description": "Gems, Villagers, & Gem Villagers.",
-  "gem.error.missing_villager_type": "<red>Please specify a villager type!",
-  "gem.error.missing_gem_type": "<red>Please choose a gem to give!",
-  "gem.error.amount_more_than_64": "<red>You cannot give yourself more than 64 gems!",
-  "gem.error.amount_less_than_1": "<red>You must give yourself at least 1 gem!",
-  "gem.summoned_villager": "<green>Summoned <type> villager!",
-  "gem.villagers.aquatic": "<aqua>Aquatic",
-  "gem.villagers.concrete": "<aqua>Concrete",
-  "gem.villagers.gem_trader": "<aqua>Gem Trader",
-  "gem.villagers.functional": "<aqua>Functional",
-  "gem.villagers.gem_collector": "<gold>Gem Collector",
-  "gem.villagers.more_blocks": "<dark_blue>More Blocks",
-  "gem.villagers.natural": "<dark_blue>Natural",
-  "gem.villagers.nether": "<dark_purple>Nether",
-  "gem.villagers.ores": "<dark_purple>Ores",
-  "gem.villagers.precious": "<red>Precious",
-  "gem.villagers.redstone": "<red>Redstone",
-  "gem.villagers.stones": "<yellow>Stones",
-  "gem.villagers.wood": "<yellow>Wood",
-  "gem.given_gem": "<green>You have been given <amount> <type> Gems!",
-  "gem.gems.aquamarine": "<aqua>Aquamarine",
-  "gem.gems.ruby": "<red>Ruby",
-  "gem.gems.amethyst": "<dark_purple>Amethyst",
-  "gem.gems.topaz": "<yellow>Topaz",
-  "gem.gems.sapphire": "<dark_blue>Sapphire",
 
   "grave.command_description": "Keep Inventory stands no chance.",
   "grave.error.no_grave": "<red>You don't have a recent grave!",
