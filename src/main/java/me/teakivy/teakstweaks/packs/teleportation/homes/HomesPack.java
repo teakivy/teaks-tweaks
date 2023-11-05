@@ -114,7 +114,6 @@ public class HomesPack extends BasePack {
         String[] homes = homeString.split(",");
 
         for (String home : homes) {
-            System.out.println(home);
             NamespacedKey key2 = Key.get("home." + home);
             String locString = data.get(key2, PersistentDataType.STRING);
             if (locString == null) continue;
