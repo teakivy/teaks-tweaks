@@ -4,7 +4,10 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -14,7 +17,6 @@ import java.util.List;
 public class AbstractRecipe {
     protected String name;
     protected String path;
-    protected static TeaksTweaks teaksTweaks = TeaksTweaks.getInstance();
 
     public Material material;
     public String description;
@@ -28,19 +30,19 @@ public class AbstractRecipe {
      */
     public AbstractRecipe(String path, Material material) {
         String langKey = path.replaceAll("-", "_");
-        this.name = Translatable.getLegacy(langKey + ".name");
+        this.name = Translatable.getString(langKey + ".name");
         this.path = path;
 
         this.material = material;
-        this.description = Translatable.getLegacy(langKey + ".description");
+        this.description = Translatable.getString(langKey + ".description");
     }
 
     /**
      * Initialize all recipes for the pack
      */
     public void init() {
-        Logger.info(Translatable.getLegacy("startup.register.crafting_tweak").replace("%name%", this.name));
-        teaksTweaks.addCraftingTweaks(this.name);
+        Logger.info(Translatable.get("startup.register.crafting_tweak", Placeholder.parsed("name", PackType.CRAFTING_TWEAKS.getColor() + name)));
+        TeaksTweaks.getInstance().addCraftingTweaks(this.name);
         CraftingRegister.addEnabledRecipe(this);
         this.registerRecipes();
 
@@ -50,31 +52,31 @@ public class AbstractRecipe {
         StringBuilder newLine = new StringBuilder();
         for (String word : description.split(" ")) {
             if (newLine.length() > 30) {
-                lore.add(ChatColor.GRAY + newLine.toString());
+                lore.add("<gray>" + newLine);
                 newLine = new StringBuilder();
             }
             newLine.append(word).append(" ");
         }
-        lore.add(ChatColor.GRAY + newLine.toString());
-        lore.add("");
-        if (lore.size() >= 1) lore.remove(lore.size() - 1);
-
-        lore.add("");
+        lore.add("<gray>" + newLine);
+        lore.add(" ");
 
         lore.add(PackType.CRAFTING_TWEAKS.getName());
 
-        item.setLore(lore);
+        List<Component> components = new ArrayList<>();
+        for (String l : lore) {
+            components.add(MiniMessage.miniMessage().deserialize(l).decoration(TextDecoration.ITALIC, false));
+        }
 
-        item.editMeta(meta -> {
-            meta.setDisplayName(ChatColor.RESET + Translatable.getLegacy("crafting_tweaks.name_display").replace("%name%", this.name));
-        });
+        item.lore(components);
+
+        item.editMeta(meta -> meta.displayName(MiniMessage.miniMessage().deserialize(PackType.CRAFTING_TWEAKS.getColor() + name).decoration(TextDecoration.ITALIC, false)));
     }
 
     /**
      * Register the pack
      */
     public void register() {
-        if (teaksTweaks.getConfig().getBoolean("crafting-tweaks." + path + ".enabled")) init();
+        if (TeaksTweaks.getInstance().getConfig().getBoolean("crafting-tweaks." + path + ".enabled")) init();
     }
 
     /**

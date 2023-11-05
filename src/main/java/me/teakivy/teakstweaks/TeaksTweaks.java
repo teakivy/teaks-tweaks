@@ -9,7 +9,9 @@ import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
 import me.teakivy.teakstweaks.utils.update.UpdateChecker;
 import me.teakivy.teakstweaks.utils.update.UpdateJoinAlert;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.Listener;
@@ -37,56 +39,50 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
      */
     @Override
     public void onEnable() {
-        try {
-            devMode = getConfig().getBoolean("config.dev-mode");
+        devMode = getConfig().getBoolean("config.dev-mode");
 
-            // Credits
-            createCredits();
+        // Credits
+        createCredits();
 
-            // Metrics
-            Metrics metrics = new Metrics(this, 12001);
-            registerCustomMetrics(metrics);
+        // Metrics
+        Metrics metrics = new Metrics(this, 12001);
+        registerCustomMetrics(metrics);
 
-            // Update Config.yml
-            updateConfig();
-
-
-            // Language
-            Translatable.init(getConfig().getString("settings.language"));
-
-            // Update Checker
-            getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
-            getServer().getPluginManager().registerEvents(new GUIListener(), this);
-
-            Bukkit.getScheduler().runTaskLater(this, UpdateChecker::sendUpdateMessage, 20L * 3);
+        // Update Config.yml
+        updateConfig();
 
 
-            // Crafting Tweaks
-            CraftingRegister.registerAll();
+        // Language
+        Translatable.init(getConfig().getString("settings.language"));
 
-            // Commands
-            Register.registerCommands();
+        // Update Checker
+        getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
+        getServer().getPluginManager().registerEvents(new GUIListener(), this);
 
-            // Config
-            this.saveDefaultConfig();
+        Bukkit.getScheduler().runTaskLater(this, UpdateChecker::sendUpdateMessage, 20L * 3);
 
-            tagListener = new Tag();
 
-            // Plugin startup logic
-            Logger.info("");
-            Logger.info(Translatable.getLegacy("startup.plugin.started").replace("%version%", this.getDescription().getVersion()));
-            Logger.info("");
+        // Crafting Tweaks
+        CraftingRegister.registerAll();
 
-            // Packs
-            register = new Register();
-            register.registerAll();
+        // Commands
+        Register.registerCommands();
 
-            removeDataFile();
-        } catch (Exception e) {
-            e.printStackTrace();
-            Logger.error("An error occurred while enabling the plugin. Please report this to the developer.");
-//            Bukkit.getPluginManager().disablePlugin(this);
-        }
+        // Config
+        this.saveDefaultConfig();
+
+        tagListener = new Tag();
+
+        // Plugin startup logic
+        Logger.info(newText(" "));
+        Logger.info(Translatable.get("startup.plugin.started", Placeholder.parsed("version", this.getDescription().getVersion())));
+        Logger.info(newText(" "));
+
+        // Packs
+        register = new Register();
+        register.registerAll();
+
+        removeDataFile();
     }
 
     /**
@@ -95,7 +91,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        Logger.info(Translatable.getLegacy("startup.plugin.shutting_down"));
+        Logger.info(Translatable.get("startup.plugin.shutting_down"));
     }
 
     /**
@@ -107,7 +103,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
 
     /**
      * Add a pack to the active packs list
-     * @param name
+     * @param name Pack name
      */
     public void addPack(String name) {
         activePacks.add(name);
@@ -168,8 +164,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     private void createCredits() {
         try {
             new Credits().createCredits();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignored) {
         }
     }
 
@@ -188,7 +183,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
             e.printStackTrace();
         }
 
-        Logger.info("Updated Plugin Config");
+        Logger.info(newText("Updated Plugin Config"));
     }
 
     /**
@@ -215,6 +210,10 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
      */
     public static boolean isDevMode() {
         return devMode;
+    }
+
+    public static Component newText(String text) {
+        return MiniMessage.miniMessage().deserialize(text);
     }
 
 }

@@ -15,7 +15,7 @@ public class Logger {
     public static void log(LogLevel level, Component message, boolean toAdmins) {
         if (message == null) return;
 
-        String text = "<dark_gray>[<gold><bold>TeaksTweaks</bold></gold>]<reset> " + getPrefix(level) + " <reset>" + message;
+        String text = "<dark_gray>[<gold><bold>TeaksTweaks</bold></gold>]<reset> " + getPrefix(level) + " <reset>" + MiniMessage.miniMessage().serialize(message);
 
         Bukkit.getConsoleSender().sendMessage(MiniMessage.miniMessage().deserialize(text));
 

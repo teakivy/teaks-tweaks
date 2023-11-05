@@ -38,6 +38,7 @@ public class HomesPack extends BasePack {
 
     public static boolean setHome(Player player, String name, Location loc) {
         if (getHome(player, name) != null) return false;
+        if (!checkName(name)) return false;
 
         PersistentDataContainer data = player.getPersistentDataContainer();
         NamespacedKey key = Key.get("homes");
@@ -113,6 +114,7 @@ public class HomesPack extends BasePack {
         String[] homes = homeString.split(",");
 
         for (String home : homes) {
+            System.out.println(home);
             NamespacedKey key2 = Key.get("home." + home);
             String locString = data.get(key2, PersistentDataType.STRING);
             if (locString == null) continue;
@@ -138,6 +140,21 @@ public class HomesPack extends BasePack {
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
         unloadHomes(event.getPlayer());
+    }
+
+    private static boolean checkName(String name) {
+        char[] allowedChars = "abcdefghijklmnopqrstuvwxyz1234567890_-".toCharArray();
+        for (char c : name.toCharArray()) {
+            boolean allowed = false;
+            for (char allowedChar : allowedChars) {
+                if (c == allowedChar) {
+                    allowed = true;
+                    break;
+                }
+            }
+            if (!allowed) return false;
+        }
+        return true;
     }
 
 }

@@ -41,6 +41,7 @@
   "startup.update.download": "Visit <url> to download the latest version!",
   "startup.update.join_alert": "<yellow>There is a new version of Teak's Tweaks available!<newline><click:open_url:<url>>Click here to download <gold>Teak's Tweaks v<version></gold>!",
   "startup.update.join_alert.hover": "<gold>Click to download Teak's Tweaks v<version>!",
+  "startup.register.pack": "Registered Pack: <name>",
   "startup.register.crafting_tweak": "Registered Crafting Tweak: <name>",
   "startup.register.command": "Registered Command: /<command>",
   "startup.lang.error.missing_language_file": "<red>Could not find language file for <lang>! Using <current_lang_name> (<current_lang_key>.json) instead.",

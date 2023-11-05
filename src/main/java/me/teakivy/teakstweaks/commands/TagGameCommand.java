@@ -5,6 +5,7 @@ import me.teakivy.teakstweaks.utils.command.Arg;
 import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -29,7 +30,7 @@ public class TagGameCommand extends AbstractCommand {
 
             ItemStack tag = new ItemStack(Material.NAME_TAG);
             ItemMeta tagMeta = tag.getItemMeta();
-            tagMeta.setDisplayName(getString("item_name"));
+            tagMeta.displayName(newText(getString("item_name")).decoration(TextDecoration.ITALIC, false));
             tagMeta.setUnbreakable(true);
             tag.setItemMeta(tagMeta);
 

@@ -18,17 +18,17 @@ public enum PackType {
      * Gets the color for the pack type
      * @return chat color
      */
-    public Object getColor() {
+    public String getColor() {
         return switch (this) {
-            case EXPERIMENTAL -> ChatColor.DARK_RED;
-            case HERMITCRAFT -> ChatColor.DARK_GREEN;
-            case ITEMS -> ChatColor.AQUA;
-            case MOBS -> ChatColor.YELLOW;
-            case SURVIVAL -> ChatColor.GOLD;
-            case TEAKSTWEAKS -> ChatColor.DARK_PURPLE;
-            case TELEPORTATION -> ChatColor.DARK_AQUA;
-            case UTILITIES -> ChatColor.LIGHT_PURPLE;
-            case CRAFTING_TWEAKS -> ChatColor.RED;
+            case EXPERIMENTAL -> "<dark_red>";
+            case HERMITCRAFT -> "<dark_green>";
+            case ITEMS -> "<aqua>";
+            case MOBS -> "<yellow>";
+            case SURVIVAL -> "<gold>";
+            case TEAKSTWEAKS -> "<dark_purple>";
+            case TELEPORTATION -> "<dark_aqua>";
+            case UTILITIES -> "<light_purple>";
+            case CRAFTING_TWEAKS -> "<red>";
         };
     }
 
