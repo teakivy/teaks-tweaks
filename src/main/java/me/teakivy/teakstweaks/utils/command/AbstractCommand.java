@@ -43,155 +43,11 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     private final CommandType commandType;
 
     private int cooldownTime;
-    private HashMap<UUID, Long> cooldownMap;
+    private final HashMap<UUID, Long> cooldownMap;
 
 
     private CommandSender sender;
     private Player player;
-
-    /**
-     * Create a new AbstractCommand
-     * @param parentPack The pack this command belongs to
-     * @param command The command name
-     * @param commandType The command type
-     */
-    public AbstractCommand(String parentPack, String command, CommandType commandType) {
-        this(parentPack, command, null, Translatable.getLegacy(command + ".command_description"), null, null, commandType, null);
-    }
-
-    /**
-     * Create a new AbstractCommand
-     * @param parentPack The pack this command belongs to
-     * @param command The command name
-     * @param commandType The command type
-     * @param translationKey The translation key
-     */
-    public AbstractCommand(String parentPack, String command, CommandType commandType, String translationKey) {
-        this(parentPack, command, null, Translatable.getLegacy(command + ".command_description"), null, null, commandType, translationKey);
-    }
-
-    /**
-     * Create a new AbstractCommand
-     * @param parentPack The pack this command belongs to
-     * @param command The command name
-     * @param args The command arguments
-     * @param commandType The command type
-     */
-    public AbstractCommand(String parentPack, String command, String args, CommandType commandType) {
-        this(parentPack, command, args, Translatable.getLegacy(command + ".command_description"), null, null, commandType, null);
-    }
-
-    /**
-     * Create a new AbstractCommand
-     * @param parentPack The pack this command belongs to
-     * @param command The command name
-     * @param args The command arguments
-     * @param commandType The command type
-     * @param translationKey The translation key
-     */
-    public AbstractCommand(String parentPack, String command, String args, CommandType commandType, String translationKey) {
-        this(parentPack, command, args, Translatable.getLegacy(command + ".command_description"), null, null, commandType, translationKey);
-    }
-
-    /**
-     * Create a new AbstractCommand
-     * @param parentPack The pack this command belongs to
-     * @param command The command name
-     * @param alias The command aliases
-     * @param commandType The command type
-     */
-    public AbstractCommand(String parentPack, String command, List<String> alias, CommandType commandType) {
-        this(parentPack, command, null, Translatable.getLegacy(command + ".command_description"), null, alias, commandType, null);
-    }
-
-    /**
-     * Create a new AbstractCommand
-     * @param parentPack The pack this command belongs to
-     * @param command The command name
-     * @param alias The command aliases
-     * @param commandType The command type
-     * @param translationKey The translation key
-     */
-    public AbstractCommand(String parentPack, String command, List<String> alias, CommandType commandType, String translationKey) {
-        this(parentPack, command, null, Translatable.getLegacy(command + ".command_description"), null, alias, commandType, translationKey);
-    }
-
-    /**
-     * Create a new AbstractCommand
-     * @param parentPack The pack this command belongs to
-     * @param command The command name
-     * @param args The command arguments
-     * @param alias The command aliases
-     * @param commandType The command type
-     */
-    public AbstractCommand(String parentPack, String command, String args, List<String> alias, CommandType commandType) {
-        this(parentPack, command, args, Translatable.getLegacy(command + ".command_description"), null, alias, commandType, null);
-    }
-
-    /**
-     * Create a new AbstractCommand
-     * @param parentPack The pack this command belongs to
-     * @param command The command name
-     * @param args The command arguments
-     * @param alias The command aliases
-     * @param commandType The command type
-     * @param translationKey The translation key
-     */
-    public AbstractCommand(String parentPack, String command, String args, List<String> alias, CommandType commandType, String translationKey) {
-        this(parentPack, command, args, Translatable.getString(command + ".command_description"), null, alias, commandType, translationKey);
-    }
-
-    /**
-     * Create a new AbstractCommand
-     * @param parentPack The pack this command belongs to
-     * @param command The command name
-     * @param args The command arguments
-     * @param description The command description
-     * @param aliases The command aliases
-     * @param commandType The command type
-     */
-    public AbstractCommand(String parentPack, String command, String args, String description, List<String> aliases, CommandType commandType) {
-        this(parentPack, command, args, description, null, aliases, commandType, null);
-    }
-
-    /**
-     * Create a new AbstractCommand
-     * @param parentPack The pack this command belongs to
-     * @param command The command name
-     * @param args The command arguments
-     * @param description The command description
-     * @param aliases The command aliases
-     * @param commandType The command type
-     * @param translationKey The translation key
-     */
-    public AbstractCommand(String parentPack, String command, String args, String description, List<String> aliases, CommandType commandType, String translationKey) {
-        this(parentPack, command, args, description, null, aliases, commandType, translationKey);
-    }
-
-    /**
-     * Create a new AbstractCommand
-     * @param parentPack The pack this command belongs to
-     * @param command The command name
-     * @param args The command arguments
-     * @param description The command description
-     * @param permissionMessage The permission message
-     * @param aliases The command aliases
-     * @param commandType The command type
-     * @param translationKey The translation key
-     */
-    public AbstractCommand(String parentPack, String command, String args, String description, String permissionMessage, List<String> aliases, CommandType commandType, String translationKey) {
-        this.parentPack = parentPack;
-        this.command = command.toLowerCase();
-        this.description = description;
-        this.alias = aliases;
-        this.permission = "teakstweaks." + parentPack + ".command." + command;
-        this.commandType = commandType;
-        this.translationKey = translationKey == null ? command : translationKey;
-
-        this.cooldownTime = 0;
-        this.cooldownMap = new HashMap<>();
-        this.args = new Arg[]{};
-    }
 
     public AbstractCommand(CommandType type, String command, List<String> aliases, Arg... args) {
         this(type, null, command, aliases, args);
@@ -406,26 +262,6 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         return true;
     }
 
-    /**
-     * Command Executor
-     * @param sender The command sender
-     * @param args The command arguments
-     */
-    @Deprecated
-    public void command(CommandSender sender, String[] args) {
-        sender.sendMessage(getUsage());
-    }
-
-    /**
-     * Player Command Executor
-     * @param player The command sender
-     * @param args The command arguments
-     */
-    @Deprecated
-    public void playerCommand(Player player, String[] args) {
-        player.sendMessage(getUsage());
-    }
-
 
     /**
      * Command Executor
@@ -441,20 +277,6 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      */
     public void playerCommand(PlayerCommandEvent event) {
         sender.sendMessage(getUsage());
-    }
-
-    /**
-     * Check if the sender has permission
-     * @param sender The command sender
-     * @param permission The permission to check
-     * @return false if the sender does not have permission
-     */
-    @Deprecated
-    public boolean checkPermission(CommandSender sender, String permission) {
-        if (sender.hasPermission(this.permission + "." + permission)) return true;
-
-        sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-        return false;
     }
 
 
@@ -516,22 +338,6 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         return null;
     }
 
-    @Deprecated
-    public List<String> tabComplete(String[] args) {
-        return null;
-    }
-
-    @Deprecated
-    public List<String> tabComplete(CommandSender sender, String[] args) {
-        if (!(sender instanceof Player)) return null;
-        return tabComplete((Player) sender, args);
-    }
-
-    @Deprecated
-    public List<String> tabComplete(Player player, String[] args) {
-        return null;
-    }
-
     public Player checkPlayer() {
         if (sender instanceof Player) return (Player) sender;
 
@@ -556,11 +362,6 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     }
 
     public String getString(String key) {
-        return Translatable.getString(translationKey + "." + key);
-    }
-
-    @Deprecated
-    public String getString(String key, TagResolver... resolvers) {
         return Translatable.getString(translationKey + "." + key);
     }
 
@@ -604,11 +405,6 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      */
     public Component getUsage() {
         return get("plugin.commands.usage", Placeholder.parsed("command_usage", getUsageString()));
-    }
-
-    @Deprecated
-    public void sendUsage(CommandSender sender) {
-        sendMessage(getUsage());
     }
 
     public void sendUsage() {
@@ -655,11 +451,6 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     public boolean isOnCooldown() {
         if (!this.cooldownMap.containsKey(player.getUniqueId())) return false;
         return this.cooldownMap.get(player.getUniqueId()) + (this.cooldownTime * 1000L) > System.currentTimeMillis();
-    }
-
-    public int getCooldown() {
-        if (!this.cooldownMap.containsKey(player.getUniqueId())) return 0;
-        return (int) ((this.cooldownMap.get(player.getUniqueId()) + (this.cooldownTime * 1000L) - System.currentTimeMillis()) / 1000L);
     }
 
     public void sendMessage(String key, TagResolver... resolvers) {

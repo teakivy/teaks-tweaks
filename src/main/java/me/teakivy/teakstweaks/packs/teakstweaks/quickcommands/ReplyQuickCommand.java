@@ -1,9 +1,7 @@
 package me.teakivy.teakstweaks.packs.teakstweaks.quickcommands;
 
-import me.teakivy.teakstweaks.utils.command.AbstractCommand;
-import me.teakivy.teakstweaks.utils.command.CommandType;
+import me.teakivy.teakstweaks.utils.command.*;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -25,46 +23,42 @@ public class ReplyQuickCommand {
 
     class MessageCommand extends AbstractCommand {
         public MessageCommand() {
-            super("quick-commands", "message", "/message <player> <message>", Translatable.getLegacy("quick_commands.message.command_description"), null, List.of("msg", "tell", "whisper", "w"), CommandType.PLAYER_ONLY, null);
+            super(CommandType.PLAYER_ONLY, "quick-commands", "message", List.of("msg", "tell", "whisper", "w"), "quick_commands.message", Arg.required("player"), Arg.required("message"));
         }
 
         @Override
-        public void playerCommand(Player player, String[] args) {
-            if (args.length < 2) {
-                sendUsage(player);
-                return;
-            }
-
-            Player target = Bukkit.getPlayer(args[0]);
+        public void playerCommand(PlayerCommandEvent event) {
+            Player target = Bukkit.getPlayer(event.getArg(0));
+            Player player = event.getPlayer();
             if (target == null) {
-                player.sendMessage(ErrorType.PLAYER_DNE.m());
+                sendError(ErrorType.PLAYER_DNE);
                 return;
             }
 
             StringBuilder message = new StringBuilder();
-            for (int i = 1; i < args.length; i++) {
-                message.append(args[i]).append(" ");
+            for (int i = 1; i < event.getArgs().length; i++) {
+                message.append(event.getArg(i)).append(" ");
             }
 
             target.sendMessage(get("quick_commands.message.whisper_to_you", Placeholder.parsed("player", player.getName()), Placeholder.parsed("message", message.toString())));
-            player.sendMessage(get("quick_commands.message.whisper_to_player", Placeholder.parsed("player", player.getName()), Placeholder.parsed("message", message.toString())));
+            sendMessage("whisper_to_player", Placeholder.parsed("player", player.getName()), Placeholder.parsed("message", message.toString()));
 
             lastMessage.put(player.getUniqueId(), target.getUniqueId());
             lastMessage.put(target.getUniqueId(), player.getUniqueId());
         }
 
         @Override
-        public List<String> tabComplete(Player player, String[] args) {
-            if (args.length == 1) {
+        public List<String> tabComplete(TabCompleteEvent event) {
+            if (event.isArg(0)) {
                 List<String> result = new ArrayList<>();
                 for (Player p : Bukkit.getOnlinePlayers()) {
-                    if (p.getUniqueId().equals(player.getUniqueId())) continue;
+                    if (p.getUniqueId().equals(event.getPlayer().getUniqueId())) continue;
                     result.add(p.getName());
                 }
                 return result;
             }
 
-            if (args.length == 2) return List.of("<message>");
+            if (event.isArg(1)) return List.of("<message>");
 
             return null;
         }
@@ -72,43 +66,39 @@ public class ReplyQuickCommand {
 
     class ReplyCommand extends AbstractCommand {
         public ReplyCommand() {
-            super("quick-commands", "reply", "/reply <message>", Translatable.getLegacy("quick_commands.reply.command_description"), null, List.of("r"), CommandType.PLAYER_ONLY, null);
+            super(CommandType.PLAYER_ONLY, "quick-commands", "reply", List.of("r"), "quick_commands.reply", Arg.required("message"));
         }
 
         @Override
-        public void playerCommand(Player player, String[] args) {
-            if (args.length < 1) {
-                sendUsage(player);
-                return;
-            }
-
+        public void playerCommand(PlayerCommandEvent event) {
+            Player player = event.getPlayer();
             UUID targetUUID = lastMessage.get(player.getUniqueId());
             if (targetUUID == null) {
-                player.sendMessage(get("quick_commands.reply.error.no_reply"));
+                sendError("no_reply");
                 return;
             }
 
             Player target = player.getServer().getPlayer(targetUUID);
             if (target == null) {
-                player.sendMessage(ErrorType.PLAYER_DNE.m());
+                sendError(ErrorType.PLAYER_DNE);
                 return;
             }
 
             StringBuilder message = new StringBuilder();
-            for (String arg : args) {
+            for (String arg : event.getArgs()) {
                 message.append(arg).append(" ");
             }
 
             target.sendMessage(get("quick_commands.message.whisper_to_you", Placeholder.parsed("player", player.getName()), Placeholder.parsed("message", message.toString())));
-            player.sendMessage(get("quick_commands.message.whisper_to_player", Placeholder.parsed("player", player.getName()), Placeholder.parsed("message", message.toString())));
+            sendMessage(get("quick_commands.message.whisper_to_player", Placeholder.parsed("player", player.getName()), Placeholder.parsed("message", message.toString())));
 
             lastMessage.put(player.getUniqueId(), targetUUID);
             lastMessage.put(targetUUID, player.getUniqueId());
         }
 
         @Override
-        public List<String> tabComplete(Player player, String[] args) {
-            if (args.length == 1) return List.of("<message>");
+        public List<String> tabComplete(TabCompleteEvent event) {
+            if (event.isArg(0)) return List.of("<message>");
 
             return null;
         }
