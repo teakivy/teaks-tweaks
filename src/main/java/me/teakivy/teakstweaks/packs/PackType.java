@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs;
 
 import me.teakivy.teakstweaks.utils.lang.Translatable;
-import org.bukkit.ChatColor;
 
 public enum PackType {
     EXPERIMENTAL,

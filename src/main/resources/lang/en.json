@@ -39,7 +39,7 @@
   "startup.plugin.shutting_down": "Teak's Tweaks Shutting Down...",
   "startup.update.version_available": "A new version of Teak's Tweaks is available! v<version>",
   "startup.update.download": "Visit <url> to download the latest version!",
-  "startup.update.join_alert": "<yellow>There is a new version of Teak's Tweaks available!<newline><click:open_url:<url>>Click here to download <gold>Teak's Tweaks v<version></gold>!",
+  "startup.update.join_alert": "<yellow>There is a new version of Teak's Tweaks available!<newline>Click here to download <gold>Teak's Tweaks v<version></gold>!",
   "startup.update.join_alert.hover": "<gold>Click to download Teak's Tweaks v<version>!",
   "startup.register.pack": "Registered Pack: <name>",
   "startup.register.crafting_tweak": "Registered Crafting Tweak: <name>",

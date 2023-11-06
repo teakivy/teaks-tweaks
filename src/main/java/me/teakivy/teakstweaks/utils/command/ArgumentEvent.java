@@ -3,7 +3,7 @@ package me.teakivy.teakstweaks.utils.command;
 import org.bukkit.command.CommandSender;
 
 public class ArgumentEvent {
-    private String[] args;
+    private final String[] args;
 
     public ArgumentEvent(String[] args) {
         this.args = args;
