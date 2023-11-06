@@ -3,9 +3,9 @@ package me.teakivy.teakstweaks.packs.experimental.xpmanagement;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.block.Furnace;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.ThrownExpBottle;
@@ -96,7 +96,7 @@ public class XPManagement extends BasePack {
                 finalXPAmount = item.getAmount() * takeXPAmount;
             } else {
                 int bottles = item.getAmount();
-                int xpTimes = (int) Math.floor(player.getTotalExperience() / takeXPAmount);
+                int xpTimes = (int) Math.floor((double) player.getTotalExperience() / takeXPAmount);
                 if (xpTimes > bottles) {
                     timesToBottle = item.getAmount();
                     finalXPAmount = takeXPAmount * item.getAmount();
@@ -120,9 +120,9 @@ public class XPManagement extends BasePack {
         ItemMeta xpMeta = xpBottle.getItemMeta();
 
         if (getConfig().getBoolean("display-amount")) {
-            List<String> lore = new ArrayList<>();
-            lore.add(getString("bottle_contains").replace("%amount%", String.valueOf(config.getInt("take-xp-amount"))));
-            xpMeta.setLore(lore);
+            List<Component> lore = new ArrayList<>();
+            lore.add(getText("bottle_contains", insert("amount", config.getInt("take-xp-amount"))));
+            xpMeta.lore(lore);
         }
 
         PersistentDataContainer data = xpMeta.getPersistentDataContainer();

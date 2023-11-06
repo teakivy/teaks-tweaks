@@ -4,6 +4,7 @@ import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Base64Serializer;
 import me.teakivy.teakstweaks.utils.Key;
+import net.kyori.adventure.text.Component;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
@@ -136,18 +137,18 @@ public class ArmoredElytras extends BasePack {
 
         HashMap<Enchantment, Integer> enchantmentStorage = new HashMap<>();
 
-        String name = getString("item_name");
+        Component name = getText("item_name");
         if (chestplate.hasItemMeta()) {
             if (chestplate.getItemMeta().hasDisplayName()) {
-                name = chestplate.getItemMeta().getDisplayName();
+                name = chestplate.getItemMeta().displayName();
             }
         }
         if (elytra.hasItemMeta()) {
             if (elytra.getItemMeta().hasDisplayName()) {
-                name = elytra.getItemMeta().getDisplayName();
+                name = elytra.getItemMeta().displayName();
             }
         }
-        meta.setDisplayName(name);
+        meta.displayName(name);
 
         NamespacedKey key = Key.get("armored_elytra");
         meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "true");

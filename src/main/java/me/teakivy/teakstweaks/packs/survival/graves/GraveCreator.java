@@ -9,6 +9,7 @@ import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.ReflectionUtils;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.ArmorStand;
@@ -87,26 +88,25 @@ public class GraveCreator {
 
         if (!config.getBoolean("console-info")) return;
 
-        Logger.info(Translatable.get("graves.log.created")
-                .replace("%player%", player.getName())
-                .replace("%x%", loc.getBlockX() + "")
-                .replace("%y%", loc.getBlockY() + "")
-                .replace("%z%", loc.getBlockZ() + "")
-                .replace("%world%", loc.getWorld().getName())
-
-        );
+        Logger.info(Translatable.get("graves.log.created",
+                Placeholder.parsed("player", player.getName()),
+                Placeholder.parsed("x", loc.getBlockX() + ""),
+                Placeholder.parsed("y", loc.getBlockY() + ""),
+                Placeholder.parsed("z", loc.getBlockZ() + ""),
+                Placeholder.parsed("world", loc.getWorld().getName())));
         int items = 0;
         for (ItemStack item : player.getInventory().getContents()) {
             if (item == null) continue;
             items += item.getAmount();
         }
-        Logger.info(Translatable.get("graves.log.contains")
-                .replace("%item_count%", items + "")
-                .replace("%xp_count%", xp + "")
-        );
+        Logger.info(Translatable.get("graves.log.contains",
+                Placeholder.parsed("item_count", items + ""),
+                Placeholder.parsed("xp_count", xp + "")));
         for (ItemStack item : player.getInventory().getContents()) {
             if (item == null) continue;
-            Logger.info(" - " + ChatColor.GOLD + item.getType().name() + ChatColor.WHITE + " x " + ChatColor.GOLD + item.getAmount());
+            Logger.info(Translatable.get("graves.log.item",
+                    Placeholder.parsed("item", item.getType().toString()),
+                    Placeholder.parsed("amount", item.getAmount() + "")));
         }
     }
 
@@ -151,13 +151,6 @@ public class GraveCreator {
         airTypes.add(Material.FERN);
         airTypes.add(Material.LARGE_FERN);
         return airTypes;
-    }
-
-    public static ArrayList<Material> getFluidTypes() {
-        ArrayList<Material> fluidTypes = new ArrayList<>();
-        fluidTypes.add(Material.WATER);
-        fluidTypes.add(Material.LAVA);
-        return fluidTypes;
     }
 
     public static Location getTopBlock(Location location, int max) {

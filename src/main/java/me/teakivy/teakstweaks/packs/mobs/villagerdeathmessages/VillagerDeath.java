@@ -3,8 +3,10 @@ package me.teakivy.teakstweaks.packs.mobs.villagerdeathmessages;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Logger;
+import net.kyori.adventure.text.Component;
 import org.bukkit.*;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDeathEvent;
 
@@ -18,29 +20,32 @@ public class VillagerDeath extends BasePack {
     public void onMobDeath(EntityDeathEvent event) {
         if (event.getEntity().getType() == EntityType.VILLAGER) {
             Location loc = event.getEntity().getLocation();
-            String deathMessage = getString("death_message")
-                    .replace("%x%", Math.floor(loc.getX()) + "")
-                    .replace("%y%", Math.floor(loc.getY()) + "")
-                    .replace("%z%", Math.floor(loc.getZ()) + "")
-                    .replace("world", getWorldName(loc));
+            Component deathMessage = getText("death_message",
+                    insert("x", loc.getBlockX()),
+                    insert("y", loc.getBlockY()),
+                    insert("z", loc.getBlockZ()),
+                    insert("world", getWorldName(loc)));
 
             if (getConfig().getBoolean("show-in-chat")) {
-                Bukkit.broadcastMessage(deathMessage);
-            } else {
-                Logger.info(deathMessage);
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    player.sendMessage(deathMessage);
+                }
+                return;
             }
+            Logger.info(deathMessage);
         }
     }
 
-    private String getWorldName(Location loc) {
+    private Component getWorldName(Location loc) {
         World world = loc.getWorld();
-        if (world == null) return "";
-        if (world.getName().equalsIgnoreCase("world")) return ChatColor.YELLOW + " in " + ChatColor.GREEN + "Overworld";
-        if (world.getName().equalsIgnoreCase("world_nether"))
-            return ChatColor.YELLOW + " in " + ChatColor.RED + "The Nether";
-        if (world.getName().equalsIgnoreCase("world_the_end"))
-            return ChatColor.YELLOW + " in " + ChatColor.LIGHT_PURPLE + "The End";
-        return "";
+        if (world == null) return newText("<yellow>Unknown World");
+
+        return switch (world.getName()) {
+            case "world" -> newText("<yellow>The Overworld");
+            case "world_nether" -> newText("<red>The Nether");
+            case "world_the_end" -> newText("<light_purple>The End");
+            default -> newText("<yellow>" + world.getName());
+        };
     }
 
 

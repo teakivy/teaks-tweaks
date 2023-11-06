@@ -1,6 +1,8 @@
 package me.teakivy.teakstweaks.utils;
 
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
 
 public enum ErrorType {
     UNKNOWN_ERROR(Translatable.getError("unknown")),
@@ -15,9 +17,9 @@ public enum ErrorType {
     PLAYER_DNE(Translatable.getError("player_dne"));
 
 
-    final String text;
+    final Component text;
 
-    ErrorType(final String error) {
+    ErrorType(final Component error) {
         this.text = error;
     }
 
@@ -25,7 +27,7 @@ public enum ErrorType {
      * Gets the error message
      * @return The error message
      */
-    public String m() {
+    public Component m() {
         return text;
     }
 
@@ -35,6 +37,6 @@ public enum ErrorType {
      */
     @Override
     public String toString() {
-        return text;
+        return ((TextComponent) text).content();
     }
 }

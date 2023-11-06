@@ -21,7 +21,7 @@ public class ConduitPower extends BasePack {
         if (player.getGameMode().equals(GameMode.SPECTATOR)) {
             if (player.hasPotionEffect(PotionEffectType.CONDUIT_POWER)) {
                 player.removePotionEffect(PotionEffectType.CONDUIT_POWER);
-                player.sendMessage(getString("error.game_mode_changed"));
+                player.sendMessage(getText("error.game_mode_changed"));
             }
         }
     }

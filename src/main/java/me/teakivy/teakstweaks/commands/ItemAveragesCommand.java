@@ -1,43 +1,42 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.packs.utilities.itemaverages.ItemTracker;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.Arg;
+import me.teakivy.teakstweaks.utils.command.CommandType;
+import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
+import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-
-import java.util.List;
 
 public class ItemAveragesCommand extends AbstractCommand {
 
 
     public ItemAveragesCommand() {
-        super("item-averages", "itemaverages", "/itemaverages <create|uninstall>", CommandType.PLAYER_ONLY);
+        super(CommandType.PLAYER_ONLY, "item-averages", "itemaverages", Arg.required("create", "uninstall"));
     }
 
     @Override
-    public void playerCommand(Player player, String[] args) {
-        if (args.length < 1) {
-            sendUsage(player);
-            return;
-        }
-
-        if (args[0].equals("create")) {
-            if (!checkPermission(player, "create")) return;
+    public void playerCommand(PlayerCommandEvent event) {
+        Player player = event.getPlayer();
+        if (event.isArg(0, "create")) {
+            if (!checkPermission("create")) return;
 
             if (ItemTracker.inUse) {
-                player.sendMessage(getError("tracker_in_use"));
+                sendError("tracker_in_use");
                 return;
             }
 
-            player.sendMessage(getString("tracker_created")
-                    .replace("%x%", "" + (int) player.getLocation().getX())
-                    .replace("%y%", "" + (int) player.getLocation().getY())
-                    .replace("%z%", "" + (int) player.getLocation().getZ())
-            );
-            ItemTracker.spawnTracker(player.getLocation().getBlock().getLocation(), player);
+            Location loc = player.getLocation().getBlock().getLocation();
+            sendMessage("tracker_created",
+                    insert("x", loc.getBlockX()),
+                    insert("y", loc.getBlockY()),
+                    insert("z", loc.getBlockZ()));
+            ItemTracker.spawnTracker(loc, player);
         }
 
-        if (args[0].equals("uninstall")) {
-            if (!checkPermission(player, "uninstall")) return;
+        if (event.isArg(0, "uninstall")) {
+            if (!checkPermission("uninstall")) return;
             int count = 0;
             for (Entity entity : player.getWorld().getEntities()) {
                 if (entity.getScoreboardTags().contains("tracker")) {
@@ -45,12 +44,7 @@ public class ItemAveragesCommand extends AbstractCommand {
                     entity.remove();
                 }
             }
-            player.sendMessage(getString("tracker_mass_removed").replace("%count%", count + ""));
+            sendMessage("tracker_mass_removed", insert("count", count));
         }
-    }
-
-    @Override
-    public List<String> tabComplete(String[] args) {
-        return List.of("create", "uninstall");
     }
 }

@@ -2,30 +2,30 @@ package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.packs.survival.afkdisplay.AFK;
 import me.teakivy.teakstweaks.utils.ErrorType;
+import me.teakivy.teakstweaks.utils.command.*;
 import org.bukkit.entity.Player;
-
-import java.util.List;
 
 public class AFKCommand extends AbstractCommand {
 
     public AFKCommand() {
-        super("afk-display", "afk", "/afk [uninstall]", CommandType.PLAYER_ONLY);
+        super(CommandType.PLAYER_ONLY, "afk-display", "afk", Arg.optional("uninstall"));
     }
 
     @Override
-    public void playerCommand(Player player, String[] args) {
-        if (args.length == 1 && args[0].equals("uninstall")) {
-            if (!checkPermission(player, "uninstall")) return;
+    public void playerCommand(PlayerCommandEvent event) {
+        Player player = event.getPlayer();
+        if (event.isArgsSize(1) && event.isArg(0, "uninstall")) {
+            if (!checkPermission("uninstall")) return;
 
             AFK.uninstall();
         }
 
-        if (!getConfig().getBoolean("packs.afk-display.allow-afk-command")) {
-            player.sendMessage(ErrorType.COMMAND_DISABLED.m());
+        if (!getPackConfig().getBoolean("allow-afk-command")) {
+            sendError(ErrorType.COMMAND_DISABLED);
             return;
         }
 
-        if (!checkPermission(player, "toggle")) return;
+        if (!checkPermission("toggle")) return;
 
         if (AFK.afk.containsKey(player.getUniqueId())) {
             if (AFK.afk.get(player.getUniqueId())) {
@@ -35,12 +35,5 @@ public class AFKCommand extends AbstractCommand {
 
             AFK.afk(player, true);
         }
-    }
-
-    @Override
-    public List<String> tabComplete(String[] args) {
-        if (args.length == 1) return List.of("uninstall");
-
-        return null;
     }
 }

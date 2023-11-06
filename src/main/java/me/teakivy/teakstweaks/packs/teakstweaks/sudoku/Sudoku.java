@@ -15,7 +15,7 @@ public class Sudoku extends BasePack {
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
         if (!event.getEntity().getScoreboardTags().contains("sudoku-message")) return;
-        event.setDeathMessage(getString("death_message").replace("%player%", event.getEntity().getName()));
+        event.deathMessage(getText("death_message", insert("player", event.getEntity().getName())));
         event.getEntity().getScoreboardTags().remove("sudoku-message");
     }
 }

@@ -3,16 +3,19 @@ package me.teakivy.teakstweaks.packs;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
+import org.intellij.lang.annotations.Subst;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,13 +42,13 @@ public class BasePack implements Listener {
 	 */
 	public BasePack(String path, PackType packType, Material material) {
 		this.translatableKey = path.replaceAll("-", "_");
-        this.name = Translatable.get(this.translatableKey + ".name");
+        this.name = Translatable.getString(this.translatableKey + ".name");
 		this.path = path;
 		this.packType = packType;
 		this.config = teaksTweaks.getConfig().getConfigurationSection("packs." + path);
 		this.permission = "teakstweaks." + path;
 
-		String[] description = Translatable.get(this.translatableKey + ".description").split("\n");
+		String[] description = Translatable.getString(this.translatableKey + ".description").split("<newline>");
 
 		item = new ItemStack(material);
 
@@ -54,18 +57,18 @@ public class BasePack implements Listener {
 			StringBuilder newLine = new StringBuilder();
 			for (String word : line.split(" ")) {
 				if (newLine.length() > 30) {
-					lore.add(ChatColor.GRAY + newLine.toString());
+					lore.add("<gray>" + newLine);
 					newLine = new StringBuilder();
 				}
 				newLine.append(word).append(" ");
 			}
-			lore.add(ChatColor.GRAY + newLine.toString());
-			lore.add("");
+			lore.add("<gray>" + newLine);
+			lore.add(" ");
 		}
-		if (lore.size() >= 1) lore.remove(lore.size() - 1);
+		if (!lore.isEmpty()) lore.remove(lore.size() - 1);
 
 		if (config.getKeys(false).size() > 1) {
-			lore.add("");
+			lore.add(" ");
 			lore.add(packType.getColor() + "Config");
 		}
 
@@ -75,18 +78,22 @@ public class BasePack implements Listener {
 				continue;
 			}
 
-			lore.add("  " + ChatColor.GRAY + transformKey(key) + ": " + ChatColor.RESET + packType.getColor() + config.get(key));
+			lore.add("  <gray>" + transformKey(key) + ": <reset>" + packType.getColor() + config.get(key));
 		}
 
-		lore.add("");
+		lore.add(" ");
 
 		lore.add(packType.getColor() + packType.getName());
 
-		item.setLore(lore);
+		List<Component> loreComponents = new ArrayList<>();
+		for (String line : lore) {
+			loreComponents.add(MiniMessage.miniMessage().deserialize("<reset>" + line).decoration(TextDecoration.ITALIC, false));
+		}
 
-		item.editMeta(meta -> {
-			meta.setDisplayName(ChatColor.RESET + packType.getColor().toString() + name);
-		});
+		item.lore(loreComponents);
+
+
+		item.editMeta(meta -> meta.displayName(MiniMessage.miniMessage().deserialize(packType.getColor() + name).decoration(TextDecoration.ITALIC, false)));
     }
 
 	/**
@@ -95,7 +102,7 @@ public class BasePack implements Listener {
 	public void init() {
 		registerEvents(this);
 		teaksTweaks.addPack(name);
-		Logger.info("Registered Pack: " + packType.getColor() + name);
+		Logger.info(Translatable.get("startup.register.pack", insert("name", packType.getColor() + name)));
 	}
 
 	/**
@@ -155,15 +162,6 @@ public class BasePack implements Listener {
 		return player.hasPermission(permission);
 	}
 
-	/**
-	 * Player join event handler
-	 * @param event event
-	 */
-	@EventHandler
-	public void onJoin(PlayerJoinEvent event) {
-		// TODO
-	}
-
 	private String transformKey(String key) {
 		String[] words = key.split("-");
 		StringBuilder newKey = new StringBuilder();
@@ -183,8 +181,26 @@ public class BasePack implements Listener {
 	 * @return Translated & colored string
 	 */
 	protected String getString(String key) {
-		return Translatable.get(translatableKey + "." + key);
+		return Translatable.getString(translatableKey + "." + key);
 	}
 
+	protected Component getText(String key, TagResolver... resolvers) {
+		return Translatable.get(translatableKey + "." + key, resolvers);
+	}
+
+	public static TagResolver.Single insert(@Subst("") String key, String value) {
+		return Placeholder.parsed(key, value);
+	}
+	public static TagResolver.Single insert(@Subst("") String key, int value) {
+		return Placeholder.parsed(key, value + "");
+	}
+
+	public static TagResolver.Single insert(@Subst("") String key, Component value) {
+		return Placeholder.component(key, value);
+	}
+
+	public static Component newText(String text, TagResolver... resolvers) {
+		return MiniMessage.miniMessage().deserialize(text, resolvers);
+	}
 }
 

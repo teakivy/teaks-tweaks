@@ -1,8 +1,10 @@
 package me.teakivy.teakstweaks.packs.utilities.spawningspheres;
 
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
@@ -52,20 +54,22 @@ public enum SphereType {
      * Gets the chat color of the sphere
      * @return the chat color of the sphere
      */
-    public ChatColor getChatColor() {
+    public String getMiniMessageColor() {
         return switch (this) {
-            case RED -> ChatColor.RED;
-            case BLUE -> ChatColor.BLUE;
-            case GREEN -> ChatColor.GREEN;
+            case RED -> "<red>";
+            case BLUE -> "<blue>";
+            case GREEN -> "<green>";
         };
     }
 
-    public String getName() {
-        return switch (this) {
-            case RED -> getChatColor() + Translatable.get("spawning_spheres.sphere.red");
-            case BLUE -> getChatColor() + Translatable.get("spawning_spheres.sphere.blue");
-            case GREEN -> getChatColor() + Translatable.get("spawning_spheres.sphere.green");
+    public Component getName() {
+        String name = switch (this) {
+            case RED -> Translatable.getString("spawning_spheres.sphere.red");
+            case BLUE -> Translatable.getString("spawning_spheres.sphere.blue");
+            case GREEN -> Translatable.getString("spawning_spheres.sphere.green");
         };
+
+        return MiniMessage.miniMessage().deserialize(getMiniMessageColor() + name);
     }
 
     public Team getTeam() {
@@ -74,21 +78,21 @@ public enum SphereType {
             case RED -> {
                 if (sb.getTeam("sphere_red") == null) {
                     Team tTeam = sb.registerNewTeam("sphere_red");
-                    tTeam.setColor(ChatColor.RED);
+                    tTeam.color(NamedTextColor.RED);
                 }
                 yield sb.getTeam("sphere_red");
             }
             case BLUE -> {
                 if (sb.getTeam("sphere_blue") == null) {
                     Team tTeam = sb.registerNewTeam("sphere_blue");
-                    tTeam.setColor(ChatColor.BLUE);
+                    tTeam.color(NamedTextColor.BLUE);
                 }
                 yield sb.getTeam("sphere_blue");
             }
             case GREEN -> {
                 if (sb.getTeam("sphere_green") == null) {
                     Team tTeam = sb.registerNewTeam("sphere_green");
-                    tTeam.setColor(ChatColor.GREEN);
+                    tTeam.color(NamedTextColor.GREEN);
                 }
                 yield sb.getTeam("sphere_green");
             }

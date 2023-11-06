@@ -1,68 +1,52 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
-import me.teakivy.teakstweaks.utils.lang.Translatable;
-import org.bukkit.command.CommandSender;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.Arg;
+import me.teakivy.teakstweaks.utils.command.CommandEvent;
+import me.teakivy.teakstweaks.utils.command.CommandType;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class TeaksTweaksCommand extends AbstractCommand {
 
     public TeaksTweaksCommand() {
-        super(null, "teakstweaks", "/teakstweaks <info|version|support|update>", Arrays.asList("tweaks", "tt"), CommandType.ALL);
+        super(CommandType.ALL, null, "teakstweaks", Arrays.asList("tweaks", "tt"), "teakstweakscommand", Arg.required("info", "version", "support", "update"));
     }
 
     @Override
-    public void command(CommandSender sender, String[] args) {
-        if (args.length < 1) {
-            sendUsage(sender);
-            return;
-        }
-
-        switch (args[0]) {
+    public void command(CommandEvent event) {
+        switch (event.getArg(0)) {
             case "info":
-                sendInfoMessage(sender);
+                sendInfoMessage();
                 return;
             case "version":
-                sender.sendMessage(getString("version").replace("%version%", TeaksTweaks.getInstance().getDescription().getVersion()));
+                sendMessage("version", insert("version", TeaksTweaks.getInstance().getDescription().getVersion()));
                 return;
             case "support":
-                sender.sendMessage(getString("support").replace("%discord%", get("plugin.discord")));
+                sendMessage("support", insert("discord", get("plugin.discord")));
                 return;
             case "update":
-                sender.sendMessage(getString("update").replace("%url%", get("plugin.url")));
+                sendMessage("update", insert("url", get("plugin.url")));
                 return;
             default:
-                sendUsage(sender);
+                sendUsage();
         }
     }
 
-    @Override
-    public List<String> tabComplete(String[] args) {
-        if (args.length != 1) return null;
-
-        return List.of("info", "version", "support", "update");
-    }
-
-    public void sendInfoMessage(CommandSender sender) {
-        sender.sendMessage(getString("info.dashed_line"));
-        sender.sendMessage("");
-        sender.sendMessage(getString("info.title").replace("%version%", TeaksTweaks.getInstance().getDescription().getVersion()));
-        sender.sendMessage("");
-        sender.sendMessage(getString("info.author").replace("%author%", get("plugin.author")));
-        sender.sendMessage(getString("info.config_version").replace("%config_version%", TeaksTweaks.getInstance().getConfig().getString("config.version")));
-        sender.sendMessage(getString("info.config_generated").replace("%config_generated%", TeaksTweaks.getInstance().getConfig().getString("config.created-version")));
+    public void sendInfoMessage() {
+        sendMessage("info.dashed_line");
+        sendText("");
+        sendMessage("info.title", insert("version", TeaksTweaks.getInstance().getDescription().getVersion()));
+        sendText("");
+        sendMessage("info.author", insert("author", get("plugin.author")));
+        sendMessage("info.config_version", insert("config_version", getConfig().getString("config.version")));
+        sendMessage("info.config_generated", insert("config_generated", getConfig().getString("config.created-version")));
         if (TeaksTweaks.getInstance().getConfig().getBoolean("config.dev-mode")) {
-            sender.sendMessage(getString("info.dev_mode_enabled"));
+            sendMessage("info.dev_mode_enabled");
         }
-        sender.sendMessage(getString("info.support").replace("%discord%", get("plugin.discord")));
-        sender.sendMessage("");
-        sender.sendMessage(getString("info.dashed_line"));
-    }
-
-    @Override
-    public String getString(String key) {
-        return Translatable.get("teakstweakscommand." + key);
+        sendMessage("info.support", insert("discord", get("plugin.discord")));
+        sendText("");
+        sendMessage("info.dashed_line");
     }
 }

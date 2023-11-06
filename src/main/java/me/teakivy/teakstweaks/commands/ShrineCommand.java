@@ -1,85 +1,69 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.packs.hermitcraft.thundershrine.Shrine;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.Arg;
+import me.teakivy.teakstweaks.utils.command.CommandType;
+import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
 
 import java.io.IOException;
-import java.util.List;
 
 public class ShrineCommand extends AbstractCommand {
 
     public ShrineCommand() {
-        super("thunder-shrine", "shrine", "/shrine <create|remove|uninstall>", CommandType.PLAYER_ONLY);
+        super(CommandType.PLAYER_ONLY, "thunder-shrine", "shrine", Arg.required("create", "remove", "uninstall"));
     }
 
     @Override
-    public void playerCommand(Player player, String[] args) {
-        if (args.length < 1) {
-            sendUsage(player);
-            return;
-        }
+    public void playerCommand(PlayerCommandEvent event) {
+        if (event.isArg(0, "create")) {
+            if (!checkPermission("create")) return;
 
-        if (args[0].equals("create")) {
-            if (!checkPermission(player, "create")) return;
-
-            Location loc = player.getLocation();
+            Location loc = event.getPlayer().getLocation();
             String world = loc.getWorld().getName();
-            int x = (int) Math.floor(loc.getX());
-            int y = (int) Math.floor(loc.getY());
-            int z = (int) Math.floor(loc.getZ());
+            int x = loc.getBlockX();
+            int y = loc.getBlockY();
+            int z = loc.getBlockZ();
             try {
-                Shrine.createShrine(player.getLocation());
+                Shrine.createShrine(new Location(loc.getWorld(), x, y, z));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            player.sendMessage(getString("created")
-                    .replace("%x%", x + "")
-                    .replace("%y%", y + "")
-                    .replace("%z%", z + "")
-                    .replace("%world%", world)
-            );
+            sendMessage("created", insert("x", x), insert("y", y), insert("z", z), insert("world", world));
         }
 
-        if (args[0].equals("remove")) {
-            if (!checkPermission(player, "remove")) return;
+        if (event.isArg(0, "remove")) {
+            if (!checkPermission("remove")) return;
 
             Entity shrine = null;
-            for (Entity entity : player.getNearbyEntities(3, 3, 3)) {
+            for (Entity entity : event.getPlayer().getNearbyEntities(3, 3, 3)) {
                 if (Shrine.getShrines().contains(entity)) {
                     shrine = entity;
                 }
             }
 
             if (shrine == null) {
-                player.sendMessage(getError("none_nearby"));
+                sendError("none_nearby");
                 return;
             }
 
             shrine.remove();
-            player.sendMessage(getString("removed")
-                    .replace("%x%", (int) shrine.getLocation().getX() + "")
-                    .replace("%y%", (int) shrine.getLocation().getY() + "")
-                    .replace("%z%", (int) shrine.getLocation().getZ() + "")
-                    .replace("%world%", shrine.getLocation().getWorld().getName())
-            );
+            sendMessage("removed",
+                    insert("x", shrine.getLocation().getBlockX()),
+                    insert("y", shrine.getLocation().getBlockY()),
+                    insert("z", shrine.getLocation().getBlockZ()),
+                    insert("world", shrine.getLocation().getWorld().getName()));
         }
 
-        if (args[0].equals("uninstall")) {
-            if (!checkPermission(player, "uninstall")) return;
+        if (event.isArg(0, "uninstall")) {
+            if (!checkPermission("uninstall")) return;
 
             for (Entity shrine : Shrine.getShrines()) {
                 shrine.remove();
             }
-            player.sendMessage(getString("shrines_mass_removed"));
+            sendMessage("shrines_mass_removed");
         }
-    }
-
-    @Override
-    public List<String> tabComplete(String[] args) {
-        if (args.length == 1) return List.of("create", "remove", "uninstall");
-
-        return null;
     }
 }

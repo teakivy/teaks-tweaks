@@ -3,6 +3,8 @@ package me.teakivy.teakstweaks.packs.survival.durabilityping;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.title.TitlePart;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import org.apache.commons.lang3.text.WordUtils;
@@ -103,25 +105,23 @@ public class DuraPing extends BasePack {
         }
         if (style.equalsIgnoreCase("hidden")) return;
         if (style.equalsIgnoreCase("subtitle")) {
-            player.sendTitle(getDurabilityMessage("ping.subtitle.title", item, durability, maxDurability), getDurabilityMessage("ping.subtitle.subtitle", item, durability, maxDurability));
+            player.sendTitlePart(TitlePart.TITLE, getDurabilityMessage("ping.subtitle.title", item, durability, maxDurability));
+            player.sendTitlePart(TitlePart.SUBTITLE, getDurabilityMessage("ping.subtitle.subtitle", item, durability, maxDurability));
         }
         if (style.equalsIgnoreCase("title")) {
-            player.sendTitle(getDurabilityMessage("ping.title.title", item, durability, maxDurability), getDurabilityMessage("ping.title.subtitle", item, durability, maxDurability));
+            player.sendTitlePart(TitlePart.TITLE, getDurabilityMessage("ping.title.title", item, durability, maxDurability));
+            player.sendTitlePart(TitlePart.SUBTITLE, getDurabilityMessage("ping.title.subtitle", item, durability, maxDurability));
         }
         if (style.equalsIgnoreCase("chat")) {
             player.sendMessage(getDurabilityMessage("ping.chat.message", item, durability, maxDurability));
         }
         if (style.equalsIgnoreCase("actionbar")) {
-            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new ComponentBuilder(getDurabilityMessage("ping.actionbar.message", item, durability, maxDurability)).create());
+            player.sendActionBar(getDurabilityMessage("ping.actionbar.message", item, durability, maxDurability));
         }
     }
 
-    private static String getDurabilityMessage(String path, ItemStack item, float durability, float maxDurability) {
-        String str = Translatable.get("durability_ping." + path);
-        str = str.replace("%item_type%", getItemName(item));
-        str = str.replace("%item_durability%", String.valueOf((int) Math.ceil(durability)));
-        str = str.replace("%item_max_durability%", String.valueOf((int) maxDurability));
-        return str;
+    private static Component getDurabilityMessage(String path, ItemStack item, float durability, float maxDurability) {
+        return Translatable.get("durability_ping." + path, insert("item_type", getItemName(item)), insert("item_durability", (int) Math.ceil(durability)), insert("item_max_durability", (int) maxDurability));
     }
 
     public static void pingPlayer(Player player, ItemStack item, float durability) {
@@ -130,40 +130,17 @@ public class DuraPing extends BasePack {
 
 
     private boolean isArmor(ItemStack item) {
-        Material type = item.getType();
-
-        if (type == Material.LEATHER_HELMET) return true;
-        if (type == Material.LEATHER_CHESTPLATE) return true;
-        if (type == Material.LEATHER_LEGGINGS) return true;
-        if (type == Material.LEATHER_BOOTS) return true;
-
-        if (type == Material.CHAINMAIL_HELMET) return true;
-        if (type == Material.CHAINMAIL_CHESTPLATE) return true;
-        if (type == Material.CHAINMAIL_LEGGINGS) return true;
-        if (type == Material.CHAINMAIL_BOOTS) return true;
-
-        if (type == Material.IRON_HELMET) return true;
-        if (type == Material.IRON_CHESTPLATE) return true;
-        if (type == Material.IRON_LEGGINGS) return true;
-        if (type == Material.IRON_BOOTS) return true;
-
-        if (type == Material.GOLDEN_HELMET) return true;
-        if (type == Material.GOLDEN_CHESTPLATE) return true;
-        if (type == Material.GOLDEN_LEGGINGS) return true;
-        if (type == Material.GOLDEN_BOOTS) return true;
-
-        if (type == Material.DIAMOND_HELMET) return true;
-        if (type == Material.DIAMOND_CHESTPLATE) return true;
-        if (type == Material.DIAMOND_LEGGINGS) return true;
-        if (type == Material.DIAMOND_BOOTS) return true;
-
-        if (type == Material.NETHERITE_HELMET) return true;
-        if (type == Material.NETHERITE_CHESTPLATE) return true;
-        if (type == Material.NETHERITE_LEGGINGS) return true;
-        if (type == Material.NETHERITE_BOOTS) return true;
-
-        if (type == Material.ELYTRA) return true;
-        return type == Material.TURTLE_HELMET;
+        return switch (item.getType()) {
+            case LEATHER_HELMET, LEATHER_CHESTPLATE, LEATHER_LEGGINGS, LEATHER_BOOTS,
+                    CHAINMAIL_HELMET, CHAINMAIL_CHESTPLATE, CHAINMAIL_LEGGINGS, CHAINMAIL_BOOTS,
+                    IRON_HELMET, IRON_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS,
+                    GOLDEN_HELMET, GOLDEN_CHESTPLATE, GOLDEN_LEGGINGS, GOLDEN_BOOTS,
+                    DIAMOND_HELMET, DIAMOND_CHESTPLATE, DIAMOND_LEGGINGS, DIAMOND_BOOTS,
+                    NETHERITE_HELMET, NETHERITE_CHESTPLATE, NETHERITE_LEGGINGS, NETHERITE_BOOTS,
+                    ELYTRA, TURTLE_HELMET
+                    -> true;
+            default -> false;
+        };
     }
 
     public static String getSetting(Player player, String setting) {

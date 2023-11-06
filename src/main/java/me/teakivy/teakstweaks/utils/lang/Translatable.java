@@ -1,7 +1,9 @@
 package me.teakivy.teakstweaks.utils.lang;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 
 import java.io.*;
 import java.util.*;
@@ -29,21 +31,28 @@ public class Translatable {
     }
 
     /**
-     * Gets a string from the language map
+     * Gets a component from the language map
      * @param key The key
-     * @return The string
+     * @param resolvers The resolvers
+     * @return The component
      */
-    public static String get(String key) {
-        return ChatColor.translateAlternateColorCodes('&', currentLanguage.get(key));
+    public static Component get(String key, TagResolver... resolvers) {
+        MiniMessage miniMessage = MiniMessage.miniMessage();
+        return miniMessage.deserialize(currentLanguage.get(key), resolvers);
     }
 
     /**
      * Gets an error message
      * @param key The error key
+     * @param resolvers The resolvers
      * @return The error message
      */
-    public static String getError(String key) {
-        return ChatColor.translateAlternateColorCodes('&', currentLanguage.get("error." + key));
+    public static Component getError(String key, TagResolver... resolvers) {
+        return get("error." + key, resolvers);
+    }
+
+    public static String getString(String key) {
+        return currentLanguage.get(key);
     }
 
     /**

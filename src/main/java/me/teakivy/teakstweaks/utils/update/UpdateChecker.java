@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.utils.update;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.apache.commons.io.IOUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -48,8 +49,8 @@ public class UpdateChecker {
      */
     public static void sendUpdateMessage() {
         if (hasUpdate()) {
-            Logger.info(Translatable.get("startup.update.available").replace("%version%", getLatestVersion()));
-            Logger.info(Translatable.get("startup.update.download").replace("%url%", Translatable.get("plugin.url")));
+            Logger.info(Translatable.get("startup.update.available", Placeholder.parsed("version", getLatestVersion())));
+            Logger.info(Translatable.get("startup.update.download", Placeholder.parsed("url", Translatable.getString("plugin.url"))));
         }
     }
 }

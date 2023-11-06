@@ -5,7 +5,6 @@ import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
@@ -95,16 +94,19 @@ public class ItemTracker extends BasePack {
         });
 
         if (!totalItems.isEmpty()) {
-            player.sendMessage(ChatColor.DARK_GRAY + "-------------------------");
+            player.sendMessage(newText("<dark_gray>-------------------------"));
             player.sendMessage(Translatable.get("item_averages.source_production"));
             totalItems.forEach((item, amount) -> {
-                player.sendMessage(Translatable.get("item_averages.item").replace("%amount%", String.valueOf(amount)).replace("%item%", item.toString().toLowerCase().replace("_", " ")));
+                player.sendMessage(
+                        Translatable.get("item_averages.item",
+                                insert("amount", amount),
+                                insert("item", item.toString().toLowerCase().replace("_", " "))));
             });
-            player.sendMessage(ChatColor.DARK_GRAY + "-------------------------");
+            player.sendMessage(newText("<dark_gray>-------------------------"));
         } else {
-            player.sendMessage(ChatColor.DARK_GRAY + "-------------------------");
+            player.sendMessage(newText("<dark_gray>-------------------------"));
             player.sendMessage(Translatable.get("item_averages.no_items"));
-            player.sendMessage(ChatColor.DARK_GRAY + "-------------------------");
+            player.sendMessage(newText("<dark_gray>-------------------------"));
         }
     }
 

@@ -3,10 +3,9 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.teleportation.back.Back;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.HoverEvent;
-import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.api.chat.hover.content.Text;
+import me.teakivy.teakstweaks.utils.command.*;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -18,39 +17,34 @@ public class TPACommand extends AbstractCommand {
     private final List<TPARequest> requests = new ArrayList<>();
 
     public TPACommand() {
-        super("tpa", "tpa", "/tpa <accept|player> [player]", CommandType.PLAYER_ONLY);
+        super(CommandType.PLAYER_ONLY, "tpa", "tpa", Arg.required("accept", "player"), Arg.optional("player"));
     }
 
     @Override
-    public void playerCommand(Player player, String[] args) {
-        if (args.length < 1) {
-            player.sendMessage(getError("specify_player"));
-            return;
-        }
-
-        if (args[0].equals("accept")) {
-            if (args.length < 2) {
+    public void playerCommand(PlayerCommandEvent event) {
+        Player player = event.getPlayer();
+        if (event.isArg(0, "accept")) {
+            if (!event.hasArgs(2)) {
                 TPARequest req = getRequest(player);
                 if (req == null || req.isExpired()) {
-                    player.sendMessage(getError("no_pending_requests"));
+                    sendError("no_pending_requests");
                     return;
                 }
 
                 req.accept();
                 requests.remove(req);
-
                 return;
             }
 
-            Player from = Bukkit.getPlayer(args[1]);
+            Player from = Bukkit.getPlayer(event.getArg(1));
             if (from == null) {
-                player.sendMessage(ErrorType.PLAYER_DNE.m());
+                sendError(ErrorType.PLAYER_DNE);
                 return;
             }
 
             TPARequest req = getRequest(from, player);
             if (req == null || req.isExpired()) {
-                player.sendMessage(getError("player_no_pending_requests"));
+                sendError("player_no_pending_requests");
                 return;
             }
 
@@ -60,40 +54,39 @@ public class TPACommand extends AbstractCommand {
             return;
         }
 
-        Player to = Bukkit.getPlayer(args[0]);
+        Player to = Bukkit.getPlayer(event.getArg(0));
 
         if (to == null) {
-            player.sendMessage(ErrorType.PLAYER_DNE.m());
+            sendError(ErrorType.PLAYER_DNE);
             return;
         }
 
-        TextComponent text = new TextComponent(getString("request_message").replace("%player%", player.getName()));
-        text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(getString("request_message.hover"))));
-        text.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tpa accept " + player.getName()));
+        String text = "<hover:show_text:\"" + getString("request_message.hover") + "\"><click:run_command:/tpa accept " + player.getName() + ">" + getString("request_message") + "</click></hover>";
+        Component message = MiniMessage.miniMessage().deserialize(text, insert("player", player.getName()));
 
         TPARequest req = new TPARequest(player, to);
         requests.add(req);
 
-        to.spigot().sendMessage(text);
-        player.sendMessage(getString("request_sent").replace("%player%", to.getName()));
+        to.sendMessage(message);
+        sendMessage("request_sent", insert("player", to.getName()));
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
             if (req.isAccepted()) return;
 
-            player.sendMessage(getString("request_expired").replace("%player%", to.getName()));
+            sendMessage("request_expired", insert("player", to.getName()));
             requests.remove(req);
         }, 61 * 20L);
     }
 
     @Override
-    public List<String> tabComplete(Player player, String[] args) {
-        if (args.length == 1) {
-            if (args[0].isEmpty()) return List.of("accept", "<player>");
+    public List<String> tabComplete(TabCompleteEvent event) {
+        if (event.isArg(0)) {
+            if (event.getArg(0).isEmpty()) return List.of("accept", "<player>");
 
             List<String> arguments = new ArrayList<>();
             arguments.add("accept");
             for (Player p : Bukkit.getOnlinePlayers()) {
-                if (p.getUniqueId().equals(player.getUniqueId())) continue;
+                if (p.getUniqueId().equals(event.getPlayer().getUniqueId())) continue;
 
                 arguments.add(p.getName());
             }
@@ -101,10 +94,10 @@ public class TPACommand extends AbstractCommand {
             return arguments;
         }
 
-        if (args.length == 2 && args[0].equals("accept")) {
+        if (event.isArg(2) && event.isArg(0, "accept")) {
             List<String> arguments = new ArrayList<>();
             for (TPARequest request : requests) {
-                if (!request.getTo().getUniqueId().equals(player.getUniqueId())) continue;
+                if (!request.getTo().getUniqueId().equals(event.getPlayer().getUniqueId())) continue;
 
                 arguments.add(request.getFrom().getName());
             }
@@ -171,8 +164,8 @@ public class TPACommand extends AbstractCommand {
             accepted = true;
             Back.backLoc.put(to.getUniqueId(), to.getLocation());
             from.teleport(to.getLocation());
-            to.sendMessage(getString("teleporting_to_you").replace("%player%", from.getName()));
-            from.sendMessage(getString("teleporting").replace("%player%", to.getName()));
+            to.sendMessage(getText("teleporting_to_you", insert("player", from.getName())));
+            from.sendMessage(getText("teleporting", insert("player", to.getName())));
         }
     }
 }

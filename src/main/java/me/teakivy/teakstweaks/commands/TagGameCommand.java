@@ -1,7 +1,13 @@
 package me.teakivy.teakstweaks.commands;
 
+import me.teakivy.teakstweaks.packs.hermitcraft.tag.Tag;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.Arg;
+import me.teakivy.teakstweaks.utils.command.CommandType;
+import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -9,55 +15,41 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
-import java.util.List;
-
 public class TagGameCommand extends AbstractCommand {
 
     public TagGameCommand() {
-        super("tag", "taggame", "/taggame", CommandType.PLAYER_ONLY);
+        super(CommandType.PLAYER_ONLY, "tag", "taggame", Arg.optional("uninstall"));
     }
 
     @Override
-    public void playerCommand(Player player, String[] args) {
+    public void playerCommand(PlayerCommandEvent event) {
         Scoreboard sb = Bukkit.getScoreboardManager().getMainScoreboard();
         Team team = Bukkit.getScoreboardManager().getMainScoreboard().getTeam("TaggedTeam");
 
-        if (args.length < 1) {
-            if (!checkPermission(player, "give")) return;
+        if (!event.hasArgs()) {
+            if (!checkPermission("give")) return;
 
-            ItemStack tag = new ItemStack(Material.NAME_TAG);
-            ItemMeta tagMeta = tag.getItemMeta();
-            tagMeta.setDisplayName(getString("item_name"));
-            tagMeta.setUnbreakable(true);
-            tag.setItemMeta(tagMeta);
+            Player player = event.getPlayer();
 
-            player.getInventory().addItem(tag);
-
+            player.getInventory().addItem(Tag.getTagItem());
             player.addScoreboardTag("tag_it");
 
             if (team == null) {
                 team = sb.registerNewTeam("TaggedTeam");
-                team.setColor(ChatColor.RED);
+                team.color(NamedTextColor.RED);
             }
 
             team.addEntry(player.getName());
-            player.sendMessage(getString("begun"));
+            sendMessage("begun");
             return;
         }
 
-        if (args[0].equals("uninstall")) {
-            if (!checkPermission(player, "uninstall")) return;
+        if (event.isArg(0, "uninstall")) {
+            if (!checkPermission("uninstall")) return;
 
             if (team == null) return;
             team.unregister();
-            player.sendMessage(getString("uninstalled"));
+            sendMessage("uninstalled");
         }
-    }
-
-    @Override
-    public List<String> tabComplete(String[] args) {
-        if (args.length == 1) return List.of("uninstall");
-
-        return null;
     }
 }

@@ -2,6 +2,9 @@ package me.teakivy.teakstweaks.utils.update;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -23,13 +26,12 @@ public class UpdateJoinAlert implements Listener {
 
         if (!player.hasPermission("teakstweaks.manage")) return;
         if (!TeaksTweaks.getInstance().getConfig().getBoolean("settings.alert-on-new-version")) return;
-        if (!UpdateChecker.hasUpdate()) return;
 
-        TextComponent text = new TextComponent(Translatable.get("startup.update.join_alert").replace("%version%", UpdateChecker.getLatestVersion()));
-        text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(Translatable.get("startup.update.join_alert.hover").replace("%version%", UpdateChecker.getLatestVersion()))));
-        text.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, Translatable.get("plugin.url")));
+        String message = Translatable.getString("startup.update.join_alert");
+        message = "<hover:show_text:\"" + Translatable.getString("startup.update.join_alert.hover") + "\">" + message;
+        message = "<click:open_url:\"" + Translatable.getString("plugin.url") + "\">" + message;
 
-        player.spigot().sendMessage(text);
+        player.sendMessage(MiniMessage.miniMessage().deserialize(message, Placeholder.parsed("version", UpdateChecker.getLatestVersion())));
 
         player.sendMessage("");
     }

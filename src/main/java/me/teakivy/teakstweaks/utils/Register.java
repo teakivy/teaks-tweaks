@@ -9,7 +9,6 @@ import me.teakivy.teakstweaks.packs.experimental.elevators.Elevator;
 import me.teakivy.teakstweaks.packs.experimental.xpmanagement.XPManagement;
 import me.teakivy.teakstweaks.packs.hermitcraft.tag.Tag;
 import me.teakivy.teakstweaks.packs.hermitcraft.thundershrine.Shrine;
-import me.teakivy.teakstweaks.packs.hermitcraft.treasuregems.Gems;
 import me.teakivy.teakstweaks.packs.hermitcraft.wanderingtrades.Trades;
 import me.teakivy.teakstweaks.packs.items.armoredelytra.ArmoredElytras;
 import me.teakivy.teakstweaks.packs.items.playerheaddrops.HeadDrop;
@@ -33,7 +32,6 @@ import me.teakivy.teakstweaks.packs.survival.customnetherportals.NetherPortal;
 import me.teakivy.teakstweaks.packs.survival.durabilityping.DuraPing;
 import me.teakivy.teakstweaks.packs.survival.fastleafdecay.Decay;
 import me.teakivy.teakstweaks.packs.survival.graves.GraveEvents;
-import me.teakivy.teakstweaks.packs.survival.multiplayersleep.MultiSleep;
 import me.teakivy.teakstweaks.packs.survival.netherportalcoords.NetherPortalCoords;
 import me.teakivy.teakstweaks.packs.survival.pillagertools.PillagerSpawning;
 import me.teakivy.teakstweaks.packs.survival.realtimeclock.RealTimeClock;
@@ -59,12 +57,12 @@ import me.teakivy.teakstweaks.packs.teleportation.back.Back;
 import me.teakivy.teakstweaks.packs.teleportation.homes.HomesPack;
 import me.teakivy.teakstweaks.packs.teleportation.spawn.Spawn;
 import me.teakivy.teakstweaks.packs.teleportation.tpa.TPA;
-import me.teakivy.teakstweaks.packs.utilities.customvillagershops.CustomVillager;
 import me.teakivy.teakstweaks.packs.utilities.itemaverages.ItemTracker;
 import me.teakivy.teakstweaks.packs.utilities.killboats.KillBoats;
 import me.teakivy.teakstweaks.packs.utilities.spawningspheres.SpheresPack;
 import me.teakivy.teakstweaks.packs.utilities.spectatorconduitpower.ConduitPower;
 import me.teakivy.teakstweaks.packs.utilities.spectatornightvision.NightVision;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -93,7 +91,6 @@ public class Register {
             new CountDeaths(),
             new QuickCommands(),
             new SpectatorAlts(),
-            new MultiSleep(),
             new HeadDrop(),
             new Silencer(),
             new ConduitPower(),
@@ -113,7 +110,6 @@ public class Register {
             new PillagerSpawning(),
             new Elevator(),
             new Wrench(),
-            new Gems(),
             new ArmoredElytras(),
             new Fishing(),
             new NetherPortal(),
@@ -122,7 +118,6 @@ public class Register {
             new RawStats(),
             new GraveEvents(),
             new HUD(),
-            new CustomVillager(),
             new SpheresPack(),
             new KeepSmall(),
             new ChatColors(),
@@ -238,7 +233,6 @@ public class Register {
             new ItemAveragesCommand(),
             new GraveCommand(),
             new SpawningSpheresCommand(),
-            new GemCommand(),
             new SudokuCommand(),
             new PackListCommand(),
             new DeleteHomeCommand(),

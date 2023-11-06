@@ -1,15 +1,18 @@
 package me.teakivy.teakstweaks.commands;
 
-import org.bukkit.entity.Player;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.CommandType;
+import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 
 public class TestCommand extends AbstractCommand {
 
     public TestCommand() {
-        super(null, "test", "/test", CommandType.PLAYER_ONLY);
+        super(CommandType.PLAYER_ONLY, "test");
     }
 
     @Override
-    public void playerCommand(Player player, String[] args) {
-        player.sendMessage(getString("test"));
+    public void playerCommand(PlayerCommandEvent event) {
+        sendMessage("test", insert("name", event.getPlayer().getName()));
     }
 }
