@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractRecipe {
+public abstract class AbstractCraftingTweak {
     private final String name;
     private final String path;
 
@@ -29,7 +29,7 @@ public abstract class AbstractRecipe {
      * @param path Config path
      * @param material Material for the item
      */
-    public AbstractRecipe(String path, Material material) {
+    public AbstractCraftingTweak(String path, Material material) {
         String langKey = path.replaceAll("-", "_");
         this.name = Translatable.getString(langKey + ".name");
         this.path = path;

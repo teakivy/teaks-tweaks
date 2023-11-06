@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CraftingRegister {
-    private static final List<AbstractRecipe> enabledRecipes = new ArrayList<>();
+    private static final List<AbstractCraftingTweak> enabledRecipes = new ArrayList<>();
 
     /**
      * Register all recipes
      */
     public static void registerAll() {
-        List<AbstractRecipe> recipes = new ArrayList<>();
+        List<AbstractCraftingTweak> recipes = new ArrayList<>();
         recipes.add(new BackToBlocks());
         recipes.add(new DoubleSlabs());
         recipes.add(new DropperToDispenser());
@@ -48,18 +48,19 @@ public class CraftingRegister {
         recipes.add(new SmeltableRawOreBlocks());
         recipes.add(new MorePackedMud());
         recipes.add(new MoreSherds());
-        try {
-            for (AbstractRecipe recipe : recipes) {
+        for (AbstractCraftingTweak recipe : recipes) {
+            try {
                 recipe.register();
-            }
-        } catch (Exception ignored) {}
+            } catch (Exception ignored) {}
+        }
+
     }
 
     /**
      * Add a recipe to the list of enabled recipes
      * @param recipe AbstractRecipe
      */
-    public static void addEnabledRecipe(AbstractRecipe recipe) {
+    public static void addEnabledRecipe(AbstractCraftingTweak recipe) {
         enabledRecipes.add(recipe);
     }
 
@@ -67,7 +68,7 @@ public class CraftingRegister {
      * Get the list of enabled recipes
      * @return List<AbstractRecipe>
      */
-    public static List<AbstractRecipe> getEnabledRecipes() {
+    public static List<AbstractCraftingTweak> getEnabledRecipes() {
         return enabledRecipes;
     }
 

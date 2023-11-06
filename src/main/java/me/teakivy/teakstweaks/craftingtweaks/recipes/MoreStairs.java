@@ -1,14 +1,17 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
-import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
+import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 
-public class MoreStairs extends AbstractRecipe {
+import java.util.Iterator;
+
+public class MoreStairs extends AbstractCraftingTweak {
 
     public MoreStairs() {
         super("more-stairs", Material.OAK_STAIRS);
