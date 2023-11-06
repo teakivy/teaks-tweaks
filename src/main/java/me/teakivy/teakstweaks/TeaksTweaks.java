@@ -2,8 +2,8 @@ package me.teakivy.teakstweaks;
 
 import com.google.gson.Gson;
 import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
-import me.teakivy.teakstweaks.packs.hermitcraft.tag.Tag;
 import me.teakivy.teakstweaks.utils.*;
+import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.gui.GUIListener;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
@@ -20,8 +20,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Objects;
 
 import static me.teakivy.teakstweaks.utils.metrics.CustomMetrics.registerCustomMetrics;
 
@@ -31,16 +29,11 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
 
     private Register register;
 
-    public Tag tagListener;
-    private static boolean devMode;
-
     /**
      * Called when the plugin is enabled
      */
     @Override
     public void onEnable() {
-        devMode = getConfig().getBoolean("config.dev-mode");
-
         // Credits
         createCredits();
 
@@ -48,9 +41,8 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         Metrics metrics = new Metrics(this, 12001);
         registerCustomMetrics(metrics);
 
-        // Update Config.yml
-        updateConfig();
-
+        // Initialize & Update Config
+        Config.init();
 
         // Language
         Translatable.init(getConfig().getString("settings.language"));
@@ -61,17 +53,11 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
 
         Bukkit.getScheduler().runTaskLater(this, UpdateChecker::sendUpdateMessage, 20L * 3);
 
-
         // Crafting Tweaks
         CraftingRegister.registerAll();
 
         // Commands
         Register.registerCommands();
-
-        // Config
-        this.saveDefaultConfig();
-
-        tagListener = new Tag();
 
         // Plugin startup logic
         Logger.info(newText(" "));
@@ -82,6 +68,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         register = new Register();
         register.registerAll();
 
+        // Remove legacy data.yml file
         removeDataFile();
     }
 
@@ -150,15 +137,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     }
 
     /**
-     * Get the config section for a pack
-     * @param pack Pack name
-     * @return config: packs.[pack]
-     */
-    public static ConfigurationSection getPackConfig(String pack) {
-        return getInstance().getConfig().getConfigurationSection("packs." + pack);
-    }
-
-    /**
      * Create the credits file
      */
     private void createCredits() {
@@ -166,24 +144,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
             new Credits().createCredits();
         } catch (IOException ignored) {
         }
-    }
-
-    /**
-     * Update the config.yml file
-     */
-    private void updateConfig() {
-        String configVersion = this.getConfig().getString("config.version");
-        String pluginConfigVersion = Objects.requireNonNull(this.getConfig().getDefaults()).getString("config.version");
-
-        if (!devMode && !configVersion.equalsIgnoreCase(pluginConfigVersion)) return;
-
-        try {
-            ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList(), true);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Logger.info(newText("Updated Plugin Config"));
     }
 
     /**
@@ -202,14 +162,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         if (file.exists()) {
             file.delete();
         }
-    }
-
-    /**
-     * Check if the plugin is in dev mode
-     * @return Boolean
-     */
-    public static boolean isDevMode() {
-        return devMode;
     }
 
     public static Component newText(String text) {

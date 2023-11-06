@@ -5,6 +5,7 @@ import com.mojang.authlib.properties.Property;
 import com.mojang.authlib.properties.PropertyMap;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.ReflectionUtils;
+import me.teakivy.teakstweaks.utils.config.Config;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.apache.commons.lang3.text.WordUtils;
@@ -62,7 +63,7 @@ public class BaseMobHead implements Listener {
     }
 
     public boolean dropHead(EntityDeathEvent event) {
-        if (TeaksTweaks.getInstance().getConfig().getBoolean("config.dev-mode")) return true;
+        if (Config.isDevMode()) return true;
         return shouldDrop(event.getEntity().getKiller());
     }
 

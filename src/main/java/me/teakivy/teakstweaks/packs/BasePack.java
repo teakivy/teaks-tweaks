@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.Logger;
+import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -45,7 +46,7 @@ public class BasePack implements Listener {
         this.name = Translatable.getString(this.translatableKey + ".name");
 		this.path = path;
 		this.packType = packType;
-		this.config = teaksTweaks.getConfig().getConfigurationSection("packs." + path);
+		this.config = Config.getPackConfig(path);
 		this.permission = "teakstweaks." + path;
 
 		String[] description = Translatable.getString(this.translatableKey + ".description").split("<newline>");

@@ -5,6 +5,7 @@ import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.Arg;
 import me.teakivy.teakstweaks.utils.command.CommandEvent;
 import me.teakivy.teakstweaks.utils.command.CommandType;
+import me.teakivy.teakstweaks.utils.config.Config;
 
 import java.util.Arrays;
 
@@ -40,9 +41,9 @@ public class TeaksTweaksCommand extends AbstractCommand {
         sendMessage("info.title", insert("version", TeaksTweaks.getInstance().getDescription().getVersion()));
         sendText("");
         sendMessage("info.author", insert("author", get("plugin.author")));
-        sendMessage("info.config_version", insert("config_version", getConfig().getString("config.version")));
-        sendMessage("info.config_generated", insert("config_generated", getConfig().getString("config.created-version")));
-        if (TeaksTweaks.getInstance().getConfig().getBoolean("config.dev-mode")) {
+        sendMessage("info.config_version", insert("config_version", Config.getVersion()));
+        sendMessage("info.config_generated", insert("config_generated", Config.getCreatedVersion()));
+        if (Config.isDevMode()) {
             sendMessage("info.dev_mode_enabled");
         }
         sendMessage("info.support", insert("discord", get("plugin.discord")));

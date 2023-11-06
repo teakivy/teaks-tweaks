@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.hermitcraft.wanderingtrades;
 import com.google.gson.internal.LinkedTreeMap;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.JsonManager;
+import me.teakivy.teakstweaks.utils.config.Config;
 import org.bukkit.Material;
 import org.bukkit.inventory.MerchantRecipe;
 
@@ -49,12 +50,12 @@ public class MiniBlocks {
 
     public static List<MerchantRecipe> getBlockTrades() {
         List<MerchantRecipe> recipes = new ArrayList<>();
-        int amount = TeaksTweaks.getInstance().getConfig().getInt("packs.wandering-trades.mini-blocks.amount-of-trades");
+        int amount = Config.getInt("packs.wandering-trades.mini-blocks.amount-of-trades");
         List<Integer> numbers = new ArrayList<>();
 
-        if (!TeaksTweaks.getInstance().getConfig().getBoolean("packs.wandering-trades.mini-blocks.has-mini-blocks")) return recipes;
+        if (!Config.getBoolean("packs.wandering-trades.mini-blocks.has-mini-blocks")) return recipes;
 
-        if (TeaksTweaks.getInstance().getConfig().getBoolean("config.dev-mode")) {
+        if (Config.isDevMode()) {
             for (MiniBlockTrade miniBlock : miniBlocks) {
                 recipes.add(miniBlock.getTrade());
             }

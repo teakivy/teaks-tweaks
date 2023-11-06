@@ -63,6 +63,7 @@ import me.teakivy.teakstweaks.packs.utilities.spawningspheres.SpheresPack;
 import me.teakivy.teakstweaks.packs.utilities.spectatorconduitpower.ConduitPower;
 import me.teakivy.teakstweaks.packs.utilities.spectatornightvision.NightVision;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
+import me.teakivy.teakstweaks.utils.config.Config;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -154,10 +155,9 @@ public class Register {
      * @param bypassEnabled If true, will register all packs regardless of if they are enabled or not
      */
     public void registerAll(boolean bypassEnabled) {
-        TeaksTweaks teaksTweaks = TeaksTweaks.getInstance();
         unregisterAll();
-        for (String pack : Objects.requireNonNull(teaksTweaks.getConfig().getConfigurationSection("packs")).getKeys(false)) {
-            if (teaksTweaks.getConfig().getBoolean("packs." + pack + ".enabled") || bypassEnabled) {
+        for (String pack : Objects.requireNonNull(Config.get().getConfigurationSection("packs")).getKeys(false)) {
+            if (Config.isPackEnabled(pack) || bypassEnabled) {
                 registerPack(pack);
             }
         }
@@ -175,10 +175,9 @@ public class Register {
      * @param bypassEnabled If true, will unregister all packs regardless of if they are enabled or not
      */
     public void unregisterAll(boolean bypassEnabled) {
-        TeaksTweaks teaksTweaks = TeaksTweaks.getInstance();
-        teaksTweaks.clearPacks();
-        for (String pack : Objects.requireNonNull(teaksTweaks.getConfig().getConfigurationSection("packs")).getKeys(false)) {
-            if (teaksTweaks.getConfig().getBoolean("packs." + pack + ".enabled") || bypassEnabled) {
+        TeaksTweaks.getInstance().clearPacks();
+        for (String pack : Objects.requireNonNull(Config.get().getConfigurationSection("packs")).getKeys(false)) {
+            if (Config.isPackEnabled(pack) || bypassEnabled) {
                 unregisterPack(pack);
             }
         }
@@ -249,8 +248,7 @@ public class Register {
      * @return A set of all packs
      */
     public Set<String> getAllPacks() {
-        TeaksTweaks teaksTweaks = TeaksTweaks.getInstance();
-        return Objects.requireNonNull(teaksTweaks.getConfig().getConfigurationSection("packs")).getKeys(false);
+        return Objects.requireNonNull(Config.get().getConfigurationSection("packs")).getKeys(false);
     }
 
     /**

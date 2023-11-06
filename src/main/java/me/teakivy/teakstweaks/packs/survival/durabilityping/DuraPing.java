@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.survival.durabilityping;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.title.TitlePart;
@@ -93,7 +94,7 @@ public class DuraPing extends BasePack {
                     pingPlayer(player, item, durability);
                 }
             }
-            pingCooldown.put(player.getUniqueId(), System.currentTimeMillis() + (teaksTweaks.getConfig().getInt("packs.durability-ping.ping-cooldown") * 1000L));
+            pingCooldown.put(player.getUniqueId(), System.currentTimeMillis() + (Config.getInt("packs.durability-ping.ping-cooldown") * 1000L));
         }
     }
 

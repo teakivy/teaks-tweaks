@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.survival.coordshud;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.utils.config.Config;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
@@ -16,14 +17,14 @@ public class DisplayHud {
 
     public static void init() {
         hudMessage = "<gold>XYZ: <white><x> <y> <z>  <gold><direction>      <world_time>";
-        world =  Bukkit.getWorld(TeaksTweaks.getInstance().getConfig().getString("packs.coords-hud.time-world"));
+        world =  Bukkit.getWorld(Config.getString("packs.coords-hud.time-world"));
         if (world == null) world = Bukkit.getWorlds().get(0);
     }
 
     public static void showHud(Player player) {
         Bukkit.getScheduler().runTaskAsynchronously(TeaksTweaks.getInstance(), () -> {
             Location loc = player.getLocation().getBlock().getLocation();
-            if (TeaksTweaks.getInstance().getConfig().getBoolean("packs.coords-hud.use-player-position")) {
+            if (Config.getBoolean("packs.coords-hud.use-player-position")) {
                 loc = player.getLocation();
             }
 

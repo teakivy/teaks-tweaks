@@ -8,6 +8,7 @@ import me.teakivy.teakstweaks.utils.Base64Serializer;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.ReflectionUtils;
+import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.*;
@@ -27,7 +28,7 @@ import java.util.Objects;
 
 public class GraveCreator {
 
-    public static ConfigurationSection config = TeaksTweaks.getInstance().getConfig().getConfigurationSection("packs.graves");
+    public static ConfigurationSection config = Config.getPackConfig("graves");
 
     public static Location findGraveLocation(Location loc) {
         Location ogLoc = loc.clone();

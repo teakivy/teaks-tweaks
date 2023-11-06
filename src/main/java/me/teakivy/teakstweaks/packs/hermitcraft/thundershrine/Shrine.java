@@ -4,6 +4,7 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
@@ -81,7 +82,7 @@ public class Shrine extends BasePack {
     }
 
     public static void startThunder(Player player, Location loc) {
-        ConfigurationSection config = TeaksTweaks.getInstance().getConfig().getConfigurationSection("packs.thunder-shrine");
+        ConfigurationSection config = Config.get().getConfigurationSection("packs.thunder-shrine");
         World world = player.getWorld();
         if (config.getBoolean("summoning.strike-lightning")) {
             world.strikeLightning(loc.add(0, +1, 0));

@@ -4,9 +4,11 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.config.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -62,14 +64,14 @@ public class HUD extends BasePack {
         if (data.has(Key.get("ch_enabled"), PersistentDataType.BOOLEAN)) {
             return data.get(Key.get("ch_enabled"), PersistentDataType.BOOLEAN);
         }
-        FileConfiguration config = TeaksTweaks.getInstance().getConfig();
 
-        setEnabled(player, config.getBoolean("packs.coords-hud.auto-enable") || config.getBoolean("packs.coords-hud.force-enable"));
+        setEnabled(player, Config.getBoolean("packs.coords-hud.auto-enable") ||
+                Config.getBoolean("packs.coords-hud.force-enable"));
         return isEnabled(player);
     }
 
     public static void setEnabled(Player player, boolean enabled) {
-        if (TeaksTweaks.getInstance().getConfig().getBoolean("force-enable")) enabled = true;
+        if (Config.getBoolean("packs.coords-hud.force-enable")) enabled = true;
         PersistentDataContainer data = player.getPersistentDataContainer();
 
         data.set(Key.get("ch_enabled"), PersistentDataType.BOOLEAN, enabled);
