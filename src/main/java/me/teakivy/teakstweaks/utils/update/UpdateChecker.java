@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.utils.update;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.Logger;
+import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.apache.commons.io.IOUtils;
@@ -20,17 +21,14 @@ public class UpdateChecker {
      * @return The latest version of the plugin
      */
     public static String getLatestVersion() {
-        if (TeaksTweaks.getInstance().getConfig().getBoolean("settings.disable-update-checker")) return null;
+        if (Config.getBoolean("settings.disable-update-checker")) return null;
         String url = "https://api.spiget.org/v2/resources/" + resourceId + "/versions/latest";
 
         try {
-            @SuppressWarnings("deprecation")
             String nameJson = IOUtils.toString(new URL(url));
             JSONObject latest = (JSONObject) JSONValue.parseWithException(nameJson);
             return latest.get("name").toString();
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException | ParseException ignored) {}
         return null;
     }
 

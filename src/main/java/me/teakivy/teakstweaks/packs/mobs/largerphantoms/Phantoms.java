@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.mobs.largerphantoms;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.config.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Statistic;
@@ -24,7 +25,7 @@ public class Phantoms extends BasePack {
     @EventHandler
     public void onSpawn(CreatureSpawnEvent event) {
         Entity entity = event.getEntity();
-        if (entity.getType() != EntityType.PHANTOM || (event.getSpawnReason() != CreatureSpawnEvent.SpawnReason.NATURAL && !teaksTweaks.getConfig().getBoolean("config.dev-mode"))) return;
+        if (entity.getType() != EntityType.PHANTOM || (event.getSpawnReason() != CreatureSpawnEvent.SpawnReason.NATURAL && !Config.isDevMode())) return;
         Phantom phantom = (Phantom) entity;
         Player player = null;
         double distance = Integer.MAX_VALUE;

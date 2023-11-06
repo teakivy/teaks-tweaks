@@ -2,6 +2,8 @@ package me.teakivy.teakstweaks.utils.lang;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.Logger;
+import me.teakivy.teakstweaks.utils.config.Config;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 
 import java.io.*;
 import java.util.LinkedHashMap;
@@ -131,12 +133,12 @@ public class TranslatableLanguage {
             newMap.put(key, map.get(key));
         }
 
-        newMap.put("meta.version", TeaksTweaks.getInstance().getConfig().getString("config.version"));
+        newMap.put("meta.version", Config.getVersion());
 
         map = newMap;
         save(map);
 
-        Logger.info("Updated language file: " + this.getFileName());
+        Logger.info(MiniMessage.miniMessage().deserialize("<yellow>Updated language file: " + this.getFileName()));
     }
 
     /**

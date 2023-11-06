@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.experimental.xpmanagement;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.config.Config;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -39,7 +40,7 @@ public class XPManagement extends BasePack {
     public void registerRecipe() {
         if (getConfig().getBoolean("allow-smelting")) {
             FurnaceRecipe recipe = new FurnaceRecipe(new ItemStack(Material.GLASS_BOTTLE), Material.EXPERIENCE_BOTTLE);
-            recipe.setExperience(teaksTweaks.getConfig().getInt("packs.xp-management.take-xp-amount"));
+            recipe.setExperience(Config.getInt("packs.xp-management.take-xp-amount"));
             Bukkit.addRecipe(recipe);
         }
     }
@@ -126,10 +127,10 @@ public class XPManagement extends BasePack {
         }
 
         PersistentDataContainer data = xpMeta.getPersistentDataContainer();
-        data.set(Key.get("xp_amount"), PersistentDataType.INTEGER, teaksTweaks.getConfig().getInt("packs.xp-management.return-xp-amount"));
+        data.set(Key.get("xp_amount"), PersistentDataType.INTEGER, Config.getInt("packs.xp-management.return-xp-amount"));
         xpBottle.setItemMeta(xpMeta);
 
-        data.set(Key.get("xp_smelt_amount"), PersistentDataType.INTEGER, teaksTweaks.getConfig().getInt("packs.xp-management.take-xp-amount"));
+        data.set(Key.get("xp_smelt_amount"), PersistentDataType.INTEGER, Config.getInt("packs.xp-management.take-xp-amount"));
         xpBottle.setItemMeta(xpMeta);
 
         if (getConfig().getBoolean("sneak-to-bottle-all") && player.isSneaking()) {

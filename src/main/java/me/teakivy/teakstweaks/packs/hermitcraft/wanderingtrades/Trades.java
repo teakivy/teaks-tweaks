@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.hermitcraft.wanderingtrades;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.config.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
@@ -56,7 +57,7 @@ public class Trades extends BasePack {
             }
         }
 
-        if (teaksTweaks.getConfig().getBoolean("config.dev-mode")) {
+        if (Config.isDevMode()) {
             for (String player : players) {
                 trades.add(newHeadRecipe(player));
             }

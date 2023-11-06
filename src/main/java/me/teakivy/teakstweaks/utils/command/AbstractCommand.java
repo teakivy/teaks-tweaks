@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.utils.command;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.Logger;
+import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -143,10 +144,10 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * Register the command
      */
     public void register() {
-        if (this.command.equals("mechanics") && !getConfig().getBoolean("settings.mechanics-command")) return;
-        if (this.command.equals("test") && !TeaksTweaks.isDevMode()) return;
+        if (this.command.equals("mechanics") && !Config.getBoolean("settings.mechanics-command")) return;
+        if (this.command.equals("test") && !Config.isDevMode()) return;
 
-        if (this.parentPack != null && !TeaksTweaks.getPackConfig(parentPack).getBoolean("enabled")) return;
+        if (this.parentPack != null && !Config.getPackConfig(parentPack).getBoolean("enabled")) return;
 
         ReflectCommand cmd = new ReflectCommand(this.command);
         if (this.alias != null) cmd.setAliases(this.alias);
@@ -412,11 +413,11 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     }
 
     public ConfigurationSection getPackConfig() {
-        return TeaksTweaks.getInstance().getConfig().getConfigurationSection("packs." + parentPack);
+        return Config.getPackConfig(parentPack);
     }
 
-    public FileConfiguration getConfig() {
-        return TeaksTweaks.getInstance().getConfig();
+    public ConfigurationSection getConfig() {
+        return Config.get();
     }
 
     public void setCooldownTime(int time) {

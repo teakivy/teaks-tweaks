@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.craftingtweaks;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Logger;
+import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -76,7 +77,7 @@ public class AbstractRecipe {
      * Register the pack
      */
     public void register() {
-        if (TeaksTweaks.getInstance().getConfig().getBoolean("crafting-tweaks." + path + ".enabled")) init();
+        if (Config.isCraftingTweakEnabled(path)) init();
     }
 
     /**

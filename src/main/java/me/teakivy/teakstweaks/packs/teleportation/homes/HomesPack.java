@@ -4,6 +4,7 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.config.Config;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -95,7 +96,7 @@ public class HomesPack extends BasePack {
     }
 
     public static int getCooldown(Player player) {
-        long cooldownTime = TeaksTweaks.getInstance().getConfig().getInt("packs.homes.teleport-cooldown") * 1000L;
+        long cooldownTime = Config.getInt("packs.homes.teleport-cooldown") * 1000L;
         if (!cooldowns.containsKey(player.getUniqueId())) {
             return 0;
         }

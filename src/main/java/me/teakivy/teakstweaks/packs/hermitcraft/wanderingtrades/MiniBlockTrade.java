@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.hermitcraft.wanderingtrades;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.utils.config.Config;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Material;
@@ -25,7 +26,7 @@ public class MiniBlockTrade {
     }
 
     public MerchantRecipe getTrade() {
-        MerchantRecipe recipe = new MerchantRecipe(getSkull(), TeaksTweaks.getInstance().getConfig().getInt("packs.wandering-trades.mini-blocks.per-trade"));
+        MerchantRecipe recipe = new MerchantRecipe(getSkull(), Config.getInt("packs.wandering-trades.mini-blocks.per-trade"));
 
         recipe.addIngredient(new ItemStack(Material.EMERALD, 1));
         recipe.addIngredient(new ItemStack(material));

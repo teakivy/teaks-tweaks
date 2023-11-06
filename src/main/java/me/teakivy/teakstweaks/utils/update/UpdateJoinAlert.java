@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.utils.update;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -25,7 +26,8 @@ public class UpdateJoinAlert implements Listener {
         Player player = event.getPlayer();
 
         if (!player.hasPermission("teakstweaks.manage")) return;
-        if (!TeaksTweaks.getInstance().getConfig().getBoolean("settings.alert-on-new-version")) return;
+        if (!Config.getBoolean("settings.alert-on-new-version")) return;
+        if (!UpdateChecker.hasUpdate()) return;
 
         String message = Translatable.getString("startup.update.join_alert");
         message = "<hover:show_text:\"" + Translatable.getString("startup.update.join_alert.hover") + "\">" + message;

@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.experimental.chunkloaders;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.config.Config;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -48,7 +49,7 @@ public class Loader extends BasePack {
                         marker.setRadius(.001F);
                         marker.addScoreboardTag("loaded");
 
-                        if (teaksTweaks.getConfig().getBoolean("packs.chunk-loaders.show-particles")) {
+                        if (Config.getBoolean("packs.chunk-loaders.show-particles")) {
                             marker.getWorld().spawnParticle(Particle.FLAME, item.getLocation(), 100, 0, 0, 0, .5);
                         }
                         item.remove();
