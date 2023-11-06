@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.teakstweaks.keepsmall;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -26,27 +27,33 @@ public class KeepSmall extends BasePack {
             Bukkit.getScheduler().scheduleSyncDelayedTask(teaksTweaks, () -> {
                 Entity entity1 = getEntityByUniqueId(entity.getUniqueId());
                 if (entity1 == null) return;
-                if (entity1.getCustomName() == null) return;
-                if (entity1.getCustomName().toLowerCase().replace("_", " ").equalsIgnoreCase(getString("smallify.activation_name"))) {
+                if (entity1.customName() == null) return;
+                if (MiniMessage.miniMessage().serialize(entity1.customName()).replaceAll("_", " ")
+                        .replaceAll("-", " ")
+                        .trim()
+                        .equalsIgnoreCase(getString("smallify.activation_name"))) {
                     if (!getConfig().getBoolean("smallify")) return;
                     if (entity1 instanceof Ageable) {
                         Ageable ageable = (Ageable) entity1;
                         ageable.setAge(-Integer.MAX_VALUE);
                     }
-                    entity.setCustomName(getString("smallify.small_name"));
+                    entity.customName(getText("smallify.small_name"));
                 }
-                if (entity1.getCustomName().equalsIgnoreCase(getString("grow.activation_name"))) {
+                if (MiniMessage.miniMessage().serialize(entity1.customName()).replaceAll("_", " ")
+                        .replaceAll("-", " ")
+                        .trim()
+                        .equalsIgnoreCase(getString("grow.activation_name"))) {
                     if (!getConfig().getBoolean("grow")) return;
                     if (entity1 instanceof Ageable) {
                         Ageable ageable = (Ageable) entity1;
                         ageable.setAge(1);
                     }
-                    entity.setCustomName(getString("grow.grown_name"));
+                    entity.customName(getText("grow.grown_name"));
                 }
             }, 10L);
-        } catch (NoClassDefFoundError err) {
-        }
+        } catch (NoClassDefFoundError ignored) {}
     }
+
     public Entity getEntityByUniqueId(UUID uniqueId) {
         for (World world : Bukkit.getWorlds()) {
             for (Entity entity : world.getEntities()) {

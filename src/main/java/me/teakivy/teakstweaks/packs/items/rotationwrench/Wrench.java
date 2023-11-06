@@ -44,7 +44,7 @@ public class Wrench extends BasePack {
         meta.setUnbreakable(true);
         meta.setCustomModelData(4321);
         result.setDurability((short) 1);
-        meta.setDisplayName(getString("item_name"));
+        meta.displayName(getText("item_name"));
         result.setItemMeta(meta);
 
         ShapedRecipe recipe = new ShapedRecipe(key, result);
@@ -69,7 +69,7 @@ public class Wrench extends BasePack {
         ItemStack item = event.getItem();
         if (item == null) return;
         if (!item.hasItemMeta()) return;
-        if (!Objects.requireNonNull(item.getItemMeta()).getDisplayName().equalsIgnoreCase(getString("item_name"))) return;
+        if (!Objects.requireNonNull(item.getItemMeta()).displayName().equals(getText("item_name"))) return;
         if (item.getType() != Material.CARROT_ON_A_STICK) return;
         if (!item.getItemMeta().isUnbreakable()) return;
         if (event.getPlayer().getVehicle() != null) event.setCancelled(true);

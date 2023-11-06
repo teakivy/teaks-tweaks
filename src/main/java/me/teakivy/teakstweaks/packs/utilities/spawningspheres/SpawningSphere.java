@@ -21,14 +21,6 @@ public class SpawningSphere {
     private Location center;
     protected SphereType type;
 
-    public SpawningSphere(Location center, SphereType type) {
-        this.center = center;
-        this.type = type;
-
-        center.setYaw(0);
-        center.setPitch(0);
-    }
-
     public SpawningSphere(LinkedHashMap<String, Object> map, SphereType type) {
         this.type = type;
         deserialize(map);
@@ -87,7 +79,7 @@ public class SpawningSphere {
         stand.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 999999, 0));
 
         if (isCenter) {
-            stand.setCustomName(Translatable.getLegacy("spawning_spheres.center_stand"));
+            stand.customName(Translatable.get("spawning_spheres.center_stand"));
             stand.setCustomNameVisible(true);
         }
 

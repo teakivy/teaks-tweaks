@@ -129,11 +129,11 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         this.parentPack = parentPack;
         this.command = command.toLowerCase();
         this.args = args;
-        this.description = description == null ? Translatable.getString(command + ".command_description") : description;
+        this.translationKey = translationKey == null ? command : translationKey;
+        this.description = description == null ? Translatable.getString(this.translationKey + ".command_description") : description;
         this.alias = aliases;
         this.permission = "teakstweaks." + parentPack + ".command." + command;
         this.commandType = type;
-        this.translationKey = translationKey == null ? command : translationKey;
 
         this.cooldownTime = 0;
         this.cooldownMap = new HashMap<>();

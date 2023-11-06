@@ -12,13 +12,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.intellij.lang.annotations.Subst;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -184,11 +181,26 @@ public class BasePack implements Listener {
 	 * @return Translated & colored string
 	 */
 	protected String getString(String key) {
-		return Translatable.getLegacy(translatableKey + "." + key);
+		return Translatable.getString(translatableKey + "." + key);
 	}
 
-	public TagResolver.Single insert(@Subst("") String key, String value) {
+	protected Component getText(String key, TagResolver... resolvers) {
+		return Translatable.get(translatableKey + "." + key, resolvers);
+	}
+
+	public static TagResolver.Single insert(@Subst("") String key, String value) {
 		return Placeholder.parsed(key, value);
+	}
+	public static TagResolver.Single insert(@Subst("") String key, int value) {
+		return Placeholder.parsed(key, value + "");
+	}
+
+	public static TagResolver.Single insert(@Subst("") String key, Component value) {
+		return Placeholder.component(key, value);
+	}
+
+	public static Component newText(String text, TagResolver... resolvers) {
+		return MiniMessage.miniMessage().deserialize(text, resolvers);
 	}
 }
 

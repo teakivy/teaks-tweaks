@@ -5,6 +5,8 @@ import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.XPUtils;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
@@ -90,7 +92,7 @@ public class GraveEvents extends BasePack {
                 }
                 return;
             } else {
-                event.getPlayer().sendMessage(getString("cant_rob_grave"));
+                event.getPlayer().sendMessage(getText("cant_rob_grave"));
             }
         }
         event.setCancelled(true);
@@ -157,14 +159,14 @@ public class GraveEvents extends BasePack {
         GraveCreator.createGrave(loc, player, xp);
 
         if (getConfig().getBoolean("locatable")) {
-            String lastGrave = getString("pack.graves.last_grave")
-                    .replace("%x%", String.valueOf((int) Math.floor(loc.getX())))
-                    .replace("%y%", String.valueOf((int) Math.floor(loc.getY())))
-                    .replace("%z%", String.valueOf((int) Math.floor(loc.getZ())))
-                    .replace("%world%", loc.getWorld().getName());
+            Component lastGrave = getText("pack.graves.last_grave",
+                            insert("x", (int) Math.floor(loc.getX())),
+                            insert("y", (int) Math.floor(loc.getY())),
+                            insert("z", (int) Math.floor(loc.getZ())),
+                            insert("world", loc.getWorld().getName()));
             player.sendMessage(lastGrave);
             PersistentDataContainer playerData = player.getPersistentDataContainer();
-            playerData.set(Key.get("graves_last"), PersistentDataType.STRING, lastGrave);
+            playerData.set(Key.get("graves_last"), PersistentDataType.STRING, MiniMessage.miniMessage().serialize(lastGrave));
         }
         if (getConfig().getBoolean("hold-xp")) {
             event.setDroppedExp(0);
@@ -190,12 +192,12 @@ public class GraveEvents extends BasePack {
     public static ItemStack getGraveKey() {
         ItemStack graveKey = new ItemStack(Material.TRIPWIRE_HOOK);
         ItemMeta keyMeta = graveKey.getItemMeta();
-        keyMeta.setDisplayName(Translatable.getLegacy("graves.key.item_name"));
+        keyMeta.displayName(Translatable.get("graves.key.item_name"));
         graveKey.addUnsafeEnchantment(Enchantment.CHANNELING, 1);
         keyMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        List<String> lore = new ArrayList<>();
-        lore.add(Translatable.getLegacy("graves.key.item_lore"));
-        keyMeta.setLore(lore);
+        List<Component> lore = new ArrayList<>();
+        lore.add(Translatable.get("graves.key.item_lore"));
+        keyMeta.lore(lore);
         graveKey.setItemMeta(keyMeta);
         return graveKey;
     }

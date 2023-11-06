@@ -5,8 +5,9 @@ import com.mojang.authlib.properties.Property;
 import com.mojang.authlib.properties.PropertyMap;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.ReflectionUtils;
+import net.kyori.adventure.text.format.TextDecoration;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.apache.commons.lang3.text.WordUtils;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
@@ -100,9 +101,7 @@ public class BaseMobHead implements Listener {
             event.setDropItems(false);
             List<String> headDetails = findTextureName(event.getBlock());
             event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), createHead(headDetails.get(0), headDetails.get(1)));
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
+        } catch (IllegalAccessException ignored) {}
 
 
     }
@@ -166,7 +165,7 @@ public class BaseMobHead implements Listener {
 
         meta.setNoteBlockSound(this.sound.getKey());
 
-        meta.setDisplayName(ChatColor.RESET.toString() + ChatColor.YELLOW + name);
+        meta.displayName(MiniMessage.miniMessage().deserialize("<yellow>" + name).decoration(TextDecoration.ITALIC, false));
 
         GameProfile profile = new GameProfile(UUID.fromString("fdb5599c-1b14-440e-82df-d69719703d21"), name);
         profile.getProperties().put("textures", new Property("textures", texture));
@@ -175,9 +174,7 @@ public class BaseMobHead implements Listener {
             profileField = meta.getClass().getDeclaredField("profile");
             profileField.setAccessible(true);
             profileField.set(meta, profile);
-        } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
+        } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException ignored) {}
 
         head.setItemMeta(meta);
         return head;

@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
+import me.teakivy.teakstweaks.packs.hermitcraft.tag.Tag;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.Arg;
 import me.teakivy.teakstweaks.utils.command.CommandType;
@@ -28,15 +29,9 @@ public class TagGameCommand extends AbstractCommand {
         if (!event.hasArgs()) {
             if (!checkPermission("give")) return;
 
-            ItemStack tag = new ItemStack(Material.NAME_TAG);
-            ItemMeta tagMeta = tag.getItemMeta();
-            tagMeta.displayName(newText(getString("item_name")).decoration(TextDecoration.ITALIC, false));
-            tagMeta.setUnbreakable(true);
-            tag.setItemMeta(tagMeta);
-
             Player player = event.getPlayer();
 
-            player.getInventory().addItem(tag);
+            player.getInventory().addItem(Tag.getTagItem());
             player.addScoreboardTag("tag_it");
 
             if (team == null) {

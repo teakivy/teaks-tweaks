@@ -68,6 +68,7 @@
   "tag.description": "Adds the Hermitcraft Tag game directly into your world! '/tag'",
   "tag.error.cant_tag_afk": "<red>You can't Tag an AFK Player!",
   "tag.tagged_message": "<red><tagged_name> <yellow>was tagged by <gold><tagger_name>",
+  "tag.item_name": "<yellow>Tag!",
 
   "thunder_shrine.name": "Thunder Shrine",
   "thunder_shrine.description": "A shrine that allows you to create a thunder storm when offered a Nether Star.<newline>Drop a Nether Star on top of a shrine to create a thunder storm.",
@@ -164,6 +165,7 @@
   "graves.key.item_lore": "Right-click any grave with this key to open it.",
   "graves.log.created": "Created a grave for <player> at XYZ: <x> <y> <z> in World: <world>",
   "graves.log.contains": "Contains <gold><item_count></gold> items and <gold><xp_count></gold> XP.",
+  "graves.log.item": "- <gold><item> <white>x <gold><amount>",
 
   "nether_portal_coords.name": "Nether Portal Coords",
   "nether_portal_coords.description": "Adds a command that calculates where a nether portal must be placed in the other dimension. Useful for syncing up nether portals.<newline>Command: /portal",
@@ -518,7 +520,6 @@
   "sudoku.committed": "<green>Thanks for playing sudoku!",
 
   "taggame.command_description": "The classic game of tag.",
-  "taggame.item_name": "<yellow>Tag!",
   "taggame.begun": "<yellow>Let the games begin!",
   "taggame.uninstalled": "<yellow>The Tag Game has been uninstalled!",
 

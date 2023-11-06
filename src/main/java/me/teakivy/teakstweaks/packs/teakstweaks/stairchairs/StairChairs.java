@@ -48,7 +48,7 @@ public class StairChairs extends BasePack {
         Marker marker = (Marker) Objects.requireNonNull(loc.getWorld()).spawnEntity(loc, EntityType.MARKER);
         marker.addScoreboardTag("chair");
 
-        event.getPlayer().sendMessage(getString("chair_created"));
+        event.getPlayer().sendMessage(getText("chair_created"));
     }
 
     public boolean isChair(Location loc) {
@@ -70,7 +70,7 @@ public class StairChairs extends BasePack {
             }
         }
         event.getBlock().getWorld().dropItem(loc.add(.5, .5, .5), new ItemStack(Material.SADDLE));
-        event.getPlayer().sendMessage(getString("chair_destroyed"));
+        event.getPlayer().sendMessage(getText("chair_destroyed"));
     }
 
     @EventHandler

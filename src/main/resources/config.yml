@@ -198,9 +198,9 @@ packs:
   afk-display:
     enabled: false
     # Whether or not to display [AFK] before an AFK players name
-    display-afk-badge: true
+    display-badge: true
     # Badge to show when afk
-    afk-badge: '&7[AFK]'
+    badge: '<gray>[AFK]'
     # How long a player needs to be still before getting AFK'
     afk-after: 5
     # How long (in minutes) a player needs to be AFK before they get kicked from the server

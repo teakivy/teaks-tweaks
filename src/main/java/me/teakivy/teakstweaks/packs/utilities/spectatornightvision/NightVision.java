@@ -21,7 +21,7 @@ public class NightVision extends BasePack {
         if (player.getGameMode().equals(GameMode.SPECTATOR)) {
             if (player.hasPotionEffect(PotionEffectType.NIGHT_VISION)) {
                 player.removePotionEffect(PotionEffectType.NIGHT_VISION);
-                player.sendMessage(getString("error.game_mode_changed"));
+                player.sendMessage(getText("error.game_mode_changed"));
             }
         }
     }
