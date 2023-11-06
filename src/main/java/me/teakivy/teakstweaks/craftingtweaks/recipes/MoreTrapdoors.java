@@ -30,13 +30,10 @@ public class MoreTrapdoors extends AbstractRecipe {
     }
 
     public static void newTrapdoorRecipe(String type) {
-        NamespacedKey key = Key.get(type.toLowerCase() + "_trapdoors");
-
-        ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.valueOf(type + "_TRAPDOOR"), 12));
-
+        ShapedRecipe recipe = new ShapedRecipe(Key.get(type.toLowerCase() + "_trapdoors"),
+                new ItemStack(Material.valueOf(type + "_TRAPDOOR"), 12));
         recipe.shape("xxx", "xxx");
         recipe.setIngredient('x', Material.valueOf(type + "_PLANKS"));
-
         Bukkit.addRecipe(recipe);
     }
 

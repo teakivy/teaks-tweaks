@@ -4,7 +4,6 @@ import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
 import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapelessRecipe;
 
@@ -16,20 +15,16 @@ public class SandstoneDyeing extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        newRedRecipe("red_sandstone", Material.SANDSTONE, Material.RED_SANDSTONE);
-        newRedRecipe("smooth_red_sandstone", Material.SMOOTH_SANDSTONE, Material.SMOOTH_RED_SANDSTONE);
-        newRedRecipe("red_sand", Material.SAND, Material.RED_SAND);
+        newRedRecipe(Material.SANDSTONE, Material.RED_SANDSTONE);
+        newRedRecipe(Material.SMOOTH_SANDSTONE, Material.SMOOTH_RED_SANDSTONE);
+        newRedRecipe(Material.SAND, Material.RED_SAND);
     }
 
-    public static void newRedRecipe(String name, Material input, Material output) {
-
-        NamespacedKey key = Key.get(name + "_sandstone_dyeing");
-
-        ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(output, 2));
-
+    public static void newRedRecipe(Material input, Material output) {
+        ShapelessRecipe recipe = new ShapelessRecipe(Key.get(output.toString().toLowerCase() + "_sandstone_dyeing"),
+                new ItemStack(output, 2));
         recipe.addIngredient(Material.RED_DYE);
         recipe.addIngredient(2, input);
-
         Bukkit.addRecipe(recipe);
     }
 }

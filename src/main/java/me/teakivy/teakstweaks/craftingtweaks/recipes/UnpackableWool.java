@@ -4,7 +4,6 @@ import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
 import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapelessRecipe;
@@ -37,13 +36,11 @@ public class UnpackableWool extends AbstractRecipe {
         woolList.add(Material.GREEN_WOOL);
         woolList.add(Material.RED_WOOL);
         woolList.add(Material.BLACK_WOOL);
-
         RecipeChoice wool = new RecipeChoice.MaterialChoice(woolList);
 
-        NamespacedKey key = Key.get("wool_unpackables");
-        ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.STRING, 4));
+        ShapelessRecipe recipe = new ShapelessRecipe(Key.get("wool_unpackables"),
+                new ItemStack(Material.STRING, 4));
         recipe.addIngredient(wool);
-
         Bukkit.addRecipe(recipe);
     }
 }

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CraftingRegister {
-
     private static final List<AbstractRecipe> enabledRecipes = new ArrayList<>();
 
     /**
@@ -41,7 +40,6 @@ public class CraftingRegister {
         recipes.add(new CraftableGildedBlackstone());
         recipes.add(new CraftableSporeBlossoms());
         recipes.add(new CraftableSmallDripleaves());
-        recipes.add(new CraftableSculkSensors());
         recipes.add(new UnpackableIce());
         recipes.add(new UnpackableNetherWart());
         recipes.add(new UnpackableWool());

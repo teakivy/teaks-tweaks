@@ -4,7 +4,6 @@ import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
 import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapelessRecipe;
@@ -26,10 +25,8 @@ public class UnpackableQuartz extends AbstractRecipe {
         materials.add(Material.QUARTZ_BRICKS);
         materials.add(Material.CHISELED_QUARTZ_BLOCK);
 
-        NamespacedKey iceKey = Key.get("unpackable_quartz");
-        ShapelessRecipe iceRecipe = new ShapelessRecipe(iceKey, new ItemStack(Material.QUARTZ, 4));
+        ShapelessRecipe iceRecipe = new ShapelessRecipe(Key.get("unpackable_quartz"), new ItemStack(Material.QUARTZ, 4));
         iceRecipe.addIngredient(new RecipeChoice.MaterialChoice(materials));
-
         Bukkit.addRecipe(iceRecipe);
     }
 }

@@ -71,13 +71,9 @@ public class MoreStairs extends AbstractRecipe {
     }
 
     public static void newStairsRecipe(Material input, Material output) {
-        NamespacedKey key = Key.get(output.name().toLowerCase() + "_stairs");
-
-        ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(output, 8));
-
+        ShapedRecipe recipe = new ShapedRecipe(Key.get(output.name().toLowerCase() + "_stairs"), new ItemStack(output, 8));
         recipe.shape("x  ", "xx ", "xxx");
         recipe.setIngredient('x', input);
-
         Bukkit.addRecipe(recipe);
     }
 }

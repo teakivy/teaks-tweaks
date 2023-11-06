@@ -15,14 +15,14 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractRecipe {
-    protected String name;
-    protected String path;
+public abstract class AbstractRecipe {
+    private final String name;
+    private final String path;
 
-    public Material material;
-    public String description;
+    private final Material material;
+    private final String description;
 
-    public ItemStack item;
+    private ItemStack item;
 
     /**
      * Set up the pack
@@ -83,9 +83,7 @@ public class AbstractRecipe {
     /**
      * Register all recipes for the pack
      */
-    public void registerRecipes() {
-        // TODO : Implement
-    }
+    public abstract void registerRecipes();
 
     /**
      * Get the item for the pack
