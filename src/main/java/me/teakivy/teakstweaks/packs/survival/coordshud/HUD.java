@@ -34,7 +34,7 @@ public class HUD extends BasePack {
         running = true;
         DisplayHud.init();
         new Thread(() -> {
-            taskID = Bukkit.getScheduler().runTaskTimer(teaksTweaks, () -> {
+            taskID = Bukkit.getScheduler().runTaskTimer(TeaksTweaks.getInstance(), () -> {
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     if (!isEnabled(player)) continue;
                     DisplayHud.showHud(player);

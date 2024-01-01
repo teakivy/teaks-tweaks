@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.packs.survival.cauldronconcrete;
 
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Bukkit;
@@ -18,7 +19,7 @@ public class ConcreteConverter extends BasePack {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
-        if (!hasPermission(event.getPlayer())) return;
+        if (!checkPermission(event.getPlayer())) return;
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (event.getClickedBlock() == null) return;
         if (event.getClickedBlock().getType() != Material.WATER_CAULDRON) return;
@@ -27,15 +28,15 @@ public class ConcreteConverter extends BasePack {
         if (!event.getItem().getType().name().contains("_CONCRETE_POWDER")) return;
 
         Levelled levelled = (Levelled) event.getClickedBlock().getBlockData();
-        if (levelled.getLevel() == 1 && !config.getBoolean("drops-water-level")) {
+        if (levelled.getLevel() == 1 && !getConfig().getBoolean("drops-water-level")) {
             event.getClickedBlock().setType(Material.BARRIER);
-            Bukkit.getScheduler().runTaskLater(teaksTweaks, () -> event.getClickedBlock().setType(Material.CAULDRON), 1L);
+            Bukkit.getScheduler().runTaskLater(TeaksTweaks.getInstance(), () -> event.getClickedBlock().setType(Material.CAULDRON), 1L);
 
         }
 
         event.setCancelled(true);
 
-        if (event.getClickedBlock().getType() == Material.WATER_CAULDRON && !config.getBoolean("drops-water-level")) {
+        if (event.getClickedBlock().getType() == Material.WATER_CAULDRON && !getConfig().getBoolean("drops-water-level")) {
             levelled.setLevel(levelled.getLevel() - 1);
         }
 

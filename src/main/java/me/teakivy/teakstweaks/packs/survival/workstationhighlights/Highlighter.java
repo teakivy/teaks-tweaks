@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.packs.survival.workstationhighlights;
 
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Bukkit;
@@ -42,7 +43,7 @@ public class Highlighter extends BasePack {
         entity.addScoreboardTag("glowing");
 
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(teaksTweaks, entity::remove, glowLength);
+        Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), entity::remove, glowLength);
     }
 
 }

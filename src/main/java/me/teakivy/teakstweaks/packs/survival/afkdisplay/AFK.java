@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.packs.survival.afkdisplay;
 
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Logger;
@@ -62,7 +63,7 @@ public class AFK extends BasePack {
             }
         }
 
-        afkTimer = Bukkit.getScheduler().runTaskTimer(teaksTweaks, () -> {
+        afkTimer = Bukkit.getScheduler().runTaskTimer(TeaksTweaks.getInstance(), () -> {
             afk.forEach((uuid, isAFK) -> {
                 Player player = Bukkit.getOfflinePlayer(uuid).getPlayer();
                 if (!isAFK) {

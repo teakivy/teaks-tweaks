@@ -37,7 +37,7 @@ public class GraveEvents extends BasePack {
 
     @EventHandler
     public void onInteract(PlayerInteractAtEntityEvent event) throws IOException {
-        if (!hasPermission(event.getPlayer())) return;
+        if (!checkPermission(event.getPlayer())) return;
         Entity entity = event.getRightClicked();
         if (!entity.getScoreboardTags().contains("grave")) return;
 
@@ -116,7 +116,7 @@ public class GraveEvents extends BasePack {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event) throws IOException {
-        if (!config.getBoolean("generate-in-lava")) {
+        if (!getConfig().getBoolean("generate-in-lava")) {
             if (event.getPlayer().getLocation().getBlock().getType() == Material.LAVA || event.getPlayer().getLocation().getBlock().getType() == Material.LAVA_CAULDRON) {
                 return;
             }
@@ -125,9 +125,9 @@ public class GraveEvents extends BasePack {
 
         Player player = event.getEntity();
 
-        if (player.getLevel() < config.getInt("level-threshold")) return;
+        if (player.getLevel() < getConfig().getInt("level-threshold")) return;
 
-        if (!config.getBoolean("creative-drops")) {
+        if (!getConfig().getBoolean("creative-drops")) {
             if (event.getEntity().getGameMode() == GameMode.CREATIVE) {
                 event.getEntity().getInventory().clear();
                 event.getEntity().setExp(0);
@@ -135,11 +135,11 @@ public class GraveEvents extends BasePack {
             }
         }
 
-        if (!config.getBoolean("allow-empty-graves")) {
+        if (!getConfig().getBoolean("allow-empty-graves")) {
             if (event.getDrops().isEmpty()) return;
         }
 
-        if (!config.getBoolean("creative-graves")) {
+        if (!getConfig().getBoolean("creative-graves")) {
             if (event.getEntity().getGameMode() == GameMode.CREATIVE) return;
         }
 
@@ -150,8 +150,8 @@ public class GraveEvents extends BasePack {
             loc = GraveCreator.findGraveLocation(loc);
         }
         int xp = 0;
-        if (config.getBoolean("hold-xp")) {
-            xp = config.getBoolean("keep-all-xp") ?
+        if (getConfig().getBoolean("hold-xp")) {
+            xp = getConfig().getBoolean("keep-all-xp") ?
                     XPUtils.getPlayerExp(player) :
                     event.getDroppedExp();
         }

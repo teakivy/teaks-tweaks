@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.packs.survival.unlockallrecipes;
 
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Keyed;
@@ -20,7 +21,7 @@ public class UnlockRecipes extends BasePack {
         super("unlock-all-recipes", PackType.SURVIVAL, Material.KNOWLEDGE_BOOK);
 
         recipes.clear();
-        Iterator<Recipe> it = teaksTweaks.getServer().recipeIterator();
+        Iterator<Recipe> it = TeaksTweaks.getInstance().getServer().recipeIterator();
         while (it.hasNext()) {
             Recipe rec = it.next();
             if (rec instanceof Keyed) {
