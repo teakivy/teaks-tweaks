@@ -85,7 +85,6 @@ public class Trades extends BasePack {
 
     }
 
-
     private MerchantRecipe newHeadRecipe(String playerName) {
         MerchantRecipe recipe = new MerchantRecipe(getHead(playerName), getConfig().getInt("player-heads.per-trade"));
 
@@ -93,7 +92,6 @@ public class Trades extends BasePack {
 
         return recipe;
     }
-
 
     public static ItemStack getHead(String playerName) {
         ItemStack item = new ItemStack(Material.PLAYER_HEAD, 1);

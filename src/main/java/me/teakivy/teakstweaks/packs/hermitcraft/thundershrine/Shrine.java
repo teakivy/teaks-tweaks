@@ -25,8 +25,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Shrine extends BasePack {
-
-    int particleTask = -1;
+    private int particleTask = -1;
 
     public Shrine() {
         super("thunder-shrine", PackType.HERMITCRAFT, Material.NETHER_STAR);
@@ -39,16 +38,14 @@ public class Shrine extends BasePack {
     }
 
     public void register() {
-        if (getConfig().getBoolean("idle-particles")) {
-            particleTask = new BukkitRunnable() {
-                @Override
-                public void run() {
-                    runParticles();
-                }
-            }.runTaskTimer(TeaksTweaks.getInstance(), 0, 3L).getTaskId();
-        } else {
-            particleTask = -1;
-        }
+        if (!getConfig().getBoolean("idle-particles")) particleTask = -1;
+
+        particleTask = new BukkitRunnable() {
+            @Override
+            public void run() {
+                runParticles();
+            }
+        }.runTaskTimer(TeaksTweaks.getInstance(), 0, 3L).getTaskId();
     }
 
     public static void runParticles() {
@@ -57,28 +54,22 @@ public class Shrine extends BasePack {
         }
     }
 
-    public static void removeShrine(Entity shrine) {
-        shrine.remove();
-    }
-
     @EventHandler
     public void onDrop(PlayerDropItemEvent event) {
-        if (!hasPermission(event.getPlayer())) {
-            return;
-        }
         ItemStack item = event.getItemDrop().getItemStack();
-        if (item.getType() == Material.getMaterial(getConfig().getString("summoning.summoning-item"))) {
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    if (isShrine(event.getItemDrop())) {
-                        event.getItemDrop().remove();
-                        startThunder(event.getPlayer(), event.getItemDrop().getLocation());
-                    }
-                    if (event.getItemDrop().isDead() || event.getItemDrop().getItemStack().getAmount() != 1) this.cancel();
+        if (!checkPermission(event.getPlayer())) return;
+        if (item.getType() != Material.getMaterial(getConfig().getString("summoning.summoning-item"))) return;
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (isShrine(event.getItemDrop())) {
+                    event.getItemDrop().remove();
+                    startThunder(event.getPlayer(), event.getItemDrop().getLocation());
                 }
-            }.runTaskTimer(TeaksTweaks.getInstance(), 0, 20L);
-        }
+                if (event.getItemDrop().isDead() || event.getItemDrop().getItemStack().getAmount() != 1) this.cancel();
+            }
+        }.runTaskTimer(TeaksTweaks.getInstance(), 0, 20L);
     }
 
     public static void startThunder(Player player, Location loc) {
@@ -94,22 +85,20 @@ public class Shrine extends BasePack {
         world.setThunderDuration(6000);
         world.setStorm(true);
         world.setThundering(true);
-        if (config.getBoolean("summoning.brodcast-message")) {
-            for (Player oPlayer : Bukkit.getOnlinePlayers()) {
-                oPlayer.sendMessage(Translatable.get("storm_initialize"));
-            }
+        if (!config.getBoolean("summoning.brodcast-message")) return;
+
+        for (Player oPlayer : Bukkit.getOnlinePlayers()) {
+            oPlayer.sendMessage(Translatable.get("storm_initialize"));
         }
     }
 
     public static List<Entity> getShrines() {
         List<Entity> shrines = new ArrayList<>();
-        Bukkit.getWorlds().forEach(world -> {
-            world.getEntities().forEach(entity -> {
-                if (isShrine(entity)) {
-                    shrines.add(entity);
-                }
-            });
-        });
+        Bukkit.getWorlds().forEach(world -> world.getEntities().forEach(entity -> {
+            if (isShrine(entity)) {
+                shrines.add(entity);
+            }
+        }));
         return shrines;
     }
 
