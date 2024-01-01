@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.packs.utilities.itemaverages;
 
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Logger;
@@ -71,7 +72,7 @@ public class ItemTracker extends BasePack {
             }
         }
         if (!shouldStop) {
-            Bukkit.getScheduler().runTaskLater(teaksTweaks, () -> {
+            Bukkit.getScheduler().runTaskLater(TeaksTweaks.getInstance(), () -> {
                 trackItems(player);
             }, 1L);
             return;
@@ -123,7 +124,7 @@ public class ItemTracker extends BasePack {
         tracking = loc.getBlock().getLocation();
 
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(teaksTweaks, () -> {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
             entity.remove();
             Logger.info(Translatable.get("item_averages.log_finish"));
             shouldStop = true;
