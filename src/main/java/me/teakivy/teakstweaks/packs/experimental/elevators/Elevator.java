@@ -79,7 +79,7 @@ public class Elevator extends BasePack {
         player.teleport(new Location(player.getWorld(), player.getLocation().getX(), elevatorSpot.getY() + 1, player.getLocation().getZ(), player.getLocation().getYaw(), player.getLocation().getPitch()));
         player.getWorld().spawnParticle(Particle.PORTAL, player.getLocation().add(0, 1, 0), 20, -.5, -.5, -.5, 4);
 
-        if (!getConfig().getBoolean("elevators.play-sound")) return;
+        if (!getConfig().getBoolean("play-sound")) return;
         player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
     }
 

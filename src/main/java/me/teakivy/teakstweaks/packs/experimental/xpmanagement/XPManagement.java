@@ -38,11 +38,10 @@ public class XPManagement extends BasePack {
     }
 
     public void registerRecipe() {
-        if (getConfig().getBoolean("allow-smelting")) {
-            FurnaceRecipe recipe = new FurnaceRecipe(new ItemStack(Material.GLASS_BOTTLE), Material.EXPERIENCE_BOTTLE);
-            recipe.setExperience(Config.getInt("packs.xp-management.take-xp-amount"));
-            Bukkit.addRecipe(recipe);
-        }
+        if (!getConfig().getBoolean("allow-smelting")) return;
+
+        FurnaceRecipe recipe = new FurnaceRecipe(Key.get("smeltable_xp_bottle"), new ItemStack(Material.GLASS_BOTTLE), Material.EXPERIENCE_BOTTLE, getConfig().getInt("take-xp-amount"), 100);
+        Bukkit.addRecipe(recipe);
     }
 
     @EventHandler
@@ -76,9 +75,7 @@ public class XPManagement extends BasePack {
         Player player = event.getPlayer();
         ItemStack item = event.getItem();
 
-        if (!event.getPlayer().hasPermission(permission)) {
-            return;
-        }
+        if (!checkPermission(player)) return;
 
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (event.getClickedBlock() == null) return;
@@ -122,7 +119,7 @@ public class XPManagement extends BasePack {
 
         if (getConfig().getBoolean("display-amount")) {
             List<Component> lore = new ArrayList<>();
-            lore.add(getText("bottle_contains", insert("amount", config.getInt("take-xp-amount"))));
+            lore.add(getText("bottle_contains", insert("amount", getConfig().getInt("take-xp-amount"))));
             xpMeta.lore(lore);
         }
 
