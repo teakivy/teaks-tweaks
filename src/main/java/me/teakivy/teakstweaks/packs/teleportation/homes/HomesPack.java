@@ -32,7 +32,7 @@ public class HomesPack extends BasePack {
     @Override
     public void init() {
         super.init();
-        for (Player player : teaksTweaks.getServer().getOnlinePlayers()) {
+        for (Player player : TeaksTweaks.getInstance().getServer().getOnlinePlayers()) {
             loadHomes(player);
         }
     }
