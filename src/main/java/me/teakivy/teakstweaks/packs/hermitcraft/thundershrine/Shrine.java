@@ -94,7 +94,7 @@ public class Shrine extends BasePack {
         world.setThunderDuration(6000);
         world.setStorm(true);
         world.setThundering(true);
-        if (config.getBoolean("summoning.brodcast-message")) {
+        if (config.getBoolean("summoning.broadcast-message")) {
             for (Player oPlayer : Bukkit.getOnlinePlayers()) {
                 oPlayer.sendMessage(Translatable.get("storm_initialize"));
             }
