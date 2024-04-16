@@ -44,7 +44,7 @@ public class HeadDrop extends BasePack {
         if (getConfig().getBoolean("display-killer"))
             lore.add(getText("lore", insert("player", killer)));
         skull.lore(lore);
-        skull.setOwner(player.getName());
+        skull.setOwningPlayer(player);
         item.setItemMeta(skull);
         return item;
     }
