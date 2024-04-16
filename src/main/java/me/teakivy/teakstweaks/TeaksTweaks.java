@@ -37,6 +37,8 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         // Credits
         createCredits();
 
+        createDataFolders();
+
         // Metrics
         Metrics metrics = new Metrics(this, 12001);
         registerCustomMetrics(metrics);
@@ -166,6 +168,18 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
 
     public static Component newText(String text) {
         return MiniMessage.miniMessage().deserialize(text);
+    }
+
+    public void createDataFolders() {
+        File dataFolder = new File(getDataFolder(), "data");
+        if (!dataFolder.exists()) {
+            dataFolder.mkdirs();
+        }
+
+        File packsFolder = new File(getDataFolder(), "lang");
+        if (!packsFolder.exists()) {
+            packsFolder.mkdirs();
+        }
     }
 
 }
