@@ -94,9 +94,35 @@ public class AFK extends BasePack {
         Scoreboard sb = Bukkit.getScoreboardManager().getMainScoreboard();
         if (sb.getTeam("AFK") == null) {
             Team afk = sb.registerNewTeam("AFK");
-            afk.color(NamedTextColor.GRAY);
+            String color = Config.getString("packs.afk-display.name-color");
+            if (color == null || !color.equals("none")) {
+                afkTeam = sb.getTeam("AFK");
+                return;
+            }
+            afk.color(getColor(color));
         }
         afkTeam = sb.getTeam("AFK");
+    }
+
+    public static NamedTextColor getColor(String color) {
+        return switch (color) {
+            case "black" -> NamedTextColor.BLACK;
+            case "dark_blue" -> NamedTextColor.DARK_BLUE;
+            case "dark_green" -> NamedTextColor.DARK_GREEN;
+            case "dark_aqua" -> NamedTextColor.DARK_AQUA;
+            case "dark_red" -> NamedTextColor.DARK_RED;
+            case "dark_purple" -> NamedTextColor.DARK_PURPLE;
+            case "gold" -> NamedTextColor.GOLD;
+            case "gray" -> NamedTextColor.GRAY;
+            case "dark_gray" -> NamedTextColor.DARK_GRAY;
+            case "blue" -> NamedTextColor.BLUE;
+            case "green" -> NamedTextColor.GREEN;
+            case "aqua" -> NamedTextColor.AQUA;
+            case "red" -> NamedTextColor.RED;
+            case "light_purple" -> NamedTextColor.LIGHT_PURPLE;
+            case "yellow" -> NamedTextColor.YELLOW;
+            default -> NamedTextColor.WHITE;
+        };
     }
 
     @EventHandler
