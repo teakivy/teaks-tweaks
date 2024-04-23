@@ -160,7 +160,7 @@
   "graves.name": "Graves",
   "graves.description": "When a player dies, a grave is made at their location containing all their items. Right-click the grave to receive your items, and crouch to make it so only you can pick them up.<newline>Get a grave key to unlock any grave: '/grave key'<newline>Locate your last grave (if locatable is enabled): '/grave locate'",
   "graves.cant_rob_grave": "<red>You are not allowed to rob graves!",
-  "graves.last_grave": "<yellow>Your last grave was at XYZ: <gold><x> <y> <z></gold< in <gold>World: <world>",
+  "graves.last_grave": "<yellow>Your last grave was at XYZ: <gold><x> <y> <z></gold> in <gold>World: <world>",
   "graves.key.item_name": "<gold>Grave Key",
   "graves.key.item_lore": "Right-click any grave with this key to open it.",
   "graves.log.created": "Created a grave for <player> at XYZ: <x> <y> <z> in World: <world>",
