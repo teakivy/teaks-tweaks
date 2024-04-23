@@ -13,8 +13,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Marker;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.block.Action;
-import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.*;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.spigotmc.event.entity.EntityDismountEvent;
@@ -80,6 +79,7 @@ public class StairChairs extends BasePack {
         if (block == null) return;
         if (event.getPlayer().getInventory().getItemInMainHand().getType() != Material.AIR) return;
         if (!isChair(block.getLocation())) return;
+        if (!block.getType().name().toLowerCase().contains("stairs")) return;
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (block.getLocation().add(0, 1, 0).getBlock().getType() != Material.AIR) return;
         AreaEffectCloud seat = (AreaEffectCloud) block.getWorld().spawnEntity(block.getLocation().add(.5, 0, .5), EntityType.AREA_EFFECT_CLOUD);
