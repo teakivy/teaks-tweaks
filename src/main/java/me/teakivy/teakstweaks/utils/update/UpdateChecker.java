@@ -6,6 +6,7 @@ import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.apache.commons.io.IOUtils;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
@@ -14,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 
 public class UpdateChecker {
-    private final static int resourceId = 94021;
+    private final static String resourceId = "Xdn5t532";
 
     /**
      * Gets the latest version of the plugin from SpigotMC
@@ -22,12 +23,12 @@ public class UpdateChecker {
      */
     public static String getLatestVersion() {
         if (Config.getBoolean("settings.disable-update-checker")) return null;
-        String url = "https://api.spiget.org/v2/resources/" + resourceId + "/versions/latest";
+        String url = "https://api.modrinth.com/v2/project/" + resourceId + "/version";
 
         try {
             String nameJson = IOUtils.toString(new URL(url));
-            JSONObject latest = (JSONObject) JSONValue.parseWithException(nameJson);
-            return latest.get("name").toString();
+            JSONArray latest = (JSONArray) JSONValue.parseWithException(nameJson);
+            return ((JSONObject) latest.get(0)).get("version_number").toString();
         } catch (IOException | ParseException ignored) {}
         return null;
     }
@@ -47,7 +48,7 @@ public class UpdateChecker {
      */
     public static void sendUpdateMessage() {
         if (hasUpdate()) {
-            Logger.info(Translatable.get("startup.update.available", Placeholder.parsed("version", getLatestVersion())));
+            Logger.info(Translatable.get("startup.update.version_available", Placeholder.parsed("version", getLatestVersion())));
             Logger.info(Translatable.get("startup.update.download", Placeholder.parsed("url", Translatable.getString("plugin.url"))));
         }
     }
