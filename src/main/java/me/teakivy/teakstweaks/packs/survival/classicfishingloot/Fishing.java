@@ -20,8 +20,8 @@ public class Fishing extends BasePack {
         if (event.getCaught() == null) return;
         int luckNum = 0;
         Item caught = (Item) event.getCaught();
-        if (event.getPlayer().getInventory().getItem(EquipmentSlot.HAND).getEnchantments().containsKey(Enchantment.LUCK)) {
-            luckNum = event.getPlayer().getInventory().getItem(EquipmentSlot.HAND).getEnchantmentLevel(Enchantment.LUCK);
+        if (event.getPlayer().getInventory().getItem(EquipmentSlot.HAND).getEnchantments().containsKey(Enchantment.LUCK_OF_THE_SEA)) {
+            luckNum = event.getPlayer().getInventory().getItem(EquipmentSlot.HAND).getEnchantmentLevel(Enchantment.LUCK_OF_THE_SEA);
         }
 
         caught.setItemStack(FishingLootTable.generateFishingLoot(luckNum, false));

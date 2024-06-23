@@ -118,12 +118,12 @@ public class MobHeads extends BasePack {
         Random rand = new Random();
         if (player == null) return false;
         if (player.getInventory().getItemInMainHand().getItemMeta() != null) {
-            for (int i = 0; i < player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(Enchantment.LOOT_BONUS_MOBS); i++) {
+            for (int i = 0; i < player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(Enchantment.LOOTING); i++) {
                 chance = chance + lootingBonus;
             }
         } else {
             if (player.getInventory().getItemInOffHand().getItemMeta() != null) {
-                for (int i = 0; i < player.getInventory().getItemInOffHand().getItemMeta().getEnchantLevel(Enchantment.LOOT_BONUS_MOBS); i++) {
+                for (int i = 0; i < player.getInventory().getItemInOffHand().getItemMeta().getEnchantLevel(Enchantment.LOOTING); i++) {
                     chance = chance + lootingBonus;
                 }
             }

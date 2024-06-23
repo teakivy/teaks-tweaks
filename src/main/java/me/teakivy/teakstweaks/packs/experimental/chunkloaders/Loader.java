@@ -43,7 +43,7 @@ public class Loader extends BasePack {
                         AreaEffectCloud marker = (AreaEffectCloud) block.getWorld().spawnEntity(block.getLocation().add(.5, 1, .5), EntityType.AREA_EFFECT_CLOUD);
 
                         marker.setDuration(Integer.MAX_VALUE);
-                        marker.setParticle(Particle.SUSPENDED);
+                        marker.setParticle(Particle.FLAME);
                         marker.setWaitTime(0);
                         marker.setColor(Color.WHITE);
                         marker.setRadius(.001F);

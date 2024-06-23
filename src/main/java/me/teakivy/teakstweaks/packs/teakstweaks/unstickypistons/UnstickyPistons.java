@@ -72,7 +72,7 @@ public class UnstickyPistons extends BasePack {
     }
 
     public int getDamage(ItemStack itemStack) {
-        int unbLvl = itemStack.getEnchantmentLevel(Enchantment.DURABILITY);
+        int unbLvl = itemStack.getEnchantmentLevel(Enchantment.UNBREAKING);
         int dmgTop = 100 / (unbLvl + 1);
 
         Random rand = new Random();

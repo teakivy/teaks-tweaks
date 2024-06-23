@@ -116,7 +116,7 @@ public class GraveCreator {
         airTypes.add(Material.AIR);
         airTypes.add(Material.CAVE_AIR);
         airTypes.add(Material.VOID_AIR);
-        airTypes.add(Material.GRASS);
+        airTypes.add(Material.SHORT_GRASS);
         airTypes.add(Material.TALL_GRASS);
         airTypes.add(Material.SEAGRASS);
         airTypes.add(Material.POPPY);

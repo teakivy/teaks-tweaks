@@ -14,9 +14,9 @@ import org.bukkit.entity.Marker;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.*;
+import org.bukkit.event.entity.EntityDismountEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.spigotmc.event.entity.EntityDismountEvent;
 
 import java.util.Objects;
 
@@ -87,7 +87,7 @@ public class StairChairs extends BasePack {
         seat.addScoreboardTag("chair-rider");
         seat.setInvulnerable(true);
         seat.setDuration(Integer.MAX_VALUE);
-        seat.setParticle(Particle.SUSPENDED);
+        seat.setParticle(Particle.FLAME);
         seat.setWaitTime(0);
         seat.setColor(Color.WHITE);
         seat.setRadius(.001F);

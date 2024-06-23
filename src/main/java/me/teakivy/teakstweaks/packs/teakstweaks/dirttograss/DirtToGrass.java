@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 public class DirtToGrass extends BasePack {
 
     public DirtToGrass() {
-        super("dirt-to-grass", PackType.TEAKSTWEAKS, Material.GRASS);
+        super("dirt-to-grass", PackType.TEAKSTWEAKS, Material.GRASS_BLOCK);
     }
 
     @EventHandler

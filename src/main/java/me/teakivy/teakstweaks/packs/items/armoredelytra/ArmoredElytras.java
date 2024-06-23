@@ -50,7 +50,7 @@ public class ArmoredElytras extends BasePack {
                 if (b != Material.ANVIL && b != Material.CHIPPED_ANVIL && b != Material.DAMAGED_ANVIL) return;
 
                 for (Entity entity : itemDrop.getNearbyEntities(1, 1, 1)) {
-                    if (entity.getType() != EntityType.DROPPED_ITEM) continue;
+                    if (entity.getType() != EntityType.ITEM) continue;
 
                     Item item = (Item) entity;
                     if (item.getItemStack().getType() != Material.ELYTRA) continue;
