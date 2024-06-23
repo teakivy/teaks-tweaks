@@ -116,7 +116,7 @@ public class GraveCreator {
         airTypes.add(Material.AIR);
         airTypes.add(Material.CAVE_AIR);
         airTypes.add(Material.VOID_AIR);
-        airTypes.add(Material.GRASS);
+        airTypes.add(Material.SHORT_GRASS);
         airTypes.add(Material.TALL_GRASS);
         airTypes.add(Material.SEAGRASS);
         airTypes.add(Material.POPPY);
@@ -199,15 +199,6 @@ public class GraveCreator {
             toRemove.add(item);
         }
 
-        for (ItemStack item : items) {
-            if (item == null) continue;
-            if (!item.getType().equals(Material.PLAYER_HEAD)) continue;
-
-            if (Objects.equals(getSkullTexture(item), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGRjYzZlYjQwZjNiYWRhNDFlNDMzOTg4OGQ2ZDIwNzQzNzU5OGJkYmQxNzVjMmU3MzExOTFkNWE5YTQyZDNjOCJ9fX0=")) {
-                toRemove.add(item);
-            }
-        }
-
         items.addAll(items2);
 
         items.removeAll(toRemove);
@@ -237,16 +228,5 @@ public class GraveCreator {
 
     public static String removeLastChars(String str, int chars) {
         return str.substring(0, str.length() - chars);
-    }
-
-
-    public static String getSkullTexture(ItemStack skull) {
-        SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
-        GameProfile profile = (GameProfile) ReflectionUtils.getFieldValue(skullMeta, "profile");
-        if (profile != null) {
-            Property property = profile.getProperties().get("textures").iterator().next();
-            return property.getValue();
-        }
-        return null;
     }
 }

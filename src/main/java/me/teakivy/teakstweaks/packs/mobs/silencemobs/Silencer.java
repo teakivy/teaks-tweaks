@@ -25,12 +25,12 @@ public class Silencer extends BasePack {
 
         if (minecartTypes.isEmpty()) {
             minecartTypes.add(EntityType.MINECART);
-            minecartTypes.add(EntityType.MINECART_FURNACE);
-            minecartTypes.add(EntityType.MINECART_CHEST);
-            minecartTypes.add(EntityType.MINECART_COMMAND);
-            minecartTypes.add(EntityType.MINECART_TNT);
-            minecartTypes.add(EntityType.MINECART_HOPPER);
-            minecartTypes.add(EntityType.MINECART_MOB_SPAWNER);
+            minecartTypes.add(EntityType.FURNACE_MINECART);
+            minecartTypes.add(EntityType.CHEST_MINECART);
+            minecartTypes.add(EntityType.COMMAND_BLOCK_MINECART);
+            minecartTypes.add(EntityType.TNT_MINECART);
+            minecartTypes.add(EntityType.HOPPER_MINECART);
+            minecartTypes.add(EntityType.SPAWNER_MINECART);
         }
     }
 

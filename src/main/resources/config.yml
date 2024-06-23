@@ -201,6 +201,8 @@ packs:
     display-badge: true
     # Badge to show when afk
     badge: '<gray>[AFK]'
+    # Color to change the player's name to when they are AFK (or 'none' to not change the color)
+    name-color: 'gray'
     # How long a player needs to be still before getting AFK'
     afk-after: 5
     # How long (in minutes) a player needs to be AFK before they get kicked from the server
@@ -653,7 +655,7 @@ packs:
       # Whether or not to show particles when summoning a storm
       show-particles: true
       # Whether or not to broadcast a message when a storm begins
-      brodcast-message: true
+      broadcast-message: true
 
 
   # Experimental

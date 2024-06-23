@@ -50,7 +50,7 @@ public class Shrine extends BasePack {
 
     public static void runParticles() {
         for (Entity shrine : getShrines()) {
-            shrine.getWorld().spawnParticle(Particle.ENCHANTMENT_TABLE, shrine.getLocation().add(0, 1, 0), 1, 0.1, 0.1, 0.1, 1);
+            shrine.getWorld().spawnParticle(Particle.ENCHANT, shrine.getLocation().add(0, 1, 0), 1, 0.1, 0.1, 0.1, 1);
         }
     }
 

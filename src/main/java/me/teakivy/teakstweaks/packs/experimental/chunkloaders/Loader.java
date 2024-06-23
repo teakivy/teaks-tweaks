@@ -38,6 +38,12 @@ public class Loader extends BasePack {
                 block.getLocation().getChunk().setForceLoaded(true);
                 Marker marker = (Marker) block.getWorld().spawnEntity(block.getLocation().add(.5, 1, .5), EntityType.MARKER);
                 marker.addScoreboardTag("loaded");
+                marker.setDuration(Integer.MAX_VALUE);
+                marker.setParticle(Particle.FLAME);
+                marker.setWaitTime(0);
+                marker.setColor(Color.WHITE);
+                marker.setRadius(.001F);
+                marker.addScoreboardTag("loaded");
 
                 if (Config.getBoolean("packs.chunk-loaders.show-particles")) {
                     marker.getWorld().spawnParticle(Particle.FLAME, item.getLocation(), 100, 0, 0, 0, .5);

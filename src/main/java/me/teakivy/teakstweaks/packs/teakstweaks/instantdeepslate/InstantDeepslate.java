@@ -48,12 +48,12 @@ public class InstantDeepslate extends BasePack {
     }
 
     private boolean hasHasteTwo(Player player) {
-        PotionEffect potion = player.getPotionEffect(PotionEffectType.FAST_DIGGING);
+        PotionEffect potion = player.getPotionEffect(PotionEffectType.HASTE);
         if (potion == null) return false;
         return potion.getAmplifier() >= 1;
     }
 
     private boolean isEfficiencyFive(ItemStack item) {
-        return item.getItemMeta().getEnchantLevel(Enchantment.DIG_SPEED) >= 5;
+        return item.getItemMeta().getEnchantLevel(Enchantment.EFFICIENCY) >= 5;
     }
 }

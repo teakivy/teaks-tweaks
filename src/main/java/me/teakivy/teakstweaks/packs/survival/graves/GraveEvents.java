@@ -159,7 +159,7 @@ public class GraveEvents extends BasePack {
         GraveCreator.createGrave(loc, player, xp);
 
         if (getConfig().getBoolean("locatable")) {
-            Component lastGrave = getText("pack.graves.last_grave",
+            Component lastGrave = getText("last_grave",
                             insert("x", (int) Math.floor(loc.getX())),
                             insert("y", (int) Math.floor(loc.getY())),
                             insert("z", (int) Math.floor(loc.getZ())),

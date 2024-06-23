@@ -58,7 +58,7 @@ public class ItemTracker extends BasePack {
     public static void trackItems(Player player) {
 
         for (Entity entity : tracking.getWorld().getEntities()) {
-            if (entity.getType() == EntityType.DROPPED_ITEM) {
+            if (entity.getType() == EntityType.ITEM) {
                 if (entity.getLocation().getBlock().getLocation().distanceSquared(tracking) < 1 && !itemsTracked.contains(entity)) {
                     if (!(entity instanceof Item)) continue;
                     ItemStack item = ((Item) entity).getItemStack();

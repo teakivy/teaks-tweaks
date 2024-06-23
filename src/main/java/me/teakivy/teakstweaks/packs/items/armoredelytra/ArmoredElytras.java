@@ -51,7 +51,7 @@ public class ArmoredElytras extends BasePack {
                 if (b != Material.ANVIL && b != Material.CHIPPED_ANVIL && b != Material.DAMAGED_ANVIL) return;
 
                 for (Entity entity : itemDrop.getNearbyEntities(1, 1, 1)) {
-                    if (entity.getType() != EntityType.DROPPED_ITEM) continue;
+                    if (entity.getType() != EntityType.ITEM) continue;
 
                     Item item = (Item) entity;
                     if (item.getItemStack().getType() != Material.ELYTRA) continue;
@@ -154,11 +154,14 @@ public class ArmoredElytras extends BasePack {
         NamespacedKey key = Key.get("armored_elytra");
         meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "true");
 
+        NamespacedKey version_key = Key.get("version");
+        meta.getPersistentDataContainer().set(version_key, PersistentDataType.INTEGER, 2);
+
         NamespacedKey chestplate_storage_key = Key.get("chestplate_storage");
-        meta.getPersistentDataContainer().set(chestplate_storage_key, PersistentDataType.STRING, serializeItem(chestplate));
+        meta.getPersistentDataContainer().set(chestplate_storage_key, PersistentDataType.BYTE_ARRAY, chestplate.serializeAsBytes());
 
         NamespacedKey elytra_storage_key = Key.get("elytra_storage");
-        meta.getPersistentDataContainer().set(elytra_storage_key, PersistentDataType.STRING, serializeItem(elytra));
+        meta.getPersistentDataContainer().set(elytra_storage_key, PersistentDataType.BYTE_ARRAY, elytra.serializeAsBytes());
 
 
         chestplate.getEnchantments().forEach((enchantment, integer) -> {
@@ -222,19 +225,21 @@ public class ArmoredElytras extends BasePack {
     public static ItemStack getB64ChestplateFromArmoredElytra(ItemStack elytra) throws IOException {
         if (!elytra.hasItemMeta()) return null;
         if (!elytra.getItemMeta().getPersistentDataContainer().has(Key.get("armored_elytra"), PersistentDataType.STRING)) return null;
-        String chestplate = elytra.getItemMeta().getPersistentDataContainer().get(Key.get("chestplate_storage"), PersistentDataType.STRING);
-        return deserializeItem(chestplate);
+        if (!elytra.getItemMeta().getPersistentDataContainer().has(Key.get("version"), PersistentDataType.INTEGER)) {
+            String chestplate = elytra.getItemMeta().getPersistentDataContainer().get(Key.get("chestplate_storage"), PersistentDataType.STRING);
+            return deserializeItem(chestplate);
+        }
+        return ItemStack.deserializeBytes(elytra.getItemMeta().getPersistentDataContainer().get(Key.get("chestplate_storage"), PersistentDataType.BYTE_ARRAY));
     }
 
     public static ItemStack getB64ElytraFromArmoredElytra(ItemStack elytra) throws IOException {
         if (!elytra.hasItemMeta()) return null;
         if (!elytra.getItemMeta().getPersistentDataContainer().has(Key.get("armored_elytra"), PersistentDataType.STRING)) return null;
-        String oldElytra = elytra.getItemMeta().getPersistentDataContainer().get(Key.get("elytra_storage"), PersistentDataType.STRING);
-        return deserializeItem(oldElytra);
-    }
-
-    public String serializeItem(ItemStack item) {
-        return Base64Serializer.itemStackArrayToBase64(new ItemStack[]{item});
+        if (!elytra.getItemMeta().getPersistentDataContainer().has(Key.get("version"), PersistentDataType.INTEGER)) {
+            String oldElytra = elytra.getItemMeta().getPersistentDataContainer().get(Key.get("elytra_storage"), PersistentDataType.STRING);
+            return deserializeItem(oldElytra);
+        }
+        return ItemStack.deserializeBytes(elytra.getItemMeta().getPersistentDataContainer().get(Key.get("elytra_storage"), PersistentDataType.BYTE_ARRAY));
     }
 
     public static ItemStack deserializeItem(String serialized) throws IOException {

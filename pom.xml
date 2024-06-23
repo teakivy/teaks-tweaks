@@ -71,7 +71,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.3.1</version>
                 <configuration>
-                    <outputDirectory>C:\Users\TeakIvy\Desktop\Servers\TeaksTweaksTesting\plugins</outputDirectory>
+                    <outputDirectory>C:\Users\legoc\Desktop\Servers\TeaksTweaks Testing\plugins</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>
@@ -110,7 +110,7 @@
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>1.20-R0.1-SNAPSHOT</version>
+            <version>1.21-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

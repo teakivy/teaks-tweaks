@@ -6,7 +6,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
-import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionType;
 
 import java.util.ArrayList;
@@ -21,46 +20,46 @@ public class FishingLootTable {
     public static void register() {
         if (enchants.isEmpty()) {
             addEnchant(Enchantment.MENDING, 1);
-            addEnchant(Enchantment.DURABILITY, 3);
+            addEnchant(Enchantment.UNBREAKING, 3);
             addEnchant(Enchantment.VANISHING_CURSE, 1);
 
-            addEnchant(Enchantment.WATER_WORKER, 1);
-            addEnchant(Enchantment.PROTECTION_EXPLOSIONS, 4);
+            addEnchant(Enchantment.AQUA_AFFINITY, 1);
+            addEnchant(Enchantment.BLAST_PROTECTION, 4);
             addEnchant(Enchantment.BINDING_CURSE, 1);
             addEnchant(Enchantment.DEPTH_STRIDER, 3);
-            addEnchant(Enchantment.PROTECTION_FALL, 4);
-            addEnchant(Enchantment.PROTECTION_FIRE, 4);
+            addEnchant(Enchantment.FEATHER_FALLING, 4);
+            addEnchant(Enchantment.FIRE_PROTECTION, 4);
             addEnchant(Enchantment.FROST_WALKER, 2);
-            addEnchant(Enchantment.PROTECTION_PROJECTILE, 4);
-            addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
-            addEnchant(Enchantment.OXYGEN, 3);
+            addEnchant(Enchantment.PROJECTILE_PROTECTION, 4);
+            addEnchant(Enchantment.PROTECTION, 4);
+            addEnchant(Enchantment.RESPIRATION, 3);
             addEnchant(Enchantment.SOUL_SPEED, 3);
             addEnchant(Enchantment.THORNS, 3);
 
-            addEnchant(Enchantment.DAMAGE_ARTHROPODS, 5);
+            addEnchant(Enchantment.BANE_OF_ARTHROPODS, 5);
             addEnchant(Enchantment.CHANNELING, 1);
-            addEnchant(Enchantment.DIG_SPEED, 5);
+            addEnchant(Enchantment.EFFICIENCY, 5);
             addEnchant(Enchantment.FIRE_ASPECT, 1);
-            addEnchant(Enchantment.LOOT_BONUS_MOBS, 3);
+            addEnchant(Enchantment.LOOTING, 3);
             addEnchant(Enchantment.KNOCKBACK, 2);
-            addEnchant(Enchantment.DAMAGE_ALL, 5);
-            addEnchant(Enchantment.DAMAGE_UNDEAD, 5);
+            addEnchant(Enchantment.SHARPNESS, 5);
+            addEnchant(Enchantment.SMITE, 5);
             addEnchant(Enchantment.SWEEPING_EDGE, 3);
 
-            addEnchant(Enchantment.ARROW_FIRE, 1);
+            addEnchant(Enchantment.FLAME, 1);
             addEnchant(Enchantment.IMPALING, 5);
-            addEnchant(Enchantment.ARROW_INFINITE, 1);
+            addEnchant(Enchantment.INFINITY, 1);
             addEnchant(Enchantment.LOYALTY, 3);
             addEnchant(Enchantment.RIPTIDE, 3);
             addEnchant(Enchantment.MULTISHOT, 1);
             addEnchant(Enchantment.PIERCING, 4);
-            addEnchant(Enchantment.ARROW_DAMAGE, 5);
-            addEnchant(Enchantment.ARROW_KNOCKBACK, 2);
+            addEnchant(Enchantment.POWER, 5);
+            addEnchant(Enchantment.PUNCH, 2);
             addEnchant(Enchantment.QUICK_CHARGE, 3);
 
-            addEnchant(Enchantment.LOOT_BONUS_BLOCKS, 3);
+            addEnchant(Enchantment.FORTUNE, 3);
             addEnchant(Enchantment.LURE, 3);
-            addEnchant(Enchantment.LUCK, 3);
+            addEnchant(Enchantment.LUCK_OF_THE_SEA, 3);
             addEnchant(Enchantment.SILK_TOUCH, 1);
         }
     }
@@ -189,15 +188,6 @@ public class FishingLootTable {
         if (fish <= lilyPad + bowl + fishingRod + leather + leatherBoots + rottenFlesh + stick + string) {
             return new ItemStack(Material.STRING);
         }
-        if (fish <= lilyPad + bowl + fishingRod + leather + leatherBoots + rottenFlesh + stick + waterBottls) {
-            ItemStack bottle = new ItemStack(Material.POTION, 1);
-            ItemMeta meta = bottle.getItemMeta();
-            PotionMeta pmeta = (PotionMeta) meta;
-            PotionData pdata = new PotionData(PotionType.WATER);
-            pmeta.setBasePotionData(pdata);
-            bottle.setItemMeta(meta);
-            return bottle;
-        }
         if (fish <= lilyPad + bowl + fishingRod + leather + leatherBoots + rottenFlesh + stick + waterBottls + bone) {
             return new ItemStack(Material.BONE);
         }
@@ -223,12 +213,12 @@ public class FishingLootTable {
         ItemStack item = new ItemStack(Material.BOW);
 
         HashMap<Enchantment, Integer> possibleEnchants = new HashMap<>();
-        possibleEnchants.put(Enchantment.ARROW_FIRE, 1);
-        possibleEnchants.put(Enchantment.ARROW_INFINITE, 1);
+        possibleEnchants.put(Enchantment.FLAME, 1);
+        possibleEnchants.put(Enchantment.INFINITY, 1);
         possibleEnchants.put(Enchantment.MENDING, 1);
-        possibleEnchants.put(Enchantment.ARROW_DAMAGE, 5);
-        possibleEnchants.put(Enchantment.ARROW_KNOCKBACK, 2);
-        possibleEnchants.put(Enchantment.DURABILITY, 3);
+        possibleEnchants.put(Enchantment.POWER, 5);
+        possibleEnchants.put(Enchantment.PUNCH, 2);
+        possibleEnchants.put(Enchantment.UNBREAKING, 3);
 
         Random rand = new Random();
 
@@ -239,7 +229,7 @@ public class FishingLootTable {
 
         for (int i = 0; i < possibleEnchants.size(); i++) {
             if (rand.nextInt(4) == 2) {
-                if (!(enchantments.get(i) == Enchantment.MENDING && item.getEnchantments().containsKey(Enchantment.ARROW_INFINITE))) {
+                if (!(enchantments.get(i) == Enchantment.MENDING && item.getEnchantments().containsKey(Enchantment.INFINITY))) {
                     item.addUnsafeEnchantment(enchantments.get(i), rand.nextInt(possibleEnchants.get(enchantments.get(i))) + 1);
                 }
             }
@@ -253,10 +243,10 @@ public class FishingLootTable {
         ItemStack item = new ItemStack(Material.FISHING_ROD);
 
         HashMap<Enchantment, Integer> possibleEnchants = new HashMap<>();
-        possibleEnchants.put(Enchantment.LUCK, 3);
+        possibleEnchants.put(Enchantment.LUCK_OF_THE_SEA, 3);
         possibleEnchants.put(Enchantment.LURE, 3);
         possibleEnchants.put(Enchantment.MENDING, 1);
-        possibleEnchants.put(Enchantment.DURABILITY, 3);
+        possibleEnchants.put(Enchantment.UNBREAKING, 3);
 
         Random rand = new Random();
 
@@ -298,7 +288,7 @@ public class FishingLootTable {
             }
         }
         if (meta.getEnchants().isEmpty()) {
-            meta.addStoredEnchant(Enchantment.DIG_SPEED, rand.nextInt(Enchantment.DIG_SPEED.getMaxLevel()) + 1, true);
+            meta.addStoredEnchant(Enchantment.EFFICIENCY, rand.nextInt(Enchantment.EFFICIENCY.getMaxLevel()) + 1, true);
         }
         item.setItemMeta(meta);
         return item;
