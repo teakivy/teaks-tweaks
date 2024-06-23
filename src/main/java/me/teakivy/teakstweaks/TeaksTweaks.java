@@ -13,7 +13,6 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -38,10 +37,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         createCredits();
 
         createDataFolders();
-
-        // Metrics
-        Metrics metrics = new Metrics(this, 12001);
-        registerCustomMetrics(metrics);
 
         // Initialize & Update Config
         Config.init();
@@ -72,6 +67,13 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
 
         // Remove legacy data.yml file
         removeDataFile();
+
+
+        // Metrics
+        Bukkit.getScheduler().runTaskLater(this, () -> {
+            Metrics metrics = new Metrics(this, 12001);
+            registerCustomMetrics(metrics);
+        }, 20L * 30);
     }
 
     /**

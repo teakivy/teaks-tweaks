@@ -5,6 +5,7 @@ import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import me.teakivy.teakstweaks.utils.metrics.CustomMetrics;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -36,6 +37,8 @@ public abstract class AbstractCraftingTweak {
 
         this.material = material;
         this.description = Translatable.getString(langKey + ".description");
+
+        CustomMetrics.addCraftingTweakEnabled(this.name);
     }
 
     /**
