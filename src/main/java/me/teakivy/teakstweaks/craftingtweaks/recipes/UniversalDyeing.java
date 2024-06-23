@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
-import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
+import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -13,7 +13,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UniversalDyeing extends AbstractRecipe {
+public class UniversalDyeing extends AbstractCraftingTweak {
 
     public UniversalDyeing() {
         super("universal-dyeing", Material.PURPLE_TERRACOTTA);
@@ -91,7 +91,7 @@ public class UniversalDyeing extends AbstractRecipe {
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(output));
 
 
-        List<Material> materials = new ArrayList<Material>();
+        List<Material> materials = new ArrayList<>();
         materials.add(Material.valueOf("BLACK_" + inputName));
         materials.add(Material.valueOf("BLUE_" + inputName));
         materials.add(Material.valueOf("BROWN_" + inputName));
@@ -142,7 +142,7 @@ public class UniversalDyeing extends AbstractRecipe {
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.valueOf(inputName)));
 
 
-        List<Material> materials = new ArrayList<Material>();
+        List<Material> materials = new ArrayList<>();
         materials.add(Material.valueOf("BLACK_" + inputName));
         materials.add(Material.valueOf("BLUE_" + inputName));
         materials.add(Material.valueOf("BROWN_" + inputName));
@@ -172,7 +172,7 @@ public class UniversalDyeing extends AbstractRecipe {
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.valueOf(inputName)));
 
 
-        List<Material> materials = new ArrayList<Material>();
+        List<Material> materials = new ArrayList<>();
         materials.add(Material.valueOf("BLACK_STAINED_" + inputName));
         materials.add(Material.valueOf("BLUE_STAINED_" + inputName));
         materials.add(Material.valueOf("BROWN_STAINED_" + inputName));
@@ -195,5 +195,4 @@ public class UniversalDyeing extends AbstractRecipe {
 
         Bukkit.addRecipe(recipe);
     }
-
 }

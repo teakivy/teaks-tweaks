@@ -20,7 +20,7 @@ public class DirtToGrass extends BasePack {
 
     @EventHandler
     public void interactEvent(PlayerInteractEvent event) {
-        if (!hasPermission(event.getPlayer())) return;
+        if (!checkPermission(event.getPlayer())) return;
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (event.getItem() == null) return;
         if (event.getClickedBlock() == null) return;

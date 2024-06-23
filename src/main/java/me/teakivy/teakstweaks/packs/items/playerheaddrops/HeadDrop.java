@@ -23,16 +23,15 @@ public class HeadDrop extends BasePack {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
-        if (!hasPermission(event.getPlayer())) return;
+        if (!checkPermission(event.getPlayer())) return;
 
         Player player = event.getEntity();
-        if (player.isDead()) {
-            if (player.getKiller() != null) {
-                if (!MobHeads.shouldDrop(event.getEntity().getKiller(), "player")) return;
-                Player killer = player.getKiller();
-                event.getDrops().add(getHead(player, killer.getName()));
-            }
-        }
+        if (!player.isDead()) return;
+        if (player.getKiller() == null) return;
+        if (!MobHeads.shouldDrop(event.getEntity().getKiller(), "player")) return;
+
+        Player killer = player.getKiller();
+        event.getDrops().add(getHead(player, killer.getName()));
     }
 
     public ItemStack getHead(Player player, String killer) {

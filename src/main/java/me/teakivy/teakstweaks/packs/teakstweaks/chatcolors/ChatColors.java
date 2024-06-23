@@ -22,7 +22,7 @@ public class ChatColors extends BasePack {
     @EventHandler
     public void onChat(AsyncChatEvent event) {
         if (!getConfig().getBoolean("chat")) return;
-        if (!hasPermission(event.getPlayer())) return;
+        if (!checkPermission(event.getPlayer())) return;
 
         event.message(legacyToMiniMessage(event.message()));
     }
@@ -30,7 +30,7 @@ public class ChatColors extends BasePack {
     @EventHandler
     private void onAnvil(PrepareAnvilEvent event) {
         if (!getConfig().getBoolean("items")) return;
-        if (!hasPermission((Player) event.getInventory().getViewers().get(0))) return;
+        if (!checkPermission((Player) event.getInventory().getViewers().get(0))) return;
         ItemStack result = event.getResult();
         if (result == null) return;
         if (!result.hasItemMeta()) return;
@@ -47,7 +47,7 @@ public class ChatColors extends BasePack {
     @EventHandler
     public void onSign(SignChangeEvent event) {
         if (!getConfig().getBoolean("signs")) return;
-        if (!hasPermission(event.getPlayer())) return;
+        if (!checkPermission(event.getPlayer())) return;
 
         for (int i = 0; i < event.lines().size(); i++) {
             if (event.line(i) == null) continue;

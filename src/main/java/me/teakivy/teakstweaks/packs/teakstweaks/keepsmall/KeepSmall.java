@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.packs.teakstweaks.keepsmall;
 
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -21,10 +22,10 @@ public class KeepSmall extends BasePack {
 
     @EventHandler
     public void onSilence(PlayerInteractAtEntityEvent event) {
-        if (!hasPermission(event.getPlayer())) return;
+        if (!checkPermission(event.getPlayer())) return;
         Entity entity = event.getRightClicked();
         try {
-            Bukkit.getScheduler().scheduleSyncDelayedTask(teaksTweaks, () -> {
+            Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
                 Entity entity1 = getEntityByUniqueId(entity.getUniqueId());
                 if (entity1 == null) return;
                 if (entity1.customName() == null) return;

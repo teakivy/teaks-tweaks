@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.packs.items.armoredelytra;
 
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Base64Serializer;
@@ -35,7 +36,7 @@ public class ArmoredElytras extends BasePack {
 
     @EventHandler
     public void onDrop(PlayerDropItemEvent event) {
-        if (!hasPermission(event.getPlayer())) return;
+        if (!checkPermission(event.getPlayer())) return;
 
         ItemStack item = event.getItemDrop().getItemStack();
         Item itemDrop = event.getItemDrop();
@@ -70,7 +71,7 @@ public class ArmoredElytras extends BasePack {
 
                 if (itemDrop.isDead()) this.cancel();
             }
-        }.runTaskTimer(teaksTweaks, 0, 20L);
+        }.runTaskTimer(TeaksTweaks.getInstance(), 0, 20L);
     }
 
     private Material getBlockBelow(Location location) {
@@ -107,7 +108,7 @@ public class ArmoredElytras extends BasePack {
                 }
                 if (event.getItemDrop().isDead()) this.cancel();
             }
-        }.runTaskTimer(teaksTweaks, 0, 20L);
+        }.runTaskTimer(TeaksTweaks.getInstance(), 0, 20L);
     }
 
     @EventHandler

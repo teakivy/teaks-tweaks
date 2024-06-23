@@ -884,11 +884,6 @@ crafting-tweaks:
   craftable-small-dripleaf:
     enabled: false
 
-  # Craftable Sculk Sensors
-  # Allows you to craft Sculk Sensors.
-  craftable-sculk-sensors:
-    enabled: false
-
   # Unpackable Ice
   # Allows you to break down Ice into 9 pieces. 1 Blue Ice to 9 Packed Ice to 81 Ice.
   unpackable-ice:

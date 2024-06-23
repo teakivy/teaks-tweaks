@@ -1,12 +1,13 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
-import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
+import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
+import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
 
-public class PowderToGlass extends AbstractRecipe {
+public class PowderToGlass extends AbstractCraftingTweak {
 
     public PowderToGlass() {
         super("powder-to-glass", Material.RED_CONCRETE_POWDER);
@@ -33,7 +34,7 @@ public class PowderToGlass extends AbstractRecipe {
     }
 
     public static void newSmeltableGlass(String color) {
-        FurnaceRecipe recipe = new FurnaceRecipe(new ItemStack(Material.valueOf(color + "_STAINED_GLASS")), Material.valueOf(color + "_CONCRETE_POWDER"));
+        FurnaceRecipe recipe = new FurnaceRecipe(Key.get("rotten_flesh_to_leather"), new ItemStack(Material.valueOf(color + "_STAINED_GLASS")), Material.valueOf(color + "_CONCRETE_POWDER"), 10, 100);
         Bukkit.addRecipe(recipe);
     }
 }

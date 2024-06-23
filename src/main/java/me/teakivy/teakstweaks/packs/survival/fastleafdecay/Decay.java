@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.packs.survival.fastleafdecay;
 
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.*;
@@ -56,11 +57,11 @@ public class Decay extends BasePack {
             if (scheduledBlocks.contains(block)) continue;
             if (getConfig().getBoolean("one-by-one")) {
                 if (scheduledBlocks.isEmpty()) {
-                    teaksTweaks.getServer().getScheduler().runTaskLater(teaksTweaks, this::decayOne, delay);
+                    TeaksTweaks.getInstance().getServer().getScheduler().runTaskLater(TeaksTweaks.getInstance(), this::decayOne, delay);
                 }
                 scheduledBlocks.add(block);
             } else {
-                teaksTweaks.getServer().getScheduler().runTaskLater(teaksTweaks, () -> decay(block), delay);
+                TeaksTweaks.getInstance().getServer().getScheduler().runTaskLater(TeaksTweaks.getInstance(), () -> decay(block), delay);
             }
             scheduledBlocks.add(block);
         }
@@ -74,7 +75,7 @@ public class Decay extends BasePack {
         if (leaves.isPersistent()) return false;
         if (leaves.getDistance() < 7) return false;
         LeavesDecayEvent event = new LeavesDecayEvent(block);
-        teaksTweaks.getServer().getPluginManager().callEvent(event);
+        TeaksTweaks.getInstance().getServer().getPluginManager().callEvent(event);
         if (event.isCancelled()) return false;
         if (getConfig().getBoolean("spawn-particles")) {
             block.getWorld()
@@ -101,7 +102,7 @@ public class Decay extends BasePack {
         if (!scheduledBlocks.isEmpty()) {
             long delay = getConfig().getLong("decay-delay");
             if (delay <= 0) delay = 1L;
-            teaksTweaks.getServer().getScheduler().runTaskLater(teaksTweaks, this::decayOne, delay);
+            TeaksTweaks.getInstance().getServer().getScheduler().runTaskLater(TeaksTweaks.getInstance(), this::decayOne, delay);
         }
     }
 }

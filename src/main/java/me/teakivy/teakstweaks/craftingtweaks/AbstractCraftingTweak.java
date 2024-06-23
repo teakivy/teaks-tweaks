@@ -15,21 +15,21 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractRecipe {
-    protected String name;
-    protected String path;
+public abstract class AbstractCraftingTweak {
+    private final String name;
+    private final String path;
 
-    public Material material;
-    public String description;
+    private final Material material;
+    private final String description;
 
-    public ItemStack item;
+    private ItemStack item;
 
     /**
      * Set up the pack
      * @param path Config path
      * @param material Material for the item
      */
-    public AbstractRecipe(String path, Material material) {
+    public AbstractCraftingTweak(String path, Material material) {
         String langKey = path.replaceAll("-", "_");
         this.name = Translatable.getString(langKey + ".name");
         this.path = path;
@@ -83,9 +83,7 @@ public class AbstractRecipe {
     /**
      * Register all recipes for the pack
      */
-    public void registerRecipes() {
-        // TODO : Implement
-    }
+    public abstract void registerRecipes();
 
     /**
      * Get the item for the pack

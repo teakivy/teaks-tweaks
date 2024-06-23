@@ -16,14 +16,14 @@ public class QuickCommands extends BasePack {
     public void init() {
         super.init();
 
-        if (config.getBoolean("gamemode")) {
+        if (getConfig().getBoolean("gamemode")) {
             new AQuickCommand("gmc", List.of("gamemode creative")).register();
             new AQuickCommand("gms", List.of("gamemode survival")).register();
             new AQuickCommand("gma", List.of("gamemode adventure")).register();
             new AQuickCommand("gmsp", List.of("gamemode spectator")).register();
         }
 
-        if (config.getBoolean("reply")) {
+        if (getConfig().getBoolean("reply")) {
             new ReplyQuickCommand().register();
         }
     }

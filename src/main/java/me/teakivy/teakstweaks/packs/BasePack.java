@@ -22,18 +22,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BasePack implements Listener {
-	public String name;
-	public String path;
-	public PackType packType;
-	public String permission;
-
-	protected static TeaksTweaks teaksTweaks = TeaksTweaks.getInstance();
-
-	public ConfigurationSection config;
-
-	public ItemStack item;
-
-	public String translatableKey;
+	private final String name;
+	private final String path;
+	private final String translatableKey;
+	private final PackType packType;
+	private final ItemStack item;
 
 	/**
 	 * Set up the pack
@@ -46,8 +39,6 @@ public class BasePack implements Listener {
         this.name = Translatable.getString(this.translatableKey + ".name");
 		this.path = path;
 		this.packType = packType;
-		this.config = Config.getPackConfig(path);
-		this.permission = "teakstweaks." + path;
 
 		String[] description = Translatable.getString(this.translatableKey + ".description").split("<newline>");
 
@@ -68,18 +59,16 @@ public class BasePack implements Listener {
 		}
 		if (!lore.isEmpty()) lore.remove(lore.size() - 1);
 
-		if (config.getKeys(false).size() > 1) {
+		if (getConfig().getKeys(false).size() > 1) {
 			lore.add(" ");
 			lore.add(packType.getColor() + "Config");
 		}
 
-		for (String key : config.getKeys(false)) {
+		for (String key : getConfig().getKeys(false)) {
 			if (key.equals("enabled")) continue;
-			if (config.get(key).toString().startsWith("MemorySection")) {
-				continue;
-			}
+			if (getConfig().get(key).toString().startsWith("MemorySection")) continue;
 
-			lore.add("  <gray>" + transformKey(key) + ": <reset>" + packType.getColor() + config.get(key));
+			lore.add("  <gray>" + transformKey(key) + ": <reset>" + packType.getColor() + getConfig().get(key));
 		}
 
 		lore.add(" ");
@@ -92,8 +81,6 @@ public class BasePack implements Listener {
 		}
 
 		item.lore(loreComponents);
-
-
 		item.editMeta(meta -> meta.displayName(MiniMessage.miniMessage().deserialize(packType.getColor() + name).decoration(TextDecoration.ITALIC, false)));
     }
 
@@ -102,7 +89,7 @@ public class BasePack implements Listener {
 	 */
 	public void init() {
 		registerEvents(this);
-		teaksTweaks.addPack(name);
+		getPlugin().addPack(name);
 		Logger.info(Translatable.get("startup.register.pack", insert("name", packType.getColor() + name)));
 	}
 
@@ -112,7 +99,7 @@ public class BasePack implements Listener {
 	 */
 	public void registerEvents(Listener listener) {
         HandlerList.unregisterAll(listener);
-        Bukkit.getServer().getPluginManager().registerEvents(listener, teaksTweaks);
+        Bukkit.getServer().getPluginManager().registerEvents(listener, getPlugin());
     }
 
 	/**
@@ -130,6 +117,10 @@ public class BasePack implements Listener {
 		return name;
 	}
 
+	public TeaksTweaks getPlugin() {
+		return TeaksTweaks.getInstance();
+	}
+
 	/**
 	 * Get the pack's config path
 	 * @return [pack]
@@ -143,7 +134,7 @@ public class BasePack implements Listener {
 	 * @return config.packs.[pack]
 	 */
 	public ConfigurationSection getConfig() {
-		return config;
+		return Config.getPackConfig(path);
 	}
 
 	/**
@@ -159,8 +150,8 @@ public class BasePack implements Listener {
 	 * @param player Player to check
 	 * @return if the player has permission
 	 */
-	public boolean hasPermission(Player player) {
-		return player.hasPermission(permission);
+	public boolean checkPermission(Player player) {
+		return player.hasPermission("teakstweaks." + this.path);
 	}
 
 	private String transformKey(String key) {
@@ -204,4 +195,3 @@ public class BasePack implements Listener {
 		return MiniMessage.miniMessage().deserialize(text, resolvers);
 	}
 }
-

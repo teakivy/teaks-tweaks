@@ -1,10 +1,9 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
-import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
+import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
@@ -12,7 +11,7 @@ import org.bukkit.inventory.ShapedRecipe;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LogChests extends AbstractRecipe {
+public class LogChests extends AbstractCraftingTweak {
 
     public LogChests() {
         super("log-chests", Material.CHEST);
@@ -61,16 +60,11 @@ public class LogChests extends AbstractRecipe {
         logList.add(Material.STRIPPED_MANGROVE_WOOD);
         logList.add(Material.CHERRY_WOOD);
         logList.add(Material.STRIPPED_CHERRY_WOOD);
-
-
-
         RecipeChoice logs = new RecipeChoice.MaterialChoice(logList);
 
-        NamespacedKey key = Key.get("log_to_chests");
-        ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.CHEST, 4));
+        ShapedRecipe recipe = new ShapedRecipe(Key.get("log_to_chests"), new ItemStack(Material.CHEST, 4));
         recipe.shape("xxx", "x x", "xxx");
         recipe.setIngredient('x', logs);
-
         Bukkit.addRecipe(recipe);
     }
 }

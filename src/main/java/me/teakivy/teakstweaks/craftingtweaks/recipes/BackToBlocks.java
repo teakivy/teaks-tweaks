@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
-import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
+import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 
-public class BackToBlocks extends AbstractRecipe {
+public class BackToBlocks extends AbstractCraftingTweak {
 
     public BackToBlocks() {
         super("back-to-blocks", Material.BRICK_SLAB);
@@ -17,130 +17,127 @@ public class BackToBlocks extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        newShapelessStairRecipe("acacia_planks", new ItemStack(Material.ACACIA_PLANKS, 3), Material.ACACIA_STAIRS, 4);
-        newShapelessStairRecipe("birch_planks", new ItemStack(Material.BIRCH_PLANKS, 3), Material.BIRCH_STAIRS, 4);
-        newShapelessStairRecipe("blackstone", new ItemStack(Material.BLACKSTONE, 3), Material.BLACKSTONE_STAIRS, 4);
-        newShapelessStairRecipe("bricks", new ItemStack(Material.BRICKS, 3), Material.BRICK_STAIRS, 4);
-        newShapelessStairRecipe("cobblestone", new ItemStack(Material.COBBLESTONE, 3), Material.COBBLESTONE_STAIRS, 4);
-        newShapelessStairRecipe("crimson_planks", new ItemStack(Material.CRIMSON_PLANKS, 3), Material.CRIMSON_STAIRS, 4);
-        newShapelessStairRecipe("dark_oak_planks", new ItemStack(Material.DARK_OAK_PLANKS, 3), Material.DARK_OAK_STAIRS, 4);
-        newShapelessStairRecipe("dark_prismarine", new ItemStack(Material.DARK_PRISMARINE, 3), Material.DARK_PRISMARINE_STAIRS, 4);
-        newShapelessStairRecipe("diorite", new ItemStack(Material.DIORITE, 3), Material.DIORITE_STAIRS, 4);
-        newShapelessStairRecipe("end_stone_bricks", new ItemStack(Material.END_STONE_BRICKS, 3), Material.END_STONE_BRICK_STAIRS, 4);
-        newShapelessStairRecipe("granite", new ItemStack(Material.GRANITE, 3), Material.GRANITE_STAIRS, 4);
-        newShapelessStairRecipe("jungle_planks", new ItemStack(Material.JUNGLE_PLANKS, 3), Material.JUNGLE_STAIRS, 4);
-        newShapelessStairRecipe("mossy_cobblestone", new ItemStack(Material.MOSSY_COBBLESTONE, 3), Material.MOSSY_COBBLESTONE_STAIRS, 4);
-        newShapelessStairRecipe("mossy_stone_bricks", new ItemStack(Material.MOSSY_STONE_BRICKS, 3), Material.MOSSY_STONE_BRICK_STAIRS, 4);
-        newShapelessStairRecipe("nether_bricks", new ItemStack(Material.NETHER_BRICKS, 3), Material.NETHER_BRICK_STAIRS, 4);
-        newShapelessStairRecipe("oak_planks", new ItemStack(Material.OAK_PLANKS, 3), Material.OAK_STAIRS, 4);
-        newShapelessStairRecipe("polished_andesite", new ItemStack(Material.POLISHED_ANDESITE, 3), Material.POLISHED_ANDESITE_STAIRS, 4);
-        newShapelessStairRecipe("polished_blackstone", new ItemStack(Material.POLISHED_BLACKSTONE, 3), Material.POLISHED_BLACKSTONE_STAIRS, 4);
-        newShapelessStairRecipe("polished_blackstone_bricks", new ItemStack(Material.POLISHED_BLACKSTONE_BRICKS, 3), Material.POLISHED_BLACKSTONE_BRICK_STAIRS, 4);
-        newShapelessStairRecipe("prismarine_bricks", new ItemStack(Material.PRISMARINE_BRICKS, 3), Material.PRISMARINE_BRICK_STAIRS, 4);
-        newShapelessStairRecipe("prismarine", new ItemStack(Material.PRISMARINE, 3), Material.PRISMARINE_STAIRS, 4);
-        newShapelessStairRecipe("purpur_block", new ItemStack(Material.PURPUR_BLOCK, 3), Material.PURPUR_STAIRS, 4);
-        newShapelessStairRecipe("quartz_block", new ItemStack(Material.QUARTZ_BLOCK, 3), Material.QUARTZ_STAIRS, 4);
-        newShapelessStairRecipe("red_nether_bricks", new ItemStack(Material.RED_NETHER_BRICKS, 3), Material.RED_NETHER_BRICK_STAIRS, 4);
-        newShapelessStairRecipe("red_sandstone", new ItemStack(Material.RED_SANDSTONE, 3), Material.RED_SANDSTONE_STAIRS, 4);
-        newShapelessStairRecipe("sandstone", new ItemStack(Material.SANDSTONE, 3), Material.SANDSTONE_STAIRS, 4);
-        newShapelessStairRecipe("smooth_quartz", new ItemStack(Material.SMOOTH_QUARTZ, 3), Material.SMOOTH_QUARTZ_STAIRS, 4);
-        newShapelessStairRecipe("smooth_red_sandstone", new ItemStack(Material.SMOOTH_RED_SANDSTONE, 3), Material.SMOOTH_RED_SANDSTONE_STAIRS, 4);
-        newShapelessStairRecipe("smooth_sandstone", new ItemStack(Material.SMOOTH_SANDSTONE, 3), Material.SMOOTH_SANDSTONE_STAIRS, 4);
-        newShapelessStairRecipe("spruce_planks", new ItemStack(Material.SPRUCE_PLANKS, 3), Material.SPRUCE_STAIRS, 4);
-        newShapelessStairRecipe("stone_bricks", new ItemStack(Material.STONE_BRICKS, 3), Material.STONE_BRICK_STAIRS, 4);
-        newShapelessStairRecipe("stone", new ItemStack(Material.STONE, 3), Material.STONE_STAIRS, 4);
-        newShapelessStairRecipe("warped_planks", new ItemStack(Material.WARPED_PLANKS, 3), Material.WARPED_STAIRS, 4);
-        newShapelessStairRecipe("cherry_planks", new ItemStack(Material.CHERRY_PLANKS, 3), Material.CHERRY_STAIRS, 4);
-        newShapelessStairRecipe("bamboo_planks", new ItemStack(Material.BAMBOO_PLANKS, 3), Material.BAMBOO_STAIRS, 4);
-        newShapelessStairRecipe("bamboo_mosaic", new ItemStack(Material.BAMBOO_MOSAIC, 3), Material.BAMBOO_MOSAIC_STAIRS, 4);
+        registerStairRecipe(Material.ACACIA_PLANKS, Material.ACACIA_STAIRS);
+        registerStairRecipe(Material.BIRCH_PLANKS, Material.BIRCH_STAIRS);
+        registerStairRecipe(Material.BLACKSTONE, Material.BLACKSTONE_STAIRS);
+        registerStairRecipe(Material.BRICKS, Material.BRICK_STAIRS);
+        registerStairRecipe(Material.COBBLESTONE, Material.COBBLESTONE_STAIRS);
+        registerStairRecipe(Material.CRIMSON_PLANKS, Material.CRIMSON_STAIRS);
+        registerStairRecipe(Material.DARK_OAK_PLANKS, Material.DARK_OAK_STAIRS);
+        registerStairRecipe(Material.DARK_PRISMARINE, Material.DARK_PRISMARINE_STAIRS);
+        registerStairRecipe(Material.DIORITE, Material.DIORITE_STAIRS);
+        registerStairRecipe(Material.END_STONE_BRICKS, Material.END_STONE_BRICK_STAIRS);
+        registerStairRecipe(Material.GRANITE, Material.GRANITE_STAIRS);
+        registerStairRecipe(Material.JUNGLE_PLANKS, Material.JUNGLE_STAIRS);
+        registerStairRecipe(Material.MOSSY_COBBLESTONE, Material.MOSSY_COBBLESTONE_STAIRS);
+        registerStairRecipe(Material.MOSSY_STONE_BRICKS, Material.MOSSY_STONE_BRICK_STAIRS);
+        registerStairRecipe(Material.NETHER_BRICKS, Material.NETHER_BRICK_STAIRS);
+        registerStairRecipe(Material.OAK_PLANKS, Material.OAK_STAIRS);
+        registerStairRecipe(Material.POLISHED_ANDESITE, Material.POLISHED_ANDESITE_STAIRS);
+        registerStairRecipe(Material.POLISHED_BLACKSTONE, Material.POLISHED_BLACKSTONE_STAIRS);
+        registerStairRecipe(Material.POLISHED_BLACKSTONE_BRICKS, Material.POLISHED_BLACKSTONE_BRICK_STAIRS);
+        registerStairRecipe(Material.PRISMARINE_BRICKS, Material.PRISMARINE_BRICK_STAIRS);
+        registerStairRecipe(Material.PRISMARINE, Material.PRISMARINE_STAIRS);
+        registerStairRecipe(Material.PURPUR_BLOCK, Material.PURPUR_STAIRS);
+        registerStairRecipe(Material.QUARTZ_BLOCK, Material.QUARTZ_STAIRS);
+        registerStairRecipe(Material.RED_NETHER_BRICKS, Material.RED_NETHER_BRICK_STAIRS);
+        registerStairRecipe(Material.RED_SANDSTONE, Material.RED_SANDSTONE_STAIRS);
+        registerStairRecipe(Material.SANDSTONE, Material.SANDSTONE_STAIRS);
+        registerStairRecipe(Material.SMOOTH_QUARTZ, Material.SMOOTH_QUARTZ_STAIRS);
+        registerStairRecipe(Material.SMOOTH_RED_SANDSTONE, Material.SMOOTH_RED_SANDSTONE_STAIRS);
+        registerStairRecipe(Material.SMOOTH_SANDSTONE, Material.SMOOTH_SANDSTONE_STAIRS);
+        registerStairRecipe(Material.SPRUCE_PLANKS, Material.SPRUCE_STAIRS);
+        registerStairRecipe(Material.STONE_BRICKS, Material.STONE_BRICK_STAIRS);
+        registerStairRecipe(Material.STONE, Material.STONE_STAIRS);
+        registerStairRecipe(Material.WARPED_PLANKS, Material.WARPED_STAIRS);
+        registerStairRecipe(Material.CHERRY_PLANKS, Material.CHERRY_STAIRS);
+        registerStairRecipe(Material.BAMBOO_PLANKS, Material.BAMBOO_STAIRS);
+        registerStairRecipe(Material.BAMBOO_MOSAIC, Material.BAMBOO_MOSAIC_STAIRS);
+        registerStairRecipe(Material.CUT_COPPER, Material.CUT_COPPER_STAIRS);
+        registerStairRecipe(Material.EXPOSED_CUT_COPPER, Material.EXPOSED_CUT_COPPER_STAIRS);
+        registerStairRecipe(Material.WEATHERED_CUT_COPPER, Material.WEATHERED_CUT_COPPER_STAIRS);
+        registerStairRecipe(Material.OXIDIZED_CUT_COPPER, Material.OXIDIZED_CUT_COPPER_STAIRS);
+        registerStairRecipe(Material.WAXED_CUT_COPPER, Material.WAXED_CUT_COPPER_STAIRS);
+        registerStairRecipe(Material.WAXED_EXPOSED_CUT_COPPER, Material.WAXED_EXPOSED_CUT_COPPER_STAIRS);
+        registerStairRecipe(Material.WAXED_WEATHERED_CUT_COPPER, Material.WAXED_WEATHERED_CUT_COPPER_STAIRS);
+        registerStairRecipe(Material.WAXED_OXIDIZED_CUT_COPPER, Material.WAXED_OXIDIZED_CUT_COPPER_STAIRS);
+        registerStairRecipe(Material.COBBLED_DEEPSLATE, Material.COBBLED_DEEPSLATE_STAIRS);
+        registerStairRecipe(Material.POLISHED_DEEPSLATE, Material.POLISHED_DEEPSLATE_STAIRS);
+        registerStairRecipe(Material.DEEPSLATE_BRICKS, Material.DEEPSLATE_BRICK_STAIRS);
+        registerStairRecipe(Material.DEEPSLATE_TILES, Material.DEEPSLATE_TILE_STAIRS);
+        registerStairRecipe(Material.MANGROVE_PLANKS, Material.MANGROVE_STAIRS);
+        registerStairRecipe(Material.MUD_BRICKS, Material.MUD_BRICK_STAIRS);
 
-        newShapelessStairRecipe("cut_copper", new ItemStack(Material.CUT_COPPER, 3), Material.CUT_COPPER_STAIRS, 4);
-        newShapelessStairRecipe("exposed_cut_copper", new ItemStack(Material.EXPOSED_CUT_COPPER, 3), Material.EXPOSED_CUT_COPPER_STAIRS, 4);
-        newShapelessStairRecipe("weathered_cut_copper", new ItemStack(Material.WEATHERED_CUT_COPPER, 3), Material.WEATHERED_CUT_COPPER_STAIRS, 4);
-        newShapelessStairRecipe("oxidized_cut_copper", new ItemStack(Material.OXIDIZED_CUT_COPPER, 3), Material.OXIDIZED_CUT_COPPER_STAIRS, 4);
-        newShapelessStairRecipe("waxed_cut_copper", new ItemStack(Material.WAXED_CUT_COPPER, 3), Material.WAXED_CUT_COPPER_STAIRS, 4);
-        newShapelessStairRecipe("waxed_exposed_cut_copper", new ItemStack(Material.WAXED_EXPOSED_CUT_COPPER, 3), Material.WAXED_EXPOSED_CUT_COPPER_STAIRS, 4);
-        newShapelessStairRecipe("waxed_weathered_cut_copper", new ItemStack(Material.WAXED_WEATHERED_CUT_COPPER, 3), Material.WAXED_WEATHERED_CUT_COPPER_STAIRS, 4);
-        newShapelessStairRecipe("waxed_oxidized_cut_copper", new ItemStack(Material.WAXED_OXIDIZED_CUT_COPPER, 3), Material.WAXED_OXIDIZED_CUT_COPPER_STAIRS, 4);
-        newShapelessStairRecipe("cobbled_deepslate", new ItemStack(Material.COBBLED_DEEPSLATE, 3), Material.COBBLED_DEEPSLATE_STAIRS, 4);
-        newShapelessStairRecipe("polished_deepslate", new ItemStack(Material.POLISHED_DEEPSLATE, 3), Material.POLISHED_DEEPSLATE_STAIRS, 4);
-        newShapelessStairRecipe("deepslate_bricks", new ItemStack(Material.DEEPSLATE_BRICKS, 3), Material.DEEPSLATE_BRICK_STAIRS, 4);
-        newShapelessStairRecipe("deepslate_tiles", new ItemStack(Material.DEEPSLATE_TILES, 3), Material.DEEPSLATE_TILE_STAIRS, 4);
-        newShapedSlabRecipe("cut_copper", new ItemStack(Material.CUT_COPPER, 1), Material.CUT_COPPER_SLAB);
-        newShapedSlabRecipe("exposed_cut_copper", new ItemStack(Material.EXPOSED_CUT_COPPER, 1), Material.EXPOSED_CUT_COPPER_SLAB);
-        newShapedSlabRecipe("weathered_cut_copper", new ItemStack(Material.WEATHERED_CUT_COPPER, 1), Material.WEATHERED_CUT_COPPER_SLAB);
-        newShapedSlabRecipe("oxidized_cut_copper", new ItemStack(Material.OXIDIZED_CUT_COPPER, 1), Material.OXIDIZED_CUT_COPPER_SLAB);
-        newShapedSlabRecipe("waxed_cut_copper", new ItemStack(Material.WAXED_CUT_COPPER, 1), Material.WAXED_CUT_COPPER_SLAB);
-        newShapedSlabRecipe("waxed_exposed_cut_copper", new ItemStack(Material.WAXED_EXPOSED_CUT_COPPER, 1), Material.WAXED_EXPOSED_CUT_COPPER_SLAB);
-        newShapedSlabRecipe("waxed_weathered_cut_copper", new ItemStack(Material.WAXED_WEATHERED_CUT_COPPER, 1), Material.WAXED_WEATHERED_CUT_COPPER_SLAB);
-        newShapedSlabRecipe("waxed_oxidized_cut_copper", new ItemStack(Material.WAXED_OXIDIZED_CUT_COPPER, 1), Material.WAXED_OXIDIZED_CUT_COPPER_SLAB);
-        newShapedSlabRecipe("cobbled_deepslate", new ItemStack(Material.COBBLED_DEEPSLATE, 1), Material.COBBLED_DEEPSLATE_SLAB);
-        newShapedSlabRecipe("polished_deepslate", new ItemStack(Material.POLISHED_DEEPSLATE, 1), Material.POLISHED_DEEPSLATE_SLAB);
-        newShapedSlabRecipe("deepslate_bricks", new ItemStack(Material.DEEPSLATE_BRICKS, 1), Material.DEEPSLATE_BRICK_SLAB);
-        newShapedSlabRecipe("deepslate_tiles", new ItemStack(Material.DEEPSLATE_TILES, 1), Material.DEEPSLATE_TILE_SLAB);
-
-        newShapedSlabRecipe("acacia_planks", new ItemStack(Material.ACACIA_PLANKS, 1), Material.ACACIA_SLAB);
-        newShapedSlabRecipe("birch_planks", new ItemStack(Material.BIRCH_PLANKS, 1), Material.BIRCH_SLAB);
-        newShapedSlabRecipe("blackstone", new ItemStack(Material.BLACKSTONE, 1), Material.BLACKSTONE_SLAB);
-        newShapedSlabRecipe("bricks", new ItemStack(Material.BRICKS, 1), Material.BRICK_SLAB);
-        newShapedSlabRecipe("cobblestone", new ItemStack(Material.COBBLESTONE, 1), Material.COBBLESTONE_SLAB);
-        newShapedSlabRecipe("crimson_planks", new ItemStack(Material.CRIMSON_PLANKS, 1), Material.CRIMSON_SLAB);
-        newShapedSlabRecipe("dark_oak_planks", new ItemStack(Material.DARK_OAK_PLANKS, 1), Material.DARK_OAK_SLAB);
-        newShapedSlabRecipe("dark_prismarine", new ItemStack(Material.DARK_PRISMARINE, 1), Material.DARK_PRISMARINE_SLAB);
-        newShapedSlabRecipe("diorite", new ItemStack(Material.DIORITE, 1), Material.DIORITE_SLAB);
-        newShapedSlabRecipe("end_stone_bricks", new ItemStack(Material.END_STONE_BRICKS, 1), Material.END_STONE_BRICK_SLAB);
-        newShapedSlabRecipe("granite", new ItemStack(Material.GRANITE, 1), Material.GRANITE_SLAB);
-        newShapedSlabRecipe("jungle_planks", new ItemStack(Material.JUNGLE_PLANKS, 1), Material.JUNGLE_SLAB);
-        newShapedSlabRecipe("mossy_cobblestone", new ItemStack(Material.MOSSY_COBBLESTONE, 1), Material.MOSSY_COBBLESTONE_SLAB);
-        newShapedSlabRecipe("mossy_stone_bricks", new ItemStack(Material.MOSSY_STONE_BRICKS, 1), Material.MOSSY_STONE_BRICK_SLAB);
-        newShapedSlabRecipe("nether_bricks", new ItemStack(Material.NETHER_BRICKS, 1), Material.NETHER_BRICK_SLAB);
-        newShapedSlabRecipe("oak_planks", new ItemStack(Material.OAK_PLANKS, 1), Material.OAK_SLAB);
-        newShapedSlabRecipe("polished_andesite", new ItemStack(Material.POLISHED_ANDESITE, 1), Material.POLISHED_ANDESITE_SLAB);
-        newShapedSlabRecipe("polished_blackstone_bricks", new ItemStack(Material.POLISHED_BLACKSTONE_BRICKS, 1), Material.POLISHED_BLACKSTONE_BRICK_SLAB);
-        newShapedSlabRecipe("prismarine_bricks", new ItemStack(Material.PRISMARINE_BRICKS, 1), Material.PRISMARINE_BRICK_SLAB);
-        newShapedSlabRecipe("prismarine", new ItemStack(Material.PRISMARINE, 1), Material.PRISMARINE_SLAB);
-        newShapedSlabRecipe("purpur_block", new ItemStack(Material.PURPUR_BLOCK, 1), Material.PURPUR_SLAB);
-        newShapedSlabRecipe("quartz_block", new ItemStack(Material.QUARTZ_BLOCK, 1), Material.QUARTZ_SLAB);
-        newShapedSlabRecipe("red_nether_bricks", new ItemStack(Material.RED_NETHER_BRICKS, 1), Material.RED_NETHER_BRICK_SLAB);
-        newShapedSlabRecipe("red_sandstone", new ItemStack(Material.RED_SANDSTONE, 1), Material.RED_SANDSTONE_SLAB);
-        newShapedSlabRecipe("sandstone", new ItemStack(Material.SANDSTONE, 1), Material.SANDSTONE_SLAB);
-        newShapedSlabRecipe("smooth_quartz", new ItemStack(Material.SMOOTH_QUARTZ, 1), Material.SMOOTH_QUARTZ_SLAB);
-        newShapedSlabRecipe("smooth_red_sandstone", new ItemStack(Material.SMOOTH_RED_SANDSTONE, 1), Material.SMOOTH_RED_SANDSTONE_SLAB);
-        newShapedSlabRecipe("smooth_sandstone", new ItemStack(Material.SMOOTH_SANDSTONE, 1), Material.SMOOTH_SANDSTONE_SLAB);
-        newShapedSlabRecipe("spruce_planks", new ItemStack(Material.SPRUCE_PLANKS, 1), Material.SPRUCE_SLAB);
-        newShapedSlabRecipe("stone_bricks", new ItemStack(Material.STONE_BRICKS, 1), Material.STONE_BRICK_SLAB);
-        newShapedSlabRecipe("stone", new ItemStack(Material.STONE, 1), Material.STONE_SLAB);
-        newShapedSlabRecipe("warped_planks", new ItemStack(Material.WARPED_PLANKS, 1), Material.WARPED_SLAB);
-        newShapedSlabRecipe("cherry_planks", new ItemStack(Material.CHERRY_PLANKS, 1), Material.CHERRY_SLAB);
-        newShapedSlabRecipe("bamboo_planks", new ItemStack(Material.BAMBOO_PLANKS, 1), Material.BAMBOO_SLAB);
-        newShapedSlabRecipe("bamboo_mosaic", new ItemStack(Material.BAMBOO_MOSAIC, 1), Material.BAMBOO_MOSAIC_SLAB);
-
-        newShapedSlabRecipe("mangrove_planks", new ItemStack(Material.MANGROVE_PLANKS, 1), Material.MANGROVE_SLAB);
-        newShapelessStairRecipe("mangrove_planks", new ItemStack(Material.MANGROVE_PLANKS, 3), Material.MANGROVE_STAIRS, 4);
-        newShapedSlabRecipe("mud_bricks", new ItemStack(Material.MUD_BRICKS, 1), Material.MUD_BRICK_SLAB);
-        newShapelessStairRecipe("mud_bricks", new ItemStack(Material.MUD_BRICKS, 3), Material.MUD_BRICK_STAIRS, 4);
+        registerSlabRecipe(Material.CUT_COPPER, Material.CUT_COPPER_SLAB);
+        registerSlabRecipe(Material.EXPOSED_CUT_COPPER, Material.EXPOSED_CUT_COPPER_SLAB);
+        registerSlabRecipe(Material.WEATHERED_CUT_COPPER, Material.WEATHERED_CUT_COPPER_SLAB);
+        registerSlabRecipe(Material.OXIDIZED_CUT_COPPER, Material.OXIDIZED_CUT_COPPER_SLAB);
+        registerSlabRecipe(Material.WAXED_CUT_COPPER, Material.WAXED_CUT_COPPER_SLAB);
+        registerSlabRecipe(Material.WAXED_EXPOSED_CUT_COPPER, Material.WAXED_EXPOSED_CUT_COPPER_SLAB);
+        registerSlabRecipe(Material.WAXED_WEATHERED_CUT_COPPER, Material.WAXED_WEATHERED_CUT_COPPER_SLAB);
+        registerSlabRecipe(Material.WAXED_OXIDIZED_CUT_COPPER, Material.WAXED_OXIDIZED_CUT_COPPER_SLAB);
+        registerSlabRecipe(Material.COBBLED_DEEPSLATE, Material.COBBLED_DEEPSLATE_SLAB);
+        registerSlabRecipe(Material.POLISHED_DEEPSLATE, Material.POLISHED_DEEPSLATE_SLAB);
+        registerSlabRecipe(Material.DEEPSLATE_BRICKS, Material.DEEPSLATE_BRICK_SLAB);
+        registerSlabRecipe(Material.DEEPSLATE_TILES, Material.DEEPSLATE_TILE_SLAB);
+        registerSlabRecipe(Material.ACACIA_PLANKS, Material.ACACIA_SLAB);
+        registerSlabRecipe(Material.BIRCH_PLANKS, Material.BIRCH_SLAB);
+        registerSlabRecipe(Material.BLACKSTONE, Material.BLACKSTONE_SLAB);
+        registerSlabRecipe(Material.BRICKS, Material.BRICK_SLAB);
+        registerSlabRecipe(Material.COBBLESTONE, Material.COBBLESTONE_SLAB);
+        registerSlabRecipe(Material.CRIMSON_PLANKS, Material.CRIMSON_SLAB);
+        registerSlabRecipe(Material.DARK_OAK_PLANKS, Material.DARK_OAK_SLAB);
+        registerSlabRecipe(Material.DARK_PRISMARINE, Material.DARK_PRISMARINE_SLAB);
+        registerSlabRecipe(Material.DIORITE, Material.DIORITE_SLAB);
+        registerSlabRecipe(Material.END_STONE_BRICKS, Material.END_STONE_BRICK_SLAB);
+        registerSlabRecipe(Material.GRANITE, Material.GRANITE_SLAB);
+        registerSlabRecipe(Material.JUNGLE_PLANKS, Material.JUNGLE_SLAB);
+        registerSlabRecipe(Material.MOSSY_COBBLESTONE, Material.MOSSY_COBBLESTONE_SLAB);
+        registerSlabRecipe(Material.MOSSY_STONE_BRICKS, Material.MOSSY_STONE_BRICK_SLAB);
+        registerSlabRecipe(Material.NETHER_BRICKS, Material.NETHER_BRICK_SLAB);
+        registerSlabRecipe(Material.OAK_PLANKS, Material.OAK_SLAB);
+        registerSlabRecipe(Material.POLISHED_ANDESITE, Material.POLISHED_ANDESITE_SLAB);
+        registerSlabRecipe(Material.POLISHED_BLACKSTONE_BRICKS, Material.POLISHED_BLACKSTONE_BRICK_SLAB);
+        registerSlabRecipe(Material.PRISMARINE_BRICKS, Material.PRISMARINE_BRICK_SLAB);
+        registerSlabRecipe(Material.PRISMARINE, Material.PRISMARINE_SLAB);
+        registerSlabRecipe(Material.PURPUR_BLOCK, Material.PURPUR_SLAB);
+        registerSlabRecipe(Material.QUARTZ_BLOCK, Material.QUARTZ_SLAB);
+        registerSlabRecipe(Material.RED_NETHER_BRICKS, Material.RED_NETHER_BRICK_SLAB);
+        registerSlabRecipe(Material.RED_SANDSTONE, Material.RED_SANDSTONE_SLAB);
+        registerSlabRecipe(Material.SANDSTONE, Material.SANDSTONE_SLAB);
+        registerSlabRecipe(Material.SMOOTH_QUARTZ, Material.SMOOTH_QUARTZ_SLAB);
+        registerSlabRecipe(Material.SMOOTH_RED_SANDSTONE, Material.SMOOTH_RED_SANDSTONE_SLAB);
+        registerSlabRecipe(Material.SMOOTH_SANDSTONE, Material.SMOOTH_SANDSTONE_SLAB);
+        registerSlabRecipe(Material.SPRUCE_PLANKS, Material.SPRUCE_SLAB);
+        registerSlabRecipe(Material.STONE_BRICKS, Material.STONE_BRICK_SLAB);
+        registerSlabRecipe(Material.STONE, Material.STONE_SLAB);
+        registerSlabRecipe(Material.WARPED_PLANKS, Material.WARPED_SLAB);
+        registerSlabRecipe(Material.CHERRY_PLANKS, Material.CHERRY_SLAB);
+        registerSlabRecipe(Material.BAMBOO_PLANKS, Material.BAMBOO_SLAB);
+        registerSlabRecipe(Material.BAMBOO_MOSAIC, Material.BAMBOO_MOSAIC_SLAB);
+        registerSlabRecipe(Material.MANGROVE_PLANKS, Material.MANGROVE_SLAB);
+        registerSlabRecipe(Material.MUD_BRICKS, Material.MUD_BRICK_SLAB);
 
     }
 
-    public static void newShapelessStairRecipe(String keyName, ItemStack result, Material ingredient, int amount) {
-        NamespacedKey key = Key.get(keyName + "_stair");
+    private void registerStairRecipe(Material result, Material ingredient) {
+        NamespacedKey key = Key.get(ingredient.toString().toLowerCase() + "_stair");
 
-        ShapelessRecipe recipe = new ShapelessRecipe(key, result);
+        ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(result, 3));
 
-        recipe.addIngredient(amount, ingredient);
+        recipe.addIngredient(4, ingredient);
 
         Bukkit.addRecipe(recipe);
     }
-    public static void newShapedSlabRecipe(String keyName, ItemStack result, Material ingredient) {
-        NamespacedKey key = Key.get(keyName + "_slab");
 
-        ShapedRecipe recipe = new ShapedRecipe(key, result);
+    private void registerSlabRecipe(Material result, Material ingredient) {
+        NamespacedKey key = Key.get(ingredient.toString().toLowerCase() + "_slab");
+
+        ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(result, 1));
 
         recipe.shape("##");
         recipe.setIngredient('#', ingredient);
 
         Bukkit.addRecipe(recipe);
     }
-
-
 }

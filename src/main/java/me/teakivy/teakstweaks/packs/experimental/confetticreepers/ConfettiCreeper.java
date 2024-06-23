@@ -30,13 +30,11 @@ public class ConfettiCreeper extends BasePack {
         if (entity.getType() != EntityType.CREEPER) return;
         if (entity.getScoreboardTags().contains("confetti_true") || entity.getScoreboardTags().contains("confetti_false")) return;
 
-        int chance = getConfig().getInt("confetti-chance");
-        boolean confetti = randomChance(chance);
-
-        if (!confetti) {
+        if (!randomChance(getConfig().getInt("confetti-chance"))) {
             entity.addScoreboardTag("confetti_false");
             return;
         }
+
         entity.addScoreboardTag("confetti_true");
 
         FireworkEffect fwEffect = FireworkEffect.builder()
@@ -66,23 +64,19 @@ public class ConfettiCreeper extends BasePack {
     public void onExplosion(EntityExplodeEvent event) {
         Entity entity = event.getEntity();
         if (entity.getType() != EntityType.CREEPER) return;
-        boolean confetti = entity.getScoreboardTags().contains("confetti_true");
+        if (!entity.getScoreboardTags().contains("confetti_true")) return;
+        if (getConfig().getBoolean("do-block-damage")) return;
 
-        if (!confetti) return;
-
-        if (!getConfig().getBoolean("do-block-damage")) {
-            event.blockList().clear();
-        }
+        event.blockList().clear();
     }
 
     @EventHandler
     public void onExplosionDamage(EntityDamageByEntityEvent event) {
-        if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) {
-            if (event.getDamager().getScoreboardTags().contains("confetti_true")) {
-                event.setDamage(event.getDamage() -
-                        (event.getDamage() * (getConfig().getInt("entity-damage-reduction") / 100.0)));
-            }
-        }
+        if (event.getCause() != EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) return;
+        if (!event.getDamager().getScoreboardTags().contains("confetti_true")) return;
+
+        event.setDamage(
+                event.getDamage() - (event.getDamage() * (getConfig().getInt("entity-damage-reduction") / 100.0)));
     }
 
     private boolean randomChance(int percent) {

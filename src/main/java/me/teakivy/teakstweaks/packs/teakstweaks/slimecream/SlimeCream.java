@@ -22,7 +22,7 @@ public class SlimeCream extends BasePack {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
-        if (!hasPermission(event.getPlayer())) return;
+        if (!checkPermission(event.getPlayer())) return;
         if (event.getHand() != EquipmentSlot.HAND) return;
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (event.getClickedBlock() == null) return;

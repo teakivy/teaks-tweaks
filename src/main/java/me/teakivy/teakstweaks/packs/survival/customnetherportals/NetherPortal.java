@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.packs.survival.customnetherportals;
 
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.*;
@@ -133,7 +134,7 @@ public class NetherPortal extends BasePack {
 
                         }
 
-                        Bukkit.getScheduler().scheduleSyncDelayedTask(teaksTweaks, () -> {
+                        Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
                             for (Block portalBlock : portalBlocks) {
                                 portalBlock.setType(Material.NETHER_PORTAL);
                                 if (portalAxis.equals("z")) {

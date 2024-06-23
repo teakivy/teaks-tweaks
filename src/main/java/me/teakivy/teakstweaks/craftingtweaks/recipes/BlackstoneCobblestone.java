@@ -1,10 +1,9 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
-import me.teakivy.teakstweaks.craftingtweaks.AbstractRecipe;
+import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
@@ -12,7 +11,7 @@ import org.bukkit.inventory.ShapedRecipe;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BlackstoneCobblestone extends AbstractRecipe {
+public class BlackstoneCobblestone extends AbstractCraftingTweak {
 
     public BlackstoneCobblestone() {
         super("blackstone-cobblestone", Material.BLACKSTONE);
@@ -20,12 +19,7 @@ public class BlackstoneCobblestone extends AbstractRecipe {
 
     @Override
     public void registerRecipes() {
-        List<Material> blackstoneList = new ArrayList<>();
-        blackstoneList.add(Material.BLACKSTONE);
-        blackstoneList.add(Material.COBBLESTONE);
-
-        RecipeChoice blackstone = new RecipeChoice.MaterialChoice(blackstoneList);
-
+        RecipeChoice blackstone = new RecipeChoice.MaterialChoice(List.of(Material.BLACKSTONE, Material.COBBLESTONE));
 
         List<Material> woodList = new ArrayList<>();
         woodList.add(Material.OAK_PLANKS);
@@ -36,65 +30,49 @@ public class BlackstoneCobblestone extends AbstractRecipe {
         woodList.add(Material.DARK_OAK_PLANKS);
         woodList.add(Material.WARPED_PLANKS);
         woodList.add(Material.CRIMSON_PLANKS);
-
+        woodList.add(Material.CHERRY_PLANKS);
+        woodList.add(Material.BAMBOO_PLANKS);
+        woodList.add(Material.MANGROVE_PLANKS);
         RecipeChoice wood = new RecipeChoice.MaterialChoice(woodList);
 
-        NamespacedKey pistonKey = Key.get("piston_blackstone");
-        ShapedRecipe pistonRecipe = new ShapedRecipe(pistonKey, new ItemStack(Material.PISTON));
-
+        ShapedRecipe pistonRecipe = new ShapedRecipe(Key.get("piston_blackstone"), new ItemStack(Material.PISTON));
         pistonRecipe.shape("---", "bob", "bab");
         pistonRecipe.setIngredient('b', blackstone);
         pistonRecipe.setIngredient('-', wood);
         pistonRecipe.setIngredient('o', Material.IRON_INGOT);
         pistonRecipe.setIngredient('a', Material.REDSTONE);
-
         Bukkit.addRecipe(pistonRecipe);
 
-        NamespacedKey observerKey = Key.get("observer_blackstone");
-        ShapedRecipe observerRecipe = new ShapedRecipe(observerKey, new ItemStack(Material.OBSERVER));
-
+        ShapedRecipe observerRecipe = new ShapedRecipe(Key.get("observer_blackstone"), new ItemStack(Material.OBSERVER));
         observerRecipe.shape("bbb", "aaq", "bbb");
         observerRecipe.setIngredient('b', blackstone);
         observerRecipe.setIngredient('q', Material.QUARTZ);
         observerRecipe.setIngredient('a', Material.REDSTONE);
-
         Bukkit.addRecipe(observerRecipe);
 
-        NamespacedKey dropperKey = Key.get("dropper_blackstone");
-        ShapedRecipe dropperRecipe = new ShapedRecipe(dropperKey, new ItemStack(Material.DROPPER));
-
+        ShapedRecipe dropperRecipe = new ShapedRecipe(Key.get("dropper_blackstone"), new ItemStack(Material.DROPPER));
         dropperRecipe.shape("bbb", "b b", "bab");
         dropperRecipe.setIngredient('b', blackstone);
         dropperRecipe.setIngredient('a', Material.REDSTONE);
-
         Bukkit.addRecipe(dropperRecipe);
 
-        NamespacedKey dispenserKey = Key.get("dispenser_blackstone");
-        ShapedRecipe dispenserRecipe = new ShapedRecipe(dispenserKey, new ItemStack(Material.DISPENSER));
-
+        ShapedRecipe dispenserRecipe = new ShapedRecipe(Key.get("dispenser_blackstone"), new ItemStack(Material.DISPENSER));
         dispenserRecipe.shape("bbb", "b=b", "bab");
         dispenserRecipe.setIngredient('b', blackstone);
         dispenserRecipe.setIngredient('a', Material.REDSTONE);
         dispenserRecipe.setIngredient('=', Material.BOW);
-
         Bukkit.addRecipe(dispenserRecipe);
 
-        NamespacedKey brewingStandKey = Key.get("brewing_stand_blackstone");
-        ShapedRecipe brewingStandRecipe = new ShapedRecipe(brewingStandKey, new ItemStack(Material.BREWING_STAND));
-
+        ShapedRecipe brewingStandRecipe = new ShapedRecipe(Key.get("brewing_stand_blackstone"), new ItemStack(Material.BREWING_STAND));
         brewingStandRecipe.shape(" | ", "bbb");
         brewingStandRecipe.setIngredient('b', blackstone);
         brewingStandRecipe.setIngredient('|', Material.BLAZE_ROD);
-
         Bukkit.addRecipe(brewingStandRecipe);
 
-        NamespacedKey leverKey = Key.get("lever_blackstone");
-        ShapedRecipe leverRecipe = new ShapedRecipe(leverKey, new ItemStack(Material.LEVER));
-
+        ShapedRecipe leverRecipe = new ShapedRecipe(Key.get("lever_blackstone"), new ItemStack(Material.LEVER));
         leverRecipe.shape("/", "b");
         leverRecipe.setIngredient('/', Material.STICK);
         leverRecipe.setIngredient('b', blackstone);
-
         Bukkit.addRecipe(leverRecipe);
     }
 }

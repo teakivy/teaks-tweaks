@@ -71,7 +71,7 @@ public class DuraPing extends BasePack {
 
     @EventHandler
     public void onItemUse(PlayerItemDamageEvent event) {
-        if (!hasPermission(event.getPlayer())) return;
+        if (!checkPermission(event.getPlayer())) return;
         ItemStack item = event.getItem();
         Player player = event.getPlayer();
 

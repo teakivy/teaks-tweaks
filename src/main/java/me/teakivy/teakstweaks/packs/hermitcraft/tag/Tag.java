@@ -41,7 +41,7 @@ public class Tag extends BasePack {
 
         if (AFK.afk.get(player.getUniqueId())) {
             if (!getConfig().getBoolean("allow-tagging-afk")) {
-                damager.sendMessage(getString("error.cant_tag_afk"));
+                damager.sendMessage(getText("error.cant_tag_afk"));
                 event.setCancelled(true);
                 return;
             }
@@ -66,6 +66,7 @@ public class Tag extends BasePack {
         for (int i = 0; i < 36; i++) {
             if (player.getInventory().getItem(i) == null) {
                 emptySlot = true;
+                break;
             }
         }
         if (emptySlot) {

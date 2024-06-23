@@ -18,7 +18,7 @@ public class InvisibleItemFrames extends BasePack {
 
     @EventHandler
     public void onRotate(PlayerInteractEntityEvent event) {
-        if (!hasPermission(event.getPlayer())) return;
+        if (!checkPermission(event.getPlayer())) return;
 
         if (event.getRightClicked().getType() == EntityType.ITEM_FRAME || event.getRightClicked().getType() == EntityType.GLOW_ITEM_FRAME) {
             if (!event.getPlayer().isSneaking()) return;

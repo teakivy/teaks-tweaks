@@ -115,7 +115,7 @@ public class SpectatorAlts extends BasePack {
     @EventHandler
     public void onGameModeChange(PlayerGameModeChangeEvent event) {
         Player player = event.getPlayer();
-        if (!config.getBoolean("force-gamemode")) return;
+        if (!getConfig().getBoolean("force-gamemode")) return;
         if (!alts.containsKey(player.getUniqueId())) return;
 
         if (event.getNewGameMode() != getGameMode()) {
@@ -126,7 +126,7 @@ public class SpectatorAlts extends BasePack {
     @EventHandler
     public void onTeleport(PlayerTeleportEvent event) {
         Player player = event.getPlayer();
-        if (config.getBoolean("allow-player-teleport")) return;
+        if (getConfig().getBoolean("allow-player-teleport")) return;
         if (!alts.containsKey(player.getUniqueId())) return;
 
         for (Entity entity : event.getTo().getNearbyEntities(10, 10, 10)) {
@@ -140,7 +140,7 @@ public class SpectatorAlts extends BasePack {
     }
 
     protected GameMode getGameMode() {
-        return switch (Objects.requireNonNull(config.getString("gamemode"))) {
+        return switch (Objects.requireNonNull(getConfig().getString("gamemode"))) {
             case "survival" -> GameMode.SURVIVAL;
             case "creative" -> GameMode.CREATIVE;
             case "adventure" -> GameMode.ADVENTURE;
