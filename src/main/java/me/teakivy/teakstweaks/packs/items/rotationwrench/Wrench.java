@@ -69,7 +69,8 @@ public class Wrench extends BasePack {
         ItemStack item = event.getItem();
         if (item == null) return;
         if (!item.hasItemMeta()) return;
-        if (!Objects.requireNonNull(item.getItemMeta()).displayName().equals(getText("item_name"))) return;
+        if (item.getItemMeta().displayName() == null) return;
+        if (!Objects.equals(Objects.requireNonNull(item.getItemMeta()).displayName(), getText("item_name"))) return;
         if (item.getType() != Material.CARROT_ON_A_STICK) return;
         if (!item.getItemMeta().isUnbreakable()) return;
         if (event.getPlayer().getVehicle() != null) event.setCancelled(true);

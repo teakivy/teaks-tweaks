@@ -76,7 +76,7 @@ public class SpheresPack extends BasePack {
         Bukkit.getScheduler().runTaskLater(TeaksTweaks.getInstance(), () -> {
             executor.teleport(location);
             save();
-        }, 30L);
+        }, 20L * 3);
         return true;
     }
 

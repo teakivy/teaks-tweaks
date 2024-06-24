@@ -85,8 +85,6 @@ public class Home {
         data.set(key, PersistentDataType.STRING, newHomes.toString());
 
         data.remove(Key.get("home." + name));
-
-        player.sendMessage(Translatable.get("homes.deleted", Placeholder.parsed("home", name)));
     }
 
 }

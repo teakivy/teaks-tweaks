@@ -54,7 +54,7 @@ public class AltsCommand extends AbstractCommand {
             return;
         }
 
-        if (!event.hasArgs(3)) {
+        if (!event.hasArgs(2)) {
             sendUsage();
             return;
         }
@@ -103,16 +103,16 @@ public class AltsCommand extends AbstractCommand {
 
     @Override
     public List<String> tabComplete(TabCompleteEvent event) {
-        if (event.isArg(1)) return List.of("add", "remove", "list");
+        if (event.isArg(0)) return List.of("add", "remove", "list");
 
-        if (event.isArg(2)) {
+        if (event.isArg(1)) {
             if (event.isArg(0, "list")) {
                 return List.of("[player]");
             }
             return List.of("<alt>");
         }
 
-        if (event.isArg(3)) {
+        if (event.isArg(2)) {
             if (event.isArg(0, "add") || event.isArg(0, "remove")) {
                 return List.of("[player]");
             }

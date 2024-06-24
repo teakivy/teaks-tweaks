@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 public class PowderToGlass extends AbstractCraftingTweak {
 
     public PowderToGlass() {
-        super("powder-to-glass", Material.RED_CONCRETE_POWDER);
+        super("powder-to-glass", Material.GLASS);
     }
 
     @Override

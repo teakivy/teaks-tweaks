@@ -48,7 +48,7 @@ public class Config {
         String configVersion = getString("config.version");
         String pluginConfigVersion = Objects.requireNonNull(TeaksTweaks.getInstance().getConfig().getDefaults()).getString("config.version");
 
-        if (!TeaksTweaks.getInstance().getConfig().getBoolean("config.dev-mode") && !configVersion.equalsIgnoreCase(pluginConfigVersion)) return;
+        if (TeaksTweaks.getInstance().getConfig().getBoolean("config.dev-mode") && !configVersion.equalsIgnoreCase(pluginConfigVersion)) return;
 
         try {
             ConfigUpdater.update(TeaksTweaks.getInstance(), "config.yml", new File(TeaksTweaks.getInstance().getDataFolder(), "config.yml"), Collections.emptyList(), true);

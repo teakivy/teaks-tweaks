@@ -37,7 +37,7 @@ public class MiniBlockTrade {
         ItemStack head = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta headMeta = (SkullMeta) head.getItemMeta();
 
-        GameProfile profile = new GameProfile(UUID.fromString("fdb5599c-1b14-440e-82df-d69719703d21"), name);
+        GameProfile profile = new GameProfile(UUID.fromString("fdb5599c-1b14-440e-82df-d69719703d21"), "MiniBlock");
         profile.getProperties().put("textures", new Property("textures", texture));
         Field field;
         try {

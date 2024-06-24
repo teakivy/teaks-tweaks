@@ -2,6 +2,8 @@ package me.teakivy.teakstweaks.packs.mobs.moremobheads;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.config.Config;
+import net.kyori.adventure.text.format.TextDecoration;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.apache.commons.lang3.text.WordUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -90,8 +92,9 @@ public class BaseMobHead implements Listener {
 
     public ItemStack createHead(String name, String texture) {
         ItemStack head = new ItemStack(Material.PLAYER_HEAD);
-        PlayerProfile profile = Bukkit.createPlayerProfile(UUID.fromString("fdb5599c-1b14-440e-82df-d69719703d21"), name.replace(" Head", ""));
+        PlayerProfile profile = Bukkit.createPlayerProfile(UUID.fromString("fdb5599c-1b14-440e-82df-d69719703d21"), "MobHead");
         SkullMeta meta = (SkullMeta)head.getItemMeta();
+        meta.displayName(MiniMessage.miniMessage().deserialize("<yellow>" + name.replace(" Head", "'s Head")).decoration(TextDecoration.ITALIC, false));
         PlayerTextures textures = profile.getTextures();
 
         try {

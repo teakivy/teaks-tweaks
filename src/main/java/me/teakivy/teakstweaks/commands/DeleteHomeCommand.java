@@ -22,7 +22,7 @@ public class DeleteHomeCommand extends AbstractCommand {
             return;
         }
 
-        String name = event.hasArgs() ? "home" : event.getArg(0).toLowerCase();
+        String name = event.hasArgs() ? event.getArg(0).toLowerCase() : "home";
 
         Home home = HomesPack.getHome(player, name);
         if (home == null) {
@@ -32,9 +32,10 @@ public class DeleteHomeCommand extends AbstractCommand {
 
         if (!HomesPack.removeHome(player, name)) {
             sendError("cant_delete_home");
+            return;
         }
-
         sendMessage("deleted_home", insert("name", name));
+        return;
     }
 
     @Override

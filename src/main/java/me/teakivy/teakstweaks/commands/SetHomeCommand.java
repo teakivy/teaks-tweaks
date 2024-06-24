@@ -41,7 +41,7 @@ public class SetHomeCommand extends AbstractCommand {
             return;
         }
 
-        sendMessage("home.set_home", insert("name", name));
+        sendMessage("set_home", insert("name", name));
     }
 
     @Override
