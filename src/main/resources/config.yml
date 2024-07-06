@@ -308,12 +308,21 @@ packs:
 
 
   # Cauldron Concrete
-  # Right click a cauldron with concrete powder to harden it.
+  # Right click a water cauldron with concrete powder to harden it.
   #
   # Permission: teakstweaks.cauldron-concrete
   cauldron-concrete:
     enabled: false
     # Whether or not hardening takes a water level from the cauldron
+    drops-water-level: true
+
+  # Cauldron Mud
+  # Right click a water cauldron with dirt to turn it into mud.
+  #
+  # Permission: teakstweaks.cauldron-concrete
+  cauldron-mud:
+    enabled: false
+    # Whether or not converting the mud takes a water level from the cauldron
     drops-water-level: true
 
   # Track Raw Stats

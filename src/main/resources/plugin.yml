@@ -42,6 +42,7 @@ permissions:
       teakstweaks.afk.*: true
       teakstweaks.graves.*: true
       teakstweaks.durability-ping.*: true
+      teakstweaks.cauldron-mud: true
       teakstweaks.cauldron-concrete: true
       teakstweaks.nether-portal-coords.*: true
       teakstweaks.coords-hud.*: true
@@ -185,6 +186,10 @@ permissions:
   
   teakstweaks.durability-ping.command.durabilityping.set:
     description: Execute /durabilityping set
+    default: true
+
+  teakstweaks.cauldron-mud:
+    description: Use the cauldron mud module
     default: true
   
   teakstweaks.cauldron-concrete:

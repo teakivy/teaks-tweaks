@@ -1,4 +1,4 @@
-package me.teakivy.teakstweaks.packs.survival.cauldronconcrete;
+package me.teakivy.teakstweaks.packs.survival.cauldronmud;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
@@ -11,10 +11,10 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class ConcreteConverter extends BasePack {
+public class MudConverter extends BasePack {
 
-    public ConcreteConverter() {
-        super ("cauldron-concrete", PackType.SURVIVAL, Material.CAULDRON);
+    public MudConverter() {
+        super ("cauldron-mud", PackType.SURVIVAL, Material.CAULDRON);
     }
 
     @EventHandler
@@ -25,7 +25,7 @@ public class ConcreteConverter extends BasePack {
         if (event.getClickedBlock().getType() != Material.WATER_CAULDRON) return;
 
         if (event.getItem() == null) return;
-        if (!event.getItem().getType().name().contains("_CONCRETE_POWDER")) return;
+        if (event.getItem().getType() != Material.DIRT) return;
 
         Levelled levelled = (Levelled) event.getClickedBlock().getBlockData();
         if (levelled.getLevel() == 1 && !getConfig().getBoolean("drops-water-level")) {
@@ -43,7 +43,7 @@ public class ConcreteConverter extends BasePack {
 
         event.getItem().setAmount(event.getItem().getAmount() - 1);
 
-        ItemStack newItem = new ItemStack(Material.valueOf(event.getItem().getType().name().replace("_CONCRETE_POWDER", "_CONCRETE")));
+        ItemStack newItem = new ItemStack(Material.MUD);
 
         event.getPlayer().getInventory().addItem(newItem);
     }

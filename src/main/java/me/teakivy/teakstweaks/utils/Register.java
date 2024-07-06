@@ -26,6 +26,7 @@ import me.teakivy.teakstweaks.packs.mobs.silencemobs.Silencer;
 import me.teakivy.teakstweaks.packs.mobs.villagerdeathmessages.VillagerDeath;
 import me.teakivy.teakstweaks.packs.survival.afkdisplay.AFK;
 import me.teakivy.teakstweaks.packs.survival.cauldronconcrete.ConcreteConverter;
+import me.teakivy.teakstweaks.packs.survival.cauldronmud.MudConverter;
 import me.teakivy.teakstweaks.packs.survival.classicfishingloot.Fishing;
 import me.teakivy.teakstweaks.packs.survival.coordshud.HUD;
 import me.teakivy.teakstweaks.packs.survival.customnetherportals.NetherPortal;
@@ -89,6 +90,7 @@ public class Register {
             new MobHeads(),
             new DuraPing(),
             new ConcreteConverter(),
+            new MudConverter(),
             new CountDeaths(),
             new QuickCommands(),
             new SpectatorAlts(),
