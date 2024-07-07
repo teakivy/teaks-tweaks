@@ -37,7 +37,7 @@ public class ZombieVillagerHead extends BaseMobHead {
         if (profession == null) {
             return textures.get("unemployed");
         }
-        String key = switch (villager.getVillagerProfession()) {
+        String key = switch (VillagerProfession.fromProfession(villager.getVillagerProfession())) {
             case ARMORER -> "armorer";
             case BUTCHER -> "butcher";
             case CARTOGRAPHER -> "cartographer";
@@ -66,7 +66,7 @@ public class ZombieVillagerHead extends BaseMobHead {
         if (profession == null) {
             return "Unemployed Zombie Villager";
         }
-        String name = switch (villager.getVillagerProfession()) {
+        String name = switch (VillagerProfession.fromProfession(villager.getVillagerProfession())) {
             case ARMORER -> "Armorer";
             case BUTCHER -> "Butcher";
             case CARTOGRAPHER -> "Cartographer";
@@ -85,5 +85,40 @@ public class ZombieVillagerHead extends BaseMobHead {
         };
 
         return name + " Zombie Villager";
+    }
+
+    protected enum VillagerProfession {
+        ARMORER(Villager.Profession.ARMORER),
+        BUTCHER(Villager.Profession.BUTCHER),
+        CARTOGRAPHER(Villager.Profession.CARTOGRAPHER),
+        CLERIC(Villager.Profession.CLERIC),
+        FARMER(Villager.Profession.FARMER),
+        FISHERMAN(Villager.Profession.FISHERMAN),
+        FLETCHER(Villager.Profession.FLETCHER),
+        LEATHERWORKER(Villager.Profession.LEATHERWORKER),
+        LIBRARIAN(Villager.Profession.LIBRARIAN),
+        MASON(Villager.Profession.MASON),
+        NITWIT(Villager.Profession.NITWIT),
+        SHEPHERD(Villager.Profession.SHEPHERD),
+        TOOLSMITH(Villager.Profession.TOOLSMITH),
+        WEAPONSMITH(Villager.Profession.WEAPONSMITH),
+        NONE(Villager.Profession.NONE);
+
+        private final Villager.Profession profession;
+
+        VillagerProfession(Villager.Profession profession) {
+            this.profession = profession;
+        }
+
+        public Villager.Profession getProfession() {
+            return profession;
+        }
+
+        public static VillagerProfession fromProfession(Villager.Profession profession) {
+            for (VillagerProfession value : values()) {
+                if (value.profession == profession) return value;
+            }
+            return null;
+        }
     }
 }

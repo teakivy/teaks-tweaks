@@ -6,6 +6,8 @@ import org.bukkit.entity.Cat;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.entity.EntityDeathEvent;
 
+import java.util.Objects;
+
 public class CatHead extends BaseMobHead {
 
     public CatHead() {
@@ -28,7 +30,7 @@ public class CatHead extends BaseMobHead {
     public String getTexture(EntityDeathEvent event) {
         Cat cat = (Cat) event.getEntity();
 
-        String key = switch (cat.getCatType()) {
+        String key = switch (Objects.requireNonNull(CatType.fromType(cat.getCatType()))) {
             case CALICO -> "calico";
             case JELLIE -> "jellie";
             case SIAMESE -> "siamese";
@@ -51,7 +53,7 @@ public class CatHead extends BaseMobHead {
 
         String name = "";
 
-        switch (cat.getCatType()) {
+        switch (Objects.requireNonNull(CatType.fromType(cat.getCatType()))) {
             case CALICO -> name = "Calico";
             case JELLIE -> name = "Jellie";
             case SIAMESE -> name = "Siamese";
@@ -66,5 +68,36 @@ public class CatHead extends BaseMobHead {
         }
 
         return name + " Cat";
+    }
+
+    protected enum CatType {
+        CALICO(Cat.Type.CALICO),
+        JELLIE(Cat.Type.JELLIE),
+        SIAMESE(Cat.Type.SIAMESE),
+        PERSIAN(Cat.Type.PERSIAN),
+        BRITISH_SHORTHAIR(Cat.Type.BRITISH_SHORTHAIR),
+        TABBY(Cat.Type.TABBY),
+        BLACK(Cat.Type.BLACK),
+        RED(Cat.Type.RED),
+        RAGDOLL(Cat.Type.RAGDOLL),
+        WHITE(Cat.Type.WHITE),
+        ALL_BLACK(Cat.Type.ALL_BLACK);
+
+        private final Cat.Type type;
+
+        CatType(Cat.Type type) {
+            this.type = type;
+        }
+
+        public Cat.Type getType() {
+            return type;
+        }
+
+        public static CatType fromType(Cat.Type type) {
+            for (CatType value : values()) {
+                if (value.type == type) return value;
+            }
+            return null;
+        }
     }
 }
