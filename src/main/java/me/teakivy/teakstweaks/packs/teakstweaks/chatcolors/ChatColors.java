@@ -1,8 +1,8 @@
 package me.teakivy.teakstweaks.packs.teakstweaks.chatcolors;
 
-import io.papermc.paper.event.player.AsyncChatEvent;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.MM;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Material;
@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.inventory.PrepareAnvilEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -20,11 +21,11 @@ public class ChatColors extends BasePack {
     }
 
     @EventHandler
-    public void onChat(AsyncChatEvent event) {
+    public void onChat(AsyncPlayerChatEvent event) {
         if (!getConfig().getBoolean("chat")) return;
         if (!checkPermission(event.getPlayer())) return;
 
-        event.message(legacyToMiniMessage(event.message()));
+        event.setMessage(MM.toString(legacyToMiniMessage(newText(event.getMessage()))));
     }
 
     @EventHandler
@@ -39,7 +40,7 @@ public class ChatColors extends BasePack {
         if (meta == null) return;
         if (!meta.hasDisplayName()) return;
 
-        meta.displayName(legacyToMiniMessage(meta.displayName()));
+        meta.setDisplayName(MM.toString(legacyToMiniMessage(newText(meta.getDisplayName()))));
         result.setItemMeta(meta);
         event.setResult(result);
     }
@@ -49,9 +50,9 @@ public class ChatColors extends BasePack {
         if (!getConfig().getBoolean("signs")) return;
         if (!checkPermission(event.getPlayer())) return;
 
-        for (int i = 0; i < event.lines().size(); i++) {
-            if (event.line(i) == null) continue;
-            event.line(i, legacyToMiniMessage(event.line(i)));
+        for (int i = 0; i < event.getLines().length; i++) {
+            if (event.getLine(i) == null) continue;
+            event.setLine(i, MM.toString(legacyToMiniMessage(newText(event.getLine(i)))));
         }
     }
 

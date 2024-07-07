@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.teleportation.back;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.ErrorType;
+import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -23,13 +24,13 @@ public class Back extends BasePack {
 
     public static void tpBack(Player player) {
         if (!player.hasPermission("teakstweaks.back")) {
-            player.sendMessage(ErrorType.MISSING_PERMISSION.m());
+            MM.player(player).sendMessage(ErrorType.MISSING_PERMISSION.m());
             return;
         }
         if (backLoc.containsKey(player.getUniqueId())) {
             player.teleport(backLoc.get(player.getUniqueId()));
         } else {
-            player.sendMessage(Translatable.get("back.error.no_back_location"));
+            MM.player(player).sendMessage(Translatable.get("back.error.no_back_location"));
         }
     }
 

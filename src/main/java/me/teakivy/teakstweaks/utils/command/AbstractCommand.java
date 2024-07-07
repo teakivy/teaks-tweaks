@@ -3,8 +3,11 @@ package me.teakivy.teakstweaks.utils.command;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.Logger;
+import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -156,11 +159,13 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         getCommandMap().register("", cmd);
         cmd.setExecutor(this);
 
-        Bukkit.getCommandMap().getKnownCommands().put(this.command, cmd);
+        getCommandMap().register(this.command, cmd);
+        // TODO finish command map & test
+//        Bukkit.getCommandMap().getKnownCommands().put(this.command, cmd);
 
         if (this.alias != null) {
             for (String alias : this.alias) {
-                Bukkit.getCommandMap().getKnownCommands().put(alias, cmd);
+//                Bukkit.getCommandMap().getKnownCommands().put(alias, cmd);
             }
         }
 
@@ -241,7 +246,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
             if (arg.isRequired()) requiredArgs++;
         }
         if (args.length < requiredArgs) {
-            sender.sendMessage(getUsage());
+            MM.sender(sender).sendMessage(getUsage());
             return true;
         }
 
@@ -269,7 +274,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param event The command event
      */
     public void command(CommandEvent event) {
-        sender.sendMessage(getUsage());
+        MM.sender(this.sender).sendMessage(getUsage());
     }
 
     /**
@@ -277,7 +282,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param event The command event
      */
     public void playerCommand(PlayerCommandEvent event) {
-        sender.sendMessage(getUsage());
+        MM.sender(this.sender).sendMessage(getUsage());
     }
 
 
@@ -342,14 +347,14 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     public Player checkPlayer() {
         if (sender instanceof Player) return (Player) sender;
 
-        sender.sendMessage(ErrorType.NOT_PLAYER.m());
+        MM.sender(this.sender).sendMessage(ErrorType.NOT_PLAYER.m());
         return null;
     }
 
     public boolean checkPermission() {
         if (sender.hasPermission(permission)) return false;
 
-        sender.sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
+        MM.sender(this.sender).sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
         return true;
     }
 
@@ -455,27 +460,27 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     }
 
     public void sendMessage(String key, TagResolver... resolvers) {
-        this.sender.sendMessage(getText(key, resolvers));
+        MM.sender(this.sender).sendMessage(getText(key, resolvers));
     }
 
     public void sendError(String key, TagResolver... resolvers) {
-        this.sender.sendMessage(getError(key, resolvers));
+        MM.sender(this.sender).sendMessage(getError(key, resolvers));
     }
 
     public void sendError(ErrorType errorType) {
-        this.sender.sendMessage(errorType.m());
+        MM.sender(this.sender).sendMessage(errorType.m());
     }
 
     public void sendMessage(Component message) {
-        this.sender.sendMessage(message);
+        MM.sender(this.sender).sendMessage(message);
     }
 
     public void sendString(String message) {
-        this.sender.sendMessage(newText(message));
+        MM.sender(this.sender).sendMessage(newText(message));
     }
 
     public void sendText(String message, TagResolver... resolvers) {
-        this.sender.sendMessage(newText(message, resolvers));
+        MM.sender(this.sender).sendMessage(newText(message, resolvers));
     }
 
     public TagResolver.Single insert(@Subst("") String key, String value) {

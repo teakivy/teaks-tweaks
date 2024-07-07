@@ -6,6 +6,8 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Frog;
 import org.bukkit.event.entity.EntityDeathEvent;
 
+import java.util.Objects;
+
 public class FrogHead extends BaseMobHead {
 
     public FrogHead() {
@@ -20,7 +22,7 @@ public class FrogHead extends BaseMobHead {
     public String getTexture(EntityDeathEvent event) {
         Frog frog = (Frog) event.getEntity();
 
-        String key = switch (frog.getVariant()) {
+        String key = switch (Objects.requireNonNull(FrogVariant.fromVariant(frog.getVariant()))) {
             case WARM -> "warm";
             case TEMPERATE -> "temperate";
             case COLD -> "cold";
@@ -33,12 +35,35 @@ public class FrogHead extends BaseMobHead {
     public String getName(EntityDeathEvent event) {
         Frog frog = (Frog) event.getEntity();
 
-        String key = switch (frog.getVariant()) {
+        String key = switch (Objects.requireNonNull(FrogVariant.fromVariant(frog.getVariant()))) {
             case WARM -> "Warm";
             case TEMPERATE -> "Temperate";
             case COLD -> "Cold";
         };
 
         return key + " Frog";
+    }
+
+    protected enum FrogVariant {
+        WARM(Frog.Variant.WARM),
+        TEMPERATE(Frog.Variant.TEMPERATE),
+        COLD(Frog.Variant.COLD);
+
+        private final Frog.Variant variant;
+
+        FrogVariant(Frog.Variant profession) {
+            this.variant = profession;
+        }
+
+        public Frog.Variant getVariant() {
+            return variant;
+        }
+
+        public static FrogVariant fromVariant(Frog.Variant variant) {
+            for (FrogVariant value : values()) {
+                if (value.variant == variant) return value;
+            }
+            return null;
+        }
     }
 }

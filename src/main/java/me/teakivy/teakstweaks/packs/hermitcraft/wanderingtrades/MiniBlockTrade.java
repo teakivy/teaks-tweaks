@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.hermitcraft.wanderingtrades;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
+import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -46,7 +47,7 @@ public class MiniBlockTrade {
             field.set(headMeta, profile);
         } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException ignored) {}
 
-        headMeta.displayName(MiniMessage.miniMessage().deserialize("<yellow>" + this.name).decoration(TextDecoration.ITALIC, false));
+        headMeta.setDisplayName(MM.toString(MiniMessage.miniMessage().deserialize("<yellow>" + this.name).decoration(TextDecoration.ITALIC, false)));
 
         head.setItemMeta(headMeta);
         return head;

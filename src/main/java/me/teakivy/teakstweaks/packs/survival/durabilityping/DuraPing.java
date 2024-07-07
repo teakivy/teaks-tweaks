@@ -2,12 +2,11 @@ package me.teakivy.teakstweaks.packs.survival.durabilityping;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.title.TitlePart;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.ComponentBuilder;
 import org.apache.commons.lang3.text.WordUtils;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -106,18 +105,18 @@ public class DuraPing extends BasePack {
         }
         if (style.equalsIgnoreCase("hidden")) return;
         if (style.equalsIgnoreCase("subtitle")) {
-            player.sendTitlePart(TitlePart.TITLE, getDurabilityMessage("ping.subtitle.title", item, durability, maxDurability));
-            player.sendTitlePart(TitlePart.SUBTITLE, getDurabilityMessage("ping.subtitle.subtitle", item, durability, maxDurability));
+            MM.player(player).sendTitlePart(TitlePart.TITLE, getDurabilityMessage("ping.subtitle.title", item, durability, maxDurability));
+            MM.player(player).sendTitlePart(TitlePart.SUBTITLE, getDurabilityMessage("ping.subtitle.subtitle", item, durability, maxDurability));
         }
         if (style.equalsIgnoreCase("title")) {
-            player.sendTitlePart(TitlePart.TITLE, getDurabilityMessage("ping.title.title", item, durability, maxDurability));
-            player.sendTitlePart(TitlePart.SUBTITLE, getDurabilityMessage("ping.title.subtitle", item, durability, maxDurability));
+            MM.player(player).sendTitlePart(TitlePart.TITLE, getDurabilityMessage("ping.title.title", item, durability, maxDurability));
+            MM.player(player).sendTitlePart(TitlePart.SUBTITLE, getDurabilityMessage("ping.title.subtitle", item, durability, maxDurability));
         }
         if (style.equalsIgnoreCase("chat")) {
-            player.sendMessage(getDurabilityMessage("ping.chat.message", item, durability, maxDurability));
+            MM.player(player).sendMessage(getDurabilityMessage("ping.chat.message", item, durability, maxDurability));
         }
         if (style.equalsIgnoreCase("actionbar")) {
-            player.sendActionBar(getDurabilityMessage("ping.actionbar.message", item, durability, maxDurability));
+            MM.player(player).sendActionBar(getDurabilityMessage("ping.actionbar.message", item, durability, maxDurability));
         }
     }
 

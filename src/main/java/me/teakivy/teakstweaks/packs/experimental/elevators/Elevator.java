@@ -1,6 +1,5 @@
 package me.teakivy.teakstweaks.packs.experimental.elevators;
 
-import com.destroystokyo.paper.event.player.PlayerJumpEvent;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.*;
@@ -12,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -84,8 +84,9 @@ public class Elevator extends BasePack {
     }
 
     @EventHandler
-    public void onJump(PlayerJumpEvent e) {
+    public void onJump(PlayerMoveEvent e) {
         Player player = e.getPlayer();
+        if (e.getFrom().getY() < e.getTo().getY()) return;
         Location loc = player.getLocation();
         Block standingBlock = loc.add(0, -1, 0).getBlock();
         if (!isElevator(standingBlock)) return;

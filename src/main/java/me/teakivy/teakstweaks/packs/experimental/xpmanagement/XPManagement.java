@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.experimental.xpmanagement;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
@@ -118,9 +119,9 @@ public class XPManagement extends BasePack {
         ItemMeta xpMeta = xpBottle.getItemMeta();
 
         if (getConfig().getBoolean("display-amount")) {
-            List<Component> lore = new ArrayList<>();
-            lore.add(getText("bottle_contains", insert("amount", getConfig().getInt("take-xp-amount"))));
-            xpMeta.lore(lore);
+            List<String> lore = new ArrayList<>();
+            lore.add(MM.toString(getText("bottle_contains", insert("amount", getConfig().getInt("take-xp-amount")))));
+            xpMeta.setLore(lore);
         }
 
         PersistentDataContainer data = xpMeta.getPersistentDataContainer();

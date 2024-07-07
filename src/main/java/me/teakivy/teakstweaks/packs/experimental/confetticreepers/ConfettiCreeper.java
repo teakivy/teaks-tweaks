@@ -54,7 +54,7 @@ public class ConfettiCreeper extends BasePack {
 
         Firework fw = (Firework) entity.getWorld().spawnEntity(entity.getLocation(), EntityType.FIREWORK_ROCKET);
         FireworkMeta fwMeta = fw.getFireworkMeta();
-        fwMeta.displayName(Component.text("Confetti"));
+        fwMeta.setDisplayName("Confetti");
         fwMeta.addEffect(fwEffect);
         fw.setFireworkMeta(fwMeta);
         fw.detonate();
