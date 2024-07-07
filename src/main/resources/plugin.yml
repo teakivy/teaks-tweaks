@@ -1,7 +1,7 @@
 name: TeaksTweaks
 version: ${project.version}
 main: me.teakivy.teakstweaks.TeaksTweaks
-api-version: 1.17
+api-version: 1.21
 prefix: TeaksTweaks
 authors: [ TeakIvy ]
 description: 150+ Toggleable Tweaks & Features including Vanilla Tweaks as a plugin, and more!
@@ -123,23 +123,23 @@ permissions:
     description: Execute /spectatoralts
     default: op
   
-  teakstweaks.afk.*:
+  teakstweaks.afk-display.*:
     description: All AFK Permissions
     default: op
     children:
-      teakstweaks.afk.command.afk: true
-      teakstweaks.afk.command.afk.toggle: true
-      teakstweaks.afk.command.afk.uninstall: true
+      teakstweaks.afk-display.command.afk: true
+      teakstweaks.afk-display.command.afk.toggle: true
+      teakstweaks.afk-display.command.afk.uninstall: true
   
-  teakstweaks.afk.command.afk:
+  teakstweaks.afk-display.command.afk:
     description: Execute /afk
     default: true
   
-  teakstweaks.afk.command.afk.toggle:
+  teakstweaks.afk-display.command.afk.toggle:
     description: Execute /afk toggle
     default: true
   
-  teakstweaks.afk.command.afk.uninstall:
+  teakstweaks.afk-display.command.afk.uninstall:
     description: Execute /afk uninstall
     default: op
   
@@ -442,7 +442,7 @@ permissions:
 
   teakstweaks.thunder-shrine.commmand.shrine.remove:
     description: Execute /shrine remove
-    default: op
+    default: opUp
   
   teakstweaks.thunder-shrine.commmand.shrine.uninstall:
     description: Execute /shrine uninstall
