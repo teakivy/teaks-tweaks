@@ -12,11 +12,15 @@ import java.util.Arrays;
 public class TeaksTweaksCommand extends AbstractCommand {
 
     public TeaksTweaksCommand() {
-        super(CommandType.ALL, null, "teakstweaks", Arrays.asList("tweaks", "tt"), "teakstweakscommand", Arg.required("info", "version", "support", "update"));
+        super(CommandType.ALL, null, "teakstweaks", Arrays.asList("tweaks", "tt"), "teakstweakscommand", Arg.optional("info", "version", "support", "update"));
     }
 
     @Override
     public void command(CommandEvent event) {
+        if (!event.hasArgs()) {
+            sendInfoMessage();
+            return;
+        }
         switch (event.getArg(0)) {
             case "info":
                 sendInfoMessage();
