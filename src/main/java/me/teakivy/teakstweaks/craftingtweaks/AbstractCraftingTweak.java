@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.craftingtweaks;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Logger;
+import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.metrics.CustomMetrics;
@@ -12,6 +13,7 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,14 +68,14 @@ public abstract class AbstractCraftingTweak {
 
         lore.add(PackType.CRAFTING_TWEAKS.getName());
 
-        List<Component> components = new ArrayList<>();
+        List<String> components = new ArrayList<>();
         for (String l : lore) {
-            components.add(MiniMessage.miniMessage().deserialize(l).decoration(TextDecoration.ITALIC, false));
+            components.add(MM.toString(MiniMessage.miniMessage().deserialize(l).decoration(TextDecoration.ITALIC, false)));
         }
-
-        item.lore(components);
-
-        item.editMeta(meta -> meta.displayName(MiniMessage.miniMessage().deserialize(PackType.CRAFTING_TWEAKS.getColor() + name).decoration(TextDecoration.ITALIC, false)));
+        ItemMeta meta = item.getItemMeta();
+        meta.setLore(components);
+        meta.setDisplayName(MM.toString(MiniMessage.miniMessage().deserialize(PackType.CRAFTING_TWEAKS.getColor() + name).decoration(TextDecoration.ITALIC, false)));
+        item.setItemMeta(meta);
     }
 
     /**

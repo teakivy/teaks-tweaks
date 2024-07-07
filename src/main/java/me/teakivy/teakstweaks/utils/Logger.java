@@ -3,7 +3,6 @@ package me.teakivy.teakstweaks.utils;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
-import org.jetbrains.annotations.NotNull;
 
 public class Logger {
     /**
@@ -17,18 +16,17 @@ public class Logger {
 
         String text = "<dark_gray>[<gold><bold>TeaksTweaks</bold></gold>]<reset> " + getPrefix(level) + " <reset>" + MiniMessage.miniMessage().serialize(message);
 
-        Bukkit.getConsoleSender().sendMessage(MiniMessage.miniMessage().deserialize(text));
+        MM.sender(Bukkit.getConsoleSender()).sendMessage(MiniMessage.miniMessage().deserialize(text));
 
         if (!toAdmins) return;
 
-        Bukkit.getOnlinePlayers().stream().filter(player -> player.hasPermission("teakstweaks.manage")).forEach(player -> player.sendMessage(message));
+        Bukkit.getOnlinePlayers().stream().filter(player -> player.hasPermission("teakstweaks.manage")).forEach(player -> MM.player(player).sendMessage(message));
     }
 
     public static void log(LogLevel level, String message, boolean toAdmins) {
         log(level, MiniMessage.miniMessage().deserialize(message), toAdmins);
     }
 
-    @NotNull
     private static String getPrefix(LogLevel level) {
         String prefix = "";
         switch (level) {

@@ -17,12 +17,16 @@ public class SleepySpiderEggs extends BasePack {
     @EventHandler
     public void onSleep(PlayerBedLeaveEvent event) {
         Player player = event.getPlayer();
-        if (!player.getWorld().isDayTime()) return;
+        if (!isDayTime(player.getWorld().getTime())) return;
 
-        player.getLocation().getNearbyEntities(10, 10, 10).forEach(entity -> {
+        player.getWorld().getNearbyEntities(player.getLocation(), 10, 10, 10).forEach(entity -> {
             if (entity.getType() != EntityType.SPIDER) return;
 
             player.setExp(player.getExp() + (int) (Math.random() * 5) + 1);
         });
+    }
+
+    public boolean isDayTime(long time) {
+        return time > 0 && time < 12300;
     }
 }

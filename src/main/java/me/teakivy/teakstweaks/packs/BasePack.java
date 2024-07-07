@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.Logger;
+import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.metrics.CustomMetrics;
@@ -17,6 +18,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.intellij.lang.annotations.Subst;
 
 import java.util.ArrayList;
@@ -76,13 +78,15 @@ public class BasePack implements Listener {
 
 		lore.add(packType.getColor() + packType.getName());
 
-		List<Component> loreComponents = new ArrayList<>();
+		List<String> loreComponents = new ArrayList<>();
 		for (String line : lore) {
-			loreComponents.add(MiniMessage.miniMessage().deserialize("<reset>" + line).decoration(TextDecoration.ITALIC, false));
+			loreComponents.add(MM.toString(MiniMessage.miniMessage().deserialize("<reset>" + line).decoration(TextDecoration.ITALIC, false)));
 		}
 
-		item.lore(loreComponents);
-		item.editMeta(meta -> meta.displayName(MiniMessage.miniMessage().deserialize(packType.getColor() + name).decoration(TextDecoration.ITALIC, false)));
+		ItemMeta meta = item.getItemMeta();
+		meta.setLore(loreComponents);
+		meta.setDisplayName(MM.toString(MiniMessage.miniMessage().deserialize(packType.getColor() + name).decoration(TextDecoration.ITALIC, false)));
+		item.setItemMeta(meta);
 
 		CustomMetrics.addPackEnabled(name);
     }

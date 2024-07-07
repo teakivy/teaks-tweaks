@@ -8,6 +8,7 @@ import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -36,7 +37,7 @@ public class TagGameCommand extends AbstractCommand {
 
             if (team == null) {
                 team = sb.registerNewTeam("TaggedTeam");
-                team.color(NamedTextColor.RED);
+                team.setColor(ChatColor.RED);
             }
 
             team.addEntry(player.getName());

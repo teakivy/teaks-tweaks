@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.utilities.spectatornightvision;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.MM;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -21,7 +22,7 @@ public class NightVision extends BasePack {
         if (player.getGameMode().equals(GameMode.SPECTATOR)) {
             if (player.hasPotionEffect(PotionEffectType.NIGHT_VISION)) {
                 player.removePotionEffect(PotionEffectType.NIGHT_VISION);
-                player.sendMessage(getText("error.game_mode_changed"));
+                MM.player(player).sendMessage(getText("error.game_mode_changed"));
             }
         }
     }

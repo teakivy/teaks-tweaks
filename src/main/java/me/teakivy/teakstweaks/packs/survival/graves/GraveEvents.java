@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.survival.graves;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.XPUtils;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.kyori.adventure.text.Component;
@@ -92,7 +93,7 @@ public class GraveEvents extends BasePack {
                 }
                 return;
             } else {
-                event.getPlayer().sendMessage(getText("cant_rob_grave"));
+                MM.player(event.getPlayer()).sendMessage(getText("cant_rob_grave"));
             }
         }
         event.setCancelled(true);
@@ -117,7 +118,7 @@ public class GraveEvents extends BasePack {
     @EventHandler
     public void onDeath(PlayerDeathEvent event) throws IOException {
         if (!getConfig().getBoolean("generate-in-lava")) {
-            if (event.getPlayer().getLocation().getBlock().getType() == Material.LAVA || event.getPlayer().getLocation().getBlock().getType() == Material.LAVA_CAULDRON) {
+            if (event.getEntity().getLocation().getBlock().getType() == Material.LAVA || event.getEntity().getLocation().getBlock().getType() == Material.LAVA_CAULDRON) {
                 return;
             }
         }
@@ -164,7 +165,7 @@ public class GraveEvents extends BasePack {
                             insert("y", (int) Math.floor(loc.getY())),
                             insert("z", (int) Math.floor(loc.getZ())),
                             insert("world", loc.getWorld().getName()));
-            player.sendMessage(lastGrave);
+            MM.player(player).sendMessage(lastGrave);
             PersistentDataContainer playerData = player.getPersistentDataContainer();
             playerData.set(Key.get("graves_last"), PersistentDataType.STRING, MiniMessage.miniMessage().serialize(lastGrave));
         }
@@ -192,12 +193,12 @@ public class GraveEvents extends BasePack {
     public static ItemStack getGraveKey() {
         ItemStack graveKey = new ItemStack(Material.TRIPWIRE_HOOK);
         ItemMeta keyMeta = graveKey.getItemMeta();
-        keyMeta.displayName(Translatable.get("graves.key.item_name"));
+        keyMeta.setDisplayName(MM.toString(Translatable.get("graves.key.item_name")));
         graveKey.addUnsafeEnchantment(Enchantment.CHANNELING, 1);
         keyMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        List<Component> lore = new ArrayList<>();
-        lore.add(Translatable.get("graves.key.item_lore"));
-        keyMeta.lore(lore);
+        List<String> lore = new ArrayList<>();
+        lore.add(MM.toString(Translatable.get("graves.key.item_lore")));
+        keyMeta.setLore(lore);
         graveKey.setItemMeta(keyMeta);
         return graveKey;
     }

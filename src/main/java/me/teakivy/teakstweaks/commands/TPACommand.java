@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.teleportation.back.Back;
 import me.teakivy.teakstweaks.utils.ErrorType;
+import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.command.*;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -67,7 +68,7 @@ public class TPACommand extends AbstractCommand {
         TPARequest req = new TPARequest(player, to);
         requests.add(req);
 
-        to.sendMessage(message);
+        MM.player(to).sendMessage(message);
         sendMessage("request_sent", insert("player", to.getName()));
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
@@ -164,8 +165,8 @@ public class TPACommand extends AbstractCommand {
             accepted = true;
             Back.backLoc.put(to.getUniqueId(), to.getLocation());
             from.teleport(to.getLocation());
-            to.sendMessage(getText("teleporting_to_you", insert("player", from.getName())));
-            from.sendMessage(getText("teleporting", insert("player", to.getName())));
+            MM.player(to).sendMessage(getText("teleporting_to_you", insert("player", from.getName())));
+            MM.player(from).sendMessage(getText("teleporting", insert("player", to.getName())));
         }
     }
 }
