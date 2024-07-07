@@ -16,7 +16,6 @@ import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,7 +31,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     private Register register;
 
 
-    public @NonNull BukkitAudiences adventure() {
+    public BukkitAudiences adventure() {
         if(this.adventure == null) {
             throw new IllegalStateException("Tried to access Adventure when the plugin was disabled!");
         }
