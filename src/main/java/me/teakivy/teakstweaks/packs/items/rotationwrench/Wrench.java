@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.MM;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -44,7 +45,7 @@ public class Wrench extends BasePack {
         meta.setUnbreakable(true);
         meta.setCustomModelData(4321);
         result.setDurability((short) 1);
-        meta.displayName(getText("item_name"));
+        meta.setDisplayName(MM.toString(getText("item_name")));
         result.setItemMeta(meta);
 
         ShapedRecipe recipe = new ShapedRecipe(key, result);
@@ -69,8 +70,9 @@ public class Wrench extends BasePack {
         ItemStack item = event.getItem();
         if (item == null) return;
         if (!item.hasItemMeta()) return;
-        if (item.getItemMeta().displayName() == null) return;
-        if (!Objects.equals(Objects.requireNonNull(item.getItemMeta()).displayName(), getText("item_name"))) return;
+        if (item.getItemMeta() == null) return;
+        if (item.getItemMeta().getDisplayName() == null) return;
+        if (!Objects.equals(Objects.requireNonNull(item.getItemMeta()).getDisplayName(), getText("item_name"))) return;
         if (item.getType() != Material.CARROT_ON_A_STICK) return;
         if (!item.getItemMeta().isUnbreakable()) return;
         if (event.getPlayer().getVehicle() != null) event.setCancelled(true);

@@ -5,6 +5,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
@@ -78,21 +79,21 @@ public enum SphereType {
             case RED -> {
                 if (sb.getTeam("sphere_red") == null) {
                     Team tTeam = sb.registerNewTeam("sphere_red");
-                    tTeam.color(NamedTextColor.RED);
+                    tTeam.setColor(ChatColor.RED);
                 }
                 yield sb.getTeam("sphere_red");
             }
             case BLUE -> {
                 if (sb.getTeam("sphere_blue") == null) {
                     Team tTeam = sb.registerNewTeam("sphere_blue");
-                    tTeam.color(NamedTextColor.BLUE);
+                    tTeam.setColor(ChatColor.BLUE);
                 }
                 yield sb.getTeam("sphere_blue");
             }
             case GREEN -> {
                 if (sb.getTeam("sphere_green") == null) {
                     Team tTeam = sb.registerNewTeam("sphere_green");
-                    tTeam.color(NamedTextColor.GREEN);
+                    tTeam.setColor(ChatColor.GREEN);
                 }
                 yield sb.getTeam("sphere_green");
             }

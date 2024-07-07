@@ -25,7 +25,7 @@ public class AltsCommand extends AbstractCommand {
         String action = event.getArg(0);
 
         if (event.hasArgs(2)) {
-            secondary = Bukkit.getPlayerUniqueId(event.getArg(1));
+            secondary = getUUID(event.getArg(1));
 
             if (secondary == null) {
                 sendError(ErrorType.PLAYER_DNE);
@@ -39,7 +39,7 @@ public class AltsCommand extends AbstractCommand {
                 return;
             }
 
-            main = Bukkit.getPlayerUniqueId(event.getArg(2));
+            main = getUUID(event.getArg(2));
 
             if (main == null) {
                 sendError(ErrorType.PLAYER_DNE);
@@ -158,5 +158,14 @@ public class AltsCommand extends AbstractCommand {
         if (player.isOp()) return true;
         if (getPackConfig().getInt("max-alts") == -1) return true;
         return SpectatorAlts.getAlts(player.getUniqueId()).size() < getPackConfig().getInt("max-alts");
+    }
+
+    private UUID getUUID(String name) {
+        for (OfflinePlayer p : Bukkit.getOfflinePlayers()) {
+            if (p.getName().equalsIgnoreCase(name)) {
+                return p.getUniqueId();
+            }
+        }
+        return null;
     }
 }

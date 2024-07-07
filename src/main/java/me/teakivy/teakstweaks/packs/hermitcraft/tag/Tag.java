@@ -3,11 +3,13 @@ package me.teakivy.teakstweaks.packs.hermitcraft.tag;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.packs.survival.afkdisplay.AFK;
+import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -41,7 +43,7 @@ public class Tag extends BasePack {
 
         if (AFK.afk.get(player.getUniqueId())) {
             if (!getConfig().getBoolean("allow-tagging-afk")) {
-                damager.sendMessage(getText("error.cant_tag_afk"));
+                MM.player(damager).sendMessage(getText("error.cant_tag_afk"));
                 event.setCancelled(true);
                 return;
             }
@@ -55,7 +57,7 @@ public class Tag extends BasePack {
         Scoreboard sb = Bukkit.getScoreboardManager().getMainScoreboard();
         if (sb.getTeam("TaggedTeam") == null) {
             Team taggedTeam = sb.registerNewTeam("TaggedTeam");
-            taggedTeam.color(NamedTextColor.RED);
+            taggedTeam.setColor(ChatColor.RED);
         }
         Team taggedTeam = sb.getTeam("TaggedTeam");
         taggedTeam.removeEntry(damager.getName());
@@ -76,7 +78,7 @@ public class Tag extends BasePack {
         }
         if (getConfig().getBoolean("display-when-tagged")) {
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                onlinePlayer.sendMessage(getText("tagged_message",
+                MM.player(onlinePlayer).sendMessage(getText("tagged_message",
                         insert("tagged_name", player.getName()),
                         insert("tagger_name", damager.getName())));
             }
@@ -105,7 +107,7 @@ public class Tag extends BasePack {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
-        if (!event.getPlayer().getScoreboardTags().contains("tag_it")) return;
+        if (!event.getEntity().getScoreboardTags().contains("tag_it")) return;
 
         event.getDrops().remove(getTagItem());
     }
@@ -132,7 +134,7 @@ public class Tag extends BasePack {
     public static ItemStack getTagItem() {
         ItemStack tag = new ItemStack(Material.NAME_TAG);
         ItemMeta tagMeta = tag.getItemMeta();
-        tagMeta.displayName(getTagItemName());
+        tagMeta.setDisplayName(MM.toString(getTagItemName()));
         tagMeta.setUnbreakable(true);
         tag.setItemMeta(tagMeta);
 

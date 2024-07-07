@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.teakstweaks.keepsmall;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.MM;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -28,8 +29,8 @@ public class KeepSmall extends BasePack {
             Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
                 Entity entity1 = getEntityByUniqueId(entity.getUniqueId());
                 if (entity1 == null) return;
-                if (entity1.customName() == null) return;
-                if (MiniMessage.miniMessage().serialize(entity1.customName()).replaceAll("_", " ")
+                if (entity1.getCustomName() == null) return;
+                if (entity1.getCustomName().replaceAll("_", " ")
                         .replaceAll("-", " ")
                         .trim()
                         .equalsIgnoreCase(getString("smallify.activation_name"))) {
@@ -38,9 +39,9 @@ public class KeepSmall extends BasePack {
                         Ageable ageable = (Ageable) entity1;
                         ageable.setAge(-Integer.MAX_VALUE);
                     }
-                    entity.customName(getText("smallify.small_name"));
+                    entity.setCustomName(MM.toString(getText("smallify.small_name")));
                 }
-                if (MiniMessage.miniMessage().serialize(entity1.customName()).replaceAll("_", " ")
+                if (entity1.getCustomName().replaceAll("_", " ")
                         .replaceAll("-", " ")
                         .trim()
                         .equalsIgnoreCase(getString("grow.activation_name"))) {
@@ -49,7 +50,7 @@ public class KeepSmall extends BasePack {
                         Ageable ageable = (Ageable) entity1;
                         ageable.setAge(1);
                     }
-                    entity.customName(getText("grow.grown_name"));
+                    entity.setCustomName(MM.toString(getText("grow.grown_name")));
                 }
             }, 10L);
         } catch (NoClassDefFoundError ignored) {}

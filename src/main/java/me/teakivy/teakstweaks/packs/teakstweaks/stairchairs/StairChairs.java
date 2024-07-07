@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.teakstweaks.stairchairs;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.MM;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -47,7 +48,7 @@ public class StairChairs extends BasePack {
         Marker marker = (Marker) Objects.requireNonNull(loc.getWorld()).spawnEntity(loc, EntityType.MARKER);
         marker.addScoreboardTag("chair");
 
-        event.getPlayer().sendMessage(getText("chair_created"));
+        MM.player(event.getPlayer()).sendMessage(getText("chair_created"));
     }
 
     public boolean isChair(Location loc) {
@@ -69,7 +70,7 @@ public class StairChairs extends BasePack {
             }
         }
         event.getBlock().getWorld().dropItem(loc.add(.5, .5, .5), new ItemStack(Material.SADDLE));
-        event.getPlayer().sendMessage(getText("chair_destroyed"));
+        MM.player(event.getPlayer()).sendMessage(getText("chair_destroyed"));
     }
 
     @EventHandler

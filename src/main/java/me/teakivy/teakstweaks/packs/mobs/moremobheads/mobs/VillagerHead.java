@@ -6,6 +6,8 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.entity.EntityDeathEvent;
 
+import static org.bukkit.entity.Villager.Profession.*;
+
 public class VillagerHead extends BaseMobHead {
 
     public VillagerHead() {
@@ -57,7 +59,8 @@ public class VillagerHead extends BaseMobHead {
     public String getName(EntityDeathEvent event) {
         Villager villager = (Villager) event.getEntity();
 
-        String name = switch (villager.getProfession()) {
+
+        String name = switch ((Villager.Profession) villager.getProfession()) {
             case ARMORER -> "Armorer";
             case BUTCHER -> "Butcher";
             case CARTOGRAPHER -> "Cartographer";

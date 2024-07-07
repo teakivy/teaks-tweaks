@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.mobs.silencemobs;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.MM;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -46,14 +47,14 @@ public class Silencer extends BasePack {
             ItemStack nametag = event.getPlayer().getInventory().getItem(event.getHand());
             if (nametag.getType() != Material.NAME_TAG) return;
             if (!nametag.hasItemMeta()) return;
-            if (!MiniMessage.miniMessage().serialize(Objects.requireNonNull(nametag.getItemMeta()).displayName())
+            if (!Objects.requireNonNull(nametag.getItemMeta()).getDisplayName()
                     .replaceAll("_", " ")
                     .replaceAll("-", " ")
                     .trim()
                     .equalsIgnoreCase(getString("activation_name")))
                 return;
             entity.setSilent(true);
-            entity.customName(getText("silenced_name"));
+            entity.setCustomName(MM.toString(getText("silenced_name")));
             event.setCancelled(true);
 
             if (event.getPlayer().getGameMode() != GameMode.CREATIVE) {
@@ -66,13 +67,13 @@ public class Silencer extends BasePack {
             Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
                 Entity entity1 = getEntityByUniqueId(entity.getUniqueId());
                 if (entity1 == null) return;
-                if (entity1.customName() == null) return;
-                if (MiniMessage.miniMessage().serialize(entity1.customName()).replaceAll("_", " ")
+                if (entity1.getCustomName() == null) return;
+                if (entity1.getCustomName().replaceAll("_", " ")
                         .replaceAll("-", " ")
                         .trim()
                         .equalsIgnoreCase(getString("activation_name"))) {
                     entity.setSilent(true);
-                    entity.customName(getText("silenced_name"));
+                    entity.setCustomName(MM.toString(getText("silenced_name")));
                 }
             }, 10L);
         } catch (NoClassDefFoundError ignored) {
