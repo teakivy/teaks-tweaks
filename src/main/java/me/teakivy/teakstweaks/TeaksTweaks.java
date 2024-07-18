@@ -96,12 +96,12 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
      */
     @Override
     public void onDisable() {
+        // Plugin shutdown logic
+        Logger.info(Translatable.get("startup.plugin.shutting_down"));
         if(this.adventure != null) {
             this.adventure.close();
             this.adventure = null;
         }
-        // Plugin shutdown logic
-        Logger.info(Translatable.get("startup.plugin.shutting_down"));
     }
 
     /**
