@@ -27,6 +27,7 @@ public class SpawnCommand extends AbstractCommand {
 
         teleportToSpawn(event.getPlayer());
         sendMessage("teleporting");
+        setCooldown();
     }
 
     private void teleportToSpawn(Player player) {

@@ -27,8 +27,8 @@ public class BackCommand extends AbstractCommand {
             return;
         }
 
-        setCooldown();
         Back.tpBack(player);
         sendMessage("teleporting");
+        setCooldown();
     }
 }
