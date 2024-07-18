@@ -64,7 +64,7 @@ public class Shrine extends BasePack {
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (isShrine(event.getItemDrop())) {
+                if (isNearShrine(event.getItemDrop().getLocation())) {
                     event.getItemDrop().remove();
                     startThunder(event.getPlayer(), event.getItemDrop().getLocation());
                 }
@@ -106,6 +106,17 @@ public class Shrine extends BasePack {
     public static boolean isShrine(Entity entity) {
         if (!(entity instanceof Marker)) return false;
         return entity.getPersistentDataContainer().has(Key.get("thunder-shrine"), PersistentDataType.BOOLEAN);
+    }
+
+    public static boolean isNearShrine(Location loc) {
+        for (Entity entity : Objects.requireNonNull(loc.getWorld()).getEntities()) {
+            if (isShrine(entity)) {
+                if (entity.getLocation().distance(loc) < 1) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public static void createShrine(Location loc) throws IOException {
