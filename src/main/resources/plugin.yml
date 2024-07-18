@@ -442,7 +442,7 @@ permissions:
 
   teakstweaks.thunder-shrine.commmand.shrine.remove:
     description: Execute /shrine remove
-    default: opUp
+    default: op
   
   teakstweaks.thunder-shrine.commmand.shrine.uninstall:
     description: Execute /shrine uninstall
