@@ -69,7 +69,7 @@ permissions:
   
   teakstweaks.mechanics.command:
     description: Execute /mechanics
-    default: op
+    default: true
   
   teakstweaks.keep-small:
     description: Use the keep small module
@@ -121,7 +121,7 @@ permissions:
     
   teakstweaks.spectator-alts.command.spectatoralts:
     description: Execute /spectatoralts
-    default: op
+    default: true
   
   teakstweaks.afk-display.*:
     description: All AFK Permissions
@@ -155,13 +155,13 @@ permissions:
   teakstweaks.graves.command.graves:
     description: Execute /graves
     default: true
+
+  teakstweaks.graves.command.graves.locate:
+    description: Execute /graves
+    default: true
   
   teakstweaks.graves.command.graves.key:
     description: Execute /graves key
-    default: op
-  
-  teakstweaks.graves.command.graves.toggle:
-    description: Execute /graves toggle
     default: op
   
   teakstweaks.graves.command.graves.uninstall:
@@ -328,11 +328,11 @@ permissions:
   
   teakstweaks.spawning-spheres.command.spawningspheres.create:
     description: Execute /spawningspheres create
-    default: op
+    default: true
 
   teakstweaks.spawning-spheres.command.spawningspheres.remove:
     description: Execute /spawningspheres remove
-    default: op
+    default: true
   
   teakstweaks.spawning-spheres.command.spawningspheres.teleport:
     description: Execute /spawningspheres teleport
@@ -368,11 +368,11 @@ permissions:
   
   teakstweaks.item-averages.command.itemaverage:
     description: Execute /itemaverage
-    default: op
+    default: true
   
   teakstweaks.item-averages.command.itemaverage.create:
     description: Execute /itemaverage create
-    default: op
+    default: true
   
   teakstweaks.item-averages.command.itemaverage.uninstall:
     description: Execute /itemaverage uninstall
@@ -386,7 +386,7 @@ permissions:
   
   teakstweaks.kill-boats.command.killboats:
     description: Execute /killboats
-    default: op
+    default: true
   
   teakstweaks.gem.*:
     description: All Gem Permissions
@@ -422,6 +422,10 @@ permissions:
   teakstweaks.tag.commmand.taggame.uninstall:
     description: Execute /taggame uninstall
     default: op
+
+  teakstweaks.thunder-shrine:
+    description: Use the thunder shrine module
+    default: true
   
   teakstweaks.thunder-shrine.*:
     description: All Thunder Shrine Permissions
@@ -434,7 +438,7 @@ permissions:
 
   teakstweaks.thunder-shrine.commmand.shrine:
     description: Execute /shrine
-    default: op
+    default: true
 
   teakstweaks.thunder-shrine.commmand.shrine.create:
     description: Execute /shrine create
