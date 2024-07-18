@@ -10,8 +10,10 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 public class Back extends BasePack {
@@ -40,6 +42,20 @@ public class Back extends BasePack {
         if (!getConfig().getBoolean("save-death-location")) return;
 
         backLoc.put(player.getUniqueId(), player.getLocation());
+    }
+
+    @EventHandler
+    public void onTeleport(PlayerTeleportEvent event) {
+        List<PlayerTeleportEvent.TeleportCause> causes =
+                List.of(PlayerTeleportEvent.TeleportCause.SPECTATE,
+                        PlayerTeleportEvent.TeleportCause.COMMAND,
+                        PlayerTeleportEvent.TeleportCause.PLUGIN,
+                        PlayerTeleportEvent.TeleportCause.CHORUS_FRUIT,
+                        PlayerTeleportEvent.TeleportCause.END_GATEWAY,
+                        PlayerTeleportEvent.TeleportCause.ENDER_PEARL);
+        if (causes.contains(event.getCause())) {
+            backLoc.put(event.getPlayer().getUniqueId(), event.getFrom());
+        }
     }
 
 }
