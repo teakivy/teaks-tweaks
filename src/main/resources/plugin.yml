@@ -147,24 +147,24 @@ permissions:
     description: All Graves Permissions
     default: op
     children:
-      teakstweaks.graves.command.graves: true
-      teakstweaks.graves.command.graves.key: true
-      teakstweaks.graves.command.graves.toggle: true
-      teakstweaks.graves.command.graves.uninstall: true
+      teakstweaks.graves.command.grave: true
+      teakstweaks.graves.command.grave.key: true
+      teakstweaks.graves.command.grave.toggle: true
+      teakstweaks.graves.command.grave.uninstall: true
   
-  teakstweaks.graves.command.graves:
+  teakstweaks.graves.command.grave:
     description: Execute /graves
     default: true
 
-  teakstweaks.graves.command.graves.locate:
+  teakstweaks.graves.command.grave.locate:
     description: Execute /graves
     default: true
   
-  teakstweaks.graves.command.graves.key:
+  teakstweaks.graves.command.grave.key:
     description: Execute /graves key
     default: op
   
-  teakstweaks.graves.command.graves.uninstall:
+  teakstweaks.graves.command.grave.uninstall:
     description: Execute /graves uninstall
     default: op
   
