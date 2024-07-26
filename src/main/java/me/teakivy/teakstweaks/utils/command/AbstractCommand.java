@@ -251,7 +251,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         }
 
         this.sender = sender;
-        if (checkPermission()) return true;
+        if (!checkPermission()) return true;
 
         if (commandType == CommandType.PLAYER_ONLY) {
             this.player = checkPlayer();
@@ -352,10 +352,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     }
 
     public boolean checkPermission() {
-        if (sender.hasPermission(permission)) return false;
-
-        MM.sender(this.sender).sendMessage(ErrorType.MISSING_COMMAND_PERMISSION.m());
-        return true;
+        return !sender.hasPermission(permission);
     }
 
     /**
