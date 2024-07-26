@@ -17,9 +17,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 public class Elevator extends BasePack {
+    private static HashMap<UUID, Long> cooldown = new HashMap<>();
 
     public Elevator() {
         super("elevators", PackType.EXPERIMENTAL, Material.ENDER_PEARL);
@@ -67,6 +70,8 @@ public class Elevator extends BasePack {
     @EventHandler
     public void onSneak(PlayerToggleSneakEvent event) {
         Player player = event.getPlayer();
+        if (isOnCooldown(player)) return;
+        setCooldown(player);
         Location loc = player.getLocation();
         if (player.isSneaking()) return;
 
@@ -86,7 +91,9 @@ public class Elevator extends BasePack {
     @EventHandler
     public void onJump(PlayerMoveEvent e) {
         Player player = e.getPlayer();
-        if (e.getFrom().getY() < e.getTo().getY()) return;
+        if (isOnCooldown(player)) return;
+        setCooldown(player);
+        if (e.getFrom().getY() <= e.getTo().getY()) return;
         Location loc = player.getLocation();
         Block standingBlock = loc.add(0, -1, 0).getBlock();
         if (!isElevator(standingBlock)) return;
@@ -123,15 +130,13 @@ public class Elevator extends BasePack {
     }
 
     private Block findNextElevatorDown(Block eBlock, int minY) {
-        Block next = null;
-        for (int i = minY; i < (int) eBlock.getLocation().getY(); i++) {
+        for (int i = (int) eBlock.getLocation().getY(); i >= minY; i--) {
             Block block = eBlock.getLocation().getWorld().getBlockAt(eBlock.getX(), i, eBlock.getZ());
             if (!checkBlock(eBlock, block)) continue;
 
-            next = block;
-            return next;
+            return block;
         }
-        return next;
+        return null;
     }
 
     private Block findNextElevatorUp(Block eBlock) {
@@ -160,5 +165,16 @@ public class Elevator extends BasePack {
         if (b2.getY() == b1.getY()) return false;
 
         return isElevator(b2);
+    }
+
+    private boolean isOnCooldown(Player player) {
+        if (cooldown.containsKey(player.getUniqueId())) {
+            return cooldown.get(player.getUniqueId()) > System.currentTimeMillis();
+        }
+        return false;
+    }
+
+    private void setCooldown(Player player) {
+        cooldown.put(player.getUniqueId(), System.currentTimeMillis() + 500);
     }
 }
