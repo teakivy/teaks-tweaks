@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.hermitcraft.wanderingtrades;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.UUIDUtils;
 import me.teakivy.teakstweaks.utils.config.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -12,7 +13,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.MerchantRecipe;
-import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,19 +86,11 @@ public class Trades extends BasePack {
     }
 
     private MerchantRecipe newHeadRecipe(String playerName) {
-        MerchantRecipe recipe = new MerchantRecipe(getHead(playerName), getConfig().getInt("player-heads.per-trade"));
+        MerchantRecipe recipe = new MerchantRecipe(UUIDUtils.getPlayerHead(playerName), getConfig().getInt("player-heads.per-trade"));
 
         recipe.addIngredient(new ItemStack(Material.EMERALD, 1));
 
         return recipe;
-    }
-
-    public static ItemStack getHead(String playerName) {
-        ItemStack item = new ItemStack(Material.PLAYER_HEAD, 1);
-        SkullMeta skull = (SkullMeta) item.getItemMeta();
-        skull.setOwner(playerName);
-        item.setItemMeta(skull);
-        return item;
     }
 
 }
