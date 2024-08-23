@@ -29,6 +29,7 @@ public class MoreTrapdoors extends AbstractCraftingTweak {
     }
 
     public static void newTrapdoorRecipe(String type) {
+        Bukkit.removeRecipe(Key.get(type.toLowerCase() + "_trapdoors"));
         ShapedRecipe recipe = new ShapedRecipe(Key.get(type.toLowerCase() + "_trapdoors"),
                 new ItemStack(Material.valueOf(type + "_TRAPDOOR"), 12));
         recipe.shape("xxx", "xxx");
