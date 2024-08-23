@@ -863,14 +863,9 @@ crafting-tweaks:
   craftable-name-tags:
     enabled: false
 
-  # Craftable Bundles (Rabbit Hide)
-  # Allows you to craft 1.18's Bundles in 1.17.
-  craftable-bundles-rabbit-hide:
-    enabled: false
-
-  # Craftable Bundles (Leather)
-  # Allows you to craft 1.18's Bundles in 1.17, using Leather instead of Rabbit Hide.
-  craftable-bundles-leather:
+  # Craftable Bundles
+  # Allows you to craft the experimental bundle item. (Using 1 Leather and 1 String)
+  craftable-bundles:
     enabled: false
 
   # Craftable Blackstone

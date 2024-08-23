@@ -34,8 +34,7 @@ public class CraftingRegister {
         recipes.add(new CraftableCoral3x3());
         recipes.add(new CraftableEnchantedGoldenApples());
         recipes.add(new CraftableNameTags());
-        recipes.add(new CraftableBundlesRabbitHide());
-        recipes.add(new CraftableBundlesLeather());
+        recipes.add(new CraftableBundles());
         recipes.add(new CraftableBlackstone());
         recipes.add(new CraftableGildedBlackstone());
         recipes.add(new CraftableSporeBlossoms());
