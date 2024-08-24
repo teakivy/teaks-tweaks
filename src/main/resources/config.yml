@@ -432,7 +432,7 @@ packs:
     teleport-cooldown: 0
 
   # Husk Drops Sand
-  # Husks drop 0-2 sand upon death.
+  # Husks drop 0-2 sand upon death (Making it a renewable resource).
   # With Looting, the amount is up to 2 + the Looting level.
   husk-drops-sand:
       enabled: false
