@@ -26,7 +26,7 @@ public class MiniBlockTrade {
     }
 
     public MerchantRecipe getTrade() {
-        MerchantRecipe recipe = new MerchantRecipe(getSkull(), Config.getInt("packs.wandering-trades.mini-blocks.per-trade"));
+        MerchantRecipe recipe = new MerchantRecipe(getSkull(), Config.getInt("packs.wandering-trades.mini-blocks.amount-of-trades"));
 
         recipe.addIngredient(new ItemStack(Material.EMERALD, 1));
         recipe.addIngredient(new ItemStack(material));
@@ -35,7 +35,7 @@ public class MiniBlockTrade {
     }
 
     public ItemStack getSkull() {
-        ItemStack head = new ItemStack(Material.PLAYER_HEAD);
+        ItemStack head = new ItemStack(Material.PLAYER_HEAD, Config.getInt("packs.wandering-trades.mini-blocks.per-trade"));
         SkullMeta headMeta = (SkullMeta) head.getItemMeta();
 
         GameProfile profile = new GameProfile(UUID.fromString("fdb5599c-1b14-440e-82df-d69719703d21"), "MiniBlock");
