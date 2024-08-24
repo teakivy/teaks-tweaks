@@ -211,6 +211,13 @@ packs:
   classic-fishing-loot:
     enabled: false
 
+  # Collectible Budding Amethyst
+  # Allows you to collect budding amethyst blocks to get the block itself.
+  collectible-budding-amethyst:
+    enabled: false
+    # Whether or not silk touch is required to collect budding amethyst blocks
+    require-silk-touch: true
+
   # Confetti Creepers
   # There is a chance each creeper will explode into confetti and do no damage to blocks.
   confetti-creepers:
@@ -577,6 +584,7 @@ packs:
     enabled: false
     # Whether or not you can silence minecart types
     allow-minecarts: false
+
 
   # Sleepy Spiders Eggs
   # When you sleep with a spider nearby you have a chance to "consume" 1-5 spider eggs, which give xp
