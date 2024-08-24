@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.classicfishingloot;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
@@ -17,6 +18,7 @@ public class Fishing extends BasePack {
 
     @EventHandler
     public void onFish(PlayerFishEvent event) {
+        if (!Permission.CLASSIC_FISHING_LOOT.check(event.getPlayer())) return;
         if (event.getCaught() == null) return;
         int luckNum = 0;
         Item caught = (Item) event.getCaught();

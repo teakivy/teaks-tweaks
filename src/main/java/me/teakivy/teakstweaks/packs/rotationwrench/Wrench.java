@@ -5,6 +5,7 @@ import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.MM;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -67,6 +68,7 @@ public class Wrench extends BasePack {
 
     @EventHandler
     public void onUse(PlayerInteractEvent event) {
+        if (!Permission.ROTATION_WRENCH.check(event.getPlayer())) return;
         ItemStack item = event.getItem();
         if (item == null) return;
         if (!item.hasItemMeta()) return;

@@ -4,6 +4,7 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.MM;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -39,7 +40,7 @@ public class Silencer extends BasePack {
 
     @EventHandler
     public void onSilence(PlayerInteractAtEntityEvent event) {
-        if (!checkPermission(event.getPlayer())) return;
+        if (!Permission.SILENCE_MOBS.check(event.getPlayer())) return;
         Entity entity = event.getRightClicked();
 
         if (minecartTypes.contains(entity.getType())) {

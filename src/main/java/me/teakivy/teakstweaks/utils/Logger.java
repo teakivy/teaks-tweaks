@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.utils;
 
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
@@ -20,7 +21,7 @@ public class Logger {
 
         if (!toAdmins) return;
 
-        Bukkit.getOnlinePlayers().stream().filter(player -> player.hasPermission("teakstweaks.manage")).forEach(player -> MM.player(player).sendMessage(message));
+        Bukkit.getOnlinePlayers().stream().filter(Permission.MANAGE::check).forEach(player -> MM.player(player).sendMessage(message));
     }
 
     public static void log(LogLevel level, String message, boolean toAdmins) {

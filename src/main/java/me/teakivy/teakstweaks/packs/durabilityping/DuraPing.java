@@ -5,6 +5,7 @@ import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.title.TitlePart;
 import org.apache.commons.lang3.text.WordUtils;
@@ -70,7 +71,7 @@ public class DuraPing extends BasePack {
 
     @EventHandler
     public void onItemUse(PlayerItemDamageEvent event) {
-        if (!checkPermission(event.getPlayer())) return;
+        if (!Permission.DURABILITY_PING.check(event.getPlayer())) return;
         ItemStack item = event.getItem();
         Player player = event.getPlayer();
 

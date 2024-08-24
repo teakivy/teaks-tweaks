@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.cauldronmud;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.data.Levelled;
@@ -19,7 +20,7 @@ public class MudConverter extends BasePack {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
-        if (!checkPermission(event.getPlayer())) return;
+        if (!Permission.CAULDRON_MUD.check(event.getPlayer())) return;
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (event.getClickedBlock() == null) return;
         if (event.getClickedBlock().getType() != Material.WATER_CAULDRON) return;

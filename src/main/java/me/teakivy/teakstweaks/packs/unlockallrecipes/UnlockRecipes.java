@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.unlockallrecipes;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Keyed;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -32,6 +33,7 @@ public class UnlockRecipes extends BasePack {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
+        if (!Permission.UNLOCK_ALL_RECIPES.check(event.getPlayer())) return;
         Player player = event.getPlayer();
         for (NamespacedKey recipe : recipes) {
             if (!player.hasDiscoveredRecipe(recipe) && !recipe.getNamespace().equals("bukkit")) player.discoverRecipe(recipe);

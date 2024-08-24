@@ -5,6 +5,7 @@ import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.packs.afkdisplay.AFK;
 import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
@@ -32,6 +33,7 @@ public class Tag extends BasePack {
 
     @EventHandler
     public void tagPlayer(EntityDamageByEntityEvent event) {
+        if (!Permission.TAG.check(event.getDamager())) return;
         if (!(event.getEntity() instanceof Player)) return;
         if (!(event.getDamager() instanceof Player)) return;
 

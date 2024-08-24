@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.fixeditemframes;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
@@ -19,7 +20,7 @@ public class FixedItemFrames extends BasePack {
 
 	@EventHandler
 	public void onRotate(PlayerInteractEntityEvent event) {
-		if (!checkPermission(event.getPlayer())) return;
+		if (!Permission.FIXED_ITEM_FRAMES.check(event.getPlayer())) return;
 
 		if (event.getRightClicked().getType() == EntityType.ITEM_FRAME || event.getRightClicked().getType() == EntityType.GLOW_ITEM_FRAME) {
 			if (!event.getPlayer().isSneaking()) return;
@@ -38,7 +39,7 @@ public class FixedItemFrames extends BasePack {
 
 	@EventHandler
 	public void onInteract(PlayerInteractAtEntityEvent event) {
-		if (!checkPermission(event.getPlayer())) return;
+		if (!Permission.FIXED_ITEM_FRAMES.check(event.getPlayer())) return;
 
 		if (event.getRightClicked().getType() == EntityType.ITEM_FRAME || event.getRightClicked().getType() == EntityType.GLOW_ITEM_FRAME) {
             if (!event.getPlayer().isSneaking()) return;

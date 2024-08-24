@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.unstickypistons;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -27,7 +28,7 @@ public class UnstickyPistons extends BasePack {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
-        if (!checkPermission(event.getPlayer())) return;
+        if (!Permission.UNSTICKY_PISTONS.check(event.getPlayer())) return;
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (event.getClickedBlock() == null) return;
         if (event.getClickedBlock().getType() != Material.STICKY_PISTON && event.getClickedBlock().getType() != Material.PISTON) return;

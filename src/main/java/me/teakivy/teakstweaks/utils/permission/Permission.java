@@ -50,6 +50,38 @@ public enum Permission {
     COMMAND_GMSP("command.gmsp", PermissionType.OP),
     COMMAND_REPLY("command.reply"),
 
+    ARMORED_ELYTRA("armored-elytra"),
+    BACK_DEATH("back.death"),
+    BACK_TELEPORT("back.teleport"),
+    CAULDRON_CONCRETE("cauldron-concrete"),
+    CAULDRON_MUD("cauldron-mud"),
+    CHAT_COLORS_CHAT("chat-colors.chat"),
+    CHAT_COLORS_ANVIL("chat-colors.anvil"),
+    CHAT_COLORS_SIGNS("chat-colors.signs"),
+    CHUNK_LOADERS("chunk-loaders"),
+    CLASSIC_FISHING_LOOT("classic-fishing-loot"),
+    DIRT_TO_GRASS("dirt-to-grass"),
+    DURABILITY_PING("durability-ping"),
+    ELEVATOR_CREATE("elevator.create"),
+    ELEVATOR_USE("elevator.use"),
+    FIXED_ITEM_FRAMES("fixed-item-frames"),
+    INSTANT_DEEPSLATE("instant-deepslate"),
+    INVISIBLE_ITEM_FRAMES("invisible-item-frames"),
+    KEEP_SMALL("keep-small"),
+    ROTATION_WRENCH("rotation-wrench"),
+    SILENCE_MOBS("silence-mobs"),
+    SLEEPY_SPIDER_EGGS("sleepy-spider-eggs"),
+    SLIME_CREAM("slime-cream"),
+    STAIR_CHAIRS_CREATE("stair-chairs.create"),
+    STAIR_CHAIRS_SIT("stair-chairs.sit"),
+    TAG("tag"),
+    THUNDER_SHRINE_USE("thunder-shrine.use"),
+    UNLOCK_ALL_RECIPES("unlock-all-recipes"),
+    UNSTICKY_PISTONS("unsticky-pistons"),
+    XP_MANAGEMENT_BOTTLE("xp-management.bottle"),
+
+    MANAGE("manage"),
+
     TEST("test", PermissionType.NONE);
 
     private final String permission;

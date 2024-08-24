@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.chunkloaders;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.config.Config;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.block.Block;
@@ -20,7 +21,7 @@ public class Loader extends BasePack {
 
     @EventHandler
     public void onItemDrop(PlayerDropItemEvent event) {
-        if (!checkPermission(event.getPlayer())) return;
+        if (!Permission.CHUNK_LOADERS.check(event.getPlayer())) return;
 
         Item item = event.getItemDrop();
         if (!item.getItemStack().getType().toString().equalsIgnoreCase(getConfig().getString("cost"))) return;

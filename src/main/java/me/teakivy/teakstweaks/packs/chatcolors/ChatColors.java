@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.chatcolors;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.MM;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Material;
@@ -22,16 +23,14 @@ public class ChatColors extends BasePack {
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event) {
-        if (!getConfig().getBoolean("chat")) return;
-        if (!checkPermission(event.getPlayer())) return;
+        if (!Permission.CHAT_COLORS_CHAT.check(event.getPlayer())) return;
 
         event.setMessage(MM.toString(legacyToMiniMessage(newText(event.getMessage()))));
     }
 
     @EventHandler
     private void onAnvil(PrepareAnvilEvent event) {
-        if (!getConfig().getBoolean("items")) return;
-        if (!checkPermission((Player) event.getInventory().getViewers().get(0))) return;
+        if (!Permission.CHAT_COLORS_ANVIL.check(event.getInventory().getViewers().get(0))) return;
         ItemStack result = event.getResult();
         if (result == null) return;
         if (!result.hasItemMeta()) return;
@@ -47,8 +46,7 @@ public class ChatColors extends BasePack {
 
     @EventHandler
     public void onSign(SignChangeEvent event) {
-        if (!getConfig().getBoolean("signs")) return;
-        if (!checkPermission(event.getPlayer())) return;
+        if (!Permission.CHAT_COLORS_SIGNS.check(event.getPlayer())) return;
 
         for (int i = 0; i < event.getLines().length; i++) {
             if (event.getLine(i) == null) continue;

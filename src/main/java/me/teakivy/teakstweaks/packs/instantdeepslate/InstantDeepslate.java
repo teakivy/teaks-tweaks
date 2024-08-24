@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.instantdeepslate;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
@@ -35,7 +36,7 @@ public class InstantDeepslate extends BasePack {
 
     @EventHandler
     public void onBeginBreak(BlockDamageEvent e) {
-        if (!checkPermission(e.getPlayer())) return;
+        if (!Permission.INSTANT_DEEPSLATE.check(e.getPlayer())) return;
         Player player = e.getPlayer();
         ItemStack item = e.getItemInHand();
         Block block = e.getBlock();

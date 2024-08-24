@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.dirttograss;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -20,7 +21,7 @@ public class DirtToGrass extends BasePack {
 
     @EventHandler
     public void interactEvent(PlayerInteractEvent event) {
-        if (!checkPermission(event.getPlayer())) return;
+        if (!Permission.DIRT_TO_GRASS.check(event.getPlayer())) return;
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (event.getItem() == null) return;
         if (event.getClickedBlock() == null) return;

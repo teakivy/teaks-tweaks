@@ -7,6 +7,7 @@ import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Entity;
@@ -58,7 +59,7 @@ public class Shrine extends BasePack {
     @EventHandler
     public void onDrop(PlayerDropItemEvent event) {
         ItemStack item = event.getItemDrop().getItemStack();
-        if (!checkPermission(event.getPlayer())) return;
+        if (!Permission.THUNDER_SHRINE_USE.check(event.getPlayer())) return;
         if (item.getType() != Material.getMaterial(getConfig().getString("summoning.summoning-item"))) return;
 
         new BukkitRunnable() {

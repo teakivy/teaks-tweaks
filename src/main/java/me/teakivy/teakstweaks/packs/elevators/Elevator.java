@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.elevators;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
@@ -30,7 +31,7 @@ public class Elevator extends BasePack {
 
     @EventHandler
     public void onDrop(PlayerDropItemEvent event) {
-        if (!checkPermission(event.getPlayer())) return;
+        if (!Permission.ELEVATOR_CREATE.check(event.getPlayer())) return;
 
         if (!event.getItemDrop().getItemStack().getType().toString().equalsIgnoreCase(getConfig().getString("activator"))) return;
         if (event.getItemDrop().getItemStack().getAmount() != 1) return;
@@ -69,6 +70,7 @@ public class Elevator extends BasePack {
 
     @EventHandler
     public void onSneak(PlayerToggleSneakEvent event) {
+        if (!Permission.ELEVATOR_USE.check(event.getPlayer())) return;
         Player player = event.getPlayer();
         if (isOnCooldown(player)) return;
         setCooldown(player);
@@ -90,6 +92,7 @@ public class Elevator extends BasePack {
 
     @EventHandler
     public void onJump(PlayerMoveEvent e) {
+        if (!Permission.ELEVATOR_USE.check(e.getPlayer())) return;
         Player player = e.getPlayer();
         if (isOnCooldown(player)) return;
         setCooldown(player);

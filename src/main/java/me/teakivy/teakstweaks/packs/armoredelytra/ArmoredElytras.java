@@ -7,6 +7,7 @@ import me.teakivy.teakstweaks.utils.Base64Serializer;
 import me.teakivy.teakstweaks.utils.ItemSerializer;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.MM;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
@@ -38,7 +39,7 @@ public class ArmoredElytras extends BasePack {
 
     @EventHandler
     public void onDrop(PlayerDropItemEvent event) {
-        if (!checkPermission(event.getPlayer())) return;
+        if (!Permission.ARMORED_ELYTRA.check(event.getPlayer())) return;
 
         ItemStack item = event.getItemDrop().getItemStack();
         Item itemDrop = event.getItemDrop();

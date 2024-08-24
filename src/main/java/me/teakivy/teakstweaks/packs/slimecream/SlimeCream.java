@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.slimecream;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
@@ -22,7 +23,7 @@ public class SlimeCream extends BasePack {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
-        if (!checkPermission(event.getPlayer())) return;
+        if (!Permission.SLIME_CREAM.check(event.getPlayer())) return;
         if (event.getHand() != EquipmentSlot.HAND) return;
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (event.getClickedBlock() == null) return;

@@ -5,6 +5,7 @@ import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Furnace;
@@ -75,7 +76,7 @@ public class XPManagement extends BasePack {
         Player player = event.getPlayer();
         ItemStack item = event.getItem();
 
-        if (!checkPermission(player)) return;
+        if (!Permission.XP_MANAGEMENT_BOTTLE.check(event.getPlayer())) return;
 
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (event.getClickedBlock() == null) return;

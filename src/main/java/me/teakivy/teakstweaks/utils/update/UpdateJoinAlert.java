@@ -4,6 +4,7 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -26,7 +27,7 @@ public class UpdateJoinAlert implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        if (!player.hasPermission("teakstweaks.manage")) return;
+        if (!Permission.MANAGE.check(player)) return;
         if (!Config.getBoolean("settings.alert-on-new-version")) return;
         if (!UpdateChecker.hasUpdate()) return;
 

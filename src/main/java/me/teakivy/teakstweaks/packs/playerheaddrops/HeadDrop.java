@@ -23,7 +23,6 @@ public class HeadDrop extends BasePack {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
-        if (!checkPermission(event.getEntity())) return;
 
         Player player = event.getEntity();
         if (!player.isDead()) return;

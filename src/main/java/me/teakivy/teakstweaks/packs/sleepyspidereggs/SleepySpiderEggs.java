@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.sleepyspidereggs;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -16,6 +17,7 @@ public class SleepySpiderEggs extends BasePack {
 
     @EventHandler
     public void onSleep(PlayerBedLeaveEvent event) {
+        if (!Permission.SLEEPY_SPIDER_EGGS.check(event.getPlayer())) return;
         Player player = event.getPlayer();
         if (!isDayTime(player.getWorld().getTime())) return;
 

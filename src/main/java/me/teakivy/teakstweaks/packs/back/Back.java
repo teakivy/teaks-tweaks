@@ -5,6 +5,7 @@ import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -25,7 +26,7 @@ public class Back extends BasePack {
     public static HashMap<UUID, Location> backLoc = new HashMap<>();
 
     public static void tpBack(Player player) {
-        if (!player.hasPermission("teakstweaks.back")) {
+        if (!Permission.COMMAND_BACK.check(player)) {
             MM.player(player).sendMessage(ErrorType.MISSING_PERMISSION.m());
             return;
         }
@@ -39,13 +40,15 @@ public class Back extends BasePack {
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
-        if (!getConfig().getBoolean("save-death-location")) return;
+        if (!Permission.BACK_DEATH.check(player)) return;
 
         backLoc.put(player.getUniqueId(), player.getLocation());
     }
 
     @EventHandler
     public void onTeleport(PlayerTeleportEvent event) {
+        if (!Permission.BACK_TELEPORT.check(event.getPlayer())) return;
+
         List<PlayerTeleportEvent.TeleportCause> causes =
                 List.of(PlayerTeleportEvent.TeleportCause.SPECTATE,
                         PlayerTeleportEvent.TeleportCause.COMMAND,

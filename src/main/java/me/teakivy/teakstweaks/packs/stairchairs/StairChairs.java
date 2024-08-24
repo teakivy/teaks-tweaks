@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.stairchairs;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.MM;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -30,6 +31,7 @@ public class StairChairs extends BasePack {
 
     @EventHandler
     public void onChairMaker(PlayerInteractEvent event) {
+        if (!Permission.STAIR_CHAIRS_CREATE.check(event.getPlayer())) return;
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.AIR) return;
         if (event.getPlayer().getInventory().getItemInMainHand().getType() != Material.SADDLE) return;
@@ -75,6 +77,7 @@ public class StairChairs extends BasePack {
 
     @EventHandler
     public void onSit(PlayerInteractEvent event) {
+        if (!Permission.STAIR_CHAIRS_SIT.check(event.getPlayer())) return;
         if (event.getPlayer().isSneaking()) return;
         Block block = event.getClickedBlock();
         if (block == null) return;

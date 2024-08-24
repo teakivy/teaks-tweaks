@@ -152,15 +152,6 @@ public class BasePack implements Listener {
 		return item;
 	}
 
-	/**
-	 * Check if the player has the base pack permission
-	 * @param player Player to check
-	 * @return if the player has permission
-	 */
-	public boolean checkPermission(Player player) {
-		return player.hasPermission("teakstweaks." + this.path);
-	}
-
 	private String transformKey(String key) {
 		String[] words = key.split("-");
 		StringBuilder newKey = new StringBuilder();
