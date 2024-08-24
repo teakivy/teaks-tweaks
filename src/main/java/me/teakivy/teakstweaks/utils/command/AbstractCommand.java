@@ -1,13 +1,11 @@
 package me.teakivy.teakstweaks.utils.command;
 
-import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.Logger;
 import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
-import net.kyori.adventure.audience.Audience;
-import net.kyori.adventure.platform.bukkit.BukkitAudiences;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -15,7 +13,6 @@ import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.Bukkit;
 import org.bukkit.command.*;
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.intellij.lang.annotations.Subst;
 
@@ -37,7 +34,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
 
     private final String command;
     private final String description;
-    private final String permission;
+    private Permission permission;
     private final List<String> alias;
 
     private final Arg[] args;
@@ -53,12 +50,12 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     private CommandSender sender;
     private Player player;
 
-    public AbstractCommand(CommandType type, String command, List<String> aliases, Arg... args) {
-        this(type, null, command, aliases, args);
+    public AbstractCommand(CommandType type, String command, Permission permission, List<String> aliases, Arg... args) {
+        this(type, null, command, permission, aliases, args);
     }
 
-    public AbstractCommand(CommandType type, String command, Arg... args) {
-        this(type, null, command, args);
+    public AbstractCommand(CommandType type, String command, Permission permission, Arg... args) {
+        this(type, null, command, permission, args);
     }
 
     /**
@@ -66,9 +63,10 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param type The command type
      * @param parentPack The pack this command belongs to
      * @param command The command name
+     * @param permission The command permission
      */
-    public AbstractCommand(CommandType type, String parentPack, String command) {
-        this(type, parentPack, command, null, null, null, new Arg[]{});
+    public AbstractCommand(CommandType type, String parentPack, String command, Permission permission) {
+        this(type, parentPack, command, permission, null, null, null, new Arg[]{});
     }
 
     /**
@@ -76,11 +74,12 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param type The command type
      * @param parentPack The pack this command belongs to
      * @param command The command name
+     * @param permission The command permission
      * @param translationKey The translation key
      * @param args The command arguments
      */
-    public AbstractCommand(CommandType type, String parentPack, String command, String translationKey, Arg... args) {
-        this(type, parentPack, command, null, null, translationKey, args);
+    public AbstractCommand(CommandType type, String parentPack, String command, Permission permission, String translationKey, Arg... args) {
+        this(type, parentPack, command, permission, null, null, translationKey, args);
     }
 
     /**
@@ -88,10 +87,11 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param type The command type
      * @param parentPack The pack this command belongs to
      * @param command The command name
+     * @param permission The command permission
      * @param args The command arguments
      */
-    public AbstractCommand(CommandType type, String parentPack, String command, Arg... args) {
-        this(type, parentPack, command, null, null, null, args);
+    public AbstractCommand(CommandType type, String parentPack, String command, Permission permission, Arg... args) {
+        this(type, parentPack, command, permission, null, null, null, args);
     }
 
     /**
@@ -99,11 +99,12 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param type The command type
      * @param parentPack The pack this command belongs to
      * @param command The command name
+     * @param permission The command permission
      * @param aliases The command aliases
      * @param args The command arguments
      */
-    public AbstractCommand(CommandType type, String parentPack, String command, List<String> aliases, Arg... args) {
-        this(type, parentPack, command, null, aliases, null, args);
+    public AbstractCommand(CommandType type, String parentPack, String command, Permission permission, List<String> aliases, Arg... args) {
+        this(type, parentPack, command, permission, null, aliases, null, args);
     }
 
     /**
@@ -111,12 +112,13 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param type The command type
      * @param parentPack The pack this command belongs to
      * @param command The command name
+     * @param permission The command permission
      * @param aliases The command aliases
      * @param translationKey The translation key
      * @param args The command arguments
      */
-    public AbstractCommand(CommandType type, String parentPack, String command, List<String> aliases, String translationKey, Arg... args) {
-        this(type, parentPack, command, null, aliases, translationKey, args);
+    public AbstractCommand(CommandType type, String parentPack, String command, Permission permission, List<String> aliases, String translationKey, Arg... args) {
+        this(type, parentPack, command, permission, null, aliases, translationKey, args);
     }
 
     /**
@@ -124,19 +126,20 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param type The command type
      * @param parentPack The pack this command belongs to
      * @param command The command name
+     * @param permission The command permission
      * @param description The command description
      * @param aliases The command aliases
      * @param translationKey The translation key
      * @param args The command arguments
      */
-    public AbstractCommand(CommandType type, String parentPack, String command, String description, List<String> aliases, String translationKey, Arg... args) {
+    public AbstractCommand(CommandType type, String parentPack, String command, Permission permission, String description, List<String> aliases, String translationKey, Arg... args) {
         this.parentPack = parentPack;
         this.command = command.toLowerCase();
         this.args = args;
         this.translationKey = translationKey == null ? command : translationKey;
         this.description = description == null ? Translatable.getString(this.translationKey + ".command_description") : description;
         this.alias = aliases;
-        this.permission = "teakstweaks." + parentPack + ".command." + command;
+        this.permission = permission;
         this.commandType = type;
 
         this.cooldownTime = 0;
@@ -291,10 +294,19 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param permission The permission to check
      * @return false if the sender does not have permission
      */
-    public boolean checkPermission(String permission) {
-        if (sender.hasPermission(this.permission + "." + permission)) return true;
+    public boolean checkPermission(Permission permission) {
+        return checkPermission(permission, false);
+    }
+    /**
+     * Check if the sender has permission
+     * @param permission The permission to check
+     * @param silent Whether or not to send an error message
+     * @return false if the sender does not have permission
+     */
+    public boolean checkPermission(Permission permission, boolean silent) {
+        if (permission.check(this.sender)) return true;
 
-        sendError(ErrorType.MISSING_COMMAND_PERMISSION);
+        if (!silent) sendError(ErrorType.MISSING_COMMAND_PERMISSION);
         return false;
     }
 
@@ -352,7 +364,8 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     }
 
     public boolean checkPermission() {
-        return !sender.hasPermission(permission);
+        if (permission == null) return true;
+        return permission.check(sender);
     }
 
     /**

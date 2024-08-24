@@ -5,6 +5,7 @@ import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
 import org.bukkit.command.CommandSender;
+import org.bukkit.permissions.Permission;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class AQuickCommand extends AbstractCommand {
     private final List<String> toRun;
 
     public AQuickCommand(String command, List<String> toRun) {
-        super(CommandType.PLAYER_ONLY, "quick-commands", command, "quick_commands." + command);
+        super(CommandType.PLAYER_ONLY, "quick-commands", command, null, "quick_commands." + command);
         this.toRun = toRun;
     }
 

@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.packs.teleportation.homes.Home;
 import me.teakivy.teakstweaks.packs.teleportation.homes.HomesPack;
 import me.teakivy.teakstweaks.utils.command.*;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 public class SetHomeCommand extends AbstractCommand {
 
     public SetHomeCommand() {
-        super(CommandType.PLAYER_ONLY, "homes", "sethome", "home",  Arg.optional("name"));
+        super(CommandType.PLAYER_ONLY, "homes", "sethome", Permission.COMMAND_HOME_SET, "home",  Arg.optional("name"));
     }
 
     @Override

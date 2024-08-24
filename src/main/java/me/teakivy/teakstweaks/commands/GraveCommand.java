@@ -7,6 +7,7 @@ import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.Arg;
 import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
@@ -17,13 +18,13 @@ public class GraveCommand extends AbstractCommand {
 
 
     public GraveCommand() {
-        super(CommandType.PLAYER_ONLY, "graves", "grave", Arg.required("locate", "key", "uninstall"));
+        super(CommandType.PLAYER_ONLY, "graves", "grave", Permission.COMMAND_GRAVE, Arg.required("locate", "key", "uninstall"));
     }
 
     @Override
     public void playerCommand(PlayerCommandEvent event) {
         if (event.isArg(0, "locate")) {
-            if (!checkPermission("locate")) return;
+            if (!checkPermission(Permission.COMMAND_GRAVE_LOCATE)) return;
             if (!getPackConfig().getBoolean("locatable")) {
                 sendError(ErrorType.COMMAND_DISABLED);
                 return;
@@ -40,14 +41,14 @@ public class GraveCommand extends AbstractCommand {
         }
 
         if (event.isArg(0, "key")) {
-            if (!checkPermission("key")) return;
+            if (!checkPermission(Permission.COMMAND_GRAVE_KEY)) return;
 
             event.getPlayer().getInventory().addItem(GraveEvents.getGraveKey());
             sendMessage("given_key");
         }
 
         if (event.isArg(0, "uninstall")) {
-            if (!checkPermission("uninstall")) return;
+            if (!checkPermission(Permission.COMMAND_GRAVE_UNINSTALL)) return;
             for (World world : Bukkit.getWorlds()) {
                 for (Entity entity : world.getEntities()) {
                     if (entity.getScoreboardTags().contains("grave")) {

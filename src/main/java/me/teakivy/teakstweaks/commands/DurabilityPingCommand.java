@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.packs.survival.durabilityping.DuraPing;
 import me.teakivy.teakstweaks.packs.survival.durabilityping.DuraPingOption;
 import me.teakivy.teakstweaks.utils.command.*;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -14,7 +15,7 @@ import java.util.Set;
 public class DurabilityPingCommand extends AbstractCommand {
 
     public DurabilityPingCommand() {
-        super(CommandType.PLAYER_ONLY, "durability-ping", "durabilityping", List.of("duraping", "dp"), Arg.optional("preview", "set"), Arg.optional("option"), Arg.optional("value"));
+        super(CommandType.PLAYER_ONLY, "durability-ping", "durabilityping", Permission.COMMAND_DURABILITYPING, List.of("duraping", "dp"), Arg.optional("preview", "set"), Arg.optional("option"), Arg.optional("value"));
     }
 
     @Override
@@ -31,7 +32,7 @@ public class DurabilityPingCommand extends AbstractCommand {
                 return;
             }
 
-            if (!checkPermission("preview")) return;
+            if (!checkPermission(Permission.COMMAND_DURABILITYPING_PREVIEW)) return;
 
             switch (event.getArg(1)) {
                 case "ping_with_sound":
@@ -58,7 +59,7 @@ public class DurabilityPingCommand extends AbstractCommand {
                 return;
             }
 
-            if (!checkPermission("set")) return;
+            if (!checkPermission(Permission.COMMAND_DURABILITYPING_SET)) return;
 
             switch (DuraPingOption.fromString(event.getArg(1))) {
                 case PING_FOR_HAND_ITEMS, PING_FOR_ARMOR_ITEMS, PING_WITH_SOUND:

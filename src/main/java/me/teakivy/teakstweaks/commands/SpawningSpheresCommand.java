@@ -6,6 +6,7 @@ import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.Arg;
 import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 public class SpawningSpheresCommand extends AbstractCommand {
 
     public SpawningSpheresCommand() {
-        super(CommandType.PLAYER_ONLY, "spawning-spheres", "spawningspheres", List.of("ss", "sphere"), Arg.required("create", "remove", "teleport"), Arg.required("red", "blue", "green"));
+        super(CommandType.PLAYER_ONLY, "spawning-spheres", "spawningspheres", Permission.COMMAND_SPAWNINGSPHERES, List.of("ss", "sphere"), Arg.required("create", "remove", "teleport"), Arg.required("red", "blue", "green"));
     }
 
     @Override
@@ -26,7 +27,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
 
         Player player = event.getPlayer();
         if (event.isArg(0, "create")) {
-            if (!checkPermission("create")) return;
+            if (!checkPermission(Permission.COMMAND_SPAWNINGSPHERES_CREATE)) return;
 
             boolean success = SpheresPack.summonSphere(type, player.getLocation());
             if (!success) {
@@ -39,7 +40,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
         }
 
         if (event.isArg(0, "remove")) {
-            if (!checkPermission("remove")) return;
+            if (!checkPermission(Permission.COMMAND_SPAWNINGSPHERES_REMOVE)) return;
 
             boolean success = SpheresPack.removeSphere(type, player);
             if (!success) {
@@ -52,7 +53,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
         }
 
         if (event.isArg(0, "teleport")) {
-            if (!checkPermission("teleport")) return;
+            if (!checkPermission(Permission.COMMAND_SPAWNINGSPHERES_TELEPORT)) return;
 
             boolean success = SpheresPack.teleport(type, player);
             if (!success) {

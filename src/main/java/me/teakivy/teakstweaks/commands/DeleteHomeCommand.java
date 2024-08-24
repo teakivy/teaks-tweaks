@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.packs.teleportation.homes.Home;
 import me.teakivy.teakstweaks.packs.teleportation.homes.HomesPack;
 import me.teakivy.teakstweaks.utils.command.*;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.List;
 public class DeleteHomeCommand extends AbstractCommand {
 
     public DeleteHomeCommand() {
-        super(CommandType.PLAYER_ONLY, "homes", "deletehome", List.of("rmhome", "delhome"), "home", Arg.optional("home"));
+    super(CommandType.PLAYER_ONLY, "homes", "deletehome", Permission.COMMAND_HOME_DELETE, List.of("rmhome", "delhome"), "home", Arg.optional("home"));
     }
 
     @Override

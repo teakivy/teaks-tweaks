@@ -7,6 +7,7 @@ import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.gui.GUIListener;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
+import me.teakivy.teakstweaks.utils.permission.PermissionManager;
 import me.teakivy.teakstweaks.utils.update.UpdateChecker;
 import me.teakivy.teakstweaks.utils.update.UpdateJoinAlert;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
@@ -52,6 +53,8 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         createCredits();
 
         createDataFolders();
+
+        PermissionManager.init();
 
         // Initialize & Update Config
         Config.init();

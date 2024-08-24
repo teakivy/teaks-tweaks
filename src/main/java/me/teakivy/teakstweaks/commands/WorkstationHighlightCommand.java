@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.packs.survival.workstationhighlights.Highlighter;
 import me.teakivy.teakstweaks.utils.command.*;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.*;
@@ -32,7 +33,7 @@ public class WorkstationHighlightCommand extends AbstractCommand {
     };
 
     public WorkstationHighlightCommand() {
-        super(CommandType.PLAYER_ONLY, "workstation-highlights", "workstationhighlight", Arg.optional("profession"), Arg.optional("radius"));
+        super(CommandType.PLAYER_ONLY, "workstation-highlights", "workstationhighlight", Permission.COMMAND_WORKSTATIONHIGHLIGHT, Arg.optional("profession"), Arg.optional("radius"));
     }
 
     @Override

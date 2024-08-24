@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.CommandEvent;
 import me.teakivy.teakstweaks.utils.command.CommandType;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
@@ -11,7 +12,7 @@ import org.bukkit.entity.EntityType;
 public class KillBoatsCommand extends AbstractCommand {
 
     public KillBoatsCommand() {
-        super(CommandType.ALL, "kill-boats", "killboats");
+        super(CommandType.ALL, "kill-boats", "killboats", Permission.COMMAND_KILLBOATS);
     }
 
     @Override

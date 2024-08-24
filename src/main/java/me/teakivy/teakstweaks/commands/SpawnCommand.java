@@ -4,6 +4,7 @@ import me.teakivy.teakstweaks.packs.teleportation.back.Back;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -13,7 +14,7 @@ import java.util.Objects;
 public class SpawnCommand extends AbstractCommand {
 
     public SpawnCommand() {
-        super(CommandType.PLAYER_ONLY, "spawn", "spawn");
+        super(CommandType.PLAYER_ONLY, "spawn", "spawn", Permission.COMMAND_SPAWN);
 
         setCooldownTime(getPackConfig().getInt("teleport-cooldown"));
     }

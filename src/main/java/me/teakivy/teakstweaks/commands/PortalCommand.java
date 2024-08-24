@@ -3,13 +3,14 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Location;
 import org.bukkit.World;
 
 public class PortalCommand extends AbstractCommand {
 
     public PortalCommand() {
-        super(CommandType.PLAYER_ONLY, "nether-portal-coords", "portal");
+        super(CommandType.PLAYER_ONLY, "nether-portal-coords", "portal", Permission.COMMAND_PORTAL);
     }
 
     @Override

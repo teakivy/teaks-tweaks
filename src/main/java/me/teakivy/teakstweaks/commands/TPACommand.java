@@ -5,6 +5,7 @@ import me.teakivy.teakstweaks.packs.teleportation.back.Back;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.command.*;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
@@ -18,7 +19,7 @@ public class TPACommand extends AbstractCommand {
     private final List<TPARequest> requests = new ArrayList<>();
 
     public TPACommand() {
-        super(CommandType.PLAYER_ONLY, "tpa", "tpa", Arg.required("accept", "player"), Arg.optional("player"));
+        super(CommandType.PLAYER_ONLY, "tpa", "tpa", Permission.COMMAND_TPA, Arg.required("accept", "player"), Arg.optional("player"));
     }
 
     @Override

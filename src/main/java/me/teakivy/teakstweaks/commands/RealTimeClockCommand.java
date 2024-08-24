@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.World;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 public class RealTimeClockCommand extends AbstractCommand {
 
     public RealTimeClockCommand() {
-        super(CommandType.PLAYER_ONLY, "real-time-clock", "realtimeclock", List.of("rtc"));
+        super(CommandType.PLAYER_ONLY, "real-time-clock", "realtimeclock", Permission.COMMAND_REALTIMECLOCK, List.of("rtc"));
     }
 
     @Override

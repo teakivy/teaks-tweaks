@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
@@ -13,7 +14,7 @@ import java.util.List;
 public class NightVisionCommand extends AbstractCommand {
 
     public NightVisionCommand() {
-        super(CommandType.PLAYER_ONLY, "spectator-night-vision", "nightvision", List.of("nv"));
+        super(CommandType.PLAYER_ONLY, "spectator-night-vision", "nightvision", Permission.COMMAND_NIGHTVISION, List.of("nv"));
     }
 
     @Override

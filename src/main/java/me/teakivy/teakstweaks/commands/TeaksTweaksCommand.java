@@ -6,13 +6,14 @@ import me.teakivy.teakstweaks.utils.command.Arg;
 import me.teakivy.teakstweaks.utils.command.CommandEvent;
 import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.config.Config;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 
 import java.util.Arrays;
 
 public class TeaksTweaksCommand extends AbstractCommand {
 
     public TeaksTweaksCommand() {
-        super(CommandType.ALL, null, "teakstweaks", Arrays.asList("tweaks", "tt"), "teakstweakscommand", Arg.optional("info", "version", "support", "update"));
+        super(CommandType.ALL, null, "teakstweaks", Permission.COMMAND_TEAKSTWEAKS, Arrays.asList("tweaks", "tt"), "teakstweakscommand", Arg.optional("info", "version", "support", "update"));
     }
 
     @Override

@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.packs.teakstweaks.spectatoralts.SpectatorAlts;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.command.*;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -13,7 +14,7 @@ import java.util.UUID;
 public class AltsCommand extends AbstractCommand {
 
     public AltsCommand() {
-        super(CommandType.PLAYER_ONLY, "spectator-alts", "alts", Arg.required("add", "remove", "list"), Arg.optional("alt"), Arg.optional("player"));
+        super(CommandType.PLAYER_ONLY, "spectator-alts", "alts", Permission.COMMAND_ALT, Arg.required("add", "remove", "list"), Arg.optional("alt"), Arg.optional("player"));
     }
 
     @Override
@@ -34,7 +35,7 @@ public class AltsCommand extends AbstractCommand {
         }
 
         if (event.hasArgs(3)) {
-            if (!player.isOp()) {
+            if (!checkPermission(Permission.COMMAND_ALT_MANAGE, true)) {
                 sendError("no_permission_modify_others");
                 return;
             }

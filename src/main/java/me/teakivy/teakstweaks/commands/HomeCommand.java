@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.packs.teleportation.homes.Home;
 import me.teakivy.teakstweaks.packs.teleportation.homes.HomesPack;
 import me.teakivy.teakstweaks.utils.command.*;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.List;
 public class HomeCommand extends AbstractCommand {
 
     public HomeCommand() {
-        super(CommandType.PLAYER_ONLY, "homes", "home", Arg.optional("set", "delete", "home"), Arg.optional("home"));
+        super(CommandType.PLAYER_ONLY, "homes", "home", Permission.COMMAND_HOME, Arg.optional("set", "delete", "home"), Arg.optional("home"));
     }
 
     @Override
@@ -40,7 +41,7 @@ public class HomeCommand extends AbstractCommand {
                 sendError("missing_home_name");
                 return;
             }
-            if (!checkPermission("set")) return;
+            if (!checkPermission(Permission.COMMAND_HOME_SET)) return;
             String name = !event.hasArgs(2) ? "home" : event.getArg(1).toLowerCase();
 
             if (HomesPack.getHome(player, name) != null) {
@@ -68,7 +69,7 @@ public class HomeCommand extends AbstractCommand {
                 sendError("missing_home_name");
                 return;
             }
-            if (!checkPermission("delete")) return;
+            if (!checkPermission(Permission.COMMAND_HOME_DELETE)) return;
             String name = !event.hasArgs(2) ? "home" : event.getArg(1).toLowerCase();
 
             Home home = HomesPack.getHome(player, name);

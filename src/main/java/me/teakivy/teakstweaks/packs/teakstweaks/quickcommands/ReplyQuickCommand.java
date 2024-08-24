@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.teakstweaks.quickcommands;
 import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.command.*;
 import me.teakivy.teakstweaks.utils.ErrorType;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -24,7 +25,7 @@ public class ReplyQuickCommand {
 
     class MessageCommand extends AbstractCommand {
         public MessageCommand() {
-            super(CommandType.PLAYER_ONLY, "quick-commands", "message", List.of("msg", "tell", "whisper", "w"), "quick_commands.message", Arg.required("player"), Arg.required("message"));
+            super(CommandType.PLAYER_ONLY, "quick-commands", "message", null, List.of("msg", "tell", "whisper", "w"), "quick_commands.message", Arg.required("player"), Arg.required("message"));
         }
 
         @Override
@@ -67,7 +68,7 @@ public class ReplyQuickCommand {
 
     class ReplyCommand extends AbstractCommand {
         public ReplyCommand() {
-            super(CommandType.PLAYER_ONLY, "quick-commands", "reply", List.of("r"), "quick_commands.reply", Arg.required("message"));
+            super(CommandType.PLAYER_ONLY, "quick-commands", "reply", Permission.COMMAND_REPLY, List.of("r"), "quick_commands.reply", Arg.required("message"));
         }
 
         @Override

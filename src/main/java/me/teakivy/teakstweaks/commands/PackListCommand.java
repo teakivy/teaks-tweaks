@@ -4,6 +4,7 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.CommandEvent;
 import me.teakivy.teakstweaks.utils.command.CommandType;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 public class PackListCommand extends AbstractCommand {
 
     public PackListCommand() {
-        super(CommandType.ALL, "packlist", List.of("pkl"));
+        super(CommandType.ALL, "packlist", Permission.COMMAND_PACKLIST, List.of("pkl"));
     }
 
     @Override

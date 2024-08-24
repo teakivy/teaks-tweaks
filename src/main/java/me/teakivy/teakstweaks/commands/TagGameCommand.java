@@ -5,6 +5,7 @@ import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.Arg;
 import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
@@ -19,7 +20,7 @@ import org.bukkit.scoreboard.Team;
 public class TagGameCommand extends AbstractCommand {
 
     public TagGameCommand() {
-        super(CommandType.PLAYER_ONLY, "tag", "taggame", Arg.optional("uninstall"));
+        super(CommandType.PLAYER_ONLY, "tag", "taggame", Permission.COMMAND_TAGGAME, Arg.optional("uninstall"));
     }
 
     @Override
@@ -28,7 +29,7 @@ public class TagGameCommand extends AbstractCommand {
         Team team = Bukkit.getScoreboardManager().getMainScoreboard().getTeam("TaggedTeam");
 
         if (!event.hasArgs()) {
-            if (!checkPermission("give")) return;
+            if (!checkPermission(Permission.COMMAND_TAGGAME_GIVE)) return;
 
             Player player = event.getPlayer();
 
@@ -46,7 +47,7 @@ public class TagGameCommand extends AbstractCommand {
         }
 
         if (event.isArg(0, "uninstall")) {
-            if (!checkPermission("uninstall")) return;
+            if (!checkPermission(Permission.COMMAND_TAGGAME_UNINSTALL)) return;
 
             if (team == null) return;
             team.unregister();

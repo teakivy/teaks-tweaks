@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
@@ -13,7 +14,7 @@ import java.util.List;
 public class ConduitPowerCommand extends AbstractCommand {
 
     public ConduitPowerCommand() {
-        super(CommandType.PLAYER_ONLY, "spectator-conduit-power", "conduitpower", List.of("cp"));
+        super(CommandType.PLAYER_ONLY, "spectator-conduit-power", "conduitpower", Permission.COMMAND_CONDUITPOWER, List.of("cp"));
     }
 
     @Override

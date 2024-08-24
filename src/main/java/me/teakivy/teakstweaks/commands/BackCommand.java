@@ -4,12 +4,13 @@ import me.teakivy.teakstweaks.packs.teleportation.back.Back;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.entity.Player;
 
 public class BackCommand extends AbstractCommand {
 
     public BackCommand() {
-        super(CommandType.PLAYER_ONLY, "back", "back");
+        super(CommandType.PLAYER_ONLY, "back", "back", Permission.COMMAND_BACK);
 
         setCooldownTime(getPackConfig().getInt("teleport-cooldown"));
     }
