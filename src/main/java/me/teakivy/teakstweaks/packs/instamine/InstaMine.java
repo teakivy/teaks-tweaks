@@ -1,4 +1,4 @@
-package me.teakivy.teakstweaks.packs.instantdeepslate;
+package me.teakivy.teakstweaks.packs.instamine;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
@@ -15,32 +15,26 @@ import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 
-public class InstantDeepslate extends BasePack {
-    private final ArrayList<Material> instantMaterials = new ArrayList<>();
+public class InstaMine extends BasePack {
 
-    public InstantDeepslate() {
+    public InstaMine() {
         super("instant-deepslate", PackType.TEAKSTWEAKS, Material.DEEPSLATE);
-    }
-
-    @Override
-    public void init() {
-        super.init();
-        instantMaterials.add(Material.DEEPSLATE);
-        instantMaterials.add(Material.DEEPSLATE_BRICKS);
-        instantMaterials.add(Material.CRACKED_DEEPSLATE_BRICKS);
-        instantMaterials.add(Material.DEEPSLATE_TILES);
-        instantMaterials.add(Material.CRACKED_DEEPSLATE_TILES);
-        instantMaterials.add(Material.POLISHED_DEEPSLATE);
-        instantMaterials.add(Material.CHISELED_DEEPSLATE);
     }
 
     @EventHandler
     public void onBeginBreak(BlockDamageEvent e) {
-        if (!Permission.INSTANT_DEEPSLATE.check(e.getPlayer())) return;
+        if (!Permission.INSTA_MINE.check(e.getPlayer())) return;
         Player player = e.getPlayer();
         ItemStack item = e.getItemInHand();
         Block block = e.getBlock();
-        if (!instantMaterials.contains(block.getType())) return;
+        boolean isInstant = false;
+        for (String blocks : getConfig().getStringList("blocks")) {
+            if (blocks.equalsIgnoreCase(block.getType().name())) {
+                isInstant = true;
+                break;
+            }
+        }
+        if (!isInstant) return;
 
         if (item.getType().equals(Material.NETHERITE_PICKAXE) && hasHasteTwo(player) && isEfficiencyFive(item)) {
             e.setInstaBreak(true);

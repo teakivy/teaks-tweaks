@@ -444,13 +444,21 @@ packs:
   husk-drops-sand:
       enabled: false
 
-  # Instant Deepslate
-  # Instantly mine deepslate blocks if you have a netherite pickaxe with efficiency 5 or higher, and haste 2 or higher.
+  # Insta Mine
+  # Instantly mine blocks if you have a netherite pickaxe with efficiency 5 or higher, and haste 2 or higher.
   #
   # Permissions:
-  # teakstweaks.instant-deepslate
-  instant-deepslate:
+  # teakstweaks.insta-mine
+  insta-mine:
     enabled: false
+    blocks:
+      - deepslate
+      - deepslate_bricks
+      - cracked_deepslate_bricks
+      - deepslate_tiles
+      - cracked_deepslate_tiles
+      - polished_deepslate
+      - chiseled_deepslate
 
   # Invisible Item Frames
   # Shift right-click an item frame with shears to make it invisible

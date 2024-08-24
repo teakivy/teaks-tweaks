@@ -47,7 +47,7 @@ import me.teakivy.teakstweaks.packs.workstationhighlights.Highlighter;
 import me.teakivy.teakstweaks.packs.chatcolors.ChatColors;
 import me.teakivy.teakstweaks.packs.dirttograss.DirtToGrass;
 import me.teakivy.teakstweaks.packs.fixeditemframes.FixedItemFrames;
-import me.teakivy.teakstweaks.packs.instantdeepslate.InstantDeepslate;
+import me.teakivy.teakstweaks.packs.instamine.InstaMine;
 import me.teakivy.teakstweaks.packs.invisibleitemframes.InvisibleItemFrames;
 import me.teakivy.teakstweaks.packs.keepsmall.KeepSmall;
 import me.teakivy.teakstweaks.packs.lecternreset.LecternReset;
@@ -136,7 +136,7 @@ public class Register {
             new InvisibleItemFrames(),
             new DirtToGrass(),
             new FixedItemFrames(),
-            new InstantDeepslate(),
+            new InstaMine(),
             new BatMembranes(),
             new SleepySpiderEggs(),
             new NetherPortalCoords(),

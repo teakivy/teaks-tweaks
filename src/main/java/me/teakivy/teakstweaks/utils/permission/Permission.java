@@ -65,7 +65,7 @@ public enum Permission {
     ELEVATOR_CREATE("elevator.create"),
     ELEVATOR_USE("elevator.use"),
     FIXED_ITEM_FRAMES("fixed-item-frames"),
-    INSTANT_DEEPSLATE("instant-deepslate"),
+    INSTA_MINE("insta-mine"),
     INVISIBLE_ITEM_FRAMES("invisible-item-frames"),
     KEEP_SMALL("keep-small"),
     ROTATION_WRENCH("rotation-wrench"),
