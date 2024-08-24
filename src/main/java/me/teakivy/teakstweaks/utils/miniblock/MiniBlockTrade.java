@@ -1,17 +1,21 @@
-package me.teakivy.teakstweaks.packs.wanderingtrades;
+package me.teakivy.teakstweaks.utils.miniblock;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
+import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.minecraft.world.item.crafting.StonecutterRecipe;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.MerchantRecipe;
+import org.bukkit.inventory.StonecuttingRecipe;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.lang.reflect.Field;
+import java.util.Random;
 import java.util.UUID;
 
 public class MiniBlockTrade {
@@ -25,8 +29,8 @@ public class MiniBlockTrade {
         this.material = material;
     }
 
-    public MerchantRecipe getTrade() {
-        MerchantRecipe recipe = new MerchantRecipe(getSkull(), Config.getInt("packs.wandering-trades.mini-blocks.amount-of-trades"));
+    public MerchantRecipe getMerchantTrade() {
+        MerchantRecipe recipe = new MerchantRecipe(getSkull(Config.getInt("packs.wandering-trades.mini-blocks.per-trade")), Config.getInt("packs.wandering-trades.mini-blocks.amount-of-trades"));
 
         recipe.addIngredient(new ItemStack(Material.EMERALD, 1));
         recipe.addIngredient(new ItemStack(material));
@@ -34,8 +38,13 @@ public class MiniBlockTrade {
         return recipe;
     }
 
-    public ItemStack getSkull() {
-        ItemStack head = new ItemStack(Material.PLAYER_HEAD, Config.getInt("packs.wandering-trades.mini-blocks.per-trade"));
+    public StonecuttingRecipe getStonecuttingRecipe() {
+        String n = name.toLowerCase().replaceAll(" ", "_");
+        return new StonecuttingRecipe(Key.get("sc_mini_blocks_" + n), getSkull(Config.getInt("packs.mini-blocks.per-cut")), material);
+    }
+
+    public ItemStack getSkull(int amount) {
+        ItemStack head = new ItemStack(Material.PLAYER_HEAD, amount);
         SkullMeta headMeta = (SkullMeta) head.getItemMeta();
 
         GameProfile profile = new GameProfile(UUID.fromString("fdb5599c-1b14-440e-82df-d69719703d21"), "MiniBlock");

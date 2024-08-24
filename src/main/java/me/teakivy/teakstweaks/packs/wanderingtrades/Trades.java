@@ -24,12 +24,6 @@ public class Trades extends BasePack {
         super("wandering-trades", PackType.HERMITCRAFT, Material.LEAD);
     }
 
-    @Override
-    public void init() {
-        super.init();
-        MiniBlocks.load();
-    }
-
     @EventHandler
     public void traderSpawn(EntitySpawnEvent event) {
         if (event.getEntityType() == EntityType.WANDERING_TRADER) {
