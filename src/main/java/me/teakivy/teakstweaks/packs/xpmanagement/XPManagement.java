@@ -120,7 +120,7 @@ public class XPManagement extends BasePack {
 
         if (getConfig().getBoolean("display-amount")) {
             List<String> lore = new ArrayList<>();
-            lore.add(MM.toString(getText("bottle_contains", insert("amount", getConfig().getInt("take-xp-amount")))));
+            lore.add(MM.toString(getText("bottle_contains", insert("return_amount", getConfig().getInt("take-xp-amount")))));
             xpMeta.setLore(lore);
         }
 
