@@ -721,7 +721,7 @@ packs:
       # Whether or not Wandering Trader's have mini blocks
       has-mini-blocks: true
       # How many mini block trades a trader will have
-      amount-of-trades: 7
+      amount-of-trades: 4
       # How many of each mini block a trader will sell
       per-trade: 8
     # Player heads section of Wandering Trades
