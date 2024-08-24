@@ -59,7 +59,8 @@ public class Trades extends BasePack {
 
         if (Config.isDevMode()) {
             for (String player : players) {
-                trades.add(newHeadRecipe(player));
+                MerchantRecipe recipe = newHeadRecipe(player);
+                if (recipe != null) trades.add(recipe);
             }
         } else {
             int amount = getConfig().getInt("player-heads.amount-of-trades");
@@ -77,7 +78,8 @@ public class Trades extends BasePack {
                     headNames.add(name);
                     amount--;
 
-                    trades.add(newHeadRecipe(name));
+                    MerchantRecipe recipe = newHeadRecipe(name);
+                    if (recipe != null) trades.add(recipe);
                 }
             }
         }
@@ -86,11 +88,15 @@ public class Trades extends BasePack {
     }
 
     private MerchantRecipe newHeadRecipe(String playerName) {
-        MerchantRecipe recipe = new MerchantRecipe(UUIDUtils.getPlayerHead(playerName), getConfig().getInt("player-heads.per-trade"));
+        try {
+            MerchantRecipe recipe = new MerchantRecipe(UUIDUtils.getPlayerHead(playerName), getConfig().getInt("player-heads.per-trade"));
 
-        recipe.addIngredient(new ItemStack(Material.EMERALD, 1));
+            recipe.addIngredient(new ItemStack(Material.EMERALD, 1));
 
-        return recipe;
+            return recipe;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 }
