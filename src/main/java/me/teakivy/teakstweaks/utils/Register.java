@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.utils;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.commands.*;
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.alwaysdrop.AlwaysDrop;
 import me.teakivy.teakstweaks.packs.chunkloaders.Loader;
 import me.teakivy.teakstweaks.packs.confetticreepers.ConfettiCreeper;
 import me.teakivy.teakstweaks.packs.elevators.Elevator;
@@ -140,7 +141,8 @@ public class Register {
             new Spawn(),
             new HomesPack(),
             new TPA(),
-            new KillBoats()
+            new KillBoats(),
+            new AlwaysDrop()
         ).collect(Collectors.toMap(BasePack::getPath, x -> x));
 
     }
