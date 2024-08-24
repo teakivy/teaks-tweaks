@@ -1,7 +1,7 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.packs.survival.durabilityping.DuraPing;
-import me.teakivy.teakstweaks.packs.survival.durabilityping.DuraPingOption;
+import me.teakivy.teakstweaks.packs.durabilityping.DuraPing;
+import me.teakivy.teakstweaks.packs.durabilityping.DuraPingOption;
 import me.teakivy.teakstweaks.utils.command.*;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Material;

@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.packs.survival.workstationhighlights.Highlighter;
+import me.teakivy.teakstweaks.packs.workstationhighlights.Highlighter;
 import me.teakivy.teakstweaks.utils.command.*;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Location;

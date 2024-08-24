@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.packs.teakstweaks.spectatoralts.SpectatorAlts;
+import me.teakivy.teakstweaks.packs.spectatoralts.SpectatorAlts;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.command.*;
 import me.teakivy.teakstweaks.utils.permission.Permission;

@@ -1,7 +1,7 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
-import me.teakivy.teakstweaks.packs.teleportation.back.Back;
+import me.teakivy.teakstweaks.packs.back.Back;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.command.*;

@@ -1,7 +1,7 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.packs.teleportation.homes.Home;
-import me.teakivy.teakstweaks.packs.teleportation.homes.HomesPack;
+import me.teakivy.teakstweaks.packs.homes.Home;
+import me.teakivy.teakstweaks.packs.homes.HomesPack;
 import me.teakivy.teakstweaks.utils.command.*;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.entity.Player;

@@ -1,7 +1,7 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.packs.utilities.spawningspheres.SphereType;
-import me.teakivy.teakstweaks.packs.utilities.spawningspheres.SpheresPack;
+import me.teakivy.teakstweaks.packs.spawningspheres.SphereType;
+import me.teakivy.teakstweaks.packs.spawningspheres.SpheresPack;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.Arg;
 import me.teakivy.teakstweaks.utils.command.CommandType;
