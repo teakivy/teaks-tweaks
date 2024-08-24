@@ -500,6 +500,13 @@ packs:
   lectern-reset:
     enabled: false
 
+  # Mini Blocks
+  # Adds mini blocks to the game. Craft them using the normal block in a Stonecutter.
+  mini-blocks:
+    enabled: false
+    # Amount of mini blocks to craft per normal block
+    per-cut: 8
+
   # More Mob Heads
   # Adds a chance to receive a mob head upon killing it.
   # Be sure to check the data/mob_heads.json file for more customizability!
