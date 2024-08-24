@@ -103,8 +103,6 @@ packs:
   # Command: /back (Permission: teakstweaks.back.command.back)
   back:
     enabled: false
-    # Whether or not death locations should be saved in the back command
-    save-death-location: false
     # Enter the number of seconds required to wait between uses of the back command
     teleport-cooldown: 0
 
@@ -136,12 +134,6 @@ packs:
   # Permission: teakstweaks.chat-colors
   chat-colors:
     enabled: false
-    # Enable Colors in the chat
-    chat: true
-    # Enable Colors on signs
-    signs: true
-    # Enable Colors on items (Using anvils)
-    items: true
 
   # Chunk Loaders
   # Drop a Nether Star above a Lodestone to create a chunk loader (AKA a Loadstone) which keeps the chunk it's in loaded until it is broken.
