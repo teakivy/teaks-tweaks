@@ -580,7 +580,8 @@ packs:
   # Adds a custom wrench in-game that allows you to rotate redstone components, & glazed terracotta when right-clicking.
   #
   # Permissions:
-  # teakstweaks.rotation-wrench
+  # teakstweaks.rotation-wrench.redstone
+  # teakstweaks.rotation-wrench.terracotta
   rotation-wrench:
     enabled: false
     # Whether or not to rotate redstone components

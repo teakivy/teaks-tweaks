@@ -68,7 +68,6 @@ public class Wrench extends BasePack {
 
     @EventHandler
     public void onUse(PlayerInteractEvent event) {
-        if (!Permission.ROTATION_WRENCH.check(event.getPlayer())) return;
         ItemStack item = event.getItem();
         if (item == null) return;
         if (!item.hasItemMeta()) return;
@@ -85,6 +84,7 @@ public class Wrench extends BasePack {
         Block block = event.getClickedBlock();
 
         if (isRedstone(block.getType()) && getConfig().getBoolean("rotate-redstone")) {
+            if (!Permission.ROTATION_WRENCH_REDSTONE.check(event.getPlayer())) return;
             Directional data = (Directional) block.getBlockData();
             if (data instanceof Piston && ((Piston) data).isExtended()) {
                 return;
@@ -104,6 +104,7 @@ public class Wrench extends BasePack {
             return;
         }
         if (isTerracotta(block.getType()) && getConfig().getBoolean("rotate-terracotta")) {
+            if (!Permission.ROTATION_WRENCH_TERRACOTTA.check(event.getPlayer())) return;
             Directional data = (Directional) block.getBlockData();
             int facing = faces.indexOf(data.getFacing());
             BlockFace nextFace = null;
