@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class InstaMine extends BasePack {
 
     public InstaMine() {
-        super("instant-deepslate", PackType.TEAKSTWEAKS, Material.DEEPSLATE);
+        super("insta-mine", PackType.TEAKSTWEAKS, Material.DEEPSLATE);
     }
 
     @EventHandler
