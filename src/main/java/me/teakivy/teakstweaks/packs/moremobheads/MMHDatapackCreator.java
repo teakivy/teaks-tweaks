@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.moremobheads;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.utils.config.Config;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.bukkit.Bukkit;
@@ -26,6 +27,7 @@ public class MMHDatapackCreator {
                 e.printStackTrace();
             }
         }
+        if (!Config.getPackConfig("more-mob-heads").getBoolean("advancements.enabled")) return;
         dataPack.mkdir();
 
         // Create the data pack files
@@ -70,6 +72,7 @@ public class MMHDatapackCreator {
         result = result.replace("<name>", name.replace(" Head", ""));
         result = result.replace("<texture>", texture);
         result = result.replace("<description>", "Collect a " + name);
+        result = result.replace("<announce_in_chat>", Config.getBoolean("packs.more-mob-heads.advancements.announce-in-chat") ? "true" : "false");
 
         advancements.put(key, result);
     }
@@ -89,6 +92,7 @@ public class MMHDatapackCreator {
         result = result.replace("<name>", name.replace(" Head", ""));
         result = result.replace("<item>", item.name().toLowerCase());
         result = result.replace("<description>", "Collect a " + name);
+        result = result.replace("<announce_in_chat>", Config.getBoolean("packs.more-mob-heads.advancements.announce-in-chat") ? "true" : "false");
 
         advancements.put(key, result);
         System.out.println("Added advancement for " + name);

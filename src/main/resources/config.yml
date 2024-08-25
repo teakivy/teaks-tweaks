@@ -522,6 +522,11 @@ packs:
     enabled: false
     # Allow creepers, skeletons, and zombies to drop their heads & skulls
     use-base-heads: false
+    # Adds an advancement screen that shows all the mob heads you have collected
+    advancements:
+      enabled: true
+      # Whether or not to display the mob head advancements in chat
+      announce-in-chat: true
 
   # Nether Portal Coords
   # Adds a command that calculates where a nether portal must be placed in the other dimension. Useful for syncing up nether portals.

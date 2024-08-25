@@ -7,7 +7,7 @@
     "description": "<description>",
     "frame": "task",
     "show_toast": true,
-    "announce_to_chat": true,
+    "announce_to_chat": <announce_in_chat>,
     "hidden": false
   },
   "parent": "teakstweaks:moremobheads/root",
