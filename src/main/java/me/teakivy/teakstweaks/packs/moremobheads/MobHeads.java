@@ -5,6 +5,8 @@ import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.packs.moremobheads.mobs.*;
 import me.teakivy.teakstweaks.utils.JsonManager;
+import me.teakivy.teakstweaks.utils.config.Config;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -27,10 +29,13 @@ public class MobHeads extends BasePack {
     public void init() {
         super.init();
         new AllayHead();
+        new ArmadilloHead();
         new AxolotlHead();
         new BatHead();
         new BeeHead();
         new BlazeHead();
+        new BoggedHead();
+        new BreezeHead();
         new CamelHead();
         new CatHead();
         new CaveSpiderHead();
@@ -106,12 +111,20 @@ public class MobHeads extends BasePack {
             new PiglinHead();
             new SkeletonHead();
             new ZombieHead();
+
+            MMHDatapackCreator.addNormalAdvancement("creeper_head", "Creeper Head", Material.CREEPER_HEAD);
+            MMHDatapackCreator.addNormalAdvancement("piglin_head", "Piglin Head", Material.PIGLIN_HEAD);
+            MMHDatapackCreator.addNormalAdvancement("skeleton_skull", "Skeleton Skull", Material.SKELETON_SKULL);
+            MMHDatapackCreator.addNormalAdvancement("zombie_head", "Zombie Head", Material.ZOMBIE_HEAD);
         }
 
         loadJson();
+
+        Bukkit.getScheduler().runTaskLater(TeaksTweaks.getInstance(), MMHDatapackCreator::createDataPack, 20);
     }
 
     public static boolean shouldDrop(Player player, String key) {
+        if (Config.isDevMode()) return true;
         if (!chances.containsKey(key + ".chance") || !chances.containsKey(key + ".looting_bonus")) return false;
         double chance = (double) chances.get(key + ".chance");
         double lootingBonus = (double) chances.get(key + ".looting_bonus");

@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.moremobheads;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
 import net.kyori.adventure.platform.bukkit.BukkitComponentSerializer;
@@ -11,6 +12,8 @@ import org.apache.commons.lang3.text.WordUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.advancement.Advancement;
+import org.bukkit.advancement.AdvancementProgress;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -53,8 +56,20 @@ public class BaseMobHead implements Listener {
 
     @EventHandler
     public void onDeath(EntityDeathEvent event) {
+        Player player = event.getEntity().getKiller();
+        if (player == null) return;
         if (event.getEntity().getType() != entity) return;
         if (!dropHead(event)) return;
+
+
+        System.out.println(Key.get("moremobheads/" + getName(event).toString().toLowerCase().replaceAll(" ", "_")).toString());
+        Advancement advancement = Bukkit.getAdvancement(Key.get("moremobheads/" + getName(event).toString().toLowerCase().replaceAll(" ", "_") + "_head"));
+        if (advancement == null) {
+            System.out.println("Advancement not found for " + getName(event).toString().toLowerCase().replaceAll(" ", "_") + "_head. Please report this to the plugin developer.");
+            return;
+        }
+        AdvancementProgress progress = player.getAdvancementProgress(advancement);
+        for(String criteria : progress.getRemainingCriteria()) progress.awardCriteria(criteria);
 
         event.getDrops().add(getHead(event));
     }
@@ -91,6 +106,7 @@ public class BaseMobHead implements Listener {
     public void addHeadTexture(String key, String name, String texture) {
         textures.put(key, texture);
         names.put(texture, name);
+        MMHDatapackCreator.addBaseAdvancement(name.toString().toLowerCase().replaceAll(" ", "_"), name, texture);
     }
 
     public ItemStack createHead(String name, String texture) {
