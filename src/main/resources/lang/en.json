@@ -74,6 +74,23 @@
   "thunder_shrine.description": "A shrine that allows you to create a thunder storm when offered a Nether Star.<newline>Drop a Nether Star on top of a shrine to create a thunder storm.",
   "thunder_shrine.storm_initialize": "<red>A great storm has been initiated by the ritual.",
 
+  "mini_blocks.name": "Mini Blocks",
+  "mini_blocks.description": "Adds mini blocks to the game. Craft them using the normal block in a Stonecutter.",
+
+  "collectible_budding_amethyst.name": "Collectible Budding Amethyst",
+  "collectible_budding_amethyst.description": "Allows you to collect budding amethyst blocks to get the block itself.",
+
+  "husk_drops_sand.name": "Husk Drops Sand",
+  "husk_drops_sand.description": "Husks drop 0-2 sand upon death (Making it a renewable resource).<newline>With Looting, the amount is up to 2 + the Looting level.",
+
+  "always_drop.name": "Always Drop",
+  "always_drop.description": "Allows you to set blocks that will always drop when broken, regardless of the tool or enchantments used.",
+
+  "wandering_trader_announcements.name": "Wandering Trader Announcements",
+  "wandering_trader_announcements.description": "Announces to nearby players when a Wandering Trader spawns in the world.",
+  "wandering_trader_announcements.announcement": "<gold>A Wandering Trader has spawned nearby!",
+  "wandering_trader_announcements.announcement_all": "<gold>A Wandering Trader has spawned somewhere on the server!",
+
   "wandering_trades.name": "Wandering Trades",
   "wandering_trades.description": "Adds Mini Blocks & Player heads to the Wandering Trader's trades.",
 
@@ -136,6 +153,9 @@
   "cauldron_concrete.name": "Cauldron Concrete",
   "cauldron_concrete.description": "Right click a cauldron with concrete powder to harden it.",
 
+  "cauldron_mud.name": "Cauldron Mud",
+  "cauldron_mud.description": "Right click a water cauldron with dirt to turn it into mud.",
+
   "classic_fishing_loot.name": "Classic Fishing Loot",
   "classic_fishing_loot.description": "Reverts the fishing loot back to its pre-1.16 loot table.",
 
@@ -197,8 +217,8 @@
   "fixed_item_frames.name": "Fixed Item Frames",
   "fixed_item_frames.description": "Shift right-click an item frame with iron bars to make it fixed.<newline>Shift right-click an item frame with shears to make it not fixed.",
 
-  "instant_deepslate.name": "Instant Deepslate",
-  "instant_deepslate.description": "Instantly mine deepslate blocks if you have a netherite pickaxe with efficiency 5 or higher, and haste 2 or higher.",
+  "insta_mine.name": "Insta Mine",
+  "insta_mine.description": "Instantly mine certain blocks if you have a netherite tool with efficiency 5 or higher, and haste 2 or higher.",
 
   "invisible_item_frames.name": "Invisible Item Frames",
   "invisible_item_frames.description": "Shift right-click an item frame with shears to make it invisible",
