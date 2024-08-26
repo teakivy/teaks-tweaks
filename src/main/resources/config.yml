@@ -75,8 +75,10 @@ packs:
       display-to-console: true
 
   # Always Drop
+  # Allows you to set blocks that will always drop when broken, regardless of the tool or enchantments used.
   always-drop:
     enabled: false
+    # Blocks that will always drop when broken
     blocks:
       - ender_chest
       - glass
@@ -134,7 +136,7 @@ packs:
 
   # Armored Elytra
   # Drop an elytra and a chestplate above an anvil to merge them into one item. Drop the item above a grindstone to separate them again.
-  # Enchantments are kept safely between merging and separating. Burning netherite armored elytra will separate the items.
+  # Enchantments are kept safely between merging and separating. Burning a netherite armored elytra will separate the items.
   #
   # Permissions:
   # teakstweaks.armored-elytra
@@ -256,7 +258,7 @@ packs:
   custom-nether-portals:
     enabled: false
     # Whether or not to allow crying obsidian to be used in portal making
-    allow-crying-obsidian: false
+    allow-crying-obsidian: true
     # How big a portal has to be to be created (Default: 6 - 2x3)
     minimum-portal-size: 6
     # How wide a portal can be (Default: 23)
@@ -445,7 +447,7 @@ packs:
       enabled: false
 
   # Insta Mine
-  # Instantly mine blocks if you have a netherite pickaxe with efficiency 5 or higher, and haste 2 or higher.
+  # Instantly mine certain blocks if you have a netherite tool with efficiency 5 or higher, and haste 2 or higher.
   #
   # Permissions:
   # teakstweaks.insta-mine
@@ -787,6 +789,17 @@ packs:
     enabled: false
     # Whether or not to announce the death in chat, or only in console.
     show-in-chat: true
+
+  # Wandering Trader Announcements
+  # Announces to nearby players when a Wandering Trader spawns in the world.
+  #
+  # Permissions:
+  # teakstweaks.wandering-trader-announcements
+  wandering-trader-announcements:
+    enabled: false
+    # How close a player has to be to the Wandering Trader to see the announcement
+    # Set to -1 to announce to all players
+    radius: 64
 
   # Wandering Trades / Wandering Trades (Hermit Edition)
   # Adds Mini Blocks to the Wandering Trader's trades.
