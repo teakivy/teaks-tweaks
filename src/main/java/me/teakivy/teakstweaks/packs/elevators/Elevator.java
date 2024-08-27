@@ -95,10 +95,11 @@ public class Elevator extends BasePack {
         if (!Permission.ELEVATOR_USE.check(e.getPlayer())) return;
         Player player = e.getPlayer();
         if (isOnCooldown(player)) return;
-        setCooldown(player);
-        if (e.getFrom().getY() <= e.getTo().getY()) return;
+        if (e.getPlayer().getVelocity().getY() < .1) return;
+        e.getPlayer().getVelocity().getY();
+
         Location loc = player.getLocation();
-        Block standingBlock = loc.add(0, -1, 0).getBlock();
+        Block standingBlock = loc.add(0, -0.6, 0).getBlock();
         if (!isElevator(standingBlock)) return;
 
         Block elevatorSpot = findNextElevatorUp(standingBlock);
@@ -110,6 +111,7 @@ public class Elevator extends BasePack {
 
             if (!getConfig().getBoolean("play-sound")) return;
             player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
+            setCooldown(player);
         }, 1L);
     }
 
