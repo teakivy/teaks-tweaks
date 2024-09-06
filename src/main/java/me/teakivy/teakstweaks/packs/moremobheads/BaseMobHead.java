@@ -28,7 +28,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
 
-public class BaseMobHead implements Listener {
+public abstract class BaseMobHead implements Listener {
     protected EntityType entity;
     protected String key;
     protected Sound sound;
@@ -76,12 +76,17 @@ public class BaseMobHead implements Listener {
         return shouldDrop(event.getEntity().getKiller());
     }
 
+    public Sound getSound(EntityDeathEvent event) {
+        System.out.println(event);
+        return this.sound;
+    }
+
     public ItemStack getHead(EntityDeathEvent event) {
-        return createHead(getName(event) + " Head", getTexture(event));
+        return createHead(event, getName(event) + " Head", getTexture(event));
     }
 
     public ItemStack getHead() {
-        return createHead(getName() + " Head", getTexture());
+        return createHead(null, getName() + " Head", getTexture());
     }
 
     public String getTexture(EntityDeathEvent event) {
@@ -106,7 +111,7 @@ public class BaseMobHead implements Listener {
         MMHDatapackCreator.addBaseAdvancement(name.toString().toLowerCase().replaceAll(" ", "_"), name, texture);
     }
 
-    public ItemStack createHead(String name, String texture) {
+    public ItemStack createHead(EntityDeathEvent event, String name, String texture) {
         ItemStack head = new ItemStack(Material.PLAYER_HEAD);
         PlayerProfile profile = Bukkit.createPlayerProfile(UUID.fromString("fdb5599c-1b14-440e-82df-d69719703d21"), "MobHead");
         SkullMeta meta = (SkullMeta)head.getItemMeta();
@@ -121,7 +126,7 @@ public class BaseMobHead implements Listener {
         }
 
         meta.setOwnerProfile(profile);
-        meta.setNoteBlockSound(this.sound.getKey());
+        meta.setNoteBlockSound(getSound(event).getKey());
         head.setItemMeta(meta);
         return head;
     }

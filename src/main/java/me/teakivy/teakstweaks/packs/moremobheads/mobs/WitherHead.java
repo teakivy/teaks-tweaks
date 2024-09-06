@@ -31,12 +31,12 @@ public class WitherHead extends BaseMobHead {
         Random rand = new Random();
         int gen = rand.nextInt(4);
         switch (gen) {
-            case 0 -> event.getDrops().add(createHead("Wither Projectile", this.textures.get("projectile")));
-            case 1 -> event.getDrops().add(createHead("Blue Wither Projectile", this.textures.get("blue_projectile")));
+            case 0 -> event.getDrops().add(createHead(event, "Wither Projectile", this.textures.get("projectile")));
+            case 1 -> event.getDrops().add(createHead(event, "Blue Wither Projectile", this.textures.get("blue_projectile")));
         }
     }
 
     public ItemStack getNormalHead() {
-        return createHead("Wither Head", this.textures.get("normal"));
+        return createHead(null, "Wither Head", this.textures.get("normal"));
     }
 }
