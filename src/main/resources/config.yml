@@ -414,8 +414,6 @@ packs:
     creative-drops: true
     # Whether or not to allow graves to generate when a player dies in lava
     generate-in-lava: true
-    # Whether or not to create the graves above water and lava
-    create-above-fluids: false
     # Whether or not an info blob is sent to the console when a grave is created
     # Includes the grave location, the player who died, and the items in the grave
     console-info: false
@@ -493,7 +491,7 @@ packs:
     # Allow the mob to be set in its adult form (By Naming a mob 'grow')
     grow: true
 
-  # Kill Empty Boats
+  # Kill Boats
   # Adds an admin command to kill all boats without passengers.
   #
   # Commands:
