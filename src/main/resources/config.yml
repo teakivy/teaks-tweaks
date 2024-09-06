@@ -139,7 +139,8 @@ packs:
   # Enchantments are kept safely between merging and separating. Burning a netherite armored elytra will separate the items.
   #
   # Permissions:
-  # teakstweaks.armored-elytra
+  # teakstweaks.armored-elytra.create
+  # teakstweaks.armored-elytra.separate
   armored-elytra:
     enabled: false
 

@@ -12,8 +12,10 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
@@ -79,10 +81,14 @@ public class AFK extends BasePack {
                     if (player != null) {
                         if (kickAfter == 0) {
                             player.kickPlayer(MM.toString(newText(getConfig().getString("kick-message"))));
+                            AFKKickEvent afkKickEvent = new AFKKickEvent(player);
+                            Bukkit.getPluginManager().callEvent(afkKickEvent);
                         }
                         if (kickAfter > 0) {
                             if (lastMove.get(uuid) + (afkMinutes * 60 * 1000) + (kickAfter * 60 * 1000) < System.currentTimeMillis()) {
                                 player.kickPlayer(MM.toString(newText(getConfig().getString("kick-message"))));
+                                AFKKickEvent afkKickEvent = new AFKKickEvent(player);
+                                Bukkit.getPluginManager().callEvent(afkKickEvent);
                             }
                         }
                     }
@@ -131,6 +137,14 @@ public class AFK extends BasePack {
         Player player = event.getPlayer();
         afk.put(player.getUniqueId(), false);
         lastMove.put(player.getUniqueId(), System.currentTimeMillis());
+        AFKStatusChangeEvent afkEvent = new AFKStatusChangeEvent(player, false);
+        Bukkit.getPluginManager().callEvent(afkEvent);
+    }
+
+    @EventHandler
+    public void onLeave(PlayerQuitEvent event) {
+        Player player = event.getPlayer();
+        unAFK(player);
     }
 
     @EventHandler
@@ -145,11 +159,21 @@ public class AFK extends BasePack {
         lastMove.put(uuid, System.currentTimeMillis());
     }
 
+    @EventHandler
+    public void chatEvent(AsyncPlayerChatEvent event) {
+        Player player = event.getPlayer();
+        if (afk.get(player.getUniqueId())) {
+            unAFK(player);
+        }
+    }
+
     public static void afk(Player player, boolean fromCommand) {
         if (!fromCommand && lastMove.get(player.getUniqueId()) + (afkMinutes * 60 * 1000) > System.currentTimeMillis()) return;
         afkTeam.addEntry(player.getName());
         afk.put(player.getUniqueId(), true);
         displayAFKMessage(player, true);
+        AFKStatusChangeEvent afkEvent = new AFKStatusChangeEvent(player, true);
+        Bukkit.getPluginManager().callEvent(afkEvent);
     }
 
     public static void unAFK(Player player) {
@@ -157,6 +181,8 @@ public class AFK extends BasePack {
         afkTeam.removeEntry(player.getName());
         afk.put(player.getUniqueId(), false);
         displayAFKMessage(player, false);
+        AFKStatusChangeEvent afkEvent = new AFKStatusChangeEvent(player, false);
+        Bukkit.getPluginManager().callEvent(afkEvent);
     }
 
     public static void displayAFKMessage(Player player, Boolean isAFK) {
