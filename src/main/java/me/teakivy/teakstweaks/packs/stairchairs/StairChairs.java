@@ -10,10 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.type.Stairs;
-import org.bukkit.entity.AreaEffectCloud;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Marker;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.EntityDismountEvent;
@@ -36,7 +33,7 @@ public class StairChairs extends BasePack {
         if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.AIR) return;
         if (event.getPlayer().getInventory().getItemInMainHand().getType() != Material.SADDLE) return;
         if (event.getClickedBlock() == null) return;
-        if (!event.getClickedBlock().getType().toString().contains("STAIRS")) return;
+        if (!event.getClickedBlock().getType().toString().contains("STAIR")) return;
         if (isChair(event.getClickedBlock().getLocation())) return;
 
         if (((Stairs) event.getClickedBlock().getBlockData()).getHalf() != Stairs.Half.BOTTOM) return;
@@ -86,15 +83,10 @@ public class StairChairs extends BasePack {
         if (!block.getType().name().toLowerCase().contains("stairs")) return;
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (block.getLocation().add(0, 1, 0).getBlock().getType() != Material.AIR) return;
-        AreaEffectCloud seat = (AreaEffectCloud) block.getWorld().spawnEntity(block.getLocation().add(.5, 0, .5), EntityType.AREA_EFFECT_CLOUD);
+        ItemDisplay seat = (ItemDisplay) block.getWorld().spawnEntity(block.getLocation().add(.5, .5, .5), EntityType.ITEM_DISPLAY);
         seat.setRotation(0, 90);
         seat.addScoreboardTag("chair-rider");
         seat.setInvulnerable(true);
-        seat.setDuration(Integer.MAX_VALUE);
-        seat.setParticle(Particle.FLAME);
-        seat.setWaitTime(0);
-        seat.setColor(Color.WHITE);
-        seat.setRadius(.001F);
         seat.addPassenger(event.getPlayer());
     }
 
