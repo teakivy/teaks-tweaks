@@ -61,11 +61,8 @@ public class BaseMobHead implements Listener {
         if (event.getEntity().getType() != entity) return;
         if (!dropHead(event)) return;
 
-
-        System.out.println(Key.get("moremobheads/" + getName(event).toString().toLowerCase().replaceAll(" ", "_")).toString());
         Advancement advancement = Bukkit.getAdvancement(Key.get("moremobheads/" + getName(event).toString().toLowerCase().replaceAll(" ", "_") + "_head"));
         if (advancement == null) {
-            System.out.println("Advancement not found for " + getName(event).toString().toLowerCase().replaceAll(" ", "_") + "_head. Please report this to the plugin developer.");
             return;
         }
         AdvancementProgress progress = player.getAdvancementProgress(advancement);

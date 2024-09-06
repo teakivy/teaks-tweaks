@@ -25,7 +25,6 @@ public class CountDeaths extends BasePack {
     @EventHandler
     public void onDeath(EntityDeathEvent event) {
         if (event.getEntity().getType() == EntityType.PLAYER) return;
-        System.out.println(event.getEntity().getName());
 
         if (objective == null) {
             Scoreboard board = Objects.requireNonNull(Bukkit.getScoreboardManager()).getMainScoreboard();

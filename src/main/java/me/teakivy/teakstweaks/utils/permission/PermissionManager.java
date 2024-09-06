@@ -15,7 +15,6 @@ public class PermissionManager {
                 case NONE -> PermissionDefault.FALSE;
             };
             TeaksTweaks.getInstance().getServer().getPluginManager().addPermission(new Permission(permission.getPermission(), permissionDefault));
-            System.out.println("Registered permission: " + permission.getPermission());
         }
     }
 

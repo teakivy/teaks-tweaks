@@ -95,6 +95,5 @@ public class MMHDatapackCreator {
         result = result.replace("<announce_in_chat>", Config.getBoolean("packs.more-mob-heads.advancements.announce-in-chat") ? "true" : "false");
 
         advancements.put(key, result);
-        System.out.println("Added advancement for " + name);
     }
 }
