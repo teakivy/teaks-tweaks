@@ -62,4 +62,4 @@ Original Concept:
 **Vanilla Tweaks:** https://vanillatweaks.net/
 ## Support
 
-For Plugin support, Join my discord ([dsc.gg/teakivy](https://discord.gg/Xb6eeRevkb)) and ask for help in `#❓︱support`
+For Plugin support, Join my discord ([dsc.gg/teakivy](https://discord.com/invite/paf2fmMyHX)) and ask for help in `#❓︱support`
