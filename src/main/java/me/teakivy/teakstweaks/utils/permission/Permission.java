@@ -50,7 +50,8 @@ public enum Permission {
     COMMAND_GMSP("command.gmsp", PermissionType.OP),
     COMMAND_REPLY("command.reply"),
 
-    ARMORED_ELYTRA("armored-elytra"),
+    ARMORED_ELYTRA_CREATE("armored-elytra.create"),
+    ARMORED_ELYTRA_SEPARATE("armored-elytra.separate"),
     BACK_DEATH("back.death"),
     BACK_TELEPORT("back.teleport"),
     CAULDRON_CONCRETE("cauldron-concrete"),

@@ -39,7 +39,7 @@ public class ArmoredElytras extends BasePack {
 
     @EventHandler
     public void onDrop(PlayerDropItemEvent event) {
-        if (!Permission.ARMORED_ELYTRA.check(event.getPlayer())) return;
+        if (!Permission.ARMORED_ELYTRA_CREATE.check(event.getPlayer())) return;
 
         ItemStack item = event.getItemDrop().getItemStack();
         Item itemDrop = event.getItemDrop();
@@ -83,6 +83,7 @@ public class ArmoredElytras extends BasePack {
 
     @EventHandler
     public void onElytraDrop(PlayerDropItemEvent event) {
+        if (!Permission.ARMORED_ELYTRA_SEPARATE.check(event.getPlayer())) return;
         ItemStack itemStack = event.getItemDrop().getItemStack();
         if (!itemStack.hasItemMeta()) return;
         if (!itemStack.getItemMeta().getPersistentDataContainer().has(Key.get("armored_elytra"), PersistentDataType.STRING)) return;
