@@ -22,7 +22,7 @@ public enum Permission {
     COMMAND_GRAVE_UNINSTALL("command.grave.uninstall", PermissionType.OP),
     COMMAND_ITEMAVERAGES("command.itemaverages"),
     COMMAND_ITEMAVERAGES_UNINSTALL("command.itemaverages.uninstall", PermissionType.OP),
-    COMMAND_KILLBOATS("command.killboats"),
+    COMMAND_KILLBOATS("command.killboats", PermissionType.OP),
     COMMAND_MECHANICS("command.mechanics"),
     COMMAND_NIGHTVISION("command.nightvision"),
     COMMAND_PACKLIST("command.packlist"),
