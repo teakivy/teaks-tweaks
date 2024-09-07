@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.alwaysdrop;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -17,6 +18,7 @@ public class AlwaysDrop extends BasePack {
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
+        if (event.getPlayer().getGameMode() == GameMode.CREATIVE) return;
         List<String> blockList = getConfig().getStringList("blocks");
         for (String block : blockList) {
             if (event.getBlock().getType().toString().equalsIgnoreCase(block)) {
