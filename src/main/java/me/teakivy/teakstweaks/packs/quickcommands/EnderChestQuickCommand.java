@@ -18,7 +18,7 @@ public class EnderChestQuickCommand {
 
     class EnderChestCommand extends AbstractCommand {
         public EnderChestCommand() {
-            super(CommandType.PLAYER_ONLY, "quick-commands", "enderchest", Permission.COMMAND_ENDERCHEST, "quick_commands.enderchest");
+            super(CommandType.PLAYER_ONLY, "quick-commands", "enderchest", Permission.COMMAND_ENDERCHEST, List.of("echest", "ec"), "quick_commands.enderchest");
         }
 
         @Override
