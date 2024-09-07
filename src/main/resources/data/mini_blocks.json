@@ -949,6 +949,61 @@
       "name": "Cherry Leaves",
       "id": "cherry_leaves",
       "texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjk4YjM4YWViZTdjNGVkNWM4MTllZTQyM2YzYjQ2YzYwNjg0Y2JkM2VkMGZhNGE5ZmQ1OTNhY2E2M2MwYWM4NSJ9fX0"
+    },
+    {
+      "name": "Unlit Copper Bulb",
+      "id": "copper_bulb",
+      "texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzg3YzM0OTZjMzViMTlmNWE1M2JlZWNlOGJmMDEwOWFiMWJkOTkwOTk2OTAyZTdjZTZiNTYyNTA4MDFkMDkwZSJ9fX0"
+    },
+    {
+      "name": "Lit Copper Bulb",
+      "id": "copper_bulb",
+      "texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWMzMzMxNTkzZWE2OGQwMDFkMDViYTVhYTM5YzI2NjZlODQ2MTZiYTk5YWRjZTUzMmM0MTJmMzE4OGE2ZWU4ZSJ9fX0"
+    },
+    {
+      "name": "Crafter",
+      "id": "crafter",
+      "texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTA2ZTIxYmI0YmVjYjBiODkyMmFlODc1MGM0YThmNmY2ZTQ0ZjIyMjQ4OGFjNTg0YzdlMmNjZjc4YmZkNmQ5MiJ9fX0"
+    },
+    {
+      "name": "Unlit Exposed Copper Bulb",
+      "id": "exposed_copper_bulb",
+      "texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWEwZWIzOWIwZjhlYTI5ZmQ5ZWJhNmI2OWY0Y2E2Y2QwNTFmNzhiNWQ4N2VjODhmOWY0YmE1Zjk5Y2Y0NmNmNyJ9fX0"
+    },
+    {
+      "name": "Lit Exposed Copper Bulb",
+      "id": "exposed_copper_bulb",
+      "texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjk1NTg1ZWIyNDkyYzgzNDNhZWY4NGM5ZGRmOTVjMTVjMDRkNGViYThlMTAzZmM0MTc0NmJkY2U3ZTAyNTI5OSJ9fX0"
+    },
+    {
+      "name": "Unlit Oxidized Copper Bulb",
+      "id": "oxidized_copper_bulb",
+      "texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWIwNGVlYzAwMjc5NWI5ZGI4NTE5MjY3MThjZjdkMzA1MmVkZjIyOGJlN2VhOGUzYTY4YjU3NTNhMTUxYjVhYyJ9fX0"
+    },
+    {
+      "name": "Lit Oxidized Copper Bulb",
+      "id": "oxidized_copper_bulb",
+      "texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmU0NDZlZTMxYTk4MzFlOWUzNzU1YzY0NDQyMGM4N2NhMjFmOGUxMTM5YWMxODFjNGYyZGMxYzk4ZDQ1ZTY5NiJ9fX0"
+    },
+    {
+      "name": "Unlit Weathered Copper Bulb",
+      "id": "weathered_copper_bulb",
+      "texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDNhZGY4MTE0NjY2NjA2NDA3ZjBlZGRlMzhhNDkyYTU4N2VkZDEzMGZjMTBkNjY2YmEwNzJkMDNiZGM1YTU2NCJ9fX0"
+    },
+    {
+      "name": "Lit Weathered Copper Bulb",
+      "id": "weathered_copper_bulb",
+      "texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTE4ZmQ4ZjI1MGY0MzAxZTcxYjI1ZTY1ODZmY2IyZDg2ZWI0M2ZkNjY4NzZhZjgxNWQ5ZDBkODFkZmM5ZDJkYyJ9fX0"
+    },
+    {
+      "name": "Polished Tuff",
+      "id": "polished_tuff",
+      "texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWJmOWUzYTNkMjY2OWJmZmZhZjQ0ZTNhNDcyNjgwNzMyY2RmOGUxMmM1M2Q1NDI3MzYxZDBiZjhmMjU5ZWFmNyJ9fX0"
+    },
+    {
+      "name": "Tuff Bricks",
+      "id": "tuff_bricks",
+      "texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2VkOTU2MzRjMWNmYWFmYzBhNDZiOGY1YzE0MjhjMmUxM2JhYTRhNWJkMTgxZDhkZmQxMTk1MDBjZWZiNDc5YiJ9fX0"
     }
   ]
 }
