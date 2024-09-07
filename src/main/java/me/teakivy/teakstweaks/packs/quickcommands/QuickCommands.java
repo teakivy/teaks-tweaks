@@ -26,5 +26,21 @@ public class QuickCommands extends BasePack {
         if (getConfig().getBoolean("reply")) {
             new ReplyQuickCommand().register();
         }
+
+        if (getConfig().getBoolean("feed")) {
+            new FeedQuickCommand().register();
+        }
+
+        if (getConfig().getBoolean("heal")) {
+            new HealQuickCommand().register();
+        }
+
+        if (getConfig().getBoolean("fly")) {
+            new FlyQuickCommand().register();
+        }
+
+        if (getConfig().getBoolean("enderchest")) {
+            new EnderChestQuickCommand().register();
+        }
     }
 }

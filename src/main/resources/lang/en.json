@@ -244,6 +244,10 @@
   "quick_commands.gms.command_description": "Change your gamemode to survival.",
   "quick_commands.gmsp.command_description": "Change your gamemode to spectator.",
   "quick_commands.gma.command_description": "Change your gamemode to adventure.",
+  "quick_commands.feed.command_description": "Feed yourself.",
+  "quick_commands.heal.command_description": "Heal yourself.",
+  "quick_commands.fly.command_description": "Toggle flight.",
+  "quick_commands.enderchest.command_description": "Open your ender chest.",
 
   "sleepy_spider_eggs.name": "Sleepy Spider Eggs",
   "sleepy_spider_eggs.description": "When you sleep with a spider nearby you have a chance to \"consume\" 1-5 spider eggs, which give xp.",

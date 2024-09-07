@@ -49,6 +49,10 @@ public enum Permission {
     COMMAND_GMA("command.gma", PermissionType.OP),
     COMMAND_GMSP("command.gmsp", PermissionType.OP),
     COMMAND_REPLY("command.reply"),
+    COMMAND_FEED("command.feed"),
+    COMMAND_HEAL("command.heal"),
+    COMMAND_FLY("command.fly"),
+    COMMAND_ENDERCHEST("command.enderchest"),
 
     ARMORED_ELYTRA_CREATE("armored-elytra.create"),
     ARMORED_ELYTRA_SEPARATE("armored-elytra.separate"),

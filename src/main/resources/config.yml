@@ -573,6 +573,12 @@ packs:
     # Commands:
     # /reply <message> (Permission: teakstweaks.command.reply)
     reply: true
+    feed: true
+    heal: true
+    fly: true
+    enderchest: true
+    workbenches: true
+
 
   # Real Time Clock
   # Adds a command that allows you to view how long a world has been running in real time minutes and hours.
