@@ -556,7 +556,7 @@ packs:
     display-killer: true
 
   # Quick Commands
-  # Quickly switch game modes, and reply to messages
+  # Quickly switch game modes, reply, and more with simple commands.
   quick-commands:
     enabled: false
     # Game mode switcher commands
@@ -573,11 +573,36 @@ packs:
     # Commands:
     # /reply <message> (Permission: teakstweaks.command.reply)
     reply: true
+    # Feed command
+    # Sets the player's food level and saturation to full
+    #
+    # Commands:
+    # /feed [player] (Permission: teakstweaks.command.feed)
     feed: true
+    # Heal command
+    # Sets the player's health to full
+    #
+    # Commands:
+    # /heal [player] (Permission: teakstweaks.command.heal)
     heal: true
+    # Fly command
+    # Toggles the player's ability to fly
+    #
+    # Commands:
+    # /fly [player] (Permission: teakstweaks.command.fly)
     fly: true
+    # Ender Chest command
+    # Opens the player's enderchest
+    #
+    # Commands:
+    # /enderchest (Permission: teakstweaks.command.enderchest)
     enderchest: true
-    workbenches: true
+    # Crafting Table command
+    # Opens the crafting table
+    #
+    # Commands:
+    # /craftingtable (Permission: teakstweaks.command.craftingtable)
+    craftingtable: true
 
 
   # Real Time Clock
