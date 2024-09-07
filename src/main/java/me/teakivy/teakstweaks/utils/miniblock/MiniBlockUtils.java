@@ -22,9 +22,9 @@ public class MiniBlockUtils {
         JsonManager.saveToFile(
                 JsonManager.updateJson(
                         JsonManager.getFromFile("data/mini_blocks.json"),
-                        JsonManager.getFromResource("data/mob_heads.json"),
+                        JsonManager.getFromResource("data/mini_blocks.json"),
                         true),
-                "data/mob_heads.json");
+                "data/mini_blocks.json");
 
         File file = new File(TeaksTweaks.getInstance().getDataFolder() + "/data/mini_blocks.json");
         if (!file.exists()) TeaksTweaks.getInstance().saveResource("data/mini_blocks.json", false);

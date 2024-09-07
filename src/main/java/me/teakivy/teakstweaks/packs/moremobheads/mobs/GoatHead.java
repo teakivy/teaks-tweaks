@@ -28,7 +28,6 @@ public class GoatHead extends BaseMobHead {
 
     @Override
     public Sound getSound(EntityDeathEvent event) {
-        System.out.println("getSound goat");
         Goat goat = (Goat) event.getEntity();
 
         if (goat.isScreaming()) return Sound.ENTITY_GOAT_SCREAMING_PREPARE_RAM;

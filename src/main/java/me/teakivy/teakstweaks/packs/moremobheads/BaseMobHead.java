@@ -77,7 +77,6 @@ public abstract class BaseMobHead implements Listener {
     }
 
     public Sound getSound(EntityDeathEvent event) {
-        System.out.println(event);
         return this.sound;
     }
 
