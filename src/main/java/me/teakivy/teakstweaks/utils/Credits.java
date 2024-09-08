@@ -24,6 +24,9 @@ public class Credits {
                         " - RamrKorda\n" +
                         " - MCCasper\n" +
                         "\n" +
+                        "Supporters:\n" +
+                        " - loudambiance\n" +
+                        "\n" +
                         "Thanks to Sachin Gorkar for some of the tweak's ideas\n" +
                         "\n" +
                         "Fast Leaf Decay  By: @StarTux on Github\n" +
