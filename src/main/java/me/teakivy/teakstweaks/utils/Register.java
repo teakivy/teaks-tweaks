@@ -39,7 +39,6 @@ import me.teakivy.teakstweaks.packs.durabilityping.DuraPing;
 import me.teakivy.teakstweaks.packs.fastleafdecay.Decay;
 import me.teakivy.teakstweaks.packs.graves.GraveEvents;
 import me.teakivy.teakstweaks.packs.netherportalcoords.NetherPortalCoords;
-import me.teakivy.teakstweaks.packs.pillagertools.PillagerSpawning;
 import me.teakivy.teakstweaks.packs.realtimeclock.RealTimeClock;
 import me.teakivy.teakstweaks.packs.trackrawstatistics.RawStats;
 import me.teakivy.teakstweaks.packs.trackstatistics.StatTracker;
@@ -115,7 +114,6 @@ public class Register {
             new Highlighter(),
             new Loader(),
             new Decay(),
-            new PillagerSpawning(),
             new Elevator(),
             new Wrench(),
             new ArmoredElytras(),
