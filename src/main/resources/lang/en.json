@@ -190,9 +190,6 @@
   "nether_portal_coords.name": "Nether Portal Coords",
   "nether_portal_coords.description": "Adds a command that calculates where a nether portal must be placed in the other dimension. Useful for syncing up nether portals.<newline>Command: /portal",
 
-  "pillager_tools.name": "Pillager Tools",
-  "pillager_tools.description": "Allows you do disable bad omen, patrols, or patrol leaders separately.",
-
   "real_time_clock.name": "Real Time Clock",
   "real_time_clock.description": "Adds a command that allows you to view how long a world has been running in real time minutes and hours.<newline>Command: /rtc",
 

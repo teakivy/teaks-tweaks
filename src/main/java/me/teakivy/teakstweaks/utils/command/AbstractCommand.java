@@ -162,7 +162,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         getCommandMap().register("", cmd);
         cmd.setExecutor(this);
 
-        getCommandMap().register("", cmd);
+        getCommandMap().register("teakstweaks", cmd);
         Logger.info(get("startup.register.command", Placeholder.parsed("command", this.command)));
     }
 
