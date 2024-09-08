@@ -11,10 +11,10 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TPACommand extends AbstractCommand {
+public class TPAHereCommand extends AbstractCommand {
 
-    public TPACommand() {
-        super(CommandType.PLAYER_ONLY, "tpa", "tpa", Permission.COMMAND_TPA, Arg.required("accept", "cancel", "player"), Arg.optional("player"));
+    public TPAHereCommand() {
+        super(CommandType.PLAYER_ONLY, "tpa", "tpahere", Permission.COMMAND_TPA, "tpa", Arg.required("accept", "cancel", "player"), Arg.optional("player"));
     }
 
     @Override
@@ -74,7 +74,7 @@ public class TPACommand extends AbstractCommand {
             return;
         }
 
-        TPARequest request = new TPARequest(from, to, TPARequest.TPAType.TPA);
+        TPARequest request = new TPARequest(from, to, TPARequest.TPAType.TPAHERE);
         TPAHandler.sendRequest(request);
     }
 
