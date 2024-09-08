@@ -248,6 +248,7 @@ public class Register {
             new PackListCommand(),
             new DeleteHomeCommand(),
             new AltsCommand(),
+            new TPAHereCommand(),
         };
 
         for (AbstractCommand cmd : cmds) {
