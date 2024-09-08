@@ -43,7 +43,7 @@ public class QuickCommands extends BasePack {
             new EnderChestQuickCommand().register();
         }
 
-        if (getConfig().getBoolean("workbench")) {
+        if (getConfig().getBoolean("craftingtable")) {
             new CraftingTableQuickCommand().register();
         }
     }
