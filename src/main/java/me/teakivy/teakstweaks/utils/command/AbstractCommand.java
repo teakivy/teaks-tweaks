@@ -162,16 +162,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         getCommandMap().register("", cmd);
         cmd.setExecutor(this);
 
-        getCommandMap().register(this.command, cmd);
-        // TODO finish command map & test
-//        Bukkit.getCommandMap().getKnownCommands().put(this.command, cmd);
-
-        if (this.alias != null) {
-            for (String alias : this.alias) {
-//                Bukkit.getCommandMap().getKnownCommands().put(alias, cmd);
-            }
-        }
-
+        getCommandMap().register("", cmd);
         Logger.info(get("startup.register.command", Placeholder.parsed("command", this.command)));
     }
 
