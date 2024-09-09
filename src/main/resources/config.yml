@@ -719,22 +719,6 @@ packs:
   sudoku:
     enabled: false
 
-  # Tag
-  # Adds the Hermitcraft Tag game directly into your world! '/tag'
-  #
-  # Commands:
-  # /taggame give (Permission: teakstweaks.command.taggame give)
-  # /taggame uninstall (Permission: teakstweaks.command.taggame.uninstall)
-  #
-  # Permissions:
-  # teakstweaks.tag
-  tag:
-    enabled: false
-    # Display in chat when someone is tagged.
-    display-when-tagged: true
-    # Whether or not you can tag afk players (using afk-display pack)
-    allow-tagging-afk: false
-
   # Thunder Shrine
   # A shrine that allows you to create a thunder storm when offered a Nether Star
   #

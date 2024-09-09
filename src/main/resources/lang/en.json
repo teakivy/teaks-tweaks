@@ -64,12 +64,6 @@
   "xp_management.description": "Right-Click an enchanting table with an empty bottle to fill it with some of your XP.",
   "xp_management.bottle_contains": "<gold>Contains <return_amount> XP",
 
-  "tag.name": "Tag",
-  "tag.description": "Adds the Hermitcraft Tag game directly into your world! '/tag'",
-  "tag.error.cant_tag_afk": "<red>You can't Tag an AFK Player!",
-  "tag.tagged_message": "<red><tagged_name> <yellow>was tagged by <gold><tagger_name>",
-  "tag.item_name": "<yellow>Tag!",
-
   "thunder_shrine.name": "Thunder Shrine",
   "thunder_shrine.description": "A shrine that allows you to create a thunder storm when offered a Nether Star.<newline>Drop a Nether Star on top of a shrine to create a thunder storm.",
   "thunder_shrine.storm_initialize": "<red>A great storm has been initiated by the ritual.",
@@ -260,7 +254,7 @@
 
   "sudoku.name": "Sudoku",
   "sudoku.description": "Allow players to commit sudoku.<newline>Command: /sudoku",
-  "sudoku.death_message": "<player> committed Sudoku",
+  "sudoku.death_message": "<player> played Sudoku",
 
   "unsticky_pistons.name": "Unsticky Pistons",
   "unsticky_pistons.description": "Allow players to remove slime from pistons by right-clicking them with an axe.<newline>Right-click a piston with a slimeball to make it sticky.",
@@ -537,10 +531,6 @@
 
   "sudoku.command_description": "Commit Sudoku.",
   "sudoku.committed": "<green>Thanks for playing sudoku!",
-
-  "taggame.command_description": "The classic game of tag.",
-  "taggame.begun": "<yellow>Let the games begin!",
-  "taggame.uninstalled": "<yellow>The Tag Game has been uninstalled!",
 
   "teakstweakscommand.command_description": "Main Command for Teak's Tweaks.",
   "teakstweakscommand.version": "<green>v<version>",

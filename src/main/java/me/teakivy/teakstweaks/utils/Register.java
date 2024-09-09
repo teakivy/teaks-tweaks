@@ -12,7 +12,6 @@ import me.teakivy.teakstweaks.packs.huskdropssand.HuskDropsSand;
 import me.teakivy.teakstweaks.packs.miniblocks.MiniBlocks;
 import me.teakivy.teakstweaks.packs.wanderingtraderannouncements.WanderingTraderAnnouncements;
 import me.teakivy.teakstweaks.packs.xpmanagement.XPManagement;
-import me.teakivy.teakstweaks.packs.tag.Tag;
 import me.teakivy.teakstweaks.packs.thundershrine.Shrine;
 import me.teakivy.teakstweaks.packs.wanderingtrades.Trades;
 import me.teakivy.teakstweaks.packs.armoredelytra.ArmoredElytras;
@@ -101,7 +100,6 @@ public class Register {
             new Silencer(),
             new ConduitPower(),
             new NightVision(),
-            new Tag(),
             new UnlockRecipes(),
             new VillagerDeath(),
             new Trades(),
@@ -231,7 +229,6 @@ public class Register {
             new TPACommand(),
             new HomeCommand(),
             new DurabilityPingCommand(),
-            new TagGameCommand(),
             new BackCommand(),
             new AFKCommand(),
             new ShrineCommand(),
