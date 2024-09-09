@@ -687,6 +687,8 @@ packs:
   # /conduitpower (Permission: teakstweaks.command.conduitpower)
   spectator-conduit-power:
     enabled: false
+    # Whether or not to auto-enable conduit power when in spectator
+    auto-enable: true
 
   # Spectator Night Vision
   # Easily toggle night vision when in spectator.
@@ -695,6 +697,8 @@ packs:
   # /nightvision (Permission: teakstweaks.command.nightvision)
   spectator-night-vision:
     enabled: false
+    # Whether or not to auto-enable night vision when in spectator
+    auto-enable: true
 
   # Stair Chairs
   # Allow players to sit on chairs
