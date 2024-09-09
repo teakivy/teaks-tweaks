@@ -121,7 +121,7 @@ public class Shrine extends BasePack {
     }
 
     public static void createShrine(Location loc) throws IOException {
-        Marker shrine = (Marker) Objects.requireNonNull(loc.getWorld()).spawnEntity(loc, EntityType.MARKER);
+        Marker shrine = (Marker) Objects.requireNonNull(loc.getWorld()).spawnEntity(loc.add(0.5, 0, 0.5), EntityType.MARKER);
 
         PersistentDataContainer container = shrine.getPersistentDataContainer();
         container.set(Key.get("thunder-shrine"), PersistentDataType.BOOLEAN, true);
