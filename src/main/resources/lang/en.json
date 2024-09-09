@@ -247,9 +247,6 @@
   "quick_commands.enderchest.command_description": "Open your Ender Chest.",
   "quick_commands.craftingtable.command_description": "Open a Crafting Table.",
 
-  "sleepy_spider_eggs.name": "Sleepy Spider Eggs",
-  "sleepy_spider_eggs.description": "When you sleep with a spider nearby you have a chance to \"consume\" 1-5 spider eggs, which give xp.",
-
   "slime_cream.name": "Slime Cream",
   "slime_cream.description": "Convert Slime Balls to Magma Cream by right-clicking a lava cauldron.<newline>Convert Magma Cream to Slime Balls by right-clicking a water cauldron.",
 

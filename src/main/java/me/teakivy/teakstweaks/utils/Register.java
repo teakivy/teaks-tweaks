@@ -52,7 +52,6 @@ import me.teakivy.teakstweaks.packs.invisibleitemframes.InvisibleItemFrames;
 import me.teakivy.teakstweaks.packs.keepsmall.KeepSmall;
 import me.teakivy.teakstweaks.packs.lecternreset.LecternReset;
 import me.teakivy.teakstweaks.packs.quickcommands.QuickCommands;
-import me.teakivy.teakstweaks.packs.sleepyspidereggs.SleepySpiderEggs;
 import me.teakivy.teakstweaks.packs.slimecream.SlimeCream;
 import me.teakivy.teakstweaks.packs.spectatoralts.SpectatorAlts;
 import me.teakivy.teakstweaks.packs.stairchairs.StairChairs;
@@ -137,7 +136,6 @@ public class Register {
             new FixedItemFrames(),
             new InstaMine(),
             new BatMembranes(),
-            new SleepySpiderEggs(),
             new NetherPortalCoords(),
             new RealTimeClock(),
             new Spawn(),

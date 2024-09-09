@@ -627,16 +627,6 @@ packs:
     # Whether or not you can silence minecart types
     allow-minecarts: false
 
-
-  # Sleepy Spiders Eggs
-  # When you sleep with a spider nearby you have a chance to "consume" 1-5 spider eggs, which give xp
-  # Inspired by a tweet by @Xilefian https://twitter.com/Xilefian/status/1584642036862685184
-  #
-  # Permissions:
-  # teakstweaks.sleepy-spider-eggs
-  sleepy-spider-eggs:
-    enabled: false
-
   # Slime Cream
   # Convert Slime Balls to Magma Cream by right-clicking a lava cauldron
   # Convert Magma Cream to Slime Balls by right-clicking a water cauldron
@@ -771,7 +761,11 @@ packs:
   #
   # Commands:
   # /tpa <player> (Permission: teakstweaks.command.tpa)
-  # /tpa accept (Permission: None)
+  # /tpa accept (Permission: teakstweaks.command.tpa)
+  # /tpa cancel (Permission: teakstweaks.command.tpa)
+  # /tpahere <player> (Permission: teakstweaks.command.tpa)
+  # /tpahere accept (Permission: teakstweaks.command.tpa)
+  # /tpahere cancel (Permission: teakstweaks.command.tpa)
   tpa:
     enabled: false
 
