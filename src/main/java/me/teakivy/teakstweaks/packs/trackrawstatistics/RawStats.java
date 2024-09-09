@@ -167,6 +167,15 @@ public class RawStats extends BasePack {
         registerStat( "ts_KillGlowSquid", "minecraft.killed:minecraft.glow_squid", "Kill Glow Squid");
         registerStat( "ts_KillAxolotl", "minecraft.killed:minecraft.axolotl", "Kill Axolotl");
         registerStat( "ts_KillGoat", "minecraft.killed:minecraft.goat", "Kill Goat");
+        registerStat( "ts_KillWarden", "minecraft.killed:minecraft.warden", "Kill Warden");
+        registerStat( "ts_KillFrog", "minecraft.killed:minecraft.frog", "Kill Frog");
+        registerStat( "ts_KillTadpole", "minecraft.killed:minecraft.allay", "Kill Allay");
+        registerStat( "ts_KillAllay", "minecraft.killed:minecraft.tadpole", "Kill Tadpole");
+        registerStat( "ts_KillCamel", "minecraft.killed:minecraft.camel", "Kill Camel");
+        registerStat( "ts_KillSniffer", "minecraft.killed:minecraft.sniffer", "Kill Sniffer");
+        registerStat( "ts_KillArmadillo", "minecraft.killed:minecraft.armadillo", "Kill Armadillo");
+        registerStat( "ts_KillBreeze", "minecraft.killed:minecraft.breeze", "Kill Breeze");
+        registerStat( "ts_KillBogged", "minecraft.killed:minecraft.bogged", "Kill Bogged");
         registerStat( "ts_DthHoglin", "minecraft.killed_by:minecraft.hoglin", "Killed by Hoglin");
         registerStat( "ts_DthPiglin", "minecraft.killed_by:minecraft.piglin", "Killed by Piglin");
         registerStat( "ts_DthStrider", "minecraft.killed_by:minecraft.strider", "Killed by Strider");
@@ -219,6 +228,15 @@ public class RawStats extends BasePack {
         registerStat( "ts_DthPanda", "minecraft.killed_by:minecraft.panda", "Killed by Panda");
         registerStat( "ts_DthPillager", "minecraft.killed_by:minecraft.pillager", "Killed by Pillager");
         registerStat( "ts_DthRavager", "minecraft.killed_by:minecraft.ravager", "Killed by Ravager");
+        registerStat( "ts_DthWarden", "minecraft.killed_by:minecraft.warden", "Killed by Warden");
+        registerStat( "ts_DthFrog", "minecraft.killed_by:minecraft.frog", "Killed by Frog");
+        registerStat( "ts_DthTadpole", "minecraft.killed_by:minecraft.allay", "Killed by Allay");
+        registerStat( "ts_DthAllay", "minecraft.killed_by:minecraft.tadpole", "Killed by Tadpole");
+        registerStat( "ts_DthCamel", "minecraft.killed_by:minecraft.camel", "Killed by Camel");
+        registerStat( "ts_DthSniffer", "minecraft.killed_by:minecraft.sniffer", "Killed by Sniffer");
+        registerStat( "ts_DthArmadillo", "minecraft.killed_by:minecraft.armadillo", "Killed by Armadillo");
+        registerStat( "ts_DthBreeze", "minecraft.killed_by:minecraft.breeze", "Killed by Breeze");
+        registerStat( "ts_DthBogged", "minecraft.killed_by:minecraft.bogged", "Killed by Bogged");
     }
 
     public void registerStat(String name, String criteria, String displayName) {
