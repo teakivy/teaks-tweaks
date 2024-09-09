@@ -40,6 +40,7 @@ public enum Permission {
     COMMAND_SUDOKU("command.sudoku"),
     COMMAND_TEAKSTWEAKS("command.teakstweaks"),
     COMMAND_TPA("command.tpa"),
+    COMMAND_TPAHERE("command.tpahere"),
     COMMAND_WORKSTATIONHIGHLIGHT("command.workstationhighlight"),
     COMMAND_GMC("command.gmc", PermissionType.OP),
     COMMAND_GMS("command.gms", PermissionType.OP),
