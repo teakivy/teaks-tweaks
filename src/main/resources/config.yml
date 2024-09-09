@@ -827,35 +827,33 @@ packs:
       # What Players will be avaliable in the Wandering Trader shop. (Default: hermitcraft heads)
       # To add your own set of heads, just make a list using ` - ` and put the ign of the players you want.
       players:
-        - PythonGB
-        - Xisuma
+        - BdoubleO100
+        - Cubfan135
         - Docm77
-        - Jessassin
-        - xBCrafted
-        - Etho
-        - Mumbo
+        - EthosLab
+        - FalseSymmetry
+        - GeminiTay
+        - GoodTimesWithScar
+        - Grian
+        - Hypnotizd
         - iJevin
         - impulseSV
-        - Renthedog
-        - Tinfoilchef
-        - Biffa2001
-        - Stressmonster101
-        - GoodTimeWithScar
-        - Zedaph
-        - joehillssays
-        - cubfan135
-        - Welsknight
-        - Keralis
-        - falsesymmetry
-        - hypnotizd
-        - VintageBeef
-        - BdoubleO100
-        - Tango
-        - Grian
         - iskall85
-        - ZombieCleo
+        - JoeHills
+        - Keralis
+        - MumboJumbo
         - PearlescentMoon
-        - GeminiTay
+        - Rendog
+        - Skizzleman
+        - SmallishBeans
+        - Stressmonster101
+        - TangoTek
+        - VintageBeef
+        - Welsknight
+        - xBCrafted
+        - Xisumavoid
+        - Zedaph
+        - ZombieCleo
 
   # Workstation Highlights
   # Allows you to find the workstation of any villager.
