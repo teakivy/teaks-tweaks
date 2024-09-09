@@ -39,7 +39,7 @@ public class Wrench extends BasePack {
     public void init() {
         super.init();
 
-        NamespacedKey key = Key.get("redstone_wrench");
+        NamespacedKey key = Key.get("rotation_wrench");
 
         ItemStack result = new ItemStack(Material.CARROT_ON_A_STICK);
         ItemMeta meta = result.getItemMeta();
