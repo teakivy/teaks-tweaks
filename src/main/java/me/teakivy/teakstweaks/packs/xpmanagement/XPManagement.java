@@ -4,6 +4,7 @@ import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.MM;
+import me.teakivy.teakstweaks.utils.XPUtils;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Bukkit;
@@ -76,7 +77,7 @@ public class XPManagement extends BasePack {
         Player player = event.getPlayer();
         ItemStack item = event.getItem();
 
-        if (!Permission.XP_MANAGEMENT_BOTTLE.check(event.getPlayer())) return;
+        if (!Permission.XP_MANAGEMENT_BOTTLE.check(player)) return;
 
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (event.getClickedBlock() == null) return;
@@ -84,18 +85,18 @@ public class XPManagement extends BasePack {
         if (item == null) return;
         if (item.getType() != Material.GLASS_BOTTLE) return;
 
-        if (player.getTotalExperience() <= getConfig().getInt("take-xp-amount")) return;
+        if (XPUtils.getPlayerExp(player) <= getConfig().getInt("take-xp-amount")) return;
 
         final int takeXPAmount = getConfig().getInt("take-xp-amount");
         int finalXPAmount = takeXPAmount;
         int timesToBottle = 1;
         if (player.isSneaking() && getConfig().getBoolean("sneak-to-bottle-all")) {
-            if (player.getTotalExperience() >= item.getAmount() * takeXPAmount) {
+            if (XPUtils.getPlayerExp(player) >= item.getAmount() * takeXPAmount) {
                 timesToBottle = item.getAmount();
                 finalXPAmount = item.getAmount() * takeXPAmount;
             } else {
                 int bottles = item.getAmount();
-                int xpTimes = (int) Math.floor((double) player.getTotalExperience() / takeXPAmount);
+                int xpTimes = (int) Math.floor((double) XPUtils.getPlayerExp(player) / takeXPAmount);
                 if (xpTimes > bottles) {
                     timesToBottle = item.getAmount();
                     finalXPAmount = takeXPAmount * item.getAmount();
