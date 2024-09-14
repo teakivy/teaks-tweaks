@@ -22,9 +22,8 @@ public class CraftableHorseArmor extends AbstractCraftingTweak {
 
     private static void newHorseArmor(Material input, Material output) {
         ShapedRecipe recipe = new ShapedRecipe(Key.get(output.toString().toLowerCase()), new ItemStack(output));
-        recipe.shape("  #", "###", "#@#");
+        recipe.shape("# #", "###", "# #");
         recipe.setIngredient('#', input);
-        recipe.setIngredient('@', Material.SADDLE);
         Bukkit.addRecipe(recipe);
     }
 }
