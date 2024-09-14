@@ -319,11 +319,8 @@
   "craftable_blackstone.name": "Craftable Blackstone",
   "craftable_blackstone.description": "Allows you to craft Blackstone or Polished Blackstone using Basalt & Coal/Charcoal",
 
-  "craftable_bundles_leather.name": "Craftable Bundles (Leather)",
-  "craftable_bundles_leather.description": "Allows you to craft Bundles using Leather.",
-
-  "craftable_bundles_rabbit_hide.name": "Craftable Bundles (Rabbit Hide)",
-  "craftable_bundles_rabbit_hide.description": "Allows you to craft Bundles using Rabbit Hide.",
+  "craftable_bundles.name": "Craftable Bundles",
+  "craftable_bundles.description": "Allows you to craft the experimental bundle item. (Using 1 Leather and 1 String)",
 
   "craftable_coral_blocks_2x2.name": "Craftable Coral Blocks (2x2)",
   "craftable_coral_blocks_2x2.description": "Allows you to craft Coral Blocks from their Coral Plant in a 2x2. Both Tubes and Fans may be used interchangeably.",
@@ -345,9 +342,6 @@
 
   "craftable_name_tags.name": "Craftable Name Tags",
   "craftable_name_tags.description": "Allows you to craft Name Tags.",
-
-  "craftable_sculk_sensors.name": "Craftable Sculk Sensors",
-  "craftable_sculk_sensors.description": "Allows you to craft Sculk Sensors",
 
   "craftable_small_dripleaf.name": "Craftable Small Dripleaf",
   "craftable_small_dripleaf.description": "Allows you to craft Small Dripleaf from a Large Dripleaf.",

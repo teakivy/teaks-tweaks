@@ -15,18 +15,9 @@ public class CraftableBundles extends AbstractCraftingTweak {
 
     @Override
     public void registerRecipes() {
-        ShapelessRecipe recipe = new ShapelessRecipe(Key.get("bundle_rabbit_hide_bundles"), new ItemStack(Material.BUNDLE));
+        ShapelessRecipe recipe = new ShapelessRecipe(Key.get("bundle_craftables"), new ItemStack(Material.BUNDLE));
         recipe.addIngredient(Material.LEATHER);
         recipe.addIngredient(Material.STRING);
         Bukkit.addRecipe(recipe);
     }
-
-//    @Override
-//    public void registerRecipes() {
-//        ShapedRecipe recipe = new ShapedRecipe(Key.get("bundle_rabbit_hide_bundles"), new ItemStack(Material.BUNDLE));
-//        recipe.shape ("s#s", "# #", "###");
-//        recipe.setIngredient('#', Material.RABBIT_HIDE);
-//        recipe.setIngredient('s', Material.STRING);
-//        Bukkit.addRecipe(recipe);
-//    }
 }
