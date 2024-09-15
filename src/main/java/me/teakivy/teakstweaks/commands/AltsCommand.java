@@ -14,7 +14,7 @@ import java.util.UUID;
 public class AltsCommand extends AbstractCommand {
 
     public AltsCommand() {
-        super(CommandType.PLAYER_ONLY, "spectator-alts", "alts", Permission.COMMAND_ALT, Arg.required("add", "remove", "list"), Arg.optional("alt"), Arg.optional("player"));
+        super(CommandType.PLAYER_ONLY, "spectator-alts", "alts", Permission.COMMAND_ALTS, Arg.required("add", "remove", "list"), Arg.optional("alt"), Arg.optional("player"));
     }
 
     @Override
@@ -35,7 +35,7 @@ public class AltsCommand extends AbstractCommand {
         }
 
         if (event.hasArgs(3)) {
-            if (!checkPermission(Permission.COMMAND_ALT_MANAGE, true)) {
+            if (!checkPermission(Permission.COMMAND_ALTS_MANAGE, true)) {
                 sendError("no_permission_modify_others");
                 return;
             }

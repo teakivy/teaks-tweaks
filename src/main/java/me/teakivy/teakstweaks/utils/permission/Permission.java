@@ -5,8 +5,8 @@ import org.bukkit.command.CommandSender;
 public enum Permission {
     COMMAND_AFK("command.afk"),
     COMMAND_AFK_UNINSTALL("command.afk.uninstall", PermissionType.OP),
-    COMMAND_ALT("command.alt"),
-    COMMAND_ALT_MANAGE("command.alt.manage", PermissionType.OP),
+    COMMAND_ALTS("command.alts"),
+    COMMAND_ALTS_MANAGE("command.alts.manage", PermissionType.OP),
     COMMAND_BACK("command.back"),
     COMMAND_CONDUITPOWER("command.conduitpower"),
     COMMAND_COORDSHUD("command.coordshud"),
