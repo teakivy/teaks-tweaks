@@ -1005,7 +1005,7 @@ crafting-tweaks:
     enabled: false
 
   # More Trapdoors
-  # Craft 12 Trapdoors instead of 3.
+  # Craft 12 Trapdoors instead of 2.
   more-trapdoors:
     enabled: false
 

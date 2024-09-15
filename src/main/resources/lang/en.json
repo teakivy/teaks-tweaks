@@ -444,7 +444,7 @@
   "durabilityping.command_description": "Get pinged when your tools drop below 10% Durability.",
   "durabilityping.error.missing_preview_selection": "<red>Please enter which section to preview!",
   "durabilityping.error.missing_set_selection": "<red>Please enter which section to set!",
-  "durabilityping.preview_panel.hover": "<gray>>Click to preview</gray> <name>",
+  "durabilityping.preview_panel.hover": "<gray>Click to preview</gray> <name>",
   "durabilityping.checkbox.yes.hover": "<red>Click to disable</red> <name>",
   "durabilityping.checkbox.no.hover": "<green>Click to enable</green> <name>",
   "durabilityping.config.ping_for_hand_items.name": "Ping for Hand Items",
