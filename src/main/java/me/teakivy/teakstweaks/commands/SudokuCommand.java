@@ -5,10 +5,12 @@ import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 
+import java.util.List;
+
 public class SudokuCommand extends AbstractCommand {
 
     public SudokuCommand() {
-        super(CommandType.PLAYER_ONLY, "sudoku", "sudoku", Permission.COMMAND_SUDOKU);
+        super(CommandType.PLAYER_ONLY, "sudoku", "sudoku", Permission.COMMAND_SUDOKU, List.of("suicide"));
     }
 
     @Override
