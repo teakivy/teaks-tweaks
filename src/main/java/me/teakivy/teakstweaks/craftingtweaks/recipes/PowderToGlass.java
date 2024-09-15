@@ -34,7 +34,7 @@ public class PowderToGlass extends AbstractCraftingTweak {
     }
 
     public static void newSmeltableGlass(String color) {
-        FurnaceRecipe recipe = new FurnaceRecipe(Key.get("rotten_flesh_to_leather"), new ItemStack(Material.valueOf(color + "_STAINED_GLASS")), Material.valueOf(color + "_CONCRETE_POWDER"), 10, 100);
+        FurnaceRecipe recipe = new FurnaceRecipe(Key.get(color.toLowerCase() + "_powder_to_glass"), new ItemStack(Material.valueOf(color + "_STAINED_GLASS")), Material.valueOf(color + "_CONCRETE_POWDER"), 10, 100);
         Bukkit.addRecipe(recipe);
     }
 }
