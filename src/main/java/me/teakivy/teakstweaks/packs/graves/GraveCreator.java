@@ -9,10 +9,12 @@ import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
@@ -195,6 +197,17 @@ public class GraveCreator {
         }
 
         items.addAll(items2);
+
+        for (ItemStack item : items) {
+            if (item == null) continue;
+
+            if (!item.hasItemMeta()) continue;
+            ItemMeta meta = item.getItemMeta();
+            if (meta == null) continue;
+            if (meta.getEnchantLevel(Enchantment.VANISHING_CURSE) > 0) {
+                toRemove.add(item);
+            }
+        }
 
         items.removeAll(toRemove);
 
