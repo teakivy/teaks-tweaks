@@ -530,6 +530,7 @@
   "teakstweakscommand.version": "<green>v<version>",
   "teakstweakscommand.support": "<green><discord>",
   "teakstweakscommand.update": "<green><url>",
+  "teakstweakscommand.wiki": "<green><click:open_url:'<url>'><url></click>",
   "teakstweakscommand.info.dashed_line": "<gray>-----------------------------------------------------",
   "teakstweakscommand.info.title": "<gold>Teak's Tweaks <yellow>v<version>",
   "teakstweakscommand.info.author": "Author: <green><author>",

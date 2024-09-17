@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.utils.Wiki;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.Arg;
 import me.teakivy.teakstweaks.utils.command.CommandEvent;
@@ -13,7 +14,7 @@ import java.util.Arrays;
 public class TeaksTweaksCommand extends AbstractCommand {
 
     public TeaksTweaksCommand() {
-        super(CommandType.ALL, null, "teakstweaks", Permission.COMMAND_TEAKSTWEAKS, Arrays.asList("tweaks", "tt"), "teakstweakscommand", Arg.optional("info", "version", "support", "update"));
+        super(CommandType.ALL, null, "teakstweaks", Permission.COMMAND_TEAKSTWEAKS, Arrays.asList("tweaks", "tt"), "teakstweakscommand", Arg.optional("info", "version", "support", "update", "wiki"), Arg.optional("packs", "craftingtweaks", "commands"));
     }
 
     @Override
@@ -35,6 +36,9 @@ public class TeaksTweaksCommand extends AbstractCommand {
             case "update":
                 sendMessage("update", insert("url", get("plugin.url")));
                 return;
+            case "wiki":
+                handleWiki(event);
+                return;
             default:
                 sendUsage();
         }
@@ -54,5 +58,26 @@ public class TeaksTweaksCommand extends AbstractCommand {
         sendMessage("info.support", insert("discord", get("plugin.discord")));
         sendText("");
         sendMessage("info.dashed_line");
+    }
+
+    public void handleWiki(CommandEvent event) {
+        if (!event.isArg(1)) {
+            sendMessage("wiki", insert("url", Wiki.getWiki()));
+            return;
+        }
+        String type = event.getArg(1);
+        switch (type) {
+            case "packs":
+                sendMessage("wiki", insert("url", Wiki.getWikiPage("Packs")));
+                return;
+            case "craftingtweaks":
+                sendMessage("wiki", insert("url", Wiki.getWikiPage("Crafting-Tweaks")));
+                return;
+            case "commands":
+                sendMessage("wiki", insert("url", Wiki.getWikiPage("Commands")));
+                return;
+            default:
+                sendUsage();
+        }
     }
 }
