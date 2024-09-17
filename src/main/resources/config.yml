@@ -1063,6 +1063,6 @@ crafting-tweaks:
 # Leave these options alone unless you know what you're doing!
 # Changing these values may cause unexpected issues.
 config:
-  created-version: 1.11.2-beta
-  version: 1.11.2-beta
+  created-version: 2.0.0
+  version: 2.0.0
   dev-mode: false
