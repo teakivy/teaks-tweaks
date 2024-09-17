@@ -1,15 +1,16 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.packs.homes.Home;
+import me.teakivy.teakstweaks.packs.homes.HomesPack;
 import me.teakivy.teakstweaks.utils.Wiki;
-import me.teakivy.teakstweaks.utils.command.AbstractCommand;
-import me.teakivy.teakstweaks.utils.command.Arg;
-import me.teakivy.teakstweaks.utils.command.CommandEvent;
-import me.teakivy.teakstweaks.utils.command.CommandType;
+import me.teakivy.teakstweaks.utils.command.*;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class TeaksTweaksCommand extends AbstractCommand {
 
@@ -79,5 +80,13 @@ public class TeaksTweaksCommand extends AbstractCommand {
             default:
                 sendUsage();
         }
+    }
+
+    @Override
+    public List<String> tabComplete(TabCompleteEvent event) {
+        if (event.isArg(0)) return Arrays.asList("info", "version", "support", "update", "wiki");
+        if (event.isArg(1) && event.isArg(0, "wiki")) return Arrays.asList("packs", "craftingtweaks", "commands");
+
+        return null;
     }
 }
