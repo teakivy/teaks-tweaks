@@ -541,6 +541,7 @@
   "test.command_description": "Teak's Tweaks Testing Command.",
   "test.test": "<rainbow>Hello, <name>! Looks like you found my test command! :D</rainbow>",
 
+  "tpahere.command_description": "Request for another player to teleport to you.",
   "tpa.command_description": "Request to teleport to another player.",
   "tpa.error.specify_player": "<red>Please specify a player to teleport to!",
   "tpa.error.no_pending_requests": "<red>You do not have any pending teleport requests!",
