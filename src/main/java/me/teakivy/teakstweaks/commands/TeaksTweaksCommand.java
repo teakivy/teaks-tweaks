@@ -6,16 +6,23 @@ import me.teakivy.teakstweaks.packs.homes.HomesPack;
 import me.teakivy.teakstweaks.utils.Wiki;
 import me.teakivy.teakstweaks.utils.command.*;
 import me.teakivy.teakstweaks.utils.config.Config;
+import me.teakivy.teakstweaks.utils.lang.Translatable;
+import me.teakivy.teakstweaks.utils.log.PasteBookUploader;
+import me.teakivy.teakstweaks.utils.log.PasteManager;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class TeaksTweaksCommand extends AbstractCommand {
+    private static final int PASTE_COOLDOWN = 30 * 60 * 60 * 1000;
+    private static long lastPaste = 0;
+
 
     public TeaksTweaksCommand() {
-        super(CommandType.ALL, null, "teakstweaks", Permission.COMMAND_TEAKSTWEAKS, Arrays.asList("tweaks", "tt"), "teakstweakscommand", Arg.optional("info", "version", "support", "update", "wiki"), Arg.optional("packs", "craftingtweaks", "commands"));
+        super(CommandType.ALL, null, "teakstweaks", Permission.COMMAND_TEAKSTWEAKS, Arrays.asList("tweaks", "tt"), "teakstweakscommand", Arg.optional("info", "version", "support", "update", "wiki", "paste"), Arg.optional("packs", "craftingtweaks", "commands", "true", "false"));
     }
 
     @Override
@@ -39,6 +46,9 @@ public class TeaksTweaksCommand extends AbstractCommand {
                 return;
             case "wiki":
                 handleWiki(event);
+                return;
+            case "paste":
+                handlePaste(event);
                 return;
             default:
                 sendUsage();
@@ -82,10 +92,39 @@ public class TeaksTweaksCommand extends AbstractCommand {
         }
     }
 
+    public void handlePaste(CommandEvent event) {
+        if (!checkPermission(Permission.COMMAND_TEAKSTWEAKS_PASTE)) return;
+        if (System.currentTimeMillis() - lastPaste < PASTE_COOLDOWN) {
+            sendMessage("paste.error.cooldown");
+            return;
+        }
+
+        sendMessage("paste.uploading");
+
+        String playerName = event.getSender().getName();
+        boolean logs = Config.getBoolean("settings.send-log-in-paste");
+
+        if (event.isArg(1)) {
+            if (event.getArg(1).equalsIgnoreCase("false")) logs = false;
+            if (event.getArg(1).equalsIgnoreCase("true")) logs = true;
+        }
+
+        String paste = PasteManager.getPasteContent(playerName, logs);
+        try {
+            String url = PasteBookUploader.uploadText(paste, "Teak's Tweaks Support: " + playerName);
+            sendMessage("paste.success", insert("url", url));
+            lastPaste = System.currentTimeMillis();
+        } catch (IOException e) {
+            sendMessage("paste.error");
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public List<String> tabComplete(TabCompleteEvent event) {
-        if (event.isArg(0)) return Arrays.asList("info", "version", "support", "update", "wiki");
+        if (event.isArg(0)) return Arrays.asList("info", "version", "support", "update", "wiki", "paste");
         if (event.isArg(1) && event.isArg(0, "wiki")) return Arrays.asList("packs", "craftingtweaks", "commands");
+        if (event.isArg(1) && event.isArg(0, "paste")) return Arrays.asList("true", "false");
 
         return null;
     }

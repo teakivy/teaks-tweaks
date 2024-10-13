@@ -1,0 +1,54 @@
+uses: SpraxDev/Action-SpigotMC@v5
+with:
+  # A comma-separated list of Spigot version that should be compiled
+  # These values are later given to the BuildTools.jar as '--rev' argument
+  #
+  # Example: latest, 1.19.2, 1.8.8
+  versions: latest # Optional
+
+  # Should sources be generated?
+  # If enabled, BuildTools is provided the '--generate-source' argument
+  generateSrc: false # Optional
+
+  # Should the documentation be generated?
+  # If enabled, BuildTools is provided the '--generate-docs' argument
+  generateDoc: false # Optional
+
+  # Should we disable the BuildTools's Java-Version-Check?
+  # If enabled, BuildTools is provided the '--disable-java-check' argument
+  disableJavaCheck: false # Optional
+
+  # Should we download additional files to deobfuscate CraftBukkit and NMS?
+  # If enabled, BuildTools will also install additional files that are required to deobfuscate CraftBukkit and NMS with the SpecialSource-Plugin
+  remapped: false # Optional
+
+  # Disables the check for existing files in the local maven repository
+  # Normally, a version is skipped if it is already installed
+  # in the local maven repository to speed up build time
+  forceRun: false # Optional
+
+  # The amount of builds allowed to run at the same time
+  # Set to '-1' to use system's cpu core count
+  threads: -1 # Optional
+
+  # You can choose between different BuildTools to be used by this action
+  # Available: SpigotMC
+  buildToolProvider: SpigotMC # Optional
+
+
+  # The host of the SFTP-Server to use as dedicated artifact cache
+  sftpCacheHost: '' # Optional
+
+  # The port of the SFTP-Server to use as dedicated artifact cache
+  sftpCachePort: 22 # Optional
+
+  # The username of the SFTP-Server to use as dedicated artifact cache
+  sftpCacheUser: '' # Optional
+
+  # The private key of the SFTP-Server to use as dedicated artifact cache
+  # The configured value should start with `-----BEGIN OPENSSH PRIVATE KEY-----`
+  sftpCachePrivateKey: '' # Optional
+
+  # Setting this to the server's host key, will enable strictly checking the host key
+  # something like `ssh-ed25519 [HASH]` is expected here
+  sftpCacheExpectedHostKey: '' # Optional

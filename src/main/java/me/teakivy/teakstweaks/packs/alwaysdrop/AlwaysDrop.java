@@ -18,6 +18,7 @@ public class AlwaysDrop extends BasePack {
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
+        if (event.isCancelled()) return;
         if (event.getPlayer().getGameMode() == GameMode.CREATIVE) return;
         List<String> blockList = getConfig().getStringList("blocks");
         for (String block : blockList) {

@@ -3,7 +3,7 @@ package me.teakivy.teakstweaks.packs.graves;
 import me.teakivy.teakstweaks.packs.armoredelytra.ArmoredElytras;
 import me.teakivy.teakstweaks.utils.Base64Serializer;
 import me.teakivy.teakstweaks.utils.Key;
-import me.teakivy.teakstweaks.utils.Logger;
+import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;

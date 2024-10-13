@@ -528,7 +528,7 @@
 
   "teakstweakscommand.command_description": "Main Command for Teak's Tweaks.",
   "teakstweakscommand.version": "<green>v<version>",
-  "teakstweakscommand.support": "<green><discord>",
+  "teakstweakscommand.support": "<yellow>For support, join the Discord, and ask in the <gold>#<red>❓</red> | support</gold> channel: <gold><click:open_url:'<discord>'><discord></click></gold><newline>For faster support, run <gold><click:run_command:'/teakstweaks paste true'>/teakstweaks paste</click></gold> and include the link in your message.",
   "teakstweakscommand.update": "<green><url>",
   "teakstweakscommand.wiki": "<green><click:open_url:'<url>'><url></click>",
   "teakstweakscommand.info.dashed_line": "<gray>-----------------------------------------------------",
@@ -538,6 +538,10 @@
   "teakstweakscommand.info.config_generated": "Config Generated: <green><config_generated>",
   "teakstweakscommand.info.dev_mode_enabled": "Dev Mode: <green>Enabled",
   "teakstweakscommand.info.support": "Support Server: <green><discord>",
+  "teakstweakscommand.paste.uploading": "<gold>Uploading to PasteBook...",
+  "teakstweakscommand.paste.success": "<yellow>Successfully uploaded to PasteBook!<newline><click:copy_to_clipboard:'<url>'><gold>Click here</gold> copy the link to your clipboard.</click><newline><click:open_url:'<url>'><gold>Click here</gold> to open the link in your browser.</click>",
+  "teakstweakscommand.paste.error": "<red>Failed to upload to PasteBook!",
+  "teakstweakscommand.paste.error.cooldown": "<red>Teak's Tweaks Paste can only be used once every 30 minutes!",
 
   "test.command_description": "Teak's Tweaks Testing Command.",
   "test.test": "<rainbow>Hello, <name>! Looks like you found my test command! :D</rainbow>",
