@@ -7,6 +7,12 @@ authors: [ TeakIvy ]
 description: 150+ Toggleable Tweaks & Features including Vanilla Tweaks as a plugin, and more!
 website: https://teakstweaks.com
 
+libraries:
+  - net.kyori:adventure-text-minimessage:4.17.0
+  - net.kyori:adventure-platform-bukkit:4.3.3
+  - com.googlecode.json-simple:json-simple:1.1.1
+  - com.squareup.okhttp3:okhttp:4.9.3
+
 #permissions:
 #
 #  teakstweaks.command.packlist:

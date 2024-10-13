@@ -12,7 +12,7 @@ public class PasteBookUploader {
     private static final OkHttpClient client = new OkHttpClient();
 
     /**
-     * Uploads the provided text to Pastebook and returns the result URL.
+     * Uploads the provided text to PasteBook and returns the result URL.
      *
      * @param text  The content to be uploaded
      * @param title The title of the post
