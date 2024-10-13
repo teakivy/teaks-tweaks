@@ -31,7 +31,7 @@ public class PasteBookUploader {
                 .addHeader("title", title)
                 .addHeader("unlisted", "true")
 //                .addHeader("expires", "2592000000")
-                .addHeader("expires", "3600000")
+                .addHeader("expires", "1200000")
                 .build();
 
         // Execute the request and get the response
