@@ -538,6 +538,10 @@
   "teakstweakscommand.info.config_generated": "Config Generated: <green><config_generated>",
   "teakstweakscommand.info.dev_mode_enabled": "Dev Mode: <green>Enabled",
   "teakstweakscommand.info.support": "Support Server: <green><discord>",
+  "teakstweakscommand.paste.uploading": "<gold>Uploading to PasteBook...",
+  "teakstweakscommand.paste.success": "<yellow>Successfully uploaded to PasteBook!<newline><click:copy_to_clipboard:'<url>'><gold>Click here</gold> copy the link to your clipboard.</click><newline><click:open_url:'<url>'><gold>Click here</gold> to open the link in your browser.</click>",
+  "teakstweakscommand.paste.error": "<red>Failed to upload to PasteBook!",
+  "teakstweakscommand.paste.error.cooldown": "<red>Teak's Tweaks Paste can only be used once every 30 minutes!",
 
   "test.command_description": "Teak's Tweaks Testing Command.",
   "test.test": "<rainbow>Hello, <name>! Looks like you found my test command! :D</rainbow>",
