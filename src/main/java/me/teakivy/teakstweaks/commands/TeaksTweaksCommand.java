@@ -93,22 +93,20 @@ public class TeaksTweaksCommand extends AbstractCommand {
     }
 
     public void handlePaste(CommandEvent event) {
-        System.out.println("Handling paste");
         if (!checkPermission(Permission.COMMAND_TEAKSTWEAKS_PASTE)) return;
-        System.out.println("No permission");
         if (System.currentTimeMillis() - lastPaste < PASTE_COOLDOWN) {
             sendMessage("paste.error.cooldown");
             return;
         }
-        System.out.println("No cooldown");
 
         sendMessage("paste.uploading");
 
         String playerName = event.getSender().getName();
-        boolean logs = true;
+        boolean logs = Config.getBoolean("settings.send-log-in-paste");
 
         if (event.isArg(1)) {
             if (event.getArg(1).equalsIgnoreCase("false")) logs = false;
+            if (event.getArg(1).equalsIgnoreCase("true")) logs = true;
         }
 
         String paste = PasteManager.getPasteContent(playerName, logs);

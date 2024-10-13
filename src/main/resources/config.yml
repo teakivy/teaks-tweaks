@@ -29,6 +29,13 @@ settings:
   # /mechanics (Permission: teakstweaks.command.mechanics)
   mechanics-command: true
 
+  # Send Log in Paste
+  # If enabled, the plugin will send the server log by default when using /teakstweaks paste.
+  # If disabled, the log can still be sent by using /teakstweaks paste true.
+  # Commands:
+  # /teakstweaks paste (Permission: teakstweaks.command.teakstweaks.paste)
+  send-log-in-paste: true
+
   # Language
   # Change the language of the plugin
   # Currently only supports English (en)
