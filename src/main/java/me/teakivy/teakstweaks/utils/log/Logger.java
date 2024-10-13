@@ -1,5 +1,6 @@
-package me.teakivy.teakstweaks.utils;
+package me.teakivy.teakstweaks.utils.log;
 
+import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;

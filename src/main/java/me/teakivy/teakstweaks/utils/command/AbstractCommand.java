@@ -1,7 +1,7 @@
 package me.teakivy.teakstweaks.utils.command;
 
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.Logger;
+import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
