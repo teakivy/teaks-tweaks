@@ -37,15 +37,22 @@ repositories {
     }
 }
 
+val libraries = listOf(
+    "org.spigotmc:spigot:1.21.1-R0.1-SNAPSHOT:remapped-mojang",
+    "com.mojang:authlib:1.5.25",
+    "net.kyori:adventure-text-minimessage:4.17.0",
+    "net.kyori:adventure-platform-bukkit:4.3.3",
+    "com.googlecode.json-simple:json-simple:1.1.1",
+    "com.squareup.okhttp3:okhttp:4.9.3"
+)
+
 dependencies {
     compileOnly("org.spigotmc:spigot:1.21.1-R0.1-SNAPSHOT:remapped-mojang")
     compileOnly("com.mojang:authlib:1.5.25")
 
-    // If you ever decide to add more libraries or change these, make sure to update plugin.yml to match.
-    compileOnly("net.kyori:adventure-text-minimessage:4.17.0")
-    compileOnly("net.kyori:adventure-platform-bukkit:4.3.3")
-    compileOnly("com.googlecode.json-simple:json-simple:1.1.1")
-    compileOnly("com.squareup.okhttp3:okhttp:4.9.3")
+    libraries.forEach { library ->
+        compileOnly(library)
+    }
 }
 
 tasks {
@@ -55,5 +62,14 @@ tasks {
     }
     jar {
 //        destinationDirectory.set(File("C:/Users/legoc/Desktop/Servers/TeaksTweaks Testing/plugins"))
+    }
+}
+
+tasks.processResources {
+    filesMatching("plugin.yml") {
+        expand(
+            "version" to project.version,
+            "libraries" to libraries.joinToString("\n  - ")
+        )
     }
 }
