@@ -38,8 +38,6 @@ repositories {
 }
 
 val libraries = listOf(
-    "org.spigotmc:spigot:1.21.1-R0.1-SNAPSHOT:remapped-mojang",
-    "com.mojang:authlib:1.5.25",
     "net.kyori:adventure-text-minimessage:4.17.0",
     "net.kyori:adventure-platform-bukkit:4.3.3",
     "com.googlecode.json-simple:json-simple:1.1.1",
