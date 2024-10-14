@@ -61,7 +61,7 @@ public abstract class BaseMobHead implements Listener {
         if (event.getEntity().getType() != entity) return;
         if (!dropHead(event)) return;
 
-        Advancement advancement = Bukkit.getAdvancement(Key.get("moremobheads/" + getName(event).toString().toLowerCase().replaceAll(" ", "_") + "_head"));
+        Advancement advancement = Bukkit.getAdvancement(Key.get("moremobheads/" + getName(event).toLowerCase().replaceAll(" ", "_") + "_head"));
         if (advancement == null) return;
         AdvancementProgress progress = player.getAdvancementProgress(advancement);
         for(String criteria : progress.getRemainingCriteria()) progress.awardCriteria(criteria);
@@ -105,7 +105,7 @@ public abstract class BaseMobHead implements Listener {
     public void addHeadTexture(String key, String name, String texture) {
         textures.put(key, texture);
         names.put(texture, name);
-        MMHDatapackCreator.addBaseAdvancement(name.toString().toLowerCase().replaceAll(" ", "_"), name, texture);
+        MMHDatapackCreator.addBaseAdvancement(name.toLowerCase().replaceAll(" ", "_"), name, texture);
     }
 
     public ItemStack createHead(EntityDeathEvent event, String name, String texture) {
