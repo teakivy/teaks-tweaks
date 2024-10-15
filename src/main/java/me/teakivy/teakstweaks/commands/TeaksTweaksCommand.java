@@ -63,9 +63,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
         sendMessage("info.author", insert("author", get("plugin.author")));
         sendMessage("info.config_version", insert("config_version", Config.getVersion()));
         sendMessage("info.config_generated", insert("config_generated", Config.getCreatedVersion()));
-        if (Config.isDevMode()) {
-            sendMessage("info.dev_mode_enabled");
-        }
+        if (Config.isDevMode()) sendMessage("info.dev_mode_enabled");
         sendMessage("info.support", insert("discord", get("plugin.discord")));
         sendText("");
         sendMessage("info.dashed_line");
