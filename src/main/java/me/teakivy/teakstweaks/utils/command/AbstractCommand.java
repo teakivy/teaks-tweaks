@@ -34,7 +34,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
 
     private final String command;
     private final String description;
-    private Permission permission;
+    private final Permission permission;
     private final List<String> alias;
 
     private final Arg[] args;

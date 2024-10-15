@@ -46,7 +46,7 @@ val libraries = listOf(
 )
 
 dependencies {
-    compileOnly("org.spigotmc:spigot:1.21.1-R0.1-SNAPSHOT:remapped-mojang")
+    compileOnly("org.spigotmc:spigot-api:1.21-R0.1-SNAPSHOT")
     compileOnly("com.mojang:authlib:1.5.25")
 
     libraries.forEach { library ->

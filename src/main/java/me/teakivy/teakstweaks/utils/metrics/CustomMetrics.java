@@ -9,8 +9,8 @@ import java.util.Map;
 import java.util.concurrent.Callable;
 
 public class CustomMetrics {
-    private static HashMap<String, Integer> enabledPacks = new HashMap<>();
-    private static HashMap<String, Integer> enabledCraftingTweaks = new HashMap<>();
+    private static final HashMap<String, Integer> enabledPacks = new HashMap<>();
+    private static final HashMap<String, Integer> enabledCraftingTweaks = new HashMap<>();
 
     public static void addPackEnabled(String pack) {
         enabledPacks.put(pack, 1);
