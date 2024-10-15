@@ -1,12 +1,13 @@
 plugins {
     `java-library`
-    id("com.gradleup.shadow") version "8.3.3"
 }
 
 group = "me.teakivy"
 version = "2.0.1"
 description = "150+ Toggleable Tweaks & Features including Vanilla Tweaks as a plugin, and more!"
 java.sourceCompatibility = JavaVersion.VERSION_21
+
+val outputDir: String? by project
 
 java {
     toolchain {
@@ -53,17 +54,11 @@ dependencies {
     }
 }
 
-tasks {
-    shadowJar {
-        archiveFileName.set("TeaksTweaks-${project.version}.jar")
-//        destinationDirectory.set(file("C:/Users/legoc/Desktop/Servers/TeaksTweaks Testing/plugins"))
-        minimize()
-    }
-    jar {
-        // change output directory
-        archiveFileName.set("TeaksTweaks-${project.version}.jar")
-        destinationDirectory.set(file("C:/Users/legoc/Desktop/Servers/TeaksTweaks Testing/plugins"))
-    }
+tasks.jar {
+    val customDir = outputDir ?: layout.buildDirectory.dir("libs")
+
+    archiveFileName.set("TeaksTweaks-${project.version}.jar")
+    destinationDirectory.set(file(customDir))
 }
 
 tasks.processResources {
