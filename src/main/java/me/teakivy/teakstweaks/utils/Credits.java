@@ -23,6 +23,7 @@ public class Credits {
                         " - evm0\n" +
                         " - RamrKorda\n" +
                         " - MCCasper\n" +
+                        " - Loudbooks\n" +
                         "\n" +
                         "Supporters:\n" +
                         " - loudambiance\n" +
