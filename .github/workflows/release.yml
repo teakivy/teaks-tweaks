@@ -3,10 +3,10 @@ name: Build Spigot Plugin
 on:
   push:
     branches:
-      - main  # Change this to your default branch if different
+      - master  # Change this to your default branch if different
   pull_request:
     branches:
-      - main  # Change this to your default branch if different
+      - master  # Change this to your default branch if different
 
 jobs:
   build:
