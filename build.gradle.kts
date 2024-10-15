@@ -57,7 +57,7 @@ dependencies {
 tasks.jar {
     val customDir = outputDir ?: layout.buildDirectory.dir("libs")
 
-    archiveFileName.set("TeaksTweaks-${project.version}.jar")
+    archiveFileName.set("TeaksTweaks-v${project.version}.jar")
     destinationDirectory.set(file(customDir))
 }
 

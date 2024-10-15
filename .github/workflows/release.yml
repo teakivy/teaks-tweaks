@@ -3,10 +3,10 @@ name: Build Spigot Plugin
 on:
   push:
     branches:
-      - master  # Change this to your default branch if different
+      - master 
   pull_request:
     branches:
-      - master  # Change this to your default branch if different
+      - master
 
 jobs:
   build:
@@ -14,27 +14,19 @@ jobs:
 
     steps:
       - name: Check out the code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up JDK 21
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4
         with:
           java-version: '21'
-          distribution: 'temurin'  # Use 'temurin' for the OpenJDK distribution
-
-      - name: Cache Gradle packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+          distribution: 'temurin'
 
       - name: Build with Gradle
         run: ./gradlew build
 
       - name: Upload JAR file
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: TeaksTweaks
-          path: build/libs/TeaksTweaks-${{ github.run_id }}.jar  # Adjust if your output path is different
+          path: build/libs/TeaksTweaks-*
