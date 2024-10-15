@@ -1,0 +1,575 @@
+{
+  "meta.version": "1.10.5-beta",
+  "meta.modified": false,
+  "meta.language_name": "Pirate Speak",
+  "plugin.name": "Teak's Plunderin' Tweaks",
+
+  "plugin.discord": "<click:open_url:'https://discord.gg/wfp4skzx6s'>https://discord.gg/wfp4skzx6s</click>",
+  "plugin.url": "<click:open_url:'https://modrinth.com/plugin/teaks-tweaks'>https://modrinth.com/plugin/teaks-tweaks</click>",
+  "plugin.author": "TeakIvy",
+  "#comment.errors": "Common error messages: (this be a comment an' will ne'er be shown in-game)",
+
+  "error.unknown": "<red>An unknown error 'as occurred!",
+
+  "error.pack_not_enabled": "<red>This pack be not enabled!",
+  "error.not_player": "<red>You must be a player to use this here command!",
+  "error.not_op": "<red>You must be an operator to use this here command!",
+  "error.missing_command_permission": "<red>You do not 'ave permission to use this here command!",
+  "error.missing_permission": "<red>You do not 'ave permission to do that there!",
+  "error.cant_get_latest_version": "<red>Could not get the latest version o' Teak's Tweaks!",
+  "error.command_disabled": "<red>This command been disabled by a server administrator!",
+  "error.missing_action": "<red>Please specify an action!",
+  "error.player_dne": "<red>That player does not exist!",
+  "#comment.metadata": "Pack metadata section: (this be a comment an' will ne'er be shown in-game)",
+
+  "packtype.experimental": "Experimental",
+
+  "packtype.'ermitcraft": "Hermitcraft",
+  "packtype.items": "Items",
+  "packtype.mobs": "Mobs",
+  "packtype.survival": "Survival",
+  "packtype.Teaks_Tweaks": "Teak's Tweaks custom",
+  "packtype.teleportation": "Teleportation",
+  "packtype.utilities": "Utilities",
+  "packtype.crafting_Tweaks": "Craftin' Tweaks",
+  "#comment.startup": "Startup section: (this be a comment an' will ne'er be shown in-game)",
+
+  "startup.plugin.started": "Teak's Tweaks v<version> 'as started!",
+
+  "startup.plugin.shutting_down": "Teak's Tweaks shuttin' down...",
+  "startup.update.version_available": "A new version o' Teak's Tweaks be available! V<version>",
+  "startup.update.download": "Visit <url> to download the latest version!",
+  "startup.update.join_alert": "<yellow>There be a new version o' Teak's Tweaks available!<newline>Click 'ere to download <gold>Teak's Tweaks v<version></gold>!",
+  "startup.update.join_alert.'over": "<gold>Click to download Teak's Tweaks v<version>!",
+  "startup.register.pack": "Registered pack: <name>",
+  "startup.register.crafting_tweak": "Registered craftin' tweak: <name>",
+  "startup.register.command": "Registered command: /<command>",
+  "startup.lang.error.missing_language_file": "<red>Could not find language file fer <lang>! Usin' <current_lang_name> (<current_lang_key>.json) instead.",
+  "startup.lang.error.fata_error_on_load": "A fatal error occurred while loadin' the language file fer <lang>!",
+  "startup.lang.loaded": "Loaded <count> language files.",
+  "startup.lang.current": "Current language: <current_lang_name> (<current_lang_key>.json)",
+  "#comment.Tweaks": "Tweaks section: (this be a comment an' will ne'er be shown in-game)",
+
+  "chunk_loaders.name": "Chunk loaders",
+
+  "chunk_loaders.description": "Drop a nether starrr above a lodestone to create a chunk loader (aka a loadstone) which keeps the chunk it be in loaded until it be broken.",
+  "confetti_creepers.name": "Confetti creepers",
+
+  "confetti_creepers.description": "There be a chance each creeper will erupt into flame, thar she blows into confetti an' do no damage to blocks.",
+  "elevators.name": "Elevators",
+
+  "elevators.description": "Drop an ender pearl above a wool block to make it into an elevator.<newline>Jump on it to warp onto an elevator o' the same color directly above.<newline>Crouch on it to warp onto one directly above.",
+  "xp_management.name": "Xp management",
+
+  "xp_management.description": "Right-click an enchantin' table with an empty bottle to fill it with some o' yer xp.",
+  "xp_management.bottle_contains": "<gold>Contains <return_amount> xp",
+  "thunder_shrine.name": "Thunder shrine",
+
+  "thunder_shrine.description": "A shrine that there allows ye to create a thunder storm when offered a nether starrr.<newline>Drop a nether starrr atop a shrine to create a thunder storm.",
+  "thunder_shrine.storm_initialize": "<red>A jolly storm been initiated by the ritual.",
+  "mini_blocks.name": "Mini blocks",
+
+  "mini_blocks.description": "Adds mini blocks to the game. Craft them usin' the normal block in a stonecutter.",
+  "collectible_budding_amethyst.name": "Collectible buddin' amethyst",
+
+  "collectible_budding_amethyst.description": "Allows ye to collect buddin' amethyst blocks to get the block itself.",
+  "husk_drops_sand.name": "Husk drops sand",
+
+  "husk_drops_sand.description": "Husks drop 0-2 sand upon death (makin' it a renewable resource).<newline>With looting, the amount be to the sky to 2 + the lootin' level.",
+  "always_drop.name": "Always drop",
+
+  "always_drop.description": "Allows ye to set blocks that there will always drop when broken, regardless o' the tool or enchantments used.",
+  "wandering_trader_announcements.name": "Wanderin' trader announcements",
+
+  "wandering_trader_announcements.description": "Announces to nearby players when a wanderin' trader spawns in the seven seas.",
+  "wandering_trader_announcements.announcement": "<gold>A wanderin' trader 'as spawned nearby!",
+  "wandering_trader_announcements.announcement_all": "<gold>A wanderin' trader 'as spawned somewhere on the server!",
+  "wandering_trades.name": "Wanderin' trades",
+
+  "wandering_trades.description": "Adds mini blocks & player 'eads to the wanderin' trader's trades.",
+  "armored_elytra.name": "Armored elytra",
+
+  "armored_elytra.description": "Drop an elytra an' a chestplate above an anvil to merge them into one item. Drop the item above a grindstone to separate them again.<newline>Enchantments be kept safely between mergin' an' separatin'. Burnin' netherite armored elytra will separate the items.",
+  "armored_elytra.item_name": "<gold>Armored elytra",
+  "player_head_drops.name": "Player 'ead drops",
+
+  "player_head_drops.description": "A player will drop their 'ead when killed by another player. The item displays who the killer be.",
+  "player_head_drops.lore": "Killed by <player>",
+  "rotation_wrench.name": "Rotation wrench",
+
+  "rotation_wrench.description": "Adds a custom wrench in-game that there allows ye to rotate redstone components, & glazed terracotta when right-clickin'.",
+  "rotation_wrench.item_name": "<gold>Wrench",
+  "anti_creeper_grief.name": "Anti creeper grief",
+
+  "anti_creeper_grief.description": "Prevents creepers from blowin' to the sky, blocks an' players do not take damage.",
+  "anti_enderman_grief.name": "Anti enderman grief",
+
+  "anti_enderman_grief.description": "Prevents endermen from pickin' to the sky blocks.",
+  "anti_ghast_grief.name": "Anti ghast grief",
+
+  "anti_ghast_grief.description": "Prevents ghasts from blowin' to the sky blocks.",
+  "bat_membranes.name": "Bat membranes",
+
+  "bat_membranes.description": "Disable phantoms to get membranes from bats instead.",
+  "count_mob_deaths.name": "Count mob deaths",
+
+  "count_mob_deaths.description": "Adds the ability to count the mob deaths durin' the time the system 'as started.",
+  "count_mob_deaths.objective_name": "<gold>Mob deaths",
+  "double_shulker_shells.name": "Double shulker shells",
+
+  "double_shulker_shells.description": "Makes all shulkers drop 2 shells.",
+  "dragon_drops.name": "Dragon drops",
+
+  "dragon_drops.description": "Makes the ender dragon drop a dragon egg an' elytra on death.",
+  "larger_phantoms.name": "Larger phantoms",
+
+  "larger_phantoms.description": "Makes the naturally spawnin' phantoms larger an' more powerful the longer ye do not sleep.",
+  "more_mob_heads.name": "More mob 'eads",
+
+  "more_mob_heads.description": "Adds a chance to receive a mob's 'ead upon killin' it.",
+  "silence_mobs.name": "Silence mobs",
+
+  "silence_mobs.description": "Adds the ability to silence mobs usin' a name tag. 'silence me'; 'silence me'; 'silence me'; 'silence_me'; be all acceptable names.",
+  "silence_mobs.activation_name": "Silence me",
+  "silence_mobs.silenced_name": "Silenced",
+  "villager_death_messages.name": "Villager death messages",
+
+  "villager_death_messages.description": "Notifies the server in chat when a villager dies. Displays coordinates an' dimension that there it died in.",
+  "villager_death_messages.death_message": "<gold>A villager 'as died! <white>(<gold>Xyz: <x> <y> <z> <yellow><world><white>)",
+  "afk_display.name": "Afk display",
+
+  "afk_display.description": "Gray out a players name that there be not movin' fer 5 minutes.",
+  "afk_display.self_now_afk": "<yellow>You be now afk.",
+  "afk_display.self_not_afk": "<yellow>You be no longer afk.",
+  "afk_display.other_now_afk": "<gold><player><yellow> be now afk.",
+  "afk_display.other_not_afk": "<gold><player><yellow> be no longer afk.",
+  "cauldron_concrete.name": "Cauldron concrete",
+
+  "cauldron_concrete.description": "Right click a cauldron with concrete powder to 'arden it.",
+  "cauldron_mud.name": "Cauldron mud",
+
+  "cauldron_mud.description": "Right click a water cauldron with dirt to turn it into mud.",
+  "classic_fishing_loot.name": "Classic fishin' loot",
+
+  "classic_fishing_loot.description": "Reverts the fishin' loot aft to its pre-1.16 loot table.",
+  "coords_hud.name": "Coords 'ud",
+
+  "coords_hud.description": "Adds information to yer actionbarrr. Xyz coords an' a 24hr clock.<newline>Command: /ch toggle",
+  "custom_nether_portals.name": "Custom nether portals",
+
+  "custom_nether_portals.description": "Ignite nether portals o' any size or shape ye like, or usin' cryin' obsidian in the portal frame if enabled.",
+  "durability_pin'.name": "Durability ping",
+
+  "durability_pin'.description": "Get notified when ye damage an item with 10% less durability.<newline>Fully customizable per-player with '/durapin' config'",
+  "durability_pin'.pin'.subtitle.title": " ",
+  "durability_pin'.pin'.subtitle.subtitle": "<gold><item_type> <red>Durability low!</red> <item_durability> <red>Of</red> <item_max_durability> <red>Remainin'.",
+  "durability_pin'.pin'.title.title": "<gold><item_type> <red>Durability low!",
+  "durability_pin'.pin'.title.subtitle": "<gold><item_durability> <red>Of</red> <item_max_durability> <red>Remainin'.",
+  "durability_pin'.pin'.chat.message": "<gold><item_type> <red>Durability low!</red> <item_durability> <red>Of</red> <item_max_durability> <red>Remainin'.",
+  "durability_pin'.pin'.actionbarrr.message": "<gold><item_type> <red>Durability low!</red> <item_durability> <red>Of</red> <item_max_durability> <red>Remainin'.",
+  "fast_leaf_decay.name": "Fast leaf decay",
+
+  "fast_leaf_decay.description": "Leaves decay much more speed, catch some wind, lads when trees be mined in survival mode.",
+  "graves.name": "Graves",
+
+  "graves.description": "When a player dies, a grave be made at their location containin' all their items. Right-click the grave to receive yer items, an' crouch to make it so only ye can pick them to the sky.<newline>Get a grave key to unlock any grave: '/grave key'<newline>Locate yer last grave (if locatable be enabled): '/grave locate'",
+  "graves.cant_rob_grave": "<red>You ain't allowed to rob graves!",
+  "graves.last_grave": "<yellow>Your last grave been at xyz: <gold><x> <y> <z></gold> in <gold>World: <world>",
+  "graves.key.item_name": "<gold>Grave key",
+  "graves.key.item_lore": "Right-click any grave with this here key to open it.",
+  "graves.log.created": "Created a grave fer <player> at xyz: <x> <y> <z> in world: <world>",
+  "graves.log.contains": "Contains <gold><item_count></gold> items an' <gold><xp_count></gold> xp.",
+  "graves.log.item": "- <gold><item> <white>X <gold><amount>",
+  "nether_portal_coords.name": "Nether portal coords",
+
+  "nether_portal_coords.description": "Adds a command that there calculates where a nether portal must be placed in the other dimension. Useful fer syncin' to the sky nether portals.<newline>Command: /portal",
+  "real_time_clock.name": "Real time clock",
+
+  "real_time_clock.description": "Adds a command that there allows ye to view 'ow long a world been runnin' in real time minutes an' 'ours.<newline>Command: /rtc",
+  "track_raw_statistics.name": "Track raw statistics",
+
+  "track_raw_statistics.description": "Adds 100+ scoreboards that there track many different statistics. Especially useful fer multiplayer.",
+  "track_statistics.name": "Track statistics",
+
+  "track_statistics.description": "Adds statistics that there be processed before-hand. E.g. Km swam, km flown, etc.",
+  "unlock_all_recipes.name": "Unlock all recipes",
+
+  "unlock_all_recipes.description": "Automatically unlock all recipes as soon as ye start playin'.",
+  "workstation_highlights.name": "Workstation 'ighlights",
+
+  "workstation_highlights.description": "Allows ye to find the workstation o' any villager by 'ighlightin' it.<newline>Command: /workstation",
+  "chat_colors.name": "Chat colors",
+
+  "chat_colors.description": "Use chat colors to make yer messages, signs, an' items look better (usin' '&' fer color codes)..",
+  "dirt_to_grass.name": "Dirt to grass",
+
+  "dirt_to_grass.description": "Convert dirt to grass by right-clickin' a dirt block with seeds.",
+  "fixed_item_frames.name": "Fixed item frames",
+
+  "fixed_item_frames.description": "Shift right-click an item frame with iron bars to make it fixed.<newline>Shift right-click an item frame with shears to make it not fixed.",
+  "insta_mine.name": "Insta mine",
+
+  "insta_mine.description": "Instantly mine certain blocks if ye 'ave a netherite tool with efficiency 5 or 'igher, an' 'aste 2 or 'igher.",
+  "invisible_item_frames.name": "Invisible item frames",
+
+  "invisible_item_frames.description": "Shift right-click an item frame with shears to make it invisible",
+  "keep_small.name": "Keep small",
+
+  "keep_small.description": "Keep a mob in its child form (if it 'as one).",
+  "keep_small.smallify.activation_name": "Keep small",
+  "keep_small.smallify.small_name": "Smallified",
+  "keep_small.grow.activation_name": "Grow",
+  "keep_small.grow.grown_name": "Grown",
+  "lectern_reset.name": "Lectern reset",
+
+  "lectern_reset.description": "Reset a lectern's book to the first page after closin' it.",
+  "quick_commands.name": "Quick commands",
+
+  "quick_commands.description": "Quickly switch game modes, an' reply to messages.",
+  "quick_commands.message.command_description": "Send a private message to a player.",
+  "quick_commands.message.whisper_to_you": "<gray><italic><player> whispers to ye: <message>",
+  "quick_commands.message.whisper_to_player": "<gray><italic>You whisper to <player>: <message>",
+  "quick_commands.reply.command_description": "Reply to the last person who messaged ye.",
+  "quick_commands.reply.error.no_reply": "<red>You 'ave no one to reply to!",
+  "quick_commands.gmc.command_description": "Change yer gamemode to creative.",
+  "quick_commands.gms.command_description": "Change yer gamemode to survival.",
+  "quick_commands.gmsp.command_description": "Change yer gamemode to spectator.",
+  "quick_commands.gma.command_description": "Change yer gamemode to adventure.",
+  "quick_commands.feed.command_description": "Feed yerself.",
+  "quick_commands.'eal.command_description": "Heal yerself.",
+  "quick_commands.fly.command_description": "Toggle flight.",
+  "quick_commands.enderchest.command_description": "Open yer ender chest.",
+  "quick_commands.craftingtable.command_description": "Open a craftin' table.",
+  "slime_cream.name": "Slime cream",
+
+  "slime_cream.description": "Convert slime balls to magma cream by right-clickin' a lava cauldron.<newline>Convert magma cream to slime balls by right-clickin' a water cauldron.",
+  "spectator_alts.name": "Spectator alts",
+
+  "spectator_alts.description": "Allow players to add their own alt accounts as spectators.<newline>Command: /alts <add/remove/list> <alt> [player]",
+  "stair_chairs.name": "Stair chairs",
+
+  "stair_chairs.description": "Allows ye to sit on stairs.<newline>Right-click a stair with a saddle to make it a chair.<newline>Break the stair to remove the chair an' get the saddle aft.",
+  "stair_chairs.chair_created": "<green>Chair created!",
+  "stair_chairs.chair_destroyed": "<green>Chair removed!",
+  "sudoku.name": "Sudoku",
+
+  "sudoku.description": "Allow players to commit sudoku.<newline>Command: /sudoku",
+  "sudoku.death_message": "<player> played sudoku",
+  "unsticky_pistons.name": "Unsticky pistons",
+
+  "unsticky_pistons.description": "Allow players to remove slime from pistons by right-clickin' them with an axe.<newline>Right-click a piston with a slimeball to make it sticky.",
+  "back.name": "Back",
+
+  "back.description": "Allows ye to teleport aft to yer previous location.<newline>Command: /back",
+  "homes.name": "Homes",
+
+  "homes.description": "Allows ye to set an' teleport to 'omes.<newline>Command: /home",
+  "homes.error.on_cooldown": "<red>You must wait <time> seconds before teleportin' again!",
+  "homes.teleporting_in": "<yellow>Teleportin' in <time> seconds...",
+  "homes.teleported": "<green>Teleported to 'ome <home>!",
+  "homes.deleted": "<green>Home <home> been deleted!",
+  "spawn.name": "Spawn",
+
+  "spawn.description": "Allows ye to teleport to the seven seas spawn.<newline>Command: /spawn",
+  "tpa.name": "Tpa",
+
+  "tpa.description": "Allows ye to offer to teleport to another player.<newline>Command: /tpa",
+  "item_averages.name": "Item averages",
+
+  "item_averages.description": "Adds a marker that there tracks items flowin' past it fer 2 minutes, then calculates 'ow many o' each item will run through per 'our.<newline>Command: /itemavgerage",
+  "item_averages.source_production": "<yellow>This source produces ± per 'our:",
+  "item_averages.item": "<gold><amount></gold> <item>",
+  "item_averages.no_items": "<yellow>No items passed through the source!",
+  "item_averages.log_finish": "Finished tracking",
+  "kill_boats.name": "Kill boats",
+
+  "kill_boats.description": "Adds an admin command to kill all boats without passengers.<newline>Command: /killboats",
+  "spawning_spheres.name": "Spawnin' spheres",
+
+  "spawning_spheres.description": "Adds a command that there allows ye to see where mobs can spawn.<newline>Command: /spawningspheres",
+  "spawning_spheres.center_stand": "Center",
+  "spawning_spheres.sphere.red": "Red",
+  "spawning_spheres.sphere.blue": "Blue",
+  "spawning_spheres.sphere.green": "Green",
+  "spectator_conduit_power.name": "Spectator conduit power",
+
+  "spectator_conduit_power.description": "Easily toggle conduit power when in spectator.<newline>Command: /conduitpower",
+  "spectator_conduit_power.error.game_mode_changed": "<red>Conduit power removed because o' game mode change!",
+  "spectator_night_vision.name": "Spectator night vision",
+
+  "spectator_night_vision.description": "Easily toggle night vision when in spectator.<newline>Command: /nightvision",
+  "spectator_night_vision.error.game_mode_changed": "<red>Night vision removed because o' game mode change!",
+  "#comment.crafting_Tweaks": "Craftin' Tweaks section: (this be a comment an' will ne'er be shown in-game)",
+
+  "crafting_Tweaks.name_display": "<red><name>",
+
+  "back_to_blocks.name": "Back to blocks",
+
+  "back_to_blocks.description": "Allows ye to craft full blocks from stairs an' slabs.",
+  "blackstone_cobblestone.name": "Blackstone cobblestone",
+
+  "blackstone_cobblestone.description": "Craft all items that there require cobblestone, usin' blackstone.",
+  "charcoal_to_black_dye.name": "Charcoal to black dye",
+
+  "charcoal_to_black_dye.description": "Allows ye to craft charcoal into black dye.",
+  "coal_to_black_dye.name": "Coal to black dye",
+
+  "coal_to_black_dye.description": "Allows ye to craft coal into black dye.",
+  "craftable_blackstone.name": "Craftable blackstone",
+
+  "craftable_blackstone.description": "Allows ye to craft blackstone or polished blackstone usin' basalt & coal/charcoal",
+  "craftable_bundles.name": "Craftable bundles",
+
+  "craftable_bundles.description": "Allows ye to craft the experimental bundle item. (usin' 1 leather an' 1 string)",
+  "craftable_coral_blocks_2x2.name": "Craftable coral blocks (2x2)",
+
+  "craftable_coral_blocks_2x2.description": "Allows ye to craft coral blocks from their coral plant in a 2x2. Both tubes an' fans may be used interchangeably.",
+  "craftable_coral_blocks_3x3.name": "Craftable coral blocks (3x3)",
+
+  "craftable_coral_blocks_3x3.description": "Allows ye to craft coral blocks from their coral plant in a 3x3. Both tubes an' fans may be used interchangeably.",
+  "craftable_enchanted_golden_apples.name": "Craftable enchanted golden apples",
+
+  "craftable_enchanted_golden_apples.description": "Allows ye to craft enchanted golden apples usin' gold blocks.",
+  "craftable_gilded_blackstone.name": "Craftable gilded blackstone",
+
+  "craftable_gilded_blackstone.description": "Allows ye to craft gilded blackstone usin' golden nuggets an' blackstone.",
+  "craftable_gravel.name": "Craftable gravel",
+
+  "craftable_gravel.description": "Allows ye to craft gravel usin' flint.",
+  "craftable_horse_armor.name": "Craftable 'orse armor",
+
+  "craftable_horse_armor.description": "Allows ye to craft 'orse armor.",
+  "craftable_name_tags.name": "Craftable name tags",
+
+  "craftable_name_tags.description": "Allows ye to craft name tags.",
+  "craftable_small_dripleaf.name": "Craftable small dripleaf",
+
+  "craftable_small_dripleaf.description": "Allows ye to craft small dripleaf from a large dripleaf.",
+  "craftable_spore_blossoms.name": "Craftable spore blossoms",
+
+  "craftable_spore_blossoms.description": "Allows ye to craft spore blossoms usin' lilacs, azalea leaves, an' 'oneycombs.",
+  "double_slabs.name": "Double slabs",
+
+  "double_slabs.description": "Allows ye to craft 2 slabs from a single block.",
+  "dropper_to_dispenser.name": "Dropper to dispenser",
+
+  "dropper_to_dispenser.description": "Allows ye to convert a dropper to a dispenser usin' a bow, or by usin' strin' an' sticks.",
+  "log_chests.name": "Log chests",
+
+  "log_chests.description": "Allows ye to bulk craft chests usin' logs.",
+  "more_bark.name": "More bark",
+
+  "more_bark.description": "Craft 4 bark instead o' 3.",
+  "more_bricks.name": "More bricks",
+
+  "more_bricks.description": "Craft 4 bricks instead o' 1.",
+  "more_packed_mud.name": "More packed mud",
+
+  "more_packed_mud.description": "Craft 2 packed mud instead o' 1.",
+  "more_sherds.name": "More sherds",
+
+  "more_sherds.description": "Craft 2 sherds when combinin' a pottery sherd with a brick.",
+  "more_stairs.name": "More stairs",
+
+  "more_stairs.description": "Craft 8 stairs instead o' 4.",
+  "more_trapdoors.name": "More trapdoors",
+
+  "more_trapdoors.description": "Craft 12 trapdoors instead o' 3.",
+  "powder_to_glass.name": "Powder to glass",
+
+  "powder_to_glass.description": "Smelt all colors o' concrete powder into their respective stained glass color.",
+  "rotten_flesh_to_leather.name": "Rotten flesh to leather",
+
+  "rotten_flesh_to_leather.description": "Allows ye to smelt rotten flesh into leather.",
+  "sandstone_dyein'.name": "Sandstone dyeing",
+
+  "sandstone_dyein'.description": "Allows ye to craft sandstone with red dye to get red sandstone",
+  "smeltable_raw_ore_blocks.name": "Smeltable raw ore blocks",
+
+  "smeltable_raw_ore_blocks.description": "Smelt raw ore blocks to ore blocks.",
+  "straight_to_shapeless.name": "Straight to shapeless",
+
+  "straight_to_shapeless.description": "Craft items such as paper, hardtack, an' shulker boxes directly in yer 2x2.",
+  "universal_dyein'.name": "Universal dyeing",
+
+  "universal_dyein'.description": "Allows ye to dye any dyeable block to another color, no matter what color it be (does not include concrete).",
+  "unpackable_ice.name": "Unpackable ice",
+
+  "unpackable_ice.description": "Allows ye to break down ice into 9 pieces. 1 blue ice to 9 packed ice to 81 ice.",
+  "unpackable_nether_wart.name": "Unpackable nether wart blocks",
+
+  "unpackable_nether_wart.description": "Allows ye to break down nether wart blocks into 9 nether wart.",
+  "unpackable_quartz_blocks.name": "Unpackable quartz blocks",
+
+  "unpackable_quartz_blocks.description": "Allows ye to break down quartz blocks into 4 quartz.",
+  "unpackable_wool.name": "Unpackable wool",
+
+  "unpackable_wool.description": "Allows ye to break down wool into 4 strin'.",
+  "#comment.commands": "Commands section: (this be a comment an' will ne'er be shown in-game)",
+
+  "plugin.commands.usage": "<red>Usage: <command_usage>",
+
+  "afk.command_description": "Toggles afk mode. When enabled, ye be automatically set to afk when ye be idle fer 5 minutes.",
+
+  "alts.command_description": "Manage spectator alt accounts.",
+
+  "alts.error.no_permission_list_others": "<red>You do not 'ave permission to see other's alts!",
+  "alts.error.no_permission_modify_others": "<red>You do not 'ave permission to modify other's alts!",
+  "alts.error.no_alts": "<red><player> does not 'ave any alts!",
+  "alts.error.max_alts": "<red>You cannot add any more alts!",
+  "alts.error.self": "<red>You cannot add yerself as an alt!",
+  "alts.error.whitelisted": "<red>You cannot add a whitelisted player as an alt!",
+  "alts.error.already_alt": "<red><alt> be already an alt!",
+  "alts.error.not_alt": "<red><alt> be not an alt!",
+  "alts.list_alts": "<gold><player><yellow>'s alts:",
+  "alts.listed_alt": "<gray> - <yellow><alt>",
+  "alts.added_alt": "<green><alt> be now <player>'s alt!",
+  "alts.removed_alt": "<green><alt> be no longer <player>'s alt!",
+  "back.command_description": "Teleport aft to yer previous location.",
+
+  "back.error.on_cooldown": "<red>You must wait <cooldown_seconds> seconds between uses o' /back!",
+  "back.error.no_back_location": "<red>You 'ave nowhere to go aft to!",
+  "back.error.moved": "<red>You must stand still to teleport!",
+  "back.teleporting": "<yellow>Teleportin' aft...",
+  "conduitpower.command_description": "Toggle conduit power as a spectator.",
+
+  "conduitpower.error.wrong_gamemode": "<red>You must be in spectator mode to use this here command!",
+  "conduitpower.toggled": "<green>Toggled conduit power",
+  "coordshud.command_description": "Coordinates 'ud main command",
+
+  "coordshud.toggled": "<green>Toggled coordinates 'ud",
+  "deletehome.command_description": "Delete a 'ome.",
+
+  "durabilitypin'.command_description": "Get pinged when yer tools drop below 10% durability.",
+
+  "durabilitypin'.error.missing_preview_selection": "<red>Please enter which section to preview!",
+  "durabilitypin'.error.missing_set_selection": "<red>Please enter which section to set!",
+  "durabilitypin'.preview_panel.'over": "<gray>Click to preview</gray> <name>",
+  "durabilitypin'.checkbox.aye.'over": "<red>Click to disable</red> <name>",
+  "durabilitypin'.checkbox.no.'over": "<green>Click to enable</green> <name>",
+  "durabilitypin'.config.ping_for_hand_items.name": "Pin' fer 'and items",
+  "durabilitypin'.config.ping_for_hand_items.description": "Inculdes any item with durability in the mainhand or offhand slots.",
+  "durabilitypin'.config.ping_for_armor_items.name": "Pin' fer armor items",
+  "durabilitypin'.config.ping_for_armor_items.description": "Inculdes any item with durability in armor slots.",
+  "durabilitypin'.config.ping_with_sound.name": "Pin' with sound",
+  "durabilitypin'.config.display_hidden.name": "Display: 'idden",
+  "durabilitypin'.config.display_subtitle.name": "Display: subtitle",
+  "durabilitypin'.config.display_title.name": "Display: title",
+  "durabilitypin'.config.display_chat.name": "Display: chat",
+  "durabilitypin'.config.display_actionbarrr.name": "Display: actionbar",
+  "grave.command_description": "Keep inventory stands no chance.",
+
+  "grave.error.no_grave": "<red>You don't 'ave a recent grave!",
+  "grave.given_key": "<green>You 'ave been given a grave key!",
+  "grave.removed_graves": "<yellow>Removed all loaded graves!",
+  "home.command_description": "Teleport, set, or delete yer 'omes!",
+
+  "home.error.missing_home_name": "<red>Please specify a name fer yer 'ome!",
+  "home.error.'ome_already_exists": "<red>The 'ome <name> already exists!",
+  "home.error.'ome_dne": "<red>The 'ome <name> does not exist!",
+  "home.error.max_homes": "<red>You cannot 'ave more than <max_homes> 'omes!",
+  "home.error.cant_set_home": "<red>An unknown error 'as occurred while settin' yer 'ome!",
+  "home.error.cant_delete_home": "<red>An unknown error 'as occurred while deletin' yer 'ome!",
+  "home.error.no_homes_yet": "<red>You don't 'ave any 'omes set! Use <gold>/home set <name></gold> to set one!",
+  "home.set_home": "<green>Set yer 'ome <name>!",
+  "home.deleted_home": "<green>Deleted yer 'ome <name>!",
+  "itemaverages.command_description": "Calculate 'ow many items flow through a source in 2 minutes.",
+
+  "itemaverages.error.tracker_in_use": "<red>A tracker be already in use!",
+  "itemaverages.tracker_created": "<yellow>Created a tracker source at xyz: <x> <y> <z>",
+  "itemaverages.tracker_mass_removed": "<yellow>Removed <count> tracker sources!",
+  "killboats.command_description": "Kill all empty boats.",
+
+  "killboats.removed_boats": "<yellow>Removed <count> boats!",
+  "mechanics.command_description": "View mechanics added by Teak's Tweaks.",
+
+  "mechanics.gui.title": "Teak's Tweaks mechanics",
+  "mechanics.gui.next_page": "<gold>Next page",
+  "mechanics.gui.previous_page": "<gold>Previous page",
+  "nightvision.command_description": "Toggle night vision as a spectator.",
+
+  "nightvision.error.wrong_gamemode": "<red>You must be in spectator mode to use this here command!",
+  "nightvision.toggled": "<green>Toggled night vision",
+  "packlist.command_description": "List all currently active packs.",
+
+  "packlist.packs": "Packs (<count>): ",
+  "packlist.craftingTweaks": "Craftin' Tweaks (<count>): ",
+  "portal.command_description": "Calculate where a nether portal must be placed in the other dimension.",
+
+  "portal.error.wrong_dimension": "<red>You cannot run this here command in <world>!",
+  "portal.location": "<yellow>XYZ: <x> <y> <z>",
+  "realtimeclock.command_description": "View 'ow long a world been runnin' in real time minutes an' 'ours.",
+
+  "realtimeclock.world_time": "<yellow>This world been active fer <gold><bold><days></bold></gold> days, <gold><bold><hours></bold></gold> 'ours, an' <gold><bold><minutes></bold></gold> minutes!",
+  "sethome.command_description": "Set a 'ome to teleport to at a later date.",
+
+  "shrine.command_description": "Create thunder shrines that there can be used to summon lightnin' storms.",
+
+  "shrine.error.none_nearby": "<red>There be no shrines nearby!",
+  "shrine.created": "<green>A shrine been created at <gold>Xyz: <yellow><x> <y> <z></yellow></gold> in <gold>World: <yellow><world>",
+  "shrine.removed": "<green>A shrine been removed at <gold>Xyz: <yellow><x> <y> <z></yellow></gold> in <gold>World: <yellow><world>",
+  "shrine.shrines_mass_removed": "<yellow>All loaded shrines 'ave been removed!",
+  "spawn.command_description": "Teleport to the server spawn.",
+
+  "spawn.error.on_cooldown": "<red>You must wait <time> seconds between uses o' /spawn!",
+  "spawn.error.moved": "<red>You must stand still to teleport!",
+  "spawn.teleporting": "<yellow>Teleportin' to spawn...",
+  "spawningspheres.command_description": "Spawn a sphere to 'elp with mob spawnin'.",
+
+  "spawningspheres.error.invalid_color": "<red>Please specify a valid color! (red, blue, green)",
+  "spawningspheres.error.in_use": "<red>The sphere <color> be already in use!",
+  "spawningspheres.error.not_in_use": "<red>The sphere <color> be not in use!",
+  "spawningspheres.summoned": "<green>Summoned the <color> <green>Spawnin' sphere!",
+  "spawningspheres.removing": "<green>Removin' the <color> <green>Spawnin' sphere...",
+  "spawningspheres.teleporting": "<yellow>Teleportin' to the <color> <green>Spawnin' sphere...",
+  "sudoku.command_description": "Commit sudoku.",
+
+  "sudoku.committed": "<green>Thanks fer playin' sudoku!",
+  "TeaksTweakscommand.command_description": "Main command fer Teak's Tweaks.",
+
+  "TeaksTweakscommand.version": "<green>V<version>",
+  "TeaksTweakscommand.support": "<yellow>For support, join the discord, an' ask in the <gold>#<red>❓</red> | support</gold> channel: <gold><click:open_url:'<discord>'><discord></click></gold><newline>For more speed, catch some wind, lads support, run <gold><click:run_command:'/teakstweaks paste true'>/teakstweaks paste</click></gold> an' include the link in yer message.",
+  "TeaksTweakscommand.update": "<green><url>",
+  "TeaksTweakscommand.wiki": "<green><click:open_url:'<url>'><url></click>",
+  "TeaksTweakscommand.info.dashed_line": "<gray>-----------------------------------------------------",
+  "TeaksTweakscommand.info.title": "<gold>Teak's Tweaks <yellow>V<version>",
+  "TeaksTweakscommand.info.author": "Author: <green><author>",
+  "TeaksTweakscommand.info.config_version": "Config version: <green><config_version>",
+  "TeaksTweakscommand.info.config_generated": "Config generated: <green><config_generated>",
+  "TeaksTweakscommand.info.dev_mode_enabled": "Dev mode: <green>Enabled",
+  "TeaksTweakscommand.info.support": "Support server: <green><discord>",
+  "TeaksTweakscommand.paste.uploading": "<gold>Uploadin' to pastebook...",
+  "TeaksTweakscommand.paste.success": "<yellow>Successfully uploaded to pastebook!<newline><click:copy_to_clipboard:'<url>'><gold>Click 'ere</gold> copy the link to yer clipboard.</click><newline><click:open_url:'<url>'><gold>Click 'ere</gold> to open the link in yer browser.</click>",
+  "TeaksTweakscommand.paste.error": "<red>Failed to upload to pastebook!",
+  "TeaksTweakscommand.paste.error.cooldown": "<red>Teak's Tweaks paste can only be used once every 30 minutes!",
+  "test.command_description": "Teak's Tweaks testin' command.",
+
+  "test.test": "<rainbow>Hello, <name>! Looks such as yerself found me test command! Rum! Spanish women! Jolly times, mateys.</rainbow>",
+  "tpahere.command_description": "Request fer another player to teleport to ye.",
+
+  "tpa.command_description": "Request to teleport to another player.",
+  "tpa.error.specify_player": "<red>Please specify a player to teleport to!",
+  "tpa.error.no_pending_requests": "<red>You do not 'ave any pendin' teleport requests!",
+  "tpa.error.'as_outgoing_request": "<red>You already 'ave an outgoin' teleport offer!",
+  "tpa.error.no_outgoing_request": "<red>You do not 'ave an outgoin' teleport offer!",
+  "tpa.error.player_not_online": "<red>That player be not online!",
+  "tpa.error.player_no_pending_requests": "<red>That player does not 'ave any pendin' teleport requests!",
+  "tpa.tpa.request_message": "<gold><player> <yellow>Has requested to teleport to ye! <gold>Click to accept!",
+  "tpa.tpahere.request_message": "<gold><player> <yellow>Has requested fer ye to teleport to them! <gold>Click to accept!",
+  "tpa.request_message.'over": "<gold>Click to accept",
+  "tpa.tpa.request_sent": "<yellow>You 'ave requested to teleport to <gold><player></gold>. <gold>They 'ave 60 seconds to accept.",
+  "tpa.tpahere.request_sent": "<yellow>You 'ave requested to teleport <gold><player></gold> to ye. <gold>They 'ave 60 seconds to accept.",
+  "tpa.request_cancelled": "<yellow>Your teleport offer to <gold><player> <yellow>Has been cancelled!",
+  "tpa.request_accepted": "<yellow>Your teleport offer to <gold><player> <yellow>Has been accepted!",
+  "tpa.request_expired": "<red>Your teleport offer to <gold><player> <red>Has expired!",
+  "tpa.teleporting": "<yellow>Teleportin' to <gold><player></gold>...",
+  "tpa.teleporting_to_you": "<yellow>Teleportin' <gold><player></gold> to ye...",
+  "workstationhighlight.command_description": "Find the workstation o' any villager.",
+
+  "workstationhighlight.error.invalid_profession": "<red>Invalid profession type!",
+  "workstationhighlight.error.invalid_radius": "<red>Invalid radius!",
+  "workstationhighlight.error.radius_out_of_bounds": "<red>Radius must be between 1 an' 16!",
+  "workstationhighlight.error.no_workstations_found": "<red>No villager workstations found nearby!",
+  "workstationhighlight.error.no_job_site": "<red>The nearest villager does not 'ave a job site!",
+  "workstationhighlight.found": "<yellow>The workstation be located at <gold>[xyz]: <x> <y> <z>"
+}
