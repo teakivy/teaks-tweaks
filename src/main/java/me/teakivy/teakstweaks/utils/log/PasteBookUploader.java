@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.utils.log;
 
+import me.teakivy.teakstweaks.utils.config.Config;
 import okhttp3.*;
 
 import java.io.IOException;
@@ -10,6 +11,8 @@ public class PasteBookUploader {
     private static final MediaType MEDIA_TYPE_TEXT = MediaType.parse("text/plain");
 
     private static final OkHttpClient client = new OkHttpClient();
+    private static final long EXPIRES = 30 * 24 * 60 * 60 * 1000L; // 30 days
+    private static final long DEV_EXPIRES = 20 * 60 * 1000L; // 20 minutes
 
     /**
      * Uploads the provided text to PasteBook and returns the result URL.
@@ -31,7 +34,7 @@ public class PasteBookUploader {
                 .addHeader("title", title)
                 .addHeader("unlisted", "true")
 //                .addHeader("expires", "2592000000")
-                .addHeader("expires", "1200000")
+                .addHeader("expires", Config.isDevMode() ? String.valueOf(DEV_EXPIRES) : String.valueOf(EXPIRES))
                 .build();
 
         // Execute the request and get the response
