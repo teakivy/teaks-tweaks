@@ -33,7 +33,6 @@ public class MiniBlockTrade {
     private final Material material;
 
     public MiniBlockTrade(String name, String texture, Material material) {
-        Logger.error("MiniBlockTrade: " + name + " " + texture + " " + material);
         this.name = name;
         this.texture = texture;
         this.material = material;
