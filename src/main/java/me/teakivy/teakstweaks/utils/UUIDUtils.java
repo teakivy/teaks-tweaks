@@ -4,11 +4,16 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.profile.PlayerProfile;
+import org.bukkit.profile.PlayerTextures;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -17,8 +22,12 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Base64;
 import java.util.UUID;
+
+import static me.teakivy.teakstweaks.packs.moremobheads.BaseMobHead.getUrlFromBase64;
 
 public class UUIDUtils {
 
@@ -77,21 +86,26 @@ public class UUIDUtils {
 
     public static ItemStack getPlayerHead(UUID uuid, String name) {
         ItemStack head = new ItemStack(Material.PLAYER_HEAD);
-        SkullMeta headMeta = (SkullMeta) head.getItemMeta();
+        PlayerProfile profile = Bukkit.createPlayerProfile(uuid, name);
+        SkullMeta meta = (SkullMeta) head.getItemMeta();
+        PlayerTextures textures = profile.getTextures();
 
-        GameProfile profile = new GameProfile(uuid, name);
-        profile.getProperties().put("textures", new Property("textures", getPlayerTexture(uuid)));
-        Field field;
         try {
-            field = headMeta.getClass().getDeclaredField("profile");
-            field.setAccessible(true);
-            field.set(headMeta, profile);
-        } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException ignored) {}
+            textures.setSkin(getURLFromTexture(getPlayerTexture(uuid)));
+        } catch (MalformedURLException var8) {
+            var8.printStackTrace();
+        }
 
-        headMeta.setDisplayName(MM.toString(MiniMessage.miniMessage().deserialize("<yellow>" + name).decoration(TextDecoration.ITALIC, false)));
-
-        head.setItemMeta(headMeta);
+        meta.setOwnerProfile(profile);
+        meta.setNoteBlockSound(Sound.ENTITY_PLAYER_HURT.getKey());
+        head.setItemMeta(meta);
         return head;
+    }
+
+    private static URL getURLFromTexture(String texture) throws MalformedURLException {
+        String decoded = new String(Base64.getDecoder().decode(texture));
+        String skinString = decoded.split("\"SKIN\" : ")[1];
+        return new URL(skinString.split("\"url\" : \"")[1].split("\"")[0]);
     }
 
 }
