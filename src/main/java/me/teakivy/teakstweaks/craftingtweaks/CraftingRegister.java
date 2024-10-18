@@ -51,6 +51,7 @@ public class CraftingRegister {
         recipes.add(new MoreIronTrapdoors());
         recipes.add(new CraftableChainmail());
         recipes.add(new CopperPoweredRails());
+        recipes.add(new CraftableSaddles());
         for (AbstractCraftingTweak recipe : recipes) {
             try {
                 recipe.register();

@@ -971,6 +971,11 @@ crafting-tweaks:
   craftable-name-tags:
     enabled: false
 
+  # Craftable Saddles
+  # Allows you to craft Saddles.
+  craftable-saddles:
+      enabled: false
+
   # Craftable Small Dripleaf
   # Allows you to craft Small dripleaves from a large dripleaf.
   craftable-small-dripleaf:

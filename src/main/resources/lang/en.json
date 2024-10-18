@@ -349,6 +349,9 @@
   "craftable_name_tags.name": "Craftable Name Tags",
   "craftable_name_tags.description": "Allows you to craft Name Tags.",
 
+  "craftable_saddles.name": "Craftable Saddles",
+  "craftable_saddles.description": "Allows you to craft Saddles.",
+
   "craftable_small_dripleaf.name": "Craftable Small Dripleaf",
   "craftable_small_dripleaf.description": "Allows you to craft Small Dripleaf from a Large Dripleaf.",
 
