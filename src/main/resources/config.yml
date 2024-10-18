@@ -926,6 +926,11 @@ crafting-tweaks:
   craftable-bundles:
     enabled: false
 
+  # Craftable Chainmail
+  # Allows you to craft Chainmail Armor using Chains.
+  craftable-chainmail:
+    enabled: false
+
   # Craftable Coral Blocks (2x2)
   # Allows you to craft Coral Blocks from their Coral Plant in a 2x2. Both Tubes and Fans may be used interchangably.
   craftable-coral-blocks-2x2:
