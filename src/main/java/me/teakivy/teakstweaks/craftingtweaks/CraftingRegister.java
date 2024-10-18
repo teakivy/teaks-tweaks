@@ -47,6 +47,8 @@ public class CraftingRegister {
         recipes.add(new SmeltableRawOreBlocks());
         recipes.add(new MorePackedMud());
         recipes.add(new MoreSherds());
+        recipes.add(new MoreCopperTrapdoors());
+        recipes.add(new MoreIronTrapdoors());
         for (AbstractCraftingTweak recipe : recipes) {
             try {
                 recipe.register();

@@ -374,7 +374,13 @@
   "more_stairs.description": "Craft 8 Stairs instead of 4.",
 
   "more_trapdoors.name": "More Trapdoors",
-  "more_trapdoors.description": "Craft 12 Trapdoors instead of 3.",
+  "more_trapdoors.description": "Craft 12 Trapdoors instead of 2.",
+
+  "more_iron_trapdoors.name": "More Iron Trapdoors",
+  "more_iron_trapdoors.description": "Craft 8 Iron Trapdoors instead of 2.",
+
+  "more_copper_trapdoors.name": "More Copper Trapdoors",
+  "more_copper_trapdoors.description": "Craft 12 Copper Trapdoors instead of 2.",
 
   "powder_to_glass.name": "Powder to Glass",
   "powder_to_glass.description": "Smelt all colors of Concrete Powder into their respective Stained Glass color.",

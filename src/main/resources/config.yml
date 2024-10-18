@@ -1011,6 +1011,16 @@ crafting-tweaks:
   more-stairs:
     enabled: false
 
+  # More Copper Trapdoors
+  # Craft 12 copper trapdoors instead of 2.
+  more-copper-trapdoors:
+    enabled: false
+
+  # More Iron Trapdoors
+  # Craft 8 iron trapdoors instead of 2.
+  more-iron-trapdoors:
+    enabled: false
+
   # More Trapdoors
   # Craft 12 Trapdoors instead of 2.
   more-trapdoors:
