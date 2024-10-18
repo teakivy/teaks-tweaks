@@ -316,6 +316,9 @@
   "coal_to_black_dye.name": "Coal to Black Dye",
   "coal_to_black_dye.description": "Allows you to craft Coal into Black Dye.",
 
+  "copper_powered_rails.name": "Copper Powered Rails",
+  "copper_powered_rails.description": "Allows you to craft Powered Rails using Copper Ingots.",
+
   "craftable_blackstone.name": "Craftable Blackstone",
   "craftable_blackstone.description": "Allows you to craft Blackstone or Polished Blackstone using Basalt & Coal/Charcoal",
 

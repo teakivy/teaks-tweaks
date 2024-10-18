@@ -916,6 +916,11 @@ crafting-tweaks:
   coal-to-black-dye:
     enabled: false
 
+  # Copper Powered Rails
+  # Allows you to craft Powered Rails using Copper Ingots.
+  copper-powered-rails:
+      enabled: false
+
   # Craftable Blackstone
   # Allows you to craft Blackstone or Polished Blackstone using Basalt & Coal/Charcoal
   craftable-blackstone:
