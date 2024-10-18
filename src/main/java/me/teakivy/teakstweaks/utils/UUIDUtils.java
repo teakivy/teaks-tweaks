@@ -2,8 +2,7 @@ package me.teakivy.teakstweaks.utils;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.Property;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -25,23 +24,36 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 import static me.teakivy.teakstweaks.packs.moremobheads.BaseMobHead.getUrlFromBase64;
 
 public class UUIDUtils {
+    private static final HashMap<String, UUID> uuidCache = new HashMap<>();
 
-    public static UUID getUUID(String name) {
-        String uuid = "";
-        try {
-            BufferedReader in = new BufferedReader(new InputStreamReader(new URL("https://api.mojang.com/users/profiles/minecraft/" + name).openStream()));
-            uuid = (((JsonObject)new JsonParser().parse(in)).get("id")).toString().replaceAll("\"", "");
-            uuid = uuid.replaceAll("(\\w{8})(\\w{4})(\\w{4})(\\w{4})(\\w{12})", "$1-$2-$3-$4-$5");
-            in.close();
-        } catch (Exception e) {
-            uuid = "er";
+    public static CompletableFuture<UUID> getUUIDAsync(String name) {
+        // Check cache first
+        if (uuidCache.containsKey(name)) {
+            return CompletableFuture.completedFuture(uuidCache.get(name));
         }
-        return UUID.fromString(uuid);
+
+        // Run async task
+        return CompletableFuture.supplyAsync(() -> {
+            String uuid = "";
+            try {
+                BufferedReader in = new BufferedReader(new InputStreamReader(new URL("https://api.mojang.com/users/profiles/minecraft/" + name).openStream()));
+                uuid = (((JsonObject)new JsonParser().parse(in)).get("id")).toString().replaceAll("\"", "");
+                uuid = uuid.replaceAll("(\\w{8})(\\w{4})(\\w{4})(\\w{4})(\\w{12})", "$1-$2-$3-$4-$5");
+                in.close();
+            } catch (Exception e) {
+                uuid = "er";
+            }
+            UUID Uuid = UUID.fromString(uuid);
+            uuidCache.put(name, Uuid);
+            return Uuid;
+        });
     }
 
     public static String getPlayerTexture(UUID uuid) {
@@ -68,7 +80,7 @@ public class UUIDUtils {
             JSONParser parser = new JSONParser();
             JSONObject jsonResponse = (JSONObject) parser.parse(result.toString());
             JSONArray propertiesArray = (JSONArray) jsonResponse.get("properties");
-            JSONObject firstProperty = (JSONObject) propertiesArray.getFirst();
+            JSONObject firstProperty = (JSONObject) propertiesArray.get(0); // fix for first element
 
             // Extract the value
             return (String) firstProperty.get("value");
@@ -80,26 +92,28 @@ public class UUIDUtils {
         return null;
     }
 
-    public static ItemStack getPlayerHead(String name) {
-        return getPlayerHead(getUUID(name), name);
+    public static CompletableFuture<ItemStack> getPlayerHead(String name) {
+        return getUUIDAsync(name).thenCompose(uuid -> getPlayerHead(uuid, name));
     }
 
-    public static ItemStack getPlayerHead(UUID uuid, String name) {
-        ItemStack head = new ItemStack(Material.PLAYER_HEAD);
-        PlayerProfile profile = Bukkit.createPlayerProfile(uuid, name);
-        SkullMeta meta = (SkullMeta) head.getItemMeta();
-        PlayerTextures textures = profile.getTextures();
+    public static CompletableFuture<ItemStack> getPlayerHead(UUID uuid, String name) {
+        return CompletableFuture.supplyAsync(() -> {
+            ItemStack head = new ItemStack(Material.PLAYER_HEAD);
+            PlayerProfile profile = Bukkit.createPlayerProfile(uuid, name);
+            SkullMeta meta = (SkullMeta) head.getItemMeta();
+            PlayerTextures textures = profile.getTextures();
 
-        try {
-            textures.setSkin(getURLFromTexture(getPlayerTexture(uuid)));
-        } catch (MalformedURLException var8) {
-            var8.printStackTrace();
-        }
+            try {
+                textures.setSkin(getURLFromTexture(getPlayerTexture(uuid)));
+            } catch (MalformedURLException var8) {
+                var8.printStackTrace();
+            }
 
-        meta.setOwnerProfile(profile);
-        meta.setNoteBlockSound(Sound.ENTITY_PLAYER_HURT.getKey());
-        head.setItemMeta(meta);
-        return head;
+            meta.setOwnerProfile(profile);
+            meta.setNoteBlockSound(Sound.ENTITY_PLAYER_HURT.getKey());
+            head.setItemMeta(meta);
+            return head;
+        });
     }
 
     private static URL getURLFromTexture(String texture) throws MalformedURLException {
