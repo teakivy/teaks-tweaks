@@ -919,7 +919,7 @@ crafting-tweaks:
   # Copper Powered Rails
   # Allows you to craft Powered Rails using Copper Ingots.
   copper-powered-rails:
-      enabled: false
+    enabled: false
 
   # Craftable Blackstone
   # Allows you to craft Blackstone or Polished Blackstone using Basalt & Coal/Charcoal
@@ -974,7 +974,7 @@ crafting-tweaks:
   # Craftable Saddles
   # Allows you to craft Saddles.
   craftable-saddles:
-      enabled: false
+    enabled: false
 
   # Craftable Small Dripleaf
   # Allows you to craft Small dripleaves from a large dripleaf.
