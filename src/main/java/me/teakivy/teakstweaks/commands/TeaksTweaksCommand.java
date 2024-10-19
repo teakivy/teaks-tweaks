@@ -14,6 +14,7 @@ import me.teakivy.teakstweaks.utils.log.PasteManager;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.io.IOException;
 import java.util.*;
@@ -126,7 +127,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
     }
 
     public void handleGive(CommandEvent event) {
-//        if (!checkPermission(Permission.COMMAND_TEAKSTWEAKS_GIVE)) return;
+        if (!checkPermission(Permission.COMMAND_TEAKSTWEAKS_GIVE)) return;
         if (!event.hasArgs(2) && !event.isArg(3)) {
             sendUsage();
             return;
@@ -142,6 +143,17 @@ public class TeaksTweaksCommand extends AbstractCommand {
                 return;
             }
         }
+
+        if (amount < 1) {
+            sendMessage("give.error.amount.lt_1");
+            return;
+        }
+
+        if (amount > 6400) {
+            sendMessage("give.error.amount.gt_6400");
+            return;
+        }
+
         List<Player> players = new ArrayList<>();
         switch (playerName) {
             case "@a":
@@ -167,11 +179,22 @@ public class TeaksTweaksCommand extends AbstractCommand {
                 players.add(player);
         }
 
+        ItemStack item = ItemHandler.getItem(itemName);
+        if (item == null) {
+            sendMessage("give.unknown_item", insert("item", itemName));
+            return;
+        }
+
+
         for (Player player : players) {
             for (int i = 0; i < amount; i++) {
                 player.getInventory().addItem(ItemHandler.getItem(itemName));
             }
         }
+
+        String recipient = players.size() == 1 ? players.getFirst().getName() : Translatable.getString("teakstweakscommand.give.all_players");
+
+        sendMessage("give.success", insert("amount", amount), insert("item", itemName), insert("player", recipient));
     }
 
     @Override
@@ -194,7 +217,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
             if (event.isArg(2)) {
                 return ItemHandler.getAllKeys();
             }
-            if (event.isArg(3)) List.of("<amount>");
+            if (event.isArg(3)) return List.of("<amount>");
         }
 
         return null;

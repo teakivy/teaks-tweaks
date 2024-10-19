@@ -557,6 +557,11 @@
   "teakstweakscommand.paste.success": "<yellow>Successfully uploaded to PasteBook!<newline><click:copy_to_clipboard:'<url>'><gold>Click here</gold> copy the link to your clipboard.</click><newline><click:open_url:'<url>'><gold>Click here</gold> to open the link in your browser.</click>",
   "teakstweakscommand.paste.error": "<red>Failed to upload to PasteBook!",
   "teakstweakscommand.paste.error.cooldown": "<red>Teak's Tweaks Paste can only be used once every 30 minutes!",
+  "teakstweakscommand.give.unknown_item": "<red>Unknown item '<item>'.",
+  "teakstweakscommand.give.error.amount.lt_1": "<red>Integer must not be less than 1.",
+  "teakstweakscommand.give.error.amount.gt_6400": "<red>Integer must not be greater than 6400.",
+  "teakstweakscommand.give.success": "<yellow>Gave <gold><amount></gold> [<gold><item></gold>] to <gold><player></gold>.",
+  "teakstweakscommand.give.all_players": "everyone",
 
   "test.command_description": "Teak's Tweaks Testing Command.",
   "test.test": "<rainbow>Hello, <name>! Looks like you found my test command! :D</rainbow>",

@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.utils.miniblock;
 import com.google.gson.internal.LinkedTreeMap;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.JsonManager;
+import me.teakivy.teakstweaks.utils.log.Logger;
 import org.bukkit.Material;
 import org.bukkit.inventory.MerchantRecipe;
 import org.bukkit.inventory.StonecuttingRecipe;

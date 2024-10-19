@@ -557,6 +557,11 @@
   "teakstweakscommand.paste.success": "<yellow>Téléversé avec succès sur PasteBook !<newline><click:copy_to_clipboard:'<url>'><gold>Cliquez ici</gold> pour copier le lien dans votre presse-papiers.</click><newline><click:open_url:'<url>'><gold>Cliquez ici</gold> pour ouvrir le lien dans votre navigateur.</click>",
   "teakstweakscommand.paste.error": "<red>Échec du téléversement sur PasteBook !",
   "teakstweakscommand.paste.error.cooldown": "<red>Le service de collage de Teak's Tweaks ne peut être utilisé qu'une fois toutes les 30 minutes !",
+  "teakstweakscommand.give.unknown_item": "<red>Objet inconnu '<item>'.",
+  "teakstweakscommand.give.error.amount.lt_1": "<red>Le nombre entier ne doit pas être inférieur à 1.",
+  "teakstweakscommand.give.error.amount.gt_6400": "<red>Le nombre entier ne doit pas être supérieur à 6400.",
+  "teakstweakscommand.give.success": "<yellow>Donné <gold><amount></gold> [<gold><item></gold>] à <gold><player></gold>.",
+  "teakstweakscommand.give.all_players": "tout le monde",
 
   "test.command_description": "Teak's Tweaks Testing Command.",
   "test.test": "<rainbow>Hello, <name>! Looks like you found my test command! :D</rainbow>",
