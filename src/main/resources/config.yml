@@ -937,12 +937,12 @@ crafting-tweaks:
     enabled: false
 
   # Craftable Coral Blocks (2x2)
-  # Allows you to craft Coral Blocks from their Coral Plant in a 2x2. Both Tubes and Fans may be used interchangably.
+  # Allows you to craft Coral Blocks from their Coral Plant in a 2x2. Both Tubes and Fans may be used interchangeably.
   craftable-coral-blocks-2x2:
     enabled: false
 
   # Craftable Coral Blocks (3x3)
-  # Allows you to craft Coral Blocks from their Coral Plant in a 3x3. Both Tubes and Fans may be used interchangably.
+  # Allows you to craft Coral Blocks from their Coral Plant in a 3x3. Both Tubes and Fans may be used interchangeably.
   craftable-coral-blocks-3x3:
     enabled: false
 
@@ -982,7 +982,7 @@ crafting-tweaks:
     enabled: false
 
   # Craftable Spore Blossoms
-  # Allows you to craft Spore Blossoms using Lilacs, Azalea Leaves, and Honeycombs
+  # Allows you to craft Spore Blossoms using Lilacs, Azalea Leaves, and Honeycombs.
   craftable-spore-blossoms:
     enabled: false
 
@@ -1011,6 +1011,16 @@ crafting-tweaks:
   more-bricks:
     enabled: false
 
+  # More Copper Trapdoors
+  # Craft 12 copper trapdoors instead of 2.
+  more-copper-trapdoors:
+    enabled: false
+
+  # More Iron Trapdoors
+  # Craft 8 iron trapdoors instead of 2.
+  more-iron-trapdoors:
+    enabled: false
+
   # More Packed Mud
   # Craft 2 Packed Mud instead of 1.
   more-packed-mud:
@@ -1024,16 +1034,6 @@ crafting-tweaks:
   # More Stairs
   # Craft 8 Stairs instead of 4.
   more-stairs:
-    enabled: false
-
-  # More Copper Trapdoors
-  # Craft 12 copper trapdoors instead of 2.
-  more-copper-trapdoors:
-    enabled: false
-
-  # More Iron Trapdoors
-  # Craft 8 iron trapdoors instead of 2.
-  more-iron-trapdoors:
     enabled: false
 
   # More Trapdoors
@@ -1072,7 +1072,7 @@ crafting-tweaks:
     enabled: false
 
   # Unpackable Nether Wart
-  # Allows you to break down nether Wart Blocks into 9 Nether Wart.
+  # Allows you to break down Nether Wart Blocks into 9 Nether Wart.
   unpackable-nether-wart:
     enabled: false
 
