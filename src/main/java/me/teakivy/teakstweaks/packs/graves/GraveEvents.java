@@ -5,6 +5,8 @@ import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.XPUtils;
+import me.teakivy.teakstweaks.utils.customitems.CustomItem;
+import me.teakivy.teakstweaks.utils.customitems.TItem;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -34,6 +36,26 @@ public class GraveEvents extends BasePack {
 
     public GraveEvents() {
         super("graves", PackType.SURVIVAL, Material.STONE_BRICK_WALL);
+    }
+
+    @Override
+    public List<CustomItem> registerItems() {
+        List<CustomItem> items = new ArrayList<>();
+
+        ItemStack graveKey = new ItemStack(Material.TRIPWIRE_HOOK);
+        ItemMeta keyMeta = graveKey.getItemMeta();
+        keyMeta.setDisplayName(MM.toString(Translatable.get("graves.key.item_name")));
+        graveKey.addUnsafeEnchantment(Enchantment.CHANNELING, 1);
+        keyMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        List<String> lore = new ArrayList<>();
+        lore.add(MM.toString(Translatable.get("graves.key.item_lore")));
+        keyMeta.setLore(lore);
+        graveKey.setItemMeta(keyMeta);
+
+        CustomItem key = new CustomItem("grave_key", graveKey);
+        items.add(key);
+
+        return items;
     }
 
     @EventHandler
@@ -71,7 +93,7 @@ public class GraveEvents extends BasePack {
             if (getConfig().getBoolean("allow-robbing") || holdingKey(event.getPlayer())) {
                 entity.remove();
                 if (holdingKey(event.getPlayer()) && !getConfig().getBoolean("allow-robbing") && event.getPlayer().getGameMode() != GameMode.CREATIVE) {
-                    event.getPlayer().getInventory().remove(getGraveKey());
+                    event.getPlayer().getInventory().remove(TItem.GRAVE_KEY.getItem());
                 }
                 PersistentDataContainer data = entity.getPersistentDataContainer();
                 if (data.has(Key.get("grave_owner_items"), PersistentDataType.STRING)) {
@@ -184,21 +206,8 @@ public class GraveEvents extends BasePack {
     }
 
     public boolean holdingKey(Player player) {
-        ItemStack graveKey = getGraveKey();
+        ItemStack graveKey = TItem.GRAVE_KEY.getItem();
         return player.getInventory().getItem(EquipmentSlot.HAND).isSimilar(graveKey);
-    }
-
-    public static ItemStack getGraveKey() {
-        ItemStack graveKey = new ItemStack(Material.TRIPWIRE_HOOK);
-        ItemMeta keyMeta = graveKey.getItemMeta();
-        keyMeta.setDisplayName(MM.toString(Translatable.get("graves.key.item_name")));
-        graveKey.addUnsafeEnchantment(Enchantment.CHANNELING, 1);
-        keyMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        List<String> lore = new ArrayList<>();
-        lore.add(MM.toString(Translatable.get("graves.key.item_lore")));
-        keyMeta.setLore(lore);
-        graveKey.setItemMeta(keyMeta);
-        return graveKey;
     }
 
     @EventHandler

@@ -5,6 +5,8 @@ import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.MM;
+import me.teakivy.teakstweaks.utils.customitems.CustomItem;
+import me.teakivy.teakstweaks.utils.customitems.TItem;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -22,8 +24,8 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Wrench extends BasePack {
     private final String resourcePackUrl = "https://potrebic.box.com/shared/static/uw4fvii2o8qsjuz6xuant1safwjdnrez.zip";
@@ -36,20 +38,30 @@ public class Wrench extends BasePack {
     }
 
     @Override
+    public List<CustomItem> registerItems() {
+        List<CustomItem> items = new ArrayList<>();
+
+        ItemStack item = new ItemStack(Material.CARROT_ON_A_STICK);
+        ItemMeta meta = item.getItemMeta();
+        meta.setUnbreakable(true);
+        meta.setCustomModelData(4321);
+        item.setDurability((short) 1);
+        meta.setDisplayName(MM.toString(getText("item_name")));
+        item.setItemMeta(meta);
+
+        CustomItem wrench = new CustomItem("rotation_wrench", item);
+        items.add(wrench);
+
+        return items;
+    }
+
+    @Override
     public void init() {
         super.init();
 
         NamespacedKey key = Key.get("rotation_wrench");
 
-        ItemStack result = new ItemStack(Material.CARROT_ON_A_STICK);
-        ItemMeta meta = result.getItemMeta();
-        meta.setUnbreakable(true);
-        meta.setCustomModelData(4321);
-        result.setDurability((short) 1);
-        meta.setDisplayName(MM.toString(getText("item_name")));
-        result.setItemMeta(meta);
-
-        ShapedRecipe recipe = new ShapedRecipe(key, result);
+        ShapedRecipe recipe = new ShapedRecipe(key, TItem.ROTATION_WRENCH.getItem());
 
         recipe.shape(" # ", " ##", "$  ");
         recipe.setIngredient('#', Material.GOLD_INGOT);

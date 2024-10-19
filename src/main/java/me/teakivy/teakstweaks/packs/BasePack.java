@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
@@ -95,9 +96,21 @@ public class BasePack implements Listener {
 	 */
 	public void init() {
 		registerEvents(this);
+		List<CustomItem> customItems = registerItems();
+		for (CustomItem customItem : customItems) {
+			customItem.register();
+		}
 		getPlugin().addPack(name);
 		Logger.info(Translatable.get("startup.register.pack", insert("name", packType.getColor() + name)));
 	}
+
+	/**
+	 * Register all custom items
+	 */
+	public List<CustomItem> registerItems() {
+		return new ArrayList<>();
+	}
+
 
 	/**
 	 * Unregister & reregister all event handlers

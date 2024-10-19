@@ -7,6 +7,7 @@ import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.Arg;
 import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
+import me.teakivy.teakstweaks.utils.customitems.TItem;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -43,7 +44,7 @@ public class GraveCommand extends AbstractCommand {
         if (event.isArg(0, "key")) {
             if (!checkPermission(Permission.COMMAND_GRAVE_KEY)) return;
 
-            event.getPlayer().getInventory().addItem(GraveEvents.getGraveKey());
+            event.getPlayer().getInventory().addItem(TItem.GRAVE_KEY.getItem());
             sendMessage("given_key");
         }
 
