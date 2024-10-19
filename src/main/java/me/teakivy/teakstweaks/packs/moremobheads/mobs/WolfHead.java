@@ -44,6 +44,7 @@ public class WolfHead extends BaseMobHead {
 
     @Override
     public Sound getSound(EntityDeathEvent event) {
+        if (event == null) return this.sound;
         Wolf wolf = (Wolf) event.getEntity();
         if (wolf.isAngry()) return Sound.ENTITY_WOLF_GROWL;
         return this.sound;

@@ -96,10 +96,14 @@ public class BasePack implements Listener {
 	 */
 	public void init() {
 		registerEvents(this);
+
 		List<CustomItem> customItems = registerItems();
-		for (CustomItem customItem : customItems) {
-			customItem.register();
+		if (customItems != null) {
+			for (CustomItem customItem : customItems) {
+				customItem.register();
+			}
 		}
+
 		getPlugin().addPack(name);
 		Logger.info(Translatable.get("startup.register.pack", insert("name", packType.getColor() + name)));
 	}

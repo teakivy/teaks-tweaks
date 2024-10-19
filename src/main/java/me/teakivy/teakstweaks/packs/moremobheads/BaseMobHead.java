@@ -4,6 +4,7 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
+import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import net.kyori.adventure.platform.bukkit.BukkitComponentSerializer;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -106,6 +107,9 @@ public abstract class BaseMobHead implements Listener {
         textures.put(key, texture);
         names.put(texture, name);
         MMHDatapackCreator.addBaseAdvancement(name.toLowerCase().replaceAll(" ", "_"), name, texture);
+
+        CustomItem customItem = new CustomItem(name.toLowerCase().replaceAll(" ", "_"), createHead(null, name, texture));
+        customItem.register();
     }
 
     public ItemStack createHead(EntityDeathEvent event, String name, String texture) {

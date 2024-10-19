@@ -6,6 +6,7 @@ import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.packs.moremobheads.mobs.*;
 import me.teakivy.teakstweaks.utils.JsonManager;
 import me.teakivy.teakstweaks.utils.config.Config;
+import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -15,14 +16,20 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 public class MobHeads extends BasePack {
     private static HashMap<String, Object> chances = new HashMap<>();
 
-
     public MobHeads() {
         super("more-mob-heads", PackType.MOBS, Material.ZOMBIE_HEAD);
+    }
+
+    @Override
+    public List<CustomItem> registerItems() {
+        // Registered in BaseMobHead # addHeadTexture
+        return null;
     }
 
     @Override
