@@ -11,7 +11,6 @@ public class ItemHandler {
 
     public static void addCustomItem(CustomItem customItem) {
         if (isCustomItem(customItem.getName())) return;
-        Logger.info("Adding custom item: " + customItem.getName());
         customItems.add(customItem);
     }
 

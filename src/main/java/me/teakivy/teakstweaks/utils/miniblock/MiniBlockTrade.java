@@ -4,6 +4,7 @@ import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.MerchantRecipe;
@@ -50,6 +51,7 @@ public class MiniBlockTrade {
         ItemStack head = new ItemStack(Material.PLAYER_HEAD, amount);
         PlayerProfile profile = Bukkit.createPlayerProfile(UUID.fromString("fdb5599c-1b14-440e-82df-d69719703d21"), "MiniBlock");
         SkullMeta meta = (SkullMeta) head.getItemMeta();
+        meta.setDisplayName(ChatColor.RESET + name + " Mini Block");
         PlayerTextures textures = profile.getTextures();
 
         try {
