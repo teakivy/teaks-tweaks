@@ -19,6 +19,7 @@ public class Translatable {
      */
     public static void init(String lang) {
         languages.add(new TranslatableLanguage("en"));
+        languages.add(new TranslatableLanguage("fr"));
 
         if (isPluginLanguage(lang)) {
             currentLanguage = getLanguage(lang);
@@ -62,10 +63,9 @@ public class Translatable {
      */
     public static boolean isPluginLanguage(String lang) {
         lang = lang.replace(".json", "");
-        for (TranslatableLanguage language : languages) {
-            if (language.getLang().equals(lang)) return true;
-        }
-        return false;
+
+        InputStream resource = TeaksTweaks.getInstance().getResource("lang/" + lang + ".json");
+        return resource != null;
     }
 
     /**
