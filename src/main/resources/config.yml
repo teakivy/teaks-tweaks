@@ -38,7 +38,7 @@ settings:
 
   # Language
   # Change the language of the plugin
-  # Currently only supports English (en)
+  # Currently only supports English (en) and French (fr)
   # If you would like to translate the plugin into your language,
   # please contact me on discord! @teakivy (https://discord.gg/wfP4SkZx6s)
   language: "en"
