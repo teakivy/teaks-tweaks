@@ -543,7 +543,7 @@
 
   "teakstweakscommand.command_description": "Commande principale de Teak's Tweaks.",
   "teakstweakscommand.version": "<green>v<version>",
-  "teakstweakscommand.support": "<yellow>Pour obtenir de l'aide, rejoignez le Discord et posez votre question dans le canal <gold>#<red>❓</red> | support</gold> : <gold><click:open_url:'<discord>'><discord></click></gold><newline>Pour une assistance plus rapide, exécutez <gold><click:run_command:'/teakstweaks paste true'>/teakstweaks paste</click></gold> et incluez le lien dans votre message.",
+  "teakstweakscommand.support": "<yellow>Pour obtenir de l'aide, rejoignez le Discord et posez votre question dans le salon <gold>#<red>❓</red> | support</gold> : <gold><click:open_url:'<discord>'><discord></click></gold><newline>Pour une assistance plus rapide, exécutez <gold><click:run_command:'/teakstweaks paste true'>/teakstweaks paste</click></gold> et incluez le lien dans votre message.",
   "teakstweakscommand.update": "<green><url>",
   "teakstweakscommand.wiki": "<green><click:open_url:'<url>'><url></click>",
   "teakstweakscommand.info.dashed_line": "<gray>-----------------------------------------------------",
@@ -553,10 +553,10 @@
   "teakstweakscommand.info.config_generated": "Génération de la configuration : <green><config_generated>",
   "teakstweakscommand.info.dev_mode_enabled": "Mode dev : <green>Enabled",
   "teakstweakscommand.info.support": "Serveur de support : <green><discord>",
-  "teakstweakscommand.paste.uploading": "<gold>Téléchargement sur PasteBook...",
-  "teakstweakscommand.paste.success": "<yellow>Téléchargé avec succès sur PasteBook !<newline><click:copy_to_clipboard:'<url>'><gold>Cliquez ici</gold> pour copier le lien dans votre presse-papiers.</click><newline><click:open_url:'<url>'><gold>Cliquez ici</gold> pour ouvrir le lien dans votre navigateur.</click>",
-  "teakstweakscommand.paste.error": "<red>Échec du téléchargement sur PasteBook !",
-  "teakstweakscommand.paste.error.cooldown": "<red>Le collage de Teak's Tweaks ne peut être utilisé qu'une fois toutes les 30 minutes !",
+  "teakstweakscommand.paste.uploading": "<gold>Téléversement sur PasteBook...",
+  "teakstweakscommand.paste.success": "<yellow>Téléversé avec succès sur PasteBook !<newline><click:copy_to_clipboard:'<url>'><gold>Cliquez ici</gold> pour copier le lien dans votre presse-papiers.</click><newline><click:open_url:'<url>'><gold>Cliquez ici</gold> pour ouvrir le lien dans votre navigateur.</click>",
+  "teakstweakscommand.paste.error": "<red>Échec du téléversement sur PasteBook !",
+  "teakstweakscommand.paste.error.cooldown": "<red>Le service de collage de Teak's Tweaks ne peut être utilisé qu'une fois toutes les 30 minutes !",
 
   "test.command_description": "Teak's Tweaks Testing Command.",
   "test.test": "<rainbow>Hello, <name>! Looks like you found my test command! :D</rainbow>",
