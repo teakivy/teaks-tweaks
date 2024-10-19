@@ -5,6 +5,7 @@ import com.mojang.authlib.properties.Property;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
+import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -36,6 +37,10 @@ public class MiniBlockTrade {
         this.name = name;
         this.texture = texture;
         this.material = material;
+
+        ItemStack head = getSkull(1);
+        CustomItem customItem = new CustomItem(name.toLowerCase().replaceAll(" ", "_") + "_mini_block", head);
+        customItem.register();
     }
 
     public MerchantRecipe getMerchantTrade() {
