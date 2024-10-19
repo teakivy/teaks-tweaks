@@ -33,9 +33,24 @@ public class ItemHandler {
         return false;
     }
 
+    public static ItemStack getItem(String name, int amount) {
+        ItemStack item = getItem(name);
+        if (item == null) return null;
+        item.setAmount(amount);
+        return item;
+    }
+
     public static ItemStack getItem(String name) {
         CustomItem customItem = getCustomItem(name);
         if (customItem == null) return null;
         return customItem.getItem();
+    }
+
+    public static List<String> getAllKeys() {
+        List<String> names = new ArrayList<>();
+        for (CustomItem customItem : customItems) {
+            names.add(customItem.getName());
+        }
+        return names;
     }
 }

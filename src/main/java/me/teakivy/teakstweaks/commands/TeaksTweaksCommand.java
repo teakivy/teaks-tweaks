@@ -3,18 +3,20 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.homes.Home;
 import me.teakivy.teakstweaks.packs.homes.HomesPack;
+import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.Wiki;
 import me.teakivy.teakstweaks.utils.command.*;
 import me.teakivy.teakstweaks.utils.config.Config;
+import me.teakivy.teakstweaks.utils.customitems.ItemHandler;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.log.PasteBookUploader;
 import me.teakivy.teakstweaks.utils.log.PasteManager;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class TeaksTweaksCommand extends AbstractCommand {
     private static final int PASTE_COOLDOWN = 30 * 60 * 60 * 1000;
@@ -22,7 +24,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
 
 
     public TeaksTweaksCommand() {
-        super(CommandType.ALL, null, "teakstweaks", Permission.COMMAND_TEAKSTWEAKS, Arrays.asList("tweaks", "tt"), "teakstweakscommand", Arg.optional("info", "version", "support", "update", "wiki", "paste"), Arg.optional("packs", "craftingtweaks", "commands", "true", "false"));
+        super(CommandType.ALL, null, "teakstweaks", Permission.COMMAND_TEAKSTWEAKS, Arrays.asList("tweaks", "tt"), "teakstweakscommand", Arg.optional("info", "version", "support", "update", "wiki", "paste", "give"), Arg.optional("packs", "craftingtweaks", "commands", "true", "false", "player"), Arg.optional("item"), Arg.optional("amount"));
     }
 
     @Override
@@ -49,6 +51,9 @@ public class TeaksTweaksCommand extends AbstractCommand {
                 return;
             case "paste":
                 handlePaste(event);
+                return;
+            case "give":
+                handleGive(event);
                 return;
             default:
                 sendUsage();
@@ -120,11 +125,77 @@ public class TeaksTweaksCommand extends AbstractCommand {
         }
     }
 
+    public void handleGive(CommandEvent event) {
+//        if (!checkPermission(Permission.COMMAND_TEAKSTWEAKS_GIVE)) return;
+        if (!event.hasArgs(2) && !event.isArg(3)) {
+            sendUsage();
+            return;
+        }
+        String playerName = event.getArg(1);
+        String itemName = event.getArg(2);
+        int amount = 1;
+        if (event.isArg(3)) {
+            try {
+                amount = Integer.parseInt(event.getArg(3));
+            } catch (NumberFormatException e) {
+                sendUsage();
+                return;
+            }
+        }
+        List<Player> players = new ArrayList<>();
+        switch (playerName) {
+            case "@a":
+                players.addAll(Bukkit.getOnlinePlayers());
+                break;
+            case "@s":
+                if (event.getSender() instanceof Player) {
+                    players.add((Player) event.getSender());
+                } else {
+                    sendError(ErrorType.NOT_PLAYER);
+                    return;
+                }
+                break;
+            case "@r":
+                players.add(Bukkit.getOnlinePlayers().stream().findAny().orElse(null));
+                break;
+            default:
+                Player player = Bukkit.getPlayer(playerName);
+                if (player == null) {
+                    sendError(ErrorType.PLAYER_DNE);
+                    return;
+                }
+                players.add(player);
+        }
+
+        for (Player player : players) {
+            for (int i = 0; i < amount; i++) {
+                player.getInventory().addItem(ItemHandler.getItem(itemName));
+            }
+        }
+    }
+
     @Override
     public List<String> tabComplete(TabCompleteEvent event) {
-        if (event.isArg(0)) return Arrays.asList("info", "version", "support", "update", "wiki", "paste");
+        if (event.isArg(0)) return Arrays.asList("info", "version", "support", "update", "wiki", "paste", "give");
         if (event.isArg(1) && event.isArg(0, "wiki")) return Arrays.asList("packs", "craftingtweaks", "commands");
         if (event.isArg(1) && event.isArg(0, "paste")) return Arrays.asList("true", "false");
+
+        if (event.isArg(0, "give")) {
+            if (event.isArg(1)) {
+                List<String> players = new ArrayList<>();
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    players.add(player.getName());
+                }
+                players.add("@a");
+                players.add("@s");
+                players.add("@r");
+                return players;
+            }
+            if (event.isArg(2)) {
+                return ItemHandler.getAllKeys();
+            }
+            if (event.isArg(3)) List.of("<amount>");
+        }
 
         return null;
     }
