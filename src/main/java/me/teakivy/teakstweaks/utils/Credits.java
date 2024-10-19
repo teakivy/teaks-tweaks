@@ -24,6 +24,7 @@ public class Credits {
                         " - RamrKorda\n" +
                         " - MCCasper\n" +
                         " - Loudbooks\n" +
+                        " - ri1_\n" +
                         "\n" +
                         "Supporters:\n" +
                         " - loudambiance\n" +
