@@ -48,7 +48,7 @@ public class GraveEvents extends BasePack {
             if (data.has(Key.get("grave_owner_items"), PersistentDataType.STRING)) {
                 String ownerItems = data.get(Key.get("grave_owner_items"), PersistentDataType.STRING);
                 if (ownerItems != null) {
-                    for (ItemStack item : new GraveCreator().deserializeItems(ownerItems)) {
+                    for (ItemStack item : GraveCreator.deserializeItems(ownerItems)) {
                         Item itemE = entity.getWorld().dropItem(entity.getLocation().add(0, 2, 0), item);
                         if (event.getPlayer().isSneaking()) {
                             PersistentDataContainer iData = itemE.getPersistentDataContainer();
@@ -77,7 +77,7 @@ public class GraveEvents extends BasePack {
                 if (data.has(Key.get("grave_owner_items"), PersistentDataType.STRING)) {
                     String ownerItems = data.get(Key.get("grave_owner_items"), PersistentDataType.STRING);
                     if (ownerItems != null) {
-                        for (ItemStack item : new GraveCreator().deserializeItems(ownerItems)) {
+                        for (ItemStack item : GraveCreator.deserializeItems(ownerItems)) {
                             Item itemE = entity.getWorld().dropItem(entity.getLocation().add(0, 2, 0), item);
                             itemE.setPickupDelay(0);
                             itemE.setVelocity(new Vector(0, 0, 0));
@@ -105,8 +105,7 @@ public class GraveEvents extends BasePack {
 
     @EventHandler
     public void onPickUp(InventoryPickupItemEvent event) {
-        if (!(event.getInventory().getHolder() instanceof Player)) return;
-        Player player = (Player) event.getInventory().getHolder();
+        if (!(event.getInventory().getHolder() instanceof Player player)) return;
         if (event.getItem().getPersistentDataContainer().has(Key.get("grave_item_owner_uuid"), PersistentDataType.STRING)) {
             UUID playerUUID = player.getUniqueId();
             UUID itemUUID = UUID.fromString(event.getItem().getPersistentDataContainer().get(Key.get("grave_item_owner_uuid"), PersistentDataType.STRING));

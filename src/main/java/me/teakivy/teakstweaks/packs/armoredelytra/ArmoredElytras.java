@@ -117,9 +117,8 @@ public class ArmoredElytras extends BasePack {
 
     @EventHandler
     public void onBurn(EntityDamageEvent event) throws IOException {
-        if (!(event.getEntity() instanceof Item)) return;
+        if (!(event.getEntity() instanceof Item item)) return;
 
-        Item item = (Item) event.getEntity();
         ItemStack itemStack = item.getItemStack();
 
         if (itemStack.getType() != Material.ELYTRA) return;

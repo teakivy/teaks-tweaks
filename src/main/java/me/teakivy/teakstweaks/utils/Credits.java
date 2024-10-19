@@ -23,16 +23,20 @@ public class Credits {
                         " - evm0\n" +
                         " - RamrKorda\n" +
                         " - MCCasper\n" +
+                        " - Loudbooks\n" +
                         "\n" +
                         "Supporters:\n" +
                         " - loudambiance\n" +
                         "\n" +
                         "Thanks to Sachin Gorkar for some of the tweak's ideas\n" +
                         "\n" +
-                        "Fast Leaf Decay  By: @StarTux on Github\n" +
+                        "Fast Leaf Decay By: @StarTux on Github\n" +
                         "\n" +
                         "Vanilla Tweaks Credits:\n" +
-                        "https://vanillatweaks.net/\n"
+                        "https://vanillatweaks.net/\n" +
+                        "\n" +
+                        "Teak's Tweaks Paste provided by PasteBook\n" +
+                        "https://pastebook.dev/\n"
                         );
         writer.close();
     }

@@ -4,6 +4,7 @@ import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 
@@ -29,7 +30,7 @@ public class MoreTrapdoors extends AbstractCraftingTweak {
     }
 
     public static void newTrapdoorRecipe(String type) {
-        Bukkit.removeRecipe(Key.get(type.toLowerCase() + "_trapdoors"));
+        Bukkit.removeRecipe(NamespacedKey.minecraft(type.toLowerCase() + "_trapdoor"));
         ShapedRecipe recipe = new ShapedRecipe(Key.get(type.toLowerCase() + "_trapdoors"),
                 new ItemStack(Material.valueOf(type + "_TRAPDOOR"), 12));
         recipe.shape("xxx", "xxx");

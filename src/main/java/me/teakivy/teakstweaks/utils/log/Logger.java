@@ -1,9 +1,15 @@
-package me.teakivy.teakstweaks.utils;
+package me.teakivy.teakstweaks.utils.log;
 
+import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 
 public class Logger {
     /**
@@ -155,4 +161,14 @@ public class Logger {
      */
     public enum LogLevel { ERROR, WARNING, INFO, SUCCESS, OUTLINE }
 
+
+    public static String getLogMessagesAsString() {
+        File file = TeaksTweaks.getInstance().getServer().getWorldContainer().toPath().resolve("logs/latest.log").toFile();
+        try {
+            return new String(Files.readAllBytes(file.toPath()));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "ERROR";
+        }
+    }
 }

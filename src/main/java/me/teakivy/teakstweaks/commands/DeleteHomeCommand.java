@@ -36,7 +36,6 @@ public class DeleteHomeCommand extends AbstractCommand {
             return;
         }
         sendMessage("deleted_home", insert("name", name));
-        return;
     }
 
     @Override

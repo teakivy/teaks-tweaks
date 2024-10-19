@@ -1,7 +1,7 @@
 package me.teakivy.teakstweaks.utils.command;
 
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.Logger;
+import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
@@ -34,7 +34,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
 
     private final String command;
     private final String description;
-    private Permission permission;
+    private final Permission permission;
     private final List<String> alias;
 
     private final Arg[] args;

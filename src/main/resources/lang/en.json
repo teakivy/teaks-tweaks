@@ -316,11 +316,17 @@
   "coal_to_black_dye.name": "Coal to Black Dye",
   "coal_to_black_dye.description": "Allows you to craft Coal into Black Dye.",
 
+  "copper_powered_rails.name": "Copper Powered Rails",
+  "copper_powered_rails.description": "Allows you to craft Powered Rails using Copper Ingots.",
+
   "craftable_blackstone.name": "Craftable Blackstone",
   "craftable_blackstone.description": "Allows you to craft Blackstone or Polished Blackstone using Basalt & Coal/Charcoal",
 
   "craftable_bundles.name": "Craftable Bundles",
   "craftable_bundles.description": "Allows you to craft the experimental bundle item. (Using 1 Leather and 1 String)",
+
+  "craftable_chainmail.name": "Craftable Chainmail",
+  "craftable_chainmail.description": "Allows you to craft Chainmail Armor using Chains.",
 
   "craftable_coral_blocks_2x2.name": "Craftable Coral Blocks (2x2)",
   "craftable_coral_blocks_2x2.description": "Allows you to craft Coral Blocks from their Coral Plant in a 2x2. Both Tubes and Fans may be used interchangeably.",
@@ -342,6 +348,9 @@
 
   "craftable_name_tags.name": "Craftable Name Tags",
   "craftable_name_tags.description": "Allows you to craft Name Tags.",
+
+  "craftable_saddles.name": "Craftable Saddles",
+  "craftable_saddles.description": "Allows you to craft Saddles.",
 
   "craftable_small_dripleaf.name": "Craftable Small Dripleaf",
   "craftable_small_dripleaf.description": "Allows you to craft Small Dripleaf from a Large Dripleaf.",
@@ -374,7 +383,13 @@
   "more_stairs.description": "Craft 8 Stairs instead of 4.",
 
   "more_trapdoors.name": "More Trapdoors",
-  "more_trapdoors.description": "Craft 12 Trapdoors instead of 3.",
+  "more_trapdoors.description": "Craft 12 Trapdoors instead of 2.",
+
+  "more_iron_trapdoors.name": "More Iron Trapdoors",
+  "more_iron_trapdoors.description": "Craft 8 Iron Trapdoors instead of 2.",
+
+  "more_copper_trapdoors.name": "More Copper Trapdoors",
+  "more_copper_trapdoors.description": "Craft 12 Copper Trapdoors instead of 2.",
 
   "powder_to_glass.name": "Powder to Glass",
   "powder_to_glass.description": "Smelt all colors of Concrete Powder into their respective Stained Glass color.",
@@ -528,7 +543,7 @@
 
   "teakstweakscommand.command_description": "Main Command for Teak's Tweaks.",
   "teakstweakscommand.version": "<green>v<version>",
-  "teakstweakscommand.support": "<green><discord>",
+  "teakstweakscommand.support": "<yellow>For support, join the Discord, and ask in the <gold>#<red>❓</red> | support</gold> channel: <gold><click:open_url:'<discord>'><discord></click></gold><newline>For faster support, run <gold><click:run_command:'/teakstweaks paste true'>/teakstweaks paste</click></gold> and include the link in your message.",
   "teakstweakscommand.update": "<green><url>",
   "teakstweakscommand.wiki": "<green><click:open_url:'<url>'><url></click>",
   "teakstweakscommand.info.dashed_line": "<gray>-----------------------------------------------------",
@@ -538,6 +553,10 @@
   "teakstweakscommand.info.config_generated": "Config Generated: <green><config_generated>",
   "teakstweakscommand.info.dev_mode_enabled": "Dev Mode: <green>Enabled",
   "teakstweakscommand.info.support": "Support Server: <green><discord>",
+  "teakstweakscommand.paste.uploading": "<gold>Uploading to PasteBook...",
+  "teakstweakscommand.paste.success": "<yellow>Successfully uploaded to PasteBook!<newline><click:copy_to_clipboard:'<url>'><gold>Click here</gold> copy the link to your clipboard.</click><newline><click:open_url:'<url>'><gold>Click here</gold> to open the link in your browser.</click>",
+  "teakstweakscommand.paste.error": "<red>Failed to upload to PasteBook!",
+  "teakstweakscommand.paste.error.cooldown": "<red>Teak's Tweaks Paste can only be used once every 30 minutes!",
 
   "test.command_description": "Teak's Tweaks Testing Command.",
   "test.test": "<rainbow>Hello, <name>! Looks like you found my test command! :D</rainbow>",

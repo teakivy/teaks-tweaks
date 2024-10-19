@@ -151,8 +151,7 @@ public class ConfigUpdater {
         for (int i = 0; i < list.size(); i++) {
             Object o = list.get(i);
 
-            if (o instanceof String) {
-                String value = (String) o;
+            if (o instanceof String value) {
                 builder.append(prefixSpaces).append("- ").append(formatStringValue(value));
             } else if (o instanceof Character) {
                 builder.append(prefixSpaces).append("- '").append(o).append("'");

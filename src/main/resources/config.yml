@@ -29,6 +29,13 @@ settings:
   # /mechanics (Permission: teakstweaks.command.mechanics)
   mechanics-command: true
 
+  # Send Log in Paste
+  # If enabled, the plugin will send the server log by default when using /teakstweaks paste.
+  # If disabled, the log can still be sent by using /teakstweaks paste true.
+  # Commands:
+  # /teakstweaks paste (Permission: teakstweaks.command.teakstweaks.paste)
+  send-log-in-paste: true
+
   # Language
   # Change the language of the plugin
   # Currently only supports English (en)
@@ -909,6 +916,11 @@ crafting-tweaks:
   coal-to-black-dye:
     enabled: false
 
+  # Copper Powered Rails
+  # Allows you to craft Powered Rails using Copper Ingots.
+  copper-powered-rails:
+    enabled: false
+
   # Craftable Blackstone
   # Allows you to craft Blackstone or Polished Blackstone using Basalt & Coal/Charcoal
   craftable-blackstone:
@@ -919,13 +931,18 @@ crafting-tweaks:
   craftable-bundles:
     enabled: false
 
+  # Craftable Chainmail
+  # Allows you to craft Chainmail Armor using Chains.
+  craftable-chainmail:
+    enabled: false
+
   # Craftable Coral Blocks (2x2)
-  # Allows you to craft Coral Blocks from their Coral Plant in a 2x2. Both Tubes and Fans may be used interchangably.
+  # Allows you to craft Coral Blocks from their Coral Plant in a 2x2. Both Tubes and Fans may be used interchangeably.
   craftable-coral-blocks-2x2:
     enabled: false
 
   # Craftable Coral Blocks (3x3)
-  # Allows you to craft Coral Blocks from their Coral Plant in a 3x3. Both Tubes and Fans may be used interchangably.
+  # Allows you to craft Coral Blocks from their Coral Plant in a 3x3. Both Tubes and Fans may be used interchangeably.
   craftable-coral-blocks-3x3:
     enabled: false
 
@@ -954,13 +971,18 @@ crafting-tweaks:
   craftable-name-tags:
     enabled: false
 
+  # Craftable Saddles
+  # Allows you to craft Saddles.
+  craftable-saddles:
+    enabled: false
+
   # Craftable Small Dripleaf
   # Allows you to craft Small dripleaves from a large dripleaf.
   craftable-small-dripleaf:
     enabled: false
 
   # Craftable Spore Blossoms
-  # Allows you to craft Spore Blossoms using Lilacs, Azalea Leaves, and Honeycombs
+  # Allows you to craft Spore Blossoms using Lilacs, Azalea Leaves, and Honeycombs.
   craftable-spore-blossoms:
     enabled: false
 
@@ -987,6 +1009,16 @@ crafting-tweaks:
   # More Bricks
   # Craft 4 Bricks instead of 1.
   more-bricks:
+    enabled: false
+
+  # More Copper Trapdoors
+  # Craft 12 copper trapdoors instead of 2.
+  more-copper-trapdoors:
+    enabled: false
+
+  # More Iron Trapdoors
+  # Craft 8 iron trapdoors instead of 2.
+  more-iron-trapdoors:
     enabled: false
 
   # More Packed Mud
@@ -1040,7 +1072,7 @@ crafting-tweaks:
     enabled: false
 
   # Unpackable Nether Wart
-  # Allows you to break down nether Wart Blocks into 9 Nether Wart.
+  # Allows you to break down Nether Wart Blocks into 9 Nether Wart.
   unpackable-nether-wart:
     enabled: false
 
@@ -1063,6 +1095,6 @@ crafting-tweaks:
 # Leave these options alone unless you know what you're doing!
 # Changing these values may cause unexpected issues.
 config:
-  created-version: 2.0.0
-  version: 2.0.0
+  created-version: 2.0.1
+  version: 2.0.1
   dev-mode: false

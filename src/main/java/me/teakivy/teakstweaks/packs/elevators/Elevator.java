@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class Elevator extends BasePack {
-    private static HashMap<UUID, Long> cooldown = new HashMap<>();
+    private static final HashMap<UUID, Long> cooldown = new HashMap<>();
 
     public Elevator() {
         super("elevators", PackType.EXPERIMENTAL, Material.ENDER_PEARL);

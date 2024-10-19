@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.packs.huskdropssand;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
-import net.minecraft.world.item.enchantment.effects.DamageEntity;
 import org.bukkit.Material;
 import org.bukkit.damage.DamageSource;
 import org.bukkit.enchantments.Enchantment;

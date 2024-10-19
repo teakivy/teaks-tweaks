@@ -36,8 +36,7 @@ public class KeepSmall extends BasePack {
                         .trim()
                         .equalsIgnoreCase(getString("smallify.activation_name"))) {
                     if (!getConfig().getBoolean("smallify")) return;
-                    if (entity1 instanceof Ageable) {
-                        Ageable ageable = (Ageable) entity1;
+                    if (entity1 instanceof Ageable ageable) {
                         ageable.setAge(-Integer.MAX_VALUE);
                     }
                     entity.setCustomName(MM.toString(getText("smallify.small_name")));
@@ -47,8 +46,7 @@ public class KeepSmall extends BasePack {
                         .trim()
                         .equalsIgnoreCase(getString("grow.activation_name"))) {
                     if (!getConfig().getBoolean("grow")) return;
-                    if (entity1 instanceof Ageable) {
-                        Ageable ageable = (Ageable) entity1;
+                    if (entity1 instanceof Ageable ageable) {
                         ageable.setAge(1);
                     }
                     entity.setCustomName(MM.toString(getText("grow.grown_name")));
