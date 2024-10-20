@@ -33,7 +33,7 @@ public class UpdateJoinAlert implements Listener {
 
         String message = Translatable.getString("startup.update.join_alert");
         message = "<hover:show_text:\"" + Translatable.getString("startup.update.join_alert.hover") + "\">" + message;
-        message = "<click:open_url:\"" + Translatable.getString("plugin.url") + "\">" + message;
+        message = "<click:open_url:\"" + Translatable.getString("plugin.base_url") + "\">" + message;
 
         MM.player(player).sendMessage(MiniMessage.miniMessage().deserialize(message, Placeholder.parsed("version", UpdateChecker.getLatestVersion())));
 

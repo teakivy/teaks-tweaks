@@ -1,11 +1,12 @@
 {
-  "meta.version": "1.10.5-beta",
+  "meta.version": "2.0.2",
   "meta.modified": false,
   "meta.language_name": "Français",
 
   "plugin.name": "Teak's Tweaks",
   "plugin.discord": "<click:open_url:'https://discord.gg/wfP4SkZx6s'>https://discord.gg/wfP4SkZx6s</click>",
   "plugin.url": "<click:open_url:'https://modrinth.com/plugin/teaks-tweaks'>https://modrinth.com/plugin/teaks-tweaks</click>",
+  "plugin.base_url": "https://modrinth.com/plugin/teaks-tweaks",
   "plugin.author": "TeakIvy",
 
   "#comment.errors": "Common Error Messages: (this is a comment and will never be shown in-game)",
