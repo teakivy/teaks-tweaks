@@ -27,6 +27,6 @@ public class MoreSherds extends AbstractCraftingTweak {
                 new ItemStack(material, 2));
         recipe.addIngredient(material);
         recipe.addIngredient(Material.BRICK);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

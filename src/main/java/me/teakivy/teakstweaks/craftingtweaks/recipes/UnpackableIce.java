@@ -18,11 +18,11 @@ public class UnpackableIce extends AbstractCraftingTweak {
         ShapelessRecipe iceRecipe = new ShapelessRecipe(Key.get("ice_unpackables"),
                 new ItemStack(Material.ICE, 9));
         iceRecipe.addIngredient(Material.PACKED_ICE);
-        Bukkit.addRecipe(iceRecipe);
+        addRecipe(iceRecipe);
 
         ShapelessRecipe packedIceRecipe = new ShapelessRecipe(Key.get("packed_ice_unpackables"),
                 new ItemStack(Material.PACKED_ICE, 9));
         packedIceRecipe.addIngredient(Material.BLUE_ICE);
-        Bukkit.addRecipe(packedIceRecipe);
+        addRecipe(packedIceRecipe);
     }
 }

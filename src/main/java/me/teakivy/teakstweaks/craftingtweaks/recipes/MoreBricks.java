@@ -19,6 +19,6 @@ public class MoreBricks extends AbstractCraftingTweak {
         ShapedRecipe recipe = new ShapedRecipe(Key.get("bricks_bricks"), new ItemStack(Material.BRICKS, 4));
         recipe.shape("##", "##");
         recipe.setIngredient('#', Material.BRICK);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

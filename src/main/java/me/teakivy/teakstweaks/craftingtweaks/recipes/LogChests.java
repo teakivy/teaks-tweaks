@@ -65,6 +65,6 @@ public class LogChests extends AbstractCraftingTweak {
         ShapedRecipe recipe = new ShapedRecipe(Key.get("log_chests"), new ItemStack(Material.CHEST, 4));
         recipe.shape("xxx", "x x", "xxx");
         recipe.setIngredient('x', logs);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

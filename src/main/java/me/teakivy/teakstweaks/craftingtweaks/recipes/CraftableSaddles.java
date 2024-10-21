@@ -19,6 +19,6 @@ public class CraftableSaddles extends AbstractCraftingTweak {
         recipe.shape("lll", "s s");
         recipe.setIngredient('l', Material.LEATHER);
         recipe.setIngredient('s', Material.STRING);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

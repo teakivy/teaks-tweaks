@@ -20,6 +20,6 @@ public class MorePackedMud extends AbstractCraftingTweak {
         ShapelessRecipe recipe = new ShapelessRecipe(Key.get("packed_mud_more"), new ItemStack(Material.PACKED_MUD, 2));
         recipe.addIngredient(Material.MUD);
         recipe.addIngredient(Material.WHEAT);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

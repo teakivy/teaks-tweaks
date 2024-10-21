@@ -25,7 +25,7 @@ public class CraftableCoral2x2 extends AbstractCraftingTweak {
         newCoralRecipe("HORN");
     }
 
-    private static void newCoralRecipe(String type) {
+    private void newCoralRecipe(String type) {
         RecipeChoice choice = new RecipeChoice.MaterialChoice(List.of(
                 Material.valueOf(type + "_CORAL"),
                 Material.valueOf(type + "_CORAL_FAN")));
@@ -34,6 +34,6 @@ public class CraftableCoral2x2 extends AbstractCraftingTweak {
                 new ItemStack(Material.valueOf(type.toUpperCase() + "_CORAL_BLOCK")));
         recipe.shape("xx", "xx");
         recipe.setIngredient('x', choice);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

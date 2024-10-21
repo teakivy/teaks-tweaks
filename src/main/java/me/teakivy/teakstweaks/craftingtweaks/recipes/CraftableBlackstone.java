@@ -25,6 +25,6 @@ public class CraftableBlackstone extends AbstractCraftingTweak {
         recipe.shape("#x", "x#");
         recipe.setIngredient('#', coal);
         recipe.setIngredient('x', basalt);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

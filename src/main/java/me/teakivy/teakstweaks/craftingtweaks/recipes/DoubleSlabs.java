@@ -63,9 +63,9 @@ public class DoubleSlabs extends AbstractCraftingTweak {
         newShapelessRecipe(Material.CUT_RED_SANDSTONE, Material.CUT_RED_SANDSTONE_SLAB);
     }
 
-    public static void newShapelessRecipe(Material ingredient, Material result) {
+    public void newShapelessRecipe(Material ingredient, Material result) {
         ShapelessRecipe recipe = new ShapelessRecipe(Key.get(ingredient.toString().toLowerCase() + "_double_slab"), new ItemStack(result, 2));
         recipe.addIngredient(ingredient);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

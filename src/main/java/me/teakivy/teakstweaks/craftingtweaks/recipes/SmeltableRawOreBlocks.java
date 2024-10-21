@@ -17,17 +17,17 @@ public class SmeltableRawOreBlocks extends AbstractCraftingTweak {
     @Override
     public void registerRecipes() {
         FurnaceRecipe ironRecipe = new FurnaceRecipe(Key.get("smeltable_raw_iron_block"), new ItemStack(Material.IRON_BLOCK), Material.RAW_IRON_BLOCK, 100, 1000);
-        Bukkit.addRecipe(ironRecipe);
+        addRecipe(ironRecipe);
         FurnaceRecipe goldRecipe = new FurnaceRecipe(Key.get("smeltable_raw_gold_block"), new ItemStack(Material.GOLD_BLOCK), Material.RAW_GOLD_BLOCK, 100, 1000);
-        Bukkit.addRecipe(goldRecipe);
+        addRecipe(goldRecipe);
         FurnaceRecipe copperRecipe = new FurnaceRecipe(Key.get("smeltable_raw_copper_block"), new ItemStack(Material.COPPER_BLOCK), Material.RAW_COPPER_BLOCK, 100, 1000);
-        Bukkit.addRecipe(copperRecipe);
+        addRecipe(copperRecipe);
 
         BlastingRecipe ironBlast = new BlastingRecipe(Key.get("smeltable_raw_iron_block_blast"), new ItemStack(Material.IRON_BLOCK), Material.RAW_IRON_BLOCK, 100, 600);
-        Bukkit.addRecipe(ironBlast);
+        addRecipe(ironBlast);
         BlastingRecipe goldBlast = new BlastingRecipe(Key.get("smeltable_raw_gold_block_blast"), new ItemStack(Material.GOLD_BLOCK), Material.RAW_GOLD_BLOCK, 100, 600);
-        Bukkit.addRecipe(goldBlast);
+        addRecipe(goldBlast);
         BlastingRecipe copperBlast = new BlastingRecipe(Key.get("smeltable_raw_copper_block_blast"), new ItemStack(Material.COPPER_BLOCK), Material.RAW_COPPER_BLOCK, 100, 600);
-        Bukkit.addRecipe(copperBlast);
+        addRecipe(copperBlast);
     }
 }

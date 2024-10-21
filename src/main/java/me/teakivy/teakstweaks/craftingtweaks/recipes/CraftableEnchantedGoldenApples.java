@@ -20,6 +20,6 @@ public class CraftableEnchantedGoldenApples extends AbstractCraftingTweak {
         recipe.shape("xxx", "x@x", "xxx");
         recipe.setIngredient('x', Material.GOLD_BLOCK);
         recipe.setIngredient('@', Material.APPLE);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

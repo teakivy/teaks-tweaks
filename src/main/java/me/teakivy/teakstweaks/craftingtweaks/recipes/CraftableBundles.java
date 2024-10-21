@@ -18,6 +18,6 @@ public class CraftableBundles extends AbstractCraftingTweak {
         ShapelessRecipe recipe = new ShapelessRecipe(Key.get("bundle_craftables"), new ItemStack(Material.BUNDLE));
         recipe.addIngredient(Material.LEATHER);
         recipe.addIngredient(Material.STRING);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

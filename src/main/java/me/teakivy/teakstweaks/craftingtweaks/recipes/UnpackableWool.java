@@ -41,6 +41,6 @@ public class UnpackableWool extends AbstractCraftingTweak {
         ShapelessRecipe recipe = new ShapelessRecipe(Key.get("wool_unpackables"),
                 new ItemStack(Material.STRING, 4));
         recipe.addIngredient(wool);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

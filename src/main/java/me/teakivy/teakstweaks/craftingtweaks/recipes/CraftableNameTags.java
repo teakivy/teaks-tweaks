@@ -20,6 +20,6 @@ public class CraftableNameTags extends AbstractCraftingTweak {
         recipe.setIngredient('i', Material.IRON_INGOT);
         recipe.setIngredient('p', Material.PAPER);
         recipe.setIngredient('s', Material.STRING);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

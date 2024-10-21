@@ -29,13 +29,13 @@ public class MoreTrapdoors extends AbstractCraftingTweak {
         newTrapdoorRecipe("BAMBOO");
     }
 
-    public static void newTrapdoorRecipe(String type) {
+    public void newTrapdoorRecipe(String type) {
         Bukkit.removeRecipe(NamespacedKey.minecraft(type.toLowerCase() + "_trapdoor"));
         ShapedRecipe recipe = new ShapedRecipe(Key.get(type.toLowerCase() + "_trapdoors"),
                 new ItemStack(Material.valueOf(type + "_TRAPDOOR"), 12));
         recipe.shape("xxx", "xxx");
         recipe.setIngredient('x', Material.valueOf(type + "_PLANKS"));
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 
 

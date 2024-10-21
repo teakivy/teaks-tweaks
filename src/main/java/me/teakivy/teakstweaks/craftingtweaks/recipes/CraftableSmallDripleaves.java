@@ -17,6 +17,6 @@ public class CraftableSmallDripleaves extends AbstractCraftingTweak {
     public void registerRecipes() {
         ShapelessRecipe recipe = new ShapelessRecipe(Key.get("craftable_dripleaf"), new ItemStack(Material.SMALL_DRIPLEAF));
         recipe.addIngredient(Material.BIG_DRIPLEAF);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

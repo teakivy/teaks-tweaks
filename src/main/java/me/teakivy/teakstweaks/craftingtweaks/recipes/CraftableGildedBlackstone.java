@@ -19,6 +19,6 @@ public class CraftableGildedBlackstone extends AbstractCraftingTweak {
                 new ItemStack(Material.GILDED_BLACKSTONE, 1));
         recipe.addIngredient(Material.BLACKSTONE);
         recipe.addIngredient(Material.GOLD_INGOT);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

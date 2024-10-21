@@ -27,6 +27,6 @@ public class UnpackableQuartz extends AbstractCraftingTweak {
 
         ShapelessRecipe iceRecipe = new ShapelessRecipe(Key.get("unpackable_quartz"), new ItemStack(Material.QUARTZ, 4));
         iceRecipe.addIngredient(new RecipeChoice.MaterialChoice(materials));
-        Bukkit.addRecipe(iceRecipe);
+        addRecipe(iceRecipe);
     }
 }

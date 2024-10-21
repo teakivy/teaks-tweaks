@@ -21,6 +21,6 @@ public class MoreCopperTrapdoors extends AbstractCraftingTweak {
                 new ItemStack(Material.COPPER_TRAPDOOR, 12));
         recipe.shape("xxx", "xxx");
         recipe.setIngredient('x', Material.COPPER_INGOT);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

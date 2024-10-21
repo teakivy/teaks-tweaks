@@ -21,6 +21,6 @@ public class MoreIronTrapdoors extends AbstractCraftingTweak {
                 new ItemStack(Material.IRON_TRAPDOOR, 8));
         recipe.shape("xx", "xx");
         recipe.setIngredient('x', Material.IRON_TRAPDOOR);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

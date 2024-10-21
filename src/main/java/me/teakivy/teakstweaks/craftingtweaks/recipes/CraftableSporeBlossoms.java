@@ -25,6 +25,6 @@ public class CraftableSporeBlossoms extends AbstractCraftingTweak {
         recipe.setIngredient('x', Material.LILAC);
         recipe.setIngredient('s', leaves);
         recipe.setIngredient('o', Material.HONEYCOMB);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

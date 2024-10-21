@@ -21,6 +21,6 @@ public class CopperPoweredRails extends AbstractCraftingTweak {
         recipe.setIngredient('g', Material.COPPER_INGOT);
         recipe.setIngredient('i', Material.STICK);
         recipe.setIngredient('g', Material.REDSTONE);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

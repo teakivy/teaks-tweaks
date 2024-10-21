@@ -35,7 +35,7 @@ public class UniversalDyeing extends AbstractCraftingTweak {
         newClearStainedRecipe("GLASS_PANE");
     }
 
-    public static void registerNewRecipeType(String inputName) {
+    public void registerNewRecipeType(String inputName) {
         newDyeingRecipe("black_", inputName, Material.BLACK_DYE, Material.valueOf("BLACK_" + inputName));
         newDyeingRecipe("blue_", inputName, Material.BLUE_DYE, Material.valueOf("BLUE_" + inputName));
         newDyeingRecipe("brown_", inputName, Material.BROWN_DYE, Material.valueOf("BROWN_" + inputName));
@@ -54,7 +54,7 @@ public class UniversalDyeing extends AbstractCraftingTweak {
         newDyeingRecipe("yellow_", inputName, Material.YELLOW_DYE, Material.valueOf("YELLOW_" + inputName));
     }
 
-    public static void newDyeingRecipe(String colorType, String inputName, Material inputDye, Material output) {
+    public void newDyeingRecipe(String colorType, String inputName, Material inputDye, Material output) {
         NamespacedKey key = Key.get(colorType + inputName.toLowerCase() + "_universal");
 
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(output, 8));
@@ -81,11 +81,11 @@ public class UniversalDyeing extends AbstractCraftingTweak {
         recipe.setIngredient('#', new RecipeChoice.MaterialChoice(materials));
         recipe.setIngredient('o', inputDye);
 
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
 
     }
 
-    public static void newBedRecipe(String colorType, String inputName, Material inputDye, Material output) {
+    public void newBedRecipe(String colorType, String inputName, Material inputDye, Material output) {
         NamespacedKey key = Key.get(colorType + inputName.toLowerCase() + "_universal");
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(output));
@@ -112,11 +112,11 @@ public class UniversalDyeing extends AbstractCraftingTweak {
         recipe.addIngredient(new RecipeChoice.MaterialChoice(materials));
         recipe.addIngredient(inputDye);
 
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
 
     }
 
-    public static void registerBedRecipeTypes(String inputName) {
+    public void registerBedRecipeTypes(String inputName) {
         newBedRecipe("black_", inputName, Material.BLACK_DYE, Material.valueOf("BLACK_" + inputName));
         newBedRecipe("blue_", inputName, Material.BLUE_DYE, Material.valueOf("BLUE_" + inputName));
         newBedRecipe("brown_", inputName, Material.BROWN_DYE, Material.valueOf("BROWN_" + inputName));
@@ -136,7 +136,7 @@ public class UniversalDyeing extends AbstractCraftingTweak {
     }
 
 
-    public static void newClearRecipe(String inputName) {
+    public void newClearRecipe(String inputName) {
         NamespacedKey key = Key.get("clear_" + inputName.toLowerCase() + "_universal");
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.valueOf(inputName)));
@@ -163,10 +163,10 @@ public class UniversalDyeing extends AbstractCraftingTweak {
         recipe.addIngredient(new RecipeChoice.MaterialChoice(materials));
         recipe.addIngredient(Material.ICE);
 
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 
-    public static void newClearStainedRecipe(String inputName) {
+    public void newClearStainedRecipe(String inputName) {
         NamespacedKey key = Key.get("clear_" + inputName.toLowerCase() + "_universal");
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.valueOf(inputName)));
@@ -193,6 +193,6 @@ public class UniversalDyeing extends AbstractCraftingTweak {
         recipe.addIngredient(new RecipeChoice.MaterialChoice(materials));
         recipe.addIngredient(Material.ICE);
 
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

@@ -20,11 +20,11 @@ public class SandstoneDyeing extends AbstractCraftingTweak {
         newRedRecipe(Material.SAND, Material.RED_SAND);
     }
 
-    public static void newRedRecipe(Material input, Material output) {
+    public void newRedRecipe(Material input, Material output) {
         ShapelessRecipe recipe = new ShapelessRecipe(Key.get(output.toString().toLowerCase() + "_sandstone_dyeing"),
                 new ItemStack(output, 2));
         recipe.addIngredient(Material.RED_DYE);
         recipe.addIngredient(2, input);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

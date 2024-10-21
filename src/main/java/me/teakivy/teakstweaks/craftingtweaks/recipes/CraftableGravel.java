@@ -18,7 +18,7 @@ public class CraftableGravel  extends AbstractCraftingTweak {
         ShapedRecipe recipe = new ShapedRecipe(Key.get("gravel_gravel"), new ItemStack(Material.GRAVEL, 4));
         recipe.shape("##", "##");
         recipe.setIngredient('#', Material.FLINT);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
 
     }
 }

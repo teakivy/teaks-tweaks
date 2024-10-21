@@ -18,6 +18,6 @@ public class UnpackableNetherWart extends AbstractCraftingTweak {
         ShapelessRecipe recipe = new ShapelessRecipe(Key.get("nether_wart_unpackables"),
                 new ItemStack(Material.NETHER_WART, 9));
         recipe.addIngredient(Material.NETHER_WART_BLOCK);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

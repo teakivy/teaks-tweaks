@@ -38,11 +38,11 @@ public class MoreBark extends AbstractCraftingTweak {
         newBarkedRecipe(Material.STRIPPED_CHERRY_LOG, Material.STRIPPED_CHERRY_WOOD);
     }
 
-    public static void newBarkedRecipe(Material input, Material output) {
+    public void newBarkedRecipe(Material input, Material output) {
         Bukkit.removeRecipe(NamespacedKey.minecraft(output.toString().toLowerCase()));
         ShapedRecipe recipe = new ShapedRecipe(Key.get(input.toString().toLowerCase() + "_bark"), new ItemStack(output, 4));
         recipe.shape("xx", "xx");
         recipe.setIngredient('x', input);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

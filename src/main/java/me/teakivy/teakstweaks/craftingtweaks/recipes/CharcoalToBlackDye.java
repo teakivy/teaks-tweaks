@@ -17,6 +17,6 @@ public class CharcoalToBlackDye extends AbstractCraftingTweak {
     public void registerRecipes() {
         ShapelessRecipe recipe = new ShapelessRecipe(Key.get("black_dye_charcoal"), new ItemStack(Material.BLACK_DYE));
         recipe.addIngredient(Material.CHARCOAL);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

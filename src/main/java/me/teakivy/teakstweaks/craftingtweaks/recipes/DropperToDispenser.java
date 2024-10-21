@@ -19,13 +19,13 @@ public class DropperToDispenser extends AbstractCraftingTweak {
         ShapelessRecipe bowRecipe = new ShapelessRecipe(Key.get("dispenser_bow"), new ItemStack(Material.DISPENSER));
         bowRecipe.addIngredient(Material.DROPPER);
         bowRecipe.addIngredient(Material.BOW);
-        Bukkit.addRecipe(bowRecipe);
+        addRecipe(bowRecipe);
 
         ShapedRecipe craftRecipe = new ShapedRecipe(Key.get("dispenser_craft"), new ItemStack(Material.DISPENSER));
         craftRecipe.shape(" ls", "los", " ls");
         craftRecipe.setIngredient('o', Material.DROPPER);
         craftRecipe.setIngredient('l', Material.STICK);
         craftRecipe.setIngredient('s', Material.STRING);
-        Bukkit.addRecipe(craftRecipe);
+        addRecipe(craftRecipe);
     }
 }

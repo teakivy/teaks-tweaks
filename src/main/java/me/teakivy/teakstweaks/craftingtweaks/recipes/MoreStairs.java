@@ -77,11 +77,11 @@ public class MoreStairs extends AbstractCraftingTweak {
         newStairsRecipe(Material.WAXED_OXIDIZED_CUT_COPPER, Material.WAXED_OXIDIZED_CUT_COPPER_STAIRS);
     }
 
-    public static void newStairsRecipe(Material input, Material output) {
+    public void newStairsRecipe(Material input, Material output) {
         Bukkit.removeRecipe(NamespacedKey.minecraft(output.toString().toLowerCase()));
         ShapedRecipe recipe = new ShapedRecipe(Key.get(output.name().toLowerCase() + "_more_stairs"), new ItemStack(output, 8));
         recipe.shape("x  ", "xx ", "xxx");
         recipe.setIngredient('x', input);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

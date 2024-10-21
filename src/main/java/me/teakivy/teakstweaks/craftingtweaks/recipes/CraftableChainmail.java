@@ -18,21 +18,21 @@ public class CraftableChainmail extends AbstractCraftingTweak {
         ShapedRecipe recipe = new ShapedRecipe(Key.get("chainmail_helmet"), new ItemStack(Material.CHAINMAIL_HELMET));
         recipe.shape("xxx", "x x");
         recipe.setIngredient('x', Material.CHAIN);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
 
         recipe = new ShapedRecipe(Key.get("chainmail_chestplate"), new ItemStack(Material.CHAINMAIL_CHESTPLATE));
         recipe.shape("x x", "xxx", "xxx");
         recipe.setIngredient('x', Material.CHAIN);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
 
         recipe = new ShapedRecipe(Key.get("chainmail_leggings"), new ItemStack(Material.CHAINMAIL_LEGGINGS));
         recipe.shape("xxx", "x x", "x x");
         recipe.setIngredient('x', Material.CHAIN);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
 
         recipe = new ShapedRecipe(Key.get("chainmail_boots"), new ItemStack(Material.CHAINMAIL_BOOTS));
         recipe.shape("x x", "x x");
         recipe.setIngredient('x', Material.CHAIN);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 }

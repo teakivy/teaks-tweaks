@@ -41,38 +41,38 @@ public class BlackstoneCobblestone extends AbstractCraftingTweak {
         pistonRecipe.setIngredient('-', wood);
         pistonRecipe.setIngredient('o', Material.IRON_INGOT);
         pistonRecipe.setIngredient('a', Material.REDSTONE);
-        Bukkit.addRecipe(pistonRecipe);
+        addRecipe(pistonRecipe);
 
         ShapedRecipe observerRecipe = new ShapedRecipe(Key.get("observer_blackstone"), new ItemStack(Material.OBSERVER));
         observerRecipe.shape("bbb", "aaq", "bbb");
         observerRecipe.setIngredient('b', blackstone);
         observerRecipe.setIngredient('q', Material.QUARTZ);
         observerRecipe.setIngredient('a', Material.REDSTONE);
-        Bukkit.addRecipe(observerRecipe);
+        addRecipe(observerRecipe);
 
         ShapedRecipe dropperRecipe = new ShapedRecipe(Key.get("dropper_blackstone"), new ItemStack(Material.DROPPER));
         dropperRecipe.shape("bbb", "b b", "bab");
         dropperRecipe.setIngredient('b', blackstone);
         dropperRecipe.setIngredient('a', Material.REDSTONE);
-        Bukkit.addRecipe(dropperRecipe);
+        addRecipe(dropperRecipe);
 
         ShapedRecipe dispenserRecipe = new ShapedRecipe(Key.get("dispenser_blackstone"), new ItemStack(Material.DISPENSER));
         dispenserRecipe.shape("bbb", "b=b", "bab");
         dispenserRecipe.setIngredient('b', blackstone);
         dispenserRecipe.setIngredient('a', Material.REDSTONE);
         dispenserRecipe.setIngredient('=', Material.BOW);
-        Bukkit.addRecipe(dispenserRecipe);
+        addRecipe(dispenserRecipe);
 
         ShapedRecipe brewingStandRecipe = new ShapedRecipe(Key.get("brewing_stand_blackstone"), new ItemStack(Material.BREWING_STAND));
         brewingStandRecipe.shape(" | ", "bbb");
         brewingStandRecipe.setIngredient('b', blackstone);
         brewingStandRecipe.setIngredient('|', Material.BLAZE_ROD);
-        Bukkit.addRecipe(brewingStandRecipe);
+        addRecipe(brewingStandRecipe);
 
         ShapedRecipe leverRecipe = new ShapedRecipe(Key.get("lever_blackstone"), new ItemStack(Material.LEVER));
         leverRecipe.shape("/", "b");
         leverRecipe.setIngredient('/', Material.STICK);
         leverRecipe.setIngredient('b', blackstone);
-        Bukkit.addRecipe(leverRecipe);
+        addRecipe(leverRecipe);
     }
 }
