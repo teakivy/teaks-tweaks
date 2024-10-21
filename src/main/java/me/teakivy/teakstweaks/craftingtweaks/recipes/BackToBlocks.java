@@ -86,18 +86,17 @@ public class BackToBlocks extends AbstractCraftingTweak {
 
         recipe.addIngredient(4, ingredient);
 
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 
     private void registerSlabRecipe(Material result, Material ingredient) {
         NamespacedKey key = Key.get(ingredient.toString().toLowerCase() + "_slab");
 
-        ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(result, 1));
+        ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(result, 1));
 
-        recipe.shape("##");
-        recipe.setIngredient('#', ingredient);
+        recipe.addIngredient(2, ingredient);
 
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 
     private void registerDualRecipe(Material result, Material stairIngredient, Material slabIngredient) {
