@@ -10,7 +10,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 public class MooshroomHead extends BaseMobHead {
 
     public MooshroomHead() {
-        super(EntityType.MOOSHROOM, "red-mooshroom", Sound.ENTITY_COW_AMBIENT);
+        super(EntityType.MOOSHROOM, "red_mooshroom", Sound.ENTITY_COW_AMBIENT);
 
         addHeadTexture("red", "Red Mooshroom Head", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGE4MDYwNmU4MmM2NDJmMTQxNTg3NzMzZTMxODBhZTU3ZjY0NjQ0MmM5ZmZmZDRlNTk5NzQ1N2UzNDMxMWEyOSJ9fX0");
         addHeadTexture("brown", "Brown Mooshroom Head", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2U2NDY2MzAyYTVhYjQzOThiNGU0NzczNDk4MDhlNWQ5NDAyZWEzYWQ4ZmM0MmUyNDQ2ZTRiZWQwYTVlZDVlIn19fQ");
