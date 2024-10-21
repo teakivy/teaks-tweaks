@@ -169,8 +169,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     private void createCredits() {
         try {
             new Credits().createCredits();
-        } catch (IOException ignored) {
-        }
+        } catch (IOException ignored) {}
     }
 
     /**
