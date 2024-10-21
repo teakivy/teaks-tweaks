@@ -10,8 +10,10 @@ import me.teakivy.teakstweaks.utils.metrics.CustomMetrics;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ public abstract class AbstractCraftingTweak {
     private final String description;
 
     private ItemStack item;
+    private List<Recipe> recipes = new ArrayList<>();
 
     /**
      * Set up the pack
@@ -50,6 +53,7 @@ public abstract class AbstractCraftingTweak {
         TeaksTweaks.getInstance().addCraftingTweaks(this.name);
         CraftingRegister.addEnabledRecipe(this);
         this.registerRecipes();
+        this.loadRecipes();
 
         item = new ItemStack(material);
 
@@ -88,6 +92,22 @@ public abstract class AbstractCraftingTweak {
      * Register all recipes for the pack
      */
     public abstract void registerRecipes();
+
+    public void addRecipe(Recipe recipe) {
+        recipes.add(recipe);
+    }
+
+    public void addRecipe(Recipe... recipes) {
+        for (Recipe recipe : recipes) {
+            addRecipe(recipe);
+        }
+    }
+
+    public void loadRecipes() {
+        for (Recipe recipe : recipes) {
+            Bukkit.addRecipe(recipe);
+        }
+    }
 
     /**
      * Get the item for the pack
