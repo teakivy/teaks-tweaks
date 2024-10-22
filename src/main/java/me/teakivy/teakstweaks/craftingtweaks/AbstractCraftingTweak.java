@@ -7,17 +7,25 @@ import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.metrics.CustomMetrics;
+import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.recipe.RecipeManager;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
+import org.bukkit.Keyed;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class AbstractCraftingTweak {
     private final String name;
@@ -27,7 +35,6 @@ public abstract class AbstractCraftingTweak {
     private final String description;
 
     private ItemStack item;
-    private List<Recipe> recipes = new ArrayList<>();
 
     /**
      * Set up the pack
@@ -53,7 +60,6 @@ public abstract class AbstractCraftingTweak {
         TeaksTweaks.getInstance().addCraftingTweaks(this.name);
         CraftingRegister.addEnabledRecipe(this);
         this.registerRecipes();
-        this.loadRecipes();
 
         item = new ItemStack(material);
 
@@ -88,24 +94,22 @@ public abstract class AbstractCraftingTweak {
         if (Config.isCraftingTweakEnabled(path)) init();
     }
 
+    public void unregister() {
+        RecipeManager.unregister(path);
+    }
+
     /**
      * Register all recipes for the pack
      */
     public abstract void registerRecipes();
 
     public void addRecipe(Recipe recipe) {
-        recipes.add(recipe);
+        RecipeManager.register(path, recipe);
     }
 
     public void addRecipe(Recipe... recipes) {
         for (Recipe recipe : recipes) {
             addRecipe(recipe);
-        }
-    }
-
-    public void loadRecipes() {
-        for (Recipe recipe : recipes) {
-            Bukkit.addRecipe(recipe);
         }
     }
 

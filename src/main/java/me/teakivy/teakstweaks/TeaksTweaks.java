@@ -9,6 +9,7 @@ import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
 import me.teakivy.teakstweaks.utils.permission.PermissionManager;
+import me.teakivy.teakstweaks.utils.recipe.RecipeManager;
 import me.teakivy.teakstweaks.utils.update.UpdateChecker;
 import me.teakivy.teakstweaks.utils.update.UpdateJoinAlert;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
@@ -66,6 +67,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         // Update Checker
         getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
         getServer().getPluginManager().registerEvents(new GUIListener(), this);
+        getServer().getPluginManager().registerEvents(new RecipeManager(), this);
 
         Bukkit.getScheduler().runTaskLater(this, UpdateChecker::sendUpdateMessage, 20L * 3);
 
