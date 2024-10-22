@@ -107,12 +107,6 @@ public abstract class AbstractCraftingTweak {
         RecipeManager.register(path, recipe);
     }
 
-    public void addRecipe(Recipe... recipes) {
-        for (Recipe recipe : recipes) {
-            addRecipe(recipe);
-        }
-    }
-
     /**
      * Get the item for the pack
      * @return item

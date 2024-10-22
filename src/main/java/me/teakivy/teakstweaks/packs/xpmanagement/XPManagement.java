@@ -43,7 +43,7 @@ public class XPManagement extends BasePack {
         if (!getConfig().getBoolean("allow-smelting")) return;
 
         FurnaceRecipe recipe = new FurnaceRecipe(Key.get("smeltable_xp_bottle"), new ItemStack(Material.GLASS_BOTTLE), Material.EXPERIENCE_BOTTLE, getConfig().getInt("take-xp-amount"), 100);
-        Bukkit.addRecipe(recipe);
+        addRecipe(recipe);
     }
 
     @EventHandler

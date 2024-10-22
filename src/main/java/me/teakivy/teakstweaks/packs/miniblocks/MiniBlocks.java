@@ -17,7 +17,7 @@ public class MiniBlocks extends BasePack {
     public void init() {
         super.init();
         for (StonecuttingRecipe recipe : MiniBlockUtils.getAllStonecuttingRecipes()) {
-            Bukkit.addRecipe(recipe);
+            addRecipe(recipe);
         }
     }
 }

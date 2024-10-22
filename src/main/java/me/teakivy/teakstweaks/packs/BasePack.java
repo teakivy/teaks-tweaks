@@ -7,6 +7,7 @@ import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.metrics.CustomMetrics;
+import me.teakivy.teakstweaks.utils.recipe.RecipeManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -18,6 +19,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.intellij.lang.annotations.Subst;
 
@@ -130,6 +132,7 @@ public class BasePack implements Listener {
 	 */
 	public void unregister() {
 		HandlerList.unregisterAll(this);
+		RecipeManager.unregister(path);
 	}
 
 	/**
@@ -158,6 +161,14 @@ public class BasePack implements Listener {
 	 */
 	public ConfigurationSection getConfig() {
 		return Config.getPackConfig(path);
+	}
+
+	/**
+	 * Register a recipe
+	 * @param recipe Recipe
+	 */
+	public void addRecipe(Recipe recipe) {
+		RecipeManager.register(path, recipe);
 	}
 
 	/**

@@ -66,9 +66,7 @@ public class Wrench extends BasePack {
         recipe.shape(" # ", " ##", "$  ");
         recipe.setIngredient('#', Material.GOLD_INGOT);
         recipe.setIngredient('$', Material.IRON_INGOT);
-        if (Bukkit.getRecipe(key) == null) {
-            Bukkit.addRecipe(recipe);
-        }
+        addRecipe(recipe);
     }
 
     @EventHandler
