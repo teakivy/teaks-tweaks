@@ -2,6 +2,8 @@ package me.teakivy.teakstweaks.utils.log;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.config.Config;
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.Plugin;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,6 +40,16 @@ public class PasteManager {
         str.append(arrayToString(packs)).append("\n");
         str.append("Enabled Crafting Tweaks (").append(ctweaks.size()).append("): \n");
         str.append(arrayToString(ctweaks)).append("\n");
+
+        str.append("\n\n");
+
+        ArrayList<String> plugins = new ArrayList<>();
+        Plugin[] pluginList = Bukkit.getServer().getPluginManager().getPlugins();
+        for (Plugin plugin : pluginList) {
+            plugins.add(plugin.getName() + " v" + plugin.getDescription().getVersion());
+        }
+        str.append("Plugins (").append(plugins.size()).append("): \n");
+        str.append(arrayToString(plugins)).append("\n");
 
         str.append("\n\n");
 
