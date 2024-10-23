@@ -2,7 +2,9 @@ package me.teakivy.teakstweaks.packs.chunkloaders;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
+import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -11,6 +13,7 @@ import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class Loader extends BasePack {
@@ -29,9 +32,15 @@ public class Loader extends BasePack {
         new BukkitRunnable() {
             @Override
             public void run() {
-                Block block = item.getLocation().add(0, -1, 0).getBlock();
+                Block block = item.getLocation().add(0, -0.5, 0).getBlock();
                 if (block.getType() != Material.LODESTONE) return;
                 if (block.getChunk().isForceLoaded()) {
+                    this.cancel();
+                    MM.player(event.getPlayer()).sendMessage(getText("already_loaded"));
+                    return;
+                }
+
+                if (event.getItemDrop().isDead() || event.getItemDrop().getItemStack().getAmount() < 1) {
                     this.cancel();
                     return;
                 }
@@ -44,9 +53,13 @@ public class Loader extends BasePack {
                     marker.getWorld().spawnParticle(Particle.FLAME, item.getLocation(), 100, 0, 0, 0, .5);
                 }
 
-                item.remove();
+                ItemStack newItem = item.getItemStack().clone();
+                newItem.setAmount(newItem.getAmount() - 1);
+                item.setItemStack(newItem);
 
-                if (event.getItemDrop().isDead() || event.getItemDrop().getItemStack().getAmount() != 1) this.cancel();
+                MM.player(event.getPlayer()).sendMessage(getText("loaded"));
+
+                if (event.getItemDrop().isDead() || event.getItemDrop().getItemStack().getAmount() < 1) this.cancel();
             }
         }.runTaskTimer(getPlugin(), 1L, 20L);
     }
