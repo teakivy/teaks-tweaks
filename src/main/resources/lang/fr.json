@@ -54,6 +54,9 @@
 
   "chunk_loaders.name": "Chargeurs de chunks (Chunkloaders)",
   "chunk_loaders.description": "Lâchez une étoile du Nether au-dessus d'une boussole pour créer un chargeur de chunk (aussi appelé Loadstone) qui maintient le chunk chargé jusqu'à ce qu'il soit cassé.",
+  "chunk_loaders.already_loaded": "<red>Ce chunk est déjà chargé !",
+  "chunk_loaders.loaded": "<green>Pierre de chargement créée !",
+
 
   "confetti_creepers.name": "Creepers à confettis",
   "confetti_creepers.description": "Il y a une chance que chaque creeper explose en confettis et ne cause aucun dégât aux blocs.",

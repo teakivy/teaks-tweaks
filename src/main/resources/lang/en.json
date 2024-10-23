@@ -54,6 +54,8 @@
 
   "chunk_loaders.name": "Chunk Loaders",
   "chunk_loaders.description": "Drop a Nether Star above a Lodestone to create a chunk loader (AKA a Loadstone) which keeps the chunk it's in loaded until it is broken.",
+  "chunk_loaders.already_loaded": "<red>This chunk is already loaded!",
+  "chunk_loaders.loaded": "<green>Loadstone created!",
 
   "confetti_creepers.name": "Confetti Creepers",
   "confetti_creepers.description": "There is a chance each creeper will explode into confetti and do no damage to blocks.",
