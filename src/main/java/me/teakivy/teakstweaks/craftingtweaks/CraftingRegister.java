@@ -8,11 +8,12 @@ import java.util.List;
 public class CraftingRegister {
     private static final List<AbstractCraftingTweak> enabledRecipes = new ArrayList<>();
 
+    private static final List<AbstractCraftingTweak> recipes = new ArrayList<>();
+
     /**
-     * Register all recipes
+     * Initialize all packs
      */
-    public static void registerAll() {
-        List<AbstractCraftingTweak> recipes = new ArrayList<>();
+    public static void init() {
         recipes.add(new BackToBlocks());
         recipes.add(new BlackstoneCobblestone());
         recipes.add(new CharcoalToBlackDye());
@@ -52,13 +53,22 @@ public class CraftingRegister {
         recipes.add(new UnpackableQuartz());
         recipes.add(new UnpackableWool());
         recipes.add(new UniversalDyeing());
+    }
 
+    public static void registerAll() {
         for (AbstractCraftingTweak recipe : recipes) {
             try {
                 recipe.register();
             } catch (Exception ignored) {}
         }
+    }
 
+    public static void unregisterAll() {
+        for (AbstractCraftingTweak recipe : recipes) {
+            try {
+                recipe.unregister();
+            } catch (Exception ignored) {}
+        }
     }
 
     /**

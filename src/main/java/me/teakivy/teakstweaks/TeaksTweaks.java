@@ -72,6 +72,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         Bukkit.getScheduler().runTaskLater(this, UpdateChecker::sendUpdateMessage, 20L * 3);
 
         // Crafting Tweaks
+        CraftingRegister.init();
         CraftingRegister.registerAll();
 
         // Commands

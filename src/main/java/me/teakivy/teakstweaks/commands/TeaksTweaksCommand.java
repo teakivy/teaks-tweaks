@@ -1,12 +1,14 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
 import me.teakivy.teakstweaks.packs.homes.Home;
 import me.teakivy.teakstweaks.packs.homes.HomesPack;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.Wiki;
 import me.teakivy.teakstweaks.utils.command.*;
 import me.teakivy.teakstweaks.utils.config.Config;
+import me.teakivy.teakstweaks.utils.config.ConfigUpdater;
 import me.teakivy.teakstweaks.utils.customitems.ItemHandler;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.log.PasteBookUploader;
@@ -25,7 +27,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
 
 
     public TeaksTweaksCommand() {
-        super(CommandType.ALL, null, "teakstweaks", Permission.COMMAND_TEAKSTWEAKS, Arrays.asList("tweaks", "tt"), "teakstweakscommand", Arg.optional("info", "version", "support", "update", "wiki", "paste", "give"), Arg.optional("packs", "craftingtweaks", "commands", "true", "false", "player"), Arg.optional("item"), Arg.optional("amount"));
+        super(CommandType.ALL, null, "teakstweaks", Permission.COMMAND_TEAKSTWEAKS, Arrays.asList("tweaks", "tt"), "teakstweakscommand", Arg.optional("info", "reload", "version", "support", "update", "wiki", "paste", "give"), Arg.optional("packs", "craftingtweaks", "commands", "true", "false", "player"), Arg.optional("item"), Arg.optional("amount"));
     }
 
     @Override
@@ -55,6 +57,9 @@ public class TeaksTweaksCommand extends AbstractCommand {
                 return;
             case "give":
                 handleGive(event);
+                return;
+            case "reload":
+                handleReload();
                 return;
             default:
                 sendUsage();
@@ -221,5 +226,15 @@ public class TeaksTweaksCommand extends AbstractCommand {
         }
 
         return null;
+    }
+
+    public void handleReload() {
+        // TODO: Does not update config values
+        Config.init();
+        TeaksTweaks.getRegister().unregisterAll();
+        TeaksTweaks.getRegister().registerAll();
+
+        CraftingRegister.unregisterAll();
+        CraftingRegister.registerAll();
     }
 }
