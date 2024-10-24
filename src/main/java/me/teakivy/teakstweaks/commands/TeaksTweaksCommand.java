@@ -27,7 +27,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
 
 
     public TeaksTweaksCommand() {
-        super(CommandType.ALL, null, "teakstweaks", Permission.COMMAND_TEAKSTWEAKS, Arrays.asList("tweaks", "tt"), "teakstweakscommand", Arg.optional("info", "reload", "version", "support", "update", "wiki", "paste", "give"), Arg.optional("packs", "craftingtweaks", "commands", "true", "false", "player"), Arg.optional("item"), Arg.optional("amount"));
+        super(CommandType.ALL, null, "teakstweaks", Permission.COMMAND_TEAKSTWEAKS, Arrays.asList("tweaks", "tt"), "teakstweakscommand", Arg.optional("info", "version", "support", "update", "wiki", "paste", "give"), Arg.optional("packs", "craftingtweaks", "commands", "true", "false", "player"), Arg.optional("item"), Arg.optional("amount"));
     }
 
     @Override
@@ -57,9 +57,6 @@ public class TeaksTweaksCommand extends AbstractCommand {
                 return;
             case "give":
                 handleGive(event);
-                return;
-            case "reload":
-                handleReload();
                 return;
             default:
                 sendUsage();
@@ -226,15 +223,5 @@ public class TeaksTweaksCommand extends AbstractCommand {
         }
 
         return null;
-    }
-
-    public void handleReload() {
-        // TODO: Does not update config values
-        Config.init();
-        TeaksTweaks.getRegister().unregisterAll();
-        TeaksTweaks.getRegister().registerAll();
-
-        CraftingRegister.unregisterAll();
-        CraftingRegister.registerAll();
     }
 }
