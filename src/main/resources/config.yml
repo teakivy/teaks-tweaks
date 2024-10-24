@@ -952,7 +952,7 @@ crafting-tweaks:
     enabled: false
 
   # Craftable Gilded Blackstone
-  # Allows you to craft Gilded Blackstone using Blackstone & Golden Nuggets
+  # Allows you to craft Gilded Blackstone using a Gold Ingot and Blackstone.
   craftable-gilded-blackstone:
     enabled: false
 
