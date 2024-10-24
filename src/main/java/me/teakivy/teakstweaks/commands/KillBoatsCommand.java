@@ -9,6 +9,9 @@ import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class KillBoatsCommand extends AbstractCommand {
 
     public KillBoatsCommand() {
@@ -17,10 +20,16 @@ public class KillBoatsCommand extends AbstractCommand {
 
     @Override
     public void command(CommandEvent event) {
+        List<EntityType> boatTypes = new ArrayList<>();
+        for (EntityType value : EntityType.values()) {
+            if (value.name().contains("BOAT") || value.name().contains("RAFT")) {
+                boatTypes.add(value);
+            }
+        }
         int boats = 0;
         for (World world : Bukkit.getWorlds()) {
             for (Entity entity : world.getEntities()) {
-                if (entity.getType() != EntityType.BOAT) continue;
+                if (!boatTypes.contains(entity.getType())) continue;
                 if (!entity.getPassengers().isEmpty()) continue;
 
                 entity.remove();
