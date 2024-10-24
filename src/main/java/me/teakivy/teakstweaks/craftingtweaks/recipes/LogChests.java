@@ -60,6 +60,8 @@ public class LogChests extends AbstractCraftingTweak {
         logList.add(Material.STRIPPED_MANGROVE_WOOD);
         logList.add(Material.CHERRY_WOOD);
         logList.add(Material.STRIPPED_CHERRY_WOOD);
+        logList.add(Material.PALE_OAK_LOG);
+        logList.add(Material.PALE_OAK_WOOD);
         RecipeChoice logs = new RecipeChoice.MaterialChoice(logList);
 
         ShapedRecipe recipe = new ShapedRecipe(Key.get("log_chests"), new ItemStack(Material.CHEST, 4));

@@ -20,7 +20,6 @@ public class CraftingRegister {
         recipes.add(new CoalToBlackDye());
         recipes.add(new CopperPoweredRails());
         recipes.add(new CraftableBlackstone());
-        recipes.add(new CraftableBundles());
         recipes.add(new CraftableChainmail());
         recipes.add(new CraftableCoral2x2());
         recipes.add(new CraftableCoral3x3());

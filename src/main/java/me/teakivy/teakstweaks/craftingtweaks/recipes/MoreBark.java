@@ -36,6 +36,7 @@ public class MoreBark extends AbstractCraftingTweak {
         newBarkedRecipe(Material.STRIPPED_MANGROVE_LOG, Material.STRIPPED_MANGROVE_WOOD);
         newBarkedRecipe(Material.CHERRY_LOG, Material.CHERRY_WOOD);
         newBarkedRecipe(Material.STRIPPED_CHERRY_LOG, Material.STRIPPED_CHERRY_WOOD);
+        newBarkedRecipe(Material.PALE_OAK_LOG, Material.PALE_OAK_WOOD);
     }
 
     public void newBarkedRecipe(Material input, Material output) {
