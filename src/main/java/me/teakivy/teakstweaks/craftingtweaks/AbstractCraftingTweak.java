@@ -24,6 +24,7 @@ import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,6 +36,8 @@ public abstract class AbstractCraftingTweak {
     private final String description;
 
     private ItemStack item;
+
+    private final HashMap<NamespacedKey, Recipe> removedRecipes = new HashMap<>();
 
     /**
      * Set up the pack
@@ -60,6 +63,7 @@ public abstract class AbstractCraftingTweak {
         TeaksTweaks.getInstance().addCraftingTweaks(this.name);
         CraftingRegister.addEnabledRecipe(this);
         this.registerRecipes();
+        this.removeRecipes();
 
         item = new ItemStack(material);
 
@@ -96,6 +100,7 @@ public abstract class AbstractCraftingTweak {
 
     public void unregister() {
         RecipeManager.unregister(path);
+        this.registerRemovedRecipes();
     }
 
     /**
@@ -105,6 +110,23 @@ public abstract class AbstractCraftingTweak {
 
     public void addRecipe(Recipe recipe) {
         RecipeManager.register(path, recipe);
+    }
+
+    public void addRemovedRecipe(Recipe recipe) {
+        NamespacedKey key = ((Keyed) recipe).getKey();
+        removedRecipes.put(key, recipe);
+    }
+
+    public void removeRecipes() {
+        for (NamespacedKey key : removedRecipes.keySet()) {
+            Bukkit.removeRecipe(key);
+        }
+    }
+
+    public void registerRemovedRecipes() {
+        for (NamespacedKey key : removedRecipes.keySet()) {
+            Bukkit.addRecipe(removedRecipes.get(key));
+        }
     }
 
     /**

@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapelessRecipe;
 
 public class MorePackedMud extends AbstractCraftingTweak {
@@ -16,7 +17,9 @@ public class MorePackedMud extends AbstractCraftingTweak {
 
     @Override
     public void registerRecipes() {
-        Bukkit.removeRecipe(NamespacedKey.minecraft("packed_mud"));
+        Recipe removedRecipe = Bukkit.getRecipe(NamespacedKey.minecraft("packed_mud"));
+        addRemovedRecipe(removedRecipe);
+
         ShapelessRecipe recipe = new ShapelessRecipe(Key.get("packed_mud_more"), new ItemStack(Material.PACKED_MUD, 2));
         recipe.addIngredient(Material.MUD);
         recipe.addIngredient(Material.WHEAT);

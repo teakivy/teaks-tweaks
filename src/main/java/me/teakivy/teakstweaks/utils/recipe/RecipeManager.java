@@ -23,22 +23,8 @@ public class RecipeManager implements Listener {
         recipe.register();
     }
 
-    public static void register(List<RecipeData> recipes) {
-        for (RecipeData recipe : recipes) {
-            register(recipe);
-        }
-    }
-
     public static void register(String parent, Recipe recipe) {
         register(new RecipeData(parent, recipe));
-    }
-
-    public static void register(String parent, List<Recipe> recipes) {
-        List<RecipeData> recipeData = new ArrayList<>();
-        for (Recipe recipe : recipes) {
-            recipeData.add(new RecipeData(parent, recipe));
-        }
-        register(recipeData);
     }
 
     public static void unregister(RecipeData recipe) {

@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 
 public class MoreBark extends AbstractCraftingTweak {
@@ -40,7 +41,9 @@ public class MoreBark extends AbstractCraftingTweak {
     }
 
     public void newBarkedRecipe(Material input, Material output) {
-        Bukkit.removeRecipe(NamespacedKey.minecraft(output.toString().toLowerCase()));
+        Recipe removedRecipe = Bukkit.getRecipe(NamespacedKey.minecraft(output.toString().toLowerCase()));
+        addRemovedRecipe(removedRecipe);
+
         ShapedRecipe recipe = new ShapedRecipe(Key.get(input.toString().toLowerCase() + "_bark"), new ItemStack(output, 4));
         recipe.shape("xx", "xx");
         recipe.setIngredient('x', input);

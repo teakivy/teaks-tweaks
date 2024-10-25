@@ -79,7 +79,9 @@ public class MoreStairs extends AbstractCraftingTweak {
     }
 
     public void newStairsRecipe(Material input, Material output) {
-        Bukkit.removeRecipe(NamespacedKey.minecraft(output.toString().toLowerCase()));
+        Recipe removedRecipe = Bukkit.getRecipe(NamespacedKey.minecraft(output.toString().toLowerCase()));
+        addRemovedRecipe(removedRecipe);
+
         ShapedRecipe recipe = new ShapedRecipe(Key.get(output.name().toLowerCase() + "_more_stairs"), new ItemStack(output, 8));
         recipe.shape("x  ", "xx ", "xxx");
         recipe.setIngredient('x', input);

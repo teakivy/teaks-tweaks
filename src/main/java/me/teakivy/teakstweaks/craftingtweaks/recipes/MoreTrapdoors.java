@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 
 public class MoreTrapdoors extends AbstractCraftingTweak {
@@ -31,7 +32,9 @@ public class MoreTrapdoors extends AbstractCraftingTweak {
     }
 
     public void newTrapdoorRecipe(String type) {
-        Bukkit.removeRecipe(NamespacedKey.minecraft(type.toLowerCase() + "_trapdoor"));
+        Recipe removedRecipe = Bukkit.getRecipe(NamespacedKey.minecraft(type.toLowerCase() + "_trapdoor"));
+        addRemovedRecipe(removedRecipe);
+
         ShapedRecipe recipe = new ShapedRecipe(Key.get(type.toLowerCase() + "_trapdoors"),
                 new ItemStack(Material.valueOf(type + "_TRAPDOOR"), 12));
         recipe.shape("xxx", "xxx");

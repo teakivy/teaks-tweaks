@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 
 public class MoreCopperTrapdoors extends AbstractCraftingTweak {
@@ -16,7 +17,9 @@ public class MoreCopperTrapdoors extends AbstractCraftingTweak {
 
     @Override
     public void registerRecipes() {
-        Bukkit.removeRecipe(NamespacedKey.minecraft("copper_trapdoor"));
+        Recipe removedRecipe = Bukkit.getRecipe(NamespacedKey.minecraft("copper_trapdoor"));
+        addRemovedRecipe(removedRecipe);
+
         ShapedRecipe recipe = new ShapedRecipe(Key.get("copper_trapdoor"),
                 new ItemStack(Material.COPPER_TRAPDOOR, 12));
         recipe.shape("xxx", "xxx");
