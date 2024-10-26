@@ -17,7 +17,10 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
+ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -206,6 +209,58 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         File packsFolder = new File(getDataFolder(), "lang");
         if (!packsFolder.exists()) {
             packsFolder.mkdirs();
+        }
+    }
+
+    public void unregisterAll() {
+        HandlerList.unregisterAll((Plugin) TeaksTweaks.getInstance());
+        TeaksTweaks.getRegister().unregisterAll();
+        CraftingRegister.unregisterAll();
+    }
+
+    public void registerAll() {
+        TeaksTweaks.getRegister().registerAll();
+        CraftingRegister.registerAll();
+    }
+
+    public void registerExtraEvents() {
+        getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
+        getServer().getPluginManager().registerEvents(new GUIListener(), this);
+        getServer().getPluginManager().registerEvents(new RecipeManager(), this);
+    }
+
+    public void handleReload() {
+        reloadConfig();
+        unregisterAll();
+        registerAll();
+        registerExtraEvents();
+    }
+
+    public void reloadPlugin() {
+        PluginManager pluginManager = getServer().getPluginManager();
+        Plugin plugin = this;
+
+        if (plugin.isEnabled()) {
+            // Schedule disabling the plugin on the next tick
+            new Thread(() -> {
+                try {
+                    // Wait for a moment (e.g., 2 seconds) to allow disabling to complete
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                // Re-enable the plugin on the main server thread
+                Bukkit.getScheduler().runTask(this, () -> {
+                    pluginManager.disablePlugin(plugin);
+                });
+
+            }).start();
+
+            // Disable the plugin on the main server thread
+            Bukkit.getScheduler().runTaskLater(this, () -> {
+                pluginManager.enablePlugin(plugin);
+            }, 30L);
         }
     }
 

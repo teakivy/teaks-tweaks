@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.MM;
@@ -24,6 +25,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.intellij.lang.annotations.Subst;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BasePack implements Listener {
@@ -33,13 +35,15 @@ public class BasePack implements Listener {
 	private final PackType packType;
 	private final ItemStack item;
 
+	private final List<AbstractCommand> commands = new ArrayList<>();
+
 	/**
 	 * Set up the pack
 	 * @param path Config path
 	 * @param packType PackType
 	 * @param material Material for the item
 	 */
-	public BasePack(String path, PackType packType, Material material) {
+	public BasePack(String path, PackType packType, Material material, AbstractCommand... commands) {
 		this.translatableKey = path.replaceAll("-", "_");
         this.name = Translatable.getString(this.translatableKey + ".name");
 		this.path = path;
@@ -91,6 +95,8 @@ public class BasePack implements Listener {
 		item.setItemMeta(meta);
 
 		CustomMetrics.addPackEnabled(name);
+
+        this.commands.addAll(Arrays.asList(commands));
     }
 
 	/**
@@ -104,6 +110,10 @@ public class BasePack implements Listener {
 			for (CustomItem customItem : customItems) {
 				customItem.register();
 			}
+		}
+
+		for (AbstractCommand command : commands) {
+			command.register();
 		}
 
 		getPlugin().addPack(name);
@@ -133,6 +143,10 @@ public class BasePack implements Listener {
 	public void unregister() {
 		HandlerList.unregisterAll(this);
 		RecipeManager.unregister(path);
+
+		for (AbstractCommand command : commands) {
+			command.unregister();
+		}
 	}
 
 	/**

@@ -41,6 +41,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     private final String translationKey;
 
     private static CommandMap cmap;
+    private ReflectCommand cmd;
     private final CommandType commandType;
 
     private int cooldownTime;
@@ -161,9 +162,17 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
         cmd.setUsage(getUsageString());
         getCommandMap().register("", cmd);
         cmd.setExecutor(this);
+        this.cmd = cmd;
 
         getCommandMap().register("teakstweaks", cmd);
         Logger.info(get("startup.register.command", Placeholder.parsed("command", this.command)));
+    }
+
+    public void unregister() {
+        if (this.cmd == null) return;
+        if (!this.cmd.isRegistered()) return;
+        if (this.getCommandMap() == null) return;
+        this.cmd.unregister(getCommandMap());
     }
 
     /**

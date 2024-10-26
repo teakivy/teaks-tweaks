@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.packs.spectatorconduitpower;
 
+import me.teakivy.teakstweaks.commands.ConduitPowerCommand;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.MM;
@@ -15,7 +16,7 @@ import org.bukkit.potion.PotionEffectType;
 public class ConduitPower extends BasePack {
 
     public ConduitPower() {
-        super("spectator-conduit-power", PackType.UTILITIES, Material.HEART_OF_THE_SEA);
+        super("spectator-conduit-power", PackType.UTILITIES, Material.HEART_OF_THE_SEA, new ConduitPowerCommand());
     }
 
     @EventHandler

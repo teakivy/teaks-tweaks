@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.packs.durabilityping;
 
+import me.teakivy.teakstweaks.commands.DurabilityPingCommand;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.MM;
@@ -25,7 +26,7 @@ import java.util.UUID;
 public class DuraPing extends BasePack {
 
     public DuraPing() {
-        super("durability-ping", PackType.SURVIVAL, Material.DIAMOND_PICKAXE);
+        super("durability-ping", PackType.SURVIVAL, Material.DIAMOND_PICKAXE, new DurabilityPingCommand());
     }
 
     private final HashMap<UUID, Long> pingCooldown = new HashMap<>();

@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.itemaverages;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.commands.ItemAveragesCommand;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.log.Logger;
@@ -30,7 +31,7 @@ public class ItemTracker extends BasePack {
     static HashMap<Material, Integer> items = new HashMap<>();
 
     public ItemTracker() {
-        super("item-averages", PackType.UTILITIES, Material.HOPPER);
+        super("item-averages", PackType.UTILITIES, Material.HOPPER, new ItemAveragesCommand());
     }
 
     public static void spawnTracker(Location loc, Player player) {

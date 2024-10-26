@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.packs.spectatoralts;
 
+import me.teakivy.teakstweaks.commands.AltsCommand;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.JsonManager;
@@ -20,7 +21,7 @@ public class SpectatorAlts extends BasePack {
     private static HashMap<UUID, UUID> alts;
 
     public SpectatorAlts() {
-        super("spectator-alts", PackType.TEAKSTWEAKS, Material.ENDER_EYE);
+        super("spectator-alts", PackType.TEAKSTWEAKS, Material.ENDER_EYE, new AltsCommand());
 
         alts = new HashMap<>();
     }

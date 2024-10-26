@@ -14,6 +14,7 @@ public class PermissionManager {
                 case NON_OP -> PermissionDefault.NOT_OP;
                 case NONE -> PermissionDefault.FALSE;
             };
+            if (TeaksTweaks.getInstance().getServer().getPluginManager().getPermission(permission.getPermission()) != null) continue;
             TeaksTweaks.getInstance().getServer().getPluginManager().addPermission(new Permission(permission.getPermission(), permissionDefault));
         }
     }

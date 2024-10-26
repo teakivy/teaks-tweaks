@@ -1,6 +1,9 @@
 package me.teakivy.teakstweaks.packs.homes;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.commands.DeleteHomeCommand;
+import me.teakivy.teakstweaks.commands.HomeCommand;
+import me.teakivy.teakstweaks.commands.SetHomeCommand;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
@@ -26,7 +29,7 @@ public class HomesPack extends BasePack {
     private static final HashMap<UUID, Long> cooldowns = new HashMap<>();
 
     public HomesPack() {
-        super("homes", PackType.TELEPORTATION, Material.RECOVERY_COMPASS);
+        super("homes", PackType.TELEPORTATION, Material.RECOVERY_COMPASS, new HomeCommand(), new SetHomeCommand(), new DeleteHomeCommand());
     }
 
     @Override

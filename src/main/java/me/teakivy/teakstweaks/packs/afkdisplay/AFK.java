@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.afkdisplay;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.commands.AFKCommand;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.log.Logger;
@@ -25,7 +26,7 @@ import java.util.UUID;
 public class AFK extends BasePack {
 
     public AFK() {
-        super("afk-display", PackType.SURVIVAL, Material.BELL);
+        super("afk-display", PackType.SURVIVAL, Material.BELL, new AFKCommand());
     }
 
     @Override

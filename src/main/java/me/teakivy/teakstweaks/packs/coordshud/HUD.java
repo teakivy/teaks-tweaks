@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.coordshud;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.commands.CoordsHudCommand;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
@@ -22,7 +23,7 @@ import java.util.UUID;
 public class HUD extends BasePack {
 
     public HUD () {
-        super("coords-hud", PackType.SURVIVAL, Material.OBSERVER);
+        super("coords-hud", PackType.SURVIVAL, Material.OBSERVER, new CoordsHudCommand());
         startHUD();
     }
 

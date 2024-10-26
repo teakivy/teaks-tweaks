@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.workstationhighlights;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.commands.WorkstationHighlightCommand;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Bukkit;
@@ -17,7 +18,7 @@ import org.bukkit.potion.PotionEffectType;
 public class Highlighter extends BasePack {
 
     public Highlighter() {
-        super("workstation-highlights", PackType.SURVIVAL, Material.SMITHING_TABLE);
+        super("workstation-highlights", PackType.SURVIVAL, Material.SMITHING_TABLE, new WorkstationHighlightCommand());
     }
 
     @EventHandler

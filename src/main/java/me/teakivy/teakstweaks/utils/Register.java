@@ -161,7 +161,6 @@ public class Register {
      * @param bypassEnabled If true, will register all packs regardless of if they are enabled or not
      */
     public void registerAll(boolean bypassEnabled) {
-        unregisterAll();
         for (String pack : Objects.requireNonNull(Config.get().getConfigurationSection("packs")).getKeys(false)) {
             if (Config.isPackEnabled(pack) || bypassEnabled) {
                 registerPack(pack);
@@ -219,29 +218,7 @@ public class Register {
             new TeaksTweaksCommand(),
             new TestCommand(),
             new MechanicsCommand(),
-            new PortalCommand(),
-            new CoordsHudCommand(),
-            new NightVisionCommand(),
-            new ConduitPowerCommand(),
-            new KillBoatsCommand(),
-            new RealTimeClockCommand(),
-            new SpawnCommand(),
-            new TPACommand(),
-            new HomeCommand(),
-            new DurabilityPingCommand(),
-            new BackCommand(),
-            new AFKCommand(),
-            new ShrineCommand(),
-            new WorkstationHighlightCommand(),
-            new SetHomeCommand(),
-            new ItemAveragesCommand(),
-            new GraveCommand(),
-            new SpawningSpheresCommand(),
-            new SudokuCommand(),
             new PackListCommand(),
-            new DeleteHomeCommand(),
-            new AltsCommand(),
-            new TPAHereCommand(),
         };
 
         for (AbstractCommand cmd : cmds) {

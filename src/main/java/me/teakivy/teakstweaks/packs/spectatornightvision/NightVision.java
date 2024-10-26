@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.packs.spectatornightvision;
 
+import me.teakivy.teakstweaks.commands.NightVisionCommand;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.MM;
@@ -15,7 +16,7 @@ import org.bukkit.potion.PotionEffectType;
 public class NightVision extends BasePack {
 
     public NightVision() {
-        super("spectator-night-vision", PackType.UTILITIES, Material.ENDER_EYE);
+        super("spectator-night-vision", PackType.UTILITIES, Material.ENDER_EYE, new NightVisionCommand());
     }
 
     @EventHandler

@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.packs.graves;
 
+import me.teakivy.teakstweaks.commands.GraveCommand;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
@@ -35,7 +36,7 @@ import java.util.UUID;
 public class GraveEvents extends BasePack {
 
     public GraveEvents() {
-        super("graves", PackType.SURVIVAL, Material.STONE_BRICK_WALL);
+        super("graves", PackType.SURVIVAL, Material.STONE_BRICK_WALL, new GraveCommand());
     }
 
     @Override
