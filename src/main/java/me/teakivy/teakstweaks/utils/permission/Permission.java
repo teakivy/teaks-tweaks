@@ -86,7 +86,7 @@ public enum Permission {
     UNSTICKY_PISTONS("unsticky-pistons"),
     XP_MANAGEMENT_BOTTLE("xp-management.bottle"),
 
-    MANAGE("manage"),
+    MANAGE("manage", PermissionType.OP),
 
     TEST("test", PermissionType.NONE);
 
