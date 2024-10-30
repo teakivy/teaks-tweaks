@@ -139,9 +139,11 @@ public class DurabilityPingCommand extends AbstractCommand {
     private void setScoreboardTag(Player player, DuraPingOption option, String value) {
         if (value.equals("true")) {
             player.addScoreboardTag(option.getScoreboardTag());
-            return;
+        } else {
+            player.removeScoreboardTag(option.getScoreboardTag());
         }
-        player.removeScoreboardTag(option.getScoreboardTag());
+        
+        player.addScoreboardTag("dp_customized");
     }
 
     private void setDisplayTag(Player player, String type) {
