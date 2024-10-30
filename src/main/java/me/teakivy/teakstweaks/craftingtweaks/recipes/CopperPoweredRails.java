@@ -17,10 +17,10 @@ public class CopperPoweredRails extends AbstractCraftingTweak {
     public void registerRecipes() {
         ShapedRecipe recipe = new ShapedRecipe(Key.get("copper_powered_rail"),
                 new ItemStack(Material.POWERED_RAIL, 6));
-        recipe.shape("g g", "gig", "gag");
+        recipe.shape("g g", "gig", "grg");
         recipe.setIngredient('g', Material.COPPER_INGOT);
         recipe.setIngredient('i', Material.STICK);
-        recipe.setIngredient('g', Material.REDSTONE);
+        recipe.setIngredient('r', Material.REDSTONE);
         addRecipe(recipe);
     }
 }
