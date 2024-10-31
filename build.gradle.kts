@@ -36,10 +36,6 @@ repositories {
     maven {
         url = uri("https://repo.maven.apache.org/maven2/")
     }
-
-    maven {
-        url = uri("https://repo.extendedclip.com/content/repositories/placeholderapi/")
-    }
 }
 
 val libraries = listOf(
@@ -52,7 +48,6 @@ val libraries = listOf(
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.21.3-R0.1-SNAPSHOT")
     compileOnly("com.mojang:authlib:1.5.25")
-    compileOnly("me.clip:placeholderapi:2.11.6")
 
     libraries.forEach { library ->
         compileOnly(library)

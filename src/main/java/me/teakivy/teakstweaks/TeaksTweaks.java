@@ -8,7 +8,6 @@ import me.teakivy.teakstweaks.utils.gui.GUIListener;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
-import me.teakivy.teakstweaks.utils.papi.PlaceholderManager;
 import me.teakivy.teakstweaks.utils.permission.PermissionManager;
 import me.teakivy.teakstweaks.utils.recipe.RecipeManager;
 import me.teakivy.teakstweaks.utils.update.UpdateChecker;
@@ -45,7 +44,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     public static BukkitAudiences getAdventure() {
         return getInstance().adventure();
     }
-    private PlaceholderManager placeholderManager;
     /**
      * Called when the plugin is enabled
      */
@@ -98,9 +96,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
             Metrics metrics = new Metrics(this, 12001);
             registerCustomMetrics(metrics);
         }, 20L * 30);
-
-        placeholderManager = new PlaceholderManager(this);
-        placeholderManager.load();
     }
 
     /**
@@ -114,7 +109,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
             this.adventure.close();
             this.adventure = null;
         }
-        placeholderManager.unload();
     }
 
     /**
@@ -214,4 +208,5 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
             packsFolder.mkdirs();
         }
     }
+
 }
