@@ -34,30 +34,23 @@ public class AfkPapi extends PlaceholderExpansion {
         return true;
     }
 
-    private String getConfigValue(String path, String defaultValue) {
-        return plugin.getConfig().getString("packs.afk-display." + path, defaultValue);
-    }
-
     @Override
     public String onRequest(OfflinePlayer player, @NotNull String params) {
 
-        if (player == null) return ""; // Check that player isn't null
+        if (player == null) return "";
 
         if (!plugin.getConfig().getBoolean("packs.afk-display.enabled", false)) {
-            return null; // AFK display is disabled
+            return null;
         }
+        if (params.toLowerCase().equals("afkstatus")) {
+            boolean isAfk = AFKManager.isAfk(player);
 
-        switch (params.toLowerCase()) {
-            case "afkstatus":
-                boolean isAfk = AFKManager.isAfk(player); // Using AFKManager
+            String playerAfk = plugin.getConfig().getString("packs.afk-display.placeholder-player-afk");
+            String playerNotAfk = plugin.getConfig().getString("packs.afk-display.placeholder-player-not-afk");
 
-                // Get this from config using the new method
-                String playerAfk = getConfigValue("player-afk", "afk");
-                String playerNotAfk = getConfigValue("player-not-afk", "not afk");
-
-                return isAfk ? playerAfk : playerNotAfk; // Return AFK status
-            default:
-                return null; // Return null for unknown parameters
+            return isAfk ? playerAfk : playerNotAfk;
+        } else {
+            return null;
         }
     }
 }

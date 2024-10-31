@@ -22,15 +22,12 @@ public class PlaceholderManager {
     public void load() {
         if (afkPapi != null) {
             afkPapi.register();
-            Bukkit.getLogger().info("TeaksTweaks PAPI registered successfully.");
         }
     }
 
     public void unload() {
         if (afkPapi != null) {
             afkPapi.unregister();
-            Bukkit.getLogger().info("TeaksTweaks PAPI unregistered successfully.");
         }
     }
-
 }
