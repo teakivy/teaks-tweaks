@@ -3,7 +3,8 @@ version: ${version}
 main: me.teakivy.teakstweaks.TeaksTweaks
 api-version: 1.21
 prefix: TeaksTweaks
-authors: [ TeakIvy ]
+authors:
+  - TeakIvy
 description: 150+ Toggleable Tweaks & Features including Vanilla Tweaks as a plugin, and more!
 website: https://teakstweaks.com
 

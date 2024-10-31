@@ -80,6 +80,9 @@ packs:
       display-to-everyone: false
       # Whether or not to display the AFK message to Server Console
       display-to-console: true
+    # Placeholder %teakstweaks_afkstatus% output
+    player-afk: "afk"
+    player-not-afk: "not afk"
 
   # Always Drop
   # Allows you to set blocks that will always drop when broken, regardless of the tool or enchantments used.
