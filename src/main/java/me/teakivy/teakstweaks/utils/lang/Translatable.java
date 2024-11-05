@@ -20,6 +20,7 @@ public class Translatable {
     public static void init(String lang) {
         languages.add(new TranslatableLanguage("en"));
         languages.add(new TranslatableLanguage("fr"));
+        languages.add(new TranslatableLanguage("ru"));
 
         if (isPluginLanguage(lang)) {
             currentLanguage = getLanguage(lang);
