@@ -61,7 +61,7 @@
   "confetti_creepers.description": "There is a chance each creeper will explode into confetti and do no damage to blocks.",
 
   "elevators.name": "Elevators",
-  "elevators.description": "Drop an ender pearl above a wool block to make it into an elevator.<newline>Jump on it to warp onto an elevator of the same color directly above.<newline>Crouch on it to warp onto one directly above.",
+  "elevators.description": "Drop an ender pearl above a wool block to make it into an elevator.<newline>Jump on it to warp onto an elevator of the same color directly above.<newline>Crouch on it to warp onto one directly below.",
 
   "xp_management.name": "XP Management",
   "xp_management.description": "Right-Click an enchanting table with an empty bottle to fill it with some of your XP.",
@@ -466,9 +466,9 @@
   "durabilityping.checkbox.yes.hover": "<red>Click to disable</red> <name>",
   "durabilityping.checkbox.no.hover": "<green>Click to enable</green> <name>",
   "durabilityping.config.ping_for_hand_items.name": "Ping for Hand Items",
-  "durabilityping.config.ping_for_hand_items.description": "Inculdes any item with durability in the mainhand or offhand slots.",
+  "durabilityping.config.ping_for_hand_items.description": "Includes any item with durability in the mainhand or offhand slots.",
   "durabilityping.config.ping_for_armor_items.name": "Ping for Armor Items",
-  "durabilityping.config.ping_for_armor_items.description": "Inculdes any item with durability in armor slots.",
+  "durabilityping.config.ping_for_armor_items.description": "Includes any item with durability in armor slots.",
   "durabilityping.config.ping_with_sound.name": "Ping with Sound",
   "durabilityping.config.display_hidden.name": "Display: Hidden",
   "durabilityping.config.display_subtitle.name": "Display: Subtitle",
