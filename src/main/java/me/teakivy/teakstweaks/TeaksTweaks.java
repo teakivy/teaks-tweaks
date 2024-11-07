@@ -8,6 +8,7 @@ import me.teakivy.teakstweaks.utils.gui.GUIListener;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
+import me.teakivy.teakstweaks.utils.papi.PlaceholderManager;
 import me.teakivy.teakstweaks.utils.permission.PermissionManager;
 import me.teakivy.teakstweaks.utils.recipe.RecipeManager;
 import me.teakivy.teakstweaks.utils.update.UpdateChecker;
@@ -51,6 +52,8 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     public void onEnable() {
         // Initialize an audiences instance for the plugin
         this.adventure = BukkitAudiences.create(this);
+        // Register Placeholders
+        new PlaceholderManager(this).load();
         // Credits
         createCredits();
 
@@ -109,6 +112,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
             this.adventure.close();
             this.adventure = null;
         }
+        new PlaceholderManager(this).unload();
     }
 
     /**
