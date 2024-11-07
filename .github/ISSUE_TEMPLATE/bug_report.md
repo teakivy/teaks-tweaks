@@ -2,7 +2,7 @@
 name: Bug report
 about: Create a report to help us improve
 title: ''
-labels: bug, feature request
+labels: bug
 assignees: teakivy
 
 ---
@@ -16,6 +16,10 @@ Steps to reproduce the behavior:
 2. Click on '....'
 3. Scroll down to '....'
 4. See error
+
+**Paste**
+Run `/teakstweaks paste` and include the generated link.
+***Note:** This also provides server logs, if you would like to exclude these, use `/teakstweaks paste false`.*
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
