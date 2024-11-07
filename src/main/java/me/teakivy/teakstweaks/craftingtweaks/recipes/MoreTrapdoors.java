@@ -27,7 +27,7 @@ public class MoreTrapdoors extends AbstractCraftingTweak {
         newTrapdoorRecipe("MANGROVE");
         newTrapdoorRecipe("CHERRY");
         newTrapdoorRecipe("BAMBOO");
-        newTrapdoorRecipe("PALE_OAK");
+     //   newTrapdoorRecipe("PALE_OAK");
     }
 
     public void newTrapdoorRecipe(String type) {

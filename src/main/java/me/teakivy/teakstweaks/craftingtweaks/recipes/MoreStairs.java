@@ -75,7 +75,7 @@ public class MoreStairs extends AbstractCraftingTweak {
         newStairsRecipe(Material.WAXED_EXPOSED_CUT_COPPER, Material.WAXED_EXPOSED_CUT_COPPER_STAIRS);
         newStairsRecipe(Material.WAXED_WEATHERED_CUT_COPPER, Material.WAXED_WEATHERED_CUT_COPPER_STAIRS);
         newStairsRecipe(Material.WAXED_OXIDIZED_CUT_COPPER, Material.WAXED_OXIDIZED_CUT_COPPER_STAIRS);
-        newStairsRecipe(Material.PALE_OAK_PLANKS, Material.PALE_OAK_STAIRS);
+        //  newStairsRecipe(Material.PALE_OAK_PLANKS, Material.PALE_OAK_STAIRS);
     }
 
     public void newStairsRecipe(Material input, Material output) {

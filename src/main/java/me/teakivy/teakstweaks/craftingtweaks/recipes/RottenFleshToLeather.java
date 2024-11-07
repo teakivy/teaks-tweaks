@@ -15,7 +15,7 @@ public class RottenFleshToLeather extends AbstractCraftingTweak {
 
     @Override
     public void registerRecipes() {
-        FurnaceRecipe recipe = new FurnaceRecipe(Key.get("rotten_flesh_to_leather"), new ItemStack(Material.LEATHER), Material.ROTTEN_FLESH, 10, 100);
+        FurnaceRecipe recipe = new FurnaceRecipe(Key.get("rotten_flesh_to_leather"), new ItemStack(Material.LEATHER), Material.ROTTEN_FLESH, 10, 36000);
         addRecipe(recipe);
     }
 }
