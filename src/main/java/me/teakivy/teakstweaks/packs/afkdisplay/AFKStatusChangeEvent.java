@@ -7,11 +7,10 @@ import org.jetbrains.annotations.NotNull;
 
 public class AFKStatusChangeEvent extends PlayerEvent {
     private static final HandlerList handlers = new HandlerList();
-    private final boolean isAfk;
+    private boolean isAfk;
 
     public AFKStatusChangeEvent(@NotNull Player who, boolean isAfk) {
         super(who);
-        this.isAfk = isAfk; // Saving statement
     }
 
     @NotNull
