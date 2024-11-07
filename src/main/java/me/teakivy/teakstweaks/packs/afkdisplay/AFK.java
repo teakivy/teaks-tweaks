@@ -174,6 +174,7 @@ public class AFK extends BasePack {
         displayAFKMessage(player, true);
         AFKStatusChangeEvent afkEvent = new AFKStatusChangeEvent(player, true);
         Bukkit.getPluginManager().callEvent(afkEvent);
+        AFKManager.setAfkStatus(player, true);
     }
 
     public static void unAFK(Player player) {
@@ -183,6 +184,7 @@ public class AFK extends BasePack {
         displayAFKMessage(player, false);
         AFKStatusChangeEvent afkEvent = new AFKStatusChangeEvent(player, false);
         Bukkit.getPluginManager().callEvent(afkEvent);
+        AFKManager.setAfkStatus(player, false);
     }
 
     public static void displayAFKMessage(Player player, Boolean isAFK) {
