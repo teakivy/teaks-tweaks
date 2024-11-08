@@ -172,8 +172,10 @@ public class AFK extends BasePack {
         afkTeam.addEntry(player.getName());
         afk.put(player.getUniqueId(), true);
         displayAFKMessage(player, true);
-        AFKStatusChangeEvent afkEvent = new AFKStatusChangeEvent(player, true);
-        Bukkit.getPluginManager().callEvent(afkEvent);
+        Bukkit.getScheduler().runTask(TeaksTweaks.getInstance(), () -> {
+            AFKStatusChangeEvent afkEvent = new AFKStatusChangeEvent(player, true);
+            Bukkit.getPluginManager().callEvent(afkEvent);
+        });
     }
 
     public static void unAFK(Player player) {
@@ -181,8 +183,10 @@ public class AFK extends BasePack {
         afkTeam.removeEntry(player.getName());
         afk.put(player.getUniqueId(), false);
         displayAFKMessage(player, false);
-        AFKStatusChangeEvent afkEvent = new AFKStatusChangeEvent(player, false);
-        Bukkit.getPluginManager().callEvent(afkEvent);
+        Bukkit.getScheduler().runTask(TeaksTweaks.getInstance(), () -> {
+            AFKStatusChangeEvent afkEvent = new AFKStatusChangeEvent(player, false);
+            Bukkit.getPluginManager().callEvent(afkEvent);
+        });
     }
 
     public static void displayAFKMessage(Player player, Boolean isAFK) {
