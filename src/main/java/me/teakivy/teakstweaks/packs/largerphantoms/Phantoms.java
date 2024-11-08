@@ -57,10 +57,10 @@ public class Phantoms extends BasePack {
 
     public void setPhantomAttributes(Phantom phantom, int size, int maxHeath, double movementSpeed, int followRange, int attackDamage) {
         phantom.setSize(size);
-        Objects.requireNonNull(phantom.getAttribute(Attribute.MAX_HEALTH)).setBaseValue(maxHeath);
-        Objects.requireNonNull(phantom.getAttribute(Attribute.MOVEMENT_SPEED)).setBaseValue(movementSpeed);
-        Objects.requireNonNull(phantom.getAttribute(Attribute.FOLLOW_RANGE)).setBaseValue(followRange);
-        Objects.requireNonNull(phantom.getAttribute(Attribute.ATTACK_DAMAGE)).setBaseValue(attackDamage);
+        Objects.requireNonNull(phantom.getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(maxHeath);
+        Objects.requireNonNull(phantom.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED)).setBaseValue(movementSpeed);
+        Objects.requireNonNull(phantom.getAttribute(Attribute.GENERIC_FOLLOW_RANGE)).setBaseValue(followRange);
+        Objects.requireNonNull(phantom.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE)).setBaseValue(attackDamage);
         phantom.setHealth(maxHeath);
     }
 
