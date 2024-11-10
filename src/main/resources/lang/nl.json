@@ -1,0 +1,595 @@
+{
+  "meta.version": "2.0.3",
+  "meta.modified": false,
+  "meta.language_name": "Nederlands",
+
+  "plugin.name": "Teak's Tweaks",
+  "plugin.discord": "<click:open_url:'https://discord.gg/wfP4SkZx6s'>https://discord.gg/wfP4SkZx6s</click>",
+  "plugin.url": "<click:open_url:'https://modrinth.com/plugin/teaks-tweaks'>https://modrinth.com/plugin/teaks-tweaks</click>",
+  "plugin.base_url": "https://modrinth.com/plugin/teaks-tweaks",
+  "plugin.author": "TeakIvy",
+
+  "#comment.errors": "Common Error Messages: (this is a comment and will never be shown in-game)",
+
+  "error.unknown": "<red>Er is een onbekende fout opgetreden!",
+  "error.pack_not_enabled": "<red>Dit pakket is niet ingeschakeld!",
+  "error.not_player": "<red>Je moet een speler zijn om dit commando te gebruiken!",
+  "error.not_op": "<red>Je moet een operator zijn om dit commando te gebruiken!",
+  "error.missing_command_permission": "<red>Je hebt geen toestemming om dit commando te gebruiken!",
+  "error.missing_permission": "<red>Je hebt geen toestemming om dat te doen!",
+  "error.cant_get_latest_version": "<red>Kon de nieuwste versie van Teak's Tweaks niet ophalen!",
+  "error.command_disabled": "<red>Dit commando is uitgeschakeld door een serverbeheerder!",
+  "error.missing_action": "<red>Specificeer een actie!",
+  "error.player_dne": "<red>Die speler bestaat niet!",
+
+  "#comment.metadata": "Pack Metadata Section: (this is a comment and will never be shown in-game)",
+
+  "packtype.experimental": "Experimental",
+  "packtype.hermitcraft": "Hermitcraft",
+  "packtype.items": "Items",
+  "packtype.mobs": "Mobs",
+  "packtype.survival": "Survival",
+  "packtype.teaks_tweaks": "Teak's Tweaks Custom",
+  "packtype.teleportation": "Teleportation",
+  "packtype.utilities": "Utilities",
+  "packtype.crafting_tweaks": "Crafting Tweaks",
+
+  "#comment.startup": "Startup Section: (this is a comment and will never be shown in-game)",
+
+  "startup.plugin.started": "Teak's Tweaks v<version> is gestart!",
+  "startup.plugin.shutting_down": "Teak's Tweaks wordt afgesloten...",
+  "startup.update.version_available": "Er is een nieuwe versie van Teak's Tweaks beschikbaar! v<version>",
+  "startup.update.download": "Bezoek <url> om de nieuwste versie te downloaden!",
+  "startup.update.join_alert": "<yellow>Er is een nieuwe versie van Teak's Tweaks beschikbaar!<newline>Klik hier om <gold>Teak's Tweaks v<version></gold> te downloaden!",
+  "startup.update.join_alert.hover": "<gold>Klik om Teak's Tweaks v<version> te downloaden!",
+  "startup.register.pack": "Geregistreerd Pakket: <name>",
+  "startup.register.crafting_tweak": "Geregistreerde Crafting Tweak: <name>",
+  "startup.register.command": "Geregistreerd Commando: /<command>",
+  "startup.lang.error.missing_language_file": "<red>Kon taalbestand voor <lang> niet vinden! Gebruik <current_lang_name> (<current_lang_key>.json) in plaats daarvan.",
+  "startup.lang.error.fata_error_on_load": "Er is een ernstige fout opgetreden bij het laden van het taalbestand voor <lang>!",
+  "startup.lang.loaded": "<count> taalbestanden geladen.",
+  "startup.lang.current": "Huidige Taal: <current_lang_name> (<current_lang_key>.json)",
+
+  "chunk_loaders.name": "Chunk Loaders",
+  "chunk_loaders.description": "Laat een Nether Star boven een Lodestone vallen om een chunk loader (ook wel Loadstone genoemd) te maken die de chunk ingeladen houdt tot hij wordt gebroken.",
+  "chunk_loaders.already_loaded": "<red>Deze chunk is al ingeladen!",
+  "chunk_loaders.loaded": "<green>Loadstone gemaakt!",
+
+  "confetti_creepers.name": "Confetti Creepers",
+  "confetti_creepers.description": "Er is een kans dat elke creeper in confetti ontploft en geen schade aan blokken aanricht.",
+
+  "elevators.name": "Liften",
+  "elevators.description": "Laat een enderparel boven een blok wol vallen om er een lift van te maken.<newline>Spring erop om naar een lift van dezelfde kleur direct erboven te gaan.<newline>Hurken om naar een lift direct eronder te gaan.",
+
+  "xp_management.name": "XP Beheer",
+  "xp_management.description": "Klik met de rechtermuisknop op een betoveringstafel met een lege fles om deze te vullen met wat van je XP.",
+  "xp_management.bottle_contains": "<gold>Bevat <return_amount> XP",
+
+  "thunder_shrine.name": "Donderheiligdom",
+  "thunder_shrine.description": "Een heiligdom dat een onweersbui creëert wanneer een Nether Star wordt geofferd.<newline>Laat een Nether Star bovenop een heiligdom vallen om een onweersbui te maken.",
+  "thunder_shrine.storm_initialize": "<red>Een grote storm is opgeroepen door het ritueel.",
+  
+  "mini_blocks.name": "Mini Blokken",
+  "mini_blocks.description": "Voegt mini blokken toe aan het spel. Maak ze door het normale blok in een Steenhouwer te gebruiken.",
+
+  "collectible_budding_amethyst.name": "Verzamelbare Ontluikende Amethist",
+  "collectible_budding_amethyst.description": "Maakt het mogelijk om ontluikende amethistblokken te verzamelen en het blok zelf te verkrijgen.",
+
+  "husk_drops_sand.name": "Husk Laat Zand Vallen",
+  "husk_drops_sand.description": "Husks laten 0-2 zand vallen bij hun dood (maakt het een hernieuwbare bron).<newline>Met Looting kan de hoeveelheid oplopen tot 2 + het Looting niveau.",
+
+  "always_drop.name": "Altijd Laten Vallen",
+  "always_drop.description": "Stelt je in staat om blokken in te stellen die altijd vallen wanneer ze worden gebroken, ongeacht het gereedschap of de betoveringen die worden gebruikt.",
+
+  "wandering_trader_announcements.name": "Aankondigingen voor Zwervende Handelaar",
+  "wandering_trader_announcements.description": "Maakt aan nabijgelegen spelers bekend wanneer een Zwervende Handelaar in de wereld verschijnt.",
+  "wandering_trader_announcements.announcement": "<gold>Een Zwervende Handelaar is in de buurt verschenen!",
+  "wandering_trader_announcements.announcement_all": "<gold>Een Zwervende Handelaar is ergens op de server verschenen!",
+
+  "wandering_trades.name": "Zwervende Handel",
+  "wandering_trades.description": "Voegt Mini Blokken & Spelerhoofden toe aan de handel van de Zwervende Handelaar.",
+
+  "armored_elytra.name": "Gepantserde Elytra",
+  "armored_elytra.description": "Laat een elytra en een borstplaat boven een aambeeld vallen om ze te combineren tot één item. Laat het item boven een slijpsteen vallen om ze weer te scheiden.<newline>Betoveringen blijven veilig bij het samenvoegen en scheiden. Brandende netherite gepantserde elytra zal de items scheiden.",
+  "armored_elytra.item_name": "<gold>Gepantserde Elytra",
+
+  "player_head_drops.name": "Spelerhoofd Laat Vallen",
+  "player_head_drops.description": "Een speler laat zijn hoofd vallen wanneer hij door een andere speler wordt gedood. Het item toont wie de moordenaar is.",
+  "player_head_drops.lore": "Gedood door <player>",
+
+  "rotation_wrench.name": "Rotatie Sleutel",
+  "rotation_wrench.description": "Voegt een aangepaste sleutel toe aan het spel waarmee je redstone-componenten en geglazuurde terracotta kunt draaien door erop te klikken.",
+  "rotation_wrench.item_name": "<gold>Sleutel",
+
+  "anti_creeper_grief.name": "Anti Creeper Vernieling",
+  "anti_creeper_grief.description": "Voorkomt dat creepers ontploffen; blokken en spelers nemen geen schade.",
+
+  "anti_enderman_grief.name": "Anti Enderman Vernieling",
+  "anti_enderman_grief.description": "Voorkomt dat endermans blokken oppakken.",
+
+  "anti_ghast_grief.name": "Anti Ghast Vernieling",
+  "anti_ghast_grief.description": "Voorkomt dat ghasts blokken opblazen.",
+
+  "bat_membranes.name": "Vleermuis Membranen",
+  "bat_membranes.description": "Schakel Phantoms uit om membranen van Vleermuizen te krijgen in plaats daarvan.",
+
+  "count_mob_deaths.name": "Tel Mob Doden",
+  "count_mob_deaths.description": "Voegt de mogelijkheid toe om het aantal doden van mobs bij te houden sinds het systeem is gestart.",
+  "count_mob_deaths.objective_name": "<gold>Mob Doden",
+
+  "double_shulker_shells.name": "Dubbele Shulker Schelpen",
+  "double_shulker_shells.description": "Maakt dat alle shulkers 2 schelpen laten vallen.",
+
+  "dragon_drops.name": "Draak Laat Vallen",
+  "dragon_drops.description": "Maakt dat de Ender Draak een drakenei en elytra laat vallen bij dood.",
+
+  "larger_phantoms.name": "Grotere Phantoms",
+  "larger_phantoms.description": "Maakt dat de natuurlijke verschijning van phantoms groter en krachtiger wordt naarmate je langer niet slaapt.",
+
+  "more_mob_heads.name": "Meer Mob Hoofden",
+  "more_mob_heads.description": "Voegt een kans toe om het hoofd van een mob te ontvangen na het doden ervan.",
+
+  "silence_mobs.name": "Stilte Mobs",
+  "silence_mobs.description": "Voegt de mogelijkheid toe om mobs stil te maken met een naamplaatje. 'Silence Me'; 'Silence me'; 'silence me'; 'silence_me' zijn allemaal geldige namen.",
+  "silence_mobs.activation_name": "silence me",
+  "silence_mobs.silenced_name": "stilgemaakt",
+
+  "villager_death_messages.name": "Dorpeling Dood Berichten",
+  "villager_death_messages.description": "Verwittigt de server in de chat wanneer een dorpeling sterft. Toont coördinaten en dimensie waarin hij stierf.",
+  "villager_death_messages.death_message": "<gold>Een Dorpeling is gestorven! <white>(<gold>XYZ: <x> <y> <z> <yellow><world><white>)",
+
+  "afk_display.name": "AFK Weergave",
+  "afk_display.description": "Vergrijst de naam van een speler die 5 minuten niet beweegt.",
+  "afk_display.self_now_afk": "<yellow>Je bent nu AFK.",
+  "afk_display.self_not_afk": "<yellow>Je bent niet langer AFK.",
+  "afk_display.other_now_afk": "<gold><player><yellow> is nu AFK.",
+  "afk_display.other_not_afk": "<gold><player><yellow> is niet langer AFK.",
+
+  "cauldron_concrete.name": "Ketel Beton",
+  "cauldron_concrete.description": "Klik met de rechtermuisknop op een ketel met betonpoeder om het te verharden.",
+
+  "cauldron_mud.name": "Ketel Modder",
+  "cauldron_mud.description": "Klik met de rechtermuisknop op een waterketel met aarde om het in modder te veranderen.",
+
+  "classic_fishing_loot.name": "Klassieke Visvangst Buit",
+  "classic_fishing_loot.description": "Herstelt de visvangstbuit naar de buitentabel van voor 1.16.",
+
+  "coords_hud.name": "Coords Hud",
+  "coords_hud.description": "Voegt informatie toe aan je actiebalk. XYZ Coördinaten en een 24-uurs klok.<newline>Commando: /ch toggle",
+
+  "custom_nether_portals.name": "Aangepaste Nether Portalen",
+  "custom_nether_portals.description": "Ontsteek nether portalen van elke grootte of vorm die je wilt, of gebruik huilende obsidiaan in het portaalframe als ingeschakeld.",
+
+  "durability_ping.name": "Duurzaamheid Ping",
+  "durability_ping.description": "Ontvang een melding wanneer je een item beschadigt dat minder dan 10% duurzaamheid heeft.<newline>Volledig aanpasbaar per speler met '/duraping config'",
+  "durability_ping.ping.subtitle.title": " ",
+  "durability_ping.ping.subtitle.subtitle": "<gold><item_type> <red>duurzaamheid laag!</red> <item_durability> <red>van</red> <item_max_durability> <red>over.",
+  "durability_ping.ping.title.title": "<gold><item_type> <red>duurzaamheid laag!",
+  "durability_ping.ping.title.subtitle": "<gold><item_durability> <red>van</red> <item_max_durability> <red>over.",
+  "durability_ping.ping.chat.message": "<gold><item_type> <red>duurzaamheid laag!</red> <item_durability> <red>van</red> <item_max_durability> <red>over.",
+  "durability_ping.ping.actionbar.message": "<gold><item_type> <red>duurzaamheid laag!</red> <item_durability> <red>van</red> <item_max_durability> <red>over.",
+
+  "fast_leaf_decay.name": "Snelle Bladeren Afbraak",
+  "fast_leaf_decay.description": "Bladeren vergaan veel sneller wanneer bomen worden gekapt in survivalmodus.",
+
+  "graves.name": "Graven",
+  "graves.description": "Wanneer een speler sterft, wordt er een graf gemaakt op hun locatie met al hun items erin. Klik met de rechtermuisknop op het graf om je items te ontvangen en hurk om het zo in te stellen dat alleen jij ze kunt oppakken.<newline>Verkrijg een graf sleutel om elk graf te ontgrendelen: '/grave key'<newline>Vind je laatste graf (indien vindbaar is ingeschakeld): '/grave locate'",
+  "graves.cant_rob_grave": "<red>Je mag geen graven beroven!",
+  "graves.last_grave": "<yellow>Je laatste graf was op XYZ: <gold><x> <y> <z></gold> in <gold>Wereld: <world>",
+  "graves.key.item_name": "<gold>Graf Sleutel",
+  "graves.key.item_lore": "Klik met de rechtermuisknop op een graf met deze sleutel om het te openen.",
+  "graves.log.created": "Een graf gemaakt voor <player> op XYZ: <x> <y> <z> in Wereld: <world>",
+  "graves.log.contains": "Bevat <gold><item_count></gold> items en <gold><xp_count></gold> XP.",
+  "graves.log.item": "- <gold><item> <white>x <gold><amount>",
+
+  "nether_portal_coords.name": "Nether Portaal Coördinaten",
+  "nether_portal_coords.description": "Voegt een commando toe dat berekent waar een nether portaal geplaatst moet worden in de andere dimensie. Handig voor het synchroniseren van nether portalen.<newline>Commando: /portal",
+
+  "real_time_clock.name": "Real-time Klok",
+  "real_time_clock.description": "Voegt een commando toe dat je laat zien hoe lang een wereld in real-time minuten en uren actief is.<newline>Commando: /rtc",
+
+  "track_raw_statistics.name": "Track Ruwe Statistieken",
+  "track_raw_statistics.description": "Voegt meer dan 100 scoreborden toe die verschillende statistieken bijhouden. Vooral nuttig voor multiplayer.",
+
+  "track_statistics.name": "Track Statistieken",
+  "track_statistics.description": "Voegt vooraf verwerkte statistieken toe. Bijv. Km gezwommen, Km gevlogen, enz.",
+
+  "unlock_all_recipes.name": "Ontgrendel Alle Recepten",
+  "unlock_all_recipes.description": "Ontgrendel automatisch alle recepten zodra je begint met spelen.",
+
+  "workstation_highlights.name": "Werkstation Markeringen",
+  "workstation_highlights.description": "Maakt het mogelijk om het werkstation van een dorpeling te vinden door het te markeren.<newline>Commando: /workstation",
+
+  "chat_colors.name": "Chat Kleuren",
+  "chat_colors.description": "Gebruik Chat Kleuren om je berichten, borden en items er beter uit te laten zien (Gebruik '&' voor kleurcodes).",
+
+  "dirt_to_grass.name": "Aarde naar Gras",
+  "dirt_to_grass.description": "Verander Aarde in gras door met zaden op een Aardeblok te klikken.",
+
+  "fixed_item_frames.name": "Vaste Voorwerplijsten",
+  "fixed_item_frames.description": "Shift-klik met ijzeren staven op een item frame om het vast te maken.<newline>Shift-klik met een schaar op een item frame om het niet vast te maken.",
+
+  "insta_mine.name": "Direct Hakken",
+  "insta_mine.description": "Mijnen van bepaalde blokken wordt direct mogelijk als je een netherite gereedschap met efficiëntie 5 of hoger hebt, en haast 2 of hoger.",
+
+  "invisible_item_frames.name": "Onzichtbare Voorwerplijsten",
+  "invisible_item_frames.description": "Shift-klik met een schaar op een item frame om het onzichtbaar te maken",
+
+  "keep_small.name": "Hou Klein",
+  "keep_small.description": "Hou een mob in zijn kindervorm (als die er een heeft).",
+  "keep_small.smallify.activation_name":  "hou klein",
+  "keep_small.smallify.small_name": "Kleingemaakt",
+  "keep_small.grow.activation_name": "groeien",
+  "keep_small.grow.grown_name": "Gegroeid",
+
+  "lectern_reset.name": "Lezenaar Reset",
+  "lectern_reset.description": "Reset het boek van een lezenaar naar de eerste pagina nadat het is gesloten.",
+
+  "quick_commands.name": "Snelle Commando's",
+  "quick_commands.description": "Schakel snel tussen spelmodi en beantwoord berichten.",
+  "quick_commands.message.command_description": "Stuur een privébericht naar een speler.",
+  "quick_commands.message.whisper_to_you": "<gray><italic><player> fluistert tegen jou: <message>",
+  "quick_commands.message.whisper_to_player": "<gray><italic>Jij fluistert naar <player>: <message>",
+  "quick_commands.reply.command_description": "Beantwoord de laatste persoon die je een bericht stuurde.",
+  "quick_commands.reply.error.no_reply": "<red>Je hebt niemand om op te reageren!",
+  "quick_commands.gmc.command_description": "Verander je spelmodus naar creatief.",
+  "quick_commands.gms.command_description": "Verander je spelmodus naar survival.",
+  "quick_commands.gmsp.command_description": "Verander je spelmodus naar toeschouwer.",
+  "quick_commands.gma.command_description": "Verander je spelmodus naar avontuur.",
+  "quick_commands.feed.command_description": "Voed jezelf.",
+  "quick_commands.heal.command_description": "Genees jezelf.",
+  "quick_commands.fly.command_description": "Schakel vliegen in of uit.",
+  "quick_commands.enderchest.command_description": "Open je Ender Chest.",
+  "quick_commands.craftingtable.command_description": "Open een Werkbank.",
+
+  "slime_cream.name": "Slijmcrème",
+  "slime_cream.description": "Verander Slijmballen naar Magma Crème door op een lavaketel te klikken.<newline>Verander Magma Crème naar Slijmballen door op een waterketel te klikken.",
+
+  "spectator_alts.name": "Toeschouwer Alternatieve Accounts",
+  "spectator_alts.description": "Laat spelers hun eigen alternatieve accounts als toeschouwers toevoegen.<newline>Commando: /alts <add/remove/list> <alt> [speler]",
+
+  "stair_chairs.name": "Trap Stoelen",
+  "stair_chairs.description": "Laat je op trappen zitten.<newline>Klik met een zadel op een trap om er een stoel van te maken.<newline>Breek de trap om de stoel te verwijderen en het zadel terug te krijgen.",
+  "stair_chairs.chair_created": "<green>Stoel gemaakt!",
+  "stair_chairs.chair_destroyed": "<green>Stoel verwijderd!",
+
+  "sudoku.name": "Sudoku",
+  "sudoku.description": "Laat spelers sudoku spelen.<newline>Commando: /sudoku",
+  "sudoku.death_message": "<player> speelde Sudoku",
+
+  "unsticky_pistons.name": "Niet-kleverige Plunjers",
+  "unsticky_pistons.description": "Laat spelers slijm van plunjers verwijderen door erop te klikken met een bijl.<newline>Klik met een slijmbal op een plunjer om hem kleverig te maken.",
+
+  "back.name": "Terug",
+  "back.description": "Stelt je in staat om terug te teleporteren naar je vorige locatie.<newline>Commando: /back",
+
+  "homes.name": "Huizen",
+  "homes.description": "Stelt je in staat om huizen in te stellen en ernaar te teleporteren.<newline>Commando: /home",
+  "homes.error.on_cooldown": "<red>Je moet <time> seconden wachten voordat je opnieuw kunt teleporteren!",
+  "homes.teleporting_in": "<yellow>Teleporteren in <time> seconden...",
+  "homes.teleported": "<green>Geteleporteerd naar huis <home>!",
+  "homes.deleted": "<green>Huis <home> is verwijderd!",
+
+  "spawn.name": "Spawn",
+  "spawn.description": "Stelt je in staat om naar de wereldspawn te teleporteren.<newline>Commando: /spawn",
+
+  "tpa.name": "TPA",
+  "tpa.description": "Maakt het mogelijk om een verzoek te sturen om naar een andere speler te teleporteren.<newline>Commando: /tpa",
+
+  "item_averages.name": "Item Gemiddelden",
+  "item_averages.description": "Voegt een markering toe die items die voorbij stromen gedurende 2 minuten bijhoudt, en berekent dan hoeveel van elk item per uur doorstroomt.<newline>Commando: /itemaverage",
+  "item_averages.source_production": "<yellow>Deze bron produceert ± per uur:",
+  "item_averages.item": "<gold><amount></gold> <item>",
+  "item_averages.no_items": "<yellow>Er zijn geen items langs de bron gekomen!",
+  "item_averages.log_finish": "Tracking voltooid",
+
+  "kill_boats.name": "Vernietig Boten",
+  "kill_boats.description": "Voegt een admin-commando toe om alle boten zonder passagiers te vernietigen.<newline>Commando: /killboats",
+
+  "spawning_spheres.name": "Spawning Bollen",
+  "spawning_spheres.description": "Voegt een commando toe waarmee je kunt zien waar mobs kunnen spawnen.<newline>Commando: /spawningspheres",
+  "spawning_spheres.center_stand": "Midden",
+  "spawning_spheres.sphere.red": "Rood",
+  "spawning_spheres.sphere.blue": "Blauw",
+  "spawning_spheres.sphere.green": "Groen",
+
+  "spectator_conduit_power.name": "Toeschouwer Geleidingskracht",
+  "spectator_conduit_power.description": "Schakel eenvoudig de geleidingskracht in wanneer je in de toeschouwer-modus bent.<newline>Commando: /conduitpower",
+  "spectator_conduit_power.error.game_mode_changed": "<red>Geleidingskracht verwijderd vanwege verandering in spelmodus!",
+
+  "spectator_night_vision.name": "Toeschouwer Nachtzicht",
+  "spectator_night_vision.description": "Schakel eenvoudig nachtzicht in wanneer je in de toeschouwer-modus bent.<newline>Commando: /nightvision",
+  "spectator_night_vision.error.game_mode_changed": "<red>Nachtzicht verwijderd vanwege verandering in spelmodus!",
+
+  "back_to_blocks.name": "Terug naar Blokken",
+  "back_to_blocks.description": "Maakt het mogelijk om volledige blokken te maken van trappen en platen.",
+
+  "blackstone_cobblestone.name": "Blackstone Keisteen",
+  "blackstone_cobblestone.description": "Maak alle items die Keisteen vereisen met Blackstone.",
+
+  "charcoal_to_black_dye.name": "Houtskool naar Zwarte Kleurstof",
+  "charcoal_to_black_dye.description": "Maakt het mogelijk om Houtskool in Zwarte Kleurstof te maken.",
+
+  "coal_to_black_dye.name": "Kolen naar Zwarte Kleurstof",
+  "coal_to_black_dye.description": "Maakt het mogelijk om Kolen in Zwarte Kleurstof te maken.",
+
+  "copper_powered_rails.name": "Koperen Geleiders",
+  "copper_powered_rails.description": "Maakt het mogelijk om Geleiders te maken met Koperen Ingots.",
+
+  "craftable_blackstone.name": "Maakbare Blackstone",
+  "craftable_blackstone.description": "Maakt het mogelijk om Blackstone of Gepolijste Blackstone te maken met Basalt en Houtskool/Kolen.",
+
+  "craftable_bundles.name": "Maakbare Bundels",
+  "craftable_bundles.description": "Maakt het mogelijk om het experimentele bundel-item te maken (met 1 Leer en 1 Touw).",
+
+  "craftable_chainmail.name": "Maakbaar Ketting",
+  "craftable_chainmail.description": "Maakt het mogelijk om Ketting Harnas te maken met Kettingen.",
+
+  "craftable_coral_blocks_2x2.name": "Maakbare Koraal Blokken (2x2)",
+  "craftable_coral_blocks_2x2.description": "Maakt het mogelijk om Koraal Blokken te maken van Koraalplanten in een 2x2. Zowel buisjes als waaiers kunnen onderling worden gebruikt.",
+
+  "craftable_coral_blocks_3x3.name": "Maakbare Koraal Blokken (3x3)",
+  "craftable_coral_blocks_3x3.description": "Maakt het mogelijk om Koraal Blokken te maken van Koraalplanten in een 3x3. Zowel buisjes als waaiers kunnen onderling worden gebruikt.",
+
+  "craftable_enchanted_golden_apples.name": "Maakbare Betoverde Gouden Appels",
+  "craftable_enchanted_golden_apples.description": "Maakt het mogelijk om Betoverde Gouden Appels te maken met Gouden Blokken.",
+
+  "craftable_gilded_blackstone.name": "Maakbare Vergulde Blackstone",
+  "craftable_gilded_blackstone.description": "Maakt het mogelijk om Vergulde Blackstone te maken met een Gouden Ingot en Blackstone.",
+
+  "craftable_gravel.name": "Maakbaar Grind",
+  "craftable_gravel.description": "Maakt het mogelijk om Grind te maken met Vuursteen.",
+
+  "craftable_horse_armor.name": "Maakbaar Paardenharnas",
+  "craftable_horse_armor.description": "Maakt het mogelijk om Paardenharnas te maken.",
+
+  "craftable_name_tags.name": "Maakbare Naamkaartje",
+  "craftable_name_tags.description": "Maakt het mogelijk om Naamkaartje te maken.",
+
+  "craftable_saddles.name": "Maakbare Zadels",
+  "craftable_saddles.description": "Maakt het mogelijk om Zadels te maken.",
+
+  "craftable_small_dripleaf.name": "Maakbare Kleine Druipblad",
+  "craftable_small_dripleaf.description": "Maakt het mogelijk om Kleine Druipblad te maken van een Grote Druipblad.",
+
+  "craftable_spore_blossoms.name": "Maakbare Sporenbloemen",
+  "craftable_spore_blossoms.description": "Maakt het mogelijk om Sporenbloemen te maken met Seringen, Azalea bladeren, en Honingraten.",
+
+  "double_slabs.name": "Dubbele Platen",
+  "double_slabs.description": "Maakt het mogelijk om 2 platen te maken van één blok.",
+
+  "dropper_to_dispenser.name": "Dropper naar Dispenser",
+  "dropper_to_dispenser.description": "Maakt het mogelijk om een Dropper om te zetten naar een Dispenser met een Boog, of door Touw en Stokken te gebruiken.",
+
+  "log_chests.name": "Hout Kisten",
+  "log_chests.description": "Maakt het mogelijk om Kisten in bulk te maken met Houtblokken.",
+
+  "more_bark.name": "Meer Schors",
+  "more_bark.description": "Maak 4 Schors in plaats van 3.",
+
+  "more_bricks.name": "Meer Bakstenen",
+  "more_bricks.description": "Maak 4 Bakstenen in plaats van 1.",
+
+  "more_packed_mud.name": "Meer Verpakte Modder",
+  "more_packed_mud.description": "Maak 2 Verpakte Modder in plaats van 1.",
+
+  "more_sherds.name": "Meer Scherven",
+  "more_sherds.description": "Maak 2 Scherven door een Aardewerk Scherf te combineren met een Baksteen.",
+
+  "more_stairs.name": "Meer Trappen",
+  "more_stairs.description": "Maak 8 Trappen in plaats van 4.",
+
+  "more_trapdoors.name": "Meer Valluik",
+  "more_trapdoors.description": "Maak 12 Valluik in plaats van 2.",
+
+  "more_iron_trapdoors.name": "Meer IJzeren Valluik",
+  "more_iron_trapdoors.description": "Maak 8 IJzeren Valluik in plaats van 2.",
+
+  "more_copper_trapdoors.name": "Meer Koperen Valluik",
+  "more_copper_trapdoors.description": "Maak 12 Koperen Valluik in plaats van 2.",
+
+  "powder_to_glass.name": "Poeder naar Glas",
+  "powder_to_glass.description": "Smelt alle kleuren Betonpoeder om in hun respectieve Gekleurd Glas kleur.",
+
+  "rotten_flesh_to_leather.name": "Rot Vlees naar Leer",
+  "rotten_flesh_to_leather.description": "Maakt het mogelijk om Rot Vlees om te smelten in Leer.",
+
+  "sandstone_dyeing.name": "Zandsteen Kleurstof",
+  "sandstone_dyeing.description": "Maakt het mogelijk om Zandsteen met Rode Kleurstof te kleuren tot Rode Zandsteen.",
+
+  "smeltable_raw_ore_blocks.name": "Smeltbare Ruwe Ertsblokken",
+  "smeltable_raw_ore_blocks.description": "Smelt Ruwe Ertsblokken tot Ertsblokken.",
+
+  "straight_to_shapeless.name": "Direct Naar Vormloos",
+  "straight_to_shapeless.description": "Maakt het mogelijk om items zoals Papier, Brood en Shulker Kisten direct in je 2x2 te maken.",
+
+  "universal_dyeing.name": "Universele Kleurstof",
+  "universal_dyeing.description": "Maakt het mogelijk om elk kleurbaar blok in een andere kleur te verven, ongeacht de huidige kleur (bevat geen Beton).",
+
+  "unpackable_ice.name": "Opdeelbaar ijs",
+  "unpackable_ice.description": "Maakt het mogelijk om ijs op te delen in 9 stukken. 1 Blauw ijs naar 9 Verpakt ijs naar 81 ijs.",
+
+  "unpackable_nether_wart.name": "Opdeelbare Nether Wart Blokken",
+  "unpackable_nether_wart.description": "Maakt het mogelijk om Nether Wart Blokken op te delen in 9 Nether Wart.",
+
+  "unpackable_quartz_blocks.name": "Opdeelbare Kwarts Blokken",
+  "unpackable_quartz_blocks.description": "Maakt het mogelijk om Kwarts Blokken op te delen in 4 Kwarts.",
+
+  "unpackable_wool.name": "Opdeelbare Wol",
+  "unpackable_wool.description": "Maakt het mogelijk om Wol op te delen in 4 Touw.",
+
+  "plugin.commands.usage": "<red>Gebruik: <command_usage>",
+
+  "afk.command_description": "Schakelt AFK modus in. Wanneer ingeschakeld, word je automatisch op AFK gezet als je 5 minuten inactief bent.",
+
+  "alts.command_description": "Beheer toeschouwer alt accounts.",
+  "alts.error.no_permission_list_others": "<red>Je hebt geen toestemming om de alts van anderen te bekijken!",
+  "alts.error.no_permission_modify_others": "<red>Je hebt geen toestemming om de alts van anderen te wijzigen!",
+  "alts.error.no_alts": "<red><player> heeft geen alts!",
+  "alts.error.max_alts": "<red>Je kunt niet meer alts toevoegen!",
+  "alts.error.self": "<red>Je kunt jezelf niet als een alt toevoegen!",
+  "alts.error.whitelisted": "<red>Je kunt geen speler op de witte lijst toevoegen als alt!",
+  "alts.error.already_alt": "<red><alt> is al een alt!",
+  "alts.error.not_alt": "<red><alt> is geen alt!",
+  "alts.list_alts": "<gold><player><yellow>’s alts:",
+  "alts.listed_alt": "<gray> - <yellow><alt>",
+  "alts.added_alt": "<green><alt> is nu een alt van <player>!",
+  "alts.removed_alt": "<green><alt> is niet langer een alt van <player>!",
+
+  "back.command_description": "Teleporteer terug naar je vorige locatie.",
+  "back.error.on_cooldown": "<red>Je moet <cooldown_seconds> seconden wachten tussen gebruik van /back!",
+  "back.error.no_back_location": "<red>Je hebt geen locatie om naar terug te keren!",
+  "back.error.moved": "<red>Je moet stilstaan om te teleporteren!",
+  "back.teleporting": "<yellow>Teleporteren naar vorige locatie...",
+
+  "conduitpower.command_description": "Schakel Geleidingskracht in als toeschouwer.",
+  "conduitpower.error.wrong_gamemode": "<red>Je moet in Toeschouwer Modus zijn om dit commando te gebruiken!",
+  "conduitpower.toggled": "<green>Geleidingskracht ingeschakeld",
+
+  "coordshud.command_description": "Coördinaten Hud Hoofdcommando",
+  "coordshud.toggled": "<green>Coördinaten Hud Ingeschakeld",
+
+  "deletehome.command_description": "Verwijder een thuislocatie.",
+
+  "durabilityping.command_description": "Ontvang een melding wanneer je gereedschap onder 10% duurzaamheid komt.",
+  "durabilityping.error.missing_preview_selection": "<red>Voer in welk deel je wilt voorvertonen!",
+  "durabilityping.error.missing_set_selection": "<red>Voer in welk deel je wilt instellen!",
+  "durabilityping.preview_panel.hover": "<gray>Klik om te voorvertonen</gray> <name>",
+  "durabilityping.checkbox.yes.hover": "<red>Klik om uit te schakelen</red> <name>",
+  "durabilityping.checkbox.no.hover": "<green>Klik om in te schakelen</green> <name>",
+  "durabilityping.config.ping_for_hand_items.name": "Melding voor Handitems",
+  "durabilityping.config.ping_for_hand_items.description": "Omvat elk item met duurzaamheid in de hoofdhand of bijhand.",
+  "durabilityping.config.ping_for_armor_items.name": "Melding voor Harnasitems",
+  "durabilityping.config.ping_for_armor_items.description": "Omvat elk item met duurzaamheid in harnasslots.",
+  "durabilityping.config.ping_with_sound.name": "Melding met Geluid",
+  "durabilityping.config.display_hidden.name": "Weergave: Verborgen",
+  "durabilityping.config.display_subtitle.name": "Weergave: Ondertitel",
+  "durabilityping.config.display_title.name": "Weergave: Titel",
+  "durabilityping.config.display_chat.name": "Weergave: Chat",
+  "durabilityping.config.display_actionbar.name": "Weergave: Actiebalk",
+
+  "grave.command_description": "Behoud je inventaris zonder risico.",
+  "grave.error.no_grave": "<red>Je hebt geen recent graf!",
+  "grave.given_key": "<green>Je hebt een graf sleutel ontvangen!",
+  "grave.removed_graves": "<yellow>Alle geladen graven zijn verwijderd!",
+
+  "home.command_description": "Teleporteer, stel in of verwijder je huizen!",
+  "home.error.missing_home_name": "<red>Geef een naam op voor je huis!",
+  "home.error.home_already_exists": "<red>Het huis <name> bestaat al!",
+  "home.error.home_dne": "<red>Het huis <name> bestaat niet!",
+  "home.error.max_homes": "<red>Je kunt niet meer dan <max_homes> huizen hebben!",
+  "home.error.cant_set_home": "<red>Er is een onbekende fout opgetreden bij het instellen van je huis!",
+  "home.error.cant_delete_home": "<red>Er is een onbekende fout opgetreden bij het verwijderen van je huis!",
+  "home.error.no_homes_yet": "<red>Je hebt nog geen huizen ingesteld! Gebruik <gold>/home set <name></gold> om er één in te stellen!",
+  "home.set_home": "<green>Je hebt je huis <name> ingesteld!",
+  "home.deleted_home": "<green>Je hebt je huis <name> verwijderd!",
+
+  "itemaverages.command_description": "Bereken hoeveel items door een bron stromen in 2 minuten.",
+  "itemaverages.error.tracker_in_use": "<red>Er is al een tracker in gebruik!",
+  "itemaverages.tracker_created": "<yellow>Tracker bron aangemaakt op XYZ: <x> <y> <z>",
+  "itemaverages.tracker_mass_removed": "<yellow><count> Tracker Bronnen verwijderd!",
+
+  "killboats.command_description": "Vernietig alle lege boten.",
+  "killboats.removed_boats": "<yellow><count> Boten verwijderd!",
+
+  "mechanics.command_description": "Bekijk Mechanieken toegevoegd door Teak's Tweaks.",
+  "mechanics.gui.title": "Teak's Tweaks Mechanieken",
+  "mechanics.gui.next_page": "<gold>Volgende Pagina",
+  "mechanics.gui.previous_page": "<gold>Vorige Pagina",
+
+  "nightvision.command_description": "Schakel Nachtzicht in als toeschouwer.",
+  "nightvision.error.wrong_gamemode": "<red>Je moet in Toeschouwer Modus zijn om dit commando te gebruiken!",
+  "nightvision.toggled": "<green>Nachtzicht Ingeschakeld",
+
+  "packlist.command_description": "Toon alle actieve Pakketten.",
+  "packlist.packs": "Pakketten (<count>): ",
+  "packlist.craftingtweaks": "Crafting Aanpassingen (<count>): ",
+
+  "portal.command_description": "Bereken waar een Nether Portaal geplaatst moet worden in de andere dimensie.",
+  "portal.error.wrong_dimension": "<red>Je kunt dit commando niet uitvoeren in <world>!",
+  "portal.location": "<yellow>XYZ: <x> <y> <z>",
+
+  "realtimeclock.command_description": "Bekijk hoe lang een wereld in realtime minuten en uren actief is.",
+  "realtimeclock.world_time": "<yellow>Deze wereld is actief geweest voor <gold><bold><days></bold></gold> Dagen, <gold><bold><hours></bold></gold> Uren, en <gold><bold><minutes></bold></gold> Minuten!",
+
+  "sethome.command_description": "Stel een thuislocatie in om later naartoe te teleporteren.",
+
+  "shrine.command_description": "Creëer donderheiligdommen die kunnen worden gebruikt om bliksemstormen op te roepen.",
+  "shrine.error.none_nearby": "<red>Er zijn geen heiligdommen in de buurt!",
+  "shrine.created": "<green>Een Heiligdom is aangemaakt op <gold>XYZ: <yellow><x> <y> <z></yellow></gold> in <gold>Wereld: <yellow><world>",
+  "shrine.removed": "<green>Een Heiligdom is verwijderd op <gold>XYZ: <yellow><x> <y> <z></yellow></gold> in <gold>Wereld: <yellow><world>",
+  "shrine.shrines_mass_removed": "<yellow>Alle geladen Heiligdommen zijn verwijderd!",
+
+  "spawn.command_description": "Teleporteer naar de server spawn.",
+  "spawn.error.on_cooldown": "<red>Je moet <time> seconden wachten tussen het gebruik van /spawn!",
+  "spawn.error.moved": "<red>Je moet stilstaan om te teleporteren!",
+  "spawn.teleporting": "<yellow>Teleporteren naar Spawn...",
+
+  "spawningspheres.command_description": "Roep een bol op om te helpen bij mob spawning.",
+  "spawningspheres.error.invalid_color": "<red>Specificeer een geldige kleur! (rood, blauw, groen)",
+  "spawningspheres.error.in_use": "<red>De bol <color> is al in gebruik!",
+  "spawningspheres.error.not_in_use": "<red>De bol <color> is niet in gebruik!",
+  "spawningspheres.summoned": "<green>De <color> <green>spawning bol opgeroepen!",
+  "spawningspheres.removing": "<green>Verwijdert de <color> <green>spawning bol...",
+  "spawningspheres.teleporting": "<yellow>Teleporteren naar de <color> <green>spawning bol...",
+
+  "sudoku.command_description": "Speel Sudoku.",
+  "sudoku.committed": "<green>Bedankt voor het spelen van sudoku!",
+
+  "teakstweakscommand.command_description": "Hoofdcommando voor Teak's Tweaks.",
+  "teakstweakscommand.version": "<green>v<version>",
+  "teakstweakscommand.support": "<yellow>Voor ondersteuning, join de Discord en vraag in het <gold>#<red>❓</red> | support</gold> kanaal: <gold><click:open_url:'<discord>'><discord></click></gold><newline>Voor snellere ondersteuning, voer <gold><click:run_command:'/teakstweaks paste true'>/teakstweaks paste</click></gold> uit en voeg de link toe aan je bericht.",
+  "teakstweakscommand.update": "<green><url>",
+  "teakstweakscommand.wiki": "<green><click:open_url:'<url>'><url></click>",
+  "teakstweakscommand.info.dashed_line": "<gray>-----------------------------------------------------",
+  "teakstweakscommand.info.title": "<gold>Teak's Tweaks <yellow>v<version>",
+  "teakstweakscommand.info.author": "Auteur: <green><author>",
+  "teakstweakscommand.info.config_version": "Config Versie: <green><config_version>",
+  "teakstweakscommand.info.config_generated": "Config Aangemaakt: <green><config_generated>",
+  "teakstweakscommand.info.dev_mode_enabled": "Dev Modus: <green>Ingeschakeld",
+  "teakstweakscommand.info.support": "Support Server: <green><discord>",
+  "teakstweakscommand.paste.uploading": "<gold>Uploaden naar PasteBook...",
+  "teakstweakscommand.paste.success": "<yellow>Succesvol geüpload naar PasteBook!<newline><click:copy_to_clipboard:'<url>'><gold>Klik hier</gold> om de link naar je klembord te kopiëren.</click><newline><click:open_url:'<url>'><gold>Klik hier</gold> om de link in je browser te openen.</click>",
+  "teakstweakscommand.paste.error": "<red>Uploaden naar PasteBook mislukt!",
+  "teakstweakscommand.paste.error.cooldown": "<red>Teak's Tweaks Paste kan slechts eenmaal per 30 minuten worden gebruikt!",
+  "teakstweakscommand.give.unknown_item": "<red>Onbekend item '<item>'.",
+  "teakstweakscommand.give.error.amount.lt_1": "<red>Getal mag niet kleiner zijn dan 1.",
+  "teakstweakscommand.give.error.amount.gt_6400": "<red>Getal mag niet groter zijn dan 6400.",
+  "teakstweakscommand.give.success": "<yellow>Gegeven <gold><amount></gold> [<gold><item></gold>] aan <gold><player></gold>.",
+  "teakstweakscommand.give.all_players": "iedereen",
+
+  "test.command_description": "Teak's Tweaks Test Commando.",
+  "test.test": "<rainbow>Hallo, <name>! Het lijkt erop dat je mijn testcommando hebt gevonden! :D</rainbow>",
+
+  "tpahere.command_description": "Verzoek voor een andere speler om naar jou te teleporteren.",
+  "tpa.command_description": "Verzoek om naar een andere speler te teleporteren.",
+  "tpa.error.specify_player": "<red>Specificeer een speler om naar toe te teleporteren!",
+  "tpa.error.no_pending_requests": "<red>Je hebt geen openstaande teleportverzoeken!",
+
+  "tpa.error.has_outgoing_request": "<red>Je hebt al een uitgaand teleportverzoek!",
+  "tpa.error.no_outgoing_request": "<red>Je hebt geen uitgaand teleportverzoek!",
+  "tpa.error.player_not_online": "<red>Die speler is niet online!",
+  "tpa.error.player_no_pending_requests": "<red>Die speler heeft geen openstaande teleportverzoeken!",
+  "tpa.tpa.request_message": "<gold><player> <yellow>heeft gevraagd om naar jou te teleporteren! <gold>Klik om te accepteren!",
+  "tpa.tpahere.request_message": "<gold><player> <yellow>heeft gevraagd om naar jou te teleporteren! <gold>Klik om te accepteren!",
+  "tpa.request_message.hover": "<gold>Klik om te accepteren",
+  "tpa.tpa.request_sent": "<yellow>Je hebt gevraagd om naar <gold><player></gold> te teleporteren. <gold>Zij hebben 60 seconden om te accepteren.",
+  "tpa.tpahere.request_sent": "<yellow>Je hebt gevraagd om <gold><player></gold> naar jou te teleporteren. <gold>Zij hebben 60 seconden om te accepteren.",
+  "tpa.request_cancelled": "<yellow>Je teleportverzoek aan <gold><player> <yellow>is geannuleerd!",
+  "tpa.request_accepted": "<yellow>Je teleportverzoek aan <gold><player> <yellow>is geaccepteerd!",
+  "tpa.request_expired": "<red>Je teleportverzoek aan <gold><player> <red>is verlopen!",
+  "tpa.teleporting": "<yellow>Teleporteren naar <gold><player></gold>...",
+  "tpa.teleporting_to_you": "<yellow>Teleporteren van <gold><player></gold> naar jou...",
+
+  "workstationhighlight.command_description": "Vind het werkstation van een dorpeling.",
+  "workstationhighlight.error.invalid_profession": "<red>Ongeldig beroepstype!",
+  "workstationhighlight.error.invalid_radius": "<red>Ongeldige straal!",
+  "workstationhighlight.error.radius_out_of_bounds": "<red>De straal moet tussen 1 en 16 liggen!",
+  "workstationhighlight.error.no_workstations_found": "<red>Geen werkstations in de buurt gevonden!",
+  "workstationhighlight.error.no_job_site": "<red>De dichtstbijzijnde dorpeling heeft geen werkplek!",
+  "workstationhighlight.found": "<yellow>Het werkstation bevindt zich op <gold>[XYZ]: <x> <y> <z>"
+}
+
+
+  
+  
