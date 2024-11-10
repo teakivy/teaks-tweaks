@@ -24,6 +24,9 @@ public class Credits {
         contributors.add("Loudbooks");
         contributors.add("ri1_");
         contributors.add("mythiccal");
+        contributors.add("Vinellon");
+        contributors.add("sanmc19");
+        contributors.add("Capirichu");
 
         supporters.add("loudambiance");
 

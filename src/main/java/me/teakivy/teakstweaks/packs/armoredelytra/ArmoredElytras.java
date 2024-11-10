@@ -20,6 +20,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
@@ -208,15 +209,15 @@ public class ArmoredElytras extends BasePack {
             knockbackResistance = .1;
         }
         if (armor != 0) {
-            AttributeModifier modifierArmor = new AttributeModifier(UUID.randomUUID(), "generic.armor", armor, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+            AttributeModifier modifierArmor = new AttributeModifier(Key.get("armor_attribute"), armor, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ARMOR);
             meta.addAttributeModifier(Attribute.ARMOR, modifierArmor);
         }
         if (toughness != 0) {
-            AttributeModifier modifierToughness = new AttributeModifier(UUID.randomUUID(), "generic.armor_toughness", toughness, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+            AttributeModifier modifierToughness = new AttributeModifier(Key.get("armor_toughness_attribute"), toughness, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ARMOR);
             meta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, modifierToughness);
         }
         if (knockbackResistance != 0) {
-            AttributeModifier modifierKnockback = new AttributeModifier(UUID.randomUUID(), "generic.knockback_resistance", knockbackResistance, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+            AttributeModifier modifierKnockback = new AttributeModifier(Key.get("knockback_resistance_attribute"), knockbackResistance, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ARMOR);
             meta.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, modifierKnockback);
         }
 

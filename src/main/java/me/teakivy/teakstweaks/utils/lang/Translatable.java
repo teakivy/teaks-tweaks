@@ -21,6 +21,8 @@ public class Translatable {
         languages.add(new TranslatableLanguage("en"));
         languages.add(new TranslatableLanguage("fr"));
         languages.add(new TranslatableLanguage("ru"));
+        languages.add(new TranslatableLanguage("fi"));
+        languages.add(new TranslatableLanguage("nl"));
 
         if (isPluginLanguage(lang)) {
             currentLanguage = getLanguage(lang);
