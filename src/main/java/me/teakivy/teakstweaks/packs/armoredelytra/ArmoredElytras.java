@@ -210,15 +210,15 @@ public class ArmoredElytras extends BasePack {
         }
         if (armor != 0) {
             AttributeModifier modifierArmor = new AttributeModifier(Key.get("armor_attribute"), armor, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ARMOR);
-            meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifierArmor);
+            meta.addAttributeModifier(Attribute.ARMOR, modifierArmor);
         }
         if (toughness != 0) {
             AttributeModifier modifierToughness = new AttributeModifier(Key.get("armor_toughness_attribute"), toughness, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ARMOR);
-            meta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, modifierToughness);
+            meta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, modifierToughness);
         }
         if (knockbackResistance != 0) {
             AttributeModifier modifierKnockback = new AttributeModifier(Key.get("knockback_resistance_attribute"), knockbackResistance, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ARMOR);
-            meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifierKnockback);
+            meta.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, modifierKnockback);
         }
 
         item.setItemMeta(meta);
