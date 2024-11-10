@@ -26,6 +26,7 @@ public class Credits {
         contributors.add("mythiccal");
         contributors.add("Vinellon");
         contributors.add("sanmc19");
+        contributors.add("Capirichu");
 
         supporters.add("loudambiance");
 
