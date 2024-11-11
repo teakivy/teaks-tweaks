@@ -387,9 +387,12 @@ packs:
   # teakstweaks.fixed-item-frames
   fixed-item-frames:
     enabled: false
-    item-for-fix: IRON_BARS # Item for make fixed item frame
-    take-item-for-fix: 1 # How many it would take for make fixed item frame
-    item-for-unfix: BRUSH # Item for make unfixed item frame
+    # Item for make fixed item frame (Default: IRON_BARS)
+    item-for-fix: IRON_BARS
+    # How many it would take for make fixed item frame (Default: 1)
+    take-item-for-fix: 1
+    # Item for make unfixed item frame (Default: BRUSH)
+    item-for-unfix: BRUSH
 
   # Graves
   # When a player dies, a grave is made at their location containing all their items. Right-click the grave to receive your items,
@@ -478,7 +481,8 @@ packs:
   # teakstweaks.invisible-item-frames
   invisible-item-frames:
     enabled: false
-    item-for-invisible: SHEARS # Item for make invisible item frame
+    # Item for make invisible item frame (Default: SHEARS)
+    item-for-invisible: SHEARS
 
 
   # Item Averages
