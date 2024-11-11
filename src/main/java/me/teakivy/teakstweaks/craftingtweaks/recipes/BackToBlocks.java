@@ -25,7 +25,7 @@ public class BackToBlocks extends AbstractCraftingTweak {
         registerDualRecipe(Material.DARK_OAK_PLANKS, Material.DARK_OAK_STAIRS, Material.DARK_OAK_SLAB);
         registerDualRecipe(Material.MANGROVE_PLANKS, Material.MANGROVE_STAIRS, Material.MANGROVE_SLAB);
         registerDualRecipe(Material.CHERRY_PLANKS, Material.CHERRY_STAIRS, Material.CHERRY_SLAB);
-        registerDualRecipe(Material.BAMBOO_PLANKS, Material.BAMBOO_STAIRS, Material.BAMBOO_SLAB);
+        registerStairRecipe(Material.BAMBOO_PLANKS, Material.BAMBOO_STAIRS);
         registerDualRecipe(Material.BAMBOO_MOSAIC, Material.BAMBOO_MOSAIC_STAIRS, Material.BAMBOO_MOSAIC_SLAB);
         registerDualRecipe(Material.CRIMSON_PLANKS, Material.CRIMSON_STAIRS, Material.CRIMSON_SLAB);
         registerDualRecipe(Material.WARPED_PLANKS, Material.WARPED_STAIRS, Material.WARPED_SLAB);
