@@ -28,7 +28,7 @@ public class FixedItemFrames extends BasePack {
 			if (((ItemFrame) event.getRightClicked()).isFixed()) return;
 			event.setCancelled(true);
 
-			event.getPlayer().getInventory().getItemInMainHand().setAmount(event.getPlayer().getInventory().getItemInMainHand().getAmount() - 1);
+			event.getPlayer().getInventory().getItemInMainHand().setAmount(event.getPlayer().getInventory().getItemInMainHand().getAmount() - getConfig().getInt("take-item-for-fix"));
 
 			ItemFrame frame = (ItemFrame) event.getRightClicked();
 			frame.setFixed(true);
@@ -38,12 +38,12 @@ public class FixedItemFrames extends BasePack {
 	}
 
 	@EventHandler
-	public void onInteract(PlayerInteractAtEntityEvent event) {
+	public void onInteract(PlayerInteractEntityEvent event) {
 		if (!Permission.FIXED_ITEM_FRAMES.check(event.getPlayer())) return;
-
+        if (Material.getMaterial(getConfig().getString("item-for-unfix")) == null) return;
 		if (event.getRightClicked().getType() == EntityType.ITEM_FRAME || event.getRightClicked().getType() == EntityType.GLOW_ITEM_FRAME) {
             if (!event.getPlayer().isSneaking()) return;
-            if (event.getPlayer().getInventory().getItemInMainHand().getType() != Material.SHEARS) return;
+            if (event.getPlayer().getInventory().getItemInMainHand().getType() != Material.getMaterial(getConfig().getString("item-for-unfix"))) return;
             if (!((ItemFrame) event.getRightClicked()).isFixed()) return;
             event.setCancelled(true);
 

@@ -23,7 +23,8 @@ public class InvisibleItemFrames extends BasePack {
 
         if (event.getRightClicked().getType() == EntityType.ITEM_FRAME || event.getRightClicked().getType() == EntityType.GLOW_ITEM_FRAME) {
             if (!event.getPlayer().isSneaking()) return;
-            if (event.getPlayer().getInventory().getItemInMainHand().getType() != Material.SHEARS) return;
+            if (Material.getMaterial(getConfig().getString("item-for-invisible")) == null) return;
+            if (event.getPlayer().getInventory().getItemInMainHand().getType() != Material.getMaterial(getConfig().getString("item-for-invisible"))) return;
             event.setCancelled(true);
 
             ItemFrame frame = (ItemFrame) event.getRightClicked();

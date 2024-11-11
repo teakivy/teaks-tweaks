@@ -387,6 +387,9 @@ packs:
   # teakstweaks.fixed-item-frames
   fixed-item-frames:
     enabled: false
+    item-for-fix: IRON_BARS # Item for make fixed item frame
+    take-item-for-fix: 1 # How many it would take for make fixed item frame
+    item-for-unfix: BRUSH # Item for make unfixed item frame
 
   # Graves
   # When a player dies, a grave is made at their location containing all their items. Right-click the grave to receive your items,
@@ -475,6 +478,8 @@ packs:
   # teakstweaks.invisible-item-frames
   invisible-item-frames:
     enabled: false
+    item-for-invisible: SHEARS # Item for make invisible item frame
+
 
   # Item Averages
   # Adds a marker that tracks items flowing past it for 2 minutes, then calculates how many of each item will run through per hour
