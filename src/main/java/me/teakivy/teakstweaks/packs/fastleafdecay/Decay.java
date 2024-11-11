@@ -51,7 +51,7 @@ public class Decay extends BasePack {
         Collections.shuffle(NEIGHBORS);
         for (BlockFace neighborFace: NEIGHBORS) {
             final Block block = oldBlock.getRelative(neighborFace);
-            if (!block.getType().toString().toLowerCase(Locale.ROOT).contains("leaves")) continue;
+            if (!block.getType().toString().toLowerCase().contains("leaves")) continue;
             Leaves leaves = (Leaves) block.getBlockData();
             if (leaves.isPersistent()) continue;
             if (scheduledBlocks.contains(block)) continue;
@@ -74,9 +74,8 @@ public class Decay extends BasePack {
         Leaves leaves = (Leaves) block.getBlockData();
         if (leaves.isPersistent()) return false;
         if (leaves.getDistance() < 7) return false;
-        LeavesDecayEvent event = new LeavesDecayEvent(block);
-        TeaksTweaks.getInstance().getServer().getPluginManager().callEvent(event);
-        if (event.isCancelled()) return false;
+
+        onBlockRemove(block, getConfig().getLong("decay-delay"));
         if (getConfig().getBoolean("spawn-particles")) {
             block.getWorld()
                     .spawnParticle(Particle.BLOCK,
@@ -94,9 +93,11 @@ public class Decay extends BasePack {
     }
     private void decayOne() {
         boolean decayed = false;
+        int loops = 0;
         do {
+            if (loops++ > 100000) break;
             if (scheduledBlocks.isEmpty()) return;
-            Block block = scheduledBlocks.get(0);
+            Block block = scheduledBlocks.getFirst();
             decayed = decay(block); // Will remove block from list.
         } while (!decayed);
         if (!scheduledBlocks.isEmpty()) {
