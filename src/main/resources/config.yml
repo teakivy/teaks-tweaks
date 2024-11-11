@@ -389,7 +389,7 @@ packs:
     enabled: false
     # Item for make fixed item frame (Default: IRON_BARS)
     item-for-fix: IRON_BARS
-    # How many it would take for make fixed item frame (Default: 1)
+    # How many it would take for make fixed item frame (Default: 1) (Max: 64) (Checks the items ONLY in your mainhand)
     take-item-for-fix: 1
     # Item for make unfixed item frame (Default: BRUSH)
     item-for-unfix: BRUSH

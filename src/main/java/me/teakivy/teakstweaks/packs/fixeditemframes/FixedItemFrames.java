@@ -23,13 +23,21 @@ public class FixedItemFrames extends BasePack {
 
 		if (event.getRightClicked().getType() == EntityType.ITEM_FRAME || event.getRightClicked().getType() == EntityType.GLOW_ITEM_FRAME) {
 			if (!event.getPlayer().isSneaking()) return;
-			if (event.getPlayer().getInventory().getItemInMainHand().getType() != Material.IRON_BARS) return;
+			if (Material.getMaterial(getConfig().getString("item-for-fix")) == null) return;
+			if (event.getPlayer().getInventory().getItemInMainHand().getType() != Material.getMaterial(getConfig().getString("item-for-fix"))) return;
 			if (((ItemFrame) event.getRightClicked()).isFixed()) return;
 			event.setCancelled(true);
 
-			event.getPlayer().getInventory().getItemInMainHand().setAmount(event.getPlayer().getInventory().getItemInMainHand().getAmount() - getConfig().getInt("take-item-for-fix"));
-
 			ItemFrame frame = (ItemFrame) event.getRightClicked();
+
+			if (event.getPlayer().getInventory().getItemInMainHand().getAmount() - Math.abs(getConfig().getInt("take-item-for-fix")) < 0) {
+				event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1, 1.4f);
+				frame.getWorld().spawnParticle(Particle.ANGRY_VILLAGER, frame.getLocation().add(0, .5, 0), 1, .1, .1, .1, 0);
+				return;
+			}
+
+			event.getPlayer().getInventory().getItemInMainHand().setAmount(event.getPlayer().getInventory().getItemInMainHand().getAmount() - Math.abs(getConfig().getInt("take-item-for-fix")));
+
 			frame.setFixed(true);
 			frame.getWorld().spawnParticle(Particle.DAMAGE_INDICATOR, frame.getLocation().add(0, .5, 0), 1, .1, .1, .1, 0);
 			event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.BLOCK_CHEST_LOCKED, 1, 1.4f);
@@ -39,9 +47,9 @@ public class FixedItemFrames extends BasePack {
 	@EventHandler
 	public void onInteract(PlayerInteractEntityEvent event) {
 		if (!Permission.FIXED_ITEM_FRAMES.check(event.getPlayer())) return;
-        if (Material.getMaterial(getConfig().getString("item-for-unfix")) == null) return;
 		if (event.getRightClicked().getType() == EntityType.ITEM_FRAME || event.getRightClicked().getType() == EntityType.GLOW_ITEM_FRAME) {
             if (!event.getPlayer().isSneaking()) return;
+			if (Material.getMaterial(getConfig().getString("item-for-unfix")) == null) return;
             if (event.getPlayer().getInventory().getItemInMainHand().getType() != Material.getMaterial(getConfig().getString("item-for-unfix"))) return;
             if (!((ItemFrame) event.getRightClicked()).isFixed()) return;
             event.setCancelled(true);
