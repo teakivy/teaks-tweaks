@@ -146,6 +146,8 @@
   "afk_display.self_not_afk": "<yellow>You are no longer AFK.",
   "afk_display.other_now_afk": "<gold><player><yellow> is now AFK.",
   "afk_display.other_not_afk": "<gold><player><yellow> is no longer AFK.",
+  "afk_display.placeholder.afk": "AFK",
+  "afk_display.placeholder.not_afk": "Active",
 
   "cauldron_concrete.name": "Cauldron Concrete",
   "cauldron_concrete.description": "Right click a cauldron with concrete powder to harden it.",

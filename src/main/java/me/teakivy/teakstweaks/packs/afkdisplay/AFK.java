@@ -235,5 +235,9 @@ public class AFK extends BasePack {
         }
     }
 
+    public static boolean isAFK(Player player) {
+        return afk.containsKey(player.getUniqueId()) && afk.get(player.getUniqueId());
+    }
+
 
 }

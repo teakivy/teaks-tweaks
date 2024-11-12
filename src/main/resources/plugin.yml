@@ -9,3 +9,5 @@ website: https://teakstweaks.com
 
 libraries:
   - ${libraries}
+
+softdepend: ["PlaceholderAPI"]

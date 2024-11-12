@@ -8,6 +8,7 @@ import me.teakivy.teakstweaks.utils.gui.GUIListener;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
+import me.teakivy.teakstweaks.utils.papi.PAPIExpansion;
 import me.teakivy.teakstweaks.utils.permission.PermissionManager;
 import me.teakivy.teakstweaks.utils.recipe.RecipeManager;
 import me.teakivy.teakstweaks.utils.update.UpdateChecker;
@@ -90,6 +91,9 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         // Remove legacy data.yml file
         removeDataFile();
 
+        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            new PAPIExpansion(this).register();
+        }
 
         // Metrics
         Bukkit.getScheduler().runTaskLater(this, () -> {
