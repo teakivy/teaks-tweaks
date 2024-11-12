@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.invisibleitemframes;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.utils.ItemUtils;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -10,6 +11,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.ItemFrame;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class InvisibleItemFrames extends BasePack {
 
@@ -23,8 +25,11 @@ public class InvisibleItemFrames extends BasePack {
 
         if (event.getRightClicked().getType() == EntityType.ITEM_FRAME || event.getRightClicked().getType() == EntityType.GLOW_ITEM_FRAME) {
             if (!event.getPlayer().isSneaking()) return;
-            if (event.getPlayer().getInventory().getItemInMainHand().getType() != Material.SHEARS) return;
+            ItemStack item = event.getPlayer().getInventory().getItemInMainHand();
+            if (item.getType() != Material.valueOf(getConfig().getString("item-to-use"))) return;
             event.setCancelled(true);
+
+            event.getPlayer().getInventory().setItemInMainHand(ItemUtils.handleUse(item, event.getPlayer()));
 
             ItemFrame frame = (ItemFrame) event.getRightClicked();
             frame.setVisible(!frame.isVisible());
