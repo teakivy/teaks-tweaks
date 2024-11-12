@@ -146,6 +146,9 @@
   "afk_display.self_not_afk": "<yellow>Et ole enää AFK.",
   "afk_display.other_now_afk": "<gold><player><yellow> on nyt AFK.",
   "afk_display.other_not_afk": "<gold><player><yellow> ei ole enää AFK.",
+  "afk_display.placeholder.afk": "AFK",
+  "afk_display.placeholder.not_afk": "Aktiivinen",
+
 
   "cauldron_concrete.name": "Pata betoni",
   "cauldron_concrete.description": "Oikea klikkaa pataa betonijauheella kovettaaksesi sen.",

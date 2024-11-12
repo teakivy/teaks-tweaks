@@ -144,6 +144,9 @@
   "afk_display.self_not_afk": "<yellow>Je bent niet langer AFK.",
   "afk_display.other_now_afk": "<gold><player><yellow> is nu AFK.",
   "afk_display.other_not_afk": "<gold><player><yellow> is niet langer AFK.",
+  "afk_display.placeholder.afk": "AFK",
+  "afk_display.placeholder.not_afk": "Actief",
+
 
   "cauldron_concrete.name": "Ketel Beton",
   "cauldron_concrete.description": "Klik met de rechtermuisknop op een ketel met betonpoeder om het te verharden.",

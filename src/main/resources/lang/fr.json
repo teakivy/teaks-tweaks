@@ -147,6 +147,9 @@
   "afk_display.self_not_afk": "<yellow>Vous n'êtes plus AFK.",
   "afk_display.other_now_afk": "<gold><player><yellow> est maintenant AFK.",
   "afk_display.other_not_afk": "<gold><player><yellow> n'est plus AFK.",
+  "afk_display.placeholder.afk": "AFK",
+  "afk_display.placeholder.not_afk": "Actif",
+
 
   "cauldron_concrete.name": "Béton dans le chaudron",
   "cauldron_concrete.description": "Faites un clic droit sur un chaudron avec de la poudre de béton pour la durcir.",
