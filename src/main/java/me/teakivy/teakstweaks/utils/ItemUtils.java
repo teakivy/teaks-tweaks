@@ -1,7 +1,9 @@
 package me.teakivy.teakstweaks.utils;
 
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.Tag;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -12,7 +14,12 @@ import java.util.List;
 public class ItemUtils {
 
     public static ItemStack handleUse(ItemStack item) {
+        return handleUse(item, null);
+    }
+
+    public static ItemStack handleUse(ItemStack item, Player player) {
         if (item == null) return null;
+        if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR) return item;
 
         ItemMeta meta = item.getItemMeta();
 

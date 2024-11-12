@@ -387,6 +387,9 @@ packs:
   # teakstweaks.fixed-item-frames
   fixed-item-frames:
     enabled: false
+    # The item to use when "fixing"/"unfixing" the item frame
+    # (If the item is a tool, one durability will be used, else the item will be consumed)
+    item-to-use: SHEARS
 
   # Graves
   # When a player dies, a grave is made at their location containing all their items. Right-click the grave to receive your items,
@@ -475,6 +478,9 @@ packs:
   # teakstweaks.invisible-item-frames
   invisible-item-frames:
     enabled: false
+    # The item to use when changing the item frame's visibility
+    # (If the item is a tool, one durability will be used, else the item will be consumed)
+    item-to-use: BRUSH
 
   # Item Averages
   # Adds a marker that tracks items flowing past it for 2 minutes, then calculates how many of each item will run through per hour
