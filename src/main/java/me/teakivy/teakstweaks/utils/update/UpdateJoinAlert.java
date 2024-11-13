@@ -12,6 +12,7 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.chat.hover.content.Text;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -26,18 +27,21 @@ public class UpdateJoinAlert implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-
         if (!Permission.MANAGE.check(player)) return;
         if (!Config.getBoolean("settings.alert-on-new-version")) return;
-        if (!UpdateChecker.hasUpdate()) return;
 
-        String message = Translatable.getString("startup.update.join_alert");
-        message = "<hover:show_text:\"" + Translatable.getString("startup.update.join_alert.hover") + "\">" + message;
-        message = "<click:open_url:\"" + Translatable.getString("plugin.base_url") + "\">" + message;
+        Bukkit.getScheduler().runTaskAsynchronously(TeaksTweaks.getInstance(), () -> {
+            if (!UpdateChecker.hasUpdate()) return;
+            
+            Bukkit.getScheduler().runTask(TeaksTweaks.getInstance(), () -> {
+                String message = Translatable.getString("startup.update.join_alert");
+                message = "<hover:show_text:\"" + Translatable.getString("startup.update.join_alert.hover") + "\">" + message;
+                message = "<click:open_url:\"" + Translatable.getString("plugin.base_url") + "\">" + message;
 
-        MM.player(player).sendMessage(MiniMessage.miniMessage().deserialize(message, Placeholder.parsed("version", UpdateChecker.getLatestVersion())));
-
-        player.sendMessage("");
+                MM.player(player).sendMessage(MiniMessage.miniMessage().deserialize(message,Placeholder.parsed("version", UpdateChecker.getLatestVersion())));
+                player.sendMessage("");
+            });
+        });
     }
 
 }
