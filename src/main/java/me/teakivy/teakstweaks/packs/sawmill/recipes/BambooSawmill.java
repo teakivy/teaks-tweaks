@@ -3,7 +3,6 @@ package me.teakivy.teakstweaks.packs.sawmill.recipes;
 import me.teakivy.teakstweaks.packs.sawmill.BaseSawmillRecipe;
 import me.teakivy.teakstweaks.utils.config.Config;
 import org.bukkit.Material;
-import org.bukkit.block.data.type.Bamboo;
 import org.bukkit.inventory.Recipe;
 
 import java.util.ArrayList;
