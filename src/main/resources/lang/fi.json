@@ -9,6 +9,8 @@
   "plugin.base_url": "https://modrinth.com/plugin/teaks-tweaks",
   "plugin.author": "TeakIvy",
 
+  "translation.credit": "sanmc19",
+
   "#comment.errors": "Common Error Messages: (this is a comment and will never be shown in-game)",
 
   "error.unknown": "<red>Tapahtui tuntematon virhe!",
@@ -139,6 +141,9 @@
   "villager_death_messages.name": "Kyläläisten kuolema viestit",
   "villager_death_messages.description": "Ilmoittaa serverille chatissa kun kyläläinen kuolee. Näyttää koordinaatit ja ulottuvuuden missä kyläläinen kuoli.",
   "villager_death_messages.death_message": "<gold>Kyläläinen on kuollut! <white>(<gold>XYZ: <x> <y> <z> <yellow><world><white>)",
+
+  "sawmill.name": "Saha",
+  "sawmill.description": "Lisää reseptejä kivenleikkaajaan, jotta voit valmistaa erilaisia puuesineitä laudoista, hirsistä, puusta jne.",
 
   "afk_display.name": "näkyvä AFK",
   "afk_display.description": "Pelaajan joka ei ole liikkunut viiteen minuuttiin nimi muuttuu harmaaksi.",

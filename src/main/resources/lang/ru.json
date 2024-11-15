@@ -9,6 +9,8 @@
   "plugin.base_url": "https://modrinth.com/plugin/teaks-tweaks",
   "plugin.author": "TeakIvy",
 
+  "translation.credit": "vinely",
+
   "#comment.errors": "Общие сообщения об ошибках: (это комментарий, он никогда не будет показан в игре)",
 
   "error.unknown": "<red>Произошла неизвестная ошибка!",
@@ -135,7 +137,10 @@
   "silence_mobs.description": "Добавляет возможность делать тихих мобов используя бирку. 'Silence Me'; 'Silence me'; 'silence me'; 'silence_me'; are all acceptable names.",
   "silence_mobs.activation_name": "silence me",
   "silence_mobs.silenced_name": "безмолвный",
-  
+
+  "sawmill.name": "Лесопилка",
+  "sawmill.description": "Добавляет рецепты в Камнерез, позволяя создавать различные деревянные предметы из досок, бревен, древесины и т.д.",
+
   "villager_death_messages.name": "Сообщения о Смерти Жителей",
   "villager_death_messages.description": "Оповещает сервер о смерти жителя через чат. Показывает координаты и измерение, где он умер.",
   "villager_death_messages.death_message": "<gold>Житель погиб! <white>(<gold>XYZ: <x> <y> <z> <yellow><world><white>)",

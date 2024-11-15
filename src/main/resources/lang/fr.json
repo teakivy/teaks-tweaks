@@ -9,6 +9,8 @@
   "plugin.base_url": "https://modrinth.com/plugin/teaks-tweaks",
   "plugin.author": "TeakIvy",
 
+  "translation.credit": "ri1_",
+
   "#comment.errors": "Common Error Messages: (this is a comment and will never be shown in-game)",
 
   "error.unknown": "<red>Une erreur inconnue est survenue !",
@@ -136,6 +138,9 @@
   "silence_mobs.description": "Ajoute la possibilité de rendre les mobs silencieux en utilisant une étiquette. 'Silence Me'; 'Silence me'; 'silence me'; 'silence_me'; sont tous des noms acceptables.",
   "silence_mobs.activation_name": "silence me",
   "silence_mobs.silenced_name": "silencieux",
+
+  "sawmill.name": "Scierie",
+  "sawmill.description": "Ajoute des recettes à la Tailleur de pierre pour vous permettre de fabriquer divers objets en bois à partir de planches, de rondins, de bois, etc.",
 
   "villager_death_messages.name": "Messages de mort de villageois",
   "villager_death_messages.description": "Notifie le serveur dans le chat quand un villageois meurt. Affiche les coordonnées et la dimension où il est mort.",

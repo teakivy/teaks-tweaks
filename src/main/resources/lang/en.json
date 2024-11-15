@@ -9,6 +9,8 @@
   "plugin.base_url": "https://modrinth.com/plugin/teaks-tweaks",
   "plugin.author": "TeakIvy",
 
+  "translation.credit": "teakivy",
+
   "#comment.errors": "Common Error Messages: (this is a comment and will never be shown in-game)",
 
   "error.unknown": "<red>An unknown error has occurred!",
@@ -130,6 +132,9 @@
 
   "more_mob_heads.name": "More Mob Heads",
   "more_mob_heads.description": "Adds a chance to receive a mob's head upon killing it.",
+
+  "sawmill.name": "Sawmill",
+  "sawmill.description": "Adds recipes to the Stonecutter to allow you to craft various wood items from planks, logs, wood, etc.",
 
   "silence_mobs.name": "Silence Mobs",
   "silence_mobs.description": "Adds the ability to silence mobs using a name tag. 'Silence Me'; 'Silence me'; 'silence me'; 'silence_me'; are all acceptable names.",

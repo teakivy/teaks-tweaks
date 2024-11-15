@@ -9,6 +9,8 @@
   "plugin.base_url": "https://modrinth.com/plugin/teaks-tweaks",
   "plugin.author": "TeakIvy",
 
+  "translation.credit": "capirichu",
+
   "#comment.errors": "Common Error Messages: (this is a comment and will never be shown in-game)",
 
   "error.unknown": "<red>Er is een onbekende fout opgetreden!",
@@ -133,6 +135,9 @@
   "silence_mobs.description": "Voegt de mogelijkheid toe om mobs stil te maken met een naamplaatje. 'Silence Me'; 'Silence me'; 'silence me'; 'silence_me' zijn allemaal geldige namen.",
   "silence_mobs.activation_name": "silence me",
   "silence_mobs.silenced_name": "stilgemaakt",
+
+  "sawmill.name": "Zagerij",
+  "sawmill.description": "Voegt recepten toe aan de Steenhouwer om verschillende houten voorwerpen te maken van planken, stammen, hout, enz.",
 
   "villager_death_messages.name": "Dorpeling Dood Berichten",
   "villager_death_messages.description": "Verwittigt de server in de chat wanneer een dorpeling sterft. Toont coördinaten en dimensie waarin hij stierf.",

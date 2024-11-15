@@ -630,6 +630,8 @@ packs:
     # Whether or not to suggest the Rotation Wrench Resource pack (shows the wrench as a wrench item instead of carrot on a stick)
     suggest-pack: false
 
+  # Sawmill
+  # Adds recipes to the Stonecutter to allow you to craft various wood items from planks, logs, wood, etc.
   sawmill:
     enabled: false
 
