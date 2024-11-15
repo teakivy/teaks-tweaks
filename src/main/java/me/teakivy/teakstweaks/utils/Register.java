@@ -10,6 +10,7 @@ import me.teakivy.teakstweaks.packs.confetticreepers.ConfettiCreeper;
 import me.teakivy.teakstweaks.packs.elevators.Elevator;
 import me.teakivy.teakstweaks.packs.huskdropssand.HuskDropsSand;
 import me.teakivy.teakstweaks.packs.miniblocks.MiniBlocks;
+import me.teakivy.teakstweaks.packs.sawmill.Sawmill;
 import me.teakivy.teakstweaks.packs.wanderingtraderannouncements.WanderingTraderAnnouncements;
 import me.teakivy.teakstweaks.packs.xpmanagement.XPManagement;
 import me.teakivy.teakstweaks.packs.thundershrine.Shrine;
@@ -144,7 +145,8 @@ public class Register {
             new HuskDropsSand(),
             new CollectibleBuddingAmethyst(),
             new MiniBlocks(),
-            new WanderingTraderAnnouncements()
+            new WanderingTraderAnnouncements(),
+            new Sawmill()
         ).collect(Collectors.toMap(BasePack::getPath, x -> x));
 
     }

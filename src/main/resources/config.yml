@@ -630,6 +630,9 @@ packs:
     # Whether or not to suggest the Rotation Wrench Resource pack (shows the wrench as a wrench item instead of carrot on a stick)
     suggest-pack: false
 
+  sawmill:
+    enabled: false
+
   # Silence Mobs
   # Adds the ability to silence mobs using a name tag. 'Silence Me'; 'Silence me'; 'silence me'; 'silence_me'; are all acceptable names.
   #
