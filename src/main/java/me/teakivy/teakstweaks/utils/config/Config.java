@@ -63,4 +63,8 @@ public class Config {
     public static String getString(String path) {
         return get().getString(path);
     }
+
+    public static String getLanguage() {
+        return get().getString("settings.language");
+    }
 }
