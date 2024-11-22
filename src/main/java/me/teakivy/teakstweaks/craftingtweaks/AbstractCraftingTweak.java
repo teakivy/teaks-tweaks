@@ -48,8 +48,6 @@ public abstract class AbstractCraftingTweak {
 
         this.material = material;
         this.description = Translatable.getString(langKey + ".description");
-
-        CustomMetrics.addCraftingTweakEnabled(this.name);
     }
 
     /**
@@ -85,6 +83,8 @@ public abstract class AbstractCraftingTweak {
         meta.setLore(components);
         meta.setDisplayName(MM.toString(MiniMessage.miniMessage().deserialize(PackType.CRAFTING_TWEAKS.getColor() + name).decoration(TextDecoration.ITALIC, false)));
         item.setItemMeta(meta);
+
+        CustomMetrics.addCraftingTweakEnabled(this.name);
     }
 
     /**

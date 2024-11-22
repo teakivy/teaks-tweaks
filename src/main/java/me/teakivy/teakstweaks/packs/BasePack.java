@@ -89,8 +89,6 @@ public class BasePack implements Listener {
 		meta.setLore(loreComponents);
 		meta.setDisplayName(MM.toString(MiniMessage.miniMessage().deserialize(packType.getColor() + name).decoration(TextDecoration.ITALIC, false)));
 		item.setItemMeta(meta);
-
-		CustomMetrics.addPackEnabled(name);
     }
 
 	/**
@@ -108,6 +106,8 @@ public class BasePack implements Listener {
 
 		getPlugin().addPack(name);
 		Logger.info(Translatable.get("startup.register.pack", insert("name", packType.getColor() + name)));
+
+		CustomMetrics.addPackEnabled(name);
 	}
 
 	/**
