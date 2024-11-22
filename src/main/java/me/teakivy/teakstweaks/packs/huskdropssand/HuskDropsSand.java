@@ -26,6 +26,7 @@ public class HuskDropsSand extends BasePack {
         int maxAmount = getMaxSandAmount(event);
         // int between 0 and maxAmount
         int amount = (int) (Math.random() * (maxAmount + 1));
+        if (amount == 0) return;
         event.getDrops().add(new ItemStack(Material.SAND, amount));
     }
 
