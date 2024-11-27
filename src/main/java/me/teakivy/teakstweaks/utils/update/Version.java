@@ -22,6 +22,12 @@ public class Version {
         this.id = id;
     }
 
+    public Version(String version) {
+        this.version = version;
+        this.supportedMCVersions = new ArrayList<>();
+        this.id = "";
+    }
+
     public String getVersion() {
         return version;
     }
@@ -43,19 +49,21 @@ public class Version {
         supportedMCVersions.add(version);
     }
 
-    public int getMajorVersion() {
+    private int getMajorVersion() {
         return Integer.parseInt(version.split("\\.")[0]);
     }
 
-    public int getMinorVersion() {
+    private int getMinorVersion() {
         return Integer.parseInt(version.split("\\.")[1]);
     }
 
-    public int getPatchVersion() {
+    private int getPatchVersion() {
         return Integer.parseInt(version.split("\\.")[2]);
     }
 
     public boolean isNewerThan(Version v) {
+        if (v.getVersion().equals(getVersion())) return false;
+
         if (getMajorVersion() != v.getMajorVersion()) {
             return getMajorVersion() > v.getMajorVersion();
         }

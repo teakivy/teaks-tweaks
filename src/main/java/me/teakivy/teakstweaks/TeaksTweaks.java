@@ -13,6 +13,7 @@ import me.teakivy.teakstweaks.utils.permission.PermissionManager;
 import me.teakivy.teakstweaks.utils.recipe.RecipeManager;
 import me.teakivy.teakstweaks.utils.update.UpdateChecker;
 import me.teakivy.teakstweaks.utils.update.UpdateJoinAlert;
+import me.teakivy.teakstweaks.utils.update.VersionManager;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -50,6 +51,8 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
      */
     @Override
     public void onEnable() {
+
+        VersionManager.init();
         // Initialize an audiences instance for the plugin
         this.adventure = BukkitAudiences.create(this);
         // Credits
@@ -66,7 +69,12 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         Translatable.init(getConfig().getString("settings.language"));
 
         // Update Checker
-        getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
+        if (Config.getBoolean("settings.disable-update-checker")) {
+            Logger.info(Translatable.get("startup.update.disabled"));
+        } else {
+            getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
+        }
+
         getServer().getPluginManager().registerEvents(new GUIListener(), this);
         getServer().getPluginManager().registerEvents(new RecipeManager(), this);
 

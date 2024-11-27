@@ -32,13 +32,15 @@ public class UpdateJoinAlert implements Listener {
 
         Bukkit.getScheduler().runTaskAsynchronously(TeaksTweaks.getInstance(), () -> {
             if (!UpdateChecker.hasUpdate()) return;
+            Version latestVersion = VersionManager.getBestVersion();
+            if (latestVersion == null) return;
             
             Bukkit.getScheduler().runTask(TeaksTweaks.getInstance(), () -> {
                 String message = Translatable.getString("startup.update.join_alert");
                 message = "<hover:show_text:\"" + Translatable.getString("startup.update.join_alert.hover") + "\">" + message;
-                message = "<click:open_url:\"" + Translatable.getString("plugin.base_url") + "\">" + message;
+                message = "<click:open_url:\"" + latestVersion.getUrl() + "\">" + message;
 
-                MM.player(player).sendMessage(MiniMessage.miniMessage().deserialize(message,Placeholder.parsed("version", UpdateChecker.getLatestVersion())));
+                MM.player(player).sendMessage(MiniMessage.miniMessage().deserialize(message,Placeholder.parsed("version", latestVersion.getVersion())));
                 player.sendMessage("");
             });
         });
