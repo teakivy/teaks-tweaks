@@ -20,7 +20,7 @@ public class MoreIronTrapdoors extends AbstractCraftingTweak {
         ShapedRecipe recipe = new ShapedRecipe(Key.get("iron_trapdoor"),
                 new ItemStack(Material.IRON_TRAPDOOR, 8));
         recipe.shape("xx", "xx");
-        recipe.setIngredient('x', Material.IRON_TRAPDOOR);
+        recipe.setIngredient('x', Material.IRON_INGOT);
         addRecipe(recipe);
     }
 }
