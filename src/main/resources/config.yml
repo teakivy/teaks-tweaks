@@ -38,7 +38,13 @@ settings:
 
   # Language
   # Change the language of the plugin
-  # Currently only supports English (en), French (fr), Russian (ru), Finnish (fi), and Dutch (nl)
+  # Supported languages:
+  #  - English (en)
+  #  - French (fr)
+  #  - Russian (ru)
+  #  - Finnish (fl)
+  #  - Polish (pl)
+  #  - Dutch (nl)
   # If you would like to translate the plugin into your language,
   # please contact me on discord! @teakivy (https://discord.gg/wfP4SkZx6s)
   language: "en"
