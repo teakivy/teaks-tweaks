@@ -67,7 +67,17 @@ public abstract class BaseMobHead implements Listener {
         AdvancementProgress progress = player.getAdvancementProgress(advancement);
         for(String criteria : progress.getRemainingCriteria()) progress.awardCriteria(criteria);
 
-        event.getDrops().add(getHead(event));
+        boolean hasHead = false;
+        for (ItemStack item : event.getDrops()) {
+            if (item.getType() == Material.PLAYER_HEAD) {
+                hasHead = true;
+                break;
+            }
+        }
+
+        if (!hasHead) {
+            event.getDrops().add(getHead(event));
+        }
     }
 
     public boolean dropHead(EntityDeathEvent event) {
@@ -113,7 +123,7 @@ public abstract class BaseMobHead implements Listener {
     }
 
     public ItemStack createHead(EntityDeathEvent event, String name, String texture) {
-        ItemStack head = new ItemStack(Material.PLAYER_HEAD);
+        ItemStack head = new ItemStack(Material.PLAYER_HEAD, 1);
         PlayerProfile profile = Bukkit.createPlayerProfile(UUID.fromString("fdb5599c-1b14-440e-82df-d69719703d21"), "MobHead");
         SkullMeta meta = (SkullMeta)head.getItemMeta();
         Component c = MiniMessage.miniMessage().deserialize("<yellow>" + name.replace(" Head", "'s Head")).decoration(TextDecoration.ITALIC, false);
