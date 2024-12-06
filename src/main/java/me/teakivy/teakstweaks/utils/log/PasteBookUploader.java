@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class PasteBookUploader {
 
-    private static final String API_URL = "https://pastebook.dev/api/upload";
+    private static final String API_URL = "https://api.pastebook.dev/upload";
     private static final MediaType MEDIA_TYPE_TEXT = MediaType.parse("text/plain");
 
     private static final OkHttpClient client = new OkHttpClient();
@@ -41,7 +41,7 @@ public class PasteBookUploader {
         try (Response response = client.newCall(request).execute()) {
             if (response.isSuccessful()) {
                 // Return the URL if the response is successful
-                return response.body().string();
+                return "https://pastebook.dev/p/" + response.body().string();
             } else {
                 throw new IOException("Request failed with status code: " + response.code());
             }
