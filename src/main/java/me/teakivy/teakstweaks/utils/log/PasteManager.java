@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.utils.log;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.config.Config;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import java.io.File;
@@ -33,6 +34,16 @@ public class PasteManager {
         str.append("Dev Mode: ").append(Config.isDevMode()).append("\n");
 
         str.append("\n\n");
+        String uuid = "CONSOLE";
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (player.getName().equalsIgnoreCase(playerName)) {
+                uuid = player.getUniqueId().toString();
+                break;
+            }
+        }
+        str.append("Uploaded By: ").append(playerName).append(" (").append(uuid).append(")").append("\n");
+
+        str.append("\n\n");
 
         ArrayList<String> packs = TeaksTweaks.getInstance().getPacks();
         ArrayList<String> ctweaks = TeaksTweaks.getInstance().getCraftingTweaks();
@@ -51,7 +62,7 @@ public class PasteManager {
         str.append("Plugins (").append(plugins.size()).append("): \n");
         str.append(arrayToString(plugins)).append("\n");
 
-        str.append("\n\n");
+        str.append("\n");
 
         if (includeLogs) {
             str.append("Logs: \n");
@@ -76,7 +87,14 @@ public class PasteManager {
 
     public static String uploadConfig(String playerName) {
         try {
-            String config = getConfigFileAsString();
+            String uuid = "CONSOLE";
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                if (player.getName().equalsIgnoreCase(playerName)) {
+                    uuid = player.getUniqueId().toString();
+                    break;
+                }
+            }
+            String config = "# Teak's Tweaks Plugin Config" + "\n# Uploaded By: " + playerName + " (" + uuid + ")" + "\n\n" + getConfigFileAsString();
             return PasteBookUploader.uploadText(config, "Teak's Tweaks Config: " + playerName);
         } catch (IOException e) {
             e.printStackTrace();
