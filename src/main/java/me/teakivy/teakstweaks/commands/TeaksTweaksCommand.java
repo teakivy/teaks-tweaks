@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class TeaksTweaksCommand extends AbstractCommand {
-    private static final int PASTE_COOLDOWN = 30 * 60 * 60 * 1000;
+    private static final int PASTE_COOLDOWN = 10 * 60 * 1000;
     private static long lastPaste = 0;
 
 
@@ -119,9 +119,13 @@ public class TeaksTweaksCommand extends AbstractCommand {
 
         String paste = PasteManager.getPasteContent(playerName, logs);
         try {
-            String url = PasteBookUploader.uploadText(paste, "Teak's Tweaks Support: " + playerName);
-            sendMessage("paste.success", insert("url", url));
+            String url = PasteBookUploader.uploadText(paste, "Support: " + playerName);
             lastPaste = System.currentTimeMillis();
+            if (event.getSender() instanceof Player) {
+                sendMessage("paste.success", insert("url", url));
+                return;
+            }
+            sendMessage("paste.success.console", insert("url", url));
         } catch (IOException e) {
             sendMessage("paste.error");
             e.printStackTrace();
