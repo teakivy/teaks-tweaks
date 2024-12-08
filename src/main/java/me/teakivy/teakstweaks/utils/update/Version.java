@@ -58,7 +58,7 @@ public class Version {
     }
 
     private int getPatchVersion() {
-        return Integer.parseInt(version.split("\\.")[2]);
+        return Integer.parseInt(version.split("\\.")[2].split("-")[0]);
     }
 
     public boolean isNewerThan(Version v) {
