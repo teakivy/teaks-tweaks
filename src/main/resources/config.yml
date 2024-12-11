@@ -36,6 +36,13 @@ settings:
   # /teakstweaks paste (Permission: teakstweaks.command.teakstweaks.paste)
   send-log-in-paste: true
 
+  # Paste Service
+  # Change the paste service used by the plugin
+  # Supported services:
+  #  - Teak's Tweaks Paste (TEAKS_TWEAKS_PASTE)
+  #  - PasteBook (PASTEBOOK)
+  paste-service: "TEAKS_TWEAKS_PASTE"
+
   # Language
   # Change the language of the plugin
   # Supported languages:
@@ -1115,6 +1122,6 @@ crafting-tweaks:
 # Leave these options alone unless you know what you're doing.
 # Changing these values may cause unexpected issues!
 config:
-  created-version: ${version}
-  version: ${version}
+  created-version: 2.0.6-mc1.21.4
+  version: 2.0.6-mc1.21.4
   dev-mode: false

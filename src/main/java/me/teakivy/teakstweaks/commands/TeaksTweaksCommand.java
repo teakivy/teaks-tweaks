@@ -98,12 +98,13 @@ public class TeaksTweaksCommand extends AbstractCommand {
 
     public void handlePaste(CommandEvent event) {
         if (!checkPermission(Permission.COMMAND_TEAKSTWEAKS_PASTE)) return;
+        PasteUploader.Service service = PasteUploader.getService();
         if (System.currentTimeMillis() - lastPaste < PASTE_COOLDOWN && !Config.isDevMode()) {
-            sendMessage("paste.error.cooldown");
+            sendMessage("paste.error.cooldown", insert("service_name", service.getName()));
             return;
         }
 
-        sendMessage("paste.uploading");
+        sendMessage("paste.uploading", insert("service_name", service.getName()));
 
         String playerName = event.getSender().getName();
         boolean logs = Config.getBoolean("settings.send-log-in-paste");
@@ -118,10 +119,10 @@ public class TeaksTweaksCommand extends AbstractCommand {
             String url = PasteUploader.uploadText(paste, "Support: " + playerName);
             lastPaste = System.currentTimeMillis();
             if (event.getSender() instanceof Player) {
-                sendMessage("paste.success", insert("url", url));
+                sendMessage("paste.success", insert("url", url), insert("service_name", service.getName()));
                 return;
             }
-            sendMessage("paste.success.console", insert("url", url));
+            sendMessage("paste.success.console", insert("url", url), insert("service_name", service.getName()));
         } catch (IOException e) {
             sendMessage("paste.error");
             e.printStackTrace();
