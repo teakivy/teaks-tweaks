@@ -1,17 +1,13 @@
 package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
-import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
-import me.teakivy.teakstweaks.packs.homes.Home;
-import me.teakivy.teakstweaks.packs.homes.HomesPack;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.Wiki;
 import me.teakivy.teakstweaks.utils.command.*;
 import me.teakivy.teakstweaks.utils.config.Config;
-import me.teakivy.teakstweaks.utils.config.ConfigUpdater;
 import me.teakivy.teakstweaks.utils.customitems.ItemHandler;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
-import me.teakivy.teakstweaks.utils.log.PasteBookUploader;
+import me.teakivy.teakstweaks.utils.log.PasteUploader;
 import me.teakivy.teakstweaks.utils.log.PasteManager;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Bukkit;
@@ -102,7 +98,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
 
     public void handlePaste(CommandEvent event) {
         if (!checkPermission(Permission.COMMAND_TEAKSTWEAKS_PASTE)) return;
-        if (System.currentTimeMillis() - lastPaste < PASTE_COOLDOWN) {
+        if (System.currentTimeMillis() - lastPaste < PASTE_COOLDOWN && !Config.isDevMode()) {
             sendMessage("paste.error.cooldown");
             return;
         }
@@ -119,7 +115,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
 
         String paste = PasteManager.getPasteContent(playerName, logs);
         try {
-            String url = PasteBookUploader.uploadText(paste, "Support: " + playerName);
+            String url = PasteUploader.uploadText(paste, "Support: " + playerName);
             lastPaste = System.currentTimeMillis();
             if (event.getSender() instanceof Player) {
                 sendMessage("paste.success", insert("url", url));

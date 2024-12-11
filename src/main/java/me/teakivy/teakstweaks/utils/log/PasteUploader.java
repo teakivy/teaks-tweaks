@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class PasteBookUploader {
+public class PasteUploader {
 
     private static final String TT_API_URL = "https://api.paste.teakstweaks.com/upload";
     private static final String TT_RESPONSE_URL = "https://paste.teakstweaks.com/p";
@@ -28,26 +28,21 @@ public class PasteBookUploader {
      * @throws IOException If an error occurs during the request
      */
     public static String uploadText(String text, String title) throws IOException {
-        // Create request body with the provided text
         RequestBody body = RequestBody.create(text, MEDIA_TYPE_TEXT);
 
         Service service = getService();
 
-        // Build the request
         Request request = new Request.Builder()
                 .url(service.getApiUrl())
                 .post(body)
                 .addHeader("Content-Type", "text/plain")
                 .addHeader("title", title)
                 .addHeader("unlisted", "true")
-//                .addHeader("expires", "2592000000")
                 .addHeader("expires", Config.isDevMode() ? String.valueOf(DEV_EXPIRES) : String.valueOf(EXPIRES))
                 .build();
 
-        // Execute the request and get the response
         try (Response response = client.newCall(request).execute()) {
             if (response.isSuccessful()) {
-                // Return the URL if the response is successful
                 return service.getResponseUrl() + response.body().string();
             } else {
                 throw new IOException("Request failed with status code: " + response.code());
