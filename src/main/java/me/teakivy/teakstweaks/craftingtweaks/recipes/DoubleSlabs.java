@@ -61,6 +61,7 @@ public class DoubleSlabs extends AbstractCraftingTweak {
         newShapelessRecipe(Material.TUFF_BRICKS, Material.TUFF_BRICK_SLAB);
         newShapelessRecipe(Material.CUT_SANDSTONE, Material.CUT_SANDSTONE_SLAB);
         newShapelessRecipe(Material.CUT_RED_SANDSTONE, Material.CUT_RED_SANDSTONE_SLAB);
+        newShapelessRecipe(Material.RESIN_BRICKS, Material.RESIN_BRICK_SLAB);
     }
 
     public void newShapelessRecipe(Material ingredient, Material result) {

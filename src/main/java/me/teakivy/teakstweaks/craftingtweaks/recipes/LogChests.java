@@ -2,6 +2,8 @@ package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -12,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LogChests extends AbstractCraftingTweak {
+
+    private static final Logger log = LogManager.getLogger(LogChests.class);
 
     public LogChests() {
         super("log-chests", Material.CHEST);
@@ -62,6 +66,8 @@ public class LogChests extends AbstractCraftingTweak {
         logList.add(Material.STRIPPED_CHERRY_WOOD);
         logList.add(Material.PALE_OAK_LOG);
         logList.add(Material.PALE_OAK_WOOD);
+        logList.add(Material.STRIPPED_PALE_OAK_LOG);
+        logList.add(Material.STRIPPED_PALE_OAK_WOOD);
         RecipeChoice logs = new RecipeChoice.MaterialChoice(logList);
 
         ShapedRecipe recipe = new ShapedRecipe(Key.get("log_chests"), new ItemStack(Material.CHEST, 4));

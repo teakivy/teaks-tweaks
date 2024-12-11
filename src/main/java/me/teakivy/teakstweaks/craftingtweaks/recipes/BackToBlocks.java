@@ -77,6 +77,7 @@ public class BackToBlocks extends AbstractCraftingTweak {
         registerDualRecipe(Material.WAXED_WEATHERED_CUT_COPPER, Material.WAXED_WEATHERED_CUT_COPPER_STAIRS, Material.WAXED_WEATHERED_CUT_COPPER_SLAB);
         registerDualRecipe(Material.WAXED_OXIDIZED_CUT_COPPER, Material.WAXED_OXIDIZED_CUT_COPPER_STAIRS, Material.WAXED_OXIDIZED_CUT_COPPER_SLAB);
         registerDualRecipe(Material.PALE_OAK_PLANKS, Material.PALE_OAK_STAIRS, Material.PALE_OAK_SLAB);
+        registerDualRecipe(Material.RESIN_BRICKS, Material.RESIN_BRICK_STAIRS, Material.RESIN_BRICK_SLAB);
     }
 
     private void registerStairRecipe(Material result, Material ingredient) {

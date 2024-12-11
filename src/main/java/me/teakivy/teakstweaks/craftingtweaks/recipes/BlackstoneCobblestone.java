@@ -33,6 +33,7 @@ public class BlackstoneCobblestone extends AbstractCraftingTweak {
         woodList.add(Material.CHERRY_PLANKS);
         woodList.add(Material.BAMBOO_PLANKS);
         woodList.add(Material.MANGROVE_PLANKS);
+        woodList.add(Material.PALE_OAK_PLANKS);
         RecipeChoice wood = new RecipeChoice.MaterialChoice(woodList);
 
         ShapedRecipe pistonRecipe = new ShapedRecipe(Key.get("piston_blackstone"), new ItemStack(Material.PISTON));
