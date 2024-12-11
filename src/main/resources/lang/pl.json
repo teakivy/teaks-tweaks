@@ -324,7 +324,10 @@
   
     "charcoal_to_black_dye.name": "Charcoal na Black Dye",
     "charcoal_to_black_dye.description": "Pozwala przerabiać węgiel drzewny na czarny barwnik.",
-  
+
+    "cheaper_resin_blocks.name": "Tańsze Bloki Żywicy",
+    "cheaper_resin_blocks.description": "Pozwala wytwarzać bloki żywicy za pomocą 4 grudek żywicy zamiast 9.",
+
     "coal_to_black_dye.name": "Coal na Black Dye",
     "coal_to_black_dye.description": "Pozwala przerabiać węgiel na czarny barwnik.",
   

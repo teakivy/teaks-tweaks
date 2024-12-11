@@ -320,7 +320,10 @@
   
   "charcoal_to_black_dye.name": "Древесный уголь в Чёрный краситель",
   "charcoal_to_black_dye.description": "Позволяет создавать чёрный краситель из древесного угля.",
-  
+
+  "cheaper_resin_blocks.name": "Дешёвые Смоляные Блоки",
+  "cheaper_resin_blocks.description": "Позволяет создавать смоляные блоки, используя 4 комка смолы вместо 9.",
+
   "coal_to_black_dye.name": "Уголь в Чёрный краситель",
   "coal_to_black_dye.description": "Позволяет создавать чёрный краситель из угля.",
   

@@ -926,6 +926,11 @@ crafting-tweaks:
   charcoal-to-black-dye:
     enabled: false
 
+  # Cheaper Resin Blocks
+  # Allows you to craft Resin Blocks using 4 Resin Clumps instead of 9.
+  cheaper-resin-blocks:
+    enabled: false
+
   # Coal to Black Dye
   # Allows you to craft Coal into Black Dye.
   coal-to-black-dye:
