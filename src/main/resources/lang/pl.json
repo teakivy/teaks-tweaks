@@ -542,6 +542,8 @@
   
     "spawn.command_description": "Teleportuj się na spawn serwera.",
     "spawn.error.on_cooldown": "<red>Musisz poczekać <time> sekund przed kolejnym użyciem /spawn!",
+    "spawn.error.teleport_moved": "<red>Musisz stać nieruchomo, aby się teleportować!",
+    "spawn.teleporting_delayed": "<yellow>Teleportacja za <time> sekund...",
     "spawn.error.moved": "<red>Musisz stać nieruchomo, aby się teleportować!",
     "spawn.teleporting": "<yellow>Teleportowanie na spawn...",
   

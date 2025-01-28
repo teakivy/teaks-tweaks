@@ -538,6 +538,8 @@
   
   "spawn.command_description": "Телепортирует на спавн сервера.",
   "spawn.error.on_cooldown": "<red>Вы должны подождать ещё <time> секунд, прежде чем использовать /spawn!",
+  "spawn.error.teleport_moved": "<red>Вы должны стоять на месте, чтобы телепортироваться!",
+  "spawn.teleporting_delayed": "<yellow>Телепортация через <time> секунд...",
   "spawn.error.moved": "<red>Вы должны стоять на месте для телепортации!",
   "spawn.teleporting": "<yellow>Телепортация на спавн...",
   

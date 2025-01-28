@@ -540,6 +540,8 @@
 
   "spawn.command_description": "Teleport to the server spawn.",
   "spawn.error.on_cooldown": "<red>You must wait <time> seconds between uses of /spawn!",
+  "spawn.error.teleport_moved": "<red>You must stand still to teleport!",
+  "spawn.teleporting_delayed": "<yellow>Teleporting in <time> seconds...",
   "spawn.error.moved": "<red>You must stand still to teleport!",
   "spawn.teleporting": "<yellow>Teleporting to Spawn...",
 

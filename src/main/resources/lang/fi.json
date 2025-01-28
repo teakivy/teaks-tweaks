@@ -541,6 +541,8 @@
 
   "spawn.command_description": "Teleporttaa serverin syntymäpisteeseen.",
   "spawn.error.on_cooldown": "<red>Sinun pitää odottaa <time> sekunttia /spawn komennon käyttöjen välillä!",
+  "spawn.error.teleport_moved": "<red>Sinun täytyy pysyä paikallasi teleportataksesi!",
+  "spawn.teleporting_delayed": "<yellow>Teleportaatio <time> sekunnissa...",
   "spawn.error.moved": "<red>Sinun pitää seisoa paikallaan teleportataksesi!",
   "spawn.teleporting": "<yellow>Teleportataan syntymäpisteeseen...",
 
