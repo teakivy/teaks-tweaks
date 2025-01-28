@@ -456,6 +456,8 @@
   "back.error.on_cooldown": "<red>Вы должны подождать ещё <cooldown_seconds> секунд прежде чем использовать /back!",
   "back.error.no_back_location": "<red>Вам некуда возвращаться!",
   "back.error.moved": "<red>Вы должны стоять на месте для телепортации!",
+  "back.error.teleport_moved": "<red>Вы должны стоять на месте, чтобы телепортироваться!",
+  "back.teleporting_delayed": "<yellow>Телепортация через <time> секунд...",
   "back.teleporting": "<yellow>Телепортируем назад...",
   
   "conduitpower.command_description": "Переключает Силу Источника для наблюдателей.",

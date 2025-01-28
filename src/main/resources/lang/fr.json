@@ -460,6 +460,8 @@
   "back.error.on_cooldown": "<red>Vous devez attendre <cooldown_seconds> secondes entre chaque utilisation du /back !",
   "back.error.no_back_location": "<red>Vous n'avez aucun endroit où retourner !",
   "back.error.moved": "<red>Vous devez rester immobile pour vous téléporter !",
+  "back.error.teleport_moved": "<red>Vous devez rester immobile pour vous téléporter !",
+  "back.teleporting_delayed": "<yellow>Téléportation dans <time> secondes...",
   "back.teleporting": "<yellow>Téléportation en cours...",
 
   "conduitpower.command_description": "Activer ou désactiver l'effet du conduit en mode spectateur.",

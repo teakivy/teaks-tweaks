@@ -456,6 +456,8 @@
 
   "back.command_description": "Teleport back to your previous location.",
   "back.error.on_cooldown": "<red>You must wait <cooldown_seconds> seconds between uses of /back!",
+  "back.error.teleport_moved": "<red>You must stand still to teleport!",
+  "back.teleporting_delayed": "<yellow>Teleporting in <time> seconds...",
   "back.error.no_back_location": "<red>You have nowhere to go back to!",
   "back.error.moved": "<red>You must stand still to teleport!",
   "back.teleporting": "<yellow>Teleporting Back...",

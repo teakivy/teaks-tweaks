@@ -458,6 +458,8 @@
     "back.error.on_cooldown": "<red>Du musst <cooldown_seconds> Sekunden zwischen der Benutzung von /back warten!",
     "back.error.no_back_location": "<red>Es gibt keinen Ort, zu dem du zurückkehren kannst!",
     "back.error.moved": "<red>Du musst stillstehen, um zu teleportieren!",
+    "back.error.teleport_moved": "<red>Du musst stillstehen, um dich zu teleportieren!",
+    "back.teleporting_delayed": "<yellow>Teleportiere in <time> Sekunden...",
     "back.teleporting": "<yellow>Teleportiere zurück...",
   
     "conduitpower.command_description": "Schalte die Conduit-Kraft als Zuschauer um.",

@@ -179,6 +179,8 @@ packs:
     enabled: false
     # Enter the number of seconds required to wait between uses of the back command
     teleport-cooldown: 0
+    # Enter the number of seconds required to wait before teleporting
+    teleport-delay: 0
 
   # Bat Membranes
   # Disable Phantoms to get membranes from Bats instead.

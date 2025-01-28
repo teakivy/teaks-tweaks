@@ -459,6 +459,8 @@
   "back.error.on_cooldown": "<red>Sinun pitää odottaa <cooldown_seconds> sekunttia /back komentojen käyttöjen välillä!",
   "back.error.no_back_location": "<red>Sinulla ei ole paikkaa mihin palata!",
   "back.error.moved": "<red>Sinun pitää seisoa paikallaan teleportataksesi!",
+  "back.error.teleport_moved": "<red>Sinun täytyy pysyä paikallasi teleportataksesi!",
+  "back.teleporting_delayed": "<yellow>Teleportaatio <time> sekunnissa...",
   "back.teleporting": "<yellow>Teleportataan takaisin...",
 
   "conduitpower.command_description": "Kytke kanavoinnin voima päälle ja pois katselijatilassa.",

@@ -451,6 +451,8 @@
   "back.error.on_cooldown": "<red>Je moet <cooldown_seconds> seconden wachten tussen gebruik van /back!",
   "back.error.no_back_location": "<red>Je hebt geen locatie om naar terug te keren!",
   "back.error.moved": "<red>Je moet stilstaan om te teleporteren!",
+  "back.error.teleport_moved": "<red>Je moet stil blijven staan om te teleporteren!",
+  "back.teleporting_delayed": "<yellow>Teleporteren in <time> seconden...",
   "back.teleporting": "<yellow>Teleporteren naar vorige locatie...",
 
   "conduitpower.command_description": "Schakel Geleidingskracht in als toeschouwer.",

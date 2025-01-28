@@ -460,6 +460,8 @@
     "back.error.on_cooldown": "<red>Musisz poczekać <cooldown_seconds> sekund przed kolejnym użyciem /back!",
     "back.error.no_back_location": "<red>Nie masz dokąd wrócić!",
     "back.error.moved": "<red>Musisz stać nieruchomo, aby się teleportować!",
+    "back.error.teleport_moved": "<red>Musisz stać nieruchomo, aby się teleportować!",
+    "back.teleporting_delayed": "<yellow>Teleportacja za <time> sekund...",
     "back.teleporting": "<yellow>Teleportowanie z powrotem...",
   
     "conduitpower.command_description": "Przełącza Conduit Power w trybie spectatora.",
