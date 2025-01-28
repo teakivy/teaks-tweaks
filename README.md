@@ -15,7 +15,7 @@ Every Vanilla Tweaks Datapack & Crafting Tweak in the Plugin can be enabled insi
 `config.yml`.  
 
 To Enable a datapack, find it in the `packs:` section, and change `enabled: false` to `enabled: true`.  
-After marking the tweak as true, run `/teakstweaks reload` to reload the datapacks. *(remember to save the file!)*
+After marking the tweak as true, restart the server to reload the packs. *(remember to save the file!)*
 #### Example:
 ```yml
 packs:
