@@ -1,0 +1,611 @@
+{
+    "meta.version": "2.0.3",
+    "meta.modified": false,
+    "meta.language_name": "Deutsch (German)",
+  
+    "plugin.name": "Teak's Tweaks",
+    "plugin.discord": "<click:open_url:'https://discord.gg/wfP4SkZx6s'>https://discord.gg/wfP4SkZx6s</click>",
+    "plugin.url": "<click:open_url:'https://modrinth.com/plugin/teaks-tweaks'>https://modrinth.com/plugin/teaks-tweaks</click>",
+    "plugin.base_url": "https://modrinth.com/plugin/teaks-tweaks",
+    "plugin.author": "TeakIvy",
+  
+    "translation.credit": "Gudlin",
+  
+    "#comment.errors": "Common Error Messages: (this is a comment and will never be shown in-game)",
+  
+    "error.unknown": "<red>Ein unbekannter Fehler ist aufgetreten!",
+    "error.pack_not_enabled": "<red>Dieses Pack ist nicht aktiviert!",
+    "error.not_player": "<red>Dieser Befehl kann nur von einem Spieler ausgeführt werden!",
+    "error.not_op": "<red>Du benötigst Operator-Rechte, um das zu tun!",
+    "error.missing_command_permission": "<red>Du hast keine Berechtigung, um das zu tun!",
+    "error.missing_permission": "<red>Du hast keine Berechtigung, das zu tun!",
+    "error.cant_get_latest_version": "<red>Die aktuelle Version von Teak's Tweaks konnte nicht geladen werden!",
+    "error.command_disabled": "<red>Dieser Befehl wurde vom Server-Admin deaktiviert!",
+    "error.missing_action": "<red>Bitte wähle eine Aktion!",
+    "error.player_dne": "<red>Der angegebene Spieler existiert nicht!",
+  
+    "#comment.metadata": "Pack Metadata Section: (this is a comment and will never be shown in-game)",
+  
+    "packtype.experimental": "Experimentell",
+    "packtype.hermitcraft": "Hermitcraft",
+    "packtype.items": "Items",
+    "packtype.mobs": "Kreaturen",
+    "packtype.survival": "Survival",
+    "packtype.teaks_tweaks": "Teak's Tweaks Custom",
+    "packtype.teleportation": "Teleportation",
+    "packtype.utilities": "Utilities",
+    "packtype.crafting_tweaks": "Crafting Tweaks",
+  
+    "#comment.startup": "Startup Section: (this is a comment and will never be shown in-game)",
+  
+    "startup.plugin.started": "Teak's Tweaks v<version> wurde erfolgreich gestartet!",
+    "startup.plugin.shutting_down": "Teak's Tweaks wird gestoppt...",
+    "startup.update.version_available": "Eine neue Version von Teak's Tweaks ist verfügbar! v<version>",
+    "startup.update.download": "Besuche <url>, um die neueste Version herunterzuladen!",
+    "startup.update.join_alert": "<yellow>Es gibt eine neue Version von Teak's Tweaks!<newline>Klicke hier, um <gold>Teak's Tweaks v<version></gold> herunterzuladen!",
+    "startup.update.join_alert.hover": "<gold>Klicke hier, um Teak's Tweaks v<version> herunterzuladen und zu installieren!",
+    "startup.register.pack": "Pack registriert: <name>",
+    "startup.register.crafting_tweak": "Crafting Tweak registriert: <name>",
+    "startup.register.command": "Befehl registriert: /<command>",
+    "startup.lang.error.missing_language_file": "<red>Sprachdatei für <lang> konnte nicht gefunden werden! Stattdessen wird <current_lang_name> (<current_lang_key>.json) benutzt.",
+    "startup.lang.error.fata_error_on_load": "Beim Laden der Sprachdatei für <lang> ist ein kritischer Fehler aufgetreten!",
+    "startup.lang.loaded": "<count> Sprachdateien wurden erfolgreich geladen.",
+    "startup.lang.current": "Aktuelle Sprache: <current_lang_name> (<current_lang_key>.json)",
+  
+    "#comment.tweaks": "Tweaks Section: (this is a comment and will never be shown in-game)",
+  
+    "chunk_loaders.name": "Chunk-Lader",
+    "chunk_loaders.description": "Wirf einen Netherstern über einen Leitstein, um einen Chunk-Lader (auch als 'Ladestein' bekannt) zu erstellen, der den Chunk geladen hält, bis er zerstört wird.",
+    "chunk_loaders.already_loaded": "<red>Dieser Chunk ist bereits geladen!",
+    "chunk_loaders.loaded": "<green>Ladestein erstellt!",
+  
+    "confetti_creepers.name": "Konfetti-Creeper",
+    "confetti_creepers.description": "Es besteht die Chance, dass jeder Creeper bei seiner Explosion Konfetti verschießt und keine Blöcke zerstört.",
+  
+    "elevators.name": "Aufzüge",
+    "elevators.description": "Wirf eine Enderperle über einen Wollblock, um ihn in einen Aufzug zu verwandeln.<newline>Springe darauf, um dich auf einen Aufzug der gleichen Farbe darüber zu teleportieren.<newline>Hocke dich darauf, um dich auf einen direkt darunter zu teleportieren.",
+
+    "xp_management.name": "EP-Verwaltung",
+    "xp_management.description": "Rechtsklicke mit einer leeren Flasche auf einen Zaubertisch, um ihn mit etwas deiner EP zu füllen.",
+    "xp_management.bottle_contains": "<gold>Enthält <return_amount> EP",
+  
+    "thunder_shrine.name": "Donner-Schrein",
+    "thunder_shrine.description": "Ein Schrein, der es dir ermöglicht, ein Gewitter zu erzeugen, wenn du ihm einen Netherstern opferst.<newline>Wirf einen Netherstern auf einen Schrein, um ein Gewitter zu erschaffen.",
+    "thunder_shrine.storm_initialize": "<red>Durch das Ritual wurde ein gewaltiges Gewitter ausgelöst.",
+  
+    "mini_blocks.name": "Mini-Blöcke",
+    "mini_blocks.description": "Fügt dem Spiel Mini-Blöcke hinzu. Stelle sie mit dem normalen Block in einem Steinsägen her.",
+  
+    "collectible_budding_amethyst.name": "Sammelbarer Amethystknospenblock",
+    "collectible_budding_amethyst.description": "Ermöglicht es dir, Amethystknospenblöcke zu sammeln, um den Block selbst zu erhalten.",
+  
+    "husk_drops_sand.name": "Husk lassen Sand fallen",
+    "husk_drops_sand.description": "Husks lassen beim Tod 0-2 Sand fallen (macht Sand zu einer erneuerbaren Ressource).<newline>Mit Plündern erhöht sich die Menge auf 2 + die Plünder-Stufe.",
+  
+    "always_drop.name": "Immer fallen lassen",
+    "always_drop.description": "Ermöglicht es dir, Blöcke festzulegen, die immer fallen gelassen werden, unabhängig vom verwendeten Werkzeug oder den Verzauberungen.",
+  
+    "wandering_trader_announcements.name": "Wandernder Händler Ankündigungen",
+    "wandering_trader_announcements.description": "Benachrichtigt nahe Spieler, wenn ein Wandernder Händler in der Welt erscheint.",
+    "wandering_trader_announcements.announcement": "<gold><gold>Ein Wandernder Händler ist in der Nähe erschienen!",
+    "wandering_trader_announcements.announcement_all": "<gold>Ein Wandernder Händler ist irgendwo auf dem Server erschienen!",
+  
+    "wandering_trades.name": "Wandernde Angebote",
+    "wandering_trades.description": "Fügt Mini-Blöcke und Spieler-Köpfe zu den Angeboten des Wandernden Händlers hinzu.",
+  
+    "armored_elytra.name": "Gepanzerte Elytra",
+    "armored_elytra.description": "Wirf eine Elytra und einen Brustpanzer über einen Amboss, um sie zu einem Gegenstand zu verschmelzen. Wirf den Gegenstand über einen Schleifstein, um sie wieder zu trennen.<newline>Verzauberungen bleiben beim Verschmelzen und Trennen sicher erhalten. Das Verbrennen einer gepanzerten Elytra aus Netherit trennt die Gegenstände.",
+    "armored_elytra.item_name": "<gold>Gepanzerte Elytra",
+  
+    "player_head_drops.name": "Spielerkopf-Drops",
+    "player_head_drops.description": "Ein Spieler lässt seinen Kopf fallen, wenn er von einem anderen Spieler getötet wird. Der Gegenstand zeigt an, wer der Mörder war.",
+    "player_head_drops.lore": "Getötet von <player>",
+  
+    "rotation_wrench.name": "Drehschlüssel",
+    "rotation_wrench.description": "Fügt einen benutzerdefinierten Schlüssel ins Spiel ein, mit dem du Redstone-Komponenten und glasierte Keramik durch Rechtsklick drehen kannst.",
+    "rotation_wrench.item_name": "<gold>Schlüssel",
+  
+    "anti_creeper_grief.name": "Anti-Creeper-Zerstörung",
+    "anti_creeper_grief.description": "Verhindert, dass Creeper explodieren und Blöcke oder Spieler Schaden nehmen.",
+  
+    "anti_enderman_grief.name": "Anti-Enderman-Zerstörung",
+    "anti_enderman_grief.description": "Verhindert, dass Endermen Blöcke aufheben.",
+  
+    "anti_ghast_grief.name": "Anti-Ghast-Zerstörung",
+    "anti_ghast_grief.description": "Verhindert, dass Ghasts Blöcke zerstören.",
+  
+    "bat_membranes.name": "Fledermaus-Phantommembrane",
+    "bat_membranes.description": "Deaktiviert Phantome, um stattdessen Phantommembranen von Fledermäusen zu erhalten.",
+  
+    "count_mob_deaths.name": "Kreatur-Tode Zählen",
+    "count_mob_deaths.description": "Ermöglicht es, die Tode von Kreaturen zu zählen, seitdem das System gestartet wurde.",
+    "count_mob_deaths.objective_name": "<gold>Kreatur-Tode",
+  
+    "double_shulker_shells.name": "Doppelte Shulker-Schalen",
+    "double_shulker_shells.description": "Alle Shulker lassen 2 Schalen fallen.",
+  
+    "dragon_drops.name": "Drachen-Drops",
+    "dragon_drops.description": "Der Enderdrache lässt bei seinem Tod ein Drachenei und eine Elytra fallen.",
+  
+    "larger_phantoms.name": "Größere Phantome",
+    "larger_phantoms.description": "Lässt die natürlich spawnende Phantome größer und stärker werden, je länger du nicht schläfst.",
+  
+    "more_mob_heads.name": "Mehr Kreaturen-Köpfe",
+    "more_mob_heads.description": "Fügt die Chance hinzu, den Kopf einer Kreatur zu erhalten, wenn du es tötest.",
+  
+    "sawmill.name": "Sägewerk",
+    "sawmill.description": "Fügt der Steinsäge Rezepte hinzu, mit denen du verschiedene Holzgegenstände aus Brettern, Stämmen, Holz usw. herstellen kannst.",
+
+    "silence_mobs.name": "Stille Kreaturen",
+    "silence_mobs.description": "Fügt die Möglichkeit hinzu, Kreaturen mit einem Namensschild zum Schweigen zu bringen. 'Silence Me'; 'Silence me'; 'silence me'; 'silence_me'; sind alle akzeptable Namen.",
+    "silence_mobs.activation_name": "silence me",
+    "silence_mobs.silenced_name": "verstummt",
+  
+    "villager_death_messages.name": "Dorfbewohner-Todesnachrichten",
+    "villager_death_messages.description": "Benachrichtigt den Server im Chat, wenn ein Dorfbewohner stirbt. Zeigt die Koordinaten und die Dimension an, in der er gestorben ist.",
+    "villager_death_messages.death_message": "<gold>Ein Dorfbewohner ist gestorben! <white>(<gold>XYZ: <x> <y> <z> <yellow><welt><white>)",
+  
+    "afk_display.name": "AFK-Anzeige",
+    "afk_display.description": "Stellt den Namen eines Spielers, der sich 5 Minuten lang nicht bewegt hat, grau dar.",
+    "afk_display.self_now_afk": "<yellow>Du bist jetzt AFK.",
+    "afk_display.self_not_afk": "<yellow>Du bist nicht mehr AFK.",
+    "afk_display.other_now_afk": "<gold><player><yellow> ist jetzt AFK.",
+    "afk_display.other_not_afk": "<gold><player><yellow> ist nicht mehr AFK.",
+    "afk_display.placeholder.afk": "AFK",
+    "afk_display.placeholder.not_afk": "Aktiv",
+  
+    "cauldron_concrete.name": "Kessel-Zement",
+    "cauldron_concrete.description": "Rechtsklicke einen Kessel mit Zementpulver, um es zu verhärten.",
+  
+    "cauldron_mud.name": "Kessel-Schlamm",
+    "cauldron_mud.description": "Rechtsklicke einen Wasserkessel mit Erde, um es in Schlamm zu verwandeln.",
+  
+    "classic_fishing_loot.name": "Klassische Angelbeute",
+    "classic_fishing_loot.description": "Stellt die Angelbeute auf die Beutetabelle vor Version 1.16 zurück.",
+
+    "coords_hud.name": "Koordinaten-HUD",
+    "coords_hud.description": "Fügt deiner Actionbar Informationen hinzu. XYZ-Koordinaten und eine 24-Stunden-Uhr.<newline>Befehl: /ch toggle",
+  
+    "custom_nether_portals.name": "Benutzerdefinierte Netherportale",
+    "custom_nether_portals.description": "Zünde Netherportale in jeder beliebigen Größe oder Form an oder verwende weinenden Obsidian im Portalrahmen, falls aktiviert.",
+  
+    "durability_ping.name": "Haltbarkeit Warnung",
+    "durability_ping.description": "Erhalte eine Benachrichtigung, wenn du ein Gegenstand mit oder weniger als 10 % Haltbarkeit benutzt.<newline>Vollständig anpassbar pro Spieler mit '/duraping config'",
+    "durability_ping.ping.subtitle.title": " ",
+    "durability_ping.ping.subtitle.subtitle": "<gold><item_type> <red>Haltbarkeit niedrig!<</red> <item_durability> <red>von</red> <item_max_durability> <red>verbleibend.",
+    "durability_ping.ping.title.title": "<gold><item_type> <red>Haltbarkeit niedrig!",
+    "durability_ping.ping.title.subtitle": "<gold><item_durability> <red>von</red> <item_max_durability> <red>verbleibend.",
+    "durability_ping.ping.chat.message": "<gold><item_type> <red>Haltbarkeit niedrig!</red> <item_durability> <red>von</red> <item_max_durability> <red>verbleibend.",
+    "durability_ping.ping.actionbar.message": "<gold><item_type> <red>Haltbarkeit niedrig!</red> <item_durability> <red>von</red> <item_max_durability> <red>verbleibend.",
+  
+    "fast_leaf_decay.name": "Schnelles Blattverrotten",
+    "fast_leaf_decay.description": "Blätter verrotten viel schneller, wenn Bäume im Überlebensmodus abgebaut werden.",
+  
+    "graves.name": "Gräber",
+    "graves.description": "Wenn ein Spieler stirbt, wird an seiner Position ein Grab mit all seinen Gegenständen erstellt. Rechtsklicke das Grab, um deine Gegenständen zu erhalten. Schleiche, um sicherzustellen, dass nur du sie aufheben kannst.<newline>Erhalte einen Grab-Schlüssel, um jedes Grab zu öffnen: '/grave key'<newline>Finde dein letztes Grab (falls auffindbar): '/grave locate'",
+    "graves.cant_rob_grave": "<red>Du darfst keine Gräber plündern!",
+    "graves.last_grave": "<yellow>Dein letztes Grab befand sich bei XYZ: <gold><x> <y> <z></gold> in <gold>Welt: <world>",
+    "graves.key.item_name": "<gold>Grabschlüssel",
+    "graves.key.item_lore": "Rechtsklicke mit diesem Schlüssel auf ein beliebiges Grab, um es zu öffnen.",
+    "graves.log.created": "Ein Grab für <player> wurde erstellt bei XYZ: <x> <y> <z> in Welt: <world>",
+    "graves.log.contains": "Enthält <gold><item_count></gold> Gegenstände und <gold><xp_count></gold> XP.",
+    "graves.log.item": "- <gold><item> <white>x <gold><amount>",
+  
+    "nether_portal_coords.name": "Netherportal-Koordinaten",
+    "nether_portal_coords.description": "Fügt einen Befehl hinzu, der berechnet, wo ein Netherportal in der anderen Dimension platziert werden muss. Nützlich, um Netherportale zu synchronisieren.<newline>Befehl: /portal",
+  
+    "real_time_clock.name": "Echtzeit-Uhr",
+    "real_time_clock.description": "Fügt einen Befehl hinzu, mit dem du anzeigen kannst, wie lange eine Welt in Echtzeit (Minuten und Stunden) aktiv ist.<newline>Befehl: /rtc",
+  
+    "track_raw_statistics.name": "Unverarbeitete Statistiken verfolgen",
+    "track_raw_statistics.description": "Fügt über 100 Anzeigetafeln hinzu, die viele verschiedene Statistiken verfolgen. Besonders nützlich für den Mehrspieler-Modus.",
+  
+    "track_statistics.name": "Verarbeitete Statistiken verfolgen",
+    "track_statistics.description": "Fügt Statistiken hinzu, die vorher verarbeitet werden, z. B. KM geschwommen, KM geflogen usw.",
+  
+    "unlock_all_recipes.name": "Alle Rezepte freischalten",
+    "unlock_all_recipes.description": "Schalte automatisch alle Rezepte frei, sobald du mit dem Spielen beginnst.",
+  
+    "workstation_highlights.name": "Arbeitsstations-Hervorhebung",
+    "workstation_highlights.description": "Erlaubt es dir, die Arbeitsstation eines Dorfbewohners zu finden, indem sie hervorgehoben wird.<newline>Befehl: /workstation",
+  
+    "chat_colors.name": "Chat-Farben",
+    "chat_colors.description": "Verwende Chat-Farben, um deine Nachrichten, Schilder und Gegenstände besser aussehen zu lassen (mit '&' für Farb-Codes).",
+  
+    "dirt_to_grass.name": "Erde zu Gras",
+    "dirt_to_grass.description": "Verwandle Erde in Gras, indem du mit Samen auf einen Erdblock rechtsklickst.",
+
+    "fixed_item_frames.name": "Feste Gegenstandsrahmen",
+    "fixed_item_frames.description": "Klicke mit der Umschalttaste + Rechtsklick auf einen Gegenstandsrahmen mit Eisenbarren, um ihn zu fixieren.<newline>Klicke mit der Umschalttaste + Rechtsklick auf einen Gegenstandsrahmen mit einer Schere, um die Fixierung aufzuheben.",
+  
+    "insta_mine.name": "Insta-Abbau",
+    "insta_mine.description": "Baue bestimmte Blöcke sofort ab, wenn du ein Netherit-Werkzeug mit Effizienz 5 oder höher sowie Eile 2 oder höher hast.",
+  
+    "invisible_item_frames.name": "Unsichtbare Gegenstandsrahmen",
+    "invisible_item_frames.description": "Klicke mit der Umschalttaste + Rechtsklick auf einen Gegenstandsrahmen mit einer Schere, um ihn unsichtbar zu machen.",
+  
+    "keep_small.name": "Klein halten",
+    "keep_small.description": "Halte ein Mob in seiner Kinderform (falls vorhanden).",
+    "keep_small.smallify.activation_name": "Klein halten",
+    "keep_small.smallify.small_name": "Verkleinert",
+    "keep_small.grow.activation_name": "Wachsen lassen",
+    "keep_small.grow.grown_name": "Gewachsen",
+  
+    "lectern_reset.name": "Lesepult zurücksetzen",
+    "lectern_reset.description": "Setzt das Buch eines Lesepults nach dem Schließen auf die erste Seite zurück.",
+  
+    "quick_commands.name": "Schnelle Befehle",
+    "quick_commands.description": "Schnelles Wechseln des Spielmodus und Beantworten von Nachrichten.",
+    "quick_commands.message.command_description": "Sende eine private Nachricht an einen Spieler.",
+    "quick_commands.message.whisper_to_you": "<gray><italic><player> flüstert dir: <message>",
+    "quick_commands.message.whisper_to_player": "<gray><italic>Du flüsterst <player>: <message>",
+    "quick_commands.reply.command_description": "Antworte der letzten Person, die dir eine Nachricht geschickt hat.",
+    "quick_commands.reply.error.no_reply": "<red>Du hast niemanden zum Antworten!",
+    "quick_commands.gmc.command_description": "Ändere deinen Spielmodus auf Kreativmodus.",
+    "quick_commands.gms.command_description": " Ändere deinen Spielmodus auf Überlebensmodus.",
+    "quick_commands.gmsp.command_description": "Ändere deinen Spielmodus auf Zuschauermodus.",
+    "quick_commands.gma.command_description": "Ändere deinen Spielmodus auf Abenteuermodus.",
+    "quick_commands.feed.command_description": "Füttere dich.",
+    "quick_commands.heal.command_description": "Heile dich.",
+    "quick_commands.fly.command_description": "Schalte den Flugmodus um.",
+    "quick_commands.enderchest.command_description": "Öffne deine Endertruhe.",
+    "quick_commands.craftingtable.command_description": "Öffne eine Werkbank.",
+  
+    "slime_cream.name": "Schleimcreme",
+    "slime_cream.description": "Verwandle Schleimbälle in Magmacreme, indem du auf einen Lavakessel rechtsklickst.<newline>Verwandle Magmacreme in Schleimbälle, indem du auf einen Wasserkessel rechtsklickst.",
+  
+    "spectator_alts.name": "Zuschauer-Alts",
+    "spectator_alts.description": "Erlaube Spielern, ihre eigenen Alt-Accounts als Zuschauer hinzuzufügen.<newline>Befehl: /alts <add/remove/list> <alt> [player]",
+  
+    "stair_chairs.name": "Treppenstühle",
+    "stair_chairs.description": "Ermöglicht das Sitzen auf Treppen.<newline>Rechtsklicke eine Treppe mit einem Sattel, um sie zu einem Stuhl zu machen.<newline>Baue die Treppe ab, um den Stuhl zu entfernen und den Sattel zurückzubekommen.",
+    "stair_chairs.chair_created": "<green>Stuhl erstellt!",
+    "stair_chairs.chair_destroyed": "<green>Stuhl entfernt!",
+  
+    "sudoku.name": "Sudoku",
+    "sudoku.description": "Erlaube Spielern, Sudoku zu begehen.<newline>Befehl: /sudoku",
+    "sudoku.death_message": "<player> hat Sudoku gespielt",
+  
+    "unsticky_pistons.name": "Unklebende Kolben",
+    "unsticky_pistons.description": "Erlaube Spielern, Schleim von Kolben zu entfernen, indem sie mit einer Axt darauf rechtsklicken.<newline>Rechtsklicke einen Kolben mit einem Schleimball, um ihn klebrig zu machen.",
+  
+    "back.name": "Zurück",
+    "back.description": "Ermöglicht es dir, zu deiner vorherigen Position zu teleportieren.<newline>Befehl: /back",
+  
+    "homes.name": "Homes",
+    "homes.description": "Ermöglicht es dir, Homes zu setzen und zu ihnen zu teleportieren.<newline>Befehl: /home",
+    "homes.error.on_cooldown": "<red>Du musst <time> Sekunden warten, bevor du erneut teleportieren kannst!",
+    "homes.teleporting_in": "<yellow>Teleportieren in <time> Sekunden...",
+    "homes.teleported": "<green>Teleportiert zu Home <home>!",
+    "homes.deleted": "<green>Home <home> wurde gelöscht!",
+  
+    "spawn.name": "Spawn",
+    "spawn.description": "Ermöglicht es dir, zum Weltspawnpunkt zu teleportieren.<newline>Befehl: /spawn",
+  
+    "tpa.name": "TPA",
+    "tpa.description": "Ermöglicht es dir, eine Anfrage zu senden, um dich zu einem anderen Spieler zu teleportieren.<newline>Befehl: /tpa",
+  
+    "item_averages.name": "Gegenstandsdurchschnittswerte",
+    "item_averages.description": "Fügt einen Marker hinzu, der vorbeifließende Gegenstände 2 Minuten lang verfolgt und berechnet, wie viele von jedem Gegenstand pro Stunde durchlaufen.<newline>Befehl: /itemaverage",
+    "item_averages.source_production": "<yellow>Diese Quelle produziert ± pro Stunde:",
+    "item_averages.item": "<gold><amount></gold> <item>",
+    "item_averages.no_items": "<yellow>Keine Gegenstände sind durch die Quelle geflossen!",
+    "item_averages.log_finish": "Verfolgung abgeschlossen",
+  
+    "kill_boats.name": "Boote Entfernen",
+    "kill_boats.description": "Fügt einen Admin-Befehl hinzu, um alle Boote ohne Passagiere zu entfernen.<newline>Befehl: /killboats",
+  
+    "spawning_spheres.name": "Spawning-Sphären",
+    "spawning_spheres.description": "Fügt einen Befehl hinzu, mit dem du sehen kannst, wo Mobs spawnen können.<newline>Befehl: /spawningspheres",
+    "spawning_spheres.center_stand": "Mitte",
+    "spawning_spheres.sphere.red": "Rot",
+    "spawning_spheres.sphere.blue": "Blau",
+    "spawning_spheres.sphere.green": "Grün",
+  
+    "spectator_conduit_power.name": "Zuschauer Conduit-Effekt",
+    "spectator_conduit_power.description": "Ermöglicht es, den Conduit-Effekt im Zuschauermodus einfach ein- und auszuschalten.<newline>Befehl: /conduitpower",
+    "spectator_conduit_power.error.game_mode_changed": "<red>Conduit-Effekt wegen Spielmoduswechsel entfernt!",
+  
+    "spectator_night_vision.name": "Zuschauer Nachtsicht",
+    "spectator_night_vision.description": "Ermöglicht es, Nachtsicht im Zuschauermodus einfach ein- und auszuschalten.<newline>Befehl: /nightvision",
+    "spectator_night_vision.error.game_mode_changed": "<red>Nachtsicht wegen Spielmoduswechsel entfernt!",
+  
+    "#comment.crafting_tweaks": "Crafting Tweaks Section: (this is a comment and will never be shown in-game)",
+  
+    "crafting_tweaks.name_display": "<red><name>",
+  
+    "back_to_blocks.name": "Zurück zu Blöcken",
+    "back_to_blocks.description": "Ermöglicht das Herstellen ganzer Blöcke aus Treppen und Stufen.",
+  
+    "blackstone_cobblestone.name": "Schwarzstein Bruchstein",
+    "blackstone_cobblestone.description": "Ermöglicht das Herstellen aller Gegenstände, die Bruchstein benötigen, mit Schwarzstein.",
+  
+    "charcoal_to_black_dye.name": "Holzkohle zu Schwarzer Farbstoff",
+    "charcoal_to_black_dye.description": "Ermöglicht das Herstellen von schwarzem Farbstoff aus Holzkohle.",
+  
+    "cheaper_resin_blocks.name": "Günstigere Harzblöcke",
+    "cheaper_resin_blocks.description": "Ermöglicht das Herstellen von Harzblöcken mit 4 Harzklumpen anstelle von 9.",
+  
+    "coal_to_black_dye.name": "Kohle zu Schwarzer Farbstoff",
+    "coal_to_black_dye.description": "Ermöglicht das Herstellen von schwarzem Farbstoff aus Kohle.",
+  
+    "copper_powered_rails.name": "Kupfer-Antriebsschienen",
+    "copper_powered_rails.description": "Ermöglicht das Herstellen von angetriebenen Schienen mit Kupferbarren.",
+  
+    "craftable_blackstone.name": "Herstellbarer Schwarzstein",
+    "craftable_blackstone.description": "Ermöglicht das Herstellen von Schwarzstein oder poliertem Schwarzstein mit Basalt & Kohle/Holzkohle.",
+  
+    "craftable_bundles.name": "Herstellbare Bündel",
+    "craftable_bundles.description": "Ermöglicht das Herstellen des experimentellen Bündelgegenstands (mit 1 Leder und 1 Faden).",
+  
+    "craftable_chainmail.name": "Herstellbare Kettenrüstung",
+    "craftable_chainmail.description": "Ermöglicht das Herstellen von Kettenrüstung mit Ketten.",
+  
+    "craftable_coral_blocks_2x2.name": "Herstellbare Korallenblöcke (2x2)",
+    "craftable_coral_blocks_2x2.description": "Ermöglicht das Herstellen von Korallenblöcken aus Korallenpflanzen in einer 2x2-Anordnung. Sowohl Röhren als auch Fächer können austauschbar verwendet werden.",
+  
+    "craftable_coral_blocks_3x3.name": "Herstellbare Korallenblöcke (3x3)",
+    "craftable_coral_blocks_3x3.description": "Ermöglicht das Herstellen von Korallenblöcken aus Korallenpflanzen in einer 3x3-Anordnung. Sowohl Röhren als auch Fächer können austauschbar verwendet werden.",
+  
+    "craftable_enchanted_golden_apples.name": "Herstellbare Verzauberte Goldene Äpfel",
+    "craftable_enchanted_golden_apples.description": "Ermöglicht das Herstellen von verzauberten goldenen Äpfeln mit Goldblöcken.",
+  
+    "craftable_gilded_blackstone.name": "Herstellbarer Vergoldeter Schwarzstein",
+    "craftable_gilded_blackstone.description": "Ermöglicht das Herstellen von vergoldetem Schwarzstein mit eine Goldbarre und einem Schwarzstein.",
+  
+    "craftable_gravel.name": "Herstellbarer Kies",
+    "craftable_gravel.description": "Ermöglicht das Herstellen von Kies mit Feuerstein.",
+  
+    "craftable_horse_armor.name": "Herstellbarer Rossharnisch",
+    "craftable_horse_armor.description": "Ermöglicht das Herstellen von Rossharnische.",
+  
+    "craftable_name_tags.name": "Herstellbare Namensschilder",
+    "craftable_name_tags.description": "Ermöglicht das Herstellen von Namensschildern.",
+  
+    "craftable_saddles.name": "Herstellbare Sättel",
+    "craftable_saddles.description": "Ermöglicht das Herstellen von Sätteln.",
+   
+    "craftable_small_dripleaf.name": "Herstellbare Kleine Tropfblätter",
+    "craftable_small_dripleaf.description": "Ermöglicht das Herstellen kleiner Tropfblätter aus großen Tropfblättern.",
+  
+    "craftable_spore_blossoms.name": "Herstellbare Sporenblüten",
+    "craftable_spore_blossoms.description": "Ermöglicht das Herstellen von Sporenblüten mit Flieder, Azaleenlauben und Honigwaben.",
+  
+    "double_slabs.name": "Doppelte Stufen",
+    "double_slabs.description": "Ermöglicht das Herstellen von 2 Stufen aus einem einzelnen Block.",
+  
+    "dropper_to_dispenser.name": "Spender zu Werfer",
+    "dropper_to_dispenser.description": "Ermöglicht das Umwandeln eines Spenders in einen Werfer mit einem Bogen oder mit Faden und Stöcken.",
+  
+    "log_chests.name": "Stammtruhen",
+    "log_chests.description": "Ermöglicht die Massenherstellung von Truhen mit Stämmen.",
+  
+    "more_bark.name": "Mehr Rinde",
+    "more_bark.description": "Stelle 4 Rinden her, anstatt nur 3.",
+  
+    "more_bricks.name": "Mehr Ziegelsteine",
+    "more_bricks.description": "Stelle 4 Ziegelsteine her, anstatt nur 1.",
+  
+    "more_packed_mud.name": "Mehr fester Schlamm",
+    "more_packed_mud.description": "Stelle 2 festen Schlamm her, anstatt nur 1.",
+  
+    "more_sherds.name": "Mehr Scherben",
+    "more_sherds.description": "Stelle 2 Scherben her, wenn du eine Töpferscherbe mit einem Ziegel kombinierst.",
+  
+    "more_stairs.name": "Mehr Treppen",
+    "more_stairs.description": "Stelle 8 Treppen her, anstatt nur 4.",
+  
+    "more_trapdoors.name": "Mehr Falltüren",
+    "more_trapdoors.description": "Stelle 12 Falltüren her, anstatt nur 2.",
+  
+    "more_iron_trapdoors.name": "Mehr Eisenfalltüren",
+    "more_iron_trapdoors.description": "Stelle 8 Eisenfalltüren her, anstatt nur 2.",
+  
+    "more_copper_trapdoors.name": "Mehr Kupferfalltüren",
+    "more_copper_trapdoors.description": "Stelle 12 Kupferfalltüren her, anstatt nur 2.",
+  
+    "powder_to_glass.name": "Pulver zu Glas",
+    "powder_to_glass.description": "Schmelze alle Zementpulverfarben in ihre jeweilige gefärbte Glasfarbe.",
+  
+    "rotten_flesh_to_leather.name": "Verrottetes Fleisch zu Leder",
+    "rotten_flesh_to_leather.description": "Ermöglicht das Schmelzen von verrottetem Fleisch zu Leder.",
+  
+    "sandstone_dyeing.name": "Sandsteinfärbung",
+    "sandstone_dyeing.description": "Ermöglicht das Herstellen von Rotem Sandstein durch Färben von Sandstein mit rotem Farbstoff.",
+  
+    "smeltable_raw_ore_blocks.name": "Schmelzbare Rohblock-Erze",
+    "smeltable_raw_ore_blocks.description": "Ermöglicht das Schmelzen von Rohblock-Erzen zu Erzblöcken.",
+  
+    "straight_to_shapeless.name": "Direkt zum Formlosen",
+    "straight_to_shapeless.description": "Ermöglicht das direkte Herstellen von Gegenständen wie Papier, Brot und Shulker-Kisten in deinem 2x2-Feld.",
+  
+    "universal_dyeing.name": "Universelles Färben",
+    "universal_dyeing.description": "Ermöglicht das Färben aller färbbaren Blöcke in eine andere Farbe, unabhängig von ihrer aktuellen Farbe (ausgenommen Zement).",
+  
+    "unpackable_ice.name": "Zerlegbares Eis",
+    "unpackable_ice.description": "Ermöglicht das Zerlegen von Eis in 9 Teile. 1 Blaues Eis -> 9 Gepacktes Eis -> 81 Eis.",
+  
+    "unpackable_nether_wart.name": "Zerlegbare Netherwarzenblöcke",
+    "unpackable_nether_wart.description": "Ermöglicht das Zerlegen von Netherwarzenblöcken in 9 Netherwarzen.",
+  
+    "unpackable_quartz_blocks.name": "Zerlegbare Quarzblöcke",
+    "unpackable_quartz_blocks.description": "Ermöglicht das Zerlegen von Quarzblöcken in 4 Quarz.",
+  
+    "unpackable_wool.name": "Zerlegbare Wolle",
+    "unpackable_wool.description": "Ermöglicht das Zerlegen von Wolle in 4 Fäden.",
+  
+    "#comment.commands": "Commands Section: (this is a comment and will never be shown in-game)",
+  
+    "plugin.commands.usage": "<red>Verwendung: <command_usage>",
+  
+    "afk.command_description": "Schaltet den AFK-Modus ein und aus. Wenn aktiviert, wirst du nach 5 Minuten Inaktivität automatisch auf AFK gesetzt.",
+  
+    "alts.command_description": "Verwalte Zuschauer-Alt-Accounts.",
+    "alts.error.no_permission_list_others": "<red>Du hast keine Berechtigung, die Alts anderer Spieler zu sehen!",
+    "alts.error.no_permission_modify_others": "<red>Du hast keine Berechtigung, die Alts anderer Spieler zu ändern!",
+    "alts.error.no_alts": "<red><player> hat keine Alts!",
+    "alts.error.max_alts": "<red>Du kannst keine weiteren Alts hinzufügen!",
+    "alts.error.self": "<red>Du kannst dich selbst nicht als Alt hinzufügen!",
+    "alts.error.whitelisted": "<red>Du kannst keinen Whitelist-Spieler als Alt hinzufügen!",
+    "alts.error.already_alt": "<red><alt> ist bereits ein Alt!",
+    "alts.error.not_alt": "<red><alt> ist kein Alt!",
+    "alts.list_alts": "<gold><player><yellow>s Alts:",
+    "alts.listed_alt": "<gray> - <yellow><alt>",
+    "alts.added_alt": "<green><alt> ist jetzt ein Alt von <player>!",
+    "alts.removed_alt": "<green><alt> ist kein Alt von <player> mehr!",
+  
+    "back.command_description": "Zurück zum vorherigen Ort teleportieren.",
+    "back.error.on_cooldown": "<red>Du musst <cooldown_seconds> Sekunden zwischen der Benutzung von /back warten!",
+    "back.error.no_back_location": "<red>Es gibt keinen Ort, zu dem du zurückkehren kannst!",
+    "back.error.moved": "<red>Du musst stillstehen, um zu teleportieren!",
+    "back.teleporting": "<yellow>Teleportiere zurück...",
+  
+    "conduitpower.command_description": "Schalte die Conduit-Kraft als Zuschauer um.",
+    "conduitpower.error.wrong_gamemode": "<red>Du musst im Zuschauermodus sein, um diesen Befehl zu verwenden!",
+    "conduitpower.toggled": "<green>Conduit-Kraft umgeschaltet",
+  
+    "coordshud.command_description": "Koordinaten-HUD Hauptbefehl",
+    "coordshud.toggled": "<green>Koordinaten-HUD umgeschaltet",
+  
+    "deletehome.command_description": "Lösche ein Zuhause.",
+  
+    "durabilityping.command_description": "Erhalte eine Benachrichtigung, wenn die Haltbarkeit deiner Werkzeuge unter 10 % fällt.",
+    "durabilityping.error.missing_preview_selection": "<red>Bitte gib an, welchen Abschnitt du in der Vorschau sehen möchtest!",
+    "durabilityping.error.missing_set_selection": "<red>Bitte gib an, welchen Abschnitt du einstellen möchtest!",
+    "durabilityping.preview_panel.hover": "<gray>Klicken zum Anzeigen der Vorschau</gray> <name>",
+    "durabilityping.checkbox.yes.hover": "<red>Klicken zum Deaktivieren</red> <name>",
+    "durabilityping.checkbox.no.hover": "<green>Klicken zum Aktivieren</green> <name>",
+    "durabilityping.config.ping_for_hand_items.name": "Benachrichtigung für Handgegenstände",
+    "durabilityping.config.ping_for_hand_items.description": "Beinhaltet alle Gegenstände mit Haltbarkeit in den Haupt- oder Nebenhand-Slots.",
+    "durabilityping.config.ping_for_armor_items.name": "Benachrichtigung für Rüstungsteile",
+    "durabilityping.config.ping_for_armor_items.description": "Beinhaltet alle Gegenstände mit Haltbarkeit in den Rüstungs-Slots.",
+    "durabilityping.config.ping_with_sound.name": "Benachrichtigung mit Ton",
+    "durabilityping.config.display_hidden.name": "Anzeige: Versteckt",
+    "durabilityping.config.display_subtitle.name": "Anzeige: Untertitel",
+    "durabilityping.config.display_title.name": "Anzeige: Titel",
+    "durabilityping.config.display_chat.name": "Anzeige: Chat",
+    "durabilityping.config.display_actionbar.name": "Anzeige: Aktionsleiste",
+  
+    "grave.command_description": "Inventar-Schutz hat keine Chance.",
+    "grave.error.no_grave": "<red>Du hast kein aktuelles Grab!",
+    "grave.given_key": "<green>Du hast einen Grabschlüssel erhalten!",
+    "grave.removed_graves": "<yellow>Alle geladenen Gräber wurden entfernt!",
+  
+    "home.command_description": "Teleportiere, Setze oder Lösche deine Zuhause!",
+    "home.error.missing_home_name": "<red>Bitte gib einen Namen für dein Zuhause an!",
+    "home.error.home_already_exists": "<red>Das Zuhause <name> existiert bereits!",
+    "home.error.home_dne": "<red>Das Zuhause <name> existiert nicht!",
+    "home.error.max_homes": "<red>Du kannst nicht mehr als <max_homes> Zuhause haben!",
+    "home.error.cant_set_home": "<red>Beim Setzen deines Zuhauses ist ein unbekannter Fehler aufgetreten!",
+    "home.error.cant_delete_home": "<red>Beim Löschen deines Zuhauses ist ein unbekannter Fehler aufgetreten!",
+    "home.error.no_homes_yet": "<red>Du hast noch keine Zuhause gesetzt! Benutze <gold>/home set <name></gold>, um eins zu setzen!",
+    "home.set_home": "<green>Dein Zuhause <name> wurde gesetzt!",
+    "home.deleted_home": "<green>Dein Zuhause <name> wurde gelöscht!",
+  
+    "itemaverages.command_description": "Berechne, wie viele Gegenstände in 2 Minuten durch eine Quelle fließen.",
+    "itemaverages.error.tracker_in_use": "<red>Ein Tracker wird bereits verwendet!",
+    "itemaverages.tracker_created": "<yellow>Eine Tracker-Quelle wurde bei XYZ erstellt: <x> <y> <z>",
+    "itemaverages.tracker_mass_removed": "<yellow><count> Tracker-Quellen entfernt!",
+  
+    "killboats.command_description": "Alle leeren Boote töten.",
+    "killboats.removed_boats": "<yellow><count> Boote wurden entfernt!",
+  
+    "mechanics.command_description": "Zeige die von Teak's Tweaks hinzugefügten Mechaniken an.",
+    "mechanics.gui.title": "Teak's Tweaks Mechaniken",
+    "mechanics.gui.next_page": "<gold>Nächste Seite",
+    "mechanics.gui.previous_page": "<gold>Vorherige Seite",
+  
+    "nightvision.command_description": "Schalte Nachtsicht als Zuschauer um.",
+    "nightvision.error.wrong_gamemode": "<red>Du musst im Zuschauermodus sein, um diesen Befehl zu verwenden!",
+    "nightvision.toggled": "<green>Nachtsicht umgeschaltet",
+  
+    "packlist.command_description": "Liste alle aktuell aktiven Packs auf.",
+    "packlist.packs": "Packs (<count>): ",
+    "packlist.craftingtweaks": "Crafting Tweaks (<count>): ",
+  
+    "portal.command_description": "Berechne, wo ein Netherportal in der anderen Dimension platziert werden muss.",
+    "portal.error.wrong_dimension": "<red>Du kannst diesen Befehl nicht in <world> ausführen!",
+    "portal.location": "<yellow>XYZ: <x> <y> <z>",
+  
+    "realtimeclock.command_description": "Zeige, wie lange eine Welt in Echtzeit in Minuten und Stunden aktiv war.",
+    "realtimeclock.world_time": "<yellow>Diese Welt ist seit <gold><bold><days></bold></gold> Tagen, <gold><bold><hours></bold></gold> Stunden und <gold><bold><minutes></bold></gold> Minuten aktiv!",
+  
+    "sethome.command_description": "Setze ein Zuhause, zu dem du dich später teleportieren kannst.",
+  
+    "shrine.command_description": "Erstelle Gewitter-Schreine, mit denen du Gewitterstürme beschwören kannst.",
+    "shrine.error.none_nearby": "<red>Es gibt keine Schreine in der Nähe!",
+    "shrine.created": "<green>Ein Schrein wurde an <gold>XYZ: <yellow><x> <y> <z></yellow></gold> in <gold>Welt: <yellow><world></yellow></gold> erstellt!",
+    "shrine.removed": "<green>Ein Schrein wurde an <gold>XYZ: <yellow><x> <y> <z></yellow></gold> in <gold>Welt: <yellow><world></yellow></gold> entfernt!",
+    "shrine.shrines_mass_removed": "<yellow>Alle geladenen Schreine wurden entfernt!",
+  
+    "spawn.command_description": "Teleportiere dich zum Server-Spawn.",
+    "spawn.error.on_cooldown": "<red>Du musst <time> Sekunden warten, bevor du /spawn erneut verwenden kannst!",
+    "spawn.error.teleport_moved": "<red>Du musst stillstehen, um dich zu teleportieren!",
+    "spawn.teleporting_delayed": "<yellow>Teleportiere in <time> Sekunden...",
+    "spawn.error.moved": "<red>Du musst stillstehen, um dich zu teleportieren!",
+    "spawn.teleporting": "<yellow>Teleportiere zum Spawn...",
+  
+    "spawningspheres.command_description": "Beschwöre eine Sphäre, die beim Kreaturen-Spawnen hilft.",
+    "spawningspheres.error.invalid_color": "<red>Bitte gib eine gültige Farbe an! (red, blue, green)",
+    "spawningspheres.error.in_use": "<red>Die Sphäre <color> wird bereits verwendet!",
+    "spawningspheres.error.not_in_use": "<red>Die Sphäre <color> ist nicht in Verwendung!",
+    "spawningspheres.summoned": "<green>Die <color> Spawn-Sphäre wurde beschworen!",
+    "spawningspheres.removing": "<green>Entferne die <color> <green>Spawn-Sphäre...",
+    "spawningspheres.teleporting": "<yellow>Teleportiere zur <color> <green>Spawn-Sphäre...",
+  
+    "sudoku.command_description": "Begeh Sudoku.",
+    "sudoku.committed": "<green>Danke fürs Sudoku spielen!",
+  
+    "teakstweakscommand.command_description": "Hauptbefehl für Teak's Tweaks.",
+    "teakstweakscommand.version": "<green>v<version>",
+    "teakstweakscommand.support": "<yellow>Für Support, tritt dem Discord-Server bei und frage im <gold>#<red>❓</red> | support</gold> Kanal: <gold><click:open_url:'<discord>'><discord></click></gold><newline>Für schnelleren Support führe <gold><click:run_command:'/teakstweaks paste true'>/teakstweaks paste</click></gold> aus und füge den Link in deine Nachricht ein.",
+    "teakstweakscommand.update": "<green><url>",
+    "teakstweakscommand.wiki": "<green><click:open_url:'<url>'><url></click>",
+    "teakstweakscommand.info.dashed_line": "<gray>-----------------------------------------------------",
+    "teakstweakscommand.info.title": "<gold>Teak's Tweaks <yellow>v<version>",
+    "teakstweakscommand.info.author": "Autor: <green><author>",
+    "teakstweakscommand.info.config_version": "Config Version: <green><config_version>",
+    "teakstweakscommand.info.config_generated": "Config Generiert: <green><config_generated>",
+    "teakstweakscommand.info.dev_mode_enabled": "Dev-Modus: <green>Aktiviert",
+    "teakstweakscommand.info.support": "Support Server: <green><discord>",
+    "teakstweakscommand.paste.uploading": "<gold>Hochladen zu <service_name>...",
+    "teakstweakscommand.paste.success": "<yellow>Erfolgreich zu <service_name> hochgeladen!<newline><click:copy_to_clipboard:'<url>'><gold>Klicke hier</gold>, um den Link in deine Zwischenablage zu kopieren.</click><newline><click:open_url:'<url>'><gold>Klicke hier</gold>, um den Link im Browser zu öffnen.</click>",
+    "teakstweakscommand.paste.success.console": "<yellow>Erfolgreich zu <service_name> hochgeladen!<newline><gold><url></gold>",
+    "teakstweakscommand.paste.error": "<red>Fehler beim Hochladen zu <service_name>!",
+    "teakstweakscommand.paste.error.cooldown": "<red><service_name> kann nur einmal alle 20 Minuten verwendet werden!",
+    "teakstweakscommand.give.unknown_item": "<red>Unbekannter Gegenstand '<item>'.",
+    "teakstweakscommand.give.error.amount.lt_1": "<red>Die Ganzzahl darf nicht kleiner als 1 sein.",
+    "teakstweakscommand.give.error.amount.gt_6400": "<red>Die Ganzzahl darf nicht größer als 6400 sein.",
+    "teakstweakscommand.give.success": "<yellow>Gab <gold><amount></gold> [<gold><item></gold>] an <gold><player></gold>.",
+    "teakstweakscommand.give.all_players": "alle",
+  
+    "test.command_description": "Teak's Tweaks Testbefehl.",
+    "test.test": "<rainbow>Hallo, <name>! Es sieht so aus, als hättest du meinen Testbefehl gefunden! :D</rainbow>",
+  
+    "tpahere.command_description": "Bitte einen anderen Spieler, sich zu dir zu teleportieren.",
+    "tpa.command_description": "Bitte, dich zu einem anderen Spieler zu teleportieren.",
+    "tpa.error.specify_player": "<red>Bitte gib einen Spieler an, zu dem du dich teleportieren möchtest!",
+    "tpa.error.no_pending_requests": "<red>Du hast keine ausstehenden Teleportanfragen!",
+    "tpa.error.has_outgoing_request": "<red>Du hast bereits eine ausgehende Teleportanfrage!",
+    "tpa.error.no_outgoing_request": "<red>Du hast keine ausgehende Teleportanfrage!",
+    "tpa.error.player_not_online": "<red>Dieser Spieler ist nicht online!",
+    "tpa.error.player_no_pending_requests": "<red>Dieser Spieler hat keine ausstehenden Teleportanfragen!",
+    "tpa.tpa.request_message": "<gold><player> <yellow>möchte sich zu dir teleportieren! <gold>Klicke zum Akzeptieren!",
+    "tpa.tpahere.request_message": "<gold><player> <yellow>möchte, dass du dich zu ihnen teleportierst! <gold>Klicke zum Akzeptieren!",
+    "tpa.request_message.hover": "<gold>Klicke zum Akzeptieren",
+    "tpa.tpa.request_sent": "<yellow>Du hast angefragt, dich zu <gold><player></gold> zu teleportieren. <gold>Sie haben 60 Sekunden zum Akzeptieren.",
+    "tpa.tpahere.request_sent": "<yellow>Du hast angefragt, <gold><player></gold> zu dir zu teleportieren. <gold>Sie haben 60 Sekunden zum Akzeptieren.",
+    "tpa.request_cancelled": "<yellow>Deine Teleportanfrage an <gold><player> <yellow>wurde abgebrochen!",
+    "tpa.request_accepted": "<yellow>Deine Teleportanfrage an <gold><player> <yellow>wurde akzeptiert!",
+    "tpa.request_expired": "<red>Deine Teleportanfrage an <gold><player> <rot>ist abgelaufen!",
+    "tpa.teleporting": "<yellow>Teleportiere zu <gold><player></gold>...",
+    "tpa.teleporting_to_you": "<yellow>Teleportiere <gold><player></gold> zu dir...",
+  
+    "workstationhighlight.command_description": "Finde die Arbeitsstation eines Dorfbewohners.",
+    "workstationhighlight.error.invalid_profession": "<red>Ungültiger Berufstyp!",
+    "workstationhighlight.error.invalid_radius": "<red>Ungültiger Radius!",
+    "workstationhighlight.error.radius_out_of_bounds": "<red>Der Radius muss zwischen 1 und 16 liegen!",
+    "workstationhighlight.error.no_workstations_found": "<red>Keine Arbeitsstationen von Dorfbewohnern in der Nähe gefunden!",
+    "workstationhighlight.error.no_job_site": "<red>Der nächste Dorfbewohner hat keine Arbeitsstation!",
+    "workstationhighlight.found": "<yellow>Die Arbeitsstation befindet sich bei <gold>[XYZ]: <x> <y> <z>"
+}

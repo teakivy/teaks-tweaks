@@ -47,6 +47,7 @@ settings:
   # Change the language of the plugin
   # Supported languages:
   #  - English (en)
+  #  - German (de)
   #  - French (fr)
   #  - Russian (ru)
   #  - Finnish (fl)
@@ -678,6 +679,8 @@ packs:
     world: world
     # Enter the number of seconds required to wait between uses of the spawn command
     teleport-cooldown: 0
+    # Enter the number of seconds required to wait before teleporting
+    teleport-delay: 0
 
   # Spawning Spheres
   # Allows you to view the spawnable area around a center point through the use of glowing spheres. Useful for proofing farms

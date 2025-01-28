@@ -28,6 +28,7 @@ public class Credits {
         contributors.add("sanmc19");
         contributors.add("Capirichu");
         contributors.add("Artugr18");
+        contributors.add("Gudlin");
 
         supporters.add("loudambiance");
 
