@@ -21,6 +21,7 @@ import org.bukkit.persistence.PersistentDataType;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Objects;
 
 public class GraveCreator {
@@ -102,9 +103,21 @@ public class GraveCreator {
                 Placeholder.parsed("xp_count", xp + "")));
         for (ItemStack item : player.getInventory().getContents()) {
             if (item == null) continue;
+            String enchantString = "";
+            if (item.hasItemMeta()) {
+                Map<Enchantment, Integer> enchantments = item.getEnchantments();
+                if (!enchantments.isEmpty()) {
+                    StringBuilder enchantStringBuilder = new StringBuilder();
+                    for (Map.Entry<Enchantment, Integer> entry : enchantments.entrySet()) {
+                        enchantStringBuilder.append(entry.getKey().getKey().getKey()).append(":").append(entry.getValue()).append(", ");
+                    }
+                    enchantString = " [ " + enchantStringBuilder.substring(0, enchantStringBuilder.length() - 2) + " ]";
+                }
+            }
             Logger.info(Translatable.get("graves.log.item",
                     Placeholder.parsed("item", item.getType().toString()),
-                    Placeholder.parsed("amount", item.getAmount() + "")));
+                    Placeholder.parsed("amount", item.getAmount() + ""),
+                    Placeholder.parsed("enchantments", enchantString)));
         }
     }
 
