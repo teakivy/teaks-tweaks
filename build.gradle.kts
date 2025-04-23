@@ -16,7 +16,7 @@ java {
 }
 
 repositories {
-//    mavenLocal()
+    mavenLocal()
     maven {
         url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     }
@@ -50,7 +50,7 @@ val libraries = listOf(
 )
 
 dependencies {
-    compileOnly("org.spigotmc:spigot-api:1.21.4-R0.1-SNAPSHOT")
+    compileOnly("org.spigotmc:spigot-api:1.21.5-R0.1-SNAPSHOT")
     compileOnly("com.mojang:authlib:1.5.25")
     compileOnly("me.clip:placeholderapi:2.11.6")
 

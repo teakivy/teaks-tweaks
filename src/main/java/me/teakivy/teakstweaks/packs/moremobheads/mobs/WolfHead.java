@@ -11,7 +11,7 @@ import static org.bukkit.entity.Wolf.Variant.*;
 public class WolfHead extends BaseMobHead {
 
     public WolfHead() {
-        super(EntityType.WOLF, "wolf", Sound.ENTITY_WOLF_HOWL);
+        super(EntityType.WOLF, "wolf", Sound.ENTITY_WOLF_CUTE_PANT);
 
         addHeadTexture("ashen_wolf", "Ashen Wolf Head", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzIzODRjNWNmMTg5NDhiODNhODk1NDhkYmE1YTk5NDVlZGVlZmM1ZTk2NTRjNWQ2ZDM4YWUxMGE1ZDUwMmU3NSJ9fX0");
         addHeadTexture("angry_ashen_wolf", "Angry Ashen Wolf Head", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2NiYzMwNjZkMzFjNDM5MDM1MDM4ZmQ2ODc1ZDVkYmVlYzM5NjhjMWI4MDA2ZmZiZmI1ZjY3NGQ3NmM4OWNkZSJ9fX0");
