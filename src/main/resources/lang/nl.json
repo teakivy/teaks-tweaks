@@ -188,10 +188,13 @@
   "graves.key.item_lore": "Klik met de rechtermuisknop op een graf met deze sleutel om het te openen.",
   "graves.log.created": "Een graf gemaakt voor <player> op XYZ: <x> <y> <z> in Wereld: <world>",
   "graves.log.contains": "Bevat <gold><item_count></gold> items en <gold><xp_count></gold> XP.",
-  "graves.log.item": "- <gold><item> <white>x <gold><amount>",
+  "graves.log.item": "- <gold><item> <white>x <gold><amount><enchantments>",
 
   "nether_portal_coords.name": "Nether Portaal Coördinaten",
   "nether_portal_coords.description": "Voegt een commando toe dat berekent waar een nether portaal geplaatst moet worden in de andere dimensie. Handig voor het synchroniseren van nether portalen.<newline>Commando: /portal",
+
+  "painting_picker.name": "Schilderijenkiezer",
+  "painting_picker.description": "Gebruik een steensnijder om een variant van het schilderij te kiezen.",
 
   "real_time_clock.name": "Real-time Klok",
   "real_time_clock.description": "Voegt een commando toe dat je laat zien hoe lang een wereld in real-time minuten en uren actief is.<newline>Commando: /rtc",

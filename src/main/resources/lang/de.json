@@ -189,11 +189,14 @@
     "graves.key.item_lore": "Rechtsklicke mit diesem Schlüssel auf ein beliebiges Grab, um es zu öffnen.",
     "graves.log.created": "Ein Grab für <player> wurde erstellt bei XYZ: <x> <y> <z> in Welt: <world>",
     "graves.log.contains": "Enthält <gold><item_count></gold> Gegenstände und <gold><xp_count></gold> XP.",
-    "graves.log.item": "- <gold><item> <white>x <gold><amount>",
+    "graves.log.item": "- <gold><item> <white>x <gold><amount><enchantments>",
   
     "nether_portal_coords.name": "Netherportal-Koordinaten",
     "nether_portal_coords.description": "Fügt einen Befehl hinzu, der berechnet, wo ein Netherportal in der anderen Dimension platziert werden muss. Nützlich, um Netherportale zu synchronisieren.<newline>Befehl: /portal",
-  
+
+    "painting_picker.name": "Malereiwähler",
+    "painting_picker.description": "Verwende einen Steinschneider, um eine Variante des Gemäldes auszuwählen.",
+
     "real_time_clock.name": "Echtzeit-Uhr",
     "real_time_clock.description": "Fügt einen Befehl hinzu, mit dem du anzeigen kannst, wie lange eine Welt in Echtzeit (Minuten und Stunden) aktiv ist.<newline>Befehl: /rtc",
   

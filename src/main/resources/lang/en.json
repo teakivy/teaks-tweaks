@@ -189,10 +189,13 @@
   "graves.key.item_lore": "Right-click any grave with this key to open it.",
   "graves.log.created": "Created a grave for <player> at XYZ: <x> <y> <z> in World: <world>",
   "graves.log.contains": "Contains <gold><item_count></gold> items and <gold><xp_count></gold> XP.",
-  "graves.log.item": "- <gold><item> <white>x <gold><amount>",
+  "graves.log.item": "- <gold><item> <white>x <gold><amount><enchantments>",
 
   "nether_portal_coords.name": "Nether Portal Coords",
   "nether_portal_coords.description": "Adds a command that calculates where a nether portal must be placed in the other dimension. Useful for syncing up nether portals.<newline>Command: /portal",
+
+  "painting_picker.name": "Painting Picker",
+  "painting_picker.description": "Use a stonecutter to choose a painting's variant.",
 
   "real_time_clock.name": "Real Time Clock",
   "real_time_clock.description": "Adds a command that allows you to view how long a world has been running in real time minutes and hours.<newline>Command: /rtc",

@@ -189,11 +189,14 @@
   "graves.key.item_lore": "Нажмите ПКМ по любой могиле с этим ключом чтобы открыть её.",
   "graves.log.created": "Создана могила для <player> на XYZ: <x> <y> <z> в Мире: <world>",
   "graves.log.contains": "Содержит <gold><item_count></gold> предметов и <gold><xp_count></gold> XP.",
-  "graves.log.item": "- <gold><item> <white>x <gold><amount>",
+  "graves.log.item": "- <gold><item> <white>x <gold><amount><enchantments>",
   
   "nether_portal_coords.name": "Координаты Незер Портала",
   "nether_portal_coords.description": "Добавляет команду которая вычисляет на каких координатах появится портал в другом измерении. Удобно при линковании порталов. <newline>Команда: /portal",
-  
+
+  "painting_picker.name": "Выбор Картины",
+  "painting_picker.description": "Используйте камнерез, чтобы выбрать вариант картины.",
+
   "real_time_clock.name": "Часы Реального Времени",
   "real_time_clock.description": "Добавляет команду которая показывает как долго существует мир в реальных часах и минутах.<newline>Команда: /rtc",
   

@@ -10,6 +10,7 @@ import me.teakivy.teakstweaks.packs.confetticreepers.ConfettiCreeper;
 import me.teakivy.teakstweaks.packs.elevators.Elevator;
 import me.teakivy.teakstweaks.packs.huskdropssand.HuskDropsSand;
 import me.teakivy.teakstweaks.packs.miniblocks.MiniBlocks;
+import me.teakivy.teakstweaks.packs.paintingpicker.PaintingPicker;
 import me.teakivy.teakstweaks.packs.sawmill.Sawmill;
 import me.teakivy.teakstweaks.packs.wanderingtraderannouncements.WanderingTraderAnnouncements;
 import me.teakivy.teakstweaks.packs.xpmanagement.XPManagement;
@@ -68,6 +69,7 @@ import me.teakivy.teakstweaks.packs.spectatorconduitpower.ConduitPower;
 import me.teakivy.teakstweaks.packs.spectatornightvision.NightVision;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.config.Config;
+import org.bukkit.entity.Painting;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -146,7 +148,8 @@ public class Register {
             new CollectibleBuddingAmethyst(),
             new MiniBlocks(),
             new WanderingTraderAnnouncements(),
-            new Sawmill()
+            new Sawmill(),
+            new PaintingPicker()
         ).collect(Collectors.toMap(BasePack::getPath, x -> x));
 
     }

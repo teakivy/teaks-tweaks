@@ -191,11 +191,14 @@
     "graves.key.item_lore": "Kliknij prawym przyciskiem na dowolny grób tym kluczem, aby go otworzyć.",
     "graves.log.created": "Utworzono grób dla <player> na XYZ: <x> <y> <z> w Świat: <world>",
     "graves.log.contains": "Zawiera <gold><item_count></gold> przedmiotów i <gold><xp_count></gold> XP.",
-    "graves.log.item": "- <gold><item> <white>x <gold><amount>",
+    "graves.log.item": "- <gold><item> <white>x <gold><amount><enchantments>",
   
     "nether_portal_coords.name": "Współrzędne Portalu Netheru",
     "nether_portal_coords.description": "Dodaje komendę, która oblicza, gdzie należy umieścić portal do Netheru w drugim wymiarze. Przydatne do synchronizacji portali do Netheru.<newline>Komenda: /portal",
-  
+
+    "painting_picker.name": "Wybierak Obrazów",
+    "painting_picker.description": "Użyj kamieniarza, aby wybrać wariant obrazu.",
+
     "real_time_clock.name": "Zegar Czasu Rzeczywistego",
     "real_time_clock.description": "Dodaje komendę, która pozwala zobaczyć, ile czasu świat działa w rzeczywistych minutach i godzinach.<newline>Komenda: /rtc",
   

@@ -190,10 +190,13 @@
   "graves.key.item_lore": "Oikea klikkaa mitä tahansa hautaa tällä avaimella avataksesi sen.",
   "graves.log.created": "Luotu hauta pelaajalle <player> sijainnissa XYZ: <x> <y> <z> maailmassa: <world>",
   "graves.log.contains": "Sisältää <gold><item_count></gold> esinettä ja <gold><xp_count></gold> XP pistettä.",
-  "graves.log.item": "- <gold><item> <white>x <gold><amount>",
+  "graves.log.item": "- <gold><item> <white>x <gold><amount><enchantments>",
 
   "nether_portal_coords.name": "Horna Portaali Koordinaatit",
   "nether_portal_coords.description": "Lisää komennon joka laskee minne horna portaali on sijoitettava toisessa ulottuvuudessa. Hyödyllinen horna portaalien synkronointiin.<newline>Komento: /portal",
+
+  "painting_picker.name": "Maalausvalitsin",
+  "painting_picker.description": "Käytä kivileikkuria valitaksesi maalauksen version.",
 
   "real_time_clock.name": "Reaaliaikainen kello",
   "real_time_clock.description": "Lisää komennon jonka avulla voit tarkastella kuinka kauan maailma on ollut käynnissä reaaliajassa minuutteina ja tunteina.<newline>Komento: /rtc",

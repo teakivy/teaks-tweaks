@@ -566,6 +566,11 @@ packs:
   nether-portal-coords:
     enabled: false
 
+  # Painting Picker
+  # Use a stonecutter to choose a painting's variant.
+  painting-picker:
+    enabled: true
+
   # Player Head Drops
   # A player will drop their head when killed by another player. The item displays who the killer is.
   player-head-drops:

@@ -191,10 +191,13 @@
   "graves.key.item_lore": "Faites un clic droit sur n'importe quelle tombe avec cette clé pour l'ouvrir.",
   "graves.log.created": "Création d'une tombe pour <player> en X : <x> Y : <y> Z : <z> dans le Monde : <world>",
   "graves.log.contains": "Contient <gold><item_count></gold> objets et <gold><xp_count></gold> XP.",
-  "graves.log.item": "- <gold><item> <white>x <gold><amount>",
+  "graves.log.item": "- <gold><item> <white>x <gold><amount><enchantments>",
 
   "nether_portal_coords.name": "Coordonnées du Portail du Nether",
   "nether_portal_coords.description": "Ajoute une commande qui calcule où un portail du Nether doit être placé dans l'autre dimension. Utile pour synchroniser les portails du Nether.<newline>Commande : /portal",
+
+  "painting_picker.name": "Sélecteur de Peinture",
+  "painting_picker.description": "Utilisez une tailleuse de pierre pour choisir une variante de peinture.",
 
   "real_time_clock.name": "Horloge Temps Réel",
   "real_time_clock.description": "Ajoute une commande permettant de voir depuis combien de temps un monde est en cours en minutes et heures réelles.<newline>Commande : /rtc",
