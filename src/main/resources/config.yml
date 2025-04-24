@@ -41,7 +41,7 @@ settings:
   # Supported services:
   #  - Teak's Tweaks Paste (TEAKS_TWEAKS_PASTE)
   #  - PasteBook (PASTEBOOK)
-  paste-service: "TEAKS_TWEAKS_PASTE"
+  paste-service: "PASTEBOOK"
 
   # Language
   # Change the language of the plugin
@@ -1132,6 +1132,6 @@ crafting-tweaks:
 # Leave these options alone unless you know what you're doing.
 # Changing these values may cause unexpected issues!
 config:
-  created-version: 2.0.7-mc1.21.4
-  version: 2.0.7-mc1.21.4
+  created-version: 2.0.8-mc1.21.5
+  version: 2.0.8-mc1.21.5
   dev-mode: false
