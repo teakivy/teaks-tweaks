@@ -11,6 +11,7 @@ import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.Directional;
@@ -26,10 +27,22 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Wrench extends BasePack {
-    private final String resourcePackUrl = "https://potrebic.box.com/shared/static/uw4fvii2o8qsjuz6xuant1safwjdnrez.zip";
-    private final byte[] hash = new BigInteger("1ACF79C491B3CB9EEE50816AD0CC1FC45AABA147", 16).toByteArray();
+    private final String resourcePackUrl = "https://drive.google.com/uc?export=download&id=1poeTqOmlGj0e40s1FSlop0lhuUNTxrVZ";
+    private final byte[] hash = hexStringToByteArray("848afde4632d98f9db390a811737ff8f82374869");
+
+
+    private byte[] hexStringToByteArray(String s) {
+        int len = s.length();
+        byte[] data = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
+                    + Character.digit(s.charAt(i+1), 16));
+        }
+        return data;
+    }
 
     private final List<BlockFace> faces = Lists.newArrayList(BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST, BlockFace.NORTH, BlockFace.UP, BlockFace.DOWN);
 
@@ -72,7 +85,7 @@ public class Wrench extends BasePack {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         if (getConfig().getBoolean("suggest-pack")) {
-            event.getPlayer().setResourcePack(resourcePackUrl, hash);
+            event.getPlayer().addResourcePack(UUID.randomUUID(), resourcePackUrl, hash, "Would You like to install the Rotation Wrench resource pack?", false);
         }
     }
 
@@ -111,6 +124,7 @@ public class Wrench extends BasePack {
             event.setCancelled(true);
             data.setFacing(nextFace);
             block.setBlockData(data);
+            event.getPlayer().playSound(block.getLocation(), Sound.BLOCK_COPPER_DOOR_OPEN, 1.0F, 0.7F);
             return;
         }
         if (isTerracotta(block.getType()) && getConfig().getBoolean("rotate-terracotta")) {
@@ -128,6 +142,7 @@ public class Wrench extends BasePack {
             event.setCancelled(true);
             data.setFacing(nextFace);
             block.setBlockData(data);
+            event.getPlayer().playSound(block.getLocation(), Sound.BLOCK_COPPER_DOOR_OPEN, 1.0F, 0.7F);
         }
     }
 
