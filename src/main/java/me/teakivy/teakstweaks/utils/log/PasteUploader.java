@@ -53,7 +53,7 @@ public class PasteUploader {
     }
 
     private static Service getDefaultService() {
-        String defaultServiceStr = Config.getString("settings.paste-service");
+        String defaultServiceStr = "PASTEBOOK";
         if (defaultServiceStr.equalsIgnoreCase("pastebook")) {
             return Service.PASTEBOOK;
         }
