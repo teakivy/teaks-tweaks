@@ -8,6 +8,8 @@ import me.teakivy.teakstweaks.utils.ItemSerializer;
 import me.teakivy.teakstweaks.utils.JsonManager;
 import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Material;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.StonecuttingRecipe;
 
@@ -17,6 +19,18 @@ import java.io.FileReader;
 import java.util.*;
 
 public class PaintingPicker extends BasePack {
+    private final String resourcePackUrl = "https://drive.google.com/uc?export=download&id=14BCDxbOyxDSdSVcHo5l2oZlhFBIpcTYb";
+    private final byte[] hash = hexStringToByteArray("bfafd1e28c44e761029e710c9d54e020c09844b6");
+
+    private byte[] hexStringToByteArray(String s) {
+        int len = s.length();
+        byte[] data = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
+                    + Character.digit(s.charAt(i+1), 16));
+        }
+        return data;
+    }
 
     static HashMap<String, ItemStack> paintings = new HashMap<>();
 
@@ -53,6 +67,13 @@ public class PaintingPicker extends BasePack {
         } catch (FileNotFoundException ignored) {}
 
         paintings = new HashMap<>();
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        if (getConfig().getBoolean("suggest-pack")) {
+            event.getPlayer().addResourcePack(UUID.randomUUID(), resourcePackUrl, hash, "Would You like to install the Unique Painting Items resource pack?", false);
+        }
     }
 
     @Override

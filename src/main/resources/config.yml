@@ -570,6 +570,8 @@ packs:
   # Use a stonecutter to choose a painting's variant.
   painting-picker:
     enabled: true
+    # Whether or not to suggest the Unique Painting Items Resource pack (from Vanilla Tweaks)
+    suggest-pack: true
 
   # Player Head Drops
   # A player will drop their head when killed by another player. The item displays who the killer is.
