@@ -23,7 +23,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
 
 
     public TeaksTweaksCommand() {
-        super(CommandType.ALL, null, "teakstweaks", Permission.COMMAND_TEAKSTWEAKS, Arrays.asList("tweaks", "tt"), "teakstweakscommand", Arg.optional("info", "version", "support", "update", "wiki", "paste", "give"), Arg.optional("packs", "craftingtweaks", "commands", "true", "false", "player"), Arg.optional("item"), Arg.optional("amount"));
+        super(CommandType.ALL, null, "teakstweaks", Permission.COMMAND_TEAKSTWEAKS, Arrays.asList("tweaks", "tt"), "teakstweakscommand", Arg.optional("info", "v", "version", "support", "update", "wiki", "paste", "give"), Arg.optional("packs", "craftingtweaks", "commands", "true", "false", "player"), Arg.optional("item"), Arg.optional("amount"));
     }
 
     @Override
@@ -36,7 +36,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
             case "info":
                 sendInfoMessage();
                 return;
-            case "version":
+            case "v", "version":
                 sendMessage("version", insert("version", TeaksTweaks.getInstance().getDescription().getVersion()));
                 return;
             case "support":
