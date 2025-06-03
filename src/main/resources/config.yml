@@ -562,7 +562,7 @@ packs:
   # Painting Picker
   # Use a stonecutter to choose a painting's variant.
   painting-picker:
-    enabled: true
+    enabled: false
     # Whether or not to suggest the Unique Painting Items Resource pack (from Vanilla Tweaks)
     suggest-pack: true
 
