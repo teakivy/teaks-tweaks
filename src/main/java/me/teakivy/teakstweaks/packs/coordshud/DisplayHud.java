@@ -17,7 +17,7 @@ public class DisplayHud {
     static String hudMessage;
 
     public static void init() {
-        hudMessage = "<gold>XYZ: <white><x> <y> <z>  <gold><direction>      <world_time>";
+        hudMessage = Config.getPackConfig("coords-hud").getString("hud-message");
         world =  Bukkit.getWorld(Config.getString("packs.coords-hud.time-world"));
         if (world == null) world = Bukkit.getWorlds().get(0);
     }

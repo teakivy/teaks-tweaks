@@ -264,6 +264,14 @@ packs:
     # Whether or not to use player position instead of block position
     # This may have unwanted effects on negative values.
     use-player-position: false
+    # The format of the coords hud message.
+    # Available variables:
+    # <x> - The X coordinate
+    # <y> - The Y coordinate
+    # <z> - The Z coordinate
+    # <direction> - The direction the player is facing (N, E, S, W)
+    # <world_time> - The current world time in 24hr format (HH:mm)
+    hud-message: "<gold>XYZ: <white><x> <y> <z>  <gold><direction>      <world_time>"
 
   # Count Mob Deaths
   # Adds the ability to count the mob deaths during the time the system has started.
