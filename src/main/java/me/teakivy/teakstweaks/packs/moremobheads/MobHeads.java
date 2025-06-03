@@ -125,6 +125,9 @@ public class MobHeads extends BasePack {
             MMHDatapackCreator.addNormalAdvancement("zombie_head", "Zombie Head", Material.ZOMBIE_HEAD);
         }
 
+        CreakingHead.init();
+        TeaksTweaks.getInstance().getServer().getPluginManager().registerEvents(new CreakingHead(), TeaksTweaks.getInstance());
+
         loadJson();
 
         Bukkit.getScheduler().runTaskLater(TeaksTweaks.getInstance(), MMHDatapackCreator::createDataPack, 20);

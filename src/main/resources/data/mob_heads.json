@@ -33,6 +33,8 @@
   "cow.looting_bonus": 0.001,
   "charged_creeper.chance": 1,
   "charged_creeper.looting_bonus": 0,
+  "creaking.chance": 0.105,
+  "creaking.looting_bonus": 0.005,
   "creeper.chance": 0.005,
   "creeper.looting_bonus": 0.001,
   "dolphin.chance": 0.33,
