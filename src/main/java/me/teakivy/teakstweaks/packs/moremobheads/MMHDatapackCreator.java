@@ -76,6 +76,7 @@ public class MMHDatapackCreator {
         result = result.replace("<announce_in_chat>", Config.getBoolean("packs.more-mob-heads.advancements.announce-in-chat") ? "true" : "false");
 
         if (key.equalsIgnoreCase("illusioner_head")) return;
+        if (key.equalsIgnoreCase("killer_rabbit_head")) return;
         advancements.put(key, result);
     }
 
