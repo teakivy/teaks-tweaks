@@ -606,7 +606,8 @@
   "workstationhighlight.error.radius_out_of_bounds": "<red>De straal moet tussen 1 en 16 liggen!",
   "workstationhighlight.error.no_workstations_found": "<red>Geen werkstations in de buurt gevonden!",
   "workstationhighlight.error.no_job_site": "<red>De dichtstbijzijnde dorpeling heeft geen werkplek!",
-  "workstationhighlight.found": "<yellow>Het werkstation bevindt zich op <gold>[XYZ]: <x> <y> <z>"
+  "workstationhighlight.found": "<yellow>Het werkstation bevindt zich op <gold>[XYZ]: <x> <y> <z>",
+  "workstationhighlight.cleared": "<yellow>Alle markeringen zijn gewist."
 }
 
 

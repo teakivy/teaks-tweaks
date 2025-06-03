@@ -612,5 +612,6 @@
     "workstationhighlight.error.radius_out_of_bounds": "<red>Der Radius muss zwischen 1 und 16 liegen!",
     "workstationhighlight.error.no_workstations_found": "<red>Keine Arbeitsstationen von Dorfbewohnern in der Nähe gefunden!",
     "workstationhighlight.error.no_job_site": "<red>Der nächste Dorfbewohner hat keine Arbeitsstation!",
-    "workstationhighlight.found": "<yellow>Die Arbeitsstation befindet sich bei <gold>[XYZ]: <x> <y> <z>"
+    "workstationhighlight.found": "<yellow>Die Arbeitsstation befindet sich bei <gold>[XYZ]: <x> <y> <z>",
+    "workstationhighlight.cleared": "<yellow>Alle Hervorhebungen gelöscht."
 }

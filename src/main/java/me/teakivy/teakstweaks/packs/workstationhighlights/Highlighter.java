@@ -6,6 +6,7 @@ import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
@@ -44,6 +45,16 @@ public class Highlighter extends BasePack {
 
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), entity::remove, glowLength);
+    }
+
+    public static void clear() {
+        for (World world : Bukkit.getWorlds()) {
+            for (LivingEntity entity : world.getLivingEntities()) {
+                if (entity.getScoreboardTags().contains("glowing")) {
+                    entity.remove();
+                }
+            }
+        }
     }
 
 }

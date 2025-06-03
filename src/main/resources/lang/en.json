@@ -612,5 +612,6 @@
   "workstationhighlight.error.radius_out_of_bounds": "<red>Radius must be between 1 and 16!",
   "workstationhighlight.error.no_workstations_found": "<red>No villager workstations found nearby!",
   "workstationhighlight.error.no_job_site": "<red>The nearest villager does not have a job site!",
-  "workstationhighlight.found": "<yellow>The workstation is located at <gold>[XYZ]: <x> <y> <z>"
+  "workstationhighlight.found": "<yellow>The workstation is located at <gold>[XYZ]: <x> <y> <z>",
+  "workstationhighlight.cleared": "<yellow>Cleared all highlights."
 }

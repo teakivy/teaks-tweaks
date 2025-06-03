@@ -10,6 +10,7 @@ import org.bukkit.entity.memory.MemoryKey;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class WorkstationHighlightCommand extends AbstractCommand {
     };
 
     public WorkstationHighlightCommand() {
-        super(CommandType.PLAYER_ONLY, "workstation-highlights", "workstationhighlight", Permission.COMMAND_WORKSTATIONHIGHLIGHT, Arg.optional("profession"), Arg.optional("radius"));
+        super(CommandType.PLAYER_ONLY, "workstation-highlights", "workstationhighlight", Permission.COMMAND_WORKSTATIONHIGHLIGHT, Arg.optional("profession", "clear"), Arg.optional("radius"));
     }
 
     @Override
@@ -41,6 +42,12 @@ public class WorkstationHighlightCommand extends AbstractCommand {
         Player player = event.getPlayer();
         String profession = professionTypes[0];
         int radius = 3;
+
+        if (event.hasArgs(1) && event.getArg(0).equalsIgnoreCase("clear")) {
+            Highlighter.clear();
+            sendMessage("cleared");
+            return;
+        }
 
         if (event.hasArgs(1)) {
             if (!Arrays.toString(professionTypes).contains(event.getArg(0))) {
@@ -103,7 +110,9 @@ public class WorkstationHighlightCommand extends AbstractCommand {
 
     @Override
     public List<String> tabComplete(TabCompleteEvent event) {
-        if (event.isArg(0)) return Arrays.asList(professionTypes);
+        List<String> arg1 = new ArrayList<>(Arrays.asList(professionTypes));
+        arg1.add("clear");
+        if (event.isArg(0)) return arg1;
         if (event.isArg(1)) return List.of("[radius]");
 
         return null;

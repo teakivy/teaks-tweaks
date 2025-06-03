@@ -610,5 +610,6 @@
   "workstationhighlight.error.radius_out_of_bounds": "<red>Радиус должен быть между 1 и 16!",
   "workstationhighlight.error.no_workstations_found": "<red>Рядом не найдено рабочих мест для жителей!",
   "workstationhighlight.error.no_job_site": "<red>Ближайший житель не имеет места работы!",
-  "workstationhighlight.found": "<yellow>Рабочее место расположено на <gold>[XYZ]: <x> <y> <z>"
+  "workstationhighlight.found": "<yellow>Рабочее место расположено на <gold>[XYZ]: <x> <y> <z>",
+  "workstationhighlight.cleared": "<yellow>Все подсветки удалены."
 }

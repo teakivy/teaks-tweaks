@@ -614,5 +614,6 @@
   "workstationhighlight.error.radius_out_of_bounds": "<red>Le rayon doit être compris entre 1 et 16 !",
   "workstationhighlight.error.no_workstations_found": "<red>Aucune station de travail de villageois trouvée à proximité !",
   "workstationhighlight.error.no_job_site": "<red>Le villageois le plus proche est un chômeur !",
-  "workstationhighlight.found": "<yellow>La station de travail est située aux coordonnées <gold>[XYZ] : <x> <y> <z>"
+  "workstationhighlight.found": "<yellow>La station de travail est située aux coordonnées <gold>[XYZ] : <x> <y> <z>",
+  "workstationhighlight.cleared": "<yellow>Tous les surlignages ont été supprimés."
 }
