@@ -19,7 +19,7 @@
     "show_toast": false,
     "announce_to_chat": false,
     "hidden": false,
-    "background": "minecraft:textures/block/bricks.png"
+    "background": "block/bricks"
   },
   "criteria": {
     "requirement": {
