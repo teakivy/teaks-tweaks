@@ -161,6 +161,13 @@ public class GraveCreator {
         airTypes.add(Material.GLOW_LICHEN);
         airTypes.add(Material.FERN);
         airTypes.add(Material.LARGE_FERN);
+        airTypes.add(Material.TORCH);
+        airTypes.add(Material.COBWEB);
+        airTypes.add(Material.SEA_PICKLE);
+        if (config.getBoolean("allow-water-graves")) {
+            airTypes.add(Material.WATER);
+            airTypes.add(Material.BUBBLE_COLUMN);
+        }
         return airTypes;
     }
 

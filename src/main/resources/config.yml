@@ -441,6 +441,8 @@ packs:
     # Example: If level-threshold is 5, and a player dies with 4 levels, the player will drop their items normally
     # If level-threshold is 5, and a player dies with 5+ levels, the player will generate a grave
     level-threshold: 0
+    # Whether or not to allow graves to be placed in water, if false, graves will generate on the surface of the water (or the next clear space above the water)
+    allow-water-graves: true
 
   # Homes
   # Allows you to set homes ('/home set <name>') and teleport back to them ('/home <name>')
