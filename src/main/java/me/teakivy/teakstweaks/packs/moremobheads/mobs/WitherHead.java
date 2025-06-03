@@ -1,8 +1,14 @@
 package me.teakivy.teakstweaks.packs.moremobheads.mobs;
 
 import me.teakivy.teakstweaks.packs.moremobheads.BaseMobHead;
+import me.teakivy.teakstweaks.utils.Key;
+import org.bukkit.Bukkit;
 import org.bukkit.Sound;
+import org.bukkit.advancement.Advancement;
+import org.bukkit.advancement.AdvancementProgress;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
@@ -26,17 +32,35 @@ public class WitherHead extends BaseMobHead {
         if (!dropHead(event)) return;
 
 
+        Player player = event.getEntity().getKiller();
+        if (player == null) return;
+
+
         event.getDrops().add(getNormalHead());
+        awardAdvancement("wither_head", player);
 
         Random rand = new Random();
         int gen = rand.nextInt(4);
         switch (gen) {
-            case 0 -> event.getDrops().add(createHead(event, "Wither Projectile", this.textures.get("projectile")));
-            case 1 -> event.getDrops().add(createHead(event, "Blue Wither Projectile", this.textures.get("blue_projectile")));
+            case 0:
+                event.getDrops().add(createHead(event, "Wither Projectile", this.textures.get("projectile")));
+                awardAdvancement("wither_projectile", player);
+                break;
+            case 1:
+                event.getDrops().add(createHead(event, "Blue Wither Projectile", this.textures.get("blue_projectile")));
+                awardAdvancement("blue_wither_projectile", player);
+                break;
         }
     }
 
     public ItemStack getNormalHead() {
         return createHead(null, "Wither Head", this.textures.get("normal"));
+    }
+
+    private void awardAdvancement(String name, Player player) {
+        Advancement advancement = Bukkit.getAdvancement(Key.get("moremobheads/" + name));
+        if (advancement == null) return;
+        AdvancementProgress progress = player.getAdvancementProgress(advancement);
+        for(String criteria : progress.getRemainingCriteria()) progress.awardCriteria(criteria);
     }
 }
