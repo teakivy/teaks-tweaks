@@ -21,7 +21,6 @@ public class CowHead extends BaseMobHead {
     @Override
     public String getTexture(EntityDeathEvent event) {
         Cow cow = (Cow) event.getEntity();
-        System.out.println("Cow variant: " + cow.getVariant());
 
         String key = switch (Objects.requireNonNull(CowHead.CowVariant.fromVariant(cow.getVariant()))) {
             case WARM -> "warm";
@@ -35,7 +34,6 @@ public class CowHead extends BaseMobHead {
     @Override
     public String getName(EntityDeathEvent event) {
         Cow cow = (Cow) event.getEntity();
-        System.out.println("Cow variant: " + cow.getVariant());
 
         String key = switch (Objects.requireNonNull(CowHead.CowVariant.fromVariant(cow.getVariant()))) {
             case WARM -> "Warm";
@@ -43,7 +41,6 @@ public class CowHead extends BaseMobHead {
             case COLD -> "Cold";
         };
 
-        System.out.println("Cow name: " + key + " Cow");
         return key + " Cow";
     }
 

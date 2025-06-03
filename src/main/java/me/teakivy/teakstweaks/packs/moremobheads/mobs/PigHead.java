@@ -21,7 +21,6 @@ public class PigHead extends BaseMobHead {
     @Override
     public String getTexture(EntityDeathEvent event) {
         Pig pig = (Pig) event.getEntity();
-        System.out.println("Pig variant: " + pig.getVariant());
 
         String key = switch (Objects.requireNonNull(PigHead.PigVariant.fromVariant(pig.getVariant()))) {
             case WARM -> "warm";
@@ -35,7 +34,6 @@ public class PigHead extends BaseMobHead {
     @Override
     public String getName(EntityDeathEvent event) {
         Pig pig = (Pig) event.getEntity();
-        System.out.println("Pig variant: " + pig.getVariant());
 
         String key = switch (Objects.requireNonNull(PigHead.PigVariant.fromVariant(pig.getVariant()))) {
             case WARM -> "Warm";
@@ -43,7 +41,6 @@ public class PigHead extends BaseMobHead {
             case COLD -> "Cold";
         };
 
-        System.out.println("Pig name: " + key + " Pig");
         return key + " Pig";
     }
 
