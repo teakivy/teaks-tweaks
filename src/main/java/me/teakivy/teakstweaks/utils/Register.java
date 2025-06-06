@@ -7,6 +7,7 @@ import me.teakivy.teakstweaks.packs.alwaysdrop.AlwaysDrop;
 import me.teakivy.teakstweaks.packs.chunkloaders.Loader;
 import me.teakivy.teakstweaks.packs.collectiblebuddingamethyst.CollectibleBuddingAmethyst;
 import me.teakivy.teakstweaks.packs.confetticreepers.ConfettiCreeper;
+import me.teakivy.teakstweaks.packs.disposal.Disposal;
 import me.teakivy.teakstweaks.packs.elevators.Elevator;
 import me.teakivy.teakstweaks.packs.huskdropssand.HuskDropsSand;
 import me.teakivy.teakstweaks.packs.miniblocks.MiniBlocks;
@@ -149,7 +150,8 @@ public class Register {
             new MiniBlocks(),
             new WanderingTraderAnnouncements(),
             new Sawmill(),
-            new PaintingPicker()
+            new PaintingPicker(),
+            new Disposal()
         ).collect(Collectors.toMap(BasePack::getPath, x -> x));
 
     }
@@ -247,6 +249,7 @@ public class Register {
             new DeleteHomeCommand(),
             new AltsCommand(),
             new TPAHereCommand(),
+            new DisposalCommand(),
         };
 
         for (AbstractCommand cmd : cmds) {

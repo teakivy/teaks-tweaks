@@ -615,5 +615,10 @@
     "workstationhighlight.error.no_workstations_found": "<red>W pobliżu nie znaleziono żadnych stanowisk pracy wieśniaków!",
     "workstationhighlight.error.no_job_site": "<red>Najbliższy wieśniak nie ma stanowiska pracy!",
     "workstationhighlight.found": "<yellow>Stanowisko pracy znajduje się pod <gold>[XYZ]: <x> <y> <z>",
-    "workstationhighlight.cleared": "<yellow>Wszystkie podświetlenia zostały usunięte."
-  }
+    "workstationhighlight.cleared": "<yellow>Wszystkie podświetlenia zostały usunięte.",
+
+    "disposal.name": "Utylizacja",
+    "disposal.description": "Pozwala graczom na utylizację przedmiotów.<newline>Komenda: /disposal",
+    "disposal.command_description": "Utylizuj przedmioty."
+
+}

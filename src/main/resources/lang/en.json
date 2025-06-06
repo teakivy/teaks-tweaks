@@ -613,5 +613,9 @@
   "workstationhighlight.error.no_workstations_found": "<red>No villager workstations found nearby!",
   "workstationhighlight.error.no_job_site": "<red>The nearest villager does not have a job site!",
   "workstationhighlight.found": "<yellow>The workstation is located at <gold>[XYZ]: <x> <y> <z>",
-  "workstationhighlight.cleared": "<yellow>Cleared all highlights."
+  "workstationhighlight.cleared": "<yellow>Cleared all highlights.",
+
+  "disposal.name": "Disposal",
+  "disposal.description": "Allow players to dispose of items.<newline>Command: /disposal",
+  "disposal.command_description": "Dispose of items."
 }

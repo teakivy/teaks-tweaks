@@ -615,5 +615,10 @@
   "workstationhighlight.error.no_workstations_found": "<red>Aucune station de travail de villageois trouvée à proximité !",
   "workstationhighlight.error.no_job_site": "<red>Le villageois le plus proche est un chômeur !",
   "workstationhighlight.found": "<yellow>La station de travail est située aux coordonnées <gold>[XYZ] : <x> <y> <z>",
-  "workstationhighlight.cleared": "<yellow>Tous les surlignages ont été supprimés."
+  "workstationhighlight.cleared": "<yellow>Tous les surlignages ont été supprimés.",
+
+  "disposal.name": "Élimination",
+  "disposal.description": "Permet aux joueurs d’éliminer des objets.<newline>Commande : /disposal",
+  "disposal.command_description": "Éliminer des objets."
+
 }

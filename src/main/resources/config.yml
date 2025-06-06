@@ -306,6 +306,14 @@ packs:
     pumpkin-seeds-chance: 0.03
     beetroot-seeds-chance: 0.03
 
+  # Disposal
+  # Allows players to dispose of items.
+  #
+  # Commands:
+  # /disposal (Permission: teakstweaks.command.disposal)
+  disposal:
+    enabled: false
+
   # Double Shulker Shells
   # Makes all shulkers drop 2 shells.
   double-shulker-shells:

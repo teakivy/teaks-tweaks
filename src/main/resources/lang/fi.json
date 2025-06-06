@@ -614,5 +614,9 @@
   "workstationhighlight.error.no_workstations_found": "<red>Läheltä ei löytynyt yhtäkään kyläläisen työpöytää!",
   "workstationhighlight.error.no_job_site": "<red>Lähimmällä kyläläisellä ei ole työpaikkaa!",
   "workstationhighlight.found": "<yellow>Työpöytä on sijainnissa <gold>[XYZ]: <x> <y> <z>",
-  "workstationhighlight.cleared": "<yellow>Kaikki korostukset poistettu."
+  "workstationhighlight.cleared": "<yellow>Kaikki korostukset poistettu.",
+
+  "disposal.name": "Hävittäminen",
+  "disposal.description": "Sallii pelaajien hävittää esineitä.<newline>Komento: /disposal",
+  "disposal.command_description": "Hävitä esineitä."
 }

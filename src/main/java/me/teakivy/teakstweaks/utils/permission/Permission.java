@@ -38,6 +38,7 @@ public enum Permission {
     COMMAND_SPAWNINGSPHERES_REMOVE("command.spawningspheres.remove"),
     COMMAND_SPAWNINGSPHERES_TELEPORT("command.spawningspheres.teleport"),
     COMMAND_SUDOKU("command.sudoku"),
+    COMMAND_DISPOSAL("command.disposal"),
     COMMAND_TEAKSTWEAKS("command.teakstweaks"),
     COMMAND_TEAKSTWEAKS_PASTE("command.teakstweaks.paste", PermissionType.OP),
     COMMAND_TEAKSTWEAKS_GIVE("command.teakstweaks.give", PermissionType.OP),

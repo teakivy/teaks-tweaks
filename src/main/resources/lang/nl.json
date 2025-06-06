@@ -607,7 +607,12 @@
   "workstationhighlight.error.no_workstations_found": "<red>Geen werkstations in de buurt gevonden!",
   "workstationhighlight.error.no_job_site": "<red>De dichtstbijzijnde dorpeling heeft geen werkplek!",
   "workstationhighlight.found": "<yellow>Het werkstation bevindt zich op <gold>[XYZ]: <x> <y> <z>",
-  "workstationhighlight.cleared": "<yellow>Alle markeringen zijn gewist."
+  "workstationhighlight.cleared": "<yellow>Alle markeringen zijn gewist.",
+
+  "disposal.name": "Verwijderen",
+  "disposal.description": "Laat spelers items verwijderen.<newline>Commando: /disposal",
+  "disposal.command_description": "Verwijder items."
+
 }
 
 
