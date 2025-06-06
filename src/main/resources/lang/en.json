@@ -617,5 +617,8 @@
 
   "disposal.name": "Disposal",
   "disposal.description": "Allow players to dispose of items.<newline>Command: /disposal",
-  "disposal.command_description": "Dispose of items."
+  "disposal.command_description": "Dispose of items.",
+
+  "always_active_beacons.name": "Always Active Beacons",
+  "always_active_beacons.description": "Allows beacons to always give effects, regardless of if they have sky access."
 }

@@ -619,6 +619,8 @@
 
   "disposal.name": "Élimination",
   "disposal.description": "Permet aux joueurs d’éliminer des objets.<newline>Commande : /disposal",
-  "disposal.command_description": "Éliminer des objets."
+  "disposal.command_description": "Éliminer des objets.",
 
+  "always_active_beacons.name": "Pyramides toujours actives",
+  "always_active_beacons.description": "Permet aux pyramides de toujours fournir des effets, même sans accès au ciel."
 }

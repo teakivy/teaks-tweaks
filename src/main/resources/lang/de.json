@@ -617,6 +617,8 @@
 
     "disposal.name": "Entsorgung",
     "disposal.description": "Erlaubt Spielern, Gegenstände zu entsorgen.<newline>Befehl: /disposal",
-    "disposal.command_description": "Gegenstände entsorgen."
+    "disposal.command_description": "Gegenstände entsorgen.",
 
+    "always_active_beacons.name": "Immer aktive Leuchtfeuer",
+    "always_active_beacons.description": "Ermöglicht Leuchtfeuern, Effekte dauerhaft zu gewähren, unabhängig vom Himmelzugang."
 }

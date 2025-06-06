@@ -4,6 +4,7 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.commands.*;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.alwaysdrop.AlwaysDrop;
+import me.teakivy.teakstweaks.packs.alwaysactivebeacons.AlwaysActiveBeacons;
 import me.teakivy.teakstweaks.packs.chunkloaders.Loader;
 import me.teakivy.teakstweaks.packs.collectiblebuddingamethyst.CollectibleBuddingAmethyst;
 import me.teakivy.teakstweaks.packs.confetticreepers.ConfettiCreeper;
@@ -70,7 +71,6 @@ import me.teakivy.teakstweaks.packs.spectatorconduitpower.ConduitPower;
 import me.teakivy.teakstweaks.packs.spectatornightvision.NightVision;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.config.Config;
-import org.bukkit.entity.Painting;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -151,7 +151,8 @@ public class Register {
             new WanderingTraderAnnouncements(),
             new Sawmill(),
             new PaintingPicker(),
-            new Disposal()
+            new Disposal(),
+            new AlwaysActiveBeacons()
         ).collect(Collectors.toMap(BasePack::getPath, x -> x));
 
     }

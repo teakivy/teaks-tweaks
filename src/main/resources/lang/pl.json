@@ -619,6 +619,8 @@
 
     "disposal.name": "Utylizacja",
     "disposal.description": "Pozwala graczom na utylizację przedmiotów.<newline>Komenda: /disposal",
-    "disposal.command_description": "Utylizuj przedmioty."
+    "disposal.command_description": "Utylizuj przedmioty.",
 
+    "always_active_beacons.name": "Zawsze aktywne latarnie",
+    "always_active_beacons.description": "Pozwala latarniom zawsze dawać efekty, niezależnie od dostępu do nieba."
 }

@@ -611,8 +611,10 @@
 
   "disposal.name": "Verwijderen",
   "disposal.description": "Laat spelers items verwijderen.<newline>Commando: /disposal",
-  "disposal.command_description": "Verwijder items."
+  "disposal.command_description": "Verwijder items.",
 
+  "always_active_beacons.name": "Altijd actieve bakens",
+  "always_active_beacons.description": "Laat bakens altijd effecten geven, ongeacht of ze zicht op de lucht hebben."
 }
 
 

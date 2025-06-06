@@ -615,6 +615,8 @@
 
   "disposal.name": "Утилизация",
   "disposal.description": "Позволяет игрокам утилизировать предметы.<newline>Команда: /disposal",
-  "disposal.command_description": "Утилизировать предметы."
+  "disposal.command_description": "Утилизировать предметы.",
 
+  "always_active_beacons.name": "Всегда активные маяки",
+  "always_active_beacons.description": "Позволяет маякам всегда давать эффекты, независимо от доступа к небу."
 }

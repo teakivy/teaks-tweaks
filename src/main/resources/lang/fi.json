@@ -618,5 +618,8 @@
 
   "disposal.name": "Hävittäminen",
   "disposal.description": "Sallii pelaajien hävittää esineitä.<newline>Komento: /disposal",
-  "disposal.command_description": "Hävitä esineitä."
+  "disposal.command_description": "Hävitä esineitä.",
+
+  "always_active_beacons.name": "Aina aktiiviset majakat",
+  "always_active_beacons.description": "Mahdollistaa majakoiden antaa vaikutuksia aina, riippumatta taivasnäkyvyydestä."
 }
