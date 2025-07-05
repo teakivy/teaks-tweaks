@@ -3,7 +3,7 @@ package me.teakivy.teakstweaks.packs.playerheaddrops;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.packs.moremobheads.MobHeads;
-import me.teakivy.teakstweaks.utils.MM;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -38,10 +38,10 @@ public class HeadDrop extends BasePack {
         SkullMeta skull = (SkullMeta) item.getItemMeta();
         skull.setNoteBlockSound(Sound.ENTITY_PLAYER_HURT.getKey());
 
-        List<String> lore = new ArrayList<>();
+        List<Component> lore = new ArrayList<>();
         if (getConfig().getBoolean("display-killer"))
-            lore.add(MM.toString(getText("lore", insert("player", killer))));
-        skull.setLore(lore);
+            lore.add(getText("lore", insert("player", killer)));
+        skull.lore(lore);
         skull.setOwningPlayer(player);
         item.setItemMeta(skull);
         return item;

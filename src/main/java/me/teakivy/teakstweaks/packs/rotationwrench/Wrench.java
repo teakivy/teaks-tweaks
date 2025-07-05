@@ -4,11 +4,9 @@ import com.google.common.collect.Lists;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
-import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import me.teakivy.teakstweaks.utils.customitems.TItem;
 import me.teakivy.teakstweaks.utils.permission.Permission;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
@@ -24,7 +22,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -59,7 +56,7 @@ public class Wrench extends BasePack {
         meta.setUnbreakable(true);
         meta.setCustomModelData(4321);
         item.setDurability((short) 1);
-        meta.setDisplayName(MM.toString(getText("item_name")));
+        meta.displayName(getText("item_name"));
         item.setItemMeta(meta);
 
         CustomItem wrench = new CustomItem("rotation_wrench", item);

@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.utils.log;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
-import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -23,11 +22,11 @@ public class Logger {
 
         String text = "<dark_gray>[<gold><bold>TeaksTweaks</bold></gold>]<reset> " + getPrefix(level) + " <reset>" + MiniMessage.miniMessage().serialize(message);
 
-        MM.sender(Bukkit.getConsoleSender()).sendMessage(MiniMessage.miniMessage().deserialize(text));
+        Bukkit.getConsoleSender().sendMessage(MiniMessage.miniMessage().deserialize(text));
 
         if (!toAdmins) return;
 
-        Bukkit.getOnlinePlayers().stream().filter(Permission.MANAGE::check).forEach(player -> MM.player(player).sendMessage(message));
+        Bukkit.getOnlinePlayers().stream().filter(Permission.MANAGE::check).forEach(player -> player.sendMessage(message));
     }
 
     public static void log(LogLevel level, String message, boolean toAdmins) {

@@ -3,7 +3,6 @@ package me.teakivy.teakstweaks.commands;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.back.Back;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
@@ -53,12 +52,12 @@ public class SpawnCommand extends AbstractCommand {
         int z = player.getLocation().getBlockZ();
         Bukkit.getScheduler().runTaskLater(TeaksTweaks.getInstance(), () -> {
             if (x != player.getLocation().getBlockX() || y != player.getLocation().getBlockY() || z != player.getLocation().getBlockZ()) {
-                MM.sender(player).sendMessage(getError("teleport_moved"));
+                player.sendMessage(getError("teleport_moved"));
                 return;
             }
             Back.backLoc.put(player.getUniqueId(), player.getLocation());
             player.teleport(world.getSpawnLocation());
-            MM.sender(player).sendMessage(getText("teleporting"));
+            player.sendMessage(getText("teleporting"));
         }, teleportDelay * 20L);
     }
 }

@@ -3,7 +3,6 @@ package me.teakivy.teakstweaks.packs;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import me.teakivy.teakstweaks.utils.log.Logger;
-import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.metrics.CustomMetrics;
@@ -80,14 +79,14 @@ public class BasePack implements Listener {
 
 		lore.add(packType.getColor() + packType.getName());
 
-		List<String> loreComponents = new ArrayList<>();
+		List<Component> loreComponents = new ArrayList<>();
 		for (String line : lore) {
-			loreComponents.add(MM.toString(MiniMessage.miniMessage().deserialize("<reset>" + line).decoration(TextDecoration.ITALIC, false)));
+			loreComponents.add(MiniMessage.miniMessage().deserialize("<reset>" + line).decoration(TextDecoration.ITALIC, false));
 		}
 
 		ItemMeta meta = item.getItemMeta();
-		meta.setLore(loreComponents);
-		meta.setDisplayName(MM.toString(MiniMessage.miniMessage().deserialize(packType.getColor() + name).decoration(TextDecoration.ITALIC, false)));
+		meta.lore(loreComponents);
+		meta.displayName(MiniMessage.miniMessage().deserialize(packType.getColor() + name).decoration(TextDecoration.ITALIC, false));
 		item.setItemMeta(meta);
     }
 

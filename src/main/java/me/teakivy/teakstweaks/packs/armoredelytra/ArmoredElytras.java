@@ -6,8 +6,8 @@ import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Base64Serializer;
 import me.teakivy.teakstweaks.utils.ItemSerializer;
 import me.teakivy.teakstweaks.utils.Key;
-import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import net.kyori.adventure.text.Component;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
@@ -19,7 +19,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -29,7 +28,6 @@ import org.bukkit.util.Vector;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.UUID;
 
 public class ArmoredElytras extends BasePack {
     // TODO test this
@@ -142,18 +140,18 @@ public class ArmoredElytras extends BasePack {
 
         HashMap<Enchantment, Integer> enchantmentStorage = new HashMap<>();
 
-        String name = MM.toString(getText("item_name"));
+        Component name = getText("item_name");
         if (chestplate.hasItemMeta()) {
             if (chestplate.getItemMeta().hasDisplayName()) {
-                name = chestplate.getItemMeta().getDisplayName();
+                name = chestplate.getItemMeta().displayName();
             }
         }
         if (elytra.hasItemMeta()) {
             if (elytra.getItemMeta().hasDisplayName()) {
-                name = elytra.getItemMeta().getDisplayName();
+                name = elytra.getItemMeta().displayName();
             }
         }
-        meta.setDisplayName(name);
+        meta.displayName(name);
 
         NamespacedKey key = Key.get("armored_elytra");
         meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "true");

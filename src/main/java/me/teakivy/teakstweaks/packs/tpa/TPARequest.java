@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.tpa;
 
 import me.teakivy.teakstweaks.packs.back.Back;
-import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -65,10 +64,10 @@ public class TPARequest {
         getFrom().teleport(getTo().getLocation());
 
         Component toMessage = MiniMessage.miniMessage().deserialize(Translatable.getString("tpa.teleporting_to_you"), Placeholder.parsed("player", getFrom().getName()));
-        MM.player(getTo()).sendMessage(toMessage);
+        getTo().sendMessage(toMessage);
 
         Component fromMessage = MiniMessage.miniMessage().deserialize(Translatable.getString("tpa.teleporting"), Placeholder.parsed("player", getTo().getName()));
-        MM.player(getFrom()).sendMessage(fromMessage);
+        getFrom().sendMessage(fromMessage);
     }
 
     public enum TPAType {

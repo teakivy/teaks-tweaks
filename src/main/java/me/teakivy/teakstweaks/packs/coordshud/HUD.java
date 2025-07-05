@@ -34,6 +34,7 @@ public class HUD extends BasePack {
         running = true;
         DisplayHud.init();
         new Thread(() -> {
+            System.out.println("Starting Coords HUD task");
             taskID = Bukkit.getScheduler().runTaskTimer(TeaksTweaks.getInstance(), () -> {
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     if (!isEnabled(player)) continue;
