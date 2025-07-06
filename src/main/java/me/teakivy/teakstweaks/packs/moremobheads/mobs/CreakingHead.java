@@ -9,6 +9,7 @@ import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Registry;
 import org.bukkit.Sound;
 import org.bukkit.advancement.Advancement;
 import org.bukkit.advancement.AdvancementProgress;
@@ -80,7 +81,7 @@ public class CreakingHead implements Listener {
         }
 
         meta.setOwnerProfile(profile);
-        meta.setNoteBlockSound(Sound.ENTITY_CREAKING_AMBIENT.getKey());
+        meta.setNoteBlockSound(Registry.SOUNDS.getKey(Sound.ENTITY_CREAKING_AMBIENT));
         head.setItemMeta(meta);
         return head;
     }

@@ -52,7 +52,7 @@ public class Back extends BasePack {
                 List.of(PlayerTeleportEvent.TeleportCause.SPECTATE,
                         PlayerTeleportEvent.TeleportCause.COMMAND,
                         PlayerTeleportEvent.TeleportCause.PLUGIN,
-                        PlayerTeleportEvent.TeleportCause.CHORUS_FRUIT,
+                        PlayerTeleportEvent.TeleportCause.CONSUMABLE_EFFECT,
                         PlayerTeleportEvent.TeleportCause.END_GATEWAY,
                         PlayerTeleportEvent.TeleportCause.ENDER_PEARL);
         if (causes.contains(event.getCause())) {

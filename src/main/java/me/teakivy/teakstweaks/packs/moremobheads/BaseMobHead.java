@@ -10,6 +10,7 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.apache.commons.lang3.text.WordUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Registry;
 import org.bukkit.Sound;
 import org.bukkit.advancement.Advancement;
 import org.bukkit.advancement.AdvancementProgress;
@@ -135,7 +136,7 @@ public abstract class BaseMobHead implements Listener {
         }
 
         meta.setOwnerProfile(profile);
-        meta.setNoteBlockSound(getSound(event).getKey());
+        meta.setNoteBlockSound(Registry.SOUNDS.getKey(getSound(event)));
         head.setItemMeta(meta);
         return head;
     }
