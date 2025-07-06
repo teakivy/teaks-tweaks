@@ -99,7 +99,7 @@ public class SpawningSphere {
     }
 
     public void teleport(Player player) {
-        player.teleport(center);
+        player.teleportAsync(center);
     }
 
     public void setInUse(boolean inUse) {

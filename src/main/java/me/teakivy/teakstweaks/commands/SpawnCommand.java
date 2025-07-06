@@ -42,7 +42,7 @@ public class SpawnCommand extends AbstractCommand {
 
         if (teleportDelay <= 0) {
             Back.backLoc.put(player.getUniqueId(), player.getLocation());
-            player.teleport(world.getSpawnLocation());
+            player.teleportAsync(world.getSpawnLocation());
             sendMessage("teleporting");
             return;
         }
@@ -56,7 +56,7 @@ public class SpawnCommand extends AbstractCommand {
                 return;
             }
             Back.backLoc.put(player.getUniqueId(), player.getLocation());
-            player.teleport(world.getSpawnLocation());
+            player.teleportAsync(world.getSpawnLocation());
             player.sendMessage(getText("teleporting"));
         }, teleportDelay * 20L);
     }

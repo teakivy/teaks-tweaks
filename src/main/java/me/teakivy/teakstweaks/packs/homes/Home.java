@@ -61,7 +61,7 @@ public class Home {
             return;
         }
 
-        player.teleport(loc);
+        player.teleportAsync(loc);
         player.sendMessage(Translatable.get("homes.teleported", Placeholder.parsed("home", name)));
     }
 

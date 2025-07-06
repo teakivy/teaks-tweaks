@@ -30,7 +30,7 @@ public class Back extends BasePack {
             return;
         }
         if (backLoc.containsKey(player.getUniqueId())) {
-            player.teleport(backLoc.get(player.getUniqueId()));
+            player.teleportAsync(backLoc.get(player.getUniqueId()));
         } else {
             player.sendMessage(Translatable.get("back.error.no_back_location"));
         }

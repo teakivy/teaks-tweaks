@@ -61,7 +61,7 @@ public class TPARequest {
     public void accept() {
         accepted = true;
         Back.backLoc.put(getFrom().getUniqueId(), getTo().getLocation());
-        getFrom().teleport(getTo().getLocation());
+        getFrom().teleportAsync(getTo().getLocation());
 
         Component toMessage = MiniMessage.miniMessage().deserialize(Translatable.getString("tpa.teleporting_to_you"), Placeholder.parsed("player", getFrom().getName()));
         getTo().sendMessage(toMessage);

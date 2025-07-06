@@ -83,7 +83,7 @@ public class Elevator extends BasePack {
         Block elevatorSpot = findNextElevatorDown(standingBlock, standingBlock.getWorld().getMinHeight());
         if (elevatorSpot == null) return;
 
-        player.teleport(new Location(player.getWorld(), player.getLocation().getX(), elevatorSpot.getY() + 1, player.getLocation().getZ(), player.getLocation().getYaw(), player.getLocation().getPitch()));
+        player.teleportAsync(new Location(player.getWorld(), player.getLocation().getX(), elevatorSpot.getY() + 1, player.getLocation().getZ(), player.getLocation().getYaw(), player.getLocation().getPitch()));
         player.getWorld().spawnParticle(Particle.PORTAL, player.getLocation().add(0, 1, 0), 20, -.5, -.5, -.5, 4);
 
         if (!getConfig().getBoolean("play-sound")) return;
@@ -106,7 +106,7 @@ public class Elevator extends BasePack {
         if (elevatorSpot == null) return;
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(getPlugin(), () -> {
-            player.teleport(new Location(loc.getWorld(), loc.getX(), elevatorSpot.getY() + 1, loc.getZ(), loc.getYaw(), loc.getPitch()));
+            player.teleportAsync(new Location(loc.getWorld(), loc.getX(), elevatorSpot.getY() + 1, loc.getZ(), loc.getYaw(), loc.getPitch()));
             player.getWorld().spawnParticle(Particle.PORTAL, player.getLocation().add(0, 1, 0), 20, -.5, -.5, -.5, 4);
 
             if (!getConfig().getBoolean("play-sound")) return;
