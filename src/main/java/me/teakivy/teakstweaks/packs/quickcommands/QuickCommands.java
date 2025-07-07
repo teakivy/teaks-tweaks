@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.quickcommands;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
+import me.teakivy.teakstweaks.packs.doubleshulkershells.DoubleShulkers;
 import org.bukkit.Material;
 
 import java.util.List;
@@ -45,6 +46,10 @@ public class QuickCommands extends BasePack {
 
         if (getConfig().getBoolean("craftingtable")) {
             new CraftingTableQuickCommand().register();
+        }
+
+        if (getConfig().getBoolean("anvil")) {
+            new AnvilQuickCommand().register();
         }
     }
 }

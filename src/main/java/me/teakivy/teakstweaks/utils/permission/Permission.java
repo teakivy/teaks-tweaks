@@ -55,6 +55,7 @@ public enum Permission {
     COMMAND_FLY("command.fly", PermissionType.OP),
     COMMAND_ENDERCHEST("command.enderchest"),
     COMMAND_CRAFTINGTABLE("command.craftingtable"),
+    COMMAND_ANVIL("command.anvil"),
 
     ARMORED_ELYTRA_CREATE("armored-elytra.create"),
     ARMORED_ELYTRA_SEPARATE("armored-elytra.separate"),

@@ -650,6 +650,12 @@ packs:
     # Commands:
     # /craftingtable (Permission: teakstweaks.command.craftingtable)
     craftingtable: true
+    # Anvil command
+    # Opens an anvil, still requires appropriate XP
+    #
+    # Commands:
+    # /anvil (Permission: teakstweaks.command.anvil)
+    anvil: true
 
 
   # Real Time Clock
