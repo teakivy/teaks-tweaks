@@ -64,6 +64,7 @@ public class MobHeads extends BasePack {
         new GlowSquidHead();
         new GoatHead();
         new GuardianHead();
+        new HappyGhastHead();
         new HoglinHead();
         new HorseHead();
         new HuskHead();

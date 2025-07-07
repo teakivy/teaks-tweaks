@@ -69,6 +69,8 @@
   "screaming_goat.looting_bonus": 0,
   "guardian.chance": 0.005,
   "guardian.looting_bonus": 0.001,
+  "happy_ghast.chance": 0.1,
+  "happy_ghast.looting_bonus": 0.01,
   "hoglin.chance": 0.03,
   "hoglin.looting_bonus": 0.02,
   "horse.chance": 0.27,

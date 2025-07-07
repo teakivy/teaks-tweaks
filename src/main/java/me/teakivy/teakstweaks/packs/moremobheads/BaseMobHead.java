@@ -62,9 +62,10 @@ public abstract class BaseMobHead implements Listener {
         if (!dropHead(event)) return;
 
         Advancement advancement = Bukkit.getAdvancement(Key.get("moremobheads/" + getName(event).toLowerCase().replaceAll(" ", "_") + "_head"));
-        if (advancement == null) return;
-        AdvancementProgress progress = player.getAdvancementProgress(advancement);
-        for(String criteria : progress.getRemainingCriteria()) progress.awardCriteria(criteria);
+        if (advancement != null) {
+            AdvancementProgress progress = player.getAdvancementProgress(advancement);
+            for (String criteria : progress.getRemainingCriteria()) progress.awardCriteria(criteria);
+        }
 
         boolean hasHead = false;
         for (ItemStack item : event.getDrops()) {
