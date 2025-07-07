@@ -5,6 +5,7 @@ import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.MenuType;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class CraftingTableQuickCommand {
         public void playerCommand(PlayerCommandEvent event) {
             Player target = event.getPlayer();
 
-            target.openWorkbench(null, true);
+            target.openInventory(MenuType.CRAFTING.create(target));
         }
     }
 }
