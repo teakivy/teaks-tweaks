@@ -621,5 +621,8 @@
   "disposal.command_description": "Hävitä esineitä.",
 
   "always_active_beacons.name": "Aina aktiiviset majakat",
-  "always_active_beacons.description": "Mahdollistaa majakoiden antaa vaikutuksia aina, riippumatta taivasnäkyvyydestä."
+  "always_active_beacons.description": "Mahdollistaa majakoiden antaa vaikutuksia aina, riippumatta taivasnäkyvyydestä.",
+
+  "music_disc_engraver.name": "Musiikkilevyn Kaivertaja",
+  "music_disc_engraver.description": "Valmista tyhjä musiikkilevy 8 rautaharkosta ja timantista.<newline>Kaiverra musiikkilevy kivileikkurilla."
 }

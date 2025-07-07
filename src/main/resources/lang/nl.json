@@ -614,7 +614,10 @@
   "disposal.command_description": "Verwijder items.",
 
   "always_active_beacons.name": "Altijd actieve bakens",
-  "always_active_beacons.description": "Laat bakens altijd effecten geven, ongeacht of ze zicht op de lucht hebben."
+  "always_active_beacons.description": "Laat bakens altijd effecten geven, ongeacht of ze zicht op de lucht hebben.",
+
+  "music_disc_engraver.name": "Muziekplaat-Graveerder",
+  "music_disc_engraver.description": "Maak een lege muziekplaat met 8 ijzerstaven en een diamant.<newline>Graveer een muziekplaat met een steenhouwbank."
 }
 
 

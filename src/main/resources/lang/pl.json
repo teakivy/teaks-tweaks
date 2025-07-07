@@ -622,5 +622,8 @@
     "disposal.command_description": "Utylizuj przedmioty.",
 
     "always_active_beacons.name": "Zawsze aktywne latarnie",
-    "always_active_beacons.description": "Pozwala latarniom zawsze dawać efekty, niezależnie od dostępu do nieba."
+    "always_active_beacons.description": "Pozwala latarniom zawsze dawać efekty, niezależnie od dostępu do nieba.",
+
+    "music_disc_engraver.name": "Grawer Płyt Muzycznych",
+    "music_disc_engraver.description": "Wytwórz pustą płytę muzyczną z 8 sztabek żelaza i diamentu.<newline>Graweruj płytę muzyczną w przecinarce kamienia."
 }

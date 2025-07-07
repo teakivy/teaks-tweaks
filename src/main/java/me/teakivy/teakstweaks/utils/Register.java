@@ -12,6 +12,7 @@ import me.teakivy.teakstweaks.packs.disposal.Disposal;
 import me.teakivy.teakstweaks.packs.elevators.Elevator;
 import me.teakivy.teakstweaks.packs.huskdropssand.HuskDropsSand;
 import me.teakivy.teakstweaks.packs.miniblocks.MiniBlocks;
+import me.teakivy.teakstweaks.packs.musicdiscengraver.MusicDiscEngraver;
 import me.teakivy.teakstweaks.packs.paintingpicker.PaintingPicker;
 import me.teakivy.teakstweaks.packs.sawmill.Sawmill;
 import me.teakivy.teakstweaks.packs.wanderingtraderannouncements.WanderingTraderAnnouncements;
@@ -152,7 +153,8 @@ public class Register {
             new Sawmill(),
             new PaintingPicker(),
             new Disposal(),
-            new AlwaysActiveBeacons()
+            new AlwaysActiveBeacons(),
+            new MusicDiscEngraver()
         ).collect(Collectors.toMap(BasePack::getPath, x -> x));
 
     }

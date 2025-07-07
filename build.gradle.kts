@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "me.teakivy"
-version = "2.0.10-mc1.21.5"
+version = "2.0.10_u1-mc1.21.7"
 description = "150+ Toggleable Tweaks & Features including Vanilla Tweaks as a plugin, and more!"
 java.sourceCompatibility = JavaVersion.VERSION_21
 

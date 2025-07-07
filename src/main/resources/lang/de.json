@@ -620,5 +620,8 @@
     "disposal.command_description": "Gegenstände entsorgen.",
 
     "always_active_beacons.name": "Immer aktive Leuchtfeuer",
-    "always_active_beacons.description": "Ermöglicht Leuchtfeuern, Effekte dauerhaft zu gewähren, unabhängig vom Himmelzugang."
+    "always_active_beacons.description": "Ermöglicht Leuchtfeuern, Effekte dauerhaft zu gewähren, unabhängig vom Himmelzugang.",
+
+    "music_disc_engraver.name": "Musikplatten-Gravierer",
+    "music_disc_engraver.description": "Stelle eine leere Musikplatte mit 8 Eisenbarren und einem Diamanten her.<newline>Graviere eine Musikplatte mit einem Steinschneider."
 }

@@ -622,5 +622,8 @@
   "disposal.command_description": "Éliminer des objets.",
 
   "always_active_beacons.name": "Pyramides toujours actives",
-  "always_active_beacons.description": "Permet aux pyramides de toujours fournir des effets, même sans accès au ciel."
+  "always_active_beacons.description": "Permet aux pyramides de toujours fournir des effets, même sans accès au ciel.",
+
+  "music_disc_engraver.name": "Graveur de Disques Musicaux",
+  "music_disc_engraver.description": "Fabrique un disque musical vierge avec 8 lingots de fer et un diamant.<newline>Grave un disque musical avec un tailleur de pierre."
 }

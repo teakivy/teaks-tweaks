@@ -618,5 +618,8 @@
   "disposal.command_description": "Утилизировать предметы.",
 
   "always_active_beacons.name": "Всегда активные маяки",
-  "always_active_beacons.description": "Позволяет маякам всегда давать эффекты, независимо от доступа к небу."
+  "always_active_beacons.description": "Позволяет маякам всегда давать эффекты, независимо от доступа к небу.",
+
+  "music_disc_engraver.name": "Гравёр Музыкальных Дисков",
+  "music_disc_engraver.description": "Создайте пустой музыкальный диск из 8 железных слитков и алмаза.<newline>Гравируйте музыкальный диск на камнерезе."
 }

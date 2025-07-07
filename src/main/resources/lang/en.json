@@ -620,5 +620,8 @@
   "disposal.command_description": "Dispose of items.",
 
   "always_active_beacons.name": "Always Active Beacons",
-  "always_active_beacons.description": "Allows beacons to always give effects, regardless of if they have sky access."
+  "always_active_beacons.description": "Allows beacons to always give effects, regardless of if they have sky access.",
+
+  "music_disc_engraver.name": "Music Disc Engraver",
+  "music_disc_engraver.description": "Craft an Empty Music Disc with 8 Iron Ingots and a Diamond.<newline>Engrave a music disc with a Stonecutter."
 }

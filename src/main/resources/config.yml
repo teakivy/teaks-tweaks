@@ -574,6 +574,12 @@ packs:
       # Whether or not to display the mob head advancements in chat
       announce-in-chat: true
 
+  # Music Disc Engraver
+  # Craft an Empty Music Disc with 8 Iron Ingots and a Diamond.
+  # Engrave a music disc with a Stonecutter.
+  music-disc-engraver:
+    enabled: true
+
   # Nether Portal Coords
   # Adds a command that calculates where a nether portal must be placed in the other dimension. Useful for syncing up nether portals.
   #
@@ -1150,6 +1156,6 @@ crafting-tweaks:
 # Leave these options alone unless you know what you're doing.
 # Changing these values may cause unexpected issues!
 config:
-  created-version: 2.0.10-mc1.21.5
-  version: 2.0.10-mc1.21.5
+  created-version: 2.0.10_u1-mc1.21.7
+  version: 2.0.10_u1-mc1.21.7
   dev-mode: false
