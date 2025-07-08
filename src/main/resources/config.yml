@@ -650,6 +650,36 @@ packs:
     # Commands:
     # /craftingtable (Permission: teakstweaks.command.craftingtable)
     craftingtable: true
+    # Anvil command
+    # Opens an anvil, still requires appropriate XP
+    #
+    # Commands:
+    # /anvil (Permission: teakstweaks.command.anvil)
+    anvil: true
+    # Cartography Table command
+    # Opens the Cartography Table
+    #
+    # Commands:
+    # /cartography (Permission: teakstweaks.command.cartographytable)
+    cartographytable: true
+    # Grindstone command
+    # Opens a Grindstone
+    #
+    # Commands:
+    # /grindstone (Permission: teakstweaks.command.grindstone)
+    grindstone: true
+    # Loom command
+    # Opens a Loom
+    #
+    # Commands:
+    # /loom (Permission: teakstweaks.command.loom)
+    loom: true
+    # Smithing Table command
+    # Opens a Smithing Table
+    #
+    # Commands:
+    # /smithingtable (Permission: teakstweaks.command.smithingtable)
+    smithingtable: true
 
 
   # Real Time Clock

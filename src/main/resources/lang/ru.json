@@ -252,6 +252,11 @@
   "quick_commands.fly.command_description": "Переключить полёт.",
   "quick_commands.enderchest.command_description": "Открыть свой Эндер-сундук.",
   "quick_commands.craftingtable.command_description": "Открыть Верстак.",
+  "quick_commands.anvil.command_description": "Открыть наковальню.",
+  "quick_commands.cartographytable.command_description": "Открыть картографический стол.",
+  "quick_commands.grindstone.command_description": "Открыть точило.",
+  "quick_commands.loom.command_description": "Открыть ткацкий станок.",
+  "quick_commands.smithingtable.command_description": "Открыть кузнечный стол.",
   
   "slime_cream.name": "Слизневый крем",
   "slime_cream.description": "Нажмите ПКМ со сгустком слизи по котлу с лавой чтобы превратить его в магмовый крем.<newline>Нажмите ПКМ с магмовым кремом по котлу с водой чтобы превратить его в сгусток слизи.",

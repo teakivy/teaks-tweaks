@@ -255,6 +255,11 @@
     "quick_commands.fly.command_description": "Przełącz latanie.",
     "quick_commands.enderchest.command_description": "Otwórz swoją Skrzynię Kresu.",
     "quick_commands.craftingtable.command_description": "Otwórz stół rzemieślniczy.",
+    "quick_commands.anvil.command_description": "Otwórz Kowadło.",
+    "quick_commands.cartographytable.command_description": "Otwórz Stół Kartograficzny.",
+    "quick_commands.grindstone.command_description": "Otwórz Szlifierkę.",
+    "quick_commands.loom.command_description": "Otwórz Krosno.",
+    "quick_commands.smithingtable.command_description": "Otwórz Stół Kowalski.",
   
     "slime_cream.name": "Krem Slime",
     "slime_cream.description": "Zamień kulki slime na krem magmowy, klikając prawym przyciskiem myszy na kocioł z lawą.<newline>Zamień krem magmowy na kulki slime, klikając prawym przyciskiem na kocioł z wodą.",

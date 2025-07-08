@@ -255,6 +255,11 @@
   "quick_commands.fly.command_description": "Activez/désactivez le vol.",
   "quick_commands.enderchest.command_description": "Ouvrez votre enderchest.",
   "quick_commands.craftingtable.command_description": "Ouvrez une table de craft.",
+  "quick_commands.anvil.command_description": "Ouvrir une enclume.",
+  "quick_commands.cartographytable.command_description": "Ouvrir une table de cartographie.",
+  "quick_commands.grindstone.command_description": "Ouvrir une meule.",
+  "quick_commands.loom.command_description": "Ouvrir un métier à tisser.",
+  "quick_commands.smithingtable.command_description": "Ouvrir une table de forgeron.",
 
   "slime_cream.name": "Crème de Slime",
   "slime_cream.description": "Convertissez des Boules de Slime en Crème de Magma en cliquant avec un chaudron de lave.<newline>Convertissez de la Crème de Magma en Boules de Slime en cliquant avec un chaudron d'eau.",
