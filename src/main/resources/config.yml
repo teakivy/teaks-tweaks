@@ -656,6 +656,12 @@ packs:
     # Commands:
     # /anvil (Permission: teakstweaks.command.anvil)
     anvil: true
+    # Cartography Table command
+    # Opens the Cartography Table
+    #
+    # Commands:
+    # /cartography (Permission: teakstweaks.command.cartographytable)
+    cartographytable: true
 
 
   # Real Time Clock

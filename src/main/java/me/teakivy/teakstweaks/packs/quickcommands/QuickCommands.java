@@ -51,5 +51,9 @@ public class QuickCommands extends BasePack {
         if (getConfig().getBoolean("anvil")) {
             new AnvilQuickCommand().register();
         }
+
+        if (getConfig().getBoolean("cartographytable")) {
+            new CartographyTableQuickCommand().register();
+        }
     }
 }
