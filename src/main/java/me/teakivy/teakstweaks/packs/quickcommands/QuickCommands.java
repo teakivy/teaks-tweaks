@@ -55,5 +55,9 @@ public class QuickCommands extends BasePack {
         if (getConfig().getBoolean("cartographytable")) {
             new CartographyTableQuickCommand().register();
         }
+
+        if (getConfig().getBoolean("grindstone")) {
+            new GrindstoneQuickCommand().register();
+        }
     }
 }

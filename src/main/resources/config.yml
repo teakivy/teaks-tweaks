@@ -662,6 +662,12 @@ packs:
     # Commands:
     # /cartography (Permission: teakstweaks.command.cartographytable)
     cartographytable: true
+    # Grindstone command
+    # Opens a Grindstone
+    #
+    # Commands:
+    # /grindstone (Permission: teakstweaks.command.grindstone)
+    grindstone: true
 
 
   # Real Time Clock
