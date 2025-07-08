@@ -59,5 +59,9 @@ public class QuickCommands extends BasePack {
         if (getConfig().getBoolean("grindstone")) {
             new GrindstoneQuickCommand().register();
         }
+
+        if (getConfig().getBoolean("loom")) {
+            new LoomQuickCommand().register();
+        }
     }
 }

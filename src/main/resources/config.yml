@@ -668,6 +668,12 @@ packs:
     # Commands:
     # /grindstone (Permission: teakstweaks.command.grindstone)
     grindstone: true
+    # Loom command
+    # Opens a Loom
+    #
+    # Commands:
+    # /loom (Permission: teakstweaks.command.loom)
+    loom: true
 
 
   # Real Time Clock
