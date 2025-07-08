@@ -59,6 +59,7 @@ public enum Permission {
     COMMAND_CARTOGRAPHYTABLE("command.cartographytable"),
     COMMAND_GRINDSTONE("command.grindstone"),
     COMMAND_LOOM("command.loom"),
+    COMMAND_SMITHINGTABLE("command.smithingtable"),
 
     ARMORED_ELYTRA_CREATE("armored-elytra.create"),
     ARMORED_ELYTRA_SEPARATE("armored-elytra.separate"),

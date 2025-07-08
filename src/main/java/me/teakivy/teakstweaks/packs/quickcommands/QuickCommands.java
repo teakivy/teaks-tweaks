@@ -63,5 +63,9 @@ public class QuickCommands extends BasePack {
         if (getConfig().getBoolean("loom")) {
             new LoomQuickCommand().register();
         }
+
+        if (getConfig().getBoolean("smithingtable")) {
+            new SmithingTableQuickCommand().register();
+        }
     }
 }

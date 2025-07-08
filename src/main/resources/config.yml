@@ -674,6 +674,12 @@ packs:
     # Commands:
     # /loom (Permission: teakstweaks.command.loom)
     loom: true
+    # Smithing Table command
+    # Opens a Smithing Table
+    #
+    # Commands:
+    # /smithingtable (Permission: teakstweaks.command.smithingtable)
+    smithingtable: true
 
 
   # Real Time Clock
