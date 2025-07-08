@@ -253,6 +253,11 @@
     "quick_commands.fly.command_description": "Schalte den Flugmodus um.",
     "quick_commands.enderchest.command_description": "Öffne deine Endertruhe.",
     "quick_commands.craftingtable.command_description": "Öffne eine Werkbank.",
+    "quick_commands.anvil.command_description": "Öffne einen Amboss.",
+    "quick_commands.cartographytable.command_description": "Öffne einen Kartentisch.",
+    "quick_commands.grindstone.command_description": "Öffne einen Schleifstein.",
+    "quick_commands.loom.command_description": "Öffne einen Webstuhl.",
+    "quick_commands.smithingtable.command_description": "Öffne einen Schmiedetisch.",
   
     "slime_cream.name": "Schleimcreme",
     "slime_cream.description": "Verwandle Schleimbälle in Magmacreme, indem du auf einen Lavakessel rechtsklickst.<newline>Verwandle Magmacreme in Schleimbälle, indem du auf einen Wasserkessel rechtsklickst.",
@@ -620,5 +625,8 @@
     "disposal.command_description": "Gegenstände entsorgen.",
 
     "always_active_beacons.name": "Immer aktive Leuchtfeuer",
-    "always_active_beacons.description": "Ermöglicht Leuchtfeuern, Effekte dauerhaft zu gewähren, unabhängig vom Himmelzugang."
+    "always_active_beacons.description": "Ermöglicht Leuchtfeuern, Effekte dauerhaft zu gewähren, unabhängig vom Himmelzugang.",
+
+    "music_disc_engraver.name": "Musikplatten-Gravierer",
+    "music_disc_engraver.description": "Stelle eine leere Musikplatte mit 8 Eisenbarren und einem Diamanten her.<newline>Graviere eine Musikplatte mit einem Steinschneider."
 }

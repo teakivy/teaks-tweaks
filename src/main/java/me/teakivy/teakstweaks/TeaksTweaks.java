@@ -14,7 +14,6 @@ import me.teakivy.teakstweaks.utils.recipe.RecipeManager;
 import me.teakivy.teakstweaks.utils.update.UpdateChecker;
 import me.teakivy.teakstweaks.utils.update.UpdateJoinAlert;
 import me.teakivy.teakstweaks.utils.update.VersionManager;
-import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -31,21 +30,9 @@ import static me.teakivy.teakstweaks.utils.metrics.CustomMetrics.registerCustomM
 public final class TeaksTweaks extends JavaPlugin implements Listener {
     private final ArrayList<String> activePacks = new ArrayList<>();
     private final ArrayList<String> activeCraftingTweaks = new ArrayList<>();
-    private BukkitAudiences adventure;
 
     private Register register;
 
-
-    public BukkitAudiences adventure() {
-        if(this.adventure == null) {
-            throw new IllegalStateException("Tried to access Adventure when the plugin was disabled!");
-        }
-        return this.adventure;
-    }
-
-    public static BukkitAudiences getAdventure() {
-        return getInstance().adventure();
-    }
     /**
      * Called when the plugin is enabled
      */
@@ -54,7 +41,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
 
         VersionManager.init();
         // Initialize an audiences instance for the plugin
-        this.adventure = BukkitAudiences.create(this);
         // Credits
         createCredits();
 
@@ -117,10 +103,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     public void onDisable() {
         // Plugin shutdown logic
         Logger.info(Translatable.get("startup.plugin.shutting_down"));
-        if(this.adventure != null) {
-            this.adventure.close();
-            this.adventure = null;
-        }
     }
 
     /**

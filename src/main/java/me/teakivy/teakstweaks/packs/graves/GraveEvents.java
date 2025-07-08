@@ -3,7 +3,6 @@ package me.teakivy.teakstweaks.packs.graves;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
-import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.XPUtils;
 import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import me.teakivy.teakstweaks.utils.customitems.TItem;
@@ -44,12 +43,12 @@ public class GraveEvents extends BasePack {
 
         ItemStack graveKey = new ItemStack(Material.TRIPWIRE_HOOK);
         ItemMeta keyMeta = graveKey.getItemMeta();
-        keyMeta.setDisplayName(MM.toString(Translatable.get("graves.key.item_name")));
+        keyMeta.displayName(Translatable.get("graves.key.item_name"));
         graveKey.addUnsafeEnchantment(Enchantment.CHANNELING, 1);
         keyMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        List<String> lore = new ArrayList<>();
-        lore.add(MM.toString(Translatable.get("graves.key.item_lore")));
-        keyMeta.setLore(lore);
+        List<Component> lore = new ArrayList<>();
+        lore.add(Translatable.get("graves.key.item_lore"));
+        keyMeta.lore(lore);
         graveKey.setItemMeta(keyMeta);
 
         CustomItem key = new CustomItem("grave_key", graveKey);
@@ -114,7 +113,7 @@ public class GraveEvents extends BasePack {
                 }
                 return;
             } else {
-                MM.player(event.getPlayer()).sendMessage(getText("cant_rob_grave"));
+                event.getPlayer().sendMessage(getText("cant_rob_grave"));
             }
         }
         event.setCancelled(true);
@@ -185,7 +184,7 @@ public class GraveEvents extends BasePack {
                             insert("y", (int) Math.floor(loc.getY())),
                             insert("z", (int) Math.floor(loc.getZ())),
                             insert("world", loc.getWorld().getName()));
-            MM.player(player).sendMessage(lastGrave);
+            player.sendMessage(lastGrave);
             PersistentDataContainer playerData = player.getPersistentDataContainer();
             playerData.set(Key.get("graves_last"), PersistentDataType.STRING, MiniMessage.miniMessage().serialize(lastGrave));
         }

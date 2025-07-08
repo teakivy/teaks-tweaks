@@ -1,8 +1,8 @@
 package me.teakivy.teakstweaks.packs.coordshud;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
-import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
@@ -34,7 +34,7 @@ public class DisplayHud {
             String directionAbbr = getDirectionAbbr(playerDirection);
             String worldTime = getWorldTime();
 
-            MM.player(player).sendActionBar(MiniMessage.miniMessage().deserialize(
+            player.sendActionBar(MiniMessage.miniMessage().deserialize(
                     hudMessage,
                     Placeholder.parsed("x", loc.getBlockX() + ""),
                     Placeholder.parsed("y", loc.getBlockY() + ""),

@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.utils.command;
 
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.log.Logger;
-import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.permission.Permission;
@@ -240,7 +239,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
             if (arg.isRequired()) requiredArgs++;
         }
         if (args.length < requiredArgs) {
-            MM.sender(sender).sendMessage(getUsage());
+            sender.sendMessage(getUsage());
             return true;
         }
 
@@ -268,7 +267,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param event The command event
      */
     public void command(CommandEvent event) {
-        MM.sender(this.sender).sendMessage(getUsage());
+        this.sender.sendMessage(getUsage());
     }
 
     /**
@@ -276,7 +275,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
      * @param event The command event
      */
     public void playerCommand(PlayerCommandEvent event) {
-        MM.sender(this.sender).sendMessage(getUsage());
+        this.sender.sendMessage(getUsage());
     }
 
 
@@ -350,7 +349,7 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     public Player checkPlayer() {
         if (sender instanceof Player) return (Player) sender;
 
-        MM.sender(this.sender).sendMessage(ErrorType.NOT_PLAYER.m());
+        this.sender.sendMessage(ErrorType.NOT_PLAYER.m());
         return null;
     }
 
@@ -461,27 +460,27 @@ public abstract class AbstractCommand implements CommandExecutor, TabExecutor {
     }
 
     public void sendMessage(String key, TagResolver... resolvers) {
-        MM.sender(this.sender).sendMessage(getText(key, resolvers));
+        this.sender.sendMessage(getText(key, resolvers));
     }
 
     public void sendError(String key, TagResolver... resolvers) {
-        MM.sender(this.sender).sendMessage(getError(key, resolvers));
+        this.sender.sendMessage(getError(key, resolvers));
     }
 
     public void sendError(ErrorType errorType) {
-        MM.sender(this.sender).sendMessage(errorType.m());
+        this.sender.sendMessage(errorType.m());
     }
 
     public void sendMessage(Component message) {
-        MM.sender(this.sender).sendMessage(message);
+        this.sender.sendMessage(message);
     }
 
     public void sendString(String message) {
-        MM.sender(this.sender).sendMessage(newText(message));
+        this.sender.sendMessage(newText(message));
     }
 
     public void sendText(String message, TagResolver... resolvers) {
-        MM.sender(this.sender).sendMessage(newText(message, resolvers));
+        this.sender.sendMessage(newText(message, resolvers));
     }
 
     public TagResolver.Single insert(@Subst("") String key, String value) {

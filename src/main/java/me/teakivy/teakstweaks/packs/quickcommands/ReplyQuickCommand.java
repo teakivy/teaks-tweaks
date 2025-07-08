@@ -1,6 +1,5 @@
 package me.teakivy.teakstweaks.packs.quickcommands;
 
-import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.command.*;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.permission.Permission;
@@ -42,7 +41,7 @@ public class ReplyQuickCommand {
                 message.append(event.getArg(i)).append(" ");
             }
 
-            MM.player(target).sendMessage(get("quick_commands.message.whisper_to_you", Placeholder.parsed("player", player.getName()), Placeholder.parsed("message", message.toString())));
+            target.sendMessage(get("quick_commands.message.whisper_to_you", Placeholder.parsed("player", player.getName()), Placeholder.parsed("message", message.toString())));
             sendMessage("whisper_to_player", Placeholder.parsed("player", player.getName()), Placeholder.parsed("message", message.toString()));
 
             lastMessage.put(player.getUniqueId(), target.getUniqueId());
@@ -91,7 +90,7 @@ public class ReplyQuickCommand {
                 message.append(arg).append(" ");
             }
 
-            MM.player(target).sendMessage(get("quick_commands.message.whisper_to_you", Placeholder.parsed("player", player.getName()), Placeholder.parsed("message", message.toString())));
+            target.sendMessage(get("quick_commands.message.whisper_to_you", Placeholder.parsed("player", player.getName()), Placeholder.parsed("message", message.toString())));
             sendMessage(get("quick_commands.message.whisper_to_player", Placeholder.parsed("player", player.getName()), Placeholder.parsed("message", message.toString())));
 
             lastMessage.put(player.getUniqueId(), targetUUID);

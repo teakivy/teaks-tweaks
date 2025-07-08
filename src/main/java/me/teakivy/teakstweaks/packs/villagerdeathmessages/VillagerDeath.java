@@ -3,7 +3,6 @@ package me.teakivy.teakstweaks.packs.villagerdeathmessages;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.log.Logger;
-import me.teakivy.teakstweaks.utils.MM;
 import net.kyori.adventure.text.Component;
 import org.bukkit.*;
 import org.bukkit.entity.EntityType;
@@ -29,7 +28,7 @@ public class VillagerDeath extends BasePack {
 
             if (getConfig().getBoolean("show-in-chat")) {
                 for (Player player : Bukkit.getOnlinePlayers()) {
-                    player.sendMessage(MM.toString(deathMessage));
+                    player.sendMessage(deathMessage);
                 }
                 return;
             }

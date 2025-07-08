@@ -253,6 +253,11 @@
   "quick_commands.fly.command_description": "Toggle flight.",
   "quick_commands.enderchest.command_description": "Open your Ender Chest.",
   "quick_commands.craftingtable.command_description": "Open a Crafting Table.",
+  "quick_commands.anvil.command_description": "Open an Anvil.",
+  "quick_commands.cartographytable.command_description": "Open a Cartography Table.",
+  "quick_commands.grindstone.command_description": "Open a Grindstone.",
+  "quick_commands.loom.command_description": "Open a Loom.",
+  "quick_commands.smithingtable.command_description": "Open a Smithing Table.",
 
   "slime_cream.name": "Slime Cream",
   "slime_cream.description": "Convert Slime Balls to Magma Cream by right-clicking a lava cauldron.<newline>Convert Magma Cream to Slime Balls by right-clicking a water cauldron.",
@@ -620,5 +625,8 @@
   "disposal.command_description": "Dispose of items.",
 
   "always_active_beacons.name": "Always Active Beacons",
-  "always_active_beacons.description": "Allows beacons to always give effects, regardless of if they have sky access."
+  "always_active_beacons.description": "Allows beacons to always give effects, regardless of if they have sky access.",
+
+  "music_disc_engraver.name": "Music Disc Engraver",
+  "music_disc_engraver.description": "Craft an Empty Music Disc with 8 Iron Ingots and a Diamond.<newline>Engrave a music disc with a Stonecutter."
 }

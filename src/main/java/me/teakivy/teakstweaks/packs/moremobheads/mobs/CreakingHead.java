@@ -4,12 +4,12 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.moremobheads.MMHDatapackCreator;
 import me.teakivy.teakstweaks.packs.moremobheads.MobHeads;
 import me.teakivy.teakstweaks.utils.Key;
-import me.teakivy.teakstweaks.utils.MM;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Registry;
 import org.bukkit.Sound;
 import org.bukkit.advancement.Advancement;
 import org.bukkit.advancement.AdvancementProgress;
@@ -71,7 +71,7 @@ public class CreakingHead implements Listener {
         PlayerProfile profile = Bukkit.createPlayerProfile(UUID.fromString("fdb5599c-1b14-440e-82df-d69719703d21"), "MobHead");
         SkullMeta meta = (SkullMeta)head.getItemMeta();
         Component c = MiniMessage.miniMessage().deserialize("<yellow>Creaking's Head").decoration(TextDecoration.ITALIC, false);
-        meta.setDisplayName(MM.toString(c));
+        meta.displayName(c);
         PlayerTextures textures = profile.getTextures();
 
         try {
@@ -81,7 +81,7 @@ public class CreakingHead implements Listener {
         }
 
         meta.setOwnerProfile(profile);
-        meta.setNoteBlockSound(Sound.ENTITY_CREAKING_AMBIENT.getKey());
+        meta.setNoteBlockSound(Registry.SOUNDS.getKey(Sound.ENTITY_CREAKING_AMBIENT));
         head.setItemMeta(meta);
         return head;
     }

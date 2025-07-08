@@ -2,12 +2,10 @@ package me.teakivy.teakstweaks.packs.chatcolors;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
-import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.inventory.PrepareAnvilEvent;
@@ -25,7 +23,7 @@ public class ChatColors extends BasePack {
     public void onChat(AsyncPlayerChatEvent event) {
         if (!Permission.CHAT_COLORS_CHAT.check(event.getPlayer())) return;
 
-        event.setMessage(MM.toString(legacyToMiniMessage(newText(event.getMessage()))));
+        event.setMessage(legacyToMiniMessage(newText(event.getMessage())).toString());
     }
 
     @EventHandler
@@ -39,7 +37,7 @@ public class ChatColors extends BasePack {
         if (meta == null) return;
         if (!meta.hasDisplayName()) return;
 
-        meta.setDisplayName(MM.toString(legacyToMiniMessage(newText(meta.getDisplayName()))));
+        meta.displayName(legacyToMiniMessage(newText(meta.getDisplayName())));
         result.setItemMeta(meta);
         event.setResult(result);
     }
@@ -48,9 +46,9 @@ public class ChatColors extends BasePack {
     public void onSign(SignChangeEvent event) {
         if (!Permission.CHAT_COLORS_SIGNS.check(event.getPlayer())) return;
 
-        for (int i = 0; i < event.getLines().length; i++) {
-            if (event.getLine(i) == null) continue;
-            event.setLine(i, MM.toString(legacyToMiniMessage(newText(event.getLine(i)))));
+        for (int i = 0; i < event.lines().size(); i++) {
+            if (event.line(i) == null) continue;
+            event.line(i, legacyToMiniMessage(newText(event.getLine(i))));
         }
     }
 

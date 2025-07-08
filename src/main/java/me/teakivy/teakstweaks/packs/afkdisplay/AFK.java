@@ -4,9 +4,9 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.log.Logger;
-import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -51,9 +51,9 @@ public class AFK extends BasePack {
         kickAfter = getConfig().getInt("kick-after");
 
         if (getConfig().getBoolean("display-badge")) {
-            afkTeam.setPrefix(MM.toString(newText(getConfig().getString("badge"))));
+            afkTeam.prefix(newText(getConfig().getString("badge")));
         } else {
-            afkTeam.setPrefix("");
+            afkTeam.prefix(Component.text(""));
         }
 
         for (Player player : Bukkit.getOnlinePlayers()) {
@@ -80,13 +80,13 @@ public class AFK extends BasePack {
                 } else {
                     if (player != null) {
                         if (kickAfter == 0) {
-                            player.kickPlayer(MM.toString(newText(getConfig().getString("kick-message"))));
+                            player.kick(newText(getConfig().getString("kick-message")));
                             AFKKickEvent afkKickEvent = new AFKKickEvent(player);
                             Bukkit.getPluginManager().callEvent(afkKickEvent);
                         }
                         if (kickAfter > 0) {
                             if (lastMove.get(uuid) + (afkMinutes * 60 * 1000) + (kickAfter * 60 * 1000) < System.currentTimeMillis()) {
-                                player.kickPlayer(MM.toString(newText(getConfig().getString("kick-message"))));
+                                player.kick(newText(getConfig().getString("kick-message")));
                                 AFKKickEvent afkKickEvent = new AFKKickEvent(player);
                                 Bukkit.getPluginManager().callEvent(afkKickEvent);
                             }
@@ -192,12 +192,12 @@ public class AFK extends BasePack {
     public static void displayAFKMessage(Player player, Boolean isAFK) {
         if (isAFK) {
             if (Config.getBoolean("packs.afk-display.message.display-to-self")) {
-                MM.player(player).sendMessage(Translatable.get("afk_display.self_now_afk"));
+                player.sendMessage(Translatable.get("afk_display.self_now_afk"));
             }
             if (Config.getBoolean("packs.afk-display.message.display-to-everyone")) {
                 for (Player player1 : Bukkit.getOnlinePlayers()) {
                     if (player1.getUniqueId() != player.getUniqueId()) {
-                        MM.player(player1).sendMessage(Translatable.get("afk_display.other_now_afk", insert("player", player.getName())));
+                        player1.sendMessage(Translatable.get("afk_display.other_now_afk", insert("player", player.getName())));
                     }
                 }
             }
@@ -206,12 +206,12 @@ public class AFK extends BasePack {
             }
         } else {
             if (Config.getBoolean("packs.afk-display.message.display-to-self")) {
-                MM.player(player).sendMessage(Translatable.get("afk_display.self_not_afk"));
+                player.sendMessage(Translatable.get("afk_display.self_not_afk"));
             }
             if (Config.getBoolean("packs.afk-display.message.display-to-everyone")) {
                 for (Player player1 : Bukkit.getOnlinePlayers()) {
                     if (player1.getUniqueId() != player.getUniqueId()) {
-                        MM.player(player1).sendMessage(Translatable.get("afk_display.other_not_afk", insert("player", player.getName())));
+                        player1.sendMessage(Translatable.get("afk_display.other_not_afk", insert("player", player.getName())));
                     }
                 }
             }

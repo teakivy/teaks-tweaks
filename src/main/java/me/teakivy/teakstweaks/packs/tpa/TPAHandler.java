@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.tpa;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
-import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -72,10 +71,10 @@ public class TPAHandler {
 
         String text = "<hover:show_text:\"" + getString("request_message.hover") + "\"><click:run_command:/tpa accept " + sender.getName() + ">" + getString(request.getType().getKey() + ".request_message") + "</click></hover>";
         Component targetMessage = MiniMessage.miniMessage().deserialize(text, Placeholder.parsed("player", sender.getName()));
-        MM.player(target).sendMessage(targetMessage);
+        target.sendMessage(targetMessage);
 
         Component senderMessage = MiniMessage.miniMessage().deserialize(getString(request.getType().getKey() + ".request_sent"), Placeholder.parsed("player", target.getName()));
-        MM.player(sender).sendMessage(senderMessage);
+        sender.sendMessage(senderMessage);
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
             if (request.isAccepted()) return;
@@ -96,13 +95,13 @@ public class TPAHandler {
 
     public static void expireRequest(TPARequest request) {
         Component senderMessage = MiniMessage.miniMessage().deserialize(getString("request_expired"), Placeholder.parsed("player", request.getTarget().getName()));
-        MM.player(request.getSender()).sendMessage(senderMessage);
+        request.getSender().sendMessage(senderMessage);
         tpaRequests.remove(request);
     }
 
     public static void cancelRequest(TPARequest request) {
         Component senderMessage = MiniMessage.miniMessage().deserialize(getString("request_cancelled"), Placeholder.parsed("player", request.getTarget().getName()));
-        MM.player(request.getSender()).sendMessage(senderMessage);
+        request.getSender().sendMessage(senderMessage);
         tpaRequests.remove(request);
     }
 }

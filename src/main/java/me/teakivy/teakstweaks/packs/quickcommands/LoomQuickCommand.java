@@ -9,23 +9,23 @@ import org.bukkit.inventory.MenuType;
 
 import java.util.List;
 
-public class CraftingTableQuickCommand {
+public class LoomQuickCommand {
 
     public void register() {
-        new CraftingTableQuickCommand.CraftingTableCommand().register();
+        new LoomQuickCommand.LoomCommand().register();
     }
 
 
-    class CraftingTableCommand extends AbstractCommand {
-        public CraftingTableCommand() {
-            super(CommandType.PLAYER_ONLY, "quick-commands", "craftingtable", Permission.COMMAND_CRAFTINGTABLE, List.of("craft", "workbench", "wb"), "quick_commands.craftingtable");
+    class LoomCommand extends AbstractCommand {
+        public LoomCommand() {
+            super(CommandType.PLAYER_ONLY, "quick-commands", "loom", Permission.COMMAND_LOOM, List.of("loom"), "quick_commands.loom");
         }
 
         @Override
         public void playerCommand(PlayerCommandEvent event) {
             Player target = event.getPlayer();
 
-            target.openInventory(MenuType.CRAFTING.create(target));
+            target.openInventory(MenuType.LOOM.create(target));
         }
     }
 }

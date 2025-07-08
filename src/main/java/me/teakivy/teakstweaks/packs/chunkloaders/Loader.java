@@ -2,9 +2,7 @@ package me.teakivy.teakstweaks.packs.chunkloaders;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
-import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.config.Config;
-import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -36,7 +34,7 @@ public class Loader extends BasePack {
                 if (block.getType() != Material.LODESTONE) return;
                 if (block.getChunk().isForceLoaded()) {
                     this.cancel();
-                    MM.player(event.getPlayer()).sendMessage(getText("already_loaded"));
+                    event.getPlayer().sendMessage(getText("already_loaded"));
                     return;
                 }
 
@@ -57,7 +55,7 @@ public class Loader extends BasePack {
                 newItem.setAmount(newItem.getAmount() - 1);
                 item.setItemStack(newItem);
 
-                MM.player(event.getPlayer()).sendMessage(getText("loaded"));
+                event.getPlayer().sendMessage(getText("loaded"));
 
                 if (event.getItemDrop().isDead() || event.getItemDrop().getItemStack().getAmount() < 1) this.cancel();
             }

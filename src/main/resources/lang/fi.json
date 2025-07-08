@@ -254,6 +254,11 @@
   "quick_commands.fly.command_description": "Kytke lento päälle ja pois.",
   "quick_commands.enderchest.command_description": "Avaa sinun ender-arkkusi.",
   "quick_commands.craftingtable.command_description": "Avaa työpöytä.",
+  "quick_commands.anvil.command_description": "Avaa alasin.",
+  "quick_commands.cartographytable.command_description": "Avaa karttapöytä.",
+  "quick_commands.grindstone.command_description": "Avaa hiomakivi.",
+  "quick_commands.loom.command_description": "Avaa kangaspuut.",
+  "quick_commands.smithingtable.command_description": "Avaa ahjopöytä.",
 
   "slime_cream.name": "Lima voide",
   "slime_cream.description": "Muunna limapallot magma voiteeksi oikea klikkaamalla laava pataa.<newline>Muunna magma voide limapalloiksi oikea klikkaamalla vesi pataa.",
@@ -621,5 +626,8 @@
   "disposal.command_description": "Hävitä esineitä.",
 
   "always_active_beacons.name": "Aina aktiiviset majakat",
-  "always_active_beacons.description": "Mahdollistaa majakoiden antaa vaikutuksia aina, riippumatta taivasnäkyvyydestä."
+  "always_active_beacons.description": "Mahdollistaa majakoiden antaa vaikutuksia aina, riippumatta taivasnäkyvyydestä.",
+
+  "music_disc_engraver.name": "Musiikkilevyn Kaivertaja",
+  "music_disc_engraver.description": "Valmista tyhjä musiikkilevy 8 rautaharkosta ja timantista.<newline>Kaiverra musiikkilevy kivileikkurilla."
 }

@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.commands;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.back.Back;
-import me.teakivy.teakstweaks.utils.MM;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.command.CommandType;
 import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
@@ -44,11 +43,11 @@ public class BackCommand extends AbstractCommand {
         int z = player.getLocation().getBlockZ();
         Bukkit.getScheduler().runTaskLater(TeaksTweaks.getInstance(), () -> {
             if (x != player.getLocation().getBlockX() || y != player.getLocation().getBlockY() || z != player.getLocation().getBlockZ()) {
-                MM.sender(player).sendMessage(getError("teleport_moved"));
+                player.sendMessage(getError("teleport_moved"));
                 return;
             }
             Back.tpBack(player);
-            MM.sender(player).sendMessage(getText("teleporting"));
+            player.sendMessage(getText("teleporting"));
         }, teleportDelay * 20L);
         setCooldown();
     }
