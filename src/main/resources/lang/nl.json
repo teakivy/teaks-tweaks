@@ -252,6 +252,11 @@
   "quick_commands.fly.command_description": "Schakel vliegen in of uit.",
   "quick_commands.enderchest.command_description": "Open je Ender Chest.",
   "quick_commands.craftingtable.command_description": "Open een Werkbank.",
+  "quick_commands.anvil.command_description": "Open een aanbeeld.",
+  "quick_commands.cartographytable.command_description": "Open een kaarttafel.",
+  "quick_commands.grindstone.command_description": "Open een slijpsteen.",
+  "quick_commands.loom.command_description": "Open een weefgetouw.",
+  "quick_commands.smithingtable.command_description": "Open een smederijtafel.",
 
   "slime_cream.name": "Slijmcrème",
   "slime_cream.description": "Verander Slijmballen naar Magma Crème door op een lavaketel te klikken.<newline>Verander Magma Crème naar Slijmballen door op een waterketel te klikken.",

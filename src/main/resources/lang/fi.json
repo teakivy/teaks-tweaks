@@ -254,6 +254,11 @@
   "quick_commands.fly.command_description": "Kytke lento päälle ja pois.",
   "quick_commands.enderchest.command_description": "Avaa sinun ender-arkkusi.",
   "quick_commands.craftingtable.command_description": "Avaa työpöytä.",
+  "quick_commands.anvil.command_description": "Avaa alasin.",
+  "quick_commands.cartographytable.command_description": "Avaa karttapöytä.",
+  "quick_commands.grindstone.command_description": "Avaa hiomakivi.",
+  "quick_commands.loom.command_description": "Avaa kangaspuut.",
+  "quick_commands.smithingtable.command_description": "Avaa ahjopöytä.",
 
   "slime_cream.name": "Lima voide",
   "slime_cream.description": "Muunna limapallot magma voiteeksi oikea klikkaamalla laava pataa.<newline>Muunna magma voide limapalloiksi oikea klikkaamalla vesi pataa.",
