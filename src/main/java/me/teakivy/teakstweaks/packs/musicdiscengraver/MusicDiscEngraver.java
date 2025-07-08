@@ -4,7 +4,6 @@ import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -84,7 +83,9 @@ public class MusicDiscEngraver extends BasePack {
         ItemStack emptyDisc = ItemStack.of(Material.KNOWLEDGE_BOOK);
         ItemMeta meta = emptyDisc.getItemMeta();
         meta.setItemModel(Material.MUSIC_DISC_STRAD.getKey());
-        meta.displayName(Component.text("Empty Music Disc").decoration(TextDecoration.ITALIC, false).color(TextColor.fromHexString("#FFFFFF")));
+        meta.displayName(Component.text("Empty Music Disc").decoration(TextDecoration.ITALIC, false));
+        meta.setRarity(ItemRarity.COMMON);
+        meta.setMaxStackSize(16);
         emptyDisc.setItemMeta(meta);
         return emptyDisc;
     }
