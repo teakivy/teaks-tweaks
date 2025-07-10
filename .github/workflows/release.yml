@@ -23,6 +23,8 @@ jobs:
           distribution: 'temurin'
 
       - name: Build with Gradle
+        env:
+          PASTEBIN_DEV_KEY: ${{ secrets.PASTEBIN_DEV_KEY }}
         run: ./gradlew build
 
       - name: Upload JAR file
