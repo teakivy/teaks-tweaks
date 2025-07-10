@@ -25,7 +25,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 public class Trades extends BasePack {
-    private static final List<Location> traderLocations = new ArrayList<>();
 
     public Trades() {
         super("wandering-trades", Material.LEAD);
@@ -35,12 +34,6 @@ public class Trades extends BasePack {
     public void traderSpawn(EntitySpawnEvent event) {
         if (event.getEntityType() == EntityType.WANDERING_TRADER) {
             Location location = event.getLocation().clone();
-            if (traderLocations.contains(location)) {
-                traderLocations.remove(location);
-                return;
-            }  // Prevents infinite loop of traders spawning
-            traderLocations.add(location);
-            event.setCancelled(true);
             if (Config.isPackEnabled("wandering-trader-announcements")) {
                 runAnnouncement(location);
             }
@@ -53,7 +46,7 @@ public class Trades extends BasePack {
                 getHeadTrades().thenAccept((recipes1) -> {
                     // Required to run on main thread
                     Bukkit.getScheduler().runTask(TeaksTweaks.getInstance(), () -> {
-                        WanderingTrader trader = (WanderingTrader) location.getWorld().spawnEntity(location, EntityType.WANDERING_TRADER);
+                        WanderingTrader trader = (WanderingTrader) event.getEntity();
                         recipes.addAll(recipes1);
                         recipes.addAll(MiniBlocks.getBlockTrades());
                         recipes.addAll(trader.getRecipes());
@@ -62,7 +55,7 @@ public class Trades extends BasePack {
                 });
                 return;
             }
-            WanderingTrader trader = (WanderingTrader) location.getWorld().spawnEntity(location, EntityType.WANDERING_TRADER);
+            WanderingTrader trader = (WanderingTrader) event.getEntity();
             recipes.addAll(MiniBlocks.getBlockTrades());
 
             recipes.addAll(trader.getRecipes());
