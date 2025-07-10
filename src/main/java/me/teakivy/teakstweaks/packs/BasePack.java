@@ -13,7 +13,6 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.HandlerList;
@@ -63,14 +62,14 @@ public class BasePack implements Listener {
 
 		if (getConfig().getKeys(false).size() > 1) {
 			lore.add(" ");
-			lore.add(ChatColor.GOLD + "Config");
+			lore.add("<gold>Config");
 		}
 
 		for (String key : getConfig().getKeys(false)) {
 			if (key.equals("enabled")) continue;
 			if (getConfig().get(key).toString().startsWith("MemorySection")) continue;
 
-			lore.add("  <gray>" + transformKey(key) + ": <reset>" + ChatColor.GOLD + getConfig().get(key));
+			lore.add("  <gray>" + transformKey(key) + ": <reset><gold>" + getConfig().get(key));
 		}
 
 		List<Component> loreComponents = new ArrayList<>();
@@ -80,7 +79,7 @@ public class BasePack implements Listener {
 
 		ItemMeta meta = item.getItemMeta();
 		meta.lore(loreComponents);
-		meta.displayName(MiniMessage.miniMessage().deserialize(ChatColor.GOLD + name).decoration(TextDecoration.ITALIC, false));
+		meta.displayName(MiniMessage.miniMessage().deserialize("<gold>" + name).decoration(TextDecoration.ITALIC, false));
 		item.setItemMeta(meta);
     }
 
@@ -98,7 +97,7 @@ public class BasePack implements Listener {
 		}
 
 		getPlugin().addPack(name);
-		Logger.info(Translatable.get("startup.register.pack", insert("name", ChatColor.GOLD + name)));
+		Logger.info(Translatable.get("startup.register.pack", insert("name", "<gold>" + name)));
 
 		CustomMetrics.addPackEnabled(name);
 	}

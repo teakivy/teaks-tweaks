@@ -10,7 +10,6 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
@@ -46,7 +45,7 @@ public abstract class AbstractCraftingTweak {
      * Initialize all recipes for the pack
      */
     public void init() {
-        Logger.info(Translatable.get("startup.register.crafting_tweak", Placeholder.parsed("name", ChatColor.GOLD + name)));
+        Logger.info(Translatable.get("startup.register.crafting_tweak", Placeholder.parsed("name", "<gold>" + name)));
         TeaksTweaks.getInstance().addCraftingTweaks(this.name);
         CraftingRegister.addEnabledRecipe(this);
         this.registerRecipes();
@@ -70,7 +69,7 @@ public abstract class AbstractCraftingTweak {
         }
         ItemMeta meta = item.getItemMeta();
         meta.lore(components);
-        meta.displayName(MiniMessage.miniMessage().deserialize(ChatColor.GOLD + name).decoration(TextDecoration.ITALIC, false));
+        meta.displayName(MiniMessage.miniMessage().deserialize("<gold>" + name).decoration(TextDecoration.ITALIC, false));
         item.setItemMeta(meta);
 
         CustomMetrics.addCraftingTweakEnabled(this.name);
