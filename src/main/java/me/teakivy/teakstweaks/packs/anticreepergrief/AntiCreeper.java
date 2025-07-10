@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.anticreepergrief;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -13,7 +12,7 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 public class AntiCreeper extends BasePack {
 
     public AntiCreeper() {
-        super("anti-creeper-grief", PackType.MOBS, Material.CREEPER_SPAWN_EGG);
+        super("anti-creeper-grief", Material.CREEPER_SPAWN_EGG);
     }
 
     @EventHandler

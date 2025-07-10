@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.graves;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.XPUtils;
 import me.teakivy.teakstweaks.utils.customitems.CustomItem;
@@ -34,7 +33,7 @@ import java.util.UUID;
 public class GraveEvents extends BasePack {
 
     public GraveEvents() {
-        super("graves", PackType.SURVIVAL, Material.STONE_BRICK_WALL);
+        super("graves", Material.STONE_BRICK_WALL);
     }
 
     @Override

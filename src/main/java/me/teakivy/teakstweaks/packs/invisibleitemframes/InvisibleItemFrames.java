@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.invisibleitemframes;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.ItemUtils;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Material;
@@ -16,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 public class InvisibleItemFrames extends BasePack {
 
     public InvisibleItemFrames() {
-        super("invisible-item-frames", PackType.TEAKSTWEAKS, Material.GLOW_ITEM_FRAME);
+        super("invisible-item-frames", Material.GLOW_ITEM_FRAME);
     }
 
     @EventHandler

@@ -1,14 +1,11 @@
 package me.teakivy.teakstweaks.packs.huskdropssand;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Material;
-import org.bukkit.damage.DamageSource;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -17,7 +14,7 @@ public class HuskDropsSand extends BasePack {
 
 
     public HuskDropsSand() {
-        super("husk-drops-sand", PackType.MOBS, Material.SAND);
+        super("husk-drops-sand", Material.SAND);
     }
 
     @EventHandler

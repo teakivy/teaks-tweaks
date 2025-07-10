@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.back;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.permission.Permission;
@@ -19,7 +18,7 @@ import java.util.UUID;
 public class Back extends BasePack {
 
     public Back() {
-        super("back", PackType.TELEPORTATION, Material.REDSTONE_TORCH);
+        super("back", Material.REDSTONE_TORCH);
     }
 
     public static HashMap<UUID, Location> backLoc = new HashMap<>();

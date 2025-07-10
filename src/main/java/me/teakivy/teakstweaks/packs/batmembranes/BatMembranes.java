@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.batmembranes;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
@@ -12,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 public class BatMembranes extends BasePack {
 
     public BatMembranes() {
-        super("bat-membranes", PackType.MOBS, Material.PHANTOM_MEMBRANE);
+        super("bat-membranes", Material.PHANTOM_MEMBRANE);
     }
 
     @EventHandler

@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.packs.homes;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.config.Config;
 import org.bukkit.Location;
@@ -26,7 +25,7 @@ public class HomesPack extends BasePack {
     private static final HashMap<UUID, Long> cooldowns = new HashMap<>();
 
     public HomesPack() {
-        super("homes", PackType.TELEPORTATION, Material.RECOVERY_COMPASS);
+        super("homes", Material.RECOVERY_COMPASS);
     }
 
     @Override

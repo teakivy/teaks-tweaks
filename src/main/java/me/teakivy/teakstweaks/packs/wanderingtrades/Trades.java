@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.packs.wanderingtrades;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.UUIDUtils;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
@@ -29,7 +28,7 @@ public class Trades extends BasePack {
     private static final List<Location> traderLocations = new ArrayList<>();
 
     public Trades() {
-        super("wandering-trades", PackType.HERMITCRAFT, Material.LEAD);
+        super("wandering-trades", Material.LEAD);
     }
 
     @EventHandler

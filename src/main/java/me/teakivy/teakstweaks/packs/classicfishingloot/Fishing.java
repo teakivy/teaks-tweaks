@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.classicfishingloot;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -13,7 +12,7 @@ import org.bukkit.inventory.EquipmentSlot;
 public class Fishing extends BasePack {
 
     public Fishing() {
-        super("classic-fishing-loot", PackType.SURVIVAL, Material.FISHING_ROD);
+        super("classic-fishing-loot", Material.FISHING_ROD);
     }
 
     @EventHandler

@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.packs.armoredelytra;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Base64Serializer;
 import me.teakivy.teakstweaks.utils.ItemSerializer;
 import me.teakivy.teakstweaks.utils.Key;
@@ -30,10 +29,9 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class ArmoredElytras extends BasePack {
-    // TODO test this
 
     public ArmoredElytras() {
-        super("armored-elytra", PackType.ITEMS, Material.ELYTRA);
+        super("armored-elytra", Material.ELYTRA);
     }
 
     @EventHandler

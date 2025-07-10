@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.playerheaddrops;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.packs.moremobheads.MobHeads;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
@@ -19,7 +18,7 @@ import java.util.List;
 public class HeadDrop extends BasePack {
 
     public HeadDrop() {
-        super("player-head-drops", PackType.ITEMS, Material.PLAYER_HEAD);
+        super("player-head-drops", Material.PLAYER_HEAD);
     }
 
     @EventHandler

@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.antiendermangrief;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -11,7 +10,7 @@ import org.bukkit.event.entity.EntityChangeBlockEvent;
 public class AntiEnderman extends BasePack {
 
     public AntiEnderman() {
-        super("anti-enderman-grief", PackType.MOBS, Material.ENDERMAN_SPAWN_EGG);
+        super("anti-enderman-grief", Material.ENDERMAN_SPAWN_EGG);
     }
 
     @EventHandler

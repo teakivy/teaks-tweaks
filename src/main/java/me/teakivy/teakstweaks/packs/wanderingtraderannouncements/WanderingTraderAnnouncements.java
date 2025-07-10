@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.wanderingtraderannouncements;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.config.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -18,7 +17,7 @@ public class WanderingTraderAnnouncements extends BasePack {
     private static final List<Location> traderLocations = new ArrayList<>();
 
     public WanderingTraderAnnouncements() {
-        super("wandering-trader-announcements",  PackType.MOBS, Material.EMERALD);
+        super("wandering-trader-announcements", Material.EMERALD);
     }
 
     @EventHandler

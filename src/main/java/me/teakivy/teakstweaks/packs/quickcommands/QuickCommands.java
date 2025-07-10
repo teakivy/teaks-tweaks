@@ -1,8 +1,6 @@
 package me.teakivy.teakstweaks.packs.quickcommands;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
-import me.teakivy.teakstweaks.packs.doubleshulkershells.DoubleShulkers;
 import org.bukkit.Material;
 
 import java.util.List;
@@ -10,7 +8,7 @@ import java.util.List;
 public class QuickCommands extends BasePack {
 
     public QuickCommands() {
-        super("quick-commands", PackType.TEAKSTWEAKS, Material.COMMAND_BLOCK);
+        super("quick-commands", Material.COMMAND_BLOCK);
     }
 
     @Override

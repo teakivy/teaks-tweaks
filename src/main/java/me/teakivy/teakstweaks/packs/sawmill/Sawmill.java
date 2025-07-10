@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.sawmill;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.packs.sawmill.recipes.*;
 import org.bukkit.Material;
 import org.bukkit.inventory.Recipe;
@@ -12,7 +11,7 @@ import java.util.List;
 public class Sawmill extends BasePack {
 
     public Sawmill() {
-        super("sawmill", PackType.TEAKSTWEAKS, Material.STONECUTTER);
+        super("sawmill", Material.STONECUTTER);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.alwaysdrop;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
@@ -13,7 +12,7 @@ import java.util.List;
 public class AlwaysDrop extends BasePack {
 
     public AlwaysDrop() {
-        super("always-drop", PackType.SURVIVAL, Material.ENDER_CHEST);
+        super("always-drop", Material.ENDER_CHEST);
     }
 
     @EventHandler

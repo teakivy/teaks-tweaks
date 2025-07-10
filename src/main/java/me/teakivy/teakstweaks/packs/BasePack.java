@@ -13,6 +13,7 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.HandlerList;
@@ -29,20 +30,17 @@ public class BasePack implements Listener {
 	private final String name;
 	private final String path;
 	private final String translatableKey;
-	private final PackType packType;
 	private final ItemStack item;
 
 	/**
 	 * Set up the pack
 	 * @param path Config path
-	 * @param packType PackType
 	 * @param material Material for the item
 	 */
-	public BasePack(String path, PackType packType, Material material) {
+	public BasePack(String path, Material material) {
 		this.translatableKey = path.replaceAll("-", "_");
         this.name = Translatable.getString(this.translatableKey + ".name");
 		this.path = path;
-		this.packType = packType;
 
 		String[] description = Translatable.getString(this.translatableKey + ".description").split("<newline>");
 
@@ -61,23 +59,19 @@ public class BasePack implements Listener {
 			lore.add("<gray>" + newLine);
 			lore.add(" ");
 		}
-		if (!lore.isEmpty()) lore.remove(lore.size() - 1);
+		if (!lore.isEmpty()) lore.removeLast();
 
 		if (getConfig().getKeys(false).size() > 1) {
 			lore.add(" ");
-			lore.add(packType.getColor() + "Config");
+			lore.add(ChatColor.GOLD + "Config");
 		}
 
 		for (String key : getConfig().getKeys(false)) {
 			if (key.equals("enabled")) continue;
 			if (getConfig().get(key).toString().startsWith("MemorySection")) continue;
 
-			lore.add("  <gray>" + transformKey(key) + ": <reset>" + packType.getColor() + getConfig().get(key));
+			lore.add("  <gray>" + transformKey(key) + ": <reset>" + ChatColor.GOLD + getConfig().get(key));
 		}
-
-		lore.add(" ");
-
-		lore.add(packType.getColor() + packType.getName());
 
 		List<Component> loreComponents = new ArrayList<>();
 		for (String line : lore) {
@@ -86,7 +80,7 @@ public class BasePack implements Listener {
 
 		ItemMeta meta = item.getItemMeta();
 		meta.lore(loreComponents);
-		meta.displayName(MiniMessage.miniMessage().deserialize(packType.getColor() + name).decoration(TextDecoration.ITALIC, false));
+		meta.displayName(MiniMessage.miniMessage().deserialize(ChatColor.GOLD + name).decoration(TextDecoration.ITALIC, false));
 		item.setItemMeta(meta);
     }
 
@@ -104,7 +98,7 @@ public class BasePack implements Listener {
 		}
 
 		getPlugin().addPack(name);
-		Logger.info(Translatable.get("startup.register.pack", insert("name", packType.getColor() + name)));
+		Logger.info(Translatable.get("startup.register.pack", insert("name", ChatColor.GOLD + name)));
 
 		CustomMetrics.addPackEnabled(name);
 	}

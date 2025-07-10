@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.packs.cauldronmud;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -15,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 public class MudConverter extends BasePack {
 
     public MudConverter() {
-        super ("cauldron-mud", PackType.SURVIVAL, Material.CAULDRON);
+        super ("cauldron-mud", Material.CAULDRON);
     }
 
     @EventHandler

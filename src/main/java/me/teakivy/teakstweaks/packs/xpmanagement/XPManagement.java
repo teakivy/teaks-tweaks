@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.xpmanagement;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.XPUtils;
 import me.teakivy.teakstweaks.utils.config.Config;
@@ -29,7 +28,7 @@ import java.util.List;
 public class XPManagement extends BasePack {
 
     public XPManagement() {
-        super("xp-management", PackType.EXPERIMENTAL, Material.EXPERIENCE_BOTTLE);
+        super("xp-management", Material.EXPERIENCE_BOTTLE);
     }
 
     @Override

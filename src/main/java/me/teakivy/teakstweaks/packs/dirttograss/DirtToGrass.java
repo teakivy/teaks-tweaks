@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.dirttograss;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -16,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 public class DirtToGrass extends BasePack {
 
     public DirtToGrass() {
-        super("dirt-to-grass", PackType.TEAKSTWEAKS, Material.GRASS_BLOCK);
+        super("dirt-to-grass", Material.GRASS_BLOCK);
     }
 
     @EventHandler

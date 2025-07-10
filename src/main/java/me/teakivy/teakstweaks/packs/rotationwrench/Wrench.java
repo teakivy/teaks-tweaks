@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.packs.rotationwrench;
 
 import com.google.common.collect.Lists;
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import me.teakivy.teakstweaks.utils.customitems.TItem;
@@ -44,7 +43,7 @@ public class Wrench extends BasePack {
     private final List<BlockFace> faces = Lists.newArrayList(BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST, BlockFace.NORTH, BlockFace.UP, BlockFace.DOWN);
 
     public Wrench() {
-        super("rotation-wrench", PackType.ITEMS, Material.CARROT_ON_A_STICK);
+        super("rotation-wrench", Material.CARROT_ON_A_STICK);
     }
 
     @Override

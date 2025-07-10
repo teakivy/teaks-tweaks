@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.packs.customnetherportals;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.*;
 import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
@@ -36,7 +35,7 @@ public class NetherPortal extends BasePack {
     String portalAxis;
 
     public NetherPortal() {
-        super("custom-nether-portals", PackType.SURVIVAL, Material.FLINT_AND_STEEL);
+        super("custom-nether-portals", Material.FLINT_AND_STEEL);
     }
 
     public void ArbitraryPortals() {

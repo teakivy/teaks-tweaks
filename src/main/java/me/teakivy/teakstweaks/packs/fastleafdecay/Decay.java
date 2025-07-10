@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.packs.fastleafdecay;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -21,7 +20,7 @@ public class Decay extends BasePack {
     // Thanks!
 
     public Decay() {
-        super("fast-leaf-decay", PackType.SURVIVAL, Material.OAK_LEAVES);
+        super("fast-leaf-decay", Material.OAK_LEAVES);
     }
 
     private final List<Block> scheduledBlocks = new ArrayList<>();

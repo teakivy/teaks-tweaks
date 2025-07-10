@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.fixeditemframes;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.ItemUtils;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Material;
@@ -17,7 +16,7 @@ import org.bukkit.inventory.ItemStack;
 public class FixedItemFrames extends BasePack {
 
 	public FixedItemFrames() {
-        super("fixed-item-frames", PackType.TEAKSTWEAKS, Material.ITEM_FRAME);
+        super("fixed-item-frames", Material.ITEM_FRAME);
     }
 
 	@EventHandler

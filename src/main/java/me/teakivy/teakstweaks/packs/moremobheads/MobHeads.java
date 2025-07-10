@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.packs.moremobheads;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.packs.moremobheads.mobs.*;
 import me.teakivy.teakstweaks.utils.JsonManager;
 import me.teakivy.teakstweaks.utils.config.Config;
@@ -23,7 +22,7 @@ public class MobHeads extends BasePack {
     private static HashMap<String, Object> chances = new HashMap<>();
 
     public MobHeads() {
-        super("more-mob-heads", PackType.MOBS, Material.ZOMBIE_HEAD);
+        super("more-mob-heads", Material.ZOMBIE_HEAD);
     }
 
     @Override

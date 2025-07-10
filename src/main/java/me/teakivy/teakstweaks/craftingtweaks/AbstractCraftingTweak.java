@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.craftingtweaks;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
@@ -11,6 +10,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
@@ -46,7 +46,7 @@ public abstract class AbstractCraftingTweak {
      * Initialize all recipes for the pack
      */
     public void init() {
-        Logger.info(Translatable.get("startup.register.crafting_tweak", Placeholder.parsed("name", PackType.CRAFTING_TWEAKS.getColor() + name)));
+        Logger.info(Translatable.get("startup.register.crafting_tweak", Placeholder.parsed("name", ChatColor.GOLD + name)));
         TeaksTweaks.getInstance().addCraftingTweaks(this.name);
         CraftingRegister.addEnabledRecipe(this);
         this.registerRecipes();
@@ -63,9 +63,6 @@ public abstract class AbstractCraftingTweak {
             newLine.append(word).append(" ");
         }
         lore.add("<gray>" + newLine);
-        lore.add(" ");
-
-        lore.add(PackType.CRAFTING_TWEAKS.getName());
 
         List<Component> components = new ArrayList<>();
         for (String l : lore) {
@@ -73,7 +70,7 @@ public abstract class AbstractCraftingTweak {
         }
         ItemMeta meta = item.getItemMeta();
         meta.lore(components);
-        meta.displayName(MiniMessage.miniMessage().deserialize(PackType.CRAFTING_TWEAKS.getColor() + name).decoration(TextDecoration.ITALIC, false));
+        meta.displayName(MiniMessage.miniMessage().deserialize(ChatColor.GOLD + name).decoration(TextDecoration.ITALIC, false));
         item.setItemMeta(meta);
 
         CustomMetrics.addCraftingTweakEnabled(this.name);

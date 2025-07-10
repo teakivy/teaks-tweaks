@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.trackstatistics;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Statistic;
@@ -21,7 +20,7 @@ public class StatTracker extends BasePack {
     Objective swimKm;
 
     public StatTracker() {
-        super("track-statistics", PackType.SURVIVAL, Material.MAP);
+        super("track-statistics", Material.MAP);
     }
 
     @Override

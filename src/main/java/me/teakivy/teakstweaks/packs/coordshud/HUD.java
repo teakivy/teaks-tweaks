@@ -2,19 +2,12 @@ package me.teakivy.teakstweaks.packs.coordshud;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.config.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
-import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.persistence.PersistentDataHolder;
 import org.bukkit.persistence.PersistentDataType;
 
 import java.util.UUID;
@@ -22,7 +15,7 @@ import java.util.UUID;
 public class HUD extends BasePack {
 
     public HUD () {
-        super("coords-hud", PackType.SURVIVAL, Material.OBSERVER);
+        super("coords-hud", Material.OBSERVER);
         startHUD();
     }
 

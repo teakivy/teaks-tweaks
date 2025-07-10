@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.packs.unlockallrecipes;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Keyed;
 import org.bukkit.Material;
@@ -19,7 +18,7 @@ public class UnlockRecipes extends BasePack {
     ArrayList<NamespacedKey> recipes = new ArrayList<>();
 
     public UnlockRecipes() {
-        super("unlock-all-recipes", PackType.SURVIVAL, Material.KNOWLEDGE_BOOK);
+        super("unlock-all-recipes", Material.KNOWLEDGE_BOOK);
 
         recipes.clear();
         Iterator<Recipe> it = TeaksTweaks.getInstance().getServer().recipeIterator();

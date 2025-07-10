@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.unstickypistons;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.PackType;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -23,7 +22,7 @@ import java.util.Random;
 public class UnstickyPistons extends BasePack {
 
     public UnstickyPistons() {
-        super("unsticky-pistons", PackType.TEAKSTWEAKS, Material.STICKY_PISTON);
+        super("unsticky-pistons", Material.STICKY_PISTON);
     }
 
     @EventHandler
