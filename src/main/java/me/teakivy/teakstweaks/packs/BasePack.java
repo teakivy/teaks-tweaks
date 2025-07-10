@@ -68,6 +68,10 @@ public class BasePack implements Listener {
 		for (String key : getConfig().getKeys(false)) {
 			if (key.equals("enabled")) continue;
 			if (getConfig().get(key).toString().startsWith("MemorySection")) continue;
+			if (getConfig().isList(key) && getConfig().getList(key).size() > 3) {
+				lore.add("  <gray>" + transformKey(key) + ": <reset><gold><italic>[" + getConfig().getList(key).size() + " Items]");
+				continue;
+			}
 
 			lore.add("  <gray>" + transformKey(key) + ": <reset><gold>" + getConfig().get(key));
 		}
