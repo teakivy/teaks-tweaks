@@ -98,13 +98,12 @@ public class TeaksTweaksCommand extends AbstractCommand {
 
     public void handlePaste(CommandEvent event) {
         if (!checkPermission(Permission.COMMAND_TEAKSTWEAKS_PASTE)) return;
-        PasteUploader.Service service = PasteUploader.getService();
         if (System.currentTimeMillis() - lastPaste < PASTE_COOLDOWN && !Config.isDevMode()) {
-            sendMessage("paste.error.cooldown", insert("service_name", service.getName()));
+            sendMessage("paste.error.cooldown", insert("service_name", "Pastebin"));
             return;
         }
 
-        sendMessage("paste.uploading", insert("service_name", service.getName()));
+        sendMessage("paste.uploading", insert("service_name", "Pastebin"));
 
         String playerName = event.getSender().getName();
         boolean logs = Config.getBoolean("settings.send-log-in-paste");
@@ -116,13 +115,13 @@ public class TeaksTweaksCommand extends AbstractCommand {
 
         String paste = PasteManager.getPasteContent(playerName, logs);
         try {
-            String url = PasteUploader.uploadText(paste, "Support: " + playerName);
+            String url = PasteUploader.uploadToPastebin(paste, "Support: " + playerName);
             lastPaste = System.currentTimeMillis();
             if (event.getSender() instanceof Player) {
-                sendMessage("paste.success", insert("url", url), insert("service_name", service.getName()));
+                sendMessage("paste.success", insert("url", url), insert("service_name", "Pastebin"));
                 return;
             }
-            sendMessage("paste.success.console", insert("url", url), insert("service_name", service.getName()));
+            sendMessage("paste.success.console", insert("url", url), insert("service_name", "Pastebin"));
         } catch (IOException e) {
             sendMessage("paste.error");
             e.printStackTrace();

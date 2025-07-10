@@ -95,7 +95,7 @@ public class PasteManager {
                 }
             }
             String config = "# Teak's Tweaks Plugin Config" + "\n# Uploaded By: " + playerName + " (" + uuid + ")" + "\n\n" + getConfigFileAsString();
-            return PasteUploader.uploadText(config, "Teak's Tweaks Config: " + playerName);
+            return PasteUploader.uploadToPastebin(config, "Teak's Tweaks Config: " + playerName);
         } catch (IOException e) {
             e.printStackTrace();
             return "ERROR";
