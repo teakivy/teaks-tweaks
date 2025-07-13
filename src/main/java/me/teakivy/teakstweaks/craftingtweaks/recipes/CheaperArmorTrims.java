@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
+import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -40,11 +41,11 @@ public class CheaperArmorTrims extends AbstractCraftingTweak {
     public void newArmorTrimRecipe(String type) {
         String upperCaseKey = type.toUpperCase() + "_ARMOR_TRIM_SMITHING_TEMPLATE";
         String lowerCaseKey = upperCaseKey.toLowerCase();
-        
-        NamespacedKey armorTrimKey = NamespacedKey.minecraft(lowerCaseKey);
 
         try {
-            Recipe recipe = Bukkit.getRecipe(armorTrimKey);
+            NamespacedKey armorTrimKeyOriginal = NamespacedKey.minecraft(lowerCaseKey);
+
+            Recipe recipe = Bukkit.getRecipe(armorTrimKeyOriginal);
             if(recipe instanceof ShapedRecipe originalRecipe) {
                 Map<Character, RecipeChoice> originalChoiceMap = originalRecipe.getChoiceMap();
 
@@ -55,12 +56,13 @@ public class CheaperArmorTrims extends AbstractCraftingTweak {
                 String[] newShape = {"MTM", "MDM", "MMM"};
 
                 // Create the new recipe.
-                ShapedRecipe newRecipe = new ShapedRecipe(armorTrimKey, originalRecipe.getResult());
+                NamespacedKey armorTrimKeyReplacement = Key.get(lowerCaseKey);
+                ShapedRecipe newRecipe = new ShapedRecipe(armorTrimKeyReplacement, originalRecipe.getResult());
                 newRecipe.shape(newShape);
                 newRecipe.setIngredient('M', uniqueMaterial);
                 newRecipe.setIngredient('T', armorTrimTemplate);
                 newRecipe.setIngredient('D', diamond);
-                Bukkit.removeRecipe(armorTrimKey);
+                Bukkit.removeRecipe(armorTrimKeyOriginal);
                 addRecipe(newRecipe);
             }
         }catch(Exception e){
