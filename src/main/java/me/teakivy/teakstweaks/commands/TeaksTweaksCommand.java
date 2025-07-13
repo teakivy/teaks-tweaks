@@ -10,6 +10,8 @@ import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.log.PasteUploader;
 import me.teakivy.teakstweaks.utils.log.PasteManager;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.translation.Argument;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -37,7 +39,8 @@ public class TeaksTweaksCommand extends AbstractCommand {
                 sendInfoMessage();
                 return;
             case "v", "version":
-                sendMessage("version", insert("version", TeaksTweaks.getInstance().getDescription().getVersion()));
+                sendMessage(Component.translatable("teakstweakscommand.version", Argument.component("version", Component.text(TeaksTweaks.getInstance().getDescription().getVersion()))));
+//                sendMessage("version", insert("version", TeaksTweaks.getInstance().getDescription().getVersion()));
                 return;
             case "support":
                 sendMessage("support", insert("discord", get("plugin.discord")));

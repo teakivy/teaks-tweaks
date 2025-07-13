@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks;
 
 import com.google.gson.Gson;
+import it.unimi.dsi.fastutil.Hash;
 import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
 import me.teakivy.teakstweaks.utils.*;
 import me.teakivy.teakstweaks.utils.config.Config;
@@ -17,13 +18,18 @@ import me.teakivy.teakstweaks.utils.update.VersionManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.translation.MiniMessageTranslationStore;
+import net.kyori.adventure.translation.GlobalTranslator;
+import net.kyori.adventure.translation.TranslationStore;
+import net.kyori.adventure.util.UTF8ResourceBundleControl;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.text.MessageFormat;
+import java.util.*;
 
 import static me.teakivy.teakstweaks.utils.metrics.CustomMetrics.registerCustomMetrics;
 
@@ -38,6 +44,8 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
      */
     @Override
     public void onEnable() {
+
+        loadTranslations();
 
         VersionManager.init();
         // Initialize an audiences instance for the plugin
@@ -203,4 +211,25 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         }
     }
 
+    public void loadTranslations() {
+        MiniMessageTranslationStore store = MiniMessageTranslationStore.create(Key.get("translations"));
+        List<String> languages = new ArrayList<>();
+        languages.add("en_US");
+        languages.add("de_DE");
+        languages.add("fi_FI");
+        languages.add("fr_FR");
+        languages.add("nl_NL");
+        languages.add("pl_PL");
+        languages.add("ru_RU");
+
+        for (String lang : languages) {
+            String language = lang.split("_")[0];
+            String country = lang.split("_")[1];
+
+            ResourceBundle bundle = ResourceBundle.getBundle("teakstweaks.Bundle", Locale.of(language, country), UTF8ResourceBundleControl.get());
+            store.registerAll(Locale.of(language, country), bundle, true);
+        }
+
+        GlobalTranslator.translator().addSource(store);
+    }
 }
