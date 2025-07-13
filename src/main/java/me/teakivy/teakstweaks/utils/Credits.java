@@ -38,7 +38,6 @@ public class Credits {
         notes.add("Thanks to Sachin Gorkar for some of the tweak's ideas");
         notes.add("Fast Leaf Decay By: @StarTux on Github");
         notes.add("Vanilla Tweaks Credits: https://vanillatweaks.net/");
-        notes.add("Teak's Tweaks Paste powered by PasteBook: https://paste.teakstweaks.com/");
     }
 
     private String generateList(String title, List<String> list) {
