@@ -862,6 +862,9 @@ packs:
   track-statistics:
     enabled: false
 
+  transferable-pets:
+    enabled: false
+
   # Unlock All Recipes
   # Automatically unlock all recipes as soon as you start playing.
   #

@@ -15,6 +15,7 @@ import me.teakivy.teakstweaks.packs.miniblocks.MiniBlocks;
 import me.teakivy.teakstweaks.packs.musicdiscengraver.MusicDiscEngraver;
 import me.teakivy.teakstweaks.packs.paintingpicker.PaintingPicker;
 import me.teakivy.teakstweaks.packs.sawmill.Sawmill;
+import me.teakivy.teakstweaks.packs.transferablepets.TransferablePets;
 import me.teakivy.teakstweaks.packs.wanderingtraderannouncements.WanderingTraderAnnouncements;
 import me.teakivy.teakstweaks.packs.xpmanagement.XPManagement;
 import me.teakivy.teakstweaks.packs.thundershrine.Shrine;
@@ -154,7 +155,8 @@ public class Register {
             new PaintingPicker(),
             new Disposal(),
             new AlwaysActiveBeacons(),
-            new MusicDiscEngraver()
+            new MusicDiscEngraver(),
+            new TransferablePets()
         ).collect(Collectors.toMap(BasePack::getPath, x -> x));
 
     }
