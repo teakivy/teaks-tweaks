@@ -1,11 +1,10 @@
 package me.teakivy.teakstweaks.packs.quickcommands;
 
-import me.teakivy.teakstweaks.utils.command.AbstractCommand;
-import me.teakivy.teakstweaks.utils.command.CommandType;
+import me.teakivy.teakstweaks.utils.oldcommand.AbstractCommand;
+import me.teakivy.teakstweaks.utils.oldcommand.CommandType;
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.command.PlayerCommandEvent;
+import me.teakivy.teakstweaks.utils.oldcommand.PlayerCommandEvent;
 import org.bukkit.command.CommandSender;
-import org.bukkit.permissions.Permission;
 
 import java.util.List;
 

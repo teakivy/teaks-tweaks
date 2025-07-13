@@ -1,7 +1,7 @@
 package me.teakivy.teakstweaks.packs.quickcommands;
 
 import me.teakivy.teakstweaks.utils.ErrorType;
-import me.teakivy.teakstweaks.utils.command.*;
+import me.teakivy.teakstweaks.utils.oldcommand.*;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
