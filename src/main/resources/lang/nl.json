@@ -326,6 +326,9 @@
   "charcoal_to_black_dye.name": "Houtskool naar Zwarte Kleurstof",
   "charcoal_to_black_dye.description": "Maakt het mogelijk om Houtskool in Zwarte Kleurstof te maken.",
 
+  "cheaper_armor_trim_templates.name": "Goedkopere Smeedmallen",
+  "cheaper_armor_trim_templates.description": "Verandert alle recepten voor smeedmallen om ze goedkoper te maken door de diamanten te verwisselen met het materiaal in het midden, en het materiaal in het midden met een diamant.",
+
   "cheaper_resin_blocks.name": "Goedkopere Harsblokken",
   "cheaper_resin_blocks.description": "Maakt het mogelijk om harsblokken te maken met 4 harsklonten in plaats van 9.",
 

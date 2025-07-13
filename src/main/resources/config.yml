@@ -1000,6 +1000,11 @@ crafting-tweaks:
   charcoal-to-black-dye:
     enabled: false
 
+  # Cheaper Armor Trims Templates
+  # Changes all Armor Trim Template recipes to be cheaper by swapping the diamonds with the material in the center, and the material in the center with a diamond.
+  cheaper-armor-trim-templates:
+    enabled: false
+
   # Cheaper Resin Blocks
   # Allows you to craft Resin Blocks using 4 Resin Clumps instead of 9.
   cheaper-resin-blocks:
