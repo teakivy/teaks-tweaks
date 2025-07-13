@@ -1,6 +1,8 @@
 package me.teakivy.teakstweaks.packs.transferablepets;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.utils.dialog.DialogUtils;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -31,25 +33,27 @@ public class TransferablePets extends BasePack implements Listener {
             }
         }
 
-        // TODO: Add confirmation dialog for transferring pets to another player.
+        DialogUtils.showConfirmation(player, Component.text("You’re about to share the lead and pass ownership of your animal to " + target.getName() + ". Are you sure you want to do this?"), (r, aud) -> {
+            for (LivingEntity pet : pets) {
+                if (!pet.isLeashed()) continue;
+                pet.setLeashHolder(target);
 
-        for (LivingEntity pet : pets) {
-            if (!pet.isLeashed()) continue;
-            pet.setLeashHolder(target);
-
-            if (pet instanceof Tameable) {
-                ((Tameable) pet).setOwner(target);
-            }
-
-            if (pet instanceof Fox fox) {
-                if (fox.getFirstTrustedPlayer() != null && fox.getFirstTrustedPlayer().getUniqueId().equals(player.getUniqueId())) {
-                    fox.setFirstTrustedPlayer(target);
+                if (pet instanceof Tameable) {
+                    ((Tameable) pet).setOwner(target);
                 }
-                if (fox.getSecondTrustedPlayer() != null && fox.getSecondTrustedPlayer().getUniqueId().equals(player.getUniqueId())) {
-                    fox.setSecondTrustedPlayer(target);
+
+                if (pet instanceof Fox fox) {
+                    if (fox.getFirstTrustedPlayer() != null && fox.getFirstTrustedPlayer().getUniqueId().equals(player.getUniqueId())) {
+                        fox.setFirstTrustedPlayer(target);
+                    }
+                    if (fox.getSecondTrustedPlayer() != null && fox.getSecondTrustedPlayer().getUniqueId().equals(player.getUniqueId())) {
+                        fox.setSecondTrustedPlayer(target);
+                    }
                 }
             }
-        }
+        }, (r, aud) -> {
+
+        });
 
     }
 }

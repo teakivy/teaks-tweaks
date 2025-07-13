@@ -51,7 +51,6 @@ public class PaintingPicker extends BasePack {
         addRecipe(recipe);
 
         for (Art art : registry) {
-            System.out.println(art);
             String name = art.toString();
             ItemStack item = ItemStack.of(Material.PAINTING);
             item.setData(DataComponentTypes.PAINTING_VARIANT, art);
