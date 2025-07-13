@@ -35,9 +35,10 @@ import java.util.concurrent.CompletableFuture;
 public class TeaksTweaksCommand extends AbstractCommand {
 
     public TeaksTweaksCommand() {
-        super(null, "teakstweakscommand", "tt", "tweaks");
+        super(null, "teakstweakscommand", List.of("tt", "tweaks"));
     }
 
+    @Override
     public LiteralCommandNode<CommandSourceStack> getCommand() {
         return Commands.literal("teakstweaks")
                 .executes(this::info)

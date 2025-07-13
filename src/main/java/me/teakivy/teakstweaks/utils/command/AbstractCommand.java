@@ -1,6 +1,10 @@
 package me.teakivy.teakstweaks.utils.command;
 
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import io.papermc.paper.command.brigadier.CommandSourceStack;
+import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.commands.TeaksTweaksCommand;
 import me.teakivy.teakstweaks.utils.config.Config;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.ComponentLike;
@@ -20,13 +24,24 @@ public abstract class AbstractCommand {
      * Set up the command
      * @param parentPack The pack this command belongs to
      * @param translationKey The translation key for this command
+     */
+    public AbstractCommand(String parentPack, String translationKey) {
+        this(parentPack, translationKey, List.of());
+    }
+
+    /**
+     * Set up the command
+     * @param parentPack The pack this command belongs to
+     * @param translationKey The translation key for this command
      * @param aliases Command aliases
      */
-    public AbstractCommand(String parentPack, String translationKey, String... aliases) {
+    public AbstractCommand(String parentPack, String translationKey, List<String> aliases) {
         this.parentPack = parentPack;
         this.translationKey = translationKey;
-        this.aliases = List.of(aliases);
+        this.aliases = aliases;
     }
+
+    public abstract LiteralCommandNode<CommandSourceStack> getCommand();
 
     /**
      * Get the parent pack of this command
@@ -114,5 +129,12 @@ public abstract class AbstractCommand {
 
     public JavaPlugin getPlugin() {
         return TeaksTweaks.getInstance();
+    }
+
+    public void register() {
+        if (parentPack != null && !Config.isPackEnabled(parentPack)) return;
+        getPlugin().getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, commands -> {
+            commands.registrar().register(this.getCommand(), aliases);
+        });
     }
 }

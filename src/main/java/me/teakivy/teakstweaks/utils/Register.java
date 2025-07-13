@@ -1,6 +1,8 @@
 package me.teakivy.teakstweaks.utils;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.commands.AFKCommand;
+import me.teakivy.teakstweaks.commands.TeaksTweaksCommand;
 import me.teakivy.teakstweaks.oldcommands.*;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.alwaysdrop.AlwaysDrop;
@@ -228,7 +230,6 @@ public class Register {
      */
     public static void registerCommands() {
         AbstractCommand[] cmds = {
-//            new TeaksTweaksCommand(),
             new TestCommand(),
             new MechanicsCommand(),
             new PortalCommand(),
@@ -242,7 +243,6 @@ public class Register {
             new HomeCommand(),
             new DurabilityPingCommand(),
             new BackCommand(),
-            new AFKCommand(),
             new ShrineCommand(),
             new WorkstationHighlightCommand(),
             new SetHomeCommand(),
@@ -259,6 +259,15 @@ public class Register {
 
         for (AbstractCommand cmd : cmds) {
             cmd.register();
+        }
+
+        me.teakivy.teakstweaks.utils.command.AbstractCommand[] commands = {
+                new TeaksTweaksCommand(),
+                new AFKCommand(),
+        };
+
+        for (me.teakivy.teakstweaks.utils.command.AbstractCommand command : commands) {
+            command.register();
         }
     }
 

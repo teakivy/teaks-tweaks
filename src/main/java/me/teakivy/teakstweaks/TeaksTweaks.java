@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks;
 
 import com.google.gson.Gson;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
+import me.teakivy.teakstweaks.commands.AFKCommand;
 import me.teakivy.teakstweaks.commands.TeaksTweaksCommand;
 import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
 import me.teakivy.teakstweaks.utils.*;
@@ -45,10 +46,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
      */
     @Override
     public void onEnable() {
-
-        this.getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, commands -> {
-            commands.registrar().register(new TeaksTweaksCommand().getCommand(), List.of("tt"));
-        });
 
         loadTranslations();
 
