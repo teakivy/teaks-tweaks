@@ -1,230 +1,191 @@
 package me.teakivy.teakstweaks.commands;
 
-import me.teakivy.teakstweaks.TeaksTweaks;
+import com.mojang.brigadier.Command;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import io.papermc.paper.command.brigadier.CommandSourceStack;
+import io.papermc.paper.command.brigadier.Commands;
+import io.papermc.paper.command.brigadier.argument.ArgumentTypes;
+import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
 import me.teakivy.teakstweaks.utils.ErrorType;
+import me.teakivy.teakstweaks.utils.URLUtils;
 import me.teakivy.teakstweaks.utils.Wiki;
-import me.teakivy.teakstweaks.utils.command.*;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.customitems.ItemHandler;
-import me.teakivy.teakstweaks.utils.lang.Translatable;
-import me.teakivy.teakstweaks.utils.log.PasteUploader;
 import me.teakivy.teakstweaks.utils.log.PasteManager;
+import me.teakivy.teakstweaks.utils.log.PasteUploader;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.translation.Argument;
-import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class TeaksTweaksCommand extends AbstractCommand {
-    private static final int PASTE_COOLDOWN = 10 * 60 * 1000;
-    private static long lastPaste = 0;
-
 
     public TeaksTweaksCommand() {
-        super(CommandType.ALL, null, "teakstweaks", Permission.COMMAND_TEAKSTWEAKS, Arrays.asList("tweaks", "tt"), "teakstweakscommand", Arg.optional("info", "v", "version", "support", "update", "wiki", "paste", "give"), Arg.optional("packs", "craftingtweaks", "commands", "true", "false", "player"), Arg.optional("item"), Arg.optional("amount"));
+        super(null, "teakstweakscommand", "tt", "tweaks");
     }
 
-    @Override
-    public void command(CommandEvent event) {
-        if (!event.hasArgs()) {
-            sendInfoMessage();
-            return;
-        }
-        switch (event.getArg(0)) {
-            case "info":
-                sendInfoMessage();
-                return;
-            case "v", "version":
-                sendMessage(Component.translatable("teakstweakscommand.version", Argument.component("version", Component.text(TeaksTweaks.getInstance().getDescription().getVersion()))));
-//                sendMessage("version", insert("version", TeaksTweaks.getInstance().getDescription().getVersion()));
-                return;
-            case "support":
-                sendMessage("support", insert("discord", get("plugin.discord")));
-                return;
-            case "update":
-                sendMessage("update", insert("url", get("plugin.url")));
-                return;
-            case "wiki":
-                handleWiki(event);
-                return;
-            case "paste":
-                handlePaste(event);
-                return;
-            case "give":
-                handleGive(event);
-                return;
-            default:
-                sendUsage();
-        }
+    public LiteralCommandNode<CommandSourceStack> getCommand() {
+        return Commands.literal("teakstweaks")
+                .executes(this::info)
+                .then(Commands.literal("info")
+                        .executes(this::info))
+                .then(Commands.literal("version")
+                        .executes(this::version))
+                .then(Commands.literal("support")
+                        .executes(this::support))
+                .then(Commands.literal("update")
+                        .executes(this::update))
+                .then(Commands.literal("wiki")
+                        .then(Commands.literal("packs")
+                                .executes(ctx -> wiki(ctx, "Packs")))
+                        .then(Commands.literal("craftingtweaks")
+                                .executes(ctx -> wiki(ctx, "Crafting-Tweaks")))
+                        .then(Commands.literal("commands")
+                                .executes(ctx -> wiki(ctx, "Commands")))
+                )
+                .then(Commands.literal("paste")
+                        .requires(sender -> sender.getSender().hasPermission(Permission.COMMAND_TEAKSTWEAKS_PASTE.getPermission()))
+                        .then(Commands.argument("include logs", BoolArgumentType.bool())
+                                .executes(this::paste))
+                        .executes(ctx -> paste(ctx, Config.getBoolean("settings.send-log-in-paste"))))
+                .then(Commands.literal("give")
+                        .requires(sender -> sender.getSender().hasPermission(Permission.COMMAND_TEAKSTWEAKS_GIVE.getPermission()))
+                        .then(Commands.argument("targets", ArgumentTypes.players())
+                                .then(Commands.argument("item", StringArgumentType.word())
+                                        .suggests(this::getGiveItemSuggestions)
+                                        .then(Commands.argument("amount", IntegerArgumentType.integer(1, 64 * 9 * 4))
+                                                .executes(this::give))))
+
+                )
+                .build();
     }
 
-    public void sendInfoMessage() {
-        sendMessage("info.dashed_line");
-        sendText("");
-        sendMessage("info.title", insert("version", TeaksTweaks.getInstance().getDescription().getVersion()));
-        sendText("");
-        sendMessage("info.author", insert("author", get("plugin.author")));
-        sendMessage("info.config_version", insert("config_version", Config.getVersion()));
-        sendMessage("info.config_generated", insert("config_generated", Config.getCreatedVersion()));
+    private int info(CommandContext<CommandSourceStack> ctx) {
+        CommandSender sender = ctx.getSource().getSender();
+
+        ArrayList<Component> components = new ArrayList<>();
+        components.add(getText("info.dashed_line"));
+        components.add(Component.empty());
+        components.add(getText("info.title", insert("version", getPlugin().getDescription().getVersion())));
+        components.add(Component.empty());
+        components.add(getText("info.author", insert("author", get("plugin.author"))));
+        components.add(getText("info.config_version", insert("config_version", Config.getVersion())));
+        components.add(getText("info.config_generated", insert("config_generated", Config.getCreatedVersion())));
         if (Config.isDevMode()) {
-            sendMessage("info.dev_mode_enabled");
+            components.add(getText("info.dev_mode_enabled"));
         }
-        sendMessage("info.support", insert("discord", get("plugin.discord")));
-        sendText("");
-        sendMessage("info.dashed_line");
+        components.add(getText("info.support", insert("discord", URLUtils.clickable(URLUtils.getDiscord()))));
+        components.add(Component.empty());
+        components.add(getText("info.dashed_line"));
+
+        for (Component component : components) {
+            sender.sendMessage(component);
+        }
+
+        return Command.SINGLE_SUCCESS;
     }
 
-    public void handleWiki(CommandEvent event) {
-        if (!event.isArg(1)) {
-            sendMessage("wiki", insert("url", Wiki.getWiki()));
-            return;
-        }
-        String type = event.getArg(1);
-        switch (type) {
-            case "packs":
-                sendMessage("wiki", insert("url", Wiki.getWikiPage("Packs")));
-                return;
-            case "craftingtweaks":
-                sendMessage("wiki", insert("url", Wiki.getWikiPage("Crafting-Tweaks")));
-                return;
-            case "commands":
-                sendMessage("wiki", insert("url", Wiki.getWikiPage("Commands")));
-                return;
-            default:
-                sendUsage();
-        }
+    private int version(CommandContext<CommandSourceStack> ctx) {
+        CommandSender sender = ctx.getSource().getSender();
+        sender.sendMessage(getText("version", insert("version", getPlugin().getDescription().getVersion())));
+        return Command.SINGLE_SUCCESS;
     }
 
-    public void handlePaste(CommandEvent event) {
-        if (!checkPermission(Permission.COMMAND_TEAKSTWEAKS_PASTE)) return;
-        if (System.currentTimeMillis() - lastPaste < PASTE_COOLDOWN && !Config.isDevMode()) {
-            sendMessage("paste.error.cooldown", insert("service_name", "Pastebin"));
-            return;
-        }
+    private int support(CommandContext<CommandSourceStack> ctx) {
+        CommandSender sender = ctx.getSource().getSender();
+        sender.sendMessage(getText("support", insert("discord", URLUtils.clickable(URLUtils.getDiscord()))));
+        return Command.SINGLE_SUCCESS;
+    }
 
-        sendMessage("paste.uploading", insert("service_name", "Pastebin"));
+    private int update(CommandContext<CommandSourceStack> ctx) {
+        CommandSender sender = ctx.getSource().getSender();
+        sender.sendMessage(getText("update", insert("url", URLUtils.clickable(URLUtils.getModrinth()))));
+        return Command.SINGLE_SUCCESS;
+    }
 
-        String playerName = event.getSender().getName();
-        boolean logs = Config.getBoolean("settings.send-log-in-paste");
+    private int wiki(CommandContext<CommandSourceStack> ctx, String page) {
+        CommandSender sender = ctx.getSource().getSender();
+        sender.sendMessage(getText("wiki", insert("wiki", URLUtils.clickable(Wiki.getWikiPage(page)))));
+        return Command.SINGLE_SUCCESS;
+    }
 
-        if (event.isArg(1)) {
-            if (event.getArg(1).equalsIgnoreCase("false")) logs = false;
-            if (event.getArg(1).equalsIgnoreCase("true")) logs = true;
-        }
+    private int paste(CommandContext<CommandSourceStack> ctx) {
+        return paste(ctx, ctx.getArgument("include logs", boolean.class));
+    }
+
+    private int paste(CommandContext<CommandSourceStack> ctx, boolean logs) {
+        CommandSender sender = ctx.getSource().getSender();
+        sender.sendMessage(getText("paste.uploading", insert("service_name", "Pastebin")));
+
+        String playerName = (sender instanceof Player) ? sender.getName() : "CONSOLE";
 
         String paste = PasteManager.getPasteContent(playerName, logs);
         try {
             String url = PasteUploader.uploadToPastebin(paste, "Support: " + playerName);
-            lastPaste = System.currentTimeMillis();
-            if (event.getSender() instanceof Player) {
-                sendMessage("paste.success", insert("url", url), insert("service_name", "Pastebin"));
-                return;
+            if (sender instanceof Player) {
+                sender.sendMessage(getText("paste.success", insert("url", URLUtils.clickable(url)), insert("service_name", "Pastebin")));
+                return Command.SINGLE_SUCCESS;
             }
-            sendMessage("paste.success.console", insert("url", url), insert("service_name", "Pastebin"));
+            sender.sendMessage(getText("paste.success.console", insert("url", url), insert("service_name", "Pastebin")));
+            return Command.SINGLE_SUCCESS;
         } catch (IOException e) {
-            sendMessage("paste.error");
+            sender.sendMessage(getText("paste.error", insert("service_name", "Pastebin")));
             e.printStackTrace();
+            return 0;
         }
+
     }
 
-    public void handleGive(CommandEvent event) {
-        if (!checkPermission(Permission.COMMAND_TEAKSTWEAKS_GIVE)) return;
-        if (!event.hasArgs(2) && !event.isArg(3)) {
-            sendUsage();
-            return;
+    private CompletableFuture<Suggestions> getGiveItemSuggestions(final CommandContext<CommandSourceStack> ctx, final SuggestionsBuilder builder) {
+        builder.restart();
+        for (String key : ItemHandler.getAllKeys()) {
+            if (key.toLowerCase().startsWith(builder.getRemainingLowerCase())) builder.suggest(key);
         }
-        String playerName = event.getArg(1);
-        String itemName = event.getArg(2);
-        int amount = 1;
-        if (event.isArg(3)) {
-            try {
-                amount = Integer.parseInt(event.getArg(3));
-            } catch (NumberFormatException e) {
-                sendUsage();
-                return;
-            }
-        }
-
-        if (amount < 1) {
-            sendMessage("give.error.amount.lt_1");
-            return;
-        }
-
-        if (amount > 6400) {
-            sendMessage("give.error.amount.gt_6400");
-            return;
-        }
-
-        List<Player> players = new ArrayList<>();
-        switch (playerName) {
-            case "@a":
-                players.addAll(Bukkit.getOnlinePlayers());
-                break;
-            case "@s":
-                if (event.getSender() instanceof Player) {
-                    players.add((Player) event.getSender());
-                } else {
-                    sendError(ErrorType.NOT_PLAYER);
-                    return;
-                }
-                break;
-            case "@r":
-                players.add(Bukkit.getOnlinePlayers().stream().findAny().orElse(null));
-                break;
-            default:
-                Player player = Bukkit.getPlayer(playerName);
-                if (player == null) {
-                    sendError(ErrorType.PLAYER_DNE);
-                    return;
-                }
-                players.add(player);
-        }
-
-        ItemStack item = ItemHandler.getItem(itemName);
-        if (item == null) {
-            sendMessage("give.unknown_item", insert("item", itemName));
-            return;
-        }
-
-
-        for (Player player : players) {
-            for (int i = 0; i < amount; i++) {
-                player.getInventory().addItem(ItemHandler.getItem(itemName));
-            }
-        }
-
-        String recipient = players.size() == 1 ? players.getFirst().getName() : Translatable.getString("teakstweakscommand.give.all_players");
-
-        sendMessage("give.success", insert("amount", amount), insert("item", itemName), insert("player", recipient));
+        return builder.buildFuture();
     }
 
-    @Override
-    public List<String> tabComplete(TabCompleteEvent event) {
-        if (event.isArg(0)) return Arrays.asList("info", "version", "support", "update", "wiki", "paste", "give");
-        if (event.isArg(1) && event.isArg(0, "wiki")) return Arrays.asList("packs", "craftingtweaks", "commands");
-        if (event.isArg(1) && event.isArg(0, "paste")) return Arrays.asList("true", "false");
+    private int give(CommandContext<CommandSourceStack> ctx) {
+        CommandSender sender = ctx.getSource().getSender();
+        final PlayerSelectorArgumentResolver targetResolver = ctx.getArgument("targets", PlayerSelectorArgumentResolver.class);
+        try {
+            final List<Player> targets = targetResolver.resolve(ctx.getSource());
+            String itemName = ctx.getArgument("item", String.class);
+            int amount = ctx.getArgument("amount", Integer.class);
 
-        if (event.isArg(0, "give")) {
-            if (event.isArg(1)) {
-                List<String> players = new ArrayList<>();
-                for (Player player : Bukkit.getOnlinePlayers()) {
-                    players.add(player.getName());
+            ItemStack item = ItemHandler.getItem(itemName);
+            if (item == null) {
+                sender.sendMessage(getError("give.unknown_item", insert("item", ctx.getArgument("item", String.class))));
+                return 0;
+            }
+
+            for (Player target : targets) {
+                ItemStack giveItem = item.clone();
+                for (int i = 0; i < amount; i++) {
+                    target.give(giveItem);
                 }
-                players.add("@a");
-                players.add("@s");
-                players.add("@r");
-                return players;
             }
-            if (event.isArg(2)) {
-                return ItemHandler.getAllKeys();
-            }
-            if (event.isArg(3)) return List.of("<amount>");
-        }
 
-        return null;
+            Component recipient = targets.size() == 1 ? Component.text(targets.getFirst().getName()) : getText("teakstweakscommand.give.all_players");
+
+            sender.sendMessage(getText("give.success", insert("amount", amount), insert("item", itemName), insert("player", recipient)));
+            return Command.SINGLE_SUCCESS;
+        } catch (CommandSyntaxException e) {
+            sender.sendMessage(ErrorType.UNKNOWN_ERROR.m());
+            throw new RuntimeException(e);
+        }
     }
 }
