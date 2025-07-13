@@ -53,6 +53,7 @@ public class CraftingRegister {
         recipes.add(new UnpackableWool());
         recipes.add(new UniversalDyeing());
         recipes.add(new CheaperResinBlocks());
+        recipes.add(new CheaperArmorTrims());
     }
 
     public static void registerAll() {
