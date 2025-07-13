@@ -29,8 +29,11 @@ public class Credits {
         contributors.add("Capirichu");
         contributors.add("Artugr18");
         contributors.add("Gudlin");
+        contributors.add("loudambiance");
+        contributors.add("Odin Allfather");
 
         supporters.add("loudambiance");
+        supporters.add("Odin Allfather");
 
         notes.add("Thanks to Sachin Gorkar for some of the tweak's ideas");
         notes.add("Fast Leaf Decay By: @StarTux on Github");
