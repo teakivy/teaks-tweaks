@@ -81,4 +81,13 @@ tasks.processResources {
             "libraries" to libraries.joinToString("\n  - ")
         )
     }
+
+    filesMatching("paper-plugin.yml") {
+        expand("version" to project.version)
+    }
+
+    filesMatching("config.yml") {
+        expand("version" to project.version)
+    }
+
 }
