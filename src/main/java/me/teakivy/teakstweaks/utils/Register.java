@@ -239,7 +239,6 @@ public class Register {
             new SpawningSpheresCommand(),
             new DeleteHomeCommand(),
             new AltsCommand(),
-            new TPAHereCommand(),
         };
 
         for (AbstractCommand cmd : cmds) {
@@ -265,6 +264,7 @@ public class Register {
                 new BackCommand(),
                 new GraveCommand(),
                 new TPACommand(),
+                new TPAHereCommand(),
         };
 
         for (me.teakivy.teakstweaks.utils.command.AbstractCommand command : commands) {
