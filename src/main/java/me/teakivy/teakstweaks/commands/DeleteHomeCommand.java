@@ -32,43 +32,19 @@ public class DeleteHomeCommand extends AbstractCommand {
                     Player player = checkPlayer(ctx);
                     if (player == null) return Command.SINGLE_SUCCESS;
 
-                    deletehome(player, "home");
+                    new HomeCommand().deleteHome(player, "home");
                     return Command.SINGLE_SUCCESS;
                 })
                 .then(Commands.argument("name", StringArgumentType.word())
-                        .suggests(this::homeNameSuggestions)
+                        .suggests((CommandContext<CommandSourceStack> ctx, SuggestionsBuilder builder) -> new HomeCommand().homeNameSuggestions(ctx, builder))
                         .executes(ctx -> {
                             Player player = checkPlayer(ctx);
                             if (player == null) return Command.SINGLE_SUCCESS;
 
                             String name = StringArgumentType.getString(ctx, "name");
-                            deletehome(player, name);
+                            new HomeCommand().deleteHome(player, name);
                             return Command.SINGLE_SUCCESS;
                         }))
                 .build();
-    }
-
-    private void deletehome(Player player, String name) {
-        if (name == null || name.isEmpty()) name = "home";
-        Home home = HomesPack.getHome(player, name);
-        if (home == null) {
-            player.sendMessage(getError("home_dne", insert("name", name)));
-            return;
-        }
-
-        if (!HomesPack.removeHome(player, name)) {
-            player.sendMessage(getError("cant_delete_home"));
-            return;
-        }
-        player.sendMessage(getText("deleted_home", insert("name", name)));
-    }
-
-    private CompletableFuture<Suggestions> homeNameSuggestions(final CommandContext<CommandSourceStack> ctx, final SuggestionsBuilder builder) {
-        builder.restart();
-        if (!(ctx.getSource().getSender() instanceof Player player)) return builder.buildFuture();
-        for (Home home : HomesPack.getHomes(player)) {
-            if (home.getName().toLowerCase().startsWith(builder.getRemainingLowerCase())) builder.suggest(home.getName());
-        }
-        return builder.buildFuture();
     }
 }

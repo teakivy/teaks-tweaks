@@ -233,7 +233,6 @@ public class Register {
      */
     public static void registerCommands() {
         AbstractCommand[] cmds = {
-            new HomeCommand(),
             new DurabilityPingCommand(),
             new WorkstationHighlightCommand(),
             new SpawningSpheresCommand(),
@@ -266,6 +265,7 @@ public class Register {
                 new TPAHereCommand(),
                 new SetHomeCommand(),
                 new DeleteHomeCommand(),
+                new HomeCommand(),
         };
 
         for (me.teakivy.teakstweaks.utils.command.AbstractCommand command : commands) {

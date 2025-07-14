@@ -30,7 +30,7 @@ public class SetHomeCommand extends AbstractCommand {
                     Player player = checkPlayer(ctx);
                     if (player == null) return Command.SINGLE_SUCCESS;
 
-                    sethome(player, "home");
+                    new HomeCommand().setHome(player, "home");
                     return Command.SINGLE_SUCCESS;
                 })
                 .then(Commands.argument("name", StringArgumentType.word())
@@ -39,31 +39,9 @@ public class SetHomeCommand extends AbstractCommand {
                             if (player == null) return Command.SINGLE_SUCCESS;
 
                             String name = StringArgumentType.getString(ctx, "name");
-                            sethome(player, name);
+                            new HomeCommand().setHome(player, name);
                             return Command.SINGLE_SUCCESS;
                         }))
                 .build();
-    }
-
-    private void sethome(Player player, String name) {
-        if (name == null || name.isEmpty()) name = "home";
-        if (HomesPack.getHome(player, name) != null) {
-            player.sendMessage(getError("home_already_exists", insert("name", name)));
-            return;
-        }
-
-        List<Home> homes = HomesPack.getHomes(player);
-        int maxHomes = getPackConfig().getInt("max-homes");
-        if (maxHomes > 0 && homes.size() >= maxHomes) {
-            player.sendMessage(getError("max_homes", insert("max_homes", maxHomes)));
-            return;
-        }
-
-        if (!HomesPack.setHome(player, name, player.getLocation())) {
-            player.sendMessage(getError("cant_set_home"));
-            return;
-        }
-
-        player.sendMessage(getText("set_home", insert("name", name)));
     }
 }
