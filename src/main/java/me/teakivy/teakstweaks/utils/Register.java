@@ -237,7 +237,6 @@ public class Register {
             new HomeCommand(),
             new DurabilityPingCommand(),
             new BackCommand(),
-            new ShrineCommand(),
             new WorkstationHighlightCommand(),
             new SetHomeCommand(),
             new ItemAveragesCommand(),
@@ -265,6 +264,7 @@ public class Register {
                 new RealTimeClockCommand(),
                 new TestCommand(),
                 new KillBoatsCommand(),
+                new ShrineCommand(),
         };
 
         for (me.teakivy.teakstweaks.utils.command.AbstractCommand command : commands) {
