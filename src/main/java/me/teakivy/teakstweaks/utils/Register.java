@@ -239,7 +239,6 @@ public class Register {
             new BackCommand(),
             new WorkstationHighlightCommand(),
             new SetHomeCommand(),
-            new ItemAveragesCommand(),
             new GraveCommand(),
             new SpawningSpheresCommand(),
             new DeleteHomeCommand(),
@@ -265,6 +264,7 @@ public class Register {
                 new TestCommand(),
                 new KillBoatsCommand(),
                 new ShrineCommand(),
+                new ItemAveragesCommand(),
         };
 
         for (me.teakivy.teakstweaks.utils.command.AbstractCommand command : commands) {

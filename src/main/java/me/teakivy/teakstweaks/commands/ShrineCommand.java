@@ -23,6 +23,7 @@ public class ShrineCommand extends AbstractCommand {
     @Override
     public LiteralCommandNode<CommandSourceStack> getCommand() {
         return Commands.literal("shrine")
+                .requires(perm(Permission.COMMAND_SHRINE))
                 .then(Commands.literal("create")
                     .requires(perm(Permission.COMMAND_SHRINE_CREATE))
                     .executes(playerOnly(this::create)))
