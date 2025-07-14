@@ -245,7 +245,6 @@ public class Register {
             new ItemAveragesCommand(),
             new GraveCommand(),
             new SpawningSpheresCommand(),
-            new PackListCommand(),
             new DeleteHomeCommand(),
             new AltsCommand(),
             new TPAHereCommand(),

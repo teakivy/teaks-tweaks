@@ -25,7 +25,6 @@ public enum Permission {
     COMMAND_KILLBOATS("command.killboats", PermissionType.OP),
     COMMAND_MECHANICS("command.mechanics"),
     COMMAND_NIGHTVISION("command.nightvision"),
-    COMMAND_PACKLIST("command.packlist"),
     COMMAND_PORTAL("command.portal"),
     COMMAND_REALTIMECLOCK("command.realtimeclock"),
     COMMAND_SHRINE("command.shrine", PermissionType.OP),
