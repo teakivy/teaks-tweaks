@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.utils;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.commands.*;
 import me.teakivy.teakstweaks.commands.PortalCommand;
+import me.teakivy.teakstweaks.commands.TestCommand;
 import me.teakivy.teakstweaks.oldcommands.*;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.alwaysdrop.AlwaysDrop;
@@ -230,7 +231,6 @@ public class Register {
      */
     public static void registerCommands() {
         AbstractCommand[] cmds = {
-            new TestCommand(),
             new KillBoatsCommand(),
             new SpawnCommand(),
             new TPACommand(),
@@ -263,6 +263,7 @@ public class Register {
                 new PortalCommand(),
                 new CoordsHudCommand(),
                 new RealTimeClockCommand(),
+                new TestCommand(),
         };
 
         for (me.teakivy.teakstweaks.utils.command.AbstractCommand command : commands) {
