@@ -21,7 +21,7 @@ public class NightVisionCommand extends AbstractCommand {
     @Override
     public LiteralCommandNode<CommandSourceStack> getCommand() {
         return Commands.literal("nightvision")
-                .requires(sender -> sender.getSender().hasPermission(Permission.COMMAND_NIGHTVISION.getPermission()))
+                .requires(perm(Permission.COMMAND_NIGHTVISION))
                 .executes(playerOnly(this::nightvision))
                 .build();
     }

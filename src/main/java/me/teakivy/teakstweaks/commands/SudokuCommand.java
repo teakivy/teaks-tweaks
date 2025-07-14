@@ -21,7 +21,7 @@ public class SudokuCommand extends AbstractCommand {
     @Override
     public LiteralCommandNode<CommandSourceStack> getCommand() {
         return Commands.literal("sudoku")
-                .requires(sender -> sender.getSender().hasPermission(Permission.COMMAND_SUDOKU.getPermission()))
+                .requires(perm(Permission.COMMAND_SUDOKU))
                 .executes(playerOnly(this::sudoku))
                 .build();
     }

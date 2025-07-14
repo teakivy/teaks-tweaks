@@ -22,7 +22,7 @@ public class AFKCommand extends AbstractCommand {
                 .requires(sender -> sender.getSender().hasPermission(Permission.COMMAND_AFK.getPermission()) && getPackConfig().getBoolean("allow-afk-command"))
                 .executes(this::afk)
                 .then(Commands.literal("uninstall")
-                        .requires(sender -> sender.getSender().hasPermission(Permission.COMMAND_AFK_UNINSTALL.getPermission()))
+                        .requires(perm(Permission.COMMAND_AFK_UNINSTALL))
                         .executes(playerOnly(this::uninstall)))
                 .build();
     }

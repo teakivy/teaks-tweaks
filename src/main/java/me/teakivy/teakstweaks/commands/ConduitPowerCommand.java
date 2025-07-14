@@ -21,7 +21,7 @@ public class ConduitPowerCommand extends AbstractCommand {
     @Override
     public LiteralCommandNode<CommandSourceStack> getCommand() {
         return Commands.literal("conduitpower")
-                .requires(sender -> sender.getSender().hasPermission(Permission.COMMAND_CONDUITPOWER.getPermission()))
+                .requires(perm(Permission.COMMAND_CONDUITPOWER))
                 .executes(playerOnly(this::conduitPower))
                 .build();
     }

@@ -26,7 +26,7 @@ public class MechanicsCommand extends AbstractCommand {
     @Override
     public LiteralCommandNode<CommandSourceStack> getCommand() {
         return Commands.literal("mechanics")
-                .requires(sender -> sender.getSender().hasPermission(Permission.COMMAND_MECHANICS.getPermission()))
+                .requires(perm(Permission.COMMAND_MECHANICS))
                 .executes(playerOnly(this::mechanics))
                 .build();
     }

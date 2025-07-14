@@ -22,7 +22,7 @@ public class DisposalCommand extends AbstractCommand {
     @Override
     public LiteralCommandNode<CommandSourceStack> getCommand() {
         return Commands.literal("disposal")
-                .requires(sender -> sender.getSender().hasPermission(Permission.COMMAND_DISPOSAL.getPermission()))
+                .requires(perm(Permission.COMMAND_DISPOSAL))
                 .executes(playerOnly(this::disposal))
                 .build();
     }

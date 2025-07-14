@@ -9,6 +9,7 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.commands.TeaksTweaksCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.config.Config;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.ComponentLike;
 import net.kyori.adventure.text.minimessage.translation.Argument;
@@ -20,6 +21,7 @@ import org.intellij.lang.annotations.Subst;
 
 import java.util.List;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public abstract class AbstractCommand {
     private final String parentPack;
@@ -152,5 +154,9 @@ public abstract class AbstractCommand {
             }
             return function.apply(context);
         };
+    }
+
+    protected Predicate<CommandSourceStack> perm(Permission permission) {
+        return source -> source.getSender().hasPermission(permission.getPermission());
     }
 }
