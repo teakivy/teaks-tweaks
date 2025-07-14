@@ -26,7 +26,7 @@ public class PortalCommand extends AbstractCommand {
         return Commands.literal("portal")
                 .requires(perm(Permission.COMMAND_PORTAL))
                 .executes(playerOnly(this::portal))
-                .then(Commands.argument("pos", ArgumentTypes.blockPosition())
+                .then(Commands.argument("location", ArgumentTypes.blockPosition())
                         .requires(perm(Permission.COMMAND_PORTAL))
                         .executes(this::portalLoc))
                 .build();
@@ -41,7 +41,7 @@ public class PortalCommand extends AbstractCommand {
 
     private int portalLoc(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         Player player = (Player) context.getSource().getSender();
-        final BlockPositionResolver blockPositionResolver = context.getArgument("arg", BlockPositionResolver.class);
+        final BlockPositionResolver blockPositionResolver = context.getArgument("location", BlockPositionResolver.class);
         final BlockPosition blockPosition = blockPositionResolver.resolve(context.getSource());
         final Location location = blockPosition.toLocation(player.getWorld());
         sendLocation(player, location);
