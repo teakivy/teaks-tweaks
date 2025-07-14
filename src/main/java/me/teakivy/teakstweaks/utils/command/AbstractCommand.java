@@ -166,7 +166,9 @@ public abstract class AbstractCommand {
         return source -> source.getSender().hasPermission(permission.getPermission());
     }
 
-
+    public void setCooldownTime(int time) {
+        this.cooldownTime = time;
+    }
 
     public int getCooldownTime() {
         return this.cooldownTime;

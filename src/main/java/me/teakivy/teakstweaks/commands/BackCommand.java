@@ -16,10 +16,10 @@ import org.bukkit.entity.Player;
 
 import java.util.Objects;
 
-public class SpawnCommand extends AbstractCommand {
+public class BackCommand extends AbstractCommand {
 
-    public SpawnCommand() {
-        super("spawn", "spawn");
+    public BackCommand() {
+        super("back", "back");
 
         setCooldownTime(getPackConfig().getInt("teleport-cooldown"));
     }
@@ -36,11 +36,34 @@ public class SpawnCommand extends AbstractCommand {
     private int spawn(CommandContext<CommandSourceStack> context) {
         Player player = (Player) context.getSource().getSender();
         if (isOnCooldown(player)) {
-            player.sendMessage(getError("on_cooldown", insert("time", getCooldownTime())));
+            player.sendMessage(getText("on_cooldown", insert("cooldown_seconds", getCooldownTime())));
             return Command.SINGLE_SUCCESS;
         }
 
-        teleportToSpawn(player);
+        if (!Back.backLoc.containsKey(player.getUniqueId())) {
+            player.sendMessage(getError("no_back_location"));
+            return Command.SINGLE_SUCCESS;
+        }
+
+        int teleportDelay = getPackConfig().getInt("teleport-delay");
+
+        if (teleportDelay <= 0) {
+            Back.tpBack(player);
+            player.sendMessage(getText("teleporting"));
+            return Command.SINGLE_SUCCESS;
+        }
+        player.sendMessage(getText("teleporting_delayed", insert("time", teleportDelay)));
+        int x = player.getLocation().getBlockX();
+        int y = player.getLocation().getBlockY();
+        int z = player.getLocation().getBlockZ();
+        Bukkit.getScheduler().runTaskLater(TeaksTweaks.getInstance(), () -> {
+            if (x != player.getLocation().getBlockX() || y != player.getLocation().getBlockY() || z != player.getLocation().getBlockZ()) {
+                player.sendMessage(getError("teleport_moved"));
+                return;
+            }
+            Back.tpBack(player);
+            player.sendMessage(getText("teleporting"));
+        }, teleportDelay * 20L);
         setCooldown(player);
         return Command.SINGLE_SUCCESS;
     }

@@ -235,7 +235,6 @@ public class Register {
             new TPACommand(),
             new HomeCommand(),
             new DurabilityPingCommand(),
-            new BackCommand(),
             new WorkstationHighlightCommand(),
             new SetHomeCommand(),
             new GraveCommand(),
@@ -265,6 +264,7 @@ public class Register {
                 new ShrineCommand(),
                 new ItemAveragesCommand(),
                 new SpawnCommand(),
+                new BackCommand(),
         };
 
         for (me.teakivy.teakstweaks.utils.command.AbstractCommand command : commands) {
