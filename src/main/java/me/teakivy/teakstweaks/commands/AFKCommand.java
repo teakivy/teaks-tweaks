@@ -25,16 +25,12 @@ public class AFKCommand extends AbstractCommand {
                 .executes(this::afk)
                 .then(Commands.literal("uninstall")
                         .requires(sender -> sender.getSender().hasPermission(Permission.COMMAND_AFK_UNINSTALL.getPermission()))
-                        .executes(this::uninstall))
+                        .executes(playerOnly(this::uninstall)))
                 .build();
     }
 
     private int afk(CommandContext<CommandSourceStack> ctx) {
-        CommandSender sender = ctx.getSource().getSender();
-        if (!(sender instanceof Player player)) {
-            sender.sendMessage(ErrorType.NOT_PLAYER.m());
-            return Command.SINGLE_SUCCESS;
-        }
+        Player player = (Player) ctx.getSource().getSender();
         if (AFK.afk.containsKey(player.getUniqueId())) {
             if (AFK.afk.get(player.getUniqueId())) {
                 AFK.unAFK(player);

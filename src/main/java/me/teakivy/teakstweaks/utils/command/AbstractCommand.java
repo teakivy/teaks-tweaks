@@ -1,19 +1,25 @@
 package me.teakivy.teakstweaks.utils.command;
 
+import com.mojang.brigadier.Command;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.commands.TeaksTweaksCommand;
+import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.config.Config;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.ComponentLike;
 import net.kyori.adventure.text.minimessage.translation.Argument;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.intellij.lang.annotations.Subst;
 
 import java.util.List;
+import java.util.function.Function;
 
 public abstract class AbstractCommand {
     private final String parentPack;
@@ -136,5 +142,15 @@ public abstract class AbstractCommand {
         getPlugin().getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, commands -> {
             commands.registrar().register(this.getCommand(), aliases);
         });
+    }
+
+    protected Command<CommandSourceStack> playerOnly(Function<CommandContext<CommandSourceStack>, Integer> function) {
+        return context -> {
+            if (!(context.getSource().getSender() instanceof Player)) {
+                context.getSource().getSender().sendMessage(ErrorType.NOT_PLAYER.m());
+                return Command.SINGLE_SUCCESS;
+            }
+            return function.apply(context);
+        };
     }
 }
