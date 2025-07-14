@@ -162,6 +162,14 @@ public abstract class AbstractCommand {
         };
     }
 
+    protected Player checkPlayer(CommandContext<CommandSourceStack> ctx) {
+        if (!(ctx.getSource().getSender() instanceof Player)) {
+            ctx.getSource().getSender().sendMessage(ErrorType.NOT_PLAYER.m());
+            return null;
+        }
+        return (Player) ctx.getSource().getSender();
+    }
+
     protected Predicate<CommandSourceStack> perm(Permission permission) {
         return source -> source.getSender().hasPermission(permission.getPermission());
     }
