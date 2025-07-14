@@ -26,14 +26,14 @@ public class BackCommand extends AbstractCommand {
 
     @Override
     public LiteralCommandNode<CommandSourceStack> getCommand() {
-        return Commands.literal("spawn")
-                .requires(perm(Permission.COMMAND_SPAWN))
-                .executes(playerOnly(this::spawn))
+        return Commands.literal("back")
+                .requires(perm(Permission.COMMAND_BACK))
+                .executes(playerOnly(this::back))
                 .build();
 
     }
 
-    private int spawn(CommandContext<CommandSourceStack> context) {
+    private int back(CommandContext<CommandSourceStack> context) {
         Player player = (Player) context.getSource().getSender();
         if (isOnCooldown(player)) {
             player.sendMessage(getText("on_cooldown", insert("cooldown_seconds", getCooldownTime())));
@@ -66,34 +66,5 @@ public class BackCommand extends AbstractCommand {
         }, teleportDelay * 20L);
         setCooldown(player);
         return Command.SINGLE_SUCCESS;
-    }
-
-    private void teleportToSpawn(Player player) {
-        World world = Bukkit.getWorld(Objects.requireNonNull(getPackConfig().getString("world")));
-        if (world == null) {
-            player.sendMessage(ErrorType.UNKNOWN_ERROR.m());
-            return;
-        }
-        int teleportDelay = getPackConfig().getInt("teleport-delay");
-
-        if (teleportDelay <= 0) {
-            Back.backLoc.put(player.getUniqueId(), player.getLocation());
-            player.teleportAsync(world.getSpawnLocation());
-            player.sendMessage(getText("teleporting"));
-            return;
-        }
-        player.sendMessage(getText("teleporting_delayed", insert("time", teleportDelay)));
-        int x = player.getLocation().getBlockX();
-        int y = player.getLocation().getBlockY();
-        int z = player.getLocation().getBlockZ();
-        Bukkit.getScheduler().runTaskLater(TeaksTweaks.getInstance(), () -> {
-            if (x != player.getLocation().getBlockX() || y != player.getLocation().getBlockY() || z != player.getLocation().getBlockZ()) {
-                player.sendMessage(getError("teleport_moved"));
-                return;
-            }
-            Back.backLoc.put(player.getUniqueId(), player.getLocation());
-            player.teleportAsync(world.getSpawnLocation());
-            player.sendMessage(getText("teleporting"));
-        }, teleportDelay * 20L);
     }
 }
