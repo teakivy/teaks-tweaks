@@ -6,20 +6,20 @@ import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import me.teakivy.teakstweaks.TeaksTweaks;
-import me.teakivy.teakstweaks.commands.TeaksTweaksCommand;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.ComponentLike;
 import net.kyori.adventure.text.minimessage.translation.Argument;
-import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.intellij.lang.annotations.Subst;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -27,6 +27,9 @@ public abstract class AbstractCommand {
     private final String parentPack;
     private final String translationKey;
     private final List<String> aliases;
+
+    private int cooldownTime;
+    private final HashMap<UUID, Long> cooldownMap;
 
     /**
      * Set up the command
@@ -47,6 +50,9 @@ public abstract class AbstractCommand {
         this.parentPack = parentPack;
         this.translationKey = translationKey;
         this.aliases = aliases;
+
+        cooldownMap = new HashMap<>();
+        cooldownTime = 0;
     }
 
     public abstract LiteralCommandNode<CommandSourceStack> getCommand();
@@ -158,5 +164,25 @@ public abstract class AbstractCommand {
 
     protected Predicate<CommandSourceStack> perm(Permission permission) {
         return source -> source.getSender().hasPermission(permission.getPermission());
+    }
+
+
+
+    public int getCooldownTime() {
+        return this.cooldownTime;
+    }
+
+    public void setCooldown(Player player) {
+        this.cooldownMap.put(player.getUniqueId(), System.currentTimeMillis());
+    }
+
+    public boolean isOnCooldown(Player player) {
+        if (!this.cooldownMap.containsKey(player.getUniqueId())) return false;
+        return this.cooldownMap.get(player.getUniqueId()) + (this.cooldownTime * 1000L) > System.currentTimeMillis();
+    }
+
+    public int getCooldown(Player player) {
+        if (!this.cooldownMap.containsKey(player.getUniqueId())) return 0;
+        return (int) ((this.cooldownMap.get(player.getUniqueId()) + (this.cooldownTime * 1000L) - System.currentTimeMillis()) / 1000L);
     }
 }
