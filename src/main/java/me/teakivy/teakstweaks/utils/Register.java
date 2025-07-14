@@ -231,7 +231,6 @@ public class Register {
     public static void registerCommands() {
         AbstractCommand[] cmds = {
             new TestCommand(),
-            new CoordsHudCommand(),
             new KillBoatsCommand(),
             new RealTimeClockCommand(),
             new SpawnCommand(),
@@ -263,6 +262,7 @@ public class Register {
                 new SudokuCommand(),
                 new DisposalCommand(),
                 new PortalCommand(),
+                new CoordsHudCommand(),
         };
 
         for (me.teakivy.teakstweaks.utils.command.AbstractCommand command : commands) {
