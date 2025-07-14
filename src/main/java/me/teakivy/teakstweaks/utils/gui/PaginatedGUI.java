@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.utils.gui;
 
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -24,7 +25,7 @@ public class PaginatedGUI {
      * @param items The items to display
      * @param title The title of the GUI
      */
-    public PaginatedGUI(List<ItemStack> items, String title) {
+    public PaginatedGUI(List<ItemStack> items, Component title) {
         this.items = items;
         this.inv = Bukkit.createInventory(null, 54, title);
     }
