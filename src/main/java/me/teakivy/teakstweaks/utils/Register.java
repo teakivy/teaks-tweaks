@@ -248,7 +248,6 @@ public class Register {
             new DeleteHomeCommand(),
             new AltsCommand(),
             new TPAHereCommand(),
-            new DisposalCommand(),
         };
 
         for (AbstractCommand cmd : cmds) {
@@ -262,6 +261,7 @@ public class Register {
                 new MechanicsCommand(),
                 new NightVisionCommand(),
                 new SudokuCommand(),
+                new DisposalCommand(),
         };
 
         for (me.teakivy.teakstweaks.utils.command.AbstractCommand command : commands) {
