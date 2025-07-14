@@ -245,7 +245,6 @@ public class Register {
             new ItemAveragesCommand(),
             new GraveCommand(),
             new SpawningSpheresCommand(),
-            new SudokuCommand(),
             new PackListCommand(),
             new DeleteHomeCommand(),
             new AltsCommand(),
@@ -263,6 +262,7 @@ public class Register {
                 new ConduitPowerCommand(),
                 new MechanicsCommand(),
                 new NightVisionCommand(),
+                new SudokuCommand(),
         };
 
         for (me.teakivy.teakstweaks.utils.command.AbstractCommand command : commands) {
