@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.utils;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.commands.AFKCommand;
+import me.teakivy.teakstweaks.commands.ConduitPowerCommand;
 import me.teakivy.teakstweaks.commands.TeaksTweaksCommand;
 import me.teakivy.teakstweaks.oldcommands.*;
 import me.teakivy.teakstweaks.packs.BasePack;
@@ -235,7 +236,6 @@ public class Register {
             new PortalCommand(),
             new CoordsHudCommand(),
             new NightVisionCommand(),
-            new ConduitPowerCommand(),
             new KillBoatsCommand(),
             new RealTimeClockCommand(),
             new SpawnCommand(),
@@ -264,6 +264,7 @@ public class Register {
         me.teakivy.teakstweaks.utils.command.AbstractCommand[] commands = {
                 new TeaksTweaksCommand(),
                 new AFKCommand(),
+                new ConduitPowerCommand(),
         };
 
         for (me.teakivy.teakstweaks.utils.command.AbstractCommand command : commands) {
