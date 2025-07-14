@@ -9,6 +9,7 @@ import me.teakivy.teakstweaks.utils.*;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.gui.GUIListener;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
+import me.teakivy.teakstweaks.utils.lang.TranslationManager;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
 import me.teakivy.teakstweaks.utils.papi.PAPIExpansion;
@@ -40,6 +41,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     private final ArrayList<String> activeCraftingTweaks = new ArrayList<>();
 
     private Register register;
+    private TranslationManager translationManager;
 
     /**
      * Called when the plugin is enabled
@@ -47,7 +49,8 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
 
-        loadTranslations();
+        translationManager = new TranslationManager(getDataFolder());
+        translationManager.initialize();
 
         VersionManager.init();
         // Initialize an audiences instance for the plugin
@@ -171,6 +174,14 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     }
 
     /**
+     * Get the TranslationManager instance
+     * @return TranslationManager instance
+     */
+    public static TranslationManager getTranslationManager() {
+        return getInstance().translationManager;
+    }
+
+    /**
      * Create the credits file
      */
     private void createCredits() {
@@ -211,27 +222,5 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         if (!packsFolder.exists()) {
             packsFolder.mkdirs();
         }
-    }
-
-    public void loadTranslations() {
-        MiniMessageTranslationStore store = MiniMessageTranslationStore.create(Key.get("translations"));
-        List<String> languages = new ArrayList<>();
-        languages.add("en_US");
-        languages.add("de_DE");
-        languages.add("fi_FI");
-        languages.add("fr_FR");
-        languages.add("nl_NL");
-        languages.add("pl_PL");
-        languages.add("ru_RU");
-
-        for (String lang : languages) {
-            String language = lang.split("_")[0];
-            String country = lang.split("_")[1];
-
-            ResourceBundle bundle = ResourceBundle.getBundle("teakstweaks.Bundle", Locale.of(language, country), UTF8ResourceBundleControl.get());
-            store.registerAll(Locale.of(language, country), bundle, true);
-        }
-
-        GlobalTranslator.translator().addSource(store);
     }
 }
