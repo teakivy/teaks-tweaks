@@ -6,10 +6,8 @@ import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import me.teakivy.teakstweaks.packs.afkdisplay.AFK;
-import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class AFKCommand extends AbstractCommand {

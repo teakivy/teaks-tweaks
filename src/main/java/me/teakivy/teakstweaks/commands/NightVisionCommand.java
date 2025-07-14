@@ -12,21 +12,21 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class ConduitPowerCommand extends AbstractCommand {
+public class NightVisionCommand extends AbstractCommand {
 
-    public ConduitPowerCommand() {
-        super("spectator-conduit-power", "conduitpower");
+    public NightVisionCommand() {
+        super("spectator-night-vision", "nightvision");
     }
 
     @Override
     public LiteralCommandNode<CommandSourceStack> getCommand() {
-        return Commands.literal("conduitpower")
-                .requires(sender -> sender.getSender().hasPermission(Permission.COMMAND_CONDUITPOWER.getPermission()))
-                .executes(playerOnly(this::conduitPower))
+        return Commands.literal("nightvision")
+                .requires(sender -> sender.getSender().hasPermission(Permission.COMMAND_NIGHTVISION.getPermission()))
+                .executes(playerOnly(this::nightvision))
                 .build();
     }
 
-    private int conduitPower(CommandContext<CommandSourceStack> context) {
+    private int nightvision(CommandContext<CommandSourceStack> context) {
         Player player = (Player) context.getSource().getSender();
         if (player.getGameMode() != GameMode.SPECTATOR) {
             player.sendMessage(getError("wrong_gamemode"));
@@ -34,12 +34,12 @@ public class ConduitPowerCommand extends AbstractCommand {
         }
 
         player.sendMessage(getText("toggled"));
-        if (player.hasPotionEffect(PotionEffectType.CONDUIT_POWER)) {
-            player.removePotionEffect(PotionEffectType.CONDUIT_POWER);
+        if (player.hasPotionEffect(PotionEffectType.NIGHT_VISION)) {
+            player.removePotionEffect(PotionEffectType.NIGHT_VISION);
             return Command.SINGLE_SUCCESS;
         }
 
-        player.addPotionEffect(new PotionEffect(PotionEffectType.CONDUIT_POWER, PotionEffect.INFINITE_DURATION, 0, false, true));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, PotionEffect.INFINITE_DURATION, 0, false, true));
         return Command.SINGLE_SUCCESS;
     }
 }
