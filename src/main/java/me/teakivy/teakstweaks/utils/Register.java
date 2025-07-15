@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.utils;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.commands.*;
 import me.teakivy.teakstweaks.commands.DeleteHomeCommand;
+import me.teakivy.teakstweaks.commands.DurabilityPingCommand;
 import me.teakivy.teakstweaks.commands.KillBoatsCommand;
 import me.teakivy.teakstweaks.commands.PortalCommand;
 import me.teakivy.teakstweaks.commands.TestCommand;
@@ -233,7 +234,6 @@ public class Register {
      */
     public static void registerCommands() {
         AbstractCommand[] cmds = {
-            new DurabilityPingCommand(),
         };
 
         for (AbstractCommand cmd : cmds) {
@@ -266,6 +266,7 @@ public class Register {
                 new SpawningSpheresCommand(),
                 new WorkstationHighlightCommand(),
                 new AltsCommand(),
+                new DurabilityPingCommand(),
         };
 
         for (me.teakivy.teakstweaks.utils.command.AbstractCommand command : commands) {
