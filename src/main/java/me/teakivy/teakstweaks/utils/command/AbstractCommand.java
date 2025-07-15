@@ -2,6 +2,8 @@ package me.teakivy.teakstweaks.utils.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
@@ -194,5 +196,18 @@ public abstract class AbstractCommand {
     public int getCooldown(Player player) {
         if (!this.cooldownMap.containsKey(player.getUniqueId())) return 0;
         return (int) ((this.cooldownMap.get(player.getUniqueId()) + (this.cooldownTime * 1000L) - System.currentTimeMillis()) / 1000L);
+    }
+
+    public static SuggestionProvider<CommandSourceStack> createSuggestions(List<String> suggestions) {
+        return (CommandContext<CommandSourceStack> ctx, SuggestionsBuilder builder) -> {
+            builder.restart();
+            String remaining = builder.getRemainingLowerCase();
+            for (String suggestion : suggestions) {
+                if (suggestion.toLowerCase().startsWith(remaining)) {
+                    builder.suggest(suggestion);
+                }
+            }
+            return builder.buildFuture();
+        };
     }
 }
