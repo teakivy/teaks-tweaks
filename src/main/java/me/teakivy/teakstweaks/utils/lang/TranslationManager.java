@@ -1,10 +1,15 @@
 package me.teakivy.teakstweaks.utils.lang;
 
+import com.destroystokyo.paper.ClientOption;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.TranslatableComponent;
 import net.kyori.adventure.text.minimessage.translation.MiniMessageTranslationStore;
 import net.kyori.adventure.translation.GlobalTranslator;
+import org.bukkit.entity.Player;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -183,5 +188,36 @@ public class TranslationManager {
         }
     }
 
+    public String getTranslationString(String localeName, String key) {
+        if (key == null || localeName == null) {
+            return null;
+        }
 
+        // Normalize locale name, e.g. "en_us" -> "en", "US"
+        String[] parts = localeName.split("_");
+        String language = parts[0];
+        String country = (parts.length > 1) ? parts[1] : "";
+        Locale locale = new Locale(language, country);
+
+        // Create a translatable component
+        TranslatableComponent translatable = Component.translatable(key);
+
+        // Translate it
+        Component resolved = GlobalTranslator.translator().translate(translatable, locale);
+        TextComponent textComponent = (TextComponent) resolved;
+        if (resolved == null) {
+            return null;
+        }
+        return textComponent.content();
+    }
+
+    public static String getString(String localeName, String key) {
+        TeaksTweaks.getInstance();
+        return TeaksTweaks.getTranslationManager().getTranslationString(localeName, key);
+    }
+
+    public static String getString(Player player, String key) {
+        TeaksTweaks.getInstance();
+        return TeaksTweaks.getTranslationManager().getTranslationString(player.getClientOption(ClientOption.LOCALE), key);
+    }
 }
