@@ -180,7 +180,7 @@ public class Register {
     public void registerAll(boolean bypassEnabled) {
         unregisterAll();
         for (String pack : Objects.requireNonNull(Config.get().getConfigurationSection("packs")).getKeys(false)) {
-            if (Config.isPackEnabled(pack) || bypassEnabled) {
+            if (Config.isPackEnabled(pack) || bypassEnabled || Config.isDevMode()) {
                 registerPack(pack);
             }
         }
@@ -234,7 +234,6 @@ public class Register {
     public static void registerCommands() {
         AbstractCommand[] cmds = {
             new DurabilityPingCommand(),
-            new WorkstationHighlightCommand(),
             new AltsCommand(),
         };
 
@@ -266,6 +265,7 @@ public class Register {
                 new DeleteHomeCommand(),
                 new HomeCommand(),
                 new SpawningSpheresCommand(),
+                new WorkstationHighlightCommand(),
         };
 
         for (me.teakivy.teakstweaks.utils.command.AbstractCommand command : commands) {

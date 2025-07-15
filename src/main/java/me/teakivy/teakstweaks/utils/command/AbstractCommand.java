@@ -146,7 +146,7 @@ public abstract class AbstractCommand {
     }
 
     public void register() {
-        if (parentPack != null && !Config.isPackEnabled(parentPack)) return;
+        if (parentPack != null && !Config.isPackEnabled(parentPack) && !Config.isDevMode()) return;
         getPlugin().getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, commands -> {
             commands.registrar().register(this.getCommand(), aliases);
         });

@@ -79,7 +79,7 @@ public abstract class AbstractCraftingTweak {
      * Register the pack
      */
     public void register() {
-        if (Config.isCraftingTweakEnabled(path)) init();
+        if (Config.isCraftingTweakEnabled(path) || Config.isDevMode()) init();
     }
 
     public void unregister() {
