@@ -1,15 +1,16 @@
 package me.teakivy.teakstweaks.craftingtweaks;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
+import me.teakivy.teakstweaks.utils.lang.TranslationManager;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.config.Config;
-import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.metrics.CustomMetrics;
 import me.teakivy.teakstweaks.utils.recipe.RecipeManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.translation.Argument;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
@@ -34,18 +35,18 @@ public abstract class AbstractCraftingTweak {
      */
     public AbstractCraftingTweak(String path, Material material) {
         String langKey = path.replaceAll("-", "_");
-        this.name = Translatable.getString(langKey + ".name");
+        this.name = TranslationManager.getString("en_US", langKey + ".name");
         this.path = path;
 
         this.material = material;
-        this.description = Translatable.getString(langKey + ".description");
+        this.description = TranslationManager.getString("en_US", langKey + ".description");
     }
 
     /**
      * Initialize all recipes for the pack
      */
     public void init() {
-        Logger.info(Translatable.get("startup.register.crafting_tweak", Placeholder.parsed("name", "<gold>" + name)));
+        Logger.info(Component.translatable("startup.register.crafting_tweak", Argument.component("name", Component.text("<gold>" + name))));
         TeaksTweaks.getInstance().addCraftingTweaks(this.name);
         CraftingRegister.addEnabledRecipe(this);
         this.registerRecipes();

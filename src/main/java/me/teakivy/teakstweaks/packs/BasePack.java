@@ -2,16 +2,17 @@ package me.teakivy.teakstweaks.packs;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.customitems.CustomItem;
+import me.teakivy.teakstweaks.utils.lang.TranslationManager;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.config.Config;
-import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.metrics.CustomMetrics;
 import me.teakivy.teakstweaks.utils.recipe.RecipeManager;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.ComponentLike;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
+import net.kyori.adventure.text.minimessage.translation.Argument;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
@@ -38,10 +39,11 @@ public class BasePack implements Listener {
 	 */
 	public BasePack(String path, Material material) {
 		this.translatableKey = path.replaceAll("-", "_");
-        this.name = Translatable.getString(this.translatableKey + ".name");
+        this.name = TranslationManager.getString("en_US", this.translatableKey + ".name");
 		this.path = path;
+		System.out.println(TranslationManager.getString("en_US", this.translatableKey + ".description"));
 
-		String[] description = Translatable.getString(this.translatableKey + ".description").split("<newline>");
+		String[] description = TranslationManager.getString("en_US", this.translatableKey + ".description").split("<newline>");
 
 		item = new ItemStack(material);
 
@@ -101,7 +103,7 @@ public class BasePack implements Listener {
 		}
 
 		getPlugin().addPack(name);
-		Logger.info(Translatable.get("startup.register.pack", insert("name", "<gold>" + name)));
+		Logger.info(Component.translatable("startup.register.pack", insert("name", "<gold>" + name)));
 
 		CustomMetrics.addPackEnabled(name);
 	}
@@ -194,22 +196,33 @@ public class BasePack implements Listener {
 	 * @return Translated & colored string
 	 */
 	protected String getString(String key) {
-		return Translatable.getString(translatableKey + "." + key);
+		return TranslationManager.getString("en_US", translatableKey + "." + key);
 	}
 
-	protected Component getText(String key, TagResolver... resolvers) {
-		return Translatable.get(translatableKey + "." + key, resolvers);
+	protected Component getText(String key, ComponentLike... resolvers) {
+		return Component.translatable(translatableKey + "." + key, resolvers);
 	}
 
-	public static TagResolver.Single insert(@Subst("") String key, String value) {
-		return Placeholder.parsed(key, value);
-	}
-	public static TagResolver.Single insert(@Subst("") String key, int value) {
-		return Placeholder.parsed(key, value + "");
+
+
+	/**
+	 * Create an argument for MiniMessage
+	 * @param key The key to replace
+	 * @param value The value to replace with
+	 * @return The argument
+	 */
+	public static ComponentLike insert(@Subst("") String key, Object value) {
+		return Argument.component(key, Component.text(value.toString()));
 	}
 
-	public static TagResolver.Single insert(@Subst("") String key, Component value) {
-		return Placeholder.component(key, value);
+	/**
+	 * Create an argument for MiniMessage
+	 * @param key The key to replace
+	 * @param value The value to replace with
+	 * @return The argument
+	 */
+	public ComponentLike insert(@Subst("") String key, Component value) {
+		return Argument.component(key, value);
 	}
 
 	public static Component newText(String text, TagResolver... resolvers) {

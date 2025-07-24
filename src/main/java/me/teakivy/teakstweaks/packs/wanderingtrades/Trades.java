@@ -4,7 +4,7 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.UUIDUtils;
 import me.teakivy.teakstweaks.utils.config.Config;
-import me.teakivy.teakstweaks.utils.lang.Translatable;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -68,14 +68,14 @@ public class Trades extends BasePack {
         int radius = config.getInt("radius");
         if (radius < 0) {
             for (Player player : Bukkit.getOnlinePlayers()) {
-                player.sendMessage(Translatable.get("wandering_trader_announcements.announcement_all"));
+                player.sendMessage(Component.translatable("wandering_trader_announcements.announcement_all"));
             }
             return;
         }
 
         location.getWorld().getNearbyEntities(location, radius, radius, radius).forEach(entity -> {
             if (entity.getType() == EntityType.PLAYER) {
-                entity.sendMessage(Translatable.get("wandering_trader_announcements.announcement"));
+                entity.sendMessage(Component.translatable("wandering_trader_announcements.announcement"));
             }
         });
     }

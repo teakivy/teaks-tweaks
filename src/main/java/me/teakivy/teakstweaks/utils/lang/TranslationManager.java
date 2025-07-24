@@ -213,11 +213,13 @@ public class TranslationManager {
 
     public static String getString(String localeName, String key) {
         TeaksTweaks.getInstance();
-        return TeaksTweaks.getTranslationManager().getTranslationString(localeName, key);
+        String str = TeaksTweaks.getTranslationManager().getTranslationString(localeName, key);
+        return str == null ? key : str;
     }
 
     public static String getString(Player player, String key) {
         TeaksTweaks.getInstance();
-        return TeaksTweaks.getTranslationManager().getTranslationString(player.getClientOption(ClientOption.LOCALE), key);
+        String str = TeaksTweaks.getTranslationManager().getTranslationString(player.getClientOption(ClientOption.LOCALE), key);
+        return str == null ? key : str;
     }
 }

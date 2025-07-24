@@ -5,8 +5,9 @@ import me.teakivy.teakstweaks.utils.Base64Serializer;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.config.Config;
-import me.teakivy.teakstweaks.utils.lang.Translatable;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.translation.Argument;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.enchantments.Enchantment;
@@ -87,20 +88,20 @@ public class GraveCreator {
 
         if (!config.getBoolean("console-info")) return;
 
-        Logger.info(Translatable.get("graves.log.created",
-                Placeholder.parsed("player", player.getName()),
-                Placeholder.parsed("x", loc.getBlockX() + ""),
-                Placeholder.parsed("y", loc.getBlockY() + ""),
-                Placeholder.parsed("z", loc.getBlockZ() + ""),
-                Placeholder.parsed("world", loc.getWorld().getName())));
+        Logger.info(Component.translatable("graves.log.created",
+                Argument.string("player", player.getName()),
+                Argument.numeric("x", loc.getBlockX()),
+                Argument.numeric("y", loc.getBlockY()),
+                Argument.numeric("z", loc.getBlockZ()),
+                Argument.string("world", loc.getWorld().getName())));
         int items = 0;
         for (ItemStack item : player.getInventory().getContents()) {
             if (item == null) continue;
             items += item.getAmount();
         }
-        Logger.info(Translatable.get("graves.log.contains",
-                Placeholder.parsed("item_count", items + ""),
-                Placeholder.parsed("xp_count", xp + "")));
+        Logger.info(Component.translatable("graves.log.contains",
+                Argument.numeric("item_count", items),
+                Argument.numeric("xp_count", xp)));
         for (ItemStack item : player.getInventory().getContents()) {
             if (item == null) continue;
             String enchantString = "";
@@ -114,10 +115,10 @@ public class GraveCreator {
                     enchantString = " [ " + enchantStringBuilder.substring(0, enchantStringBuilder.length() - 2) + " ]";
                 }
             }
-            Logger.info(Translatable.get("graves.log.item",
-                    Placeholder.parsed("item", item.getType().toString()),
-                    Placeholder.parsed("amount", item.getAmount() + ""),
-                    Placeholder.parsed("enchantments", enchantString)));
+            Logger.info(Component.translatable("graves.log.item",
+                    Argument.string("item", item.getType().toString()),
+                    Argument.numeric("amount", item.getAmount()),
+                    Argument.string("enchantments", enchantString)));
         }
     }
 

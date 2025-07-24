@@ -1,6 +1,6 @@
 package me.teakivy.teakstweaks.packs.spawningspheres;
 
-import me.teakivy.teakstweaks.utils.lang.Translatable;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -79,7 +79,7 @@ public class SpawningSphere {
         stand.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 999999, 0));
 
         if (isCenter) {
-            stand.customName(Translatable.get("spawning_spheres.center_stand"));
+            stand.customName(Component.translatable("spawning_spheres.center_stand"));
             stand.setCustomNameVisible(true);
         }
 

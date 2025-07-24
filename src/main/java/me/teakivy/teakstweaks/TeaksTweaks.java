@@ -1,9 +1,6 @@
 package me.teakivy.teakstweaks;
 
 import com.google.gson.Gson;
-import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
-import me.teakivy.teakstweaks.commands.AFKCommand;
-import me.teakivy.teakstweaks.commands.TeaksTweaksCommand;
 import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
 import me.teakivy.teakstweaks.utils.*;
 import me.teakivy.teakstweaks.utils.config.Config;
@@ -21,17 +18,12 @@ import me.teakivy.teakstweaks.utils.update.VersionManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
-import net.kyori.adventure.text.minimessage.translation.MiniMessageTranslationStore;
-import net.kyori.adventure.translation.GlobalTranslator;
-import net.kyori.adventure.translation.TranslationStore;
-import net.kyori.adventure.util.UTF8ResourceBundleControl;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.MessageFormat;
 import java.util.*;
 
 import static me.teakivy.teakstweaks.utils.metrics.CustomMetrics.registerCustomMetrics;

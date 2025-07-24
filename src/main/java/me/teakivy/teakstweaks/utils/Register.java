@@ -7,7 +7,6 @@ import me.teakivy.teakstweaks.commands.DurabilityPingCommand;
 import me.teakivy.teakstweaks.commands.KillBoatsCommand;
 import me.teakivy.teakstweaks.commands.PortalCommand;
 import me.teakivy.teakstweaks.commands.TestCommand;
-import me.teakivy.teakstweaks.oldcommands.*;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.alwaysdrop.AlwaysDrop;
 import me.teakivy.teakstweaks.packs.alwaysactivebeacons.AlwaysActiveBeacons;

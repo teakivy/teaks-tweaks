@@ -4,8 +4,8 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.config.Config;
-import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import net.kyori.adventure.text.Component;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Entity;
@@ -88,7 +88,7 @@ public class Shrine extends BasePack {
         if (!config.getBoolean("summoning.broadcast-message")) return;
 
         for (Player oPlayer : Bukkit.getOnlinePlayers()) {
-            oPlayer.sendMessage(Translatable.get("storm_initialize"));
+            oPlayer.sendMessage(Component.translatable("thunder_shrine.storm_initialize"));
         }
     }
 

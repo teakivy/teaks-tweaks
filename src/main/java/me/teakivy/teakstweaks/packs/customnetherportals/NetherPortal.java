@@ -22,9 +22,9 @@ public class NetherPortal extends BasePack {
 
     int portalMaxWidth = 23;
     int portalMaxHeight = 23;
-    HashSet<Material> portalFrameMaterials = new HashSet();
-    HashSet<Biome> endBiomes = new HashSet();
-    ConcurrentHashMap<Block, Integer> validPortalBlocksMap = new ConcurrentHashMap();
+    HashSet<Material> portalFrameMaterials = new HashSet<>();
+    HashSet<Biome> endBiomes = new HashSet<>();
+    ConcurrentHashMap<Block, Integer> validPortalBlocksMap = new ConcurrentHashMap<>();
     Set<Block> validPortalBlocks;
     ConcurrentHashMap<Block, Integer> checkedBlocksMap;
     Set<Block> checkedBlocks;
@@ -40,7 +40,7 @@ public class NetherPortal extends BasePack {
 
     public void ArbitraryPortals() {
         this.validPortalBlocks = this.validPortalBlocksMap.keySet(0);
-        this.checkedBlocksMap = new ConcurrentHashMap();
+        this.checkedBlocksMap = new ConcurrentHashMap<>();
         this.checkedBlocks = this.checkedBlocksMap.keySet(0);
         this.upFace = BlockFace.UP;
         this.downFace = BlockFace.DOWN;
@@ -79,7 +79,7 @@ public class NetherPortal extends BasePack {
                     this.validPortalBlocks.add(block);
 
                     while(this.validPortalBlocks.size() <= this.portalMaxHeight * this.portalMaxWidth && this.checkedBlocks.size() < this.validPortalBlocks.size()) {
-                        Iterator var4 = this.validPortalBlocks.iterator();
+                        Iterator<Block> var4 = this.validPortalBlocks.iterator();
 
                         label79: {
                             Block validBlock;
@@ -113,7 +113,7 @@ public class NetherPortal extends BasePack {
                         int xWidth = 1;
                         int zWidth = 1;
                         int height = 1;
-                        Iterator var14 = this.validPortalBlocks.iterator();
+                        Iterator<Block> var14 = this.validPortalBlocks.iterator();
 
                         ArrayList<Block> portalBlocks = new ArrayList<>();
 

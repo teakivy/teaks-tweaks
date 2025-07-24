@@ -2,17 +2,9 @@ package me.teakivy.teakstweaks.utils.update;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.log.Logger;
-import me.teakivy.teakstweaks.utils.config.Config;
-import me.teakivy.teakstweaks.utils.lang.Translatable;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
-import org.apache.commons.io.IOUtils;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
-
-import java.io.IOException;
-import java.net.URL;
+import net.kyori.adventure.text.minimessage.translation.Argument;
 
 public class UpdateChecker {
 
@@ -34,8 +26,8 @@ public class UpdateChecker {
         if (hasUpdate()) {
             Version latestVersion = VersionManager.getBestVersion();
             if (latestVersion == null) return;
-            Logger.info(Translatable.get("startup.update.version_available", Placeholder.parsed("version", latestVersion.getVersion())));
-            Logger.info(Translatable.get("startup.update.download", Placeholder.parsed("url", latestVersion.getUrl())));
+            Logger.info(Component.translatable("startup.update.version_available", Argument.string("version", latestVersion.getVersion())));
+            Logger.info(Component.translatable("startup.update.download", Argument.string("url", latestVersion.getUrl())));
         }
     }
 }

@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.packs.durabilityping;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.config.Config;
-import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.title.TitlePart;
@@ -120,7 +119,7 @@ public class DuraPing extends BasePack {
     }
 
     private static Component getDurabilityMessage(String path, ItemStack item, float durability, float maxDurability) {
-        return Translatable.get("durability_ping." + path, insert("item_type", getItemName(item)), insert("item_durability", (int) Math.ceil(durability)), insert("item_max_durability", (int) maxDurability));
+        return Component.translatable("durability_ping." + path, insert("item_type", getItemName(item)), insert("item_durability", (int) Math.ceil(durability)), insert("item_max_durability", (int) maxDurability));
     }
 
     public static void pingPlayer(Player player, ItemStack item, float durability) {

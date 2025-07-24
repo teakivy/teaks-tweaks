@@ -1,9 +1,7 @@
 package me.teakivy.teakstweaks.packs.spawningspheres;
 
-import me.teakivy.teakstweaks.utils.lang.Translatable;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
-import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -55,22 +53,22 @@ public enum SphereType {
      * Gets the chat color of the sphere
      * @return the chat color of the sphere
      */
-    public String getMiniMessageColor() {
+    public TextColor getColor() {
         return switch (this) {
-            case RED -> "<red>";
-            case BLUE -> "<blue>";
-            case GREEN -> "<green>";
+            case RED -> TextColor.color(0xFF5555);
+            case BLUE -> TextColor.color(0x5555FF);
+            case GREEN -> TextColor.color(0x55FF55);
         };
     }
 
     public Component getName() {
-        String name = switch (this) {
-            case RED -> Translatable.getString("spawning_spheres.sphere.red");
-            case BLUE -> Translatable.getString("spawning_spheres.sphere.blue");
-            case GREEN -> Translatable.getString("spawning_spheres.sphere.green");
+        Component name = switch (this) {
+            case RED -> Component.translatable("spawning_spheres.sphere.red");
+            case BLUE -> Component.translatable("spawning_spheres.sphere.blue");
+            case GREEN -> Component.translatable("spawning_spheres.sphere.green");
         };
 
-        return MiniMessage.miniMessage().deserialize(getMiniMessageColor() + name);
+        return name.color(getColor());
     }
 
     public Team getTeam() {

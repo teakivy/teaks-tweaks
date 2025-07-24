@@ -3,7 +3,7 @@ package me.teakivy.teakstweaks.packs.itemaverages;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.log.Logger;
-import me.teakivy.teakstweaks.utils.lang.Translatable;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -95,17 +95,17 @@ public class ItemTracker extends BasePack {
 
         if (!totalItems.isEmpty()) {
             player.sendMessage(newText("<dark_gray>-------------------------"));
-            player.sendMessage(Translatable.get("item_averages.source_production"));
+            player.sendMessage(Component.translatable("item_averages.source_production"));
             totalItems.forEach((item, amount) -> {
                 player.sendMessage(
-                        Translatable.get("item_averages.item",
+                        Component.translatable("item_averages.item",
                                 insert("amount", amount),
                                 insert("item", item.toString().toLowerCase().replace("_", " "))));
             });
             player.sendMessage(newText("<dark_gray>-------------------------"));
         } else {
             player.sendMessage(newText("<dark_gray>-------------------------"));
-            player.sendMessage(Translatable.get("item_averages.no_items"));
+            player.sendMessage(Component.translatable("item_averages.no_items"));
             player.sendMessage(newText("<dark_gray>-------------------------"));
         }
     }
@@ -125,7 +125,7 @@ public class ItemTracker extends BasePack {
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
             entity.remove();
-            Logger.info(Translatable.get("item_averages.log_finish"));
+            Logger.info(Component.translatable("item_averages.log_finish"));
             shouldStop = true;
         }, glowLength);
     }

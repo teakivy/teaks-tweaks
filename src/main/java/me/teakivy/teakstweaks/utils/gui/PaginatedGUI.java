@@ -1,8 +1,9 @@
 package me.teakivy.teakstweaks.utils.gui;
 
-import me.teakivy.teakstweaks.utils.lang.Translatable;
+import me.teakivy.teakstweaks.utils.lang.TranslationManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -72,15 +73,17 @@ public class PaginatedGUI {
             inv.setItem(i, items.get(index));
         }
 
+        MiniMessage mm = MiniMessage.miniMessage();
+
         // Add navigation buttons
         ItemStack nextButton = new ItemStack(Material.ARROW);
         ItemMeta nextMeta = nextButton.getItemMeta();
-        nextMeta.displayName(Translatable.get("mechanics.gui.next_page").decoration(TextDecoration.ITALIC, false));
+        nextMeta.displayName(mm.deserialize(TranslationManager.getString("en_US", "mechanics.gui.next_page")).decoration(TextDecoration.ITALIC, false));
         nextButton.setItemMeta(nextMeta);
 
         ItemStack prevButton = new ItemStack(Material.ARROW);
         ItemMeta prevMeta = prevButton.getItemMeta();
-        prevMeta.displayName(Translatable.get("mechanics.gui.previous_page").decoration(TextDecoration.ITALIC, false));
+        prevMeta.displayName(mm.deserialize(TranslationManager.getString("en_US", "mechanics.gui.previous_page")).decoration(TextDecoration.ITALIC, false));
         prevButton.setItemMeta(prevMeta);
 
         if (page < items.size() / 45) inv.setItem(53, nextButton);

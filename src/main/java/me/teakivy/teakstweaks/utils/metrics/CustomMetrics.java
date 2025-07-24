@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.utils.metrics;
 
 import me.teakivy.teakstweaks.utils.config.Config;
-import me.teakivy.teakstweaks.utils.lang.Translatable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +30,6 @@ public class CustomMetrics {
                 Map<String, Integer> valueMap = new HashMap<>();
                 String languageCode = Config.getLanguage();
                 String language = "Unknown";
-                language = Translatable.getString("meta.language_name");
                 valueMap.put(language + " ( " + languageCode + " )", 1);
 
                 return valueMap;

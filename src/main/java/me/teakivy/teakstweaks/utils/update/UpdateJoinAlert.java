@@ -1,8 +1,9 @@
 package me.teakivy.teakstweaks.utils.update;
 
+import com.destroystokyo.paper.ClientOption;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.config.Config;
-import me.teakivy.teakstweaks.utils.lang.Translatable;
+import me.teakivy.teakstweaks.utils.lang.TranslationManager;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -30,8 +31,8 @@ public class UpdateJoinAlert implements Listener {
             if (latestVersion == null) return;
             
             Bukkit.getScheduler().runTask(TeaksTweaks.getInstance(), () -> {
-                String message = Translatable.getString("startup.update.join_alert");
-                message = "<hover:show_text:\"" + Translatable.getString("startup.update.join_alert.hover") + "\">" + message;
+                String message = TranslationManager.getString(player.getClientOption(ClientOption.LOCALE), "startup.update.join_alert");
+                message = "<hover:show_text:\"" + TranslationManager.getString(player.getClientOption(ClientOption.LOCALE), "startup.update.join_alert.hover") + "\">" + message;
                 message = "<click:open_url:\"" + latestVersion.getUrl() + "\">" + message;
 
                 player.sendMessage(MiniMessage.miniMessage().deserialize(message,Placeholder.parsed("version", latestVersion.getVersion())));
