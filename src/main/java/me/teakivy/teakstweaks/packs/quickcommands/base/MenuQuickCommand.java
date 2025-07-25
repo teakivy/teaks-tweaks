@@ -1,4 +1,4 @@
-package me.teakivy.teakstweaks.packs.quickcommands;
+package me.teakivy.teakstweaks.packs.quickcommands.base;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
@@ -14,14 +14,12 @@ import java.util.List;
 
 public class MenuQuickCommand extends AbstractCommand {
     private final String commandName;
-    private final List<String> aliases;
     private final MenuType menuType;
     private final Permission permission;
 
     public MenuQuickCommand(String commandName, List<String> aliases, Permission permission, MenuType menuType) {
         super("quick-commands", "quick-commands." + commandName, aliases);
         this.commandName = commandName;
-        this.aliases = aliases;
         this.menuType = menuType;
         this.permission = permission;
     }
