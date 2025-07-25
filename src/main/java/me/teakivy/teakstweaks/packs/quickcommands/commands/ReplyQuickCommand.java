@@ -45,7 +45,7 @@ public class ReplyQuickCommand {
 
         private int execute(CommandContext<CommandSourceStack> context) {
             Player player = (Player) context.getSource().getSender();
-            PlayerSelectorArgumentResolver targetResolver = context.getArgument("target", PlayerSelectorArgumentResolver.class);
+            PlayerSelectorArgumentResolver targetResolver = context.getArgument("player", PlayerSelectorArgumentResolver.class);
             try {
                 Player target = targetResolver.resolve(context.getSource()).getFirst();
                 String message = StringArgumentType.getString(context, "message");
