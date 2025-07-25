@@ -2,7 +2,7 @@ name: TeaksTweaks
 version: ${version}
 main: me.teakivy.teakstweaks.TeaksTweaks
 description: 150+ Toggleable Tweaks & Features including Vanilla Tweaks as a plugin, and more!
-api-version: 1.21.7
+api-version: 1.21.8
 bootstrapper: me.teakivy.teakstweaks.TeaksTweaksBootstrap
 dependencies:
   - name: PlaceholderAPI
