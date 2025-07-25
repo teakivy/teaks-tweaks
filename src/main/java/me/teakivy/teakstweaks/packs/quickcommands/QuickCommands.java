@@ -1,7 +1,9 @@
 package me.teakivy.teakstweaks.packs.quickcommands;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Material;
+import org.bukkit.inventory.MenuType;
 
 import java.util.List;
 
@@ -43,27 +45,27 @@ public class QuickCommands extends BasePack {
         }
 
         if (getConfig().getBoolean("craftingtable")) {
-            new CraftingTableQuickCommand().register();
+            new MenuQuickCommand("craftingtable", List.of("craft", "workbench", "wb"), Permission.COMMAND_CRAFTINGTABLE, MenuType.CRAFTING).register();
         }
 
         if (getConfig().getBoolean("anvil")) {
-            new AnvilQuickCommand().register();
+            new MenuQuickCommand("anvil", Permission.COMMAND_ANVIL, MenuType.ANVIL).register();
         }
 
         if (getConfig().getBoolean("cartographytable")) {
-            new CartographyTableQuickCommand().register();
+            new MenuQuickCommand("cartographytable", List.of("cartography"), Permission.COMMAND_CARTOGRAPHYTABLE, MenuType.CARTOGRAPHY_TABLE).register();
         }
 
         if (getConfig().getBoolean("grindstone")) {
-            new GrindstoneQuickCommand().register();
+            new MenuQuickCommand("grindstone", Permission.COMMAND_GRINDSTONE, MenuType.GRINDSTONE).register();
         }
 
         if (getConfig().getBoolean("loom")) {
-            new LoomQuickCommand().register();
+            new MenuQuickCommand("loom", Permission.COMMAND_LOOM, MenuType.LOOM).register();
         }
 
         if (getConfig().getBoolean("smithingtable")) {
-            new SmithingTableQuickCommand().register();
+            new MenuQuickCommand("smithingtable", List.of("smithing"), Permission.COMMAND_SMITHINGTABLE, MenuType.SMITHING).register();
         }
     }
 }
