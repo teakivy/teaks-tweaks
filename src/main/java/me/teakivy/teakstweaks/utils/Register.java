@@ -77,7 +77,7 @@ import me.teakivy.teakstweaks.packs.killboats.KillBoats;
 import me.teakivy.teakstweaks.packs.spawningspheres.SpheresPack;
 import me.teakivy.teakstweaks.packs.spectatorconduitpower.ConduitPower;
 import me.teakivy.teakstweaks.packs.spectatornightvision.NightVision;
-import me.teakivy.teakstweaks.utils.oldcommand.AbstractCommand;
+import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.config.Config;
 
 import java.util.*;
@@ -233,14 +233,8 @@ public class Register {
      * Registers all commands
      */
     public static void registerCommands() {
-        AbstractCommand[] cmds = {
-        };
 
-        for (AbstractCommand cmd : cmds) {
-            cmd.register();
-        }
-
-        me.teakivy.teakstweaks.utils.command.AbstractCommand[] commands = {
+        AbstractCommand[] commands = {
                 new TeaksTweaksCommand(),
                 new AFKCommand(),
                 new ConduitPowerCommand(),
