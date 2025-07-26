@@ -37,7 +37,6 @@ import me.teakivy.teakstweaks.packs.countmobdeaths.CountDeaths;
 import me.teakivy.teakstweaks.packs.doubleshulkershells.DoubleShulkers;
 import me.teakivy.teakstweaks.packs.dragondrops.DragonDrops;
 import me.teakivy.teakstweaks.packs.largerphantoms.Phantoms;
-import me.teakivy.teakstweaks.packs.oldmoremobheads.MobHeads;
 import me.teakivy.teakstweaks.packs.silencemobs.Silencer;
 import me.teakivy.teakstweaks.packs.villagerdeathmessages.VillagerDeath;
 import me.teakivy.teakstweaks.packs.afkdisplay.AFK;

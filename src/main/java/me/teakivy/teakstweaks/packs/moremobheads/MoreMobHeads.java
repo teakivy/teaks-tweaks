@@ -33,11 +33,7 @@ public class MoreMobHeads extends BasePack {
             headData.put(head.key(), head);
         }
 
-        loadHeads();
-    }
-
-    public void loadHeads() {
-        new BasicMobHead("allay", EntityType.ALLAY, Sound.ENTITY_ALLAY_AMBIENT_WITHOUT_ITEM);
+        HeadRegister.registerAll();
     }
 
     public static HashMap<String, HeadEntry> getHeadData() {

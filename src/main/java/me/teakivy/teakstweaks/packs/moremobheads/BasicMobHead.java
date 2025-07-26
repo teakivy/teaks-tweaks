@@ -63,7 +63,7 @@ public class BasicMobHead implements Listener {
         ItemStack head = ItemStack.of(Material.PLAYER_HEAD);
         PlayerProfile profile = Bukkit.createProfileExact(UUID.fromString("fdb5599c-1b14-440e-82df-d69719703d21"), "MobHead");
         SkullMeta meta = (SkullMeta) head.getItemMeta();
-        Component name = MiniMessage.miniMessage().deserialize("<yellow>" + this.name.replace(" Head", "'s Head")).decoration(TextDecoration.ITALIC, false);
+        Component name = MiniMessage.miniMessage().deserialize("<yellow>" + this.name).decoration(TextDecoration.ITALIC, false);
         meta.displayName(name);
         PlayerTextures textures = profile.getTextures();
 
