@@ -2,10 +2,6 @@ package me.teakivy.teakstweaks.utils;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import me.teakivy.teakstweaks.TeaksTweaks;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.TextDecoration;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Registry;
@@ -20,7 +16,6 @@ import org.json.simple.parser.JSONParser;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.lang.reflect.Field;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -28,8 +23,6 @@ import java.util.Base64;
 import java.util.HashMap;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
-
-import static me.teakivy.teakstweaks.packs.moremobheads.BaseMobHead.getUrlFromBase64;
 
 public class UUIDUtils {
     private static final HashMap<String, UUID> uuidCache = new HashMap<>();

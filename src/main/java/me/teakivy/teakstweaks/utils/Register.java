@@ -17,6 +17,7 @@ import me.teakivy.teakstweaks.packs.disposal.Disposal;
 import me.teakivy.teakstweaks.packs.elevators.Elevator;
 import me.teakivy.teakstweaks.packs.huskdropssand.HuskDropsSand;
 import me.teakivy.teakstweaks.packs.miniblocks.MiniBlocks;
+import me.teakivy.teakstweaks.packs.moremobheads.MoreMobHeads;
 import me.teakivy.teakstweaks.packs.musicdiscengraver.MusicDiscEngraver;
 import me.teakivy.teakstweaks.packs.paintingpicker.PaintingPicker;
 import me.teakivy.teakstweaks.packs.sawmill.Sawmill;
@@ -36,7 +37,7 @@ import me.teakivy.teakstweaks.packs.countmobdeaths.CountDeaths;
 import me.teakivy.teakstweaks.packs.doubleshulkershells.DoubleShulkers;
 import me.teakivy.teakstweaks.packs.dragondrops.DragonDrops;
 import me.teakivy.teakstweaks.packs.largerphantoms.Phantoms;
-import me.teakivy.teakstweaks.packs.moremobheads.MobHeads;
+import me.teakivy.teakstweaks.packs.oldmoremobheads.MobHeads;
 import me.teakivy.teakstweaks.packs.silencemobs.Silencer;
 import me.teakivy.teakstweaks.packs.villagerdeathmessages.VillagerDeath;
 import me.teakivy.teakstweaks.packs.afkdisplay.AFK;
@@ -100,7 +101,7 @@ public class Register {
             new DoubleShulkers(),
             new DragonDrops(),
             new Phantoms(),
-            new MobHeads(),
+            new MoreMobHeads(),
             new DuraPing(),
             new ConcreteConverter(),
             new MudConverter(),

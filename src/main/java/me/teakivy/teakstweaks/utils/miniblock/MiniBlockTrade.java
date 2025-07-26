@@ -16,7 +16,7 @@ import org.bukkit.profile.PlayerTextures;
 import java.net.MalformedURLException;
 import java.util.UUID;
 
-import static me.teakivy.teakstweaks.packs.moremobheads.BaseMobHead.getUrlFromBase64;
+import static me.teakivy.teakstweaks.packs.oldmoremobheads.BaseMobHead.getUrlFromBase64;
 
 public class MiniBlockTrade {
     private final String name;

@@ -1,7 +1,7 @@
 package me.teakivy.teakstweaks.packs.playerheaddrops;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.moremobheads.MobHeads;
+import me.teakivy.teakstweaks.packs.oldmoremobheads.MobHeads;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.Registry;

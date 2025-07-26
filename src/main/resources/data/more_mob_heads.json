@@ -1,0 +1,1427 @@
+{
+	"heads": [
+		{
+			"key": "allay",
+			"name": "Allay Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2MwMzg5MTc3ZGJhYTkyZjBkNWZmZGY4NDg4NjJjN2Y5YjM2ZGYyMjJmYmZkNzM3ZTI2MzlkYzMwNTllMGNmMyJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "armadillo",
+			"name": "Armadillo Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjYwN2FlN2E3MDE3NjczMzZjMDZiMGM0ZmZhODFkZmYyY2ZkOGJjMDcwZDk1NzE0YTZiYWRmMGVmYjcyNjNlMSJ9fX0",
+			"chance": 0.105,
+			"looting_bonus": 0.005
+		},
+		{
+			"key": "lucy_axolotl",
+			"name": "Lucy Axolotl Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjY3ZTE1ZWFiNzMwNjRiNjY4MGQxZGI5OGJhNDQ1ZWQwOTE0YmEzNWE3OTk5OTdjMGRhMmIwM2ZmYzNhODgyNiJ9fX0",
+			"chance": 0.1,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "wild_axolotl",
+			"name": "Wild Axolotl Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDdjZjAyNzQ5OThiZjVhN2YzOGIzNzAzNmUxNTRmMTEyZmEyZTI4YmFkNDBkNWE3Yzk0NzY1ZmU0ZjUyMjExZSJ9fX0",
+			"chance": 0.1,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "gold_axolotl",
+			"name": "Gold Axolotl Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTU4NTYwMTE1ZmFhZDExNjE5YjNkNTVkZTc5ZWYyYTA1M2Y0NzhhNjcxOTRiYmU5MjQ3ZWRlYTBiYzk4ZTgzNCJ9fX0",
+			"chance": 0.1,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "cyan_axolotl",
+			"name": "Cyan Axolotl Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODUxMTk2ZDQzOTMwNjU5ZDcxN2UxYjZhMDQ2YTA4ZDEyMjBmY2I0ZTMxYzQ4NTZiYzMzZTc1NTE5ODZlZjFkIn19fQ",
+			"chance": 0.1,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "blue_axolotl",
+			"name": "Blue Axolotl Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjhmZDEwYjBmZWY0NTk1OTYwYjFmNjQxOTNiYzhhMTg2NWEyZDJlZDQ4YjJlMmNlMDNkOTk0NTYzMDI3ZGY5NSJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "bat",
+			"name": "Bat Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGEyOWM5ZWNlNDI4ZmEyMzM5NWFjMjAxOWJmMmQwMjc0NDA1MjlmMjUzM2ZjODIwMWU3YjNkYTBmNjBmMjAwNSJ9fX0",
+			"chance": 0.1,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "angry_bee",
+			"name": "Angry Bee Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTQwMDIyM2YxZmE1NDc0MWQ0MjFkN2U4MDQ2NDA5ZDVmM2UxNWM3ZjQzNjRiMWI3Mzk5NDAyMDhmM2I2ODZkNCJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "angry_pollinated_bee",
+			"name": "Angry Pollinated Bee Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTZiNzRlMDUyYjc0Mjg4Nzk5YmE2ZDlmMzVjNWQwMjIxY2Y4YjA0MzMxNTQ3ZWMyZjY4ZDczNTk3YWUyYzliIn19fQ",
+			"chance": 0.2,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "bee",
+			"name": "Bee Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTlhYzE2ZjI5NmI0NjFkMDVlYTA3ODVkNDc3MDMzZTUyNzM1OGI0ZjMwYzI2NmFhMDJmMDIwMTU3ZmZjYTczNiJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "pollinated_bee",
+			"name": "Pollinated Bee Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjcyN2QwYWIwM2Y1Y2QwMjJmODcwNWQzZjdmMTMzY2E0OTIwZWFlOGUxZTQ3YjUwNzQ0MzNhMTM3ZTY5MWU0ZSJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "blaze",
+			"name": "Blaze Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGVlMjNkYzdhMTBjNmE4N2VmOTM3NDU0YzBlOTRlZDQyYzIzYWE2NDFhOTFlZDg0NzBhMzA0MmQwNWM1MmM1MiJ9fX0",
+			"chance": 0.005,
+			"looting_bonus": 0.0005
+		},
+		{
+			"key": "bogged",
+			"name": "Bogged Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGY4MDdhMTg3MDc3ZjgzNmI5MzgyMGIzMmQ4ZDgzNDFkNGQzMmNkNGM4YzExMTVjZjFkYTYzNzRlMGZiZDNmZiJ9fX0",
+			"chance": 0.11,
+			"looting_bonus": 0.05
+		},
+		{
+			"key": "breeze",
+			"name": "Breeze Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTI3NTcyOGFmN2U2YTI5Yzg4MTI1YjY3NWEzOWQ4OGFlOTkxOWJiNjFmZGMyMDAzMzdmZWQ2YWIwYzQ5ZDY1YyJ9fX0",
+			"chance": 0.101,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "camel",
+			"name": "Camel Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTY3ZDQ1OTczNDAxNjZlMTk3OGE2NjhhMDZiZjU3NTZjMTdiNGNiNWI0MGFiOGZmMjQ0MDkzYjZiOGJjNzVkMyJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "calico_cat",
+			"name": "Calico Cat Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzQwMDk3MjcxYmI2ODBmZTk4MWU4NTllOGJhOTNmZWEyOGI4MTNiMTA0MmJkMjc3ZWEzMzI5YmVjNDkzZWVmMyJ9fX0",
+			"chance": 0.033,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "jellie_cat",
+			"name": "Jellie Cat Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTBkYjQxMzc2Y2E1N2RmMTBmY2IxNTM5ZTg2NjU0ZWVjZmQzNmQzZmU3NWU4MTc2ODg1ZTkzMTg1ZGYyODBhNSJ9fX0",
+			"chance": 0.033,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "siamese_cat",
+			"name": "Siamese Cat Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDViM2Y4Y2E0YjNhNTU1Y2NiM2QxOTQ0NDk4MDhiNGM5ZDc4MzMyNzE5NzgwMGQ0ZDY1OTc0Y2M2ODVhZjJlYSJ9fX0",
+			"chance": 0.033,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "persian_cat",
+			"name": "Persian Cat Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmY0MGM3NDYyNjBlZjkxYzk2YjI3MTU5Nzk1ZTg3MTkxYWU3Y2UzZDVmNzY3YmY4Yzc0ZmFhZDk2ODlhZjI1ZCJ9fX0",
+			"chance": 0.033,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "british_shorthair_cat",
+			"name": "British Shorthair Cat Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTM4OWUwZDVkM2U4MWY4NGI1NzBlMjk3ODI0NGIzYTczZTVhMjJiY2RiNjg3NGI0NGVmNWQwZjY2Y2EyNGVlYyJ9fX0",
+			"chance": 0.033,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "tabby_cat",
+			"name": "Tabby Cat Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGUyOGQzMGRiM2Y4YzNmZTUwY2E0ZjI2ZjMwNzVlMzZmMDAzYWU4MDI4MTM1YThjZDY5MmYyNGM5YTk4YWUxYiJ9fX0",
+			"chance": 0.033,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "tuxedo_cat",
+			"name": "Tuxedo Cat Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGZkMTBjOGU3NWY2NzM5OGM0NzU4N2QyNWZjMTQ2ZjMxMWMwNTNjYzVkMGFlYWI4NzkwYmNlMzZlZTg4ZjVmOCJ9fX0",
+			"chance": 0.033,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "ginger_cat",
+			"name": "Ginger Cat Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjExM2RiZDNjNmEwNzhhMTdiNGVkYjc4Y2UwN2Q4MzZjMzhkYWNlNTAyN2Q0YjBhODNmZDYwZTdjYTdhMGZjYiJ9fX0",
+			"chance": 0.033,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "ragdoll_cat",
+			"name": "Ragdoll Cat Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGM3YTQ1ZDI1ODg5ZTNmZGY3Nzk3Y2IyNThlMjZkNGU5NGY1YmMxM2VlZjAwNzk1ZGFmZWYyZTgzZTBhYjUxMSJ9fX0",
+			"chance": 0.033,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "white_cat",
+			"name": "White Cat Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjFkMTVhYzk1NThlOThiODlhY2E4OWQzODE5NTAzZjFjNTI1NmMyMTk3ZGQzYzM0ZGY1YWFjNGQ3MmU3ZmJlZCJ9fX0",
+			"chance": 0.033,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "black_cat",
+			"name": "Black Cat Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjJjMWU4MWZmMDNlODJhM2U3MWUwY2Q1ZmJlYzYwN2UxMTM2MTA4OWFhNDdmMjkwZDQ2YzhhMmMwNzQ2MGQ5MiJ9fX0",
+			"chance": 0.033,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "cave_spider",
+			"name": "Cave Spider Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWY4NDNiYjdhOTg0ZTczNGFiNzZhODhjOWExYTBmNWE0MGJmNzk1MjQ4MDlhODUxMWJmMzJkMDU3NTI2ZjdmMyJ9fX0",
+			"chance": 0.005,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "charged_creeper",
+			"name": "Charged Creeper Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzUxMWU0YTNkNWFkZDZhNTQ0OTlhYmFkMTBkNzk5ZDA2Y2U0NWNiYTllNTIwYWZkMjAwODYwOGE2Mjg4YjdlNyJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "warm_chicken",
+			"name": "Warm Chicken Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2Q2NmIwYTM1NWFhMjdmMzY0OWRmZjQwODBmZTkyYWI1ZjJhMWUxOWJhOGM3ZjE1Y2E2NzUwNjg0M2RlYTBkNyJ9fX0",
+			"chance": 0.01,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "temperate_chicken",
+			"name": "Temperate Chicken Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDJhZjZlNTg0N2VlYTA5OWUxYjBhYjhjMjBhOWU1ZjNjNzE5MDE1OGJkYTU0ZTI4MTMzZDliMjcxZWMwY2I0YiJ9fX0",
+			"chance": 0.01,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "cold_chicken",
+			"name": "Cold Chicken Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTA3NzM2MWExOGZjMWRjM2EwYzhlMmNlZTEyMmRiNmNkMGUyZmIwODAzMzU0OGFlOWM0N2U2ZjMzZmE0ZGIzOCJ9fX0",
+			"chance": 0.01,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "cod",
+			"name": "Cod Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjI0NmUxOWIzMmNmNzg0NTQ5NDQ3ZTA3Yjk2MDcyZTFmNjU2ZDc4ZTkzY2NjYTU2Mzc0ODVlNjc0OTczNDY1MiJ9fX0",
+			"chance": 0.1,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "warm_cow",
+			"name": "Warm Cow Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmYzNDRjOTk0MmFjMzU3ODlmYTZjMWQ2MDI4NzZjOWY1NmY2OGYwMmU2NzBkZTBmZjgxYjdjODMxNjEwZmY1YSJ9fX0",
+			"chance": 0.01,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "temperate_cow",
+			"name": "Temperate Cow Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDhmZGM2NWUzYmEwOWMxMmJjMWQ2OGZmZmIzM2Q2MzQzMDVjMDE0MjMxYjNkNDJhODg4ZTMzNmFlNDkwMDkwZiJ9fX0",
+			"chance": 0.01,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "cold_cow",
+			"name": "Cold Cow Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDI4ZDQwNTA3YTBlYzUxMmNkOTA4NGM2ZGI4NzRlNDAzZmQzOTYxMjA1NzQxMzJhNjhjZTEwY2FmZGQ3YjY3YyJ9fX0",
+			"chance": 0.01,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "creaking",
+			"name": "Creaking Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmMwNzdjOTc1ZjEzZGJkYWVkYTVmMGQyMDE2ZWIzYWY1MWU0YzI3ZDk3MTRhMTIzYzQxMjg5MDE1MDVjNzg4YyJ9fX0",
+			"chance": 0.105,
+			"looting_bonus": 0.005
+		},
+		{
+			"key": "creeper",
+			"material": "CREEPER_HEAD",
+			"chance": 0.005,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "dolphin",
+			"name": "Dolphin Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGU5Njg4Yjk1MGQ4ODBiNTViN2FhMmNmY2Q3NmU1YTBmYTk0YWFjNmQxNmY3OGU4MzNmNzQ0M2VhMjlmZWQzIn19fQ",
+			"chance": 0.33,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "donkey",
+			"name": "Donkey Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGUyNWVlOTI3M2FkNTc5ZDQ0YmY0MDZmNmY2Mjk1NTg2NDgxZWExOThmZDU3MjA3NmNkMGM1ODgyZGE3ZTZjYyJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.09
+		},
+		{
+			"key": "drowned",
+			"name": "Drowned Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzNmN2NjZjYxZGJjM2Y5ZmU5YTYzMzNjZGUwYzBlMTQzOTllYjJlZWE3MWQzNGNmMjIzYjNhY2UyMjA1MSJ9fX0",
+			"chance": 0.05,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "elder_guardian",
+			"name": "Elder Guardian Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGEyZDY0ZjRhMDBlOWM4NWY2NzI2MmVkY2FjYjg0NTIzNTgxYWUwZjM3YmRhYjIyZGQ3MDQ1MjRmNjJlMTY5ZiJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "ender_dragon",
+			"material": "ENDER_DRAGON_HEAD",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "enderman",
+			"name": "Enderman Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2E1OWJiMGE3YTMyOTY1YjNkOTBkOGVhZmE4OTlkMTgzNWY0MjQ1MDllYWRkNGU2YjcwOWFkYTUwYjljZiJ9fX0",
+			"chance": 0.005,
+			"looting_bonus": 0.0001
+		},
+		{
+			"key": "endermite",
+			"name": "Endermite Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGM2YjY1YzIyYjQ0NjViYTY3OTNiMjE5NWNkNTA4NGNlODNiODhkY2E2ZTU1ZWI5NDg0NTQwYWNkNzM1MmE1MCJ9fX0",
+			"chance": 0.1,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "evoker",
+			"name": "Evoker Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzkwZmJkODhmNjU5ZDM5NjNjNjhjYmJjYjdjNzEyMWQ4MTk1YThiZTY1YmJkMmJmMTI1N2QxZjY5YmNjYzBjNyJ9fX0",
+			"chance": 0.25,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "red_fox",
+			"name": "Red Fox Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDdlMDA0MzExMWJjNTcwOTA4NTYyNTkxNTU1NzFjNzkwNmU3MDcwNDZkZjA0MWI4YjU3MjcwNGM0NTFmY2Q4MiJ9fX0",
+			"chance": 0.1,
+			"looting_bonus": 0.004
+		},
+		{
+			"key": "white_fox",
+			"name": "White Fox Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDE0MzYzNzdlYjRjNGI0ZTM5ZmIwZTFlZDg4OTlmYjYxZWUxODE0YTkxNjliOGQwODcyOWVmMDFkYzg1ZDFiYSJ9fX0",
+			"chance": 0.1,
+			"looting_bonus": 0.004
+		},
+		{
+			"key": "warm_frog",
+			"name": "Warm Frog Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDViMGRhNDM5NzViODNjMzMyMjc4OGRkYTMxNzUwNjMzMzg0M2FlYmU1NTEyNzg3Y2IyZTNkNzY5ZWQyYjM4MiJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "temperate_frog",
+			"name": "Temperate Frog Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTUwZDEwNzNkNDFmMTkzNDA1ZDk1YjFkOTQxZjlmZTFhN2ZmMDgwZTM4MTU1ZDdiYjc4MGJiYmQ4ZTg2ZjcwZCJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "cold_frog",
+			"name": "Cold Frog Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzY4Nzc4OTNlOTIwZmY1ZGZhNGI1ZmJkMTRkYWJlZTJlNjMwOGE2Zjk3YzNhMTliMDhlMjQxYTI5ZWI5YTVjMyJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "ghast",
+			"name": "Ghast Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzUzZGUzMWEyZDAwNDFhNmVmNzViZjdhNmM4NDY4NDY0ZGIxYWFhNjIwMWViYjFhNjAxM2VkYjIyNDVjNzYwNyJ9fX0",
+			"chance": 0.625,
+			"looting_bonus": 0.0125
+		},
+		{
+			"key": "glow_squid",
+			"name": "Glow Squid Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGIyZTliNjU4MWZlZDQ4YTk5ZTAzMjMwOTFhZDVjM2MzMjZjZGEyMDA3M2UyOGE5MDJhMDM3M2Y3MzgyYjU5ZiJ9fX0",
+			"chance": 0.05,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "goat",
+			"name": "Goat Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODc0NzNlMDU1ZGY2ZTdmZDk4NjY0ZTlmZGI2MzY3NWYwODgxMDYzMDVkNzQ0MDI0YTQxYmIzNTg5MThhMTQyYiJ9fX0",
+			"chance": 0.01,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "screaming_goat",
+			"name": "Screaming Goat Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmRhNDg1YWMyMzUxMjQyMDg5MWE1YWUxZThkZTk4OWYwOTFkODQ4ZDE1YTkwNjhkYTQ3MjBkMzE2ZmM0MzMwZiJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "guardian",
+			"name": "Guardian Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTJiYTM0NDE2NjcwNDU0YjFhMjA0OTZmODBiOTM5ODUyOWY0OTAwM2ZjNjEzZWI5MzAyNDhlYTliNWQxYTM5MSJ9fX0",
+			"chance": 0.005,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "happy_ghast",
+			"name": "Happy Ghast Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzUwNWIwNjIwNzhkOTc1M2RkYjliYzBlZjBmNGUzMjMxM2QzN2JhNTA4NDBkYjg3NDU4YzdmNmNiY2ZmNDgwYyJ9fX0",
+			"chance": 0.1,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "hoglin",
+			"name": "Hoglin Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmM0YTdmNTdmYzAzYjEzYWEyZjlkODNjZGQ0ODIyYjkzNjc5MzA5NmRhZjUxZTc4MDI1YmJkMjQxZWQ2ZjY4ZCJ9fX0",
+			"chance": 0.03,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "white_horse",
+			"name": "White Horse Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzdiYzYxNjA5NzMwZjJjYjAxMDI2OGZhYjA4MjFiZDQ3MzUyNjk5NzUwYTE1MDU5OWYyMWMzZmM0ZTkyNTkxYSJ9fX0",
+			"chance": 0.27,
+			"looting_bonus": 0.1
+		},
+		{
+			"key": "creamy_horse",
+			"name": "Creamy Horse Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDJhMGQ1NGNjMDcxMjY3ZDZiZmQ1ZjUyM2Y4Yzg5ZGNmZGM1ZTgwNWZhYmJiNzYwMTBjYjNiZWZhNDY1YWE5NCJ9fX0",
+			"chance": 0.27,
+			"looting_bonus": 0.1
+		},
+		{
+			"key": "chestnut_horse",
+			"name": "Chestnut Horse Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmM4NzIwZDFmNTUyNjkzYjQwYTlhMzNhZmE0MWNlZjA2YWZkMTQyODMzYmVkOWZhNWI4ODdlODhmMDVmNDlmYSJ9fX0",
+			"chance": 0.27,
+			"looting_bonus": 0.1
+		},
+		{
+			"key": "brown_horse",
+			"name": "Brown Horse Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjc3MTgwMDc3MGNiNGU4MTRhM2Q5MTE4NmZjZDc5NWVjODJlMDYxMDJmZjdjMWVlNGU1YzM4MDEwMmEwYzcwZiJ9fX0",
+			"chance": 0.27,
+			"looting_bonus": 0.1
+		},
+		{
+			"key": "black_horse",
+			"name": "Black Horse Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjcyM2ZhNWJlNmFjMjI5MmE3MjIzMGY1ZmQ3YWI2NjM0OTNiZDhmN2U2NDgxNjQyNGRjNWJmMjRmMTMzODkwYyJ9fX0",
+			"chance": 0.27,
+			"looting_bonus": 0.1
+		},
+		{
+			"key": "gray_horse",
+			"name": "Gray Horse Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzI1OTg2MTAyMTgxMDgzZmIzMTdiYzU3MTJmNzEwNGRhYTVhM2U4ODkyNjRkZmViYjkxNTlmNmUwOGJhYzkwYyJ9fX0",
+			"chance": 0.27,
+			"looting_bonus": 0.1
+		},
+		{
+			"key": "dark_brown_horse",
+			"name": "Dark Brown Horse Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2YyMzQxYWFhMGM4MmMyMmJiYzIwNzA2M2UzMTkyOTEwOTdjNTM5YWRhZDlhYTkxM2ViODAwMWIxMWFhNTlkYSJ9fX0",
+			"chance": 0.27,
+			"looting_bonus": 0.1
+		},
+		{
+			"key": "husk",
+			"name": "Husk Horse Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzMzODMxOGJjOTFhMzZjZDVhYjZhYTg4NWM5YTRlZTJiZGFjZGFhNWM2NmIyYTk5ZGZiMGE1NjA5ODNmMjQ4MCJ9fX0",
+			"chance": 0.6,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "illusioner",
+			"name": "Illusioner Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDM4MjcwMWM2N2Q2YzU0YzkwNzU1ODg5MWRjMTc2MjI1MTEyNTE4NzcxZTA2MWM1ZDhiZDkxODQ3OWU2YmRkOCJ9fX0",
+			"chance": 0.25,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "iron_golem",
+			"name": "Iron Golem Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmU3YzA3MTlmYWJlMTE2ZGNlNjA1MTk5YmNhZGM2OWE1Mzg4NjA4NjRlZjE1NzA2OTgzZmY2NjI4MjJkOWZlMyJ9fX0",
+			"chance": 0.05,
+			"looting_bonus": 0.015
+		},
+		{
+			"key": "creamy_llama",
+			"name": "Creamy Llama Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGQ2N2ZkNGJmZjI5MzI2OWNiOTA4OTc0ZGNhODNjMzM0ODVlNDM1ZWQ1YThlMWRiZDY1MjFjNjE2ODcxNDAifX19",
+			"chance": 0.24,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "white_llama",
+			"name": "White Llama Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODAyNzdlNmIzZDlmNzgxOWVmYzdkYTRiNDI3NDVmN2FiOWE2M2JhOGYzNmQ2Yjg0YTdhMjUwYzZkMWEzNThlYiJ9fX0",
+			"chance": 0.24,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "brown_llama",
+			"name": "Brown Llama Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzJiMWVjZmY3N2ZmZTNiNTAzYzMwYTU0OGViMjNhMWEwOGZhMjZmZDY3Y2RmZjM4OTg1NWQ3NDkyMTM2OCJ9fX0",
+			"chance": 0.24,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "gray_llama",
+			"name": "Gray Llama Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2YyNGU1NmZkOWZmZDcxMzNkYTZkMWYzZTJmNDU1OTUyYjFkYTQ2MjY4NmY3NTNjNTk3ZWU4MjI5OWEifX19",
+			"chance": 0.24,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "magma_cube",
+			"name": "Magma Cube Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjgxNzE4ZDQ5ODQ4NDdhNGFkM2VjMDgxYTRlYmZmZDE4Mzc0MzIzOWFlY2FiNjAzMjIxMzhhNzI2MDk4MTJjMyJ9fX0",
+			"chance": 0.005,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "red_mooshroom",
+			"name": "Red Mooshroom Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGE4MDYwNmU4MmM2NDJmMTQxNTg3NzMzZTMxODBhZTU3ZjY0NjQ0MmM5ZmZmZDRlNTk5NzQ1N2UzNDMxMWEyOSJ9fX0",
+			"chance": 0.01,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "brown_mooshroom",
+			"name": "Brown Mooshroom Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2U2NDY2MzAyYTVhYjQzOThiNGU0NzczNDk4MDhlNWQ5NDAyZWEzYWQ4ZmM0MmUyNDQ2ZTRiZWQwYTVlZDVlIn19fQ",
+			"chance": 0.1,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "mule",
+			"name": "Mule Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDFjMjI0YTEwMzFiZTQzNGQyNWFlMTg4NWJmNGZmNDAwYzk4OTRjNjliZmVmNTZhNDkzNTRjNTYyNWMwYzA5YyJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.05
+		},
+		{
+			"key": "ocelot",
+			"name": "Ocelot Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTE3NWNjNDNlYThhZTIwMTY4YTFmMTcwODEwYjRkYTRkOWI0ZWJkM2M5OTc2ZTlmYzIyZTlmOTk1YzNjYmMzYyJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "aggressive_panda",
+			"name": "Aggressive Panda Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTU0NmU0MzZkMTY2YjE3ZjA1MjFiZDg1MzhlYTEzY2Q2ZWUzYjVkZjEwMmViMzJlM2U0MjVjYjI4NWQ0NDA2MyJ9fX0",
+			"chance": 0.27,
+			"looting_bonus": 0.004
+		},
+		{
+			"key": "lazy_panda",
+			"name": "Lazy Panda Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTg3ZjFmNWRiMmUyNGRmNGRhYWVkNDY4NWQ2YWVlNWRlYjdjZGQwMjk2MzBmMDA3OWMxZjhlMWY5NzQxYWNmZCJ9fX0",
+			"chance": 0.27,
+			"looting_bonus": 0.004
+		},
+		{
+			"key": "playful_panda",
+			"name": "Playful Panda Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGNhZGQ0YmYzYzRjYWNlOTE2NjgwZTFmZWY5MGI1ZDE2YWQ2NjQzOTUxNzI1NjY4YmE2YjQ5OTZiNjljYTE0MCJ9fX0",
+			"chance": 0.27,
+			"looting_bonus": 0.004
+		},
+		{
+			"key": "worried_panda",
+			"name": "Worried Panda Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmI4NmZkMWJmOGNiY2UyM2JjMDhmYjkwNjkxNzE3NjExYWRkYzg1YWI4MjNiNzcxNGFlYzk4YTU2NjBlZmYxNSJ9fX0",
+			"chance": 0.27,
+			"looting_bonus": 0.004
+		},
+		{
+			"key": "brown_panda",
+			"name": "Brown Panda Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMWQ1ZjZkNjEyNjcyODY3MWI0NGMxYzc3NWY5OTYxNzQyNGUzMzYxMWI1ZDMxYWQyYWNmZjI4MDRlYjk2ZWIwNiJ9fX0",
+			"chance": 0.27,
+			"looting_bonus": 0.004
+		},
+		{
+			"key": "weak_panda",
+			"name": "Weak Panda Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2M1NmEzNTVmYmUwZTJmYmQyOGU4NWM0ZDgxNWZmYTVkMWY5ZDVmODc5OGRiYzI1OWZmODhjNGFkZGIyMDJhZSJ9fX0",
+			"chance": 0.27,
+			"looting_bonus": 0.004
+		},
+		{
+			"key": "normal_panda",
+			"name": "Panda Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTlkZjQ3ZTAxNWQ1YzFjNjhkNzJiZTExYmI2NTYzODBmYzZkYjUzM2FhYjM4OTQxYTkxYjFkM2Q1ZTM5NjQ5NyJ9fX0",
+			"chance": 0.27,
+			"looting_bonus": 0.004
+		},
+		{
+			"key": "red_parrot",
+			"name": "Red Parrot Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDBhM2Q0N2Y1NGU3MWE1OGJmOGY1N2M1MjUzZmIyZDIxM2Y0ZjU1YmI3OTM0YTE5MTA0YmZiOTRlZGM3NmVhYSJ9fX0",
+			"chance": 0.25,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "blue_parrot",
+			"name": "Blue Parrot Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjk0YmQzZmNmNGQ0NjM1NGVkZThmZWY3MzEyNmRiY2FiNTJiMzAxYTFjOGMyM2I2Y2RmYzEyZDYxMmI2MWJlYSJ9fX0",
+			"chance": 0.25,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "green_parrot",
+			"name": "Green Parrot Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmExZGMzMzExNTIzMmY4MDA4MjVjYWM5ZTNkOWVkMDNmYzE4YWU1NTNjMjViODA1OTUxMzAwMGM1OWUzNTRmZSJ9fX0",
+			"chance": 0.25,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "light_blue_parrot",
+			"name": "Light Blue Parrot Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzI2OGNlMzdiZTg1MDdlZDY3ZTNkNDBiNjE3ZTJkNzJmNjZmOWQyMGIxMDZlZmIwOGU2YmEwNDFmOWI5ZWYxMCJ9fX0",
+			"chance": 0.25,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "gray_parrot",
+			"name": "Gray Parrot Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzFiZTcyM2FhMTczOTNkOTlkYWRkYzExOWM5OGIyYzc5YzU0YjM1ZGViZTA1YzcxMzhlZGViOGQwMjU2ZGM0NiJ9fX0",
+			"chance": 0.25,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "phantom",
+			"name": "Phantom Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2U5NTE1M2VjMjMyODRiMjgzZjAwZDE5ZDI5NzU2ZjI0NDMxM2EwNjFiNzBhYzAzYjk3ZDIzNmVlNTdiZDk4MiJ9fX0",
+			"chance": 0.1,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "warm_pig",
+			"name": "Warm Pig Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2JlYmExYTJkNTZlODRmOGU1MWZlZDY2NTlmMmNiN2MxNGZlZDQzODU5YWY1ODQ3Mzc4OTdiZjcwYzAzOTQ3NSJ9fX0",
+			"chance": 0.01,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "temperate_pig",
+			"name": "Temperate Pig Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDFlZTc2ODFhZGYwMDA2N2YwNGJmNDI2MTFjOTc2NDEwNzVhNDRhZTJiMWMwMzgxZDVhYzZiMzI0NjIxMWJmZSJ9fX0",
+			"chance": 0.01,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "cold_pig",
+			"name": "Cold Pig Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmExOGQ0MDQzY2Q2YzkwMzg2Njc4ODkxNGZkNTM0MzE1MjgxYWY5ZjI1OWUzNDgzN2UzZTE3NWU1NDVjMmVkZSJ9fX0",
+			"chance": 0.01,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "piglin_brute",
+			"name": "Piglin Brute Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjQ4ODc5OWM4M2VjYjI5NDUyY2ViYTg5YzNjMDA5OTIxOTI3NGNlNWIyYmZiOGFkMGIzZWE0YzY1ZmFjNDYzMCJ9fX0",
+			"chance": 0.1,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "piglin",
+			"material": "PIGLIN_HEAD",
+			"chance": 0.04,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "pillager",
+			"name": "Pillager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzIyNWYwYjQ5YzUyOTUwNDhhNDA5YzljNjAxY2NhNzlhYThlYjUyYWZmNWUyMDMzZWJiODY1ZjQzNjdlZjQzZSJ9fX0",
+			"chance": 0.025,
+			"looting_bonus": 0.005
+		},
+		{
+			"key": "polar_bear",
+			"name": "Polar Bear Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2Q4NzAyOTExZTYxNmMwZDMyZmJlNzc4ZDE5NWYyMWVjY2U5MDI1YmNiZDA5MTUxZTNkOTdhZjMxOTJhYTdlYyJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.05
+		},
+		{
+			"key": "pufferfish",
+			"name": "Pufferfish Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTI3MzNkNWRhNTljODJlYWYzMTBiMzgyYWZmNDBiZDUxM2M0NDM1NGRiYmFiZmUxNGIwNjZhNTU2ODEwYTdmOSJ9fX0",
+			"chance": 0.15,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "brown_rabbit",
+			"name": "Brown Rabbit Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2ZkNGY4NmNmNzQ3M2ZiYWU5M2IxZTA5MDQ4OWI2NGMwYmUxMjZjN2JiMTZmZmM4OGMwMDI0NDdkNWM3Mjc5NSJ9fX0",
+			"chance": 0.26,
+			"looting_bonus": 0.05
+		},
+		{
+			"key": "white_rabbit",
+			"name": "White Rabbit Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTU0MmQ3MTYwOTg3MTQ4YTVkOGUyMGU0NjliZDliM2MyYTM5NDZjN2ZiNTkyM2Y1NWI5YmVhZTk5MTg1ZiJ9fX0",
+			"chance": 0.26,
+			"looting_bonus": 0.05
+		},
+		{
+			"key": "black_rabbit",
+			"name": "Black Rabbit Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjJiNDI1ZmYyYTIzNmFiMTljYzkzOTcxOTVkYjQwZjhmMTg1YjE5MWM0MGJmNDRiMjZlOTVlYWM5ZmI1ZWZhMyJ9fX0",
+			"chance": 0.26,
+			"looting_bonus": 0.05
+		},
+		{
+			"key": "black_white_rabbit",
+			"name": "Black and White Rabbit Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzVmNzJhMjE5NWViZjQxMTdjNTA1NmNmZTJiNzM1N2VjNWJmODMyZWRlMTg1NmE3NzczZWU0MmEwZDBmYjNmMCJ9fX0",
+			"chance": 0.26,
+			"looting_bonus": 0.05
+		},
+		{
+			"key": "gold_rabbit",
+			"name": "Gold Rabbit Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzY3YjcyMjY1NmZkZWVjMzk5NzRkMzM5NWM1ZTE4YjQ3YzVlMjM3YmNlNWJiY2VkOWI3NTUzYWExNGI1NDU4NyJ9fX0",
+			"chance": 0.26,
+			"looting_bonus": 0.05
+		},
+		{
+			"key": "salt_pepper_rabbit",
+			"name": "Salt and Pepper Rabbit Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTIzODUxOWZmMzk4MTViMTZjNDA2MjgyM2U0MzE2MWZmYWFjOTY4OTRmZTA4OGIwMThlNmEyNGMyNmUxODFlYyJ9fX0",
+			"chance": 0.26,
+			"looting_bonus": 0.05
+		},
+		{
+			"key": "toast_rabbit",
+			"name": "Toast Rabbit Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTFhNTdjM2QwYTliMTBlMTNmNjZkZjc0MjAwY2I4YTZkNDg0YzY3MjIyNjgxMmQ3NGUyNWY2YzAyNzQxMDYxNiJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "killer_rabbit",
+			"name": "Killer Rabbit Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzFkZDc2NzkyOWVmMmZkMmQ0M2U4NmU4NzQ0YzRiMGQ4MTA4NTM0NzEyMDFmMmRmYTE4Zjk2YTY3ZGU1NmUyZiJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "ravager",
+			"name": "Ravager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWI0ZGIyOTg2MTQwZTI1MWUzMmU3MGVkMDhjOGEwODE3MjAzMTNjZTI1NzYzMmJlMWVmOTRhMDczNzM5NGRiIn19fQ",
+			"chance": 0.25,
+			"looting_bonus": 0.02
+		},
+		{
+			"key": "salmon",
+			"name": "Salmon Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzkxZDllNjliNzk1ZGE0ZWFhY2ZjZjczNTBkZmU4YWUzNjdmZWQ4MzM1NTY3MDZlMDQwMzM5ZGQ3ZmUwMjQwYSJ9fX0",
+			"chance": 0.1,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "black_sheep",
+			"name": "Black Sheep Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTMzMzVlODA2NWM3YjVkZmVhNThkM2RmNzQ3NGYzOTZhZjRmYTBhMmJhNTJhM2M5YjdmYmE2ODMxOTI3MWM5MSJ9fX0",
+			"chance": 0.0175,
+			"looting_bonus": 0.0025
+		},
+		{
+			"key": "blue_sheep",
+			"name": "Blue Sheep Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQwZTI3N2RhNmMzOThiNzQ5YTMyZjlkMDgwZjFjZjRjNGVmM2YxZjIwZGQ5ZTVmNDIyNTA5ZTdmZjU5M2MwIn19fQ==",
+			"chance": 0.0175,
+			"looting_bonus": 0.0025
+		},
+		{
+			"key": "brown_sheep",
+			"name": "Brown Sheep Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzEyOGQwODZiYzgxNjY5ZmMyMjU1YmIyMmNhZGM2NmEwZjVlZDcwODg1ZTg0YzMyZDM3YzFiNDg0ZGIzNTkwMSJ9fX0=",
+			"chance": 0.0175,
+			"looting_bonus": 0.0025
+		},
+		{
+			"key": "cyan_sheep",
+			"name": "Cyan Sheep Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWQ0MmZjYmNhZjlkNDhmNzNmZmIwYzNjMzZmMzRiNDY0MzI5NWY2ZGFhNmNjNzRhYjlkMjQyZWQ1YWE1NjM2In19fQ==",
+			"chance": 0.0175,
+			"looting_bonus": 0.0025
+		},
+		{
+			"key": "gray_sheep",
+			"name": "Gray Sheep Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2ZhZmVjZjA2MDNiMmRjZDc5ODRkMjUyNTg2MDY5ODk1ZGI5YWE3OGUxODQxYmQ1NTRiMTk1MDhkY2Y5NjdhMSJ9fX0=",
+			"chance": 0.0175,
+			"looting_bonus": 0.0025
+		},
+		{
+			"key": "green_sheep",
+			"name": "Green Sheep Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWVhODg3ZWFlNGIwNzYzNmU5ZTJmOTA2NjA5YjAwYWI4ZDliODZiNzQ3MjhiODE5ZmY2ZjM3NjU4M2VhMTM5In19fQ==",
+			"chance": 0.0175,
+			"looting_bonus": 0.0025
+		},
+		{
+			"key": "light_blue_sheep",
+			"name": "Light Blue Sheep Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWJmMjNhZjg3MTljNDM3YjNlZTg0MDE5YmEzYzllNjljYTg1NGQzYThhZmQ1Y2JhNmQ5Njk2YzA1M2I0ODYxNCJ9fX0=",
+			"chance": 0.0175,
+			"looting_bonus": 0.0025
+		},
+		{
+			"key": "light_gray_sheep",
+			"name": "Light Gray Sheep Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMWQyZTJlOTNhMTQyYmZkNDNmMjQwZDM3ZGU4ZjliMDk3NmU3NmU2NWIyMjY1MTkwODI1OWU0NmRiNzcwZSJ9fX0=",
+			"chance": 0.0175,
+			"looting_bonus": 0.0025
+		},
+		{
+			"key": "lime_sheep",
+			"name": "Lime Sheep Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmJlYWQwMzQyYWU4OWI4ZGZkM2Q3MTFhNjBhZGQ2NWUyYzJiZmVhOGQwYmQyNzRhNzU4N2RlZWQ3YTMxODkyZSJ9fX0=",
+			"chance": 0.0175,
+			"looting_bonus": 0.0025
+		},
+		{
+			"key": "magenta_sheep",
+			"name": "Magenta Sheep Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYThlMWYwNWYwZGFjY2E2M2E3MzE4NzRmOTBhNjkzZmZlMjFmZjgzMmUyYjFlMWQwN2I2NWM4NzY0NTI2ZjA4OSJ9fX0=",
+			"chance": 0.0175,
+			"looting_bonus": 0.0025
+		},
+		{
+			"key": "orange_sheep",
+			"name": "Orange Sheep Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjY4NGQwNGZhODBhYTU5ZGExNDUzNWRlYWQzODgzZDA5N2ZiYmE0MDA2MjU2NTlmNTI1OTk2NDgwNmJhNjZmMCJ9fX0=",
+			"chance": 0.0175,
+			"looting_bonus": 0.0025
+		},
+		{
+			"key": "pink_sheep",
+			"name": "Pink Sheep Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjM2M2U4YTkzZDI4N2E4NGU2NDAzMDlhZTgzY2ExZGUwYTBiMjU3NTA1YTIwZWM1NWIzMzQ5ZDQwYTQ0ODU0In19fQ==",
+			"chance": 0.0175,
+			"looting_bonus": 0.0025
+		},
+		{
+			"key": "purple_sheep",
+			"name": "Purple Sheep Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzQ0OWQwODI5MWRhZTQ1YTI0NjczNjE5NjAyZjQzNWI1N2Y0Y2Q0ZTllOThkMmUwZmJlYzRmMTgxNDQ3ODFkMyJ9fX0=",
+			"chance": 0.0175,
+			"looting_bonus": 0.0025
+		},
+		{
+			"key": "red_sheep",
+			"name": "Red Sheep Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTQ3OGUwNTcxNThkZTZmNDVlMjU0MWNkMTc3ODhlNjQwY2NiNTk3MjNkZTU5YzI1NGU4MmFiNTcxMWYzZmMyNyJ9fX0=",
+			"chance": 0.0175,
+			"looting_bonus": 0.0025
+		},
+		{
+			"key": "white_sheep",
+			"name": "White Sheep Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmRmZTdjYzQ2ZDc0OWIxNTMyNjFjMWRjMTFhYmJmMmEzMTA4ZWExYmEwYjI2NTAyODBlZWQxNTkyZGNmYzc1YiJ9fX0=",
+			"chance": 0.0175,
+			"looting_bonus": 0.0025
+		},
+		{
+			"key": "yellow_sheep",
+			"name": "Yellow Sheep Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTRiMjhmMDM1NzM1OTA2ZjgyZmZjNGRiYTk5YzlmMGI1NTI0MGU0MjZjZDFjNTI1YTlhYTc3MTgwZWVjNDkzNCJ9fX0=",
+			"chance": 0.0175,
+			"looting_bonus": 0.0025
+		},
+		{
+			"key": "jeb_sheep",
+			"name": "jeb_ Sheep Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjMzMzI2NzY1YTE5MGViZjkwZDU0ODZkNzFmMjBlMjU5N2U0YmVlMmEzOTFmZWNiYmQ4MGRlYmZlMWY4MmQ3OCJ9fX0",
+			"chance": 0.0175,
+			"looting_bonus": 0.0025
+		},
+		{
+			"key": "shulker",
+			"name": "Shulker Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmI5ZTZhZjZiODE5ZjNkOTBlNjdjZTJlNzA1OWZiZWYzMWRhMmFhOTUzZDM1ZTM0NTRmMTAyMWZhOTEyZWZkZSJ9fX0",
+			"chance": 0.05,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "silverfish",
+			"name": "Silverfish Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjI1ZTlmYWUzNzE2NjRkZTFhODAwYzg0ZDAyNTEyNGFiYjhmMTUxMTE4MDdjOGJjMWFiOTEyNmFhY2JkNGY5NSJ9fX0",
+			"chance": 0.05,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "skeleton",
+			"material": "SKELETON_SKULL",
+			"chance": 0.005,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "skeleton_horse",
+			"name": "Skeleton Horse Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmUyMjY3MDViZDJhOWU3YmI4ZDZiMGY0ZGFhOTY5YjllMTJkNGFlNWM2NmRhNjkzYmI1ZjRhNGExZTZhYTI5NiJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.05
+		},
+		{
+			"key": "slime",
+			"name": "Slime Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzA2NDI0ZWM3YTE5NmIxNWY5YWQ1NzMzYTM2YTZkMWYyZTZhMGQ0MmZmY2UxZTE1MDhmOTBmMzEyYWM0Y2FlZCJ9fX0",
+			"chance": 0.005,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "sniffer",
+			"name": "Sniffer Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzg0YTdlN2ZlMTk3YjdlNzQxOWI1MWQ0NmNjMjMzNTUxYjllYzg5OWRlMWFmZTdmNjUzZTRmOGZiMjZhNjg2ZSJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "snow_golem",
+			"name": "Snow Golem Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2FhM2UxN2VmMWIyOWE0Yjg3ZmE0M2RlZTFkYjEyYzQxZmQzOWFhMzg3ZmExM2FmMmEwNzliNWIzNzhmZGU4YiJ9fX0",
+			"chance": 0.05,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "spider",
+			"name": "Spider Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTBjNDEwMDQ1Y2QzNzQ5YzNhOGVkODU2ZGY0MTFmNmMzM2U5YThhNmY5ZTU3ZTUyMTYwOGE4YWQ4ZWQ2ZWIzNyJ9fX0",
+			"chance": 0.005,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "squid",
+			"name": "Squid Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODM1MWI3ZDlhNGYzNmNmZTMxZmQ1OWQ4YzkwMGU0MTlhMTM1MTQ0MTA1ZTdhOTgxY2FhNWExNjhkY2ZmMzI1YiJ9fX0",
+			"chance": 0.05,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "stray",
+			"name": "Stray Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTkyYjU1OTcwODVlMzVkYjUzZDliZGEwMDhjYWU3MmIyZjAwY2Q3ZDRjZDhkYzY5ZmYxNzRhNTViNjg5ZTZlIn19fQ",
+			"chance": 0.06,
+			"looting_bonus": 0.05
+		},
+		{
+			"key": "normal_strider",
+			"name": "Strider Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWM0MGZhZDFjMTFkZTllNjQyMmI0MDU0MjZlOWI5NzkwN2YzNWJjZTM0NWUzNzU4NjA0ZDNlN2JlN2RmODg0In19fQ",
+			"chance": 0.1,
+			"looting_bonus": 0.05
+		},
+		{
+			"key": "freezing_strider",
+			"name": "Freezing Strider Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjcxMzA4NWE1NzUyN2U0NTQ1OWMzOGZhYTdiYjkxY2FiYjM4MWRmMzFjZjJiZjc5ZDY3YTA3MTU2YjZjMjMwOSJ9fX0",
+			"chance": 0.1,
+			"looting_bonus": 0.05
+		},
+		{
+			"key": "tadpole",
+			"name": "Tadpole Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2RhZjE2NTNiNWY1OWI1ZWM1YTNmNzk2MDljYjQyMzM1NzlmZWYwN2U2OTNiNjE3NDllMDkwMDE0OWVkZjU2MyJ9fX0",
+			"chance": 0.1,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "creamy_trader_llama",
+			"name": "Creamy Trader Llama Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTg5YTJlYjE3NzA1ZmU3MTU0YWIwNDFlNWM3NmEwOGQ0MTU0NmEzMWJhMjBlYTMwNjBlM2VjOGVkYzEwNDEyYyJ9fX0",
+			"chance": 0.24,
+			"looting_bonus": 0.07
+		},
+		{
+			"key": "white_trader_llama",
+			"name": "White Trader Llama Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzA4N2E1NTZkNGZmYTk1ZWNkMjg0NGYzNTBkYzQzZTI1NGU1ZDUzNWZhNTk2ZjU0MGQ3ZTc3ZmE2N2RmNDY5NiJ9fX0",
+			"chance": 0.24,
+			"looting_bonus": 0.07
+		},
+		{
+			"key": "brown_trader_llama",
+			"name": "Brown Trader Llama Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODQyNDc4MGIzYzVjNTM1MWNmNDlmYjViZjQxZmNiMjg5NDkxZGY2YzQzMDY4M2M4NGQ3ODQ2MTg4ZGI0Zjg0ZCJ9fX0",
+			"chance": 0.24,
+			"looting_bonus": 0.07
+		},
+		{
+			"key": "gray_trader_llama",
+			"name": "Gray Trader Llama Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmU0ZDhhMGJjMTVmMjM5OTIxZWZkOGJlMzQ4MGJhNzdhOThlZTdkOWNlMDA3MjhjMGQ3MzNmMGEyZDYxNGQxNiJ9fX0",
+			"chance": 0.24,
+			"looting_bonus": 0.07
+		},
+		{
+			"key": "tropical_fish",
+			"name": "Tropical Fish Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzRhMGM4NGRjM2MwOTBkZjdiYWZjNDM2N2E5ZmM2Yzg1MjBkYTJmNzNlZmZmYjgwZTkzNGQxMTg5ZWFkYWM0MSJ9fX0",
+			"chance": 0.1,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "turtle",
+			"name": "Turtle Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzA0OTMxMjAwYWQ0NjBiNjUwYTE5MGU4ZDQxMjI3YzM5OTlmYmViOTMzYjUxY2E0OWZkOWU1OTIwZDFmOGU3ZCJ9fX0",
+			"chance": 0.1,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "vex",
+			"name": "Vex Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGI4ZTE0ZWQzMTRlYTllYjQ0MTkzMjQxNTllZDA4ZTc3N2JhMTg3NWFkZTI5ODllYWEwZjUzMTBkYTc3MmU1NiJ9fX0",
+			"chance": 0.1,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "armorer_villager",
+			"name": "Armorer Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMWVmNjI3ZjU2NmFjMGE3ODI4YmFkOTNlOWU0Yjk2NDNkOTlhOTI4YTEzZDVmOTc3YmY0NDFlNDBkYjEzMzZiZiJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "butcher_villager",
+			"name": "Butcher Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTFiYWQ2NDE4NWUwNGJmMWRhZmUzZGE4NDkzM2QwMjU0NWVhNGE2MzIyMWExMGQwZjA3NzU5MTc5MTEyYmRjMiJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "cartographer_villager",
+			"name": "Cartographer Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTNhZWNmYmU4MDFjZjMyYjVkMWIwYjFmNjY4MDA0OTY2NjE1ODY3OGM1M2Y0YTY1MWZjODNlMGRmOWQzNzM4YiJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "cleric_villager",
+			"name": "Cleric Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWI5ZTU4MmUyZjliODlkNTU2ZTc5YzQ2OTdmNzA2YjFkZDQ5MjllY2FlM2MwN2VlOTBiZjFkNWJlMzE5YmY2ZiJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "farmer_villager",
+			"name": "Farmer Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDkyNzJkMDNjZGE2MjkwZTRkOTI1YTdlODUwYTc0NWU3MTFmZTU3NjBmNmYwNmY5M2Q5MmI4ZjhjNzM5ZGIwNyJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "fisherman_villager",
+			"name": "Fisherman Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDE4OWZiNGFjZDE1ZDczZmYyYTU4YTg4ZGYwNDY2YWQ5ZjRjMTU0YTIwMDhlNWM2MjY1ZDVjMmYwN2QzOTM3NiJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "fletcher_villager",
+			"name": "Fletcher Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmY2MTFmMTJlMThjZTQ0YTU3MjM4ZWVmMWNhZTAzY2Q5ZjczMGE3YTQ1ZTBlYzI0OGYxNGNlODRlOWM0ODA1NiJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "leatherworker_villager",
+			"name": "Leatherworker Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWUwZTk1OTFlMTFhYWVmNGMyYzUxZDlhYzY5NTE0ZTM0MDQ4NWRlZmNjMmMxMmMzOGNkMTIzODZjMmVjNmI3OCJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "librarian_villager",
+			"name": "Librarian Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2RjYWE1NzRiYWJiNDBlZTBmYTgzZjJmZDVlYTIwY2ZmMzFmZmEyNzJmZTExMzU4OGNlZWU0Njk2ODIxMjhlNyJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "mason_villager",
+			"name": "Mason Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWUwZTk1OTFlMTFhYWVmNGMyYzUxZDlhYzY5NTE0ZTM0MDQ4NWRlZmNjMmMxMmMzOGNkMTIzODZjMmVjNmI3OCJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "nitwit_villager",
+			"name": "Nitwit Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWUwZTk1OTFlMTFhYWVmNGMyYzUxZDlhYzY5NTE0ZTM0MDQ4NWRlZmNjMmMxMmMzOGNkMTIzODZjMmVjNmI3OCJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "unemployed_villager",
+			"name": "Unemployed Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWUwZTk1OTFlMTFhYWVmNGMyYzUxZDlhYzY5NTE0ZTM0MDQ4NWRlZmNjMmMxMmMzOGNkMTIzODZjMmVjNmI3OCJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "shepherd_villager",
+			"name": "Shepherd Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmFiZjRlOTE1NGFjOTI3MTk0MWM3MzNlYWNjNjJkYzlmYzBhNmRjMWI1ZDY3Yzc4Y2E5OGFmYjVjYjFiZTliMiJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "toolsmith_villager",
+			"name": "Toolsmith Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWUwZTk1OTFlMTFhYWVmNGMyYzUxZDlhYzY5NTE0ZTM0MDQ4NWRlZmNjMmMxMmMzOGNkMTIzODZjMmVjNmI3OCJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "weaponsmith_villager",
+			"name": "Weaponsmith Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODQ3NmZmYTQxMGJiZTdmYTcwOTA5OTY1YTEyNWY0YTRlOWE0ZmIxY2UxYjhiM2MzNGJmYjczYWFmZmQ0Y2U0MyJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "vindicator",
+			"name": "Vindicator Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmRhYmFmZGUyN2VlMTJiMDk4NjUwNDdhZmY2ZjE4M2ZkYjY0ZTA0ZGFlMWMwMGNjYmRlMDRhZDkzZGNjNmM5NSJ9fX0",
+			"chance": 0.05,
+			"looting_bonus": 0.015
+		},
+		{
+			"key": "wandering_trader",
+			"name": "Wandering Trader Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWYxMzc5YTgyMjkwZDdhYmUxZWZhYWJiYzcwNzEwZmYyZWMwMmRkMzRhZGUzODZiYzAwYzkzMGM0NjFjZjkzMiJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "warden",
+			"name": "Warden Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjJmMzg3OWI3MzcxMjc0ODVlYjM1ZGRlZTc0OGQwNmNmOTE0YjE5M2Q5Nzc1M2FlMzRlOTIyMzA4NDI4MzFmYiJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "witch",
+			"name": "Witch Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTUyMGYxMmM2M2M3OTEyMTg2YzRiZTRlMzBjMzNjNWFjYWVjMGRiMGI2YWJkODM2ZDUxN2Q3NGE2MjI3NWQ0YiJ9fX0",
+			"chance": 0.005,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "wither",
+			"name": "Wither Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWRhMTA4MjhmNjNiN2VjZGVmZDc2N2IzMjQ1ZmJkYWExM2MzZWMwYzZiMTM3NzRmMWVlOGQzMDdjMDM0YzM4MyJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "wither_projectile",
+			"name": "Wither Projectile",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjM3YzU4MTRhOTJmOGVjMGY2YWU5OTMzYWJlOTU0MmUxNjUxOTA3NjhlNzYwNDc4NTQzYWViZWVkNDAyN2MyNyJ9fX0",
+			"chance": 0,
+			"looting_bonus": 0
+		},
+		{
+			"key": "blue_wither_projectile",
+			"name": "Blue Wither Projectile",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDM2ODJiMDYyMDNiOWRlNGMyODU0MTA3MWEyNmNkYzM0MGRkMjVkNGMzNzJiNzAyM2VjMmY0MTIwMjFkNjJmNyJ9fX0",
+			"chance": 0,
+			"looting_bonus": 0
+		},
+		{
+			"key": "ashen_wolf",
+			"name": "Ashen Wolf Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzIzODRjNWNmMTg5NDhiODNhODk1NDhkYmE1YTk5NDVlZGVlZmM1ZTk2NTRjNWQ2ZDM4YWUxMGE1ZDUwMmU3NSJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "angry_ashen_wolf",
+			"name": "Angry Ashen Wolf Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2NiYzMwNjZkMzFjNDM5MDM1MDM4ZmQ2ODc1ZDVkYmVlYzM5NjhjMWI4MDA2ZmZiZmI1ZjY3NGQ3NmM4OWNkZSJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "black_wolf",
+			"name": "Black Wolf Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzVhNjZhNDJiMjVmODIyYTdlMTZhMjE4NzUyOGQxYTJlMjk0YTAxZDlmODUwNjcxYjk0Yzk1NzQyYmI0OTE2ZSJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "angry_black_wolf",
+			"name": "Angry Black Wolf Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTVlZDQ3ZGVkMjcwOGIxM2Q5MmViNTBmYjY4ZThjMWUxMWIzOWEwY2Q0NWIzOTM3MmVlYWQ4NzJjNDllZWFlYiJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "chestnut_wolf",
+			"name": "Chestnut Wolf Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2I5YjBkNDg0NDIyMDRmZjZmZDM5ZmEwNzQxNjcxMThlOWMwNjZjZGUzODg4OTc3ZDBmNjAzNmUxZDhhNjllZSJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "angry_chestnut_wolf",
+			"name": "Angry Chestnut Wolf Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjg0YjI4ZjIzMmIxNGE1OWI2Y2I3NzU3MzIzOTc0ZWE1MDJiMWJjYjk4NGRlYTMwMDkzZWMyMWVkMmFkZTMxMiJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "pale_wolf",
+			"name": "Pale Wolf Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMWVlMzNjMmRjMDdkNzZiNGYwM2U2NjQyN2EwOGNiYTJlODE3OWQwNzVhZTY0YjljZTE1MGFhNDIwOWM1YWYzOSJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "angry_pale_wolf",
+			"name": "Angry Pale Wolf Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjg4N2E0Mjc4NzkwMGU2NzE2ZmE0NjJmYmFkOGRlYjU1MjZiOTQzOTg3OTc0MTRmMDNmNjAxM2VmODg1YTFkYiJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "rusty_wolf",
+			"name": "Rusty Wolf Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjM0NTVmNjA0OGE2ODA5OGNkMjc2MzRlMzE0NmM4MWM4MjY5YWVlZmNmMGFmZjkxY2M5NzZlZmEwYmFhMTE0NiJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "angry_rusty_wolf",
+			"name": "Angry Rusty Wolf Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFmMWMzMmU1MjU4ZjNkOGY4ZDE4MWZiMzBkZjYxZTA2OTNlNTVkNTM4YTEzZWVhYmRmNjMwMGYzODA4M2FkYyJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "snowy_wolf",
+			"name": "Snowy Wolf Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGVjYWRhYjUwYWE4ZDQxZmE5YjM2OWEyZjg0Zjk3NDU2YmU3OTAwYjIyMGVjZTNiOTVlOGEwMDk2ODY2MGQ1In19fQ",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "angry_snowy_wolf",
+			"name": "Angry Snowy Wolf Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTJiN2MyODZjMjMwODI2YjI5ZTdmZDM3ZjI1NzNiOTAxNWM0MjJiYzM4ZmViMTRkOWEzMTdjNjg1NWFkYTNmNiJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "spotted_wolf",
+			"name": "Spotted Wolf Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTczYjlhNjQzMWFmMjZiY2IzMTgyNmViNmZkOWY0YjM1Yjk0N2JhNTg4MmM2ZTRhYTkzNTg4NjMzZjdiOGQ5ZCJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "angry_spotted_wolf",
+			"name": "Angry Spotted Wolf Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTc4NmI3MzkzNDhhYTg1MDJlYTE4NWRmYjE0YmY1YWIwMWUyOWUwODJkMWZlYjg2MTNiM2ZlOTNlMGRlYmQ4ZSJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "striped_wolf",
+			"name": "Striped Wolf Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2ZjNTJmYjNjZGZjNmFlYjAwZTY3YzFiN2E1OWQ4ZDMyMGRmNDQ2NTZjN2FmNjgyNGIxM2NhNjA3OTJhYTdkNyJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "angry_striped_wolf",
+			"name": "Angry Striped Wolf Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGQ2MGMyNTQ4OGIwNjcyNzY2OWE2OTE1ZDFkYWRhYTlhN2QyODMxYjQ2MGJlZTMwZTVkYTQwNzg3NDcwNTAwMSJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "woods_wolf",
+			"name": "Woods Wolf Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGQxMmFiMTc2NDdiNjljOTQyMTc2OTU3MmFjNjc0ZGUxOTkxMjRjMjg0YjllZDFmNjVhMjg1YzM4Y2QyYTUwNCJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "angry_woods_wolf",
+			"name": "Angry Woods Wolf Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTMwNTgzZGJhOGVhNjE0MzA1ZGIwMTBiYWJkYzViYjQ0ZTlhMjAwMzMxMWIzOTlkODk2NWU3NzJkZDAxOTFmYiJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "zoglin",
+			"name": "Zoglin Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmUzNDkzYTk1NmJmZDc1ODhlZDFhOGVhODU4NzU5NjY3NjU5ZDU4MTAwY2JlY2Q2ZDk2Y2NjMGNhOWIzNjkyMyJ9fX0",
+			"chance": 0.2,
+			"looting_bonus": 0.05
+		},
+		{
+			"key": "zombie",
+			"material": "ZOMBIE_HEAD",
+			"chance": 0.005,
+			"looting_bonus": 0.001
+		},
+		{
+			"key": "zombie_horse",
+			"name": "Zombie Horse Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjYxOGZmYmUxY2ZhMjA1OGZlODBhMDY1ZjcwYzEyOGMyMjVhMWUwYmM5ZGVhZjhiMzhiMDM5NTQ0M2Y0MDkwOSJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
+			"key": "armorer_zombie_villager",
+			"name": "Armorer Zombie Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzg2NzllMDM0NzY3ZDUxODY2MGQ5NDE2ZGM1ZWFmMzE5ZDY5NzY4MmFjNDBjODg2ZTNjMmJjOGRmYTFkZTFkIn19fQ",
+			"chance": 0.5,
+			"looting_bonus": 0.2
+		},
+		{
+			"key": "butcher_zombie_villager",
+			"name": "Butcher Zombie Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWNjZThkNmNlNDEyNGNlYzNlODRhODUyZTcwZjUwMjkzZjI0NGRkYzllZTg1NzhmN2Q2ZDg5MjllMTZiYWQ2OSJ9fX0",
+			"chance": 0.5,
+			"looting_bonus": 0.2
+		},
+		{
+			"key": "cartographer_zombie_villager",
+			"name": "Cartographer Zombie Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTYwODAwYjAxMDEyZTk2M2U3YzIwYzhiYTE0YjcwYTAyNjRkMTQ2YTg1MGRlZmZiY2E3YmZlNTEyZjRjYjIzZCJ9fX0",
+			"chance": 0.5,
+			"looting_bonus": 0.2
+		},
+		{
+			"key": "cleric_zombie_villager",
+			"name": "Cleric Zombie Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjk1ODU3OGJlMGUxMjE3MjczNGE3ODI0MmRhYjE0OTY0YWJjODVhYjliNTk2MzYxZjdjNWRhZjhmMTRhMGZlYiJ9fX0",
+			"chance": 0.5,
+			"looting_bonus": 0.2
+		},
+		{
+			"key": "farmer_zombie_villager",
+			"name": "Farmer Zombie Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjc3ZDQxNWY5YmFhNGZhNGI1ZTA1OGY1YjgxYmY3ZjAwM2IwYTJjOTBhNDgzMWU1M2E3ZGJjMDk4NDFjNTUxMSJ9fX0",
+			"chance": 0.5,
+			"looting_bonus": 0.2
+		},
+		{
+			"key": "fisherman_zombie_villager",
+			"name": "Fisherman Zombie Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjkwNWQ1M2ZlNGZhZWIwYjMxNWE2ODc4YzlhYjgxYjRiZTUyYzMxY2Q0NzhjMDI3ZjBkN2VjZTlmNmRhODkxNCJ9fX0",
+			"chance": 0.5,
+			"looting_bonus": 0.2
+		},
+		{
+			"key": "fletcher_zombie_villager",
+			"name": "Fletcher Zombie Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmVhMjZhYzBlMjU0OThhZGFkYTRlY2VhNThiYjRlNzZkYTMyZDVjYTJkZTMwN2VmZTVlNDIxOGZiN2M1ZWY4OSJ9fX0",
+			"chance": 0.5,
+			"looting_bonus": 0.2
+		},
+		{
+			"key": "leatherworker_zombie_villager",
+			"name": "Leatherworker Zombie Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmI1NTJjOTBmMjEyZTg1NWQxMjI1NWQ1Y2Q2MmVkMzhiOWNkN2UzMGU3M2YwZWE3NzlkMTc2NDMzMGU2OTI2NCJ9fX0",
+			"chance": 0.5,
+			"looting_bonus": 0.2
+		},
+		{
+			"key": "librarian_zombie_villager",
+			"name": "Librarian Zombie Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjIyMTFhMWY0MDljY2E0MjQ5YzcwZDIwY2E4MDM5OWZhNDg0NGVhNDE3NDU4YmU5ODhjYzIxZWI0Nzk3Mzc1ZSJ9fX0",
+			"chance": 0.5,
+			"looting_bonus": 0.2
+		},
+		{
+			"key": "mason_zombie_villager",
+			"name": "Mason Zombie Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmI1NTJjOTBmMjEyZTg1NWQxMjI1NWQ1Y2Q2MmVkMzhiOWNkN2UzMGU3M2YwZWE3NzlkMTc2NDMzMGU2OTI2NCJ9fX0",
+			"chance": 0.5,
+			"looting_bonus": 0.2
+		},
+		{
+			"key": "nitwit_zombie_villager",
+			"name": "Nitwit Zombie Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmI1NTJjOTBmMjEyZTg1NWQxMjI1NWQ1Y2Q2MmVkMzhiOWNkN2UzMGU3M2YwZWE3NzlkMTc2NDMzMGU2OTI2NCJ9fX0",
+			"chance": 0.5,
+			"looting_bonus": 0.2
+		},
+		{
+			"key": "unemployed_zombie_villager",
+			"name": "Unemployed Zombie Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmI1NTJjOTBmMjEyZTg1NWQxMjI1NWQ1Y2Q2MmVkMzhiOWNkN2UzMGU3M2YwZWE3NzlkMTc2NDMzMGU2OTI2NCJ9fX0",
+			"chance": 0.5,
+			"looting_bonus": 0.2
+		},
+		{
+			"key": "shepherd_zombie_villager",
+			"name": "Shepherd Zombie Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjkxMzkxYmVmM2E0NmVmMjY3ZDNiNzE3MTA4NmJhNGM4ZDE3ZjJhNmIwZjgzZmEyYWMzMGVmZTkxNGI3YzI0OSJ9fX0",
+			"chance": 0.5,
+			"looting_bonus": 0.2
+		},
+		{
+			"key": "toolsmith_zombie_villager",
+			"name": "Toolsmith Zombie Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmI1NTJjOTBmMjEyZTg1NWQxMjI1NWQ1Y2Q2MmVkMzhiOWNkN2UzMGU3M2YwZWE3NzlkMTc2NDMzMGU2OTI2NCJ9fX0",
+			"chance": 0.5,
+			"looting_bonus": 0.2
+		},
+		{
+			"key": "weaponsmith_zombie_villager",
+			"name": "Weaponsmith Zombie Villager Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDM3MDg5NGI1Y2MzMDVkODdhYTA4YzNiNGIwODU4N2RiNjhmZjI5ZTdhM2VmMzU0Y2FkNmFiY2E1MGU1NTI4YiJ9fX0",
+			"chance": 0.5,
+			"looting_bonus": 0.2
+		},
+		{
+			"key": "zombified_piglin",
+			"name": "Zombified Piglin Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmRmMDMxMjhiMDAyYTcwNzA4ZDY4MjVlZDZjZjU0ZGRmNjk0YjM3NjZkNzhkNTY0OTAzMGIxY2I4YjM0YzZmYSJ9fX0",
+			"chance": 0.005,
+			"looting_bonus": 0.001
+		}
+	]
+}
