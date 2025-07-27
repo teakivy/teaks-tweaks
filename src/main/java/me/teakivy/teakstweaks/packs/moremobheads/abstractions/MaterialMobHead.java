@@ -25,14 +25,10 @@ public class MaterialMobHead implements Listener {
 
     @EventHandler
     public void playerKillEvent(EntityDeathEvent event) {
-        System.out.println("MaterialMobHead: " + event.getEntityType() + " " + this.type);
         if (event.getEntityType() != this.type) return;
-        System.out.println("MaterialMobHead: " + event.getEntityType() + " " + this.type + " - matched");
         Player killer = event.getEntity().getKiller();
         if (killer == null) return;
-        System.out.println("MaterialMobHead: " + event.getEntityType() + " " + this.type + " - killer not null");
         if (!MoreMobHeads.shouldDrop(killer, this.key)) return;
-        System.out.println("MaterialMobHead: " + event.getEntityType() + " " + this.type + " - should drop");
         event.getDrops().add(ItemStack.of(this.material));
     }
 

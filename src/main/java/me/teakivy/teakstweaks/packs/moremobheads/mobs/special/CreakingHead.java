@@ -31,9 +31,7 @@ public class CreakingHead implements Listener {
 
     @EventHandler
     public void onBreak(BlockBreakEvent event) {
-        System.out.println("BlockBreakEvent for Creaking Head");
         if (event.getBlock().getType() != Material.CREAKING_HEART) return;
-        System.out.println("Block is Creaking Heart");
         Creaking creaking = null;
         List<Entity> entities = (List<Entity>) event.getBlock().getWorld().getNearbyEntities(event.getBlock().getLocation(), 64, 64, 64);
 
@@ -44,15 +42,12 @@ public class CreakingHead implements Listener {
 
             break;
         }
-        System.out.println("Found Creaking: " + (creaking != null));
 
         if (creaking == null) return;
 
         Creaking finalCreaking = creaking;
         Bukkit.getScheduler().runTaskLater(TeaksTweaks.getInstance(), () -> {
-            System.out.println("Dropping Creaking Head");
             if (!MoreMobHeads.shouldDrop(event.getPlayer(), "creaking")) return;
-            System.out.println("Player can drop Creaking Head");
             ItemStack headItem = MoreMobHeads.getHeadItem("creaking", Sound.BLOCK_CREAKING_HEART_SPAWN);
             finalCreaking.getWorld().dropItemNaturally(finalCreaking.getLocation(), headItem);
         }, 50L);

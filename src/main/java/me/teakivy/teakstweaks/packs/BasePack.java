@@ -41,7 +41,6 @@ public class BasePack implements Listener {
 		this.translatableKey = path.replaceAll("-", "_");
         this.name = TranslationManager.getString("en_US", this.translatableKey + ".name");
 		this.path = path;
-		System.out.println(TranslationManager.getString("en_US", this.translatableKey + ".description"));
 
 		String[] description = TranslationManager.getString("en_US", this.translatableKey + ".description").split("<newline>");
 

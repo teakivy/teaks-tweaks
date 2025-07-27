@@ -23,7 +23,6 @@ public class ChatColors extends BasePack {
         if (!Permission.CHAT_COLORS_CHAT.check(event.getPlayer())) return;
 
         MiniMessage mm = MiniMessage.miniMessage();
-        System.out.println(mm.serialize(legacyToMiniMessage(event.message())));
         event.message(mm.deserialize(mm.serialize(legacyToMiniMessage(event.message())).replaceAll("\\\\<", "<")));
     }
 

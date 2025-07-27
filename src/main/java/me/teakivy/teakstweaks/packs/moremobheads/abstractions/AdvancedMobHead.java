@@ -23,18 +23,13 @@ public abstract class AdvancedMobHead implements Listener {
 
     @EventHandler
     public void playerKillEvent(EntityDeathEvent event) {
-        System.out.println("Entity Death Event: " + event.getEntityType());
         if (event.getEntityType() != this.type) return;
-        System.out.println("Mob Head: " + event.getEntityType() + " killed by " + event.getEntity().getKiller());
         Player killer = event.getEntity().getKiller();
         if (killer == null) return;
-        System.out.println("Killer: " + killer.getName());
         String key = getKey(event);
         if (!MoreMobHeads.shouldDrop(killer, key)) return;
-        System.out.println("Dropping head for key: " + key);
         ItemStack head = getHead(key);
         if (head == null) return;
-        System.out.println("Head created: " + head.getType());
         event.getDrops().add(head);
     }
 
