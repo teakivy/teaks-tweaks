@@ -1,21 +1,27 @@
 package me.teakivy.teakstweaks.packs.moremobheads;
 
+import com.destroystokyo.paper.profile.PlayerProfile;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.moremobheads.types.HeadDataLoader;
 import me.teakivy.teakstweaks.packs.moremobheads.types.HeadEntry;
+import me.teakivy.teakstweaks.packs.moremobheads.types.TexturedHead;
 import me.teakivy.teakstweaks.utils.config.Config;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Registry;
 import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.profile.PlayerTextures;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class MoreMobHeads extends BasePack {
     private static HashMap<String, HeadEntry> headData;
@@ -73,5 +79,36 @@ public class MoreMobHeads extends BasePack {
     public static URL getUrlFromBase64(String base64) throws MalformedURLException {
         String decoded = new String(Base64.getDecoder().decode(base64));
         return new URL(decoded.substring("{\"textures\":{\"SKIN\":{\"url\":\"".length(), decoded.length() - "\"}}}".length()));
+    }
+
+    public static ItemStack getHeadItem(String key, Sound sound) {
+        HeadEntry entry = MoreMobHeads.getHead(key);
+        if (entry == null) return null;
+        if (!(entry instanceof TexturedHead texturedHead)) return null;
+        String texture = texturedHead.texture();
+        String n = texturedHead.name();
+
+        return createhead(texture, n, sound);
+    }
+
+    public static ItemStack createhead(String texture, String name, Sound sound) {
+        ItemStack head = ItemStack.of(Material.PLAYER_HEAD);
+        PlayerProfile profile = Bukkit.createProfileExact(UUID.fromString("fdb5599c-1b14-440e-82df-d69719703d21"), "MobHead");
+        SkullMeta meta = (SkullMeta) head.getItemMeta();
+        Component n = MiniMessage.miniMessage().deserialize("<yellow>" + name).decoration(TextDecoration.ITALIC, false);
+        meta.displayName(n);
+        PlayerTextures textures = profile.getTextures();
+
+        try {
+            textures.setSkin(MoreMobHeads.getUrlFromBase64(texture));
+        } catch (MalformedURLException ignored) {
+            ignored.printStackTrace();
+        }
+
+        profile.setTextures(textures);
+        meta.setPlayerProfile(profile);
+        if (sound != null) meta.setNoteBlockSound(Registry.SOUNDS.getKey(sound));
+        head.setItemMeta(meta);
+        return head;
     }
 }

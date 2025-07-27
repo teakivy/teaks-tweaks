@@ -1,14 +1,23 @@
 package me.teakivy.teakstweaks.packs.moremobheads;
 
-import me.teakivy.teakstweaks.packs.moremobheads.mobs.AxolotlHead;
+import me.teakivy.teakstweaks.packs.moremobheads.abstractions.BasicMobHead;
+import me.teakivy.teakstweaks.packs.moremobheads.abstractions.MaterialMobHead;
+import me.teakivy.teakstweaks.packs.moremobheads.mobs.advanced.*;
+import me.teakivy.teakstweaks.packs.moremobheads.mobs.special.ChargedCreeperHead;
+import me.teakivy.teakstweaks.packs.moremobheads.mobs.special.CreakingHead;
+import me.teakivy.teakstweaks.packs.moremobheads.mobs.special.WitherHead;
+import me.teakivy.teakstweaks.utils.config.Config;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 
 public class HeadRegister {
 
     public static void registerAll() {
+        if (Config.getBoolean("packs.more-mob-heads.use-base-heads") || Config.isDevMode()) registerMaterialHeads();
         registerBasicHeads();
         registerAdvancedHeads();
+        registerSpecialHeads();
     }
 
     private static void registerBasicHeads() {
@@ -70,5 +79,40 @@ public class HeadRegister {
 
     private static void registerAdvancedHeads() {
         new AxolotlHead();
+        new BeeHead();
+        new CatHead();
+        new ChickenHead();
+        new CowHead();
+        new FoxHead();
+        new FrogHead();
+        new GoatHead();
+        new HorseHead();
+        new LlamaHead();
+        new MooshroomHead();
+        new PandaHead();
+        new ParrotHead();
+        new PigHead();
+        new RabbitHead();
+        new SheepHead();
+        new StriderHead();
+        new TraderLlamaHead();
+        new VillagerHead();
+        new WolfHead();
+        new ZombieVillagerHead();
+    }
+
+    private static void registerMaterialHeads() {
+        new MaterialMobHead("zombie", EntityType.ZOMBIE, Material.ZOMBIE_HEAD);
+        new MaterialMobHead("skeleton", EntityType.SKELETON, Material.SKELETON_SKULL);
+        new MaterialMobHead("creeper", EntityType.CREEPER, Material.CREEPER_HEAD);
+        new MaterialMobHead("dragon", EntityType.ENDER_DRAGON, Material.DRAGON_HEAD);
+        new MaterialMobHead("piglin", EntityType.PIGLIN, Material.PIGLIN_HEAD);
+    }
+
+    private static void registerSpecialHeads() {
+        new ChargedCreeperHead();
+        new CreakingHead();
+        new WitherHead();
+
     }
 }

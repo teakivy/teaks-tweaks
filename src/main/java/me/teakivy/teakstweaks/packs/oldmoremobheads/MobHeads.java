@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.packs.oldmoremobheads;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.oldmoremobheads.mobs.*;
 import me.teakivy.teakstweaks.utils.JsonManager;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.customitems.CustomItem;
@@ -34,37 +33,8 @@ public class MobHeads extends BasePack {
     @Override
     public void init() {
         super.init();
-        new AxolotlHead();
-        new BeeHead();
-        new CatHead();
-        new ChargedCreeperHead();
-        new ChickenHead();
-        new CowHead();
-        new EnderDragonHead();
-        new FoxHead();
-        new FrogHead();
-        new GoatHead();
-        new HorseHead();
-        new LlamaHead();
-        new MooshroomHead();
-        new PandaHead();
-        new ParrotHead();
-        new PigHead();
-        new RabbitHead();
-        new SheepHead();
-        new TraderLlamaHead();
-        new VillagerHead();
-        new WitherHead();
-        new WolfHead();
-        new ZombieHorseHead();
-        new ZombieVillagerHead();
-        new ZombifiedPiglinHead();
 
         if (getConfig().getBoolean("use-base-heads")) {
-            new CreeperHead();
-            new PiglinHead();
-            new SkeletonHead();
-            new ZombieHead();
 
             MMHDatapackCreator.addNormalAdvancement("creeper_head", "Creeper Head", Material.CREEPER_HEAD);
             MMHDatapackCreator.addNormalAdvancement("piglin_head", "Piglin Head", Material.PIGLIN_HEAD);
@@ -72,8 +42,6 @@ public class MobHeads extends BasePack {
             MMHDatapackCreator.addNormalAdvancement("zombie_head", "Zombie Head", Material.ZOMBIE_HEAD);
         }
 
-        CreakingHead.init();
-        TeaksTweaks.getInstance().getServer().getPluginManager().registerEvents(new CreakingHead(), TeaksTweaks.getInstance());
 
         loadJson();
 
