@@ -1,9 +1,10 @@
 plugins {
     `java-library`
+    id("com.gradleup.shadow") version "9.0.0-rc2"
 }
 
 group = "me.teakivy"
-version = "2.0.10_u1-mc1.21.7"
+version = "2.0.10_u1-mc1.21.8"
 description = "150+ Toggleable Tweaks & Features including Vanilla Tweaks as a plugin, and more!"
 java.sourceCompatibility = JavaVersion.VERSION_21
 
@@ -19,15 +20,12 @@ repositories {
     mavenCentral()
     mavenLocal()
     maven {
-        name = "sonatype-oss-snapshots1"
-        url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
-    }
-    maven {
         url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     }
 
     maven {
-        url = uri("https://papermc.io/repo/repository/maven-public/")
+        name = "papermc"
+        url = uri("https://repo.papermc.io/repository/maven-public/")
     }
 
     maven {
@@ -47,8 +45,12 @@ repositories {
     }
 
     maven {
-        name = "papermc"
-        url = uri("https://repo.papermc.io/repository/maven-public/")
+        url = uri("https://nexus.frengor.com/repository/public/")
+    }
+
+    maven {
+        name = "sonatype-oss-snapshots1"
+        url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
     }
 }
 
@@ -59,12 +61,17 @@ val libraries = listOf(
 
 dependencies {
     compileOnly("com.mojang:authlib:1.5.25")
-    compileOnly("me.clip:placeholderapi:2.11.6")
     compileOnly("io.papermc.paper:paper-api:1.21.8-R0.1-SNAPSHOT")
+    compileOnly("me.clip:placeholderapi:2.11.6")
+    implementation("com.frengor:ultimateadvancementapi-shadeable:2.6.0:mojang-mapped")
 
     libraries.forEach { library ->
         compileOnly(library)
     }
+}
+
+artifacts {
+    archives(tasks.shadowJar.get())
 }
 
 tasks.jar {
@@ -90,4 +97,13 @@ tasks.processResources {
         expand("version" to project.version)
     }
 
+}
+
+tasks.named<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJar") {
+    relocate("com.fren_gor.ultimateAdvancementAPI", "me.teakivy.libs.ultimateAdvancementAPI")
+    archiveClassifier.set("") // Removes the `-all` suffix
+    mergeServiceFiles()
+
+    val customDir = outputDir ?: layout.buildDirectory.dir("libs")
+    destinationDirectory.set(file(customDir))
 }

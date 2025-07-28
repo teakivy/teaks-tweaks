@@ -46,6 +46,7 @@ public class BasicMobHead implements Listener {
         ItemStack head = getHead();
         if (head == null) return;
         event.getDrops().add(head);
+        MoreMobHeads.grant(killer, this.key);
     }
 
     protected ItemStack getHead() {

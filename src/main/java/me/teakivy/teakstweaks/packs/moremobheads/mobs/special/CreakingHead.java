@@ -3,13 +3,9 @@ package me.teakivy.teakstweaks.packs.moremobheads.mobs.special;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.moremobheads.MoreMobHeads;
 import me.teakivy.teakstweaks.packs.moremobheads.types.TexturedHead;
-import me.teakivy.teakstweaks.packs.oldmoremobheads.MobHeads;
-import me.teakivy.teakstweaks.utils.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.advancement.Advancement;
-import org.bukkit.advancement.AdvancementProgress;
 import org.bukkit.entity.Creaking;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -21,11 +17,8 @@ import org.bukkit.inventory.ItemStack;
 import java.util.List;
 
 public class CreakingHead implements Listener {
-    private TexturedHead head;
 
     public CreakingHead() {
-        this.head = (TexturedHead) MoreMobHeads.getHead("creaking");
-
         TeaksTweaks.getInstance().getServer().getPluginManager().registerEvents(this, TeaksTweaks.getInstance());
     }
 
@@ -50,6 +43,7 @@ public class CreakingHead implements Listener {
             if (!MoreMobHeads.shouldDrop(event.getPlayer(), "creaking")) return;
             ItemStack headItem = MoreMobHeads.getHeadItem("creaking", Sound.BLOCK_CREAKING_HEART_SPAWN);
             finalCreaking.getWorld().dropItemNaturally(finalCreaking.getLocation(), headItem);
+            MoreMobHeads.grant(event.getPlayer(), "creaking");
         }, 50L);
     }
 }

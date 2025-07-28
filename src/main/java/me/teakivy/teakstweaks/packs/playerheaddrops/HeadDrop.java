@@ -1,7 +1,6 @@
 package me.teakivy.teakstweaks.packs.playerheaddrops;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.packs.oldmoremobheads.MobHeads;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.Registry;
@@ -27,7 +26,8 @@ public class HeadDrop extends BasePack {
         Player player = event.getEntity();
         if (!player.isDead()) return;
         if (player.getKiller() == null) return;
-        if (!MobHeads.shouldDrop(event.getEntity().getKiller(), "player")) return;
+        // TODO Update
+//        if (!MobHeads.shouldDrop(event.getEntity().getKiller(), "player")) return;
 
         Player killer = player.getKiller();
         event.getDrops().add(getHead(player, killer.getName()));

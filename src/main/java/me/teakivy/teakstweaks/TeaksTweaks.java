@@ -1,8 +1,16 @@
 package me.teakivy.teakstweaks;
 
+import com.fren_gor.ultimateAdvancementAPI.AdvancementMain;
+import com.fren_gor.ultimateAdvancementAPI.AdvancementTab;
+import com.fren_gor.ultimateAdvancementAPI.UltimateAdvancementAPI;
+import com.fren_gor.ultimateAdvancementAPI.advancement.RootAdvancement;
+import com.fren_gor.ultimateAdvancementAPI.advancement.display.AdvancementDisplay;
+import com.fren_gor.ultimateAdvancementAPI.advancement.display.AdvancementFrameType;
+import com.fren_gor.ultimateAdvancementAPI.database.impl.SQLite;
 import com.google.gson.Gson;
 import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
 import me.teakivy.teakstweaks.utils.*;
+import me.teakivy.teakstweaks.utils.advancements.AdvancementManager;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.gui.GUIListener;
 import me.teakivy.teakstweaks.utils.lang.Translatable;
@@ -19,6 +27,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -34,6 +43,13 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
 
     private Register register;
     private TranslationManager translationManager;
+    private AdvancementManager advancementManager;
+
+    @Override
+    public void onLoad() {
+        advancementManager = new AdvancementManager();
+        advancementManager.load();
+    }
 
     /**
      * Called when the plugin is enabled
@@ -55,6 +71,8 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
 
         // Initialize & Update Config
         Config.init();
+
+        advancementManager.enable();
 
         // Language
         Translatable.init(getConfig().getString("settings.language"));
@@ -214,5 +232,9 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         if (!packsFolder.exists()) {
             packsFolder.mkdirs();
         }
+    }
+
+    public static AdvancementManager getAdvancementManager() {
+        return getInstance().advancementManager;
     }
 }

@@ -1,10 +1,13 @@
 package me.teakivy.teakstweaks.packs.moremobheads;
 
 import com.destroystokyo.paper.profile.PlayerProfile;
+import com.fren_gor.ultimateAdvancementAPI.util.AdvancementKey;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.moremobheads.types.HeadDataLoader;
 import me.teakivy.teakstweaks.packs.moremobheads.types.HeadEntry;
 import me.teakivy.teakstweaks.packs.moremobheads.types.TexturedHead;
+import me.teakivy.teakstweaks.utils.advancements.AdvancementManager;
 import me.teakivy.teakstweaks.utils.config.Config;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -25,6 +28,7 @@ import java.util.*;
 
 public class MoreMobHeads extends BasePack {
     private static HashMap<String, HeadEntry> headData;
+    private static HashMap<String, AdvancementKey> advancementKeys = new HashMap<>();
 
     public MoreMobHeads() {
         super("more-mob-heads", Material.ZOMBIE_HEAD);
@@ -40,6 +44,7 @@ public class MoreMobHeads extends BasePack {
         }
 
         HeadRegister.registerAll();
+        registerAdvancements();
     }
 
     public static HashMap<String, HeadEntry> getHeadData() {
@@ -110,5 +115,42 @@ public class MoreMobHeads extends BasePack {
         if (sound != null) meta.setNoteBlockSound(Registry.SOUNDS.getKey(sound));
         head.setItemMeta(meta);
         return head;
+    }
+
+    private void registerAdvancements() {
+        List<String> keys = new ArrayList<>();
+        for (HeadEntry head : headData.values()) {
+            if (head instanceof TexturedHead texturedHead) {
+                keys.add(texturedHead.key());
+            }
+        }
+        keys.sort(String::compareTo);
+        List<AdvancementManager.MobHeadAdvancement> advancements = new ArrayList<>();
+        int number = 0;
+        for (String key : keys) {
+            HeadEntry head = getHead(key);
+            if (head instanceof TexturedHead texturedHead) {
+                AdvancementManager.MobHeadAdvancement advancement = TeaksTweaks.getAdvancementManager().getMobHeadAdvancement(texturedHead, number);
+                if (advancement == null) {
+                    throw new IllegalArgumentException("Advancement for key '" + key + "' could not be created.");
+                }
+                advancements.add(advancement);
+                advancementKeys.put(key, advancement.getKey());
+                number++;
+            }
+        }
+
+        TeaksTweaks.getAdvancementManager().registerMoreMobHeadsAdvancements(advancements);
+    }
+
+    public static void grant(Player player, String key) {
+        if (!advancementKeys.containsKey(key)) {
+            throw new IllegalArgumentException("No advancement key found for: " + key);
+        }
+        AdvancementKey advancementKey = advancementKeys.get(key);
+        if (advancementKey == null) {
+            throw new IllegalArgumentException("Advancement key for " + key + " is null.");
+        }
+        TeaksTweaks.getAdvancementManager().grant(player, advancementKey);
     }
 }
