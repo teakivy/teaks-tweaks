@@ -21,15 +21,15 @@ public class CraftingRegister {
         recipes.add(new CopperPoweredRails());
         recipes.add(new CraftableBlackstone());
         recipes.add(new CraftableChainmail());
-        recipes.add(new CraftableCoral2x2());
-        recipes.add(new CraftableCoral3x3());
+        recipes.add(new CraftableCoralBlocks2x2());
+        recipes.add(new CraftableCoralBlocks3x3());
         recipes.add(new CraftableEnchantedGoldenApples());
         recipes.add(new CraftableGildedBlackstone());
         recipes.add(new CraftableGravel());
         recipes.add(new CraftableHorseArmor());
         recipes.add(new CraftableNameTags());
         recipes.add(new CraftableSaddles());
-        recipes.add(new CraftableSmallDripleaves());
+        recipes.add(new CraftableSmallDripleaf());
         recipes.add(new CraftableSporeBlossoms());
         recipes.add(new DoubleSlabs());
         recipes.add(new DropperToDispenser());
@@ -49,11 +49,11 @@ public class CraftingRegister {
         recipes.add(new StraightToShapeless());
         recipes.add(new UnpackableIce());
         recipes.add(new UnpackableNetherWart());
-        recipes.add(new UnpackableQuartz());
+        recipes.add(new UnpackableQuartzBlocks());
         recipes.add(new UnpackableWool());
         recipes.add(new UniversalDyeing());
         recipes.add(new CheaperResinBlocks());
-        recipes.add(new CheaperArmorTrims());
+        recipes.add(new CheaperArmorTrimTemplates());
     }
 
     public static void registerAll() {

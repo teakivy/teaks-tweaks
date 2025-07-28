@@ -2,7 +2,6 @@ package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
@@ -10,9 +9,9 @@ import org.bukkit.inventory.ShapedRecipe;
 
 import java.util.List;
 
-public class CraftableCoral2x2 extends AbstractCraftingTweak {
+public class CraftableCoralBlocks2x2 extends AbstractCraftingTweak {
 
-    public CraftableCoral2x2() {
+    public CraftableCoralBlocks2x2() {
         super("craftable-coral-blocks-2x2", Material.TUBE_CORAL_BLOCK);
     }
 

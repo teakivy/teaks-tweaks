@@ -10,9 +10,9 @@ import org.bukkit.inventory.*;
 
 import java.util.Map;
 
-public class CheaperArmorTrims extends AbstractCraftingTweak {
+public class CheaperArmorTrimTemplates extends AbstractCraftingTweak {
 
-    public CheaperArmorTrims() {
+    public CheaperArmorTrimTemplates() {
         super("cheaper-armor-trim-templates", Material.HOST_ARMOR_TRIM_SMITHING_TEMPLATE);
     }
 

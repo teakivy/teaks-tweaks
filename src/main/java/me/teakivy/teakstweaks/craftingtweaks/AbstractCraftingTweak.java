@@ -9,7 +9,6 @@ import me.teakivy.teakstweaks.utils.recipe.RecipeManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.minimessage.translation.Argument;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

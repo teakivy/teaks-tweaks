@@ -1025,11 +1025,6 @@ crafting-tweaks:
   craftable-blackstone:
     enabled: false
 
-  # Craftable Bundles
-  # Allows you to craft the experimental bundle item. (Using 1 Leather and 1 String)
-  craftable-bundles:
-    enabled: false
-
   # Craftable Chainmail
   # Allows you to craft Chainmail Armor using Chains.
   craftable-chainmail:
