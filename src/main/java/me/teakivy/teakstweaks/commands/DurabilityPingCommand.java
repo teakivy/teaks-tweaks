@@ -1,8 +1,6 @@
 package me.teakivy.teakstweaks.commands;
 
-import com.destroystokyo.paper.ClientOption;
 import com.mojang.brigadier.Command;
-import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.suggestion.Suggestions;
@@ -10,11 +8,8 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
-import me.teakivy.teakstweaks.TeaksTweaks;
-import me.teakivy.teakstweaks.packs.durabilityping.DuraPing;
+import me.teakivy.teakstweaks.packs.durabilityping.DurabilityPing;
 import me.teakivy.teakstweaks.packs.durabilityping.DuraPingOption;
-import me.teakivy.teakstweaks.packs.homes.Home;
-import me.teakivy.teakstweaks.packs.homes.HomesPack;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.lang.TranslationManager;
 import me.teakivy.teakstweaks.utils.permission.Permission;
@@ -83,16 +78,16 @@ public class DurabilityPingCommand extends AbstractCommand {
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 1, 2);
                 break;
             case "display_subtitle":
-                DuraPing.pingPlayer(player, new ItemStack(Material.DIAMOND_PICKAXE), 156, "subtitle", false);
+                DurabilityPing.pingPlayer(player, new ItemStack(Material.DIAMOND_PICKAXE), 156, "subtitle", false);
                 break;
             case "display_title":
-                DuraPing.pingPlayer(player, new ItemStack(Material.DIAMOND_PICKAXE), 156, "title", false);
+                DurabilityPing.pingPlayer(player, new ItemStack(Material.DIAMOND_PICKAXE), 156, "title", false);
                 break;
             case "display_chat":
-                DuraPing.pingPlayer(player, new ItemStack(Material.DIAMOND_PICKAXE), 156, "chat", false);
+                DurabilityPing.pingPlayer(player, new ItemStack(Material.DIAMOND_PICKAXE), 156, "chat", false);
                 break;
             case "display_actionbar":
-                DuraPing.pingPlayer(player, new ItemStack(Material.DIAMOND_PICKAXE), 156, "actionbar", false);
+                DurabilityPing.pingPlayer(player, new ItemStack(Material.DIAMOND_PICKAXE), 156, "actionbar", false);
                 break;
         }
         return Command.SINGLE_SUCCESS;

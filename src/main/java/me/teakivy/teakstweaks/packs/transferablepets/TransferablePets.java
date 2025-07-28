@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.transferablepets;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.dialog.DialogUtils;
+import me.teakivy.teakstweaks.utils.register.Pack;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
@@ -15,7 +16,7 @@ import java.util.List;
 public class TransferablePets extends BasePack implements Listener {
 
     public TransferablePets() {
-        super("transferable-pets", Material.LEAD);
+        super(Pack.TRANSFERABLE_PETS, Material.LEAD);
     }
 
     @EventHandler

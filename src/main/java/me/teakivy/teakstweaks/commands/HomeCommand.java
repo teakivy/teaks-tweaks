@@ -9,7 +9,7 @@ import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import me.teakivy.teakstweaks.packs.homes.Home;
-import me.teakivy.teakstweaks.packs.homes.HomesPack;
+import me.teakivy.teakstweaks.packs.homes.Homes;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.entity.Player;
@@ -86,7 +86,7 @@ public class HomeCommand extends AbstractCommand {
 
     public void tpHome(Player player, String name) {
         if (name == null || name.isEmpty()) name = "home";
-        Home home = HomesPack.getHome(player, name);
+        Home home = Homes.getHome(player, name);
         if (home == null) {
             player.sendMessage(getError("home_dne", insert("name", name)));
             return;
@@ -97,19 +97,19 @@ public class HomeCommand extends AbstractCommand {
 
     public void setHome(Player player, String name) {
         if (name == null || name.isEmpty()) name = "home";
-        if (HomesPack.getHome(player, name) != null) {
+        if (Homes.getHome(player, name) != null) {
             player.sendMessage(getError("home_already_exists", insert("name", name)));
             return;
         }
 
-        List<Home> homes = HomesPack.getHomes(player);
+        List<Home> homes = Homes.getHomes(player);
         int maxHomes = getPackConfig().getInt("max-homes");
         if (maxHomes > 0 && homes.size() >= maxHomes) {
             player.sendMessage(getError("max_homes", insert("max_homes", maxHomes)));
             return;
         }
 
-        if (!HomesPack.setHome(player, name, player.getLocation())) {
+        if (!Homes.setHome(player, name, player.getLocation())) {
             player.sendMessage(getError("cant_set_home"));
             return;
         }
@@ -119,13 +119,13 @@ public class HomeCommand extends AbstractCommand {
 
     public void deleteHome(Player player, String name) {
         if (name == null || name.isEmpty()) name = "home";
-        Home home = HomesPack.getHome(player, name);
+        Home home = Homes.getHome(player, name);
         if (home == null) {
             player.sendMessage(getError("home_dne", insert("name", name)));
             return;
         }
 
-        if (!HomesPack.removeHome(player, name)) {
+        if (!Homes.removeHome(player, name)) {
             player.sendMessage(getError("cant_delete_home"));
             return;
         }
@@ -135,7 +135,7 @@ public class HomeCommand extends AbstractCommand {
     public CompletableFuture<Suggestions> homeNameSuggestions(final CommandContext<CommandSourceStack> ctx, final SuggestionsBuilder builder) {
         builder.restart();
         if (!(ctx.getSource().getSender() instanceof Player player)) return builder.buildFuture();
-        for (Home home : HomesPack.getHomes(player)) {
+        for (Home home : Homes.getHomes(player)) {
             if (home.getName().toLowerCase().startsWith(builder.getRemainingLowerCase())) builder.suggest(home.getName());
         }
         return builder.buildFuture();

@@ -1,12 +1,11 @@
 package me.teakivy.teakstweaks.packs.graves;
 
-import me.teakivy.teakstweaks.packs.armoredelytra.ArmoredElytras;
+import me.teakivy.teakstweaks.packs.armoredelytra.ArmoredElytra;
 import me.teakivy.teakstweaks.utils.Base64Serializer;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.config.Config;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.minimessage.translation.Argument;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
@@ -211,8 +210,8 @@ public class GraveCreator {
             if (!item.hasItemMeta()) continue;
             if (!item.getItemMeta().getPersistentDataContainer().has(Key.get("armored_elytra"), PersistentDataType.STRING)) continue;
 
-            items2.add(ArmoredElytras.getB64ChestplateFromArmoredElytra(item));
-            items2.add(ArmoredElytras.getB64ElytraFromArmoredElytra(item));
+            items2.add(ArmoredElytra.getB64ChestplateFromArmoredElytra(item));
+            items2.add(ArmoredElytra.getB64ElytraFromArmoredElytra(item));
 
             toRemove.add(item);
         }

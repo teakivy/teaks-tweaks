@@ -9,6 +9,7 @@ import me.teakivy.teakstweaks.packs.moremobheads.types.HeadEntry;
 import me.teakivy.teakstweaks.packs.moremobheads.types.TexturedHead;
 import me.teakivy.teakstweaks.utils.advancements.AdvancementManager;
 import me.teakivy.teakstweaks.utils.config.Config;
+import me.teakivy.teakstweaks.utils.register.Pack;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -31,7 +32,7 @@ public class MoreMobHeads extends BasePack {
     private static HashMap<String, AdvancementKey> advancementKeys = new HashMap<>();
 
     public MoreMobHeads() {
-        super("more-mob-heads", Material.ZOMBIE_HEAD);
+        super(Pack.MORE_MOB_HEADS, Material.ZOMBIE_HEAD);
     }
 
     @Override

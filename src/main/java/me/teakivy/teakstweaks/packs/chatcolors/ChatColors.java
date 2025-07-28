@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.chatcolors;
 import io.papermc.paper.event.player.AsyncChatEvent;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.Pack;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Material;
@@ -15,7 +16,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class ChatColors extends BasePack {
 
     public ChatColors() {
-        super("chat-colors", Material.PURPLE_WOOL);
+        super(Pack.CHAT_COLORS, Material.PURPLE_WOOL);
     }
 
     @EventHandler

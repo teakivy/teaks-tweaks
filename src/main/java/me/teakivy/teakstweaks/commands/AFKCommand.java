@@ -5,7 +5,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
-import me.teakivy.teakstweaks.packs.afkdisplay.AFK;
+import me.teakivy.teakstweaks.packs.afkdisplay.AFKDisplay;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.entity.Player;
@@ -29,19 +29,19 @@ public class AFKCommand extends AbstractCommand {
 
     private int afk(CommandContext<CommandSourceStack> ctx) {
         Player player = (Player) ctx.getSource().getSender();
-        if (AFK.afk.containsKey(player.getUniqueId())) {
-            if (AFK.afk.get(player.getUniqueId())) {
-                AFK.unAFK(player);
+        if (AFKDisplay.afk.containsKey(player.getUniqueId())) {
+            if (AFKDisplay.afk.get(player.getUniqueId())) {
+                AFKDisplay.unAFK(player);
                 return Command.SINGLE_SUCCESS;
             }
 
-            AFK.afk(player, true);
+            AFKDisplay.afk(player, true);
         }
         return Command.SINGLE_SUCCESS;
     }
 
     private int uninstall(CommandContext<CommandSourceStack> ctx) {
-        AFK.uninstall();
+        AFKDisplay.uninstall();
         return Command.SINGLE_SUCCESS;
     }
 }

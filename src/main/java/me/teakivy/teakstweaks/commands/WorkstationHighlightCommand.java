@@ -9,9 +9,7 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
-import me.teakivy.teakstweaks.packs.homes.Home;
-import me.teakivy.teakstweaks.packs.homes.HomesPack;
-import me.teakivy.teakstweaks.packs.workstationhighlights.Highlighter;
+import me.teakivy.teakstweaks.packs.workstationhighlights.WorkstationHighlights;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Location;
@@ -124,14 +122,14 @@ public class WorkstationHighlightCommand extends AbstractCommand {
         }
 
         villager.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 200, 0, false, false, false));
-        Highlighter.glowingBlock(jobSite, 200);
+        WorkstationHighlights.glowingBlock(jobSite, 200);
         createParticles(jobSite.add(.5, 1, .5));
         player.sendMessage(getText("found", insert("x", jobSite.getBlockX()), insert("y", jobSite.getBlockY()), insert("z", jobSite.getBlockZ())));
     }
 
     private int clear(CommandContext<CommandSourceStack> context) {
         Player player = (Player) context.getSource().getSender();
-        Highlighter.clear();
+        WorkstationHighlights.clear();
         player.sendMessage(getText("cleared"));
         return Command.SINGLE_SUCCESS;
     }

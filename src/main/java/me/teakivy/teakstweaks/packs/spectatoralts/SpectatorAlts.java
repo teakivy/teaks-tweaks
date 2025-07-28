@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.spectatoralts;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.JsonManager;
+import me.teakivy.teakstweaks.utils.register.Pack;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -19,7 +20,7 @@ public class SpectatorAlts extends BasePack {
     private static HashMap<UUID, UUID> alts;
 
     public SpectatorAlts() {
-        super("spectator-alts", Material.ENDER_EYE);
+        super(Pack.SPECTATOR_ALTS, Material.ENDER_EYE);
 
         alts = new HashMap<>();
     }

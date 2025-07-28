@@ -5,7 +5,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
-import me.teakivy.teakstweaks.packs.thundershrine.Shrine;
+import me.teakivy.teakstweaks.packs.thundershrine.ThunderShrine;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Location;
@@ -44,7 +44,7 @@ public class ShrineCommand extends AbstractCommand {
         int y = loc.getBlockY();
         int z = loc.getBlockZ();
         try {
-            Shrine.createShrine(new Location(loc.getWorld(), x, y, z));
+            ThunderShrine.createShrine(new Location(loc.getWorld(), x, y, z));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -56,7 +56,7 @@ public class ShrineCommand extends AbstractCommand {
         Player player = (Player) context.getSource().getSender();
         Entity shrine = null;
         for (Entity entity : player.getNearbyEntities(3, 3, 3)) {
-            if (Shrine.getShrines().contains(entity)) {
+            if (ThunderShrine.getShrines().contains(entity)) {
                 shrine = entity;
             }
         }
@@ -77,7 +77,7 @@ public class ShrineCommand extends AbstractCommand {
 
     private int uninstall(CommandContext<CommandSourceStack> context) {
         Player player = (Player) context.getSource().getSender();
-        for (Entity shrine : Shrine.getShrines()) {
+        for (Entity shrine : ThunderShrine.getShrines()) {
             shrine.remove();
         }
         player.sendMessage(getText("shrines_mass_removed"));

@@ -5,6 +5,7 @@ import io.papermc.paper.registry.RegistryAccess;
 import io.papermc.paper.registry.RegistryKey;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.register.Pack;
 import org.bukkit.Art;
 import org.bukkit.Material;
 import org.bukkit.Registry;
@@ -31,7 +32,7 @@ public class PaintingPicker extends BasePack {
     }
 
     public PaintingPicker() {
-        super("painting-picker", Material.PAINTING);
+        super(Pack.PAINTING_PICKER, Material.PAINTING);
     }
 
     @EventHandler

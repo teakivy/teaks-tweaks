@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.packs.collectiblebuddingamethyst;
 
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.utils.register.Pack;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.EventHandler;
@@ -10,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 public class CollectibleBuddingAmethyst extends BasePack {
 
     public CollectibleBuddingAmethyst() {
-        super("collectible-budding-amethyst", Material.BUDDING_AMETHYST);
+        super(Pack.COLLECTIBLE_BUDDING_AMETHYST, Material.BUDDING_AMETHYST);
     }
 
     @EventHandler

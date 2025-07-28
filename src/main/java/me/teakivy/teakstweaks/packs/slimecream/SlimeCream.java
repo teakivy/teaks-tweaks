@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.slimecream;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.Pack;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
@@ -17,7 +18,7 @@ import org.bukkit.util.Vector;
 public class SlimeCream extends BasePack {
 
     public SlimeCream() {
-        super("slime-cream", Material.SLIME_BALL);
+        super(Pack.SLIME_CREAM, Material.SLIME_BALL);
     }
 
     @EventHandler

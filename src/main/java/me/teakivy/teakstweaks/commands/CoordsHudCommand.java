@@ -5,7 +5,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
-import me.teakivy.teakstweaks.packs.coordshud.HUD;
+import me.teakivy.teakstweaks.packs.coordshud.CoordsHud;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.entity.Player;
@@ -28,7 +28,7 @@ public class CoordsHudCommand extends AbstractCommand {
 
     private int coordshud(CommandContext<CommandSourceStack> context) {
         Player player = (Player) context.getSource().getSender();
-        HUD.setEnabled(player, !HUD.isEnabled(player));
+        CoordsHud.setEnabled(player, !CoordsHud.isEnabled(player));
 
         player.sendMessage(getText("toggled"));
         return Command.SINGLE_SUCCESS;

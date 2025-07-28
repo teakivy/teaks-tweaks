@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.instamine;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.Pack;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 public class InstaMine extends BasePack {
 
     public InstaMine() {
-        super("insta-mine", Material.DEEPSLATE);
+        super(Pack.INSTA_MINE, Material.DEEPSLATE);
     }
 
     @EventHandler

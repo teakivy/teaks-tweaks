@@ -5,15 +5,12 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
-import me.teakivy.teakstweaks.packs.itemaverages.ItemTracker;
-import me.teakivy.teakstweaks.packs.thundershrine.Shrine;
+import me.teakivy.teakstweaks.packs.itemaverages.ItemAverages;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-
-import java.io.IOException;
 
 public class ItemAveragesCommand extends AbstractCommand {
 
@@ -36,7 +33,7 @@ public class ItemAveragesCommand extends AbstractCommand {
 
     private int create(CommandContext<CommandSourceStack> context) {
         Player player = (Player) context.getSource().getSender();
-        if (ItemTracker.inUse) {
+        if (ItemAverages.inUse) {
             player.sendMessage(getError("tracker_in_use"));
             return Command.SINGLE_SUCCESS;
         }
@@ -46,7 +43,7 @@ public class ItemAveragesCommand extends AbstractCommand {
                 insert("x", loc.getBlockX()),
                 insert("y", loc.getBlockY()),
                 insert("z", loc.getBlockZ())));
-        ItemTracker.spawnTracker(loc, player);
+        ItemAverages.spawnTracker(loc, player);
         return Command.SINGLE_SUCCESS;
     }
 

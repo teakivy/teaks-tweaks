@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.packs.stairchairs;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.Pack;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -18,7 +19,7 @@ import java.util.Objects;
 public class StairChairs extends BasePack {
 
     public StairChairs() {
-        super("stair-chairs", Material.SMOOTH_QUARTZ_STAIRS);
+        super(Pack.STAIR_CHAIRS, Material.SMOOTH_QUARTZ_STAIRS);
     }
 
 

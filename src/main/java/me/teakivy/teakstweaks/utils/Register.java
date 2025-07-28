@@ -10,11 +10,11 @@ import me.teakivy.teakstweaks.commands.TestCommand;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.alwaysdrop.AlwaysDrop;
 import me.teakivy.teakstweaks.packs.alwaysactivebeacons.AlwaysActiveBeacons;
-import me.teakivy.teakstweaks.packs.chunkloaders.Loader;
+import me.teakivy.teakstweaks.packs.chunkloaders.ChunkLoaders;
 import me.teakivy.teakstweaks.packs.collectiblebuddingamethyst.CollectibleBuddingAmethyst;
-import me.teakivy.teakstweaks.packs.confetticreepers.ConfettiCreeper;
+import me.teakivy.teakstweaks.packs.confetticreepers.ConfettiCreepers;
 import me.teakivy.teakstweaks.packs.disposal.Disposal;
-import me.teakivy.teakstweaks.packs.elevators.Elevator;
+import me.teakivy.teakstweaks.packs.elevators.Elevators;
 import me.teakivy.teakstweaks.packs.huskdropssand.HuskDropsSand;
 import me.teakivy.teakstweaks.packs.miniblocks.MiniBlocks;
 import me.teakivy.teakstweaks.packs.moremobheads.MoreMobHeads;
@@ -24,36 +24,36 @@ import me.teakivy.teakstweaks.packs.sawmill.Sawmill;
 import me.teakivy.teakstweaks.packs.transferablepets.TransferablePets;
 import me.teakivy.teakstweaks.packs.wanderingtraderannouncements.WanderingTraderAnnouncements;
 import me.teakivy.teakstweaks.packs.xpmanagement.XPManagement;
-import me.teakivy.teakstweaks.packs.thundershrine.Shrine;
-import me.teakivy.teakstweaks.packs.wanderingtrades.Trades;
-import me.teakivy.teakstweaks.packs.armoredelytra.ArmoredElytras;
-import me.teakivy.teakstweaks.packs.playerheaddrops.HeadDrop;
-import me.teakivy.teakstweaks.packs.rotationwrench.Wrench;
-import me.teakivy.teakstweaks.packs.anticreepergrief.AntiCreeper;
-import me.teakivy.teakstweaks.packs.antiendermangrief.AntiEnderman;
-import me.teakivy.teakstweaks.packs.antighastgrief.AntiGhast;
+import me.teakivy.teakstweaks.packs.thundershrine.ThunderShrine;
+import me.teakivy.teakstweaks.packs.wanderingtrades.WanderingTrades;
+import me.teakivy.teakstweaks.packs.armoredelytra.ArmoredElytra;
+import me.teakivy.teakstweaks.packs.playerheaddrops.PlayerHeadDrops;
+import me.teakivy.teakstweaks.packs.rotationwrench.RotationWrench;
+import me.teakivy.teakstweaks.packs.anticreepergrief.AntiCreeperGrief;
+import me.teakivy.teakstweaks.packs.antiendermangrief.AntiEndermanGrief;
+import me.teakivy.teakstweaks.packs.antighastgrief.AntiGhastGrief;
 import me.teakivy.teakstweaks.packs.batmembranes.BatMembranes;
-import me.teakivy.teakstweaks.packs.countmobdeaths.CountDeaths;
-import me.teakivy.teakstweaks.packs.doubleshulkershells.DoubleShulkers;
+import me.teakivy.teakstweaks.packs.countmobdeaths.CountMobDeaths;
+import me.teakivy.teakstweaks.packs.doubleshulkershells.DoubleShulkerShells;
 import me.teakivy.teakstweaks.packs.dragondrops.DragonDrops;
-import me.teakivy.teakstweaks.packs.largerphantoms.Phantoms;
-import me.teakivy.teakstweaks.packs.silencemobs.Silencer;
-import me.teakivy.teakstweaks.packs.villagerdeathmessages.VillagerDeath;
-import me.teakivy.teakstweaks.packs.afkdisplay.AFK;
-import me.teakivy.teakstweaks.packs.cauldronconcrete.ConcreteConverter;
-import me.teakivy.teakstweaks.packs.cauldronmud.MudConverter;
-import me.teakivy.teakstweaks.packs.classicfishingloot.Fishing;
-import me.teakivy.teakstweaks.packs.coordshud.HUD;
-import me.teakivy.teakstweaks.packs.customnetherportals.NetherPortal;
-import me.teakivy.teakstweaks.packs.durabilityping.DuraPing;
-import me.teakivy.teakstweaks.packs.fastleafdecay.Decay;
-import me.teakivy.teakstweaks.packs.graves.GraveEvents;
+import me.teakivy.teakstweaks.packs.largerphantoms.LargerPhantoms;
+import me.teakivy.teakstweaks.packs.silencemobs.SilenceMobs;
+import me.teakivy.teakstweaks.packs.villagerdeathmessages.VillagerDeathMessages;
+import me.teakivy.teakstweaks.packs.afkdisplay.AFKDisplay;
+import me.teakivy.teakstweaks.packs.cauldronconcrete.CauldronConcrete;
+import me.teakivy.teakstweaks.packs.cauldronmud.CauldronMud;
+import me.teakivy.teakstweaks.packs.classicfishingloot.ClassicFishingLoot;
+import me.teakivy.teakstweaks.packs.coordshud.CoordsHud;
+import me.teakivy.teakstweaks.packs.customnetherportals.CustomNetherPortals;
+import me.teakivy.teakstweaks.packs.durabilityping.DurabilityPing;
+import me.teakivy.teakstweaks.packs.fastleafdecay.FastLeafDecay;
+import me.teakivy.teakstweaks.packs.graves.Graves;
 import me.teakivy.teakstweaks.packs.netherportalcoords.NetherPortalCoords;
 import me.teakivy.teakstweaks.packs.realtimeclock.RealTimeClock;
-import me.teakivy.teakstweaks.packs.trackrawstatistics.RawStats;
-import me.teakivy.teakstweaks.packs.trackstatistics.StatTracker;
-import me.teakivy.teakstweaks.packs.unlockallrecipes.UnlockRecipes;
-import me.teakivy.teakstweaks.packs.workstationhighlights.Highlighter;
+import me.teakivy.teakstweaks.packs.trackrawstatistics.TrackRawStatistics;
+import me.teakivy.teakstweaks.packs.trackstatistics.TrackStatistics;
+import me.teakivy.teakstweaks.packs.unlockallrecipes.UnlockAllRecipes;
+import me.teakivy.teakstweaks.packs.workstationhighlights.WorkstationHighlights;
 import me.teakivy.teakstweaks.packs.chatcolors.ChatColors;
 import me.teakivy.teakstweaks.packs.dirttograss.DirtToGrass;
 import me.teakivy.teakstweaks.packs.fixeditemframes.FixedItemFrames;
@@ -68,14 +68,14 @@ import me.teakivy.teakstweaks.packs.stairchairs.StairChairs;
 import me.teakivy.teakstweaks.packs.sudoku.Sudoku;
 import me.teakivy.teakstweaks.packs.unstickypistons.UnstickyPistons;
 import me.teakivy.teakstweaks.packs.back.Back;
-import me.teakivy.teakstweaks.packs.homes.HomesPack;
+import me.teakivy.teakstweaks.packs.homes.Homes;
 import me.teakivy.teakstweaks.packs.spawn.Spawn;
 import me.teakivy.teakstweaks.packs.tpa.TPA;
-import me.teakivy.teakstweaks.packs.itemaverages.ItemTracker;
+import me.teakivy.teakstweaks.packs.itemaverages.ItemAverages;
 import me.teakivy.teakstweaks.packs.killboats.KillBoats;
-import me.teakivy.teakstweaks.packs.spawningspheres.SpheresPack;
-import me.teakivy.teakstweaks.packs.spectatorconduitpower.ConduitPower;
-import me.teakivy.teakstweaks.packs.spectatornightvision.NightVision;
+import me.teakivy.teakstweaks.packs.spawningspheres.SpawningSpheres;
+import me.teakivy.teakstweaks.packs.spectatorconduitpower.SpectatorConduitPower;
+import me.teakivy.teakstweaks.packs.spectatornightvision.SpectatorNightVision;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.config.Config;
 
@@ -94,45 +94,45 @@ public class Register {
     public Register() {
         enabledPacks = new ArrayList<>();
 
-        packs = Stream.of(new AntiCreeper(),
-            new AntiEnderman(),
-            new AntiGhast(),
-            new DoubleShulkers(),
+        packs = Stream.of(new AntiCreeperGrief(),
+            new AntiEndermanGrief(),
+            new AntiGhastGrief(),
+            new DoubleShulkerShells(),
             new DragonDrops(),
-            new Phantoms(),
+            new LargerPhantoms(),
             new MoreMobHeads(),
-            new DuraPing(),
-            new ConcreteConverter(),
-            new MudConverter(),
-            new CountDeaths(),
+            new DurabilityPing(),
+            new CauldronConcrete(),
+            new CauldronMud(),
+            new CountMobDeaths(),
             new QuickCommands(),
             new SpectatorAlts(),
-            new HeadDrop(),
-            new Silencer(),
-            new ConduitPower(),
-            new NightVision(),
-            new UnlockRecipes(),
-            new VillagerDeath(),
-            new Trades(),
+            new PlayerHeadDrops(),
+            new SilenceMobs(),
+            new SpectatorConduitPower(),
+            new SpectatorNightVision(),
+            new UnlockAllRecipes(),
+            new VillagerDeathMessages(),
+            new WanderingTrades(),
             new XPManagement(),
-            new ConfettiCreeper(),
+            new ConfettiCreepers(),
             new Back(),
-            new AFK(),
-            new Shrine(),
-            new Highlighter(),
-            new Loader(),
-            new Decay(),
-            new Elevator(),
-            new Wrench(),
-            new ArmoredElytras(),
-            new Fishing(),
-            new NetherPortal(),
-            new ItemTracker(),
-            new StatTracker(),
-            new RawStats(),
-            new GraveEvents(),
-            new HUD(),
-            new SpheresPack(),
+            new AFKDisplay(),
+            new ThunderShrine(),
+            new WorkstationHighlights(),
+            new ChunkLoaders(),
+            new FastLeafDecay(),
+            new Elevators(),
+            new RotationWrench(),
+            new ArmoredElytra(),
+            new ClassicFishingLoot(),
+            new CustomNetherPortals(),
+            new ItemAverages(),
+            new TrackStatistics(),
+            new TrackRawStatistics(),
+            new Graves(),
+            new CoordsHud(),
+            new SpawningSpheres(),
             new KeepSmall(),
             new ChatColors(),
             new LecternReset(),
@@ -148,7 +148,7 @@ public class Register {
             new NetherPortalCoords(),
             new RealTimeClock(),
             new Spawn(),
-            new HomesPack(),
+            new Homes(),
             new TPA(),
             new KillBoats(),
             new AlwaysDrop(),

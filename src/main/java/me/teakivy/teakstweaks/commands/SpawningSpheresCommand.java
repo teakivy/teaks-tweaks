@@ -6,7 +6,7 @@ import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import me.teakivy.teakstweaks.packs.spawningspheres.SphereType;
-import me.teakivy.teakstweaks.packs.spawningspheres.SpheresPack;
+import me.teakivy.teakstweaks.packs.spawningspheres.SpawningSpheres;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
@@ -54,7 +54,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
 
     private int create(CommandContext<CommandSourceStack> context, SphereType type) {
         Player player = (Player) context.getSource().getSender();
-        boolean success = SpheresPack.summonSphere(type, player.getLocation());
+        boolean success = SpawningSpheres.summonSphere(type, player.getLocation());
         if (!success) {
             player.sendMessage(getError("in_use", insert("color", type.getName())));
             return Command.SINGLE_SUCCESS;
@@ -66,7 +66,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
 
     private int remove(CommandContext<CommandSourceStack> context, SphereType type) {
         Player player = (Player) context.getSource().getSender();
-        boolean success = SpheresPack.removeSphere(type, player);
+        boolean success = SpawningSpheres.removeSphere(type, player);
         if (!success) {
             player.sendMessage(getError("not_in_use", insert("color", type.getName())));
             return Command.SINGLE_SUCCESS;
@@ -78,7 +78,7 @@ public class SpawningSpheresCommand extends AbstractCommand {
 
     private int teleport(CommandContext<CommandSourceStack> context, SphereType type) {
         Player player = (Player) context.getSource().getSender();
-        boolean success = SpheresPack.teleport(type, player);
+        boolean success = SpawningSpheres.teleport(type, player);
         if (!success) {
             player.sendMessage(getError("not_in_use", insert("color", type.getName())));
             return Command.SINGLE_SUCCESS;
