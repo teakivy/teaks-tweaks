@@ -118,6 +118,7 @@ public class MoreMobHeads extends BasePack {
     }
 
     private void registerAdvancements() {
+        if (!Config.getBoolean("packs.more-mob-heads.advancements.enabled")) return;
         List<String> keys = new ArrayList<>();
         for (HeadEntry head : headData.values()) {
             if (head instanceof TexturedHead texturedHead) {

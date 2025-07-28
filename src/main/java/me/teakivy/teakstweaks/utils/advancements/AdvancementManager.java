@@ -14,6 +14,7 @@ import com.fren_gor.ultimateAdvancementAPI.util.AdvancementKey;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.moremobheads.MoreMobHeads;
 import me.teakivy.teakstweaks.packs.moremobheads.types.TexturedHead;
+import me.teakivy.teakstweaks.utils.config.Config;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -39,7 +40,9 @@ public class AdvancementManager {
     public void enable() {
         main.enable(() -> new SQLite(main, new File(TeaksTweaks.getInstance().getDataFolder(), "advancements.db")));
         ultimateAdvancementAPI = UltimateAdvancementAPI.getInstance(TeaksTweaks.getInstance());
-        setupMoreMobHeads();
+        if (Config.getBoolean("packs.more-mob-heads.advancements.enabled")) {
+            setupMoreMobHeads();
+        }
     }
 
     public void setupMoreMobHeads() {
@@ -93,7 +96,8 @@ public class AdvancementManager {
         private static AdvancementDisplay getDisplay(String key, int index) {
             ItemStack icon = MoreMobHeads.getHeadItem(key, Sound.ENTITY_PLAYER_BREATH);
             TexturedHead entry = (TexturedHead) MoreMobHeads.getHead(key);
-            return new AdvancementDisplay(icon, entry.name(), AdvancementFrameType.GOAL, true, true, 1, index, "Collect a " + entry.name());
+            boolean showInChat = Config.getBoolean("packs.more-mob-heads.advancements.announce-in-chat");
+            return new AdvancementDisplay(icon, entry.name(), AdvancementFrameType.GOAL, true, showInChat, 1, index, "Collect a " + entry.name());
         }
     }
 }

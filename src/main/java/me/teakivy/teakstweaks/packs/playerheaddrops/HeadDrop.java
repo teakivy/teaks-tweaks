@@ -26,8 +26,6 @@ public class HeadDrop extends BasePack {
         Player player = event.getEntity();
         if (!player.isDead()) return;
         if (player.getKiller() == null) return;
-        // TODO Update
-//        if (!MobHeads.shouldDrop(event.getEntity().getKiller(), "player")) return;
 
         Player killer = player.getKiller();
         event.getDrops().add(getHead(player, killer.getName()));
