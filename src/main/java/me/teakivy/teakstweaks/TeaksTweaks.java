@@ -1,14 +1,6 @@
 package me.teakivy.teakstweaks;
 
-import com.fren_gor.ultimateAdvancementAPI.AdvancementMain;
-import com.fren_gor.ultimateAdvancementAPI.AdvancementTab;
-import com.fren_gor.ultimateAdvancementAPI.UltimateAdvancementAPI;
-import com.fren_gor.ultimateAdvancementAPI.advancement.RootAdvancement;
-import com.fren_gor.ultimateAdvancementAPI.advancement.display.AdvancementDisplay;
-import com.fren_gor.ultimateAdvancementAPI.advancement.display.AdvancementFrameType;
-import com.fren_gor.ultimateAdvancementAPI.database.impl.SQLite;
 import com.google.gson.Gson;
-import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
 import me.teakivy.teakstweaks.utils.*;
 import me.teakivy.teakstweaks.utils.advancements.AdvancementManager;
 import me.teakivy.teakstweaks.utils.config.Config;
@@ -20,6 +12,7 @@ import me.teakivy.teakstweaks.utils.metrics.Metrics;
 import me.teakivy.teakstweaks.utils.papi.PAPIExpansion;
 import me.teakivy.teakstweaks.utils.permission.PermissionManager;
 import me.teakivy.teakstweaks.utils.recipe.RecipeManager;
+import me.teakivy.teakstweaks.utils.register.Register;
 import me.teakivy.teakstweaks.utils.update.UpdateChecker;
 import me.teakivy.teakstweaks.utils.update.UpdateJoinAlert;
 import me.teakivy.teakstweaks.utils.update.VersionManager;
@@ -27,7 +20,6 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -41,7 +33,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     private final ArrayList<String> activePacks = new ArrayList<>();
     private final ArrayList<String> activeCraftingTweaks = new ArrayList<>();
 
-    private Register register;
     private TranslationManager translationManager;
     private AdvancementManager advancementManager;
 
@@ -89,21 +80,15 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
 
         Bukkit.getScheduler().runTaskLater(this, UpdateChecker::sendUpdateMessage, 20L * 3);
 
-        // Crafting Tweaks
-        CraftingRegister.init();
-        CraftingRegister.registerAll();
 
         // Commands
-        Register.registerCommands();
+        Register.registerAll();
 
         // Plugin startup logic
         Logger.info(newText(" "));
         Logger.info(Translatable.get("startup.plugin.started", Placeholder.parsed("version", this.getDescription().getVersion())));
         Logger.info(newText(" "));
 
-        // Packs
-        register = new Register();
-        register.registerAll();
 
         // Remove legacy data.yml file
         removeDataFile();
@@ -165,14 +150,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
      */
     public ArrayList<String> getCraftingTweaks() {
         return activeCraftingTweaks;
-    }
-
-    /**
-     * Get the register instance
-     * @return Register instance
-     */
-    public static Register getRegister() {
-        return TeaksTweaks.getInstance().register;
     }
 
     /**

@@ -50,7 +50,6 @@ public abstract class AbstractCraftingTweak {
     public void init() {
         Logger.info(Component.translatable("startup.register.crafting_tweak", Argument.component("name", Component.text("<gold>" + name))));
         TeaksTweaks.getInstance().addCraftingTweaks(this.name);
-        CraftingRegister.addEnabledRecipe(this);
         this.registerRecipes();
 
         item = new ItemStack(material);

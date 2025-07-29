@@ -13,6 +13,7 @@ public class Register {
 
     public static void registerPacks() {
         for (TTPack pack : TTPack.values()) {
+            pack.instantiate();
             pack.register();
         }
     }

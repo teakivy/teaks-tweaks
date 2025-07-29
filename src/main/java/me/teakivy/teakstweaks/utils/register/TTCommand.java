@@ -3,60 +3,72 @@ package me.teakivy.teakstweaks.utils.register;
 import me.teakivy.teakstweaks.commands.*;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 
+import java.lang.reflect.Constructor;
+
 public enum TTCommand {
-    AFK("afk", new AFKCommand(), TTPack.AFK_DISPLAY),
-    ALTS("alts", new AltsCommand(), TTPack.SPECTATOR_ALTS),
-    BACK("back", new BackCommand(), TTPack.BACK),
-    CONDUITPOWER("conduitpower", new ConduitPowerCommand(), TTPack.SPECTATOR_CONDUIT_POWER),
-    COORDSHUD("coordshud", new CoordsHudCommand(), TTPack.COORDS_HUD),
-    DELETEHOME("deletehome", new DeleteHomeCommand(), TTPack.HOMES),
-    DISPOSAL("disposal", new DisposalCommand(), TTPack.DISPOSAL),
-    DURABILITYPING("durabilityping", new DurabilityPingCommand(), TTPack.DURABILITY_PING),
-    GRAVE("grave", new GraveCommand(), TTPack.GRAVES),
-    HOME("home", new HomeCommand(), TTPack.HOMES),
-    ITEMAVERAGES("itemaverages", new ItemAveragesCommand(), TTPack.ITEM_AVERAGES),
-    KILLBOATS("killboats", new KillBoatsCommand(), TTPack.KILL_BOATS),
-    NIGHTVISION("nightvision", new NightVisionCommand(), TTPack.SPECTATOR_NIGHT_VISION),
-    PORTAL("portal", new PortalCommand(), TTPack.NETHER_PORTAL_COORDS),
-    REALTIMECLOCK("realtimeclock", new RealTimeClockCommand(), TTPack.REAL_TIME_CLOCK),
-    SETHOME("sethome", new SetHomeCommand(), TTPack.HOMES),
-    SHRINE("shrine", new ShrineCommand(), TTPack.THUNDER_SHRINE),
-    SPAWN("spawn", new SpawnCommand(), TTPack.SPAWN),
-    SPAWNINGSPHERES("spawningspheres", new SpawningSpheresCommand(), TTPack.SPAWNING_SPHERES),
-    SUDOKU("sudoku", new SudokuCommand(), TTPack.SUDOKU),
-    TPA("tpa", new TPACommand(), TTPack.TPA),
-    TPAHERE("tpahere", new TPAHereCommand(), TTPack.TPA),
-    WORKSTATIONHIGHLIGHT("workstationhighlight", new WorkstationHighlightCommand(), TTPack.WORKSTATION_HIGHLIGHTS),
+    AFK("afk", AFKCommand.class, TTPack.AFK_DISPLAY),
+    ALTS("alts", AltsCommand.class, TTPack.SPECTATOR_ALTS),
+    BACK("back", BackCommand.class, TTPack.BACK),
+    CONDUITPOWER("conduitpower", ConduitPowerCommand.class, TTPack.SPECTATOR_CONDUIT_POWER),
+    COORDSHUD("coordshud", CoordsHudCommand.class, TTPack.COORDS_HUD),
+    DELETEHOME("deletehome", DeleteHomeCommand.class, TTPack.HOMES),
+    DISPOSAL("disposal", DisposalCommand.class, TTPack.DISPOSAL),
+    DURABILITYPING("durabilityping", DurabilityPingCommand.class, TTPack.DURABILITY_PING),
+    GRAVE("grave", GraveCommand.class, TTPack.GRAVES),
+    HOME("home", HomeCommand.class, TTPack.HOMES),
+    ITEMAVERAGES("itemaverages", ItemAveragesCommand.class, TTPack.ITEM_AVERAGES),
+    KILLBOATS("killboats", KillBoatsCommand.class, TTPack.KILL_BOATS),
+    NIGHTVISION("nightvision", NightVisionCommand.class, TTPack.SPECTATOR_NIGHT_VISION),
+    PORTAL("portal", PortalCommand.class, TTPack.NETHER_PORTAL_COORDS),
+    REALTIMECLOCK("realtimeclock", RealTimeClockCommand.class, TTPack.REAL_TIME_CLOCK),
+    SETHOME("sethome", SetHomeCommand.class, TTPack.HOMES),
+    SHRINE("shrine", ShrineCommand.class, TTPack.THUNDER_SHRINE),
+    SPAWN("spawn", SpawnCommand.class, TTPack.SPAWN),
+    SPAWNINGSPHERES("spawningspheres", SpawningSpheresCommand.class, TTPack.SPAWNING_SPHERES),
+    SUDOKU("sudoku", SudokuCommand.class, TTPack.SUDOKU),
+    TPA("tpa", TPACommand.class, TTPack.TPA),
+    TPAHERE("tpahere", TPAHereCommand.class, TTPack.TPA),
+    WORKSTATIONHIGHLIGHT("workstationhighlight", WorkstationHighlightCommand.class, TTPack.WORKSTATION_HIGHLIGHTS),
 
-    MECHANICS("mechanics", new MechanicsCommand()),
-    TEST("test", new TestCommand()),
-    TEAKSTWEAKS("teakstweaks", new TeaksTweaksCommand());
-
+    MECHANICS("mechanics", MechanicsCommand.class),
+    TEST("test", TestCommand.class),
+    TEAKSTWEAKS("teakstweaks", TeaksTweaksCommand.class);
 
     private final String name;
-    private final AbstractCommand command;
+    private final Class<? extends AbstractCommand> clazz;
     private final TTPack parentPack;
+    private AbstractCommand command;
 
-    TTCommand(String name, AbstractCommand command, TTPack parentPack) {
+    TTCommand(String name, Class<? extends AbstractCommand> clazz, TTPack parentPack) {
         this.name = name;
-        this.command = command;
+        this.clazz = clazz;
         this.parentPack = parentPack;
     }
 
-    TTCommand(String name, AbstractCommand command) {
-        this(name, command, null);
+    TTCommand(String name, Class<? extends AbstractCommand> clazz) {
+        this(name, clazz, null);
     }
 
     public String getName() {
         return name;
     }
 
+    public TTPack getParentPack() {
+        return parentPack;
+    }
+
     public AbstractCommand getCommand() {
+        if (command == null) instantiate();
         return command;
     }
 
-    public TTPack getParentPack() {
-        return parentPack;
+    private void instantiate() {
+        try {
+            Constructor<? extends AbstractCommand> constructor = clazz.getConstructor();
+            this.command = constructor.newInstance();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to instantiate command: " + name, e);
+        }
     }
 
     public static TTCommand fromName(String name) {
@@ -70,11 +82,11 @@ public enum TTCommand {
 
     public void register() {
         if (parentPack != null && !parentPack.isEnabled()) return;
-        command.register();
+        getCommand().register();
     }
 
     public boolean isEnabled() {
-        return command.isEnabled();
+        return getCommand().isEnabled();
     }
 
     @Override

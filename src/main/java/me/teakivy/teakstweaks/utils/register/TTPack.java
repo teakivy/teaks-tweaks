@@ -73,82 +73,94 @@ import me.teakivy.teakstweaks.utils.config.Config;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
 
+import java.lang.reflect.Constructor;
+
 public enum TTPack {
-    AFK_DISPLAY("afk-display", new AFKDisplay()),
-    ALWAYS_ACTIVE_BEACONS("always-active-beacons", new AlwaysActiveBeacons()),
-    ALWAYS_DROP("always-drop", new AlwaysDrop()),
-    ANTI_CREEPER_GRIEF("anti-creeper-grief", new AntiCreeperGrief()),
-    ANTI_ENDERMAN_GRIEF("anti-enderman-grief", new AntiEndermanGrief()),
-    ANTI_GHAST_GRIEF("anti-ghast-grief", new AntiGhastGrief()),
-    ARMORED_ELYTRA("armored-elytra", new ArmoredElytra()),
-    BACK("back", new Back()),
-    BAT_MEMBRANES("bat-membranes", new BatMembranes()),
-    CAULDRON_CONCRETE("cauldron-concrete", new CauldronConcrete()),
-    CAULDRON_MUD("cauldron-mud", new CauldronMud()),
-    CHAT_COLORS("chat-colors", new ChatColors()),
-    CHUNK_LOADERS("chunk-loaders", new ChunkLoaders()),
-    CLASSIC_FISHING_LOOT("classic-fishing-loot", new ClassicFishingLoot()),
-    COLLECTIBLE_BUDDING_AMETHYST("collectible-budding-amethyst", new CollectibleBuddingAmethyst()),
-    CONFETTI_CREEPERS("confetti-creepers", new ConfettiCreepers()),
-    COORDS_HUD("coords-hud", new CoordsHud()),
-    COUNT_MOB_DEATHS("count-mob-deaths", new CountMobDeaths()),
-    CUSTOM_NETHER_PORTALS("custom-nether-portals", new CustomNetherPortals()),
-    DIRT_TO_GRASS("dirt-to-grass", new DirtToGrass()),
-    DISPOSAL("disposal", new Disposal()),
-    DOUBLE_SHULKER_SHELLS("double-shulker-shells", new DoubleShulkerShells()),
-    DRAGON_DROPS("dragon-drops", new DragonDrops()),
-    DURABILITY_PING("durability-ping", new DurabilityPing()),
-    ELEVATORS("elevators", new Elevators()),
-    FAST_LEAF_DECAY("fast-leaf-decay", new FastLeafDecay()),
-    FIXED_ITEM_FRAMES("fixed-item-frames", new FixedItemFrames()),
-    GRAVES("graves", new Graves()),
-    HOMES("homes", new Homes()),
-    HUSK_DROPS_SAND("husk-drops-sand", new HuskDropsSand()),
-    INSTA_MINE("insta-mine", new InstaMine()),
-    INVISIBLE_ITEM_FRAMES("invisible-item-frames", new InvisibleItemFrames()),
-    ITEM_AVERAGES("item-averages", new ItemAverages()),
-    KEEP_SMALL("keep-small", new KeepSmall()),
-    KILL_BOATS("kill-boats", new KillBoats()),
-    LARGER_PHANTOMS("larger-phantoms", new LargerPhantoms()),
-    LECTERN_RESET("lectern-reset", new LecternReset()),
-    MINI_BLOCKS("mini-blocks", new MiniBlocks()),
-    MORE_MOB_HEADS("more-mob-heads", new MoreMobHeads()),
-    MUSIC_DISC_ENGRAVER("music-disc-engraver", new MusicDiscEngraver()),
-    NETHER_PORTAL_COORDS("nether-portal-coords", new NetherPortalCoords()),
-    PAINTING_PICKER("painting-picker", new PaintingPicker()),
-    PLAYER_HEAD_DROPS("player-head-drops", new PlayerHeadDrops()),
-    QUICK_COMMANDS("quick-commands", new QuickCommands()),
-    REAL_TIME_CLOCK("real-time-clock", new RealTimeClock()),
-    ROTATION_WRENCH("rotation-wrench", new RotationWrench()),
-    SAWMILL("sawmill", new Sawmill()),
-    SILENCE_MOBS("silence-mobs", new SilenceMobs()),
-    SLIME_CREAM("slime-cream", new SlimeCream()),
-    SPAWN("spawn", new Spawn()),
-    SPAWNING_SPHERES("spawning-spheres", new SpawningSpheres()),
-    SPECTATOR_ALTS("spectator-alts", new SpectatorAlts()),
-    SPECTATOR_CONDUIT_POWER("spectator-conduit-power", new SpectatorConduitPower()),
-    SPECTATOR_NIGHT_VISION("spectator-night-vision", new SpectatorNightVision()),
-    STAIR_CHAIRS("stair-chairs", new StairChairs()),
-    SUDOKU("sudoku", new Sudoku()),
-    THUNDER_SHRINE("thunder-shrine", new ThunderShrine()),
-    TPA("tpa", new TPA()),
-    TRACK_RAW_STATISTICS("track-raw-statistics", new TrackRawStatistics()),
-    TRACK_STATISTICS("track-statistics", new TrackStatistics()),
-    TRANSFERABLE_PETS("transferable-pets", new TransferablePets()),
-    UNLOCK_ALL_RECIPES("unlock-all-recipes", new UnlockAllRecipes()),
-    UNSTICKY_PISTONS("unsticky-pistons", new UnstickyPistons()),
-    VILLAGER_DEATH_MESSAGES("villager-death-messages", new VillagerDeathMessages()),
-    WANDERING_TRADER_ANNOUNCEMENTS("wandering-trader-announcements", new WanderingTraderAnnouncements()),
-    WANDERING_TRADES("wandering-trades", new WanderingTrades()),
-    WORKSTATION_HIGHLIGHTS("workstation-highlights", new WorkstationHighlights()),
-    XP_MANAGEMENT("xp-management", new XPManagement());
+    AFK_DISPLAY("afk-display", AFKDisplay.class),
+    ALWAYS_ACTIVE_BEACONS("always-active-beacons", AlwaysActiveBeacons.class),
+    ALWAYS_DROP("always-drop", AlwaysDrop.class),
+    ANTI_CREEPER_GRIEF("anti-creeper-grief", AntiCreeperGrief.class),
+    ANTI_ENDERMAN_GRIEF("anti-enderman-grief", AntiEndermanGrief.class),
+    ANTI_GHAST_GRIEF("anti-ghast-grief", AntiGhastGrief.class),
+    ARMORED_ELYTRA("armored-elytra", ArmoredElytra.class),
+    BACK("back", Back.class),
+    BAT_MEMBRANES("bat-membranes", BatMembranes.class),
+    CAULDRON_CONCRETE("cauldron-concrete", CauldronConcrete.class),
+    CAULDRON_MUD("cauldron-mud", CauldronMud.class),
+    CHAT_COLORS("chat-colors", ChatColors.class),
+    CHUNK_LOADERS("chunk-loaders", ChunkLoaders.class),
+    CLASSIC_FISHING_LOOT("classic-fishing-loot", ClassicFishingLoot.class),
+    COLLECTIBLE_BUDDING_AMETHYST("collectible-budding-amethyst", CollectibleBuddingAmethyst.class),
+    CONFETTI_CREEPERS("confetti-creepers", ConfettiCreepers.class),
+    COORDS_HUD("coords-hud", CoordsHud.class),
+    COUNT_MOB_DEATHS("count-mob-deaths", CountMobDeaths.class),
+    CUSTOM_NETHER_PORTALS("custom-nether-portals", CustomNetherPortals.class),
+    DIRT_TO_GRASS("dirt-to-grass", DirtToGrass.class),
+    DISPOSAL("disposal", Disposal.class),
+    DOUBLE_SHULKER_SHELLS("double-shulker-shells", DoubleShulkerShells.class),
+    DRAGON_DROPS("dragon-drops", DragonDrops.class),
+    DURABILITY_PING("durability-ping", DurabilityPing.class),
+    ELEVATORS("elevators", Elevators.class),
+    FAST_LEAF_DECAY("fast-leaf-decay", FastLeafDecay.class),
+    FIXED_ITEM_FRAMES("fixed-item-frames", FixedItemFrames.class),
+    GRAVES("graves", Graves.class),
+    HOMES("homes", Homes.class),
+    HUSK_DROPS_SAND("husk-drops-sand", HuskDropsSand.class),
+    INSTA_MINE("insta-mine", InstaMine.class),
+    INVISIBLE_ITEM_FRAMES("invisible-item-frames", InvisibleItemFrames.class),
+    ITEM_AVERAGES("item-averages", ItemAverages.class),
+    KEEP_SMALL("keep-small", KeepSmall.class),
+    KILL_BOATS("kill-boats", KillBoats.class),
+    LARGER_PHANTOMS("larger-phantoms", LargerPhantoms.class),
+    LECTERN_RESET("lectern-reset", LecternReset.class),
+    MINI_BLOCKS("mini-blocks", MiniBlocks.class),
+    MORE_MOB_HEADS("more-mob-heads", MoreMobHeads.class),
+    MUSIC_DISC_ENGRAVER("music-disc-engraver", MusicDiscEngraver.class),
+    NETHER_PORTAL_COORDS("nether-portal-coords", NetherPortalCoords.class),
+    PAINTING_PICKER("painting-picker", PaintingPicker.class),
+    PLAYER_HEAD_DROPS("player-head-drops", PlayerHeadDrops.class),
+    QUICK_COMMANDS("quick-commands", QuickCommands.class),
+    REAL_TIME_CLOCK("real-time-clock", RealTimeClock.class),
+    ROTATION_WRENCH("rotation-wrench", RotationWrench.class),
+    SAWMILL("sawmill", Sawmill.class),
+    SILENCE_MOBS("silence-mobs", SilenceMobs.class),
+    SLIME_CREAM("slime-cream", SlimeCream.class),
+    SPAWN("spawn", Spawn.class),
+    SPAWNING_SPHERES("spawning-spheres", SpawningSpheres.class),
+    SPECTATOR_ALTS("spectator-alts", SpectatorAlts.class),
+    SPECTATOR_CONDUIT_POWER("spectator-conduit-power", SpectatorConduitPower.class),
+    SPECTATOR_NIGHT_VISION("spectator-night-vision", SpectatorNightVision.class),
+    STAIR_CHAIRS("stair-chairs", StairChairs.class),
+    SUDOKU("sudoku", Sudoku.class),
+    THUNDER_SHRINE("thunder-shrine", ThunderShrine.class),
+    TPA("tpa", TPA.class),
+    TRACK_RAW_STATISTICS("track-raw-statistics", TrackRawStatistics.class),
+    TRACK_STATISTICS("track-statistics", TrackStatistics.class),
+    TRANSFERABLE_PETS("transferable-pets", TransferablePets.class),
+    UNLOCK_ALL_RECIPES("unlock-all-recipes", UnlockAllRecipes.class),
+    UNSTICKY_PISTONS("unsticky-pistons", UnstickyPistons.class),
+    VILLAGER_DEATH_MESSAGES("villager-death-messages", VillagerDeathMessages.class),
+    WANDERING_TRADER_ANNOUNCEMENTS("wandering-trader-announcements", WanderingTraderAnnouncements.class),
+    WANDERING_TRADES("wandering-trades", WanderingTrades.class),
+    WORKSTATION_HIGHLIGHTS("workstation-highlights", WorkstationHighlights.class),
+    XP_MANAGEMENT("xp-management", XPManagement.class);
 
     private final String key;
-    private final BasePack pack;
+    private final Class<? extends BasePack> clazz;
+    private BasePack pack;
 
-    TTPack(String key, BasePack pack) {
+    TTPack(String key, Class<? extends BasePack> clazz) {
         this.key = key;
-        this.pack = pack;
+        this.clazz = clazz;
+    }
+
+    public void instantiate() {
+        try {
+            Constructor<? extends BasePack> constructor = clazz.getConstructor();
+            this.pack = constructor.newInstance();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to instantiate pack: " + name(), e);
+        }
     }
 
     public String getKey() {
@@ -169,21 +181,21 @@ public enum TTPack {
     }
 
     public ConfigurationSection getConfig() {
-        return pack.getConfig();
+        return getPack().getConfig();
     }
 
     public void register() {
-        if (pack.isRegistered()) return;
+        if (getPack().isRegistered()) return;
         if (!isEnabled() && !Config.isDevMode()) return;
-        pack.init();
+        getPack().init();
     }
 
     public boolean isEnabled() {
-        return pack.getConfig().getBoolean("enabled", false);
+        return getConfig().getBoolean("enabled", false);
     }
 
     public ItemStack getItem() {
-        return pack.getItem();
+        return getPack().getItem();
     }
 
     @Override
@@ -191,3 +203,4 @@ public enum TTPack {
         return key;
     }
 }
+
