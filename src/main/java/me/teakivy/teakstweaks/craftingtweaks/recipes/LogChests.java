@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.register.TTCraftingTweak;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.Bukkit;
@@ -15,10 +16,8 @@ import java.util.List;
 
 public class LogChests extends AbstractCraftingTweak {
 
-    private static final Logger log = LogManager.getLogger(LogChests.class);
-
     public LogChests() {
-        super("log-chests", Material.CHEST);
+        super(TTCraftingTweak.LOG_CHESTS, Material.CHEST);
     }
 
     @Override

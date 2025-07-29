@@ -73,7 +73,7 @@ import me.teakivy.teakstweaks.utils.config.Config;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
 
-public enum Pack {
+public enum TTPack {
     AFK_DISPLAY("afk-display", new AFKDisplay()),
     ALWAYS_ACTIVE_BEACONS("always-active-beacons", new AlwaysActiveBeacons()),
     ALWAYS_DROP("always-drop", new AlwaysDrop()),
@@ -146,7 +146,7 @@ public enum Pack {
     private final String key;
     private final BasePack pack;
 
-    Pack(String key, BasePack pack) {
+    TTPack(String key, BasePack pack) {
         this.key = key;
         this.pack = pack;
     }
@@ -159,8 +159,8 @@ public enum Pack {
         return pack;
     }
 
-    public static Pack fromKey(String key) {
-        for (Pack pack : values()) {
+    public static TTPack fromKey(String key) {
+        for (TTPack pack : values()) {
             if (pack.getKey().equalsIgnoreCase(key)) {
                 return pack;
             }
@@ -184,5 +184,10 @@ public enum Pack {
 
     public ItemStack getItem() {
         return pack.getItem();
+    }
+
+    @Override
+    public String toString() {
+        return key;
     }
 }

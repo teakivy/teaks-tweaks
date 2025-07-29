@@ -7,6 +7,7 @@ import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
@@ -15,7 +16,7 @@ import org.bukkit.potion.PotionEffectType;
 public class SudokuCommand extends AbstractCommand {
 
     public SudokuCommand() {
-        super("sudoku", "sudoku");
+        super(TTCommand.SUDOKU, "sudoku");
     }
 
     @Override

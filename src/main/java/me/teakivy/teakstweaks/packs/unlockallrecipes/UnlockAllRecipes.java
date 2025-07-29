@@ -3,7 +3,7 @@ package me.teakivy.teakstweaks.packs.unlockallrecipes;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.permission.Permission;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.Keyed;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -19,7 +19,7 @@ public class UnlockAllRecipes extends BasePack {
     ArrayList<NamespacedKey> recipes = new ArrayList<>();
 
     public UnlockAllRecipes() {
-        super(Pack.UNLOCK_ALL_RECIPES, Material.KNOWLEDGE_BOOK);
+        super(TTPack.UNLOCK_ALL_RECIPES, Material.KNOWLEDGE_BOOK);
 
         recipes.clear();
         Iterator<Recipe> it = TeaksTweaks.getInstance().getServer().recipeIterator();

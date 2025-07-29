@@ -10,6 +10,7 @@ import me.teakivy.teakstweaks.packs.spectatoralts.SpectatorAlts;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -20,7 +21,7 @@ import java.util.UUID;
 public class AltsCommand extends AbstractCommand {
 
     public AltsCommand() {
-        super("spectator-alts", "alts");
+        super(TTCommand.ALTS, "alts");
     }
 
     @Override

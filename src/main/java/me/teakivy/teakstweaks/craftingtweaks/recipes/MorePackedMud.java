@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.register.TTCraftingTweak;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -11,7 +12,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class MorePackedMud extends AbstractCraftingTweak {
 
      public MorePackedMud() {
-         super("more-packed-mud", Material.PACKED_MUD);
+         super(TTCraftingTweak.MORE_PACKED_MUD, Material.PACKED_MUD);
      }
 
     @Override

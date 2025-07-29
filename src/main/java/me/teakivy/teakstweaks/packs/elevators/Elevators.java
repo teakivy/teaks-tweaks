@@ -2,7 +2,7 @@ package me.teakivy.teakstweaks.packs.elevators;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.permission.Permission;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
@@ -26,7 +26,7 @@ public class Elevators extends BasePack {
     private static final HashMap<UUID, Long> cooldown = new HashMap<>();
 
     public Elevators() {
-        super(Pack.ELEVATORS, Material.ENDER_PEARL);
+        super(TTPack.ELEVATORS, Material.ENDER_PEARL);
     }
 
     @EventHandler

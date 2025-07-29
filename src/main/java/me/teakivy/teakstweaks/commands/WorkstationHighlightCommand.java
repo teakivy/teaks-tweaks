@@ -12,6 +12,7 @@ import io.papermc.paper.command.brigadier.Commands;
 import me.teakivy.teakstweaks.packs.workstationhighlights.WorkstationHighlights;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.*;
@@ -41,7 +42,7 @@ public class WorkstationHighlightCommand extends AbstractCommand {
     };
 
     public WorkstationHighlightCommand() {
-        super("workstation-highlights", "workstationhighlight");
+        super(TTCommand.WORKSTATIONHIGHLIGHT, "workstationhighlight");
     }
 
     @Override

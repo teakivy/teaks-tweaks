@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.craftingtweaks.recipes;
 import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.log.Logger;
+import me.teakivy.teakstweaks.utils.register.TTCraftingTweak;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -13,7 +14,7 @@ import java.util.Map;
 public class CheaperArmorTrimTemplates extends AbstractCraftingTweak {
 
     public CheaperArmorTrimTemplates() {
-        super("cheaper-armor-trim-templates", Material.HOST_ARMOR_TRIM_SMITHING_TEMPLATE);
+        super(TTCraftingTweak.CHEAPER_ARMOR_TRIM_TEMPLATES, Material.HOST_ARMOR_TRIM_SMITHING_TEMPLATE);
     }
 
     @Override

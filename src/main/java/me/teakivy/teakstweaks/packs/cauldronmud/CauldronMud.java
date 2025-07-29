@@ -3,7 +3,7 @@ package me.teakivy.teakstweaks.packs.cauldronmud;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.permission.Permission;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.data.Levelled;
@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 public class CauldronMud extends BasePack {
 
     public CauldronMud() {
-        super (Pack.CAULDRON_MUD, Material.CAULDRON);
+        super (TTPack.CAULDRON_MUD, Material.CAULDRON);
     }
 
     @EventHandler

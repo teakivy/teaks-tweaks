@@ -12,6 +12,7 @@ import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSele
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.minimessage.translation.Argument;
 import org.bukkit.entity.Player;
 
@@ -31,7 +32,7 @@ public class ReplyQuickCommand {
     public class MessageCommand extends AbstractCommand {
 
         public MessageCommand() {
-            super("quick-commands", "quick_commands.message", List.of("msg", "tell", "whisper", "w"));
+            super(TTPack.QUICK_COMMANDS, "quick_commands.message", List.of("msg", "tell", "whisper", "w"));
         }
 
         @Override
@@ -66,7 +67,7 @@ public class ReplyQuickCommand {
     public class ReplyCommand extends AbstractCommand {
 
         public ReplyCommand() {
-            super("quick-commands", "quick_commands.reply", List.of("r"));
+            super(TTPack.QUICK_COMMANDS, "quick_commands.reply", List.of("r"));
         }
 
         @Override

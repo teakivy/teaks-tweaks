@@ -10,6 +10,7 @@ import me.teakivy.teakstweaks.packs.back.Back;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -19,7 +20,7 @@ import java.util.Objects;
 public class BackCommand extends AbstractCommand {
 
     public BackCommand() {
-        super("back", "back");
+        super(TTCommand.BACK, "back");
 
         setCooldownTime(getPackConfig().getInt("teleport-cooldown"));
     }

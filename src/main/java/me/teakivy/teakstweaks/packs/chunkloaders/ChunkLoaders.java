@@ -3,7 +3,7 @@ package me.teakivy.teakstweaks.packs.chunkloaders;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.permission.Permission;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.block.Block;
@@ -17,7 +17,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class ChunkLoaders extends BasePack {
 
     public ChunkLoaders() {
-        super(Pack.CHUNK_LOADERS, Material.LODESTONE);
+        super(TTPack.CHUNK_LOADERS, Material.LODESTONE);
     }
 
     @EventHandler

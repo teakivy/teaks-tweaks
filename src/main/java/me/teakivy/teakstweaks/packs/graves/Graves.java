@@ -6,7 +6,7 @@ import me.teakivy.teakstweaks.utils.XPUtils;
 import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import me.teakivy.teakstweaks.utils.customitems.TItem;
 import me.teakivy.teakstweaks.utils.lang.TranslationManager;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.*;
@@ -34,7 +34,7 @@ import java.util.UUID;
 public class Graves extends BasePack {
 
     public Graves() {
-        super(Pack.GRAVES, Material.STONE_BRICK_WALL);
+        super(TTPack.GRAVES, Material.STONE_BRICK_WALL);
     }
 
     @Override

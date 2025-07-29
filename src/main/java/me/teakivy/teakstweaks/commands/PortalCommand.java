@@ -11,6 +11,7 @@ import io.papermc.paper.command.brigadier.argument.resolvers.BlockPositionResolv
 import io.papermc.paper.math.BlockPosition;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -18,7 +19,7 @@ import org.bukkit.entity.Player;
 public class PortalCommand extends AbstractCommand {
 
     public PortalCommand() {
-        super("nether-portal-coords", "portal");
+        super(TTCommand.PORTAL, "portal");
     }
 
     @Override

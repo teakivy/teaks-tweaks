@@ -9,6 +9,7 @@ import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
 public class DeleteHomeCommand extends AbstractCommand {
 
     public DeleteHomeCommand() {
-        super("homes", "home", List.of("delhome", "rmhome"));
+        super(TTCommand.DELETEHOME, "home", List.of("delhome", "rmhome"));
     }
 
     @Override

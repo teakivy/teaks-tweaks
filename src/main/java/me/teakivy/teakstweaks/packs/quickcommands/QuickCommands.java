@@ -6,7 +6,7 @@ import me.teakivy.teakstweaks.packs.quickcommands.base.TargetedQuickCommand;
 import me.teakivy.teakstweaks.packs.quickcommands.commands.EnderChestQuickCommand;
 import me.teakivy.teakstweaks.packs.quickcommands.commands.ReplyQuickCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -19,7 +19,7 @@ import java.util.function.Consumer;
 public class QuickCommands extends BasePack {
 
     public QuickCommands() {
-        super(Pack.QUICK_COMMANDS, Material.COMMAND_BLOCK);
+        super(TTPack.QUICK_COMMANDS, Material.COMMAND_BLOCK);
     }
 
     @Override

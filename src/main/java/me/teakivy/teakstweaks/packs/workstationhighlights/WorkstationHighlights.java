@@ -2,7 +2,7 @@ package me.teakivy.teakstweaks.packs.workstationhighlights;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -18,7 +18,7 @@ import org.bukkit.potion.PotionEffectType;
 public class WorkstationHighlights extends BasePack {
 
     public WorkstationHighlights() {
-        super(Pack.WORKSTATION_HIGHLIGHTS, Material.SMITHING_TABLE);
+        super(TTPack.WORKSTATION_HIGHLIGHTS, Material.SMITHING_TABLE);
     }
 
     @EventHandler

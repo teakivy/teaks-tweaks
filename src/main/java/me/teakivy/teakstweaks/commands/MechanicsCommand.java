@@ -11,6 +11,7 @@ import me.teakivy.teakstweaks.craftingtweaks.CraftingRegister;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.gui.PaginatedGUI;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -20,7 +21,7 @@ import java.util.List;
 public class MechanicsCommand extends AbstractCommand {
 
     public MechanicsCommand() {
-        super(null, "mechanics");
+        super(TTCommand.MECHANICS, "mechanics");
     }
 
     @Override

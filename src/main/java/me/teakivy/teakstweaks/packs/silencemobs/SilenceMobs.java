@@ -3,7 +3,7 @@ package me.teakivy.teakstweaks.packs.silencemobs;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.permission.Permission;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -21,7 +21,7 @@ import java.util.UUID;
 public class SilenceMobs extends BasePack {
 
     public SilenceMobs() {
-        super(Pack.SILENCE_MOBS, Material.SCULK_SHRIEKER);
+        super(TTPack.SILENCE_MOBS, Material.SCULK_SHRIEKER);
 
         if (minecartTypes.isEmpty()) {
             minecartTypes.add(EntityType.MINECART);

@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.register.TTCraftingTweak;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -10,7 +11,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class UnpackableIce extends AbstractCraftingTweak {
 
     public UnpackableIce() {
-        super("unpackable-ice", Material.PACKED_ICE);
+        super(TTCraftingTweak.UNPACKABLE_ICE, Material.PACKED_ICE);
     }
 
     @Override

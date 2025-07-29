@@ -5,7 +5,7 @@ import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.permission.Permission;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
@@ -29,7 +29,7 @@ public class ThunderShrine extends BasePack {
     private int particleTask = -1;
 
     public ThunderShrine() {
-        super(Pack.THUNDER_SHRINE, Material.NETHER_STAR);
+        super(TTPack.THUNDER_SHRINE, Material.NETHER_STAR);
     }
 
     @Override

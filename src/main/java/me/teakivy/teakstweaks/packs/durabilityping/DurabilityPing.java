@@ -3,7 +3,7 @@ package me.teakivy.teakstweaks.packs.durabilityping;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.permission.Permission;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.title.TitlePart;
 import org.apache.commons.lang3.text.WordUtils;
@@ -23,7 +23,7 @@ import java.util.UUID;
 public class DurabilityPing extends BasePack {
 
     public DurabilityPing() {
-        super(Pack.DURABILITY_PING, Material.DIAMOND_PICKAXE);
+        super(TTPack.DURABILITY_PING, Material.DIAMOND_PICKAXE);
     }
 
     private final HashMap<UUID, Long> pingCooldown = new HashMap<>();

@@ -1,7 +1,7 @@
 package me.teakivy.teakstweaks.packs.lecternreset;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.Material;
 import org.bukkit.block.Lectern;
 import org.bukkit.event.EventHandler;
@@ -12,7 +12,7 @@ import org.bukkit.inventory.LecternInventory;
 public class LecternReset extends BasePack {
 
     public LecternReset() {
-        super(Pack.LECTERN_RESET, Material.LECTERN);
+        super(TTPack.LECTERN_RESET, Material.LECTERN);
     }
 
     @EventHandler

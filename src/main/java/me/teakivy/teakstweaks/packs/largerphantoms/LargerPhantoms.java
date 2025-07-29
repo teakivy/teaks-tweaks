@@ -2,7 +2,7 @@ package me.teakivy.teakstweaks.packs.largerphantoms;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.config.Config;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Statistic;
@@ -19,7 +19,7 @@ import java.util.Objects;
 public class LargerPhantoms extends BasePack {
 
     public LargerPhantoms() {
-        super(Pack.LARGER_PHANTOMS, Material.PHANTOM_SPAWN_EGG);
+        super(TTPack.LARGER_PHANTOMS, Material.PHANTOM_SPAWN_EGG);
     }
 
     @EventHandler

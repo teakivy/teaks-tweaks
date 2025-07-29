@@ -7,7 +7,7 @@ import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.metrics.CustomMetrics;
 import me.teakivy.teakstweaks.utils.recipe.RecipeManager;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.ComponentLike;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -32,6 +32,7 @@ public class BasePack implements Listener {
 	private final String path;
 	private final String translatableKey;
 	private final ItemStack item;
+	private final TTPack pack;
 
 	private boolean registered = false;
 
@@ -40,7 +41,8 @@ public class BasePack implements Listener {
 	 * @param pack Pack value
 	 * @param material Material for the item
 	 */
-	public BasePack(Pack pack, Material material) {
+	public BasePack(TTPack pack, Material material) {
+		this.pack = pack;
 		this.path = pack.getKey();
 		this.translatableKey = this.path.replaceAll("-", "_");
         this.name = TranslationManager.getString("en_US", this.translatableKey + ".name");
@@ -114,6 +116,10 @@ public class BasePack implements Listener {
 
 	public boolean isRegistered() {
 		return this.registered;
+	}
+
+	public TTPack getPack() {
+		return this.pack;
 	}
 
 	/**

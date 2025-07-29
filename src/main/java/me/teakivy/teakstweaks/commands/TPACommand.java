@@ -13,12 +13,13 @@ import me.teakivy.teakstweaks.packs.tpa.TPARequest;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import org.bukkit.entity.Player;
 
 public class TPACommand extends AbstractCommand {
 
     public TPACommand() {
-        super("tpa", "tpa");
+        super(TTCommand.TPA, "tpa");
     }
 
     @Override

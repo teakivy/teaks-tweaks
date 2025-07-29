@@ -7,6 +7,7 @@ import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
@@ -20,7 +21,7 @@ import java.util.List;
 public class KillBoatsCommand extends AbstractCommand {
 
     public KillBoatsCommand() {
-        super("kill-boats", "killboats");
+        super(TTCommand.KILLBOATS, "killboats");
     }
 
     @Override

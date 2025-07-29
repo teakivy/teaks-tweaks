@@ -7,6 +7,7 @@ import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -16,7 +17,7 @@ import java.util.List;
 public class DisposalCommand extends AbstractCommand {
 
     public DisposalCommand() {
-        super("disposal", "disposal", List.of("trash", "bin", "garbage", "rubbish"));
+        super(TTCommand.DISPOSAL, "disposal", List.of("trash", "bin", "garbage", "rubbish"));
     }
 
     @Override

@@ -6,6 +6,7 @@ import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.metrics.CustomMetrics;
 import me.teakivy.teakstweaks.utils.recipe.RecipeManager;
+import me.teakivy.teakstweaks.utils.register.TTCraftingTweak;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -21,6 +22,7 @@ import java.util.List;
 public abstract class AbstractCraftingTweak {
     private final String name;
     private final String path;
+    private final TTCraftingTweak craftingTweak;
 
     private final Material material;
     private final String description;
@@ -29,13 +31,14 @@ public abstract class AbstractCraftingTweak {
 
     /**
      * Set up the pack
-     * @param path Config path
+     * @param craftingTweak The crafting tweak object
      * @param material Material for the item
      */
-    public AbstractCraftingTweak(String path, Material material) {
+    public AbstractCraftingTweak(TTCraftingTweak craftingTweak, Material material) {
+        this.craftingTweak = craftingTweak;
+        this.path = craftingTweak.getKey();
         String langKey = path.replaceAll("-", "_");
         this.name = TranslationManager.getString("en_US", langKey + ".name");
-        this.path = path;
 
         this.material = material;
         this.description = TranslationManager.getString("en_US", langKey + ".description");
@@ -101,6 +104,10 @@ public abstract class AbstractCraftingTweak {
      */
     public ItemStack getItem() {
         return item;
+    }
+
+    public TTCraftingTweak getCraftingTweak() {
+        return craftingTweak;
     }
 
 }

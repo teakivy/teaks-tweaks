@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.register.TTCraftingTweak;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -11,7 +12,7 @@ import org.bukkit.inventory.ShapedRecipe;
 public class MoreIronTrapdoors extends AbstractCraftingTweak {
 
     public MoreIronTrapdoors() {
-        super("more-iron-trapdoors", Material.IRON_TRAPDOOR);
+        super(TTCraftingTweak.MORE_IRON_TRAPDOORS, Material.IRON_TRAPDOOR);
     }
 
     @Override

@@ -6,7 +6,7 @@ import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import me.teakivy.teakstweaks.utils.customitems.TItem;
 import me.teakivy.teakstweaks.utils.permission.Permission;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
@@ -44,7 +44,7 @@ public class RotationWrench extends BasePack {
     private final List<BlockFace> faces = Lists.newArrayList(BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST, BlockFace.NORTH, BlockFace.UP, BlockFace.DOWN);
 
     public RotationWrench() {
-        super(Pack.ROTATION_WRENCH, Material.CARROT_ON_A_STICK);
+        super(TTPack.ROTATION_WRENCH, Material.CARROT_ON_A_STICK);
     }
 
     @Override

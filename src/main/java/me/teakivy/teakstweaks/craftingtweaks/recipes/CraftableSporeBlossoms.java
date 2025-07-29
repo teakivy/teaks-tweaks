@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.register.TTCraftingTweak;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -13,7 +14,7 @@ import java.util.List;
 public class CraftableSporeBlossoms extends AbstractCraftingTweak {
 
     public CraftableSporeBlossoms() {
-        super("craftable-spore-blossoms", Material.SPORE_BLOSSOM);
+        super(TTCraftingTweak.CRAFTABLE_SPORE_BLOSSOMS, Material.SPORE_BLOSSOM);
     }
 
     @Override

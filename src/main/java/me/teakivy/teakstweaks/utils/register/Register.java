@@ -8,17 +8,18 @@ public class Register {
     public static void registerAll() {
         registerPacks();
         registerCraftingTweaks();
+        registerCommands();
     }
 
     public static void registerPacks() {
-        for (Pack pack : Pack.values()) {
+        for (TTPack pack : TTPack.values()) {
             pack.register();
         }
     }
 
-    public static List<Pack> getEnabledPacks() {
-        List<Pack> enabled = new ArrayList<>();
-        for (Pack pack : Pack.values()) {
+    public static List<TTPack> getEnabledPacks() {
+        List<TTPack> enabled = new ArrayList<>();
+        for (TTPack pack : TTPack.values()) {
             if (pack.isEnabled()) {
                 enabled.add(pack);
             }
@@ -27,16 +28,32 @@ public class Register {
     }
 
     public static void registerCraftingTweaks() {
-        for (CraftingTweak craftingTweak : CraftingTweak.values()) {
+        for (TTCraftingTweak craftingTweak : TTCraftingTweak.values()) {
             craftingTweak.register();
         }
     }
 
-    public static List<CraftingTweak> getEnabledCraftingTweaks() {
-        List<CraftingTweak> enabled = new ArrayList<>();
-        for (CraftingTweak craftingTweak : CraftingTweak.values()) {
+    public static List<TTCraftingTweak> getEnabledCraftingTweaks() {
+        List<TTCraftingTweak> enabled = new ArrayList<>();
+        for (TTCraftingTweak craftingTweak : TTCraftingTweak.values()) {
             if (craftingTweak.isEnabled()) {
                 enabled.add(craftingTweak);
+            }
+        }
+        return enabled;
+    }
+
+    public static void registerCommands() {
+        for (TTCommand command : TTCommand.values()) {
+            command.register();
+        }
+    }
+
+    public static List<TTCommand> getEnabledCommands() {
+        List<TTCommand> enabled = new ArrayList<>();
+        for (TTCommand command : TTCommand.values()) {
+            if (command.isEnabled()) {
+                enabled.add(command);
             }
         }
         return enabled;

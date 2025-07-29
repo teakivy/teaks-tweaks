@@ -8,6 +8,7 @@ import io.papermc.paper.command.brigadier.Commands;
 import me.teakivy.teakstweaks.packs.thundershrine.ThunderShrine;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -17,7 +18,7 @@ import java.io.IOException;
 public class ShrineCommand extends AbstractCommand {
 
     public ShrineCommand() {
-        super("thunder-shrine", "shrine");
+        super(TTCommand.SHRINE, "shrine");
     }
 
     @Override

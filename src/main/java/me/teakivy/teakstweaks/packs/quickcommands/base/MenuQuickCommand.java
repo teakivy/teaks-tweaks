@@ -7,6 +7,7 @@ import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.MenuType;
 
@@ -18,7 +19,7 @@ public class MenuQuickCommand extends AbstractCommand {
     private final Permission permission;
 
     public MenuQuickCommand(String commandName, List<String> aliases, Permission permission, MenuType menuType) {
-        super("quick-commands", "quick-commands." + commandName, aliases);
+        super(TTPack.QUICK_COMMANDS, "quick-commands." + commandName, aliases);
         this.commandName = commandName;
         this.menuType = menuType;
         this.permission = permission;

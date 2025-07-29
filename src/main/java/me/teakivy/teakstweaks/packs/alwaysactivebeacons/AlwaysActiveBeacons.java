@@ -2,7 +2,7 @@ package me.teakivy.teakstweaks.packs.alwaysactivebeacons;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.*;
 import org.bukkit.block.Beacon;
 import org.bukkit.block.BlockState;
@@ -15,7 +15,7 @@ import java.util.List;
 public class AlwaysActiveBeacons extends BasePack {
 
     public AlwaysActiveBeacons() {
-        super(Pack.ALWAYS_ACTIVE_BEACONS, Material.BEACON);
+        super(TTPack.ALWAYS_ACTIVE_BEACONS, Material.BEACON);
     }
 
     public void init() {

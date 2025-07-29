@@ -5,7 +5,7 @@ import me.teakivy.teakstweaks.craftingtweaks.recipes.*;
 import me.teakivy.teakstweaks.utils.config.Config;
 import org.bukkit.inventory.ItemStack;
 
-public enum CraftingTweak {
+public enum TTCraftingTweak {
     BACK_TO_BLOCKS("back-to-blocks", new BackToBlocks()),
     BLACKSTONE_COBBLESTONE("blackstone-cobblestone", new BlackstoneCobblestone()),
     CHARCOAL_TO_BLACK_DYE("charcoal-to-black-dye", new CharcoalToBlackDye()),
@@ -50,7 +50,7 @@ public enum CraftingTweak {
     private final String key;
     private final AbstractCraftingTweak craftingTweak;
 
-    CraftingTweak(String key, AbstractCraftingTweak craftingTweak) {
+    TTCraftingTweak(String key, AbstractCraftingTweak craftingTweak) {
         this.key = key;
         this.craftingTweak = craftingTweak;
     }
@@ -63,8 +63,8 @@ public enum CraftingTweak {
         return craftingTweak;
     }
 
-    public static CraftingTweak fromKey(String key) {
-        for (CraftingTweak craftingTweak : values()) {
+    public static TTCraftingTweak fromKey(String key) {
+        for (TTCraftingTweak craftingTweak : values()) {
             if (craftingTweak.getKey().equalsIgnoreCase(key)) {
                 return craftingTweak;
             }
@@ -82,5 +82,10 @@ public enum CraftingTweak {
 
     public ItemStack getItem() {
         return craftingTweak.getItem();
+    }
+
+    @Override
+    public String toString() {
+        return key;
     }
 }

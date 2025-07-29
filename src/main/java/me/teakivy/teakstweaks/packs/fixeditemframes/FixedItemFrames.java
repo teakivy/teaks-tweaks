@@ -3,21 +3,20 @@ package me.teakivy.teakstweaks.packs.fixeditemframes;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.ItemUtils;
 import me.teakivy.teakstweaks.utils.permission.Permission;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.ItemFrame;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class FixedItemFrames extends BasePack {
 
 	public FixedItemFrames() {
-        super(Pack.FIXED_ITEM_FRAMES, Material.ITEM_FRAME);
+        super(TTPack.FIXED_ITEM_FRAMES, Material.ITEM_FRAME);
     }
 
 	@EventHandler

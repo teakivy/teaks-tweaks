@@ -12,6 +12,7 @@ import me.teakivy.teakstweaks.packs.homes.Home;
 import me.teakivy.teakstweaks.packs.homes.Homes;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.concurrent.CompletableFuture;
 public class HomeCommand extends AbstractCommand {
 
     public HomeCommand() {
-        super("homes", "home");
+        super(TTCommand.HOME, "home");
     }
 
     @Override

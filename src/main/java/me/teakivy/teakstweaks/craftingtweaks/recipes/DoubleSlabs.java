@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.register.TTCraftingTweak;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -10,7 +11,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class DoubleSlabs extends AbstractCraftingTweak {
 
     public DoubleSlabs() {
-        super("double-slabs", Material.STONE_SLAB);
+        super(TTCraftingTweak.DOUBLE_SLABS, Material.STONE_SLAB);
     }
 
     @Override

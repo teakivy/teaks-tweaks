@@ -1,7 +1,7 @@
 package me.teakivy.teakstweaks.packs.dragondrops;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 public class DragonDrops extends BasePack {
 
     public DragonDrops() {
-        super(Pack.DRAGON_DROPS, Material.DRAGON_EGG);
+        super(TTPack.DRAGON_DROPS, Material.DRAGON_EGG);
     }
 
     @EventHandler

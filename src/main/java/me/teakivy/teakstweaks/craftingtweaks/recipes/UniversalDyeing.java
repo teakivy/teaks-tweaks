@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.register.TTCraftingTweak;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -16,7 +17,7 @@ import java.util.List;
 public class UniversalDyeing extends AbstractCraftingTweak {
 
     public UniversalDyeing() {
-        super("universal-dyeing", Material.PURPLE_TERRACOTTA);
+        super(TTCraftingTweak.UNIVERSAL_DYEING, Material.PURPLE_TERRACOTTA);
     }
 
     @Override

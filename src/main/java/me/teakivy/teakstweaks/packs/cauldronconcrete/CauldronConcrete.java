@@ -3,7 +3,7 @@ package me.teakivy.teakstweaks.packs.cauldronconcrete;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.permission.Permission;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.data.Levelled;
@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 public class CauldronConcrete extends BasePack {
 
     public CauldronConcrete() {
-        super (Pack.CAULDRON_CONCRETE, Material.CAULDRON);
+        super (TTPack.CAULDRON_CONCRETE, Material.CAULDRON);
     }
 
     @EventHandler

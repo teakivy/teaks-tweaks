@@ -11,6 +11,8 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTPack;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.ComponentLike;
 import net.kyori.adventure.text.minimessage.translation.Argument;
@@ -26,32 +28,55 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public abstract class AbstractCommand {
-    private final String parentPack;
+    private final TTPack parentPack;
     private final String translationKey;
     private final List<String> aliases;
+    private TTCommand command;
 
     private int cooldownTime;
     private final HashMap<UUID, Long> cooldownMap;
 
     /**
      * Set up the command
-     * @param parentPack The pack this command belongs to
+     * @param command The command object
      * @param translationKey The translation key for this command
      */
-    public AbstractCommand(String parentPack, String translationKey) {
+    public AbstractCommand(TTCommand command, String translationKey) {
+        this(command, translationKey, List.of());
+    }
+
+    /**
+     * Set up the command
+     * @param translationKey The translation key for this command
+     */
+    public AbstractCommand(TTPack parentPack, String translationKey) {
         this(parentPack, translationKey, List.of());
     }
 
     /**
      * Set up the command
-     * @param parentPack The pack this command belongs to
      * @param translationKey The translation key for this command
-     * @param aliases Command aliases
      */
-    public AbstractCommand(String parentPack, String translationKey, List<String> aliases) {
+    public AbstractCommand(TTPack parentPack, String translationKey, List<String> aliases) {
         this.parentPack = parentPack;
         this.translationKey = translationKey;
         this.aliases = aliases;
+
+        cooldownMap = new HashMap<>();
+        cooldownTime = 0;
+    }
+
+    /**
+     * Set up the command
+     * @param command The command object
+     * @param translationKey The translation key for this command
+     * @param aliases Command aliases
+     */
+    public AbstractCommand(TTCommand command, String translationKey, List<String> aliases) {
+        this.parentPack = command.getParentPack();
+        this.translationKey = translationKey;
+        this.aliases = aliases;
+        this.command = command;
 
         cooldownMap = new HashMap<>();
         cooldownTime = 0;
@@ -63,7 +88,7 @@ public abstract class AbstractCommand {
      * Get the parent pack of this command
      * @return The parent pack
      */
-    public String getParentPack() {
+    public TTPack getParentPack() {
         return parentPack;
     }
 
@@ -112,7 +137,7 @@ public abstract class AbstractCommand {
      * @return The config section
      */
     public ConfigurationSection getPackConfig() {
-        return Config.getPackConfig(parentPack);
+        return Config.getPackConfig(parentPack.getKey());
     }
 
     /**
@@ -148,10 +173,14 @@ public abstract class AbstractCommand {
     }
 
     public void register() {
-        if (parentPack != null && !Config.isPackEnabled(parentPack) && !Config.isDevMode()) return;
+        if (parentPack != null && !Config.isPackEnabled(parentPack.getKey()) && !Config.isDevMode()) return;
         getPlugin().getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, commands -> {
             commands.registrar().register(this.getCommand(), aliases);
         });
+    }
+
+    public boolean isEnabled() {
+        return parentPack == null || Config.isPackEnabled(parentPack.getKey()) || Config.isDevMode();
     }
 
     protected Command<CommandSourceStack> playerOnly(Function<CommandContext<CommandSourceStack>, Integer> function) {

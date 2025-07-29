@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.register.TTCraftingTweak;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.BlastingRecipe;
@@ -11,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 public class SmeltableRawOreBlocks extends AbstractCraftingTweak {
 
     public SmeltableRawOreBlocks() {
-        super("smeltable-raw-ore-blocks", Material.RAW_GOLD_BLOCK);
+        super(TTCraftingTweak.SMELTABLE_RAW_ORE_BLOCKS, Material.RAW_GOLD_BLOCK);
     }
 
     @Override

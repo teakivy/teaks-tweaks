@@ -5,7 +5,7 @@ import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.XPUtils;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.permission.Permission;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.block.Furnace;
@@ -29,7 +29,7 @@ import java.util.List;
 public class XPManagement extends BasePack {
 
     public XPManagement() {
-        super(Pack.XP_MANAGEMENT, Material.EXPERIENCE_BOTTLE);
+        super(TTPack.XP_MANAGEMENT, Material.EXPERIENCE_BOTTLE);
     }
 
     @Override

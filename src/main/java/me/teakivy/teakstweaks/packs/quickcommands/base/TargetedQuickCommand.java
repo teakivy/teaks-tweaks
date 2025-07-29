@@ -8,6 +8,7 @@ import io.papermc.paper.command.brigadier.argument.ArgumentTypes;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.entity.Player;
 
 import java.util.function.Consumer;
@@ -19,7 +20,7 @@ public class TargetedQuickCommand extends AbstractCommand {
     private final Consumer<Player> action;
 
     public TargetedQuickCommand(String commandName, Permission permission, Consumer<Player> action) {
-        super("quick-commands", "quick_commands." + commandName);
+        super(TTPack.QUICK_COMMANDS, "quick_commands." + commandName);
         this.commandName = commandName;
         this.permission = permission;
         this.action = action;

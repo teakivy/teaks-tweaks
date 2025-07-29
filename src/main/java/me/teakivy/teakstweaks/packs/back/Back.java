@@ -3,7 +3,7 @@ package me.teakivy.teakstweaks.packs.back;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.permission.Permission;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -19,7 +19,7 @@ import java.util.UUID;
 public class Back extends BasePack {
 
     public Back() {
-        super(Pack.BACK, Material.REDSTONE_TORCH);
+        super(TTPack.BACK, Material.REDSTONE_TORCH);
     }
 
     public static HashMap<UUID, Location> backLoc = new HashMap<>();

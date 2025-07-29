@@ -4,7 +4,7 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.config.Config;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -24,7 +24,7 @@ import java.util.UUID;
 public class AFKDisplay extends BasePack {
 
     public AFKDisplay() {
-        super(Pack.AFK_DISPLAY, Material.BELL);
+        super(TTPack.AFK_DISPLAY, Material.BELL);
     }
 
     @Override

@@ -2,7 +2,7 @@ package me.teakivy.teakstweaks.packs.musicdiscengraver;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.Key;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
@@ -15,7 +15,7 @@ import java.util.List;
 public class MusicDiscEngraver extends BasePack {
 
     public MusicDiscEngraver() {
-        super(Pack.MUSIC_DISC_ENGRAVER, Material.MUSIC_DISC_STAL);
+        super(TTPack.MUSIC_DISC_ENGRAVER, Material.MUSIC_DISC_STAL);
     }
 
     @Override

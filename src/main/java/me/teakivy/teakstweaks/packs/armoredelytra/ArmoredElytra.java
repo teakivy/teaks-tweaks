@@ -6,7 +6,7 @@ import me.teakivy.teakstweaks.utils.Base64Serializer;
 import me.teakivy.teakstweaks.utils.ItemSerializer;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.permission.Permission;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
@@ -32,7 +32,7 @@ import java.util.HashMap;
 public class ArmoredElytra extends BasePack {
 
     public ArmoredElytra() {
-        super(Pack.ARMORED_ELYTRA, Material.ELYTRA);
+        super(TTPack.ARMORED_ELYTRA, Material.ELYTRA);
     }
 
     @EventHandler

@@ -4,7 +4,7 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.UUIDUtils;
 import me.teakivy.teakstweaks.utils.config.Config;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 public class WanderingTrades extends BasePack {
 
     public WanderingTrades() {
-        super(Pack.WANDERING_TRADES, Material.LEAD);
+        super(TTPack.WANDERING_TRADES, Material.LEAD);
     }
 
     @EventHandler

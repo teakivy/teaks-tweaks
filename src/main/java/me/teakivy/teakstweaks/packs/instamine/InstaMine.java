@@ -2,7 +2,7 @@ package me.teakivy.teakstweaks.packs.instamine;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.permission.Permission;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
@@ -13,12 +13,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.ArrayList;
-
 public class InstaMine extends BasePack {
 
     public InstaMine() {
-        super(Pack.INSTA_MINE, Material.DEEPSLATE);
+        super(TTPack.INSTA_MINE, Material.DEEPSLATE);
     }
 
     @EventHandler

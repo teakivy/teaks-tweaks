@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.register.TTCraftingTweak;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -12,7 +13,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 public class BackToBlocks extends AbstractCraftingTweak {
 
     public BackToBlocks() {
-        super("back-to-blocks", Material.BRICK_SLAB);
+        super(TTCraftingTweak.BACK_TO_BLOCKS, Material.BRICK_SLAB);
     }
 
     @Override

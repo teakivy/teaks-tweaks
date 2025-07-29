@@ -3,7 +3,7 @@ package me.teakivy.teakstweaks.packs.itemaverages;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.log.Logger;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -29,7 +29,7 @@ public class ItemAverages extends BasePack {
     static HashMap<Material, Integer> items = new HashMap<>();
 
     public ItemAverages() {
-        super(Pack.ITEM_AVERAGES, Material.HOPPER);
+        super(TTPack.ITEM_AVERAGES, Material.HOPPER);
     }
 
     public static void spawnTracker(Location loc, Player player) {

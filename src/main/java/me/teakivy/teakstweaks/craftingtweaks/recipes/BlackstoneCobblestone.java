@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.register.TTCraftingTweak;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -14,7 +15,7 @@ import java.util.List;
 public class BlackstoneCobblestone extends AbstractCraftingTweak {
 
     public BlackstoneCobblestone() {
-        super("blackstone-cobblestone", Material.BLACKSTONE);
+        super(TTCraftingTweak.BLACKSTONE_COBBLESTONE, Material.BLACKSTONE);
     }
 
     @Override

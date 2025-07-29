@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.register.TTCraftingTweak;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.FurnaceRecipe;
@@ -10,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 public class RottenFleshToLeather extends AbstractCraftingTweak {
 
     public RottenFleshToLeather() {
-        super("rotten-flesh-to-leather", Material.LEATHER);
+        super(TTCraftingTweak.ROTTEN_FLESH_TO_LEATHER, Material.LEATHER);
     }
 
     @Override

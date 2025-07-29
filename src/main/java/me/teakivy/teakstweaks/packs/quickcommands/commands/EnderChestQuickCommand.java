@@ -7,6 +7,7 @@ import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 public class EnderChestQuickCommand extends AbstractCommand {
 
     public EnderChestQuickCommand() {
-        super("quick-commands", "quick_commands.enderchest", List.of("echest", "ec"));
+        super(TTPack.QUICK_COMMANDS, "quick_commands.enderchest", List.of("echest", "ec"));
     }
 
     @Override

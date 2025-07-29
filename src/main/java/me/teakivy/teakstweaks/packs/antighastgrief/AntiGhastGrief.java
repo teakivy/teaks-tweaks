@@ -1,7 +1,7 @@
 package me.teakivy.teakstweaks.packs.antighastgrief;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -11,7 +11,7 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 public class AntiGhastGrief extends BasePack {
 
     public AntiGhastGrief() {
-        super(Pack.ANTI_GHAST_GRIEF, Material.GHAST_SPAWN_EGG);
+        super(TTPack.ANTI_GHAST_GRIEF, Material.GHAST_SPAWN_EGG);
     }
 
     @EventHandler

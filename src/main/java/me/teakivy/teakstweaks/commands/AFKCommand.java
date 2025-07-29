@@ -8,12 +8,13 @@ import io.papermc.paper.command.brigadier.Commands;
 import me.teakivy.teakstweaks.packs.afkdisplay.AFKDisplay;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import org.bukkit.entity.Player;
 
 public class AFKCommand extends AbstractCommand {
 
     public AFKCommand() {
-        super("afk-display", "afk");
+        super(TTCommand.AFK, "afk");
     }
 
     @Override

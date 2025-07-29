@@ -1,7 +1,7 @@
 package me.teakivy.teakstweaks.packs.playerheaddrops;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.Registry;
@@ -18,7 +18,7 @@ import java.util.List;
 public class PlayerHeadDrops extends BasePack {
 
     public PlayerHeadDrops() {
-        super(Pack.PLAYER_HEAD_DROPS, Material.PLAYER_HEAD);
+        super(TTPack.PLAYER_HEAD_DROPS, Material.PLAYER_HEAD);
     }
 
     @EventHandler

@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.register.TTCraftingTweak;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -14,7 +15,7 @@ import java.util.List;
 public class UnpackableWool extends AbstractCraftingTweak {
 
     public UnpackableWool() {
-        super("unpackable-wool", Material.STRING);
+        super(TTCraftingTweak.UNPACKABLE_WOOL, Material.STRING);
     }
 
     @Override

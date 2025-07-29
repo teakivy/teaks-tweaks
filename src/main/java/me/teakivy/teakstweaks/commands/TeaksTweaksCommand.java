@@ -22,6 +22,7 @@ import me.teakivy.teakstweaks.utils.customitems.ItemHandler;
 import me.teakivy.teakstweaks.utils.log.PasteManager;
 import me.teakivy.teakstweaks.utils.log.PasteUploader;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import net.kyori.adventure.text.Component;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -35,7 +36,7 @@ import java.util.concurrent.CompletableFuture;
 public class TeaksTweaksCommand extends AbstractCommand {
 
     public TeaksTweaksCommand() {
-        super(null, "teakstweakscommand", List.of("tt", "tweaks"));
+        super(TTCommand.TEAKSTWEAKS, "teakstweakscommand", List.of("tt", "tweaks"));
     }
 
     @Override

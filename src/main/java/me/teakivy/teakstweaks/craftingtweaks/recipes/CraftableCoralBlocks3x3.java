@@ -2,6 +2,7 @@ package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.register.TTCraftingTweak;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
@@ -12,7 +13,7 @@ import java.util.List;
 public class CraftableCoralBlocks3x3 extends AbstractCraftingTweak {
 
     public CraftableCoralBlocks3x3() {
-        super("craftable-coral-blocks-3x3", Material.BRAIN_CORAL_BLOCK);
+        super(TTCraftingTweak.CRAFTABLE_CORAL_BLOCKS_3X3, Material.BRAIN_CORAL_BLOCK);
     }
 
     @Override

@@ -14,6 +14,7 @@ import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.customitems.TItem;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -25,7 +26,7 @@ import org.bukkit.persistence.PersistentDataType;
 public class GraveCommand extends AbstractCommand {
 
     public GraveCommand() {
-        super("graves", "grave");
+        super(TTCommand.GRAVE, "grave");
     }
 
     @Override

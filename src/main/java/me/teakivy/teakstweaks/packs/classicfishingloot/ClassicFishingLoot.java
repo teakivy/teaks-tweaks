@@ -2,7 +2,7 @@ package me.teakivy.teakstweaks.packs.classicfishingloot;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.permission.Permission;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
@@ -13,7 +13,7 @@ import org.bukkit.inventory.EquipmentSlot;
 public class ClassicFishingLoot extends BasePack {
 
     public ClassicFishingLoot() {
-        super(Pack.CLASSIC_FISHING_LOOT, Material.FISHING_ROD);
+        super(TTPack.CLASSIC_FISHING_LOOT, Material.FISHING_ROD);
     }
 
     @EventHandler

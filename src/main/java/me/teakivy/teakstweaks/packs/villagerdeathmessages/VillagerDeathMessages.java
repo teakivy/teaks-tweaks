@@ -2,7 +2,7 @@ package me.teakivy.teakstweaks.packs.villagerdeathmessages;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.log.Logger;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
 import org.bukkit.*;
 import org.bukkit.entity.EntityType;
@@ -13,7 +13,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 public class VillagerDeathMessages extends BasePack {
 
     public VillagerDeathMessages() {
-        super(Pack.VILLAGER_DEATH_MESSAGES, Material.TORCH);
+        super(TTPack.VILLAGER_DEATH_MESSAGES, Material.TORCH);
     }
 
     @EventHandler

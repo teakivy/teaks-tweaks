@@ -4,7 +4,7 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.config.Config;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -14,7 +14,7 @@ import org.bukkit.persistence.PersistentDataType;
 public class CoordsHud extends BasePack {
 
     public CoordsHud() {
-        super(Pack.COORDS_HUD, Material.OBSERVER);
+        super(TTPack.COORDS_HUD, Material.OBSERVER);
         startHUD();
     }
 

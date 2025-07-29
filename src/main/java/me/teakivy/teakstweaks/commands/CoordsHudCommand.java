@@ -8,6 +8,7 @@ import io.papermc.paper.command.brigadier.Commands;
 import me.teakivy.teakstweaks.packs.coordshud.CoordsHud;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
 public class CoordsHudCommand extends AbstractCommand {
 
     public CoordsHudCommand() {
-        super("coords-hud", "coordshud", List.of("ch"));
+        super(TTCommand.COORDSHUD, "coordshud", List.of("ch"));
     }
 
     @Override

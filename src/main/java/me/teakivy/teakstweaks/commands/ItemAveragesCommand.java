@@ -8,6 +8,7 @@ import io.papermc.paper.command.brigadier.Commands;
 import me.teakivy.teakstweaks.packs.itemaverages.ItemAverages;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -15,7 +16,7 @@ import org.bukkit.entity.Player;
 public class ItemAveragesCommand extends AbstractCommand {
 
     public ItemAveragesCommand() {
-        super("item-averages", "itemaverages");
+        super(TTCommand.ITEMAVERAGES, "itemaverages");
     }
 
     @Override

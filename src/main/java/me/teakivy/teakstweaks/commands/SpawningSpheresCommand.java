@@ -10,6 +10,7 @@ import me.teakivy.teakstweaks.packs.spawningspheres.SpawningSpheres;
 import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.function.BiFunction;
 public class SpawningSpheresCommand extends AbstractCommand {
 
     public SpawningSpheresCommand() {
-        super("spawning-spheres", "spawningspheres", List.of("ss", "sphere"));
+        super(TTCommand.SPAWNINGSPHERES, "spawningspheres", List.of("ss", "sphere"));
     }
 
     @Override

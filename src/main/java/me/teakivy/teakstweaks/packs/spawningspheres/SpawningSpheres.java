@@ -3,7 +3,7 @@ package me.teakivy.teakstweaks.packs.spawningspheres;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.JsonManager;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -17,7 +17,7 @@ public class SpawningSpheres extends BasePack {
     private static SpawningSphere greenSphere;
 
     public SpawningSpheres() {
-        super(Pack.SPAWNING_SPHERES, Material.WARDEN_SPAWN_EGG);
+        super(TTPack.SPAWNING_SPHERES, Material.WARDEN_SPAWN_EGG);
     }
 
     @Override

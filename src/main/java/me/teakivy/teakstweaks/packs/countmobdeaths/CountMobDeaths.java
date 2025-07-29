@@ -1,7 +1,7 @@
 package me.teakivy.teakstweaks.packs.countmobdeaths;
 
 import me.teakivy.teakstweaks.packs.BasePack;
-import me.teakivy.teakstweaks.utils.register.Pack;
+import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -16,7 +16,7 @@ import java.util.Objects;
 public class CountMobDeaths extends BasePack {
 
     public CountMobDeaths() {
-        super(Pack.COUNT_MOB_DEATHS, Material.ECHO_SHARD);
+        super(TTPack.COUNT_MOB_DEATHS, Material.ECHO_SHARD);
     }
 
     Objective objective;

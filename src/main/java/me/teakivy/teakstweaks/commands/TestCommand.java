@@ -7,13 +7,14 @@ import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.permission.Permission;
+import me.teakivy.teakstweaks.utils.register.TTCommand;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class TestCommand extends AbstractCommand {
 
     public TestCommand() {
-        super(null, "test");
+        super(TTCommand.TEST, "test");
     }
 
     @Override
