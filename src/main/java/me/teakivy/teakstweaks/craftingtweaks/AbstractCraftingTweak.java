@@ -10,7 +10,6 @@ import me.teakivy.teakstweaks.utils.register.TTCraftingTweak;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.minimessage.translation.Argument;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
@@ -48,7 +47,7 @@ public abstract class AbstractCraftingTweak {
      * Initialize all recipes for the pack
      */
     public void init() {
-        Logger.info(Component.translatable("startup.register.crafting_tweak", Argument.component("name", Component.text("<gold>" + name))));
+        Logger.info(Component.text(TranslationManager.getString("en_US", "startup.register.crafting_tweak").replace("<name>", name)));
         TeaksTweaks.getInstance().addCraftingTweaks(this.name);
         this.registerRecipes();
 

@@ -109,7 +109,7 @@ public class BasePack implements Listener {
 		}
 
 		getPlugin().addPack(name);
-		Logger.info(Component.translatable("startup.register.pack", insert("name", "<gold>" + name)));
+		Logger.info(Component.text(TranslationManager.getString("en_US", "startup.register.pack").replace("<name>", name)));
 
 		CustomMetrics.addPackEnabled(name);
 	}
