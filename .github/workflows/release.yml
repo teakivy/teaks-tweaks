@@ -25,7 +25,7 @@ jobs:
       - name: Build with Gradle
         env:
           PASTEBIN_DEV_KEY: ${{ secrets.PASTEBIN_DEV_KEY }}
-        run: ./gradlew build
+        run: ./gradlew shadowJar
 
       - name: Upload JAR file
         uses: actions/upload-artifact@v4
