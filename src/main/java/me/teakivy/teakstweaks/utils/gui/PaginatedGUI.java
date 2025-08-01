@@ -1,5 +1,6 @@
 package me.teakivy.teakstweaks.utils.gui;
 
+import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.lang.TranslationManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -78,12 +79,12 @@ public class PaginatedGUI {
         // Add navigation buttons
         ItemStack nextButton = new ItemStack(Material.ARROW);
         ItemMeta nextMeta = nextButton.getItemMeta();
-        nextMeta.displayName(mm.deserialize(TranslationManager.getString("en_US", "mechanics.gui.next_page")).decoration(TextDecoration.ITALIC, false));
+        nextMeta.displayName(mm.deserialize(TranslationManager.getString(Config.getLanguage(), "mechanics.gui.next_page")).decoration(TextDecoration.ITALIC, false));
         nextButton.setItemMeta(nextMeta);
 
         ItemStack prevButton = new ItemStack(Material.ARROW);
         ItemMeta prevMeta = prevButton.getItemMeta();
-        prevMeta.displayName(mm.deserialize(TranslationManager.getString("en_US", "mechanics.gui.previous_page")).decoration(TextDecoration.ITALIC, false));
+        prevMeta.displayName(mm.deserialize(TranslationManager.getString(Config.getLanguage(), "mechanics.gui.previous_page")).decoration(TextDecoration.ITALIC, false));
         prevButton.setItemMeta(prevMeta);
 
         if (page < items.size() / 45) inv.setItem(53, nextButton);

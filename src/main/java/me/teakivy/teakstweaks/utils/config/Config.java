@@ -65,6 +65,6 @@ public class Config {
     }
 
     public static String getLanguage() {
-        return get().getString("settings.language");
+        return get().getString("settings.server-language");
     }
 }

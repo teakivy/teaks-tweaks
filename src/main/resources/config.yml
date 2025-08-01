@@ -36,19 +36,20 @@ settings:
   # /teakstweaks paste (Permission: teakstweaks.command.teakstweaks.paste)
   send-log-in-paste: true
 
-  # Language
+  # Server Language
   # Change the language of the plugin
+  # Most messages will be shown in the client's language, but some messages will be shown in the server's language.
   # Supported languages:
-  #  - English (en)
-  #  - German (de)
-  #  - French (fr)
-  #  - Russian (ru)
-  #  - Finnish (fl)
-  #  - Polish (pl)
-  #  - Dutch (nl)
+  #  - English (en_US)
+  #  - German (de_DE)
+  #  - French (fr_FR)
+  #  - Russian (ru_RU)
+  #  - Finnish (fi_FI)
+  #  - Polish (pl_PL)
+  #  - Dutch (nl_NL)
   # If you would like to translate the plugin into your language,
   # please contact me on discord! @teakivy (https://discord.gg/wfP4SkZx6s)
-  language: "en"
+  server-language: "en_US"
 
 
 # Packs
@@ -578,7 +579,7 @@ packs:
   # Craft an Empty Music Disc with 8 Iron Ingots and a Diamond.
   # Engrave a music disc with a Stonecutter.
   music-disc-engraver:
-    enabled: true
+    enabled: false
 
   # Nether Portal Coords
   # Adds a command that calculates where a nether portal must be placed in the other dimension. Useful for syncing up nether portals.

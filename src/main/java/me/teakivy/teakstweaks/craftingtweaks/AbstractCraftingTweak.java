@@ -37,17 +37,17 @@ public abstract class AbstractCraftingTweak {
         this.craftingTweak = craftingTweak;
         this.path = craftingTweak.getKey();
         String langKey = path.replaceAll("-", "_");
-        this.name = TranslationManager.getString("en_US", langKey + ".name");
+        this.name = TranslationManager.getString(Config.getLanguage(), langKey + ".name");
 
         this.material = material;
-        this.description = TranslationManager.getString("en_US", langKey + ".description");
+        this.description = TranslationManager.getString(Config.getLanguage(), langKey + ".description");
     }
 
     /**
      * Initialize all recipes for the pack
      */
     public void init() {
-        Logger.info(Component.text(TranslationManager.getString("en_US", "startup.register.crafting_tweak").replace("<name>", name)));
+        Logger.info(Component.text(TranslationManager.getString(Config.getLanguage(), "startup.register.crafting_tweak").replace("<name>", name)));
         TeaksTweaks.getInstance().addCraftingTweaks(this.name);
         this.registerRecipes();
 

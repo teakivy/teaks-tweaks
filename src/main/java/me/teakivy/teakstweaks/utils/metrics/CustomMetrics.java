@@ -24,7 +24,7 @@ public class CustomMetrics {
         registerFirstUsedMetrics(metrics);
         registerDevModeMetrics(metrics);
 
-        metrics.addCustomChart(new Metrics.AdvancedPie("language", new Callable<Map<String, Integer>>() {
+        metrics.addCustomChart(new Metrics.AdvancedPie("server-language", new Callable<Map<String, Integer>>() {
             @Override
             public Map<String, Integer> call() throws Exception {
                 Map<String, Integer> valueMap = new HashMap<>();

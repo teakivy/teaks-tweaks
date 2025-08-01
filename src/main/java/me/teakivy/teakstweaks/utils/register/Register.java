@@ -6,8 +6,8 @@ import java.util.List;
 public class Register {
 
     public static void registerAll() {
-        registerPacks();
         registerCraftingTweaks();
+        registerPacks();
         registerCommands();
     }
 

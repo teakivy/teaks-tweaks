@@ -45,9 +45,9 @@ public class BasePack implements Listener {
 		this.pack = pack;
 		this.path = pack.getKey();
 		this.translatableKey = this.path.replaceAll("-", "_");
-        this.name = TranslationManager.getString("en_US", this.translatableKey + ".name");
+        this.name = TranslationManager.getString(Config.getLanguage(), this.translatableKey + ".name");
 
-		String[] description = TranslationManager.getString("en_US", this.translatableKey + ".description").split("<newline>");
+		String[] description = TranslationManager.getString(Config.getLanguage(), this.translatableKey + ".description").split("<newline>");
 
 		item = new ItemStack(material);
 
@@ -109,7 +109,7 @@ public class BasePack implements Listener {
 		}
 
 		getPlugin().addPack(name);
-		Logger.info(Component.text(TranslationManager.getString("en_US", "startup.register.pack").replace("<name>", name)));
+		Logger.info(Component.text(TranslationManager.getString(Config.getLanguage(), "startup.register.pack").replace("<name>", name)));
 
 		CustomMetrics.addPackEnabled(name);
 	}
@@ -210,7 +210,7 @@ public class BasePack implements Listener {
 	 * @return Translated & colored string
 	 */
 	protected String getString(String key) {
-		return TranslationManager.getString("en_US", translatableKey + "." + key);
+		return TranslationManager.getString(Config.getLanguage(), translatableKey + "." + key);
 	}
 
 	protected Component getText(String key, ComponentLike... resolvers) {

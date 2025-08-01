@@ -5,7 +5,6 @@ import me.teakivy.teakstweaks.utils.*;
 import me.teakivy.teakstweaks.utils.advancements.AdvancementManager;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.gui.GUIListener;
-import me.teakivy.teakstweaks.utils.lang.Translatable;
 import me.teakivy.teakstweaks.utils.lang.TranslationManager;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
@@ -19,6 +18,7 @@ import me.teakivy.teakstweaks.utils.update.VersionManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.translation.Argument;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -48,9 +48,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
 
-        translationManager = new TranslationManager(getDataFolder());
-        translationManager.initialize();
-
         VersionManager.init();
         // Initialize an audiences instance for the plugin
         // Credits
@@ -65,12 +62,12 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
 
         advancementManager.enable();
 
-        // Language
-        Translatable.init(getConfig().getString("settings.language"));
+        translationManager = new TranslationManager(getDataFolder());
+        translationManager.initialize();
 
         // Update Checker
         if (Config.getBoolean("settings.disable-update-checker")) {
-            Logger.info(Translatable.get("startup.update.disabled"));
+            Logger.info(Component.translatable("startup.update.disabled"));
         } else {
             getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
         }
@@ -86,7 +83,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
 
         // Plugin startup logic
         Logger.info(newText(" "));
-        Logger.info(Translatable.get("startup.plugin.started", Placeholder.parsed("version", this.getDescription().getVersion())));
+        Logger.info(Component.translatable("startup.plugin.started", Argument.string("version", this.getDescription().getVersion())));
         Logger.info(newText(" "));
 
 
@@ -110,7 +107,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        Logger.info(Translatable.get("startup.plugin.shutting_down"));
+        Logger.info(Component.translatable("startup.plugin.shutting_down"));
     }
 
     /**
