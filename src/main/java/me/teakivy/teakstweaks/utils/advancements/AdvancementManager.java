@@ -54,6 +54,7 @@ public class AdvancementManager {
         tabs.put("more_mob_heads", tab);
         roots.put("more_mob_heads", root);
 
+        tab.registerAdvancements(root);
         tab.getEventManager().register(tab, PlayerLoadingCompletedEvent.class, event -> {
             tab.showTab(event.getPlayer());
             tab.grantRootAdvancement(event.getPlayer());
