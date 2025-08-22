@@ -15,7 +15,7 @@ import me.teakivy.teakstweaks.packs.cauldronmud.CauldronMud;
 import me.teakivy.teakstweaks.packs.chatcolors.ChatColors;
 import me.teakivy.teakstweaks.packs.chunkloaders.ChunkLoaders;
 import me.teakivy.teakstweaks.packs.classicfishingloot.ClassicFishingLoot;
-import me.teakivy.teakstweaks.packs.collectiblebuddingamethyst.CollectibleBuddingAmethyst;
+import me.teakivy.teakstweaks.packs.collectibleblocks.CollectibleBlocks;
 import me.teakivy.teakstweaks.packs.confetticreepers.ConfettiCreepers;
 import me.teakivy.teakstweaks.packs.coordshud.CoordsHud;
 import me.teakivy.teakstweaks.packs.countmobdeaths.CountMobDeaths;
@@ -90,7 +90,7 @@ public enum TTPack {
     CHAT_COLORS("chat-colors", ChatColors.class),
     CHUNK_LOADERS("chunk-loaders", ChunkLoaders.class),
     CLASSIC_FISHING_LOOT("classic-fishing-loot", ClassicFishingLoot.class),
-    COLLECTIBLE_BUDDING_AMETHYST("collectible-budding-amethyst", CollectibleBuddingAmethyst.class),
+    COLLECTIBLE_BLOCKS("collectible-blocks", CollectibleBlocks.class),
     CONFETTI_CREEPERS("confetti-creepers", ConfettiCreepers.class),
     COORDS_HUD("coords-hud", CoordsHud.class),
     COUNT_MOB_DEATHS("count-mob-deaths", CountMobDeaths.class),

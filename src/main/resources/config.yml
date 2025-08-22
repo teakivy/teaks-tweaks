@@ -236,11 +236,14 @@ packs:
   classic-fishing-loot:
     enabled: false
 
-  # Collectible Budding Amethyst
-  # Allows you to collect budding amethyst blocks to get the block itself.
-  collectible-budding-amethyst:
+  # Collectible Blocks
+  # Allows you to obtain certain blocks directly when breaking them.
+  collectible-blocks:
     enabled: false
-    # Whether or not silk touch is required to collect budding amethyst blocks
+    # The list of blocks that can be collected, refer to https://jd.papermc.io/paper/1.21.8/org/bukkit/Material.html for list of materials
+    blocks:
+      - BUDDING_AMETHYST
+    # Whether or not silk touch is required to collect blocks
     require-silk-touch: true
 
   # Confetti Creepers
