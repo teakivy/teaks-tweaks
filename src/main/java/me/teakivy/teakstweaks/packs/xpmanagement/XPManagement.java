@@ -3,7 +3,6 @@ package me.teakivy.teakstweaks.packs.xpmanagement;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.XPUtils;
-import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
@@ -120,15 +119,13 @@ public class XPManagement extends BasePack {
 
         if (getConfig().getBoolean("display-amount")) {
             List<Component> lore = new ArrayList<>();
-            lore.add(getText("bottle_contains", insert("return_amount", getConfig().getInt("take-xp-amount"))));
+            lore.add(getText("bottle_contains", insert("return_amount", getConfig().getInt("return-xp-amount"))));
             xpMeta.lore(lore);
         }
 
         PersistentDataContainer data = xpMeta.getPersistentDataContainer();
-        data.set(Key.get("xp_amount"), PersistentDataType.INTEGER, Config.getInt("packs.xp-management.return-xp-amount"));
-        xpBottle.setItemMeta(xpMeta);
-
-        data.set(Key.get("xp_smelt_amount"), PersistentDataType.INTEGER, Config.getInt("packs.xp-management.take-xp-amount"));
+        data.set(Key.get("xp_amount"), PersistentDataType.INTEGER, getConfig().getInt("packs.xp-management.return-xp-amount"));
+        data.set(Key.get("xp_smelt_amount"), PersistentDataType.INTEGER, getConfig().getInt("packs.xp-management.take-xp-amount"));
         xpBottle.setItemMeta(xpMeta);
 
         if (getConfig().getBoolean("sneak-to-bottle-all") && player.isSneaking()) {
