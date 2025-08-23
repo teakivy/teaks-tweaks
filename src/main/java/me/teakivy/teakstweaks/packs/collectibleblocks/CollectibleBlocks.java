@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class CollectibleBlocks extends BasePack {
 
-    private HashSet<Material> collectibleBlocks;
+    private final HashSet<Material> collectibleBlocks;
 
     public CollectibleBlocks() {
         super(TTPack.COLLECTIBLE_BLOCKS, Material.BUDDING_AMETHYST);
