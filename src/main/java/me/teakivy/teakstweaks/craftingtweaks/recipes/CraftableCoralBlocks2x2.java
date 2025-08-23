@@ -27,11 +27,11 @@ public class CraftableCoralBlocks2x2 extends AbstractCraftingTweak {
 
     private void newCoralRecipe(String type) {
         RecipeChoice choice = new RecipeChoice.MaterialChoice(List.of(
-                Material.valueOf(type + "_CORAL"),
-                Material.valueOf(type + "_CORAL_FAN")));
+                Material.matchMaterial(type + "_CORAL"),
+                Material.matchMaterial(type + "_CORAL_FAN")));
 
         ShapedRecipe recipe = new ShapedRecipe(Key.get(type.toLowerCase() + "_coral_2x2"),
-                new ItemStack(Material.valueOf(type.toUpperCase() + "_CORAL_BLOCK")));
+                new ItemStack(Material.matchMaterial(type.toUpperCase() + "_CORAL_BLOCK")));
         recipe.shape("xx", "xx");
         recipe.setIngredient('x', choice);
         addRecipe(recipe);

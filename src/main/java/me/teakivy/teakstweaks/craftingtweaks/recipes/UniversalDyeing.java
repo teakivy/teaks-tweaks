@@ -37,22 +37,22 @@ public class UniversalDyeing extends AbstractCraftingTweak {
     }
 
     public void registerNewRecipeType(String inputName) {
-        newDyeingRecipe("black_", inputName, Material.BLACK_DYE, Material.valueOf("BLACK_" + inputName));
-        newDyeingRecipe("blue_", inputName, Material.BLUE_DYE, Material.valueOf("BLUE_" + inputName));
-        newDyeingRecipe("brown_", inputName, Material.BROWN_DYE, Material.valueOf("BROWN_" + inputName));
-        newDyeingRecipe("cyan_", inputName, Material.CYAN_DYE, Material.valueOf("CYAN_" + inputName));
-        newDyeingRecipe("gray_", inputName, Material.GRAY_DYE, Material.valueOf("GRAY_" + inputName));
-        newDyeingRecipe("green_", inputName, Material.GREEN_DYE, Material.valueOf("GREEN_" + inputName));
-        newDyeingRecipe("light_blue_", inputName, Material.LIGHT_BLUE_DYE, Material.valueOf("LIGHT_BLUE_" + inputName));
-        newDyeingRecipe("light_gray_", inputName, Material.LIGHT_GRAY_DYE, Material.valueOf("LIGHT_GRAY_" + inputName));
-        newDyeingRecipe("lime_", inputName, Material.LIME_DYE, Material.valueOf("LIME_" + inputName));
-        newDyeingRecipe("magenta_", inputName, Material.MAGENTA_DYE, Material.valueOf("MAGENTA_" + inputName));
-        newDyeingRecipe("orange_", inputName, Material.ORANGE_DYE, Material.valueOf("ORANGE_" + inputName));
-        newDyeingRecipe("pink_", inputName, Material.PINK_DYE, Material.valueOf("PINK_" + inputName));
-        newDyeingRecipe("purple_", inputName, Material.PURPLE_DYE, Material.valueOf("PURPLE_" + inputName));
-        newDyeingRecipe("red_", inputName, Material.RED_DYE, Material.valueOf("RED_" + inputName));
-        newDyeingRecipe("white_", inputName, Material.WHITE_DYE, Material.valueOf("WHITE_" + inputName));
-        newDyeingRecipe("yellow_", inputName, Material.YELLOW_DYE, Material.valueOf("YELLOW_" + inputName));
+        newDyeingRecipe("black_", inputName, Material.BLACK_DYE, Material.matchMaterial("BLACK_" + inputName));
+        newDyeingRecipe("blue_", inputName, Material.BLUE_DYE, Material.matchMaterial("BLUE_" + inputName));
+        newDyeingRecipe("brown_", inputName, Material.BROWN_DYE, Material.matchMaterial("BROWN_" + inputName));
+        newDyeingRecipe("cyan_", inputName, Material.CYAN_DYE, Material.matchMaterial("CYAN_" + inputName));
+        newDyeingRecipe("gray_", inputName, Material.GRAY_DYE, Material.matchMaterial("GRAY_" + inputName));
+        newDyeingRecipe("green_", inputName, Material.GREEN_DYE, Material.matchMaterial("GREEN_" + inputName));
+        newDyeingRecipe("light_blue_", inputName, Material.LIGHT_BLUE_DYE, Material.matchMaterial("LIGHT_BLUE_" + inputName));
+        newDyeingRecipe("light_gray_", inputName, Material.LIGHT_GRAY_DYE, Material.matchMaterial("LIGHT_GRAY_" + inputName));
+        newDyeingRecipe("lime_", inputName, Material.LIME_DYE, Material.matchMaterial("LIME_" + inputName));
+        newDyeingRecipe("magenta_", inputName, Material.MAGENTA_DYE, Material.matchMaterial("MAGENTA_" + inputName));
+        newDyeingRecipe("orange_", inputName, Material.ORANGE_DYE, Material.matchMaterial("ORANGE_" + inputName));
+        newDyeingRecipe("pink_", inputName, Material.PINK_DYE, Material.matchMaterial("PINK_" + inputName));
+        newDyeingRecipe("purple_", inputName, Material.PURPLE_DYE, Material.matchMaterial("PURPLE_" + inputName));
+        newDyeingRecipe("red_", inputName, Material.RED_DYE, Material.matchMaterial("RED_" + inputName));
+        newDyeingRecipe("white_", inputName, Material.WHITE_DYE, Material.matchMaterial("WHITE_" + inputName));
+        newDyeingRecipe("yellow_", inputName, Material.YELLOW_DYE, Material.matchMaterial("YELLOW_" + inputName));
     }
 
     public void newDyeingRecipe(String colorType, String inputName, Material inputDye, Material output) {
@@ -61,22 +61,22 @@ public class UniversalDyeing extends AbstractCraftingTweak {
         ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(output, 8));
 
         List<Material> materials = new ArrayList<>();
-        materials.add(Material.valueOf("BLACK_" + inputName));
-        materials.add(Material.valueOf("BLUE_" + inputName));
-        materials.add(Material.valueOf("BROWN_" + inputName));
-        materials.add(Material.valueOf("CYAN_" + inputName));
-        materials.add(Material.valueOf("GRAY_" + inputName));
-        materials.add(Material.valueOf("GREEN_" + inputName));
-        materials.add(Material.valueOf("LIGHT_BLUE_" + inputName));
-        materials.add(Material.valueOf("LIGHT_GRAY_" + inputName));
-        materials.add(Material.valueOf("LIME_" + inputName));
-        materials.add(Material.valueOf("MAGENTA_" + inputName));
-        materials.add(Material.valueOf("ORANGE_" + inputName));
-        materials.add(Material.valueOf("PINK_" + inputName));
-        materials.add(Material.valueOf("PURPLE_" + inputName));
-        materials.add(Material.valueOf("RED_" + inputName));
-        materials.add(Material.valueOf("WHITE_" + inputName));
-        materials.add(Material.valueOf("YELLOW_" + inputName));
+        materials.add(Material.matchMaterial("BLACK_" + inputName));
+        materials.add(Material.matchMaterial("BLUE_" + inputName));
+        materials.add(Material.matchMaterial("BROWN_" + inputName));
+        materials.add(Material.matchMaterial("CYAN_" + inputName));
+        materials.add(Material.matchMaterial("GRAY_" + inputName));
+        materials.add(Material.matchMaterial("GREEN_" + inputName));
+        materials.add(Material.matchMaterial("LIGHT_BLUE_" + inputName));
+        materials.add(Material.matchMaterial("LIGHT_GRAY_" + inputName));
+        materials.add(Material.matchMaterial("LIME_" + inputName));
+        materials.add(Material.matchMaterial("MAGENTA_" + inputName));
+        materials.add(Material.matchMaterial("ORANGE_" + inputName));
+        materials.add(Material.matchMaterial("PINK_" + inputName));
+        materials.add(Material.matchMaterial("PURPLE_" + inputName));
+        materials.add(Material.matchMaterial("RED_" + inputName));
+        materials.add(Material.matchMaterial("WHITE_" + inputName));
+        materials.add(Material.matchMaterial("YELLOW_" + inputName));
 
         recipe.shape("###", "#o#", "###");
         recipe.setIngredient('#', new RecipeChoice.MaterialChoice(materials));
@@ -93,22 +93,22 @@ public class UniversalDyeing extends AbstractCraftingTweak {
 
 
         List<Material> materials = new ArrayList<>();
-        materials.add(Material.valueOf("BLACK_" + inputName));
-        materials.add(Material.valueOf("BLUE_" + inputName));
-        materials.add(Material.valueOf("BROWN_" + inputName));
-        materials.add(Material.valueOf("CYAN_" + inputName));
-        materials.add(Material.valueOf("GRAY_" + inputName));
-        materials.add(Material.valueOf("GREEN_" + inputName));
-        materials.add(Material.valueOf("LIGHT_BLUE_" + inputName));
-        materials.add(Material.valueOf("LIGHT_GRAY_" + inputName));
-        materials.add(Material.valueOf("LIME_" + inputName));
-        materials.add(Material.valueOf("MAGENTA_" + inputName));
-        materials.add(Material.valueOf("ORANGE_" + inputName));
-        materials.add(Material.valueOf("PINK_" + inputName));
-        materials.add(Material.valueOf("PURPLE_" + inputName));
-        materials.add(Material.valueOf("RED_" + inputName));
-        materials.add(Material.valueOf("WHITE_" + inputName));
-        materials.add(Material.valueOf("YELLOW_" + inputName));
+        materials.add(Material.matchMaterial("BLACK_" + inputName));
+        materials.add(Material.matchMaterial("BLUE_" + inputName));
+        materials.add(Material.matchMaterial("BROWN_" + inputName));
+        materials.add(Material.matchMaterial("CYAN_" + inputName));
+        materials.add(Material.matchMaterial("GRAY_" + inputName));
+        materials.add(Material.matchMaterial("GREEN_" + inputName));
+        materials.add(Material.matchMaterial("LIGHT_BLUE_" + inputName));
+        materials.add(Material.matchMaterial("LIGHT_GRAY_" + inputName));
+        materials.add(Material.matchMaterial("LIME_" + inputName));
+        materials.add(Material.matchMaterial("MAGENTA_" + inputName));
+        materials.add(Material.matchMaterial("ORANGE_" + inputName));
+        materials.add(Material.matchMaterial("PINK_" + inputName));
+        materials.add(Material.matchMaterial("PURPLE_" + inputName));
+        materials.add(Material.matchMaterial("RED_" + inputName));
+        materials.add(Material.matchMaterial("WHITE_" + inputName));
+        materials.add(Material.matchMaterial("YELLOW_" + inputName));
 
         recipe.addIngredient(new RecipeChoice.MaterialChoice(materials));
         recipe.addIngredient(inputDye);
@@ -118,48 +118,48 @@ public class UniversalDyeing extends AbstractCraftingTweak {
     }
 
     public void registerBedRecipeTypes(String inputName) {
-        newBedRecipe("black_", inputName, Material.BLACK_DYE, Material.valueOf("BLACK_" + inputName));
-        newBedRecipe("blue_", inputName, Material.BLUE_DYE, Material.valueOf("BLUE_" + inputName));
-        newBedRecipe("brown_", inputName, Material.BROWN_DYE, Material.valueOf("BROWN_" + inputName));
-        newBedRecipe("cyan_", inputName, Material.CYAN_DYE, Material.valueOf("CYAN_" + inputName));
-        newBedRecipe("gray_", inputName, Material.GRAY_DYE, Material.valueOf("GRAY_" + inputName));
-        newBedRecipe("green_", inputName, Material.GREEN_DYE, Material.valueOf("GREEN_" + inputName));
-        newBedRecipe("light_blue_", inputName, Material.LIGHT_BLUE_DYE, Material.valueOf("LIGHT_BLUE_" + inputName));
-        newBedRecipe("light_gray_", inputName, Material.LIGHT_GRAY_DYE, Material.valueOf("LIGHT_GRAY_" + inputName));
-        newBedRecipe("lime_", inputName, Material.LIME_DYE, Material.valueOf("LIME_" + inputName));
-        newBedRecipe("magenta_", inputName, Material.MAGENTA_DYE, Material.valueOf("MAGENTA_" + inputName));
-        newBedRecipe("orange_", inputName, Material.ORANGE_DYE, Material.valueOf("ORANGE_" + inputName));
-        newBedRecipe("pink_", inputName, Material.PINK_DYE, Material.valueOf("PINK_" + inputName));
-        newBedRecipe("purple_", inputName, Material.PURPLE_DYE, Material.valueOf("PURPLE_" + inputName));
-        newBedRecipe("red_", inputName, Material.RED_DYE, Material.valueOf("RED_" + inputName));
-        newBedRecipe("white_", inputName, Material.WHITE_DYE, Material.valueOf("WHITE_" + inputName));
-        newBedRecipe("yellow_", inputName, Material.YELLOW_DYE, Material.valueOf("YELLOW_" + inputName));
+        newBedRecipe("black_", inputName, Material.BLACK_DYE, Material.matchMaterial("BLACK_" + inputName));
+        newBedRecipe("blue_", inputName, Material.BLUE_DYE, Material.matchMaterial("BLUE_" + inputName));
+        newBedRecipe("brown_", inputName, Material.BROWN_DYE, Material.matchMaterial("BROWN_" + inputName));
+        newBedRecipe("cyan_", inputName, Material.CYAN_DYE, Material.matchMaterial("CYAN_" + inputName));
+        newBedRecipe("gray_", inputName, Material.GRAY_DYE, Material.matchMaterial("GRAY_" + inputName));
+        newBedRecipe("green_", inputName, Material.GREEN_DYE, Material.matchMaterial("GREEN_" + inputName));
+        newBedRecipe("light_blue_", inputName, Material.LIGHT_BLUE_DYE, Material.matchMaterial("LIGHT_BLUE_" + inputName));
+        newBedRecipe("light_gray_", inputName, Material.LIGHT_GRAY_DYE, Material.matchMaterial("LIGHT_GRAY_" + inputName));
+        newBedRecipe("lime_", inputName, Material.LIME_DYE, Material.matchMaterial("LIME_" + inputName));
+        newBedRecipe("magenta_", inputName, Material.MAGENTA_DYE, Material.matchMaterial("MAGENTA_" + inputName));
+        newBedRecipe("orange_", inputName, Material.ORANGE_DYE, Material.matchMaterial("ORANGE_" + inputName));
+        newBedRecipe("pink_", inputName, Material.PINK_DYE, Material.matchMaterial("PINK_" + inputName));
+        newBedRecipe("purple_", inputName, Material.PURPLE_DYE, Material.matchMaterial("PURPLE_" + inputName));
+        newBedRecipe("red_", inputName, Material.RED_DYE, Material.matchMaterial("RED_" + inputName));
+        newBedRecipe("white_", inputName, Material.WHITE_DYE, Material.matchMaterial("WHITE_" + inputName));
+        newBedRecipe("yellow_", inputName, Material.YELLOW_DYE, Material.matchMaterial("YELLOW_" + inputName));
     }
 
 
     public void newClearRecipe(String inputName) {
         NamespacedKey key = Key.get("clear_" + inputName.toLowerCase() + "_universal");
 
-        ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.valueOf(inputName)));
+        ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.matchMaterial(inputName)));
 
 
         List<Material> materials = new ArrayList<>();
-        materials.add(Material.valueOf("BLACK_" + inputName));
-        materials.add(Material.valueOf("BLUE_" + inputName));
-        materials.add(Material.valueOf("BROWN_" + inputName));
-        materials.add(Material.valueOf("CYAN_" + inputName));
-        materials.add(Material.valueOf("GRAY_" + inputName));
-        materials.add(Material.valueOf("GREEN_" + inputName));
-        materials.add(Material.valueOf("LIGHT_BLUE_" + inputName));
-        materials.add(Material.valueOf("LIGHT_GRAY_" + inputName));
-        materials.add(Material.valueOf("LIME_" + inputName));
-        materials.add(Material.valueOf("MAGENTA_" + inputName));
-        materials.add(Material.valueOf("ORANGE_" + inputName));
-        materials.add(Material.valueOf("PINK_" + inputName));
-        materials.add(Material.valueOf("PURPLE_" + inputName));
-        materials.add(Material.valueOf("RED_" + inputName));
-        materials.add(Material.valueOf("WHITE_" + inputName));
-        materials.add(Material.valueOf("YELLOW_" + inputName));
+        materials.add(Material.matchMaterial("BLACK_" + inputName));
+        materials.add(Material.matchMaterial("BLUE_" + inputName));
+        materials.add(Material.matchMaterial("BROWN_" + inputName));
+        materials.add(Material.matchMaterial("CYAN_" + inputName));
+        materials.add(Material.matchMaterial("GRAY_" + inputName));
+        materials.add(Material.matchMaterial("GREEN_" + inputName));
+        materials.add(Material.matchMaterial("LIGHT_BLUE_" + inputName));
+        materials.add(Material.matchMaterial("LIGHT_GRAY_" + inputName));
+        materials.add(Material.matchMaterial("LIME_" + inputName));
+        materials.add(Material.matchMaterial("MAGENTA_" + inputName));
+        materials.add(Material.matchMaterial("ORANGE_" + inputName));
+        materials.add(Material.matchMaterial("PINK_" + inputName));
+        materials.add(Material.matchMaterial("PURPLE_" + inputName));
+        materials.add(Material.matchMaterial("RED_" + inputName));
+        materials.add(Material.matchMaterial("WHITE_" + inputName));
+        materials.add(Material.matchMaterial("YELLOW_" + inputName));
 
         recipe.addIngredient(new RecipeChoice.MaterialChoice(materials));
         recipe.addIngredient(Material.ICE);
@@ -170,26 +170,26 @@ public class UniversalDyeing extends AbstractCraftingTweak {
     public void newClearStainedRecipe(String inputName) {
         NamespacedKey key = Key.get("clear_" + inputName.toLowerCase() + "_universal");
 
-        ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.valueOf(inputName)));
+        ShapelessRecipe recipe = new ShapelessRecipe(key, new ItemStack(Material.matchMaterial(inputName)));
 
 
         List<Material> materials = new ArrayList<>();
-        materials.add(Material.valueOf("BLACK_STAINED_" + inputName));
-        materials.add(Material.valueOf("BLUE_STAINED_" + inputName));
-        materials.add(Material.valueOf("BROWN_STAINED_" + inputName));
-        materials.add(Material.valueOf("CYAN_STAINED_" + inputName));
-        materials.add(Material.valueOf("GRAY_STAINED_" + inputName));
-        materials.add(Material.valueOf("GREEN_STAINED_" + inputName));
-        materials.add(Material.valueOf("LIGHT_BLUE_STAINED_" + inputName));
-        materials.add(Material.valueOf("LIGHT_GRAY_STAINED_" + inputName));
-        materials.add(Material.valueOf("LIME_STAINED_" + inputName));
-        materials.add(Material.valueOf("MAGENTA_STAINED_" + inputName));
-        materials.add(Material.valueOf("ORANGE_STAINED_" + inputName));
-        materials.add(Material.valueOf("PINK_STAINED_" + inputName));
-        materials.add(Material.valueOf("PURPLE_STAINED_" + inputName));
-        materials.add(Material.valueOf("RED_STAINED_" + inputName));
-        materials.add(Material.valueOf("WHITE_STAINED_" + inputName));
-        materials.add(Material.valueOf("YELLOW_STAINED_" + inputName));
+        materials.add(Material.matchMaterial("BLACK_STAINED_" + inputName));
+        materials.add(Material.matchMaterial("BLUE_STAINED_" + inputName));
+        materials.add(Material.matchMaterial("BROWN_STAINED_" + inputName));
+        materials.add(Material.matchMaterial("CYAN_STAINED_" + inputName));
+        materials.add(Material.matchMaterial("GRAY_STAINED_" + inputName));
+        materials.add(Material.matchMaterial("GREEN_STAINED_" + inputName));
+        materials.add(Material.matchMaterial("LIGHT_BLUE_STAINED_" + inputName));
+        materials.add(Material.matchMaterial("LIGHT_GRAY_STAINED_" + inputName));
+        materials.add(Material.matchMaterial("LIME_STAINED_" + inputName));
+        materials.add(Material.matchMaterial("MAGENTA_STAINED_" + inputName));
+        materials.add(Material.matchMaterial("ORANGE_STAINED_" + inputName));
+        materials.add(Material.matchMaterial("PINK_STAINED_" + inputName));
+        materials.add(Material.matchMaterial("PURPLE_STAINED_" + inputName));
+        materials.add(Material.matchMaterial("RED_STAINED_" + inputName));
+        materials.add(Material.matchMaterial("WHITE_STAINED_" + inputName));
+        materials.add(Material.matchMaterial("YELLOW_STAINED_" + inputName));
 
         recipe.addIngredient(new RecipeChoice.MaterialChoice(materials));
         recipe.addIngredient(Material.ICE);

@@ -20,15 +20,20 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.MerchantRecipe;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 public class WanderingTrades extends BasePack {
 
+    private final HashSet<String> playerNames;
+
     public WanderingTrades() {
         super(TTPack.WANDERING_TRADES, Material.LEAD);
+        playerNames = new HashSet<String>(getConfig().getStringList("player-heads.players"));
     }
 
     @EventHandler
@@ -83,24 +88,22 @@ public class WanderingTrades extends BasePack {
 
     private CompletableFuture<List<MerchantRecipe>> getHeadTrades() {
         return CompletableFuture.supplyAsync(() -> {
-            List<String> players = new ArrayList<>(getConfig().getStringList("player-heads.players"));
-
             if (getConfig().getBoolean("player-heads.read-from-whitelist")) {
-                players.clear();
+                playerNames.clear();
                 for (OfflinePlayer pl : Bukkit.getWhitelistedPlayers()) {
-                    players.add(pl.getName());
+                    playerNames.add(pl.getName());
                 }
             }
 
-            return players;
-        }).thenCompose(players -> {
+            return playerNames;
+        }).thenCompose(playerNames -> {
             List<CompletableFuture<MerchantRecipe>> futures = new ArrayList<>();
-            List<String> headNames = new ArrayList<>();
+            Set<String> headNames = new HashSet<>();
             Random rand = new Random();
 
             if (Config.isDevMode()) {
                 // In dev mode, create a recipe for each player
-                for (String player : players) {
+                for (String player : playerNames) {
                     futures.add(newHeadRecipe(player)
                             .exceptionally(ex -> {
                                 return null;  // Return null in case of failure
@@ -112,9 +115,10 @@ public class WanderingTrades extends BasePack {
                 int amount = getConfig().getInt("player-heads.amount-of-trades");
                 int attempts = amount + 25;
 
+                List<String> playerList = new ArrayList<>(playerNames);
                 while (amount > 0 && attempts > 0) {
                     attempts--;
-                    String name = players.get(rand.nextInt(players.size()));
+                    String name = playerList.get(rand.nextInt(playerList.size()));
 
                     if (!headNames.contains(name)) {
                         headNames.add(name);

@@ -41,7 +41,7 @@ public class MiniBlockUtils {
 
                 String name = (String) mini_block_map.get("name");
                 String texture = (String) mini_block_map.get("texture");
-                Material material = Material.valueOf(mini_block_map.get("id").toString().toUpperCase());
+                Material material = Material.matchMaterial(mini_block_map.get("id").toString().toUpperCase());
 
                 miniBlocks.add(new MiniBlockTrade(name, texture, material));
             }

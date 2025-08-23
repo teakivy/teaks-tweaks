@@ -44,7 +44,7 @@ public class CauldronConcrete extends BasePack {
 
         event.getItem().setAmount(event.getItem().getAmount() - 1);
 
-        ItemStack newItem = new ItemStack(Material.valueOf(event.getItem().getType().name().replace("_CONCRETE_POWDER", "_CONCRETE")));
+        ItemStack newItem = new ItemStack(Material.matchMaterial(event.getItem().getType().name().replace("_CONCRETE_POWDER", "_CONCRETE")));
 
         event.getPlayer().getInventory().addItem(newItem);
     }
