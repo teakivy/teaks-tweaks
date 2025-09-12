@@ -29,6 +29,7 @@ import me.teakivy.teakstweaks.packs.elevators.Elevators;
 import me.teakivy.teakstweaks.packs.fastleafdecay.FastLeafDecay;
 import me.teakivy.teakstweaks.packs.fixeditemframes.FixedItemFrames;
 import me.teakivy.teakstweaks.packs.graves.Graves;
+import me.teakivy.teakstweaks.packs.harderendprogression.HarderEndProgression;
 import me.teakivy.teakstweaks.packs.homes.Homes;
 import me.teakivy.teakstweaks.packs.huskdropssand.HuskDropsSand;
 import me.teakivy.teakstweaks.packs.instamine.InstaMine;
@@ -104,6 +105,7 @@ public enum TTPack {
     FAST_LEAF_DECAY("fast-leaf-decay", FastLeafDecay.class),
     FIXED_ITEM_FRAMES("fixed-item-frames", FixedItemFrames.class),
     GRAVES("graves", Graves.class),
+    HARDERENDPROGRESSION("harder-end-progression", HarderEndProgression.class),
     HOMES("homes", Homes.class),
     HUSK_DROPS_SAND("husk-drops-sand", HuskDropsSand.class),
     INSTA_MINE("insta-mine", InstaMine.class),

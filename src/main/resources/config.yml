@@ -466,6 +466,41 @@ packs:
     # Whether or not to allow graves to be placed in water, if false, graves will generate on the surface of the water (or the next clear space above the water)
     allow-water-graves: true
 
+  # Harder End Progression
+  # Changes the crafting recipe for Eyes of Ender to make progression harder and slower.
+  # Has varying levels of difficulty as shown below with an option to tweak the chance
+  # that the eye will break if thrown.
+  harder-end-progression:
+    enabled: false
+    # Items needed to craft an Eye of Ender
+    # Level 0
+    #   - Blaze Powder
+    #   - Ender Pearl (Vanilla Recipe)
+    # Level 1 -
+    #   - Blaze Powder
+    #   - Ender Pearl
+    #   - Wind Charge
+    # Level 2
+    #   - Phantom Membrane
+    #   - Blaze Powder
+    #   - Ender Pearl
+    #   - Wind Charge
+    #   - Amethyst Shard
+    # Level 3
+    #   - Prismarine Shard
+    #   - Phantom Membrane
+    #   - Blaze Powder
+    #   - Wind Charge
+    #   - Amethyst Shard
+    #   - Ghast Tear
+    #   - Resin Clump
+    #   - Echo Shard
+    difficulty-level: 1
+    # Change the Eye will break when used from 0-100.
+    #     0   - Will never break
+    #     100 - will break every time
+    break-chance: 0
+
   # Homes
   # Allows you to set homes ('/home set <name>') and teleport back to them ('/home <name>')
   #
