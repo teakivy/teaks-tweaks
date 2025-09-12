@@ -217,6 +217,10 @@ public abstract class AbstractCommand {
         this.cooldownMap.put(player.getUniqueId(), System.currentTimeMillis());
     }
 
+    public void resetCooldown(Player player) {
+        this.cooldownMap.remove(player.getUniqueId());
+    }
+
     public boolean isOnCooldown(Player player) {
         if (!this.cooldownMap.containsKey(player.getUniqueId())) return false;
         return this.cooldownMap.get(player.getUniqueId()) + (this.cooldownTime * 1000L) > System.currentTimeMillis();

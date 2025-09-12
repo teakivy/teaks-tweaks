@@ -67,6 +67,7 @@ public class SpawnCommand extends AbstractCommand {
         Bukkit.getScheduler().runTaskLater(TeaksTweaks.getInstance(), () -> {
             if (x != player.getLocation().getBlockX() || y != player.getLocation().getBlockY() || z != player.getLocation().getBlockZ()) {
                 player.sendMessage(getError("teleport_moved"));
+                resetCooldown(player);
                 return;
             }
             Back.backLoc.put(player.getUniqueId(), player.getLocation());
