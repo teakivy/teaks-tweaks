@@ -38,7 +38,7 @@ public class PaintingPicker extends BasePack {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         if (getConfig().getBoolean("suggest-pack")) {
-            event.getPlayer().addResourcePack(UUID.randomUUID(), resourcePackUrl, hash, "Would You like to install the Unique Painting Items resource pack?", false);
+            event.getPlayer().addResourcePack(UUID.nameUUIDFromBytes(hash), resourcePackUrl, hash, "Would You like to install the Unique Painting Items resource pack?", false);
         }
     }
 
