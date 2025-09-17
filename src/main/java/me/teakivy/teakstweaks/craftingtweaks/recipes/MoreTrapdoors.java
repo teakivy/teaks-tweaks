@@ -34,9 +34,9 @@ public class MoreTrapdoors extends AbstractCraftingTweak {
     public void newTrapdoorRecipe(String type) {
         Bukkit.removeRecipe(NamespacedKey.minecraft(type.toLowerCase() + "_trapdoor"));
         ShapedRecipe recipe = new ShapedRecipe(Key.get(type.toLowerCase() + "_trapdoors"),
-                new ItemStack(Material.valueOf(type + "_TRAPDOOR"), 12));
+                new ItemStack(Material.matchMaterial(type + "_TRAPDOOR"), 12));
         recipe.shape("xxx", "xxx");
-        recipe.setIngredient('x', Material.valueOf(type + "_PLANKS"));
+        recipe.setIngredient('x', Material.matchMaterial(type + "_PLANKS"));
         addRecipe(recipe);
     }
 

@@ -26,7 +26,7 @@ public class FixedItemFrames extends BasePack {
 		if (event.getRightClicked().getType() == EntityType.ITEM_FRAME || event.getRightClicked().getType() == EntityType.GLOW_ITEM_FRAME) {
 			if (!event.getPlayer().isSneaking()) return;
 			ItemStack item = event.getPlayer().getInventory().getItemInMainHand();
-			if (item.getType() != Material.valueOf(getConfig().getString("item-to-use"))) return;
+			if (item.getType() != Material.matchMaterial(getConfig().getString("item-to-use"))) return;
 			event.setCancelled(true);
 
 			event.getPlayer().getInventory().setItemInMainHand(ItemUtils.handleUse(item, event.getPlayer()));

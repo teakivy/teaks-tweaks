@@ -35,7 +35,7 @@ public class PowderToGlass extends AbstractCraftingTweak {
     }
 
     public void newSmeltableGlass(String color) {
-        FurnaceRecipe recipe = new FurnaceRecipe(Key.get(color.toLowerCase() + "_powder_to_glass"), new ItemStack(Material.valueOf(color + "_STAINED_GLASS")), Material.valueOf(color + "_CONCRETE_POWDER"), 10, 100);
+        FurnaceRecipe recipe = new FurnaceRecipe(Key.get(color.toLowerCase() + "_powder_to_glass"), new ItemStack(Material.matchMaterial(color + "_STAINED_GLASS")), Material.matchMaterial(color + "_CONCRETE_POWDER"), 10, 100);
         addRecipe(recipe);
     }
 }

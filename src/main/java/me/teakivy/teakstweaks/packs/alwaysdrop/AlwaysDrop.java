@@ -8,24 +8,30 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.List;
+import java.util.HashSet;
 
 public class AlwaysDrop extends BasePack {
 
+    private final HashSet<Material> alwaysDropBlocks;
+
     public AlwaysDrop() {
         super(TTPack.ALWAYS_DROP, Material.ENDER_CHEST);
+        alwaysDropBlocks = new HashSet<>();
+        for (String block : getConfig().getStringList("blocks")) {
+            Material item = Material.matchMaterial(block);
+            if (item != null && item.isBlock()) {
+                alwaysDropBlocks.add(item);
+            }
+        }
     }
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         if (event.isCancelled()) return;
         if (event.getPlayer().getGameMode() == GameMode.CREATIVE) return;
-        List<String> blockList = getConfig().getStringList("blocks");
-        for (String block : blockList) {
-            if (event.getBlock().getType().toString().equalsIgnoreCase(block)) {
-                event.setDropItems(false);
-                event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(event.getBlock().getType()));
-            }
+        if (alwaysDropBlocks.contains(event.getBlock().getType())) {
+            event.setDropItems(false);
+            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(event.getBlock().getType()));
         }
     }
 }
