@@ -5,9 +5,6 @@ import org.bukkit.Material;
 import org.bukkit.Tag;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.Damageable;
-import org.bukkit.inventory.meta.ItemMeta;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,16 +18,12 @@ public class ItemUtils {
         if (item == null) return null;
         if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR) return item;
 
-        ItemMeta meta = item.getItemMeta();
-
-        if (meta instanceof Damageable damageable && getAllDamageable().contains(item.getType())) {
-            damageable.setDamage(damageable.getDamage() + 1);
-            item.setItemMeta(damageable);
-            return item;
+        if (item.getType().getMaxDurability() > 0) {
+            return item.damage(1, player);
         }
 
         item.setAmount(item.getAmount() - 1);
-        return new ItemStack(item.getType(), item.getAmount());
+        return item.getAmount() > 0 ? item : null;
     }
 
     public static List<Material> getAllDamageable() {
