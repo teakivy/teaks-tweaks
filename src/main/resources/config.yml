@@ -206,8 +206,15 @@ packs:
     # Whether or not converting the mud takes a water level from the cauldron
     drops-water-level: true
 
+  # Cauldron Potions
+  # Right click an empty cauldron with a potion to fill it.
+  # Right click the cauldron with a glass bottle to get the potion.
+  # Right click the cauldron with arrows to make tipped arrows.
+  #
+  # Permissions:
+    # teakstweaks.cauldron-potions
   cauldron-potions:
-    enabled: true
+    enabled: false
 
   # Chat Colors
   # Use Chat Colors to make your messages, signs, and items look better (Using '&' for color codes)

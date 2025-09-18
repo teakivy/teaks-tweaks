@@ -1,7 +1,7 @@
 package me.teakivy.teakstweaks.packs.cauldronpotions;
 
-import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.*;
 import org.bukkit.block.Block;
@@ -26,6 +26,7 @@ public class CauldronPotions extends BasePack {
 
     @EventHandler
     public void onRightClick(PlayerInteractEvent event) {
+        if (!Permission.CAULDRON_POTIONS.check(event.getPlayer())) return;
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (event.getClickedBlock() == null) return;
         Block block = event.getClickedBlock();
