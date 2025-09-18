@@ -873,6 +873,8 @@ packs:
   track-statistics:
     enabled: false
 
+  # Transferable Pets
+  # Right click a player with leads attached to a tamed pet to transfer ownership of the pet to that player.
   transferable-pets:
     enabled: false
 
