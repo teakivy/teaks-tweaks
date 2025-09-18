@@ -56,7 +56,6 @@ public class PotionCauldron {
     }
 
     public boolean setLevel(int level) {
-        System.out.println("Setting level to " + level);
         if (level > 3) return false;
         if (level <= 0) {
             Marker marker = (Marker) location.getWorld().getEntity(markerId);
@@ -93,13 +92,10 @@ public class PotionCauldron {
     }
 
     public static PotionCauldron getCauldronAt(Location location) {
-        System.out.println(location.toString());
         for (Marker marker : location.getWorld().getEntitiesByClass(Marker.class)) {
-            System.out.println(marker.getLocation().toString());
             PersistentDataContainer data = marker.getPersistentDataContainer();
             if (!data.has(Key.get("potion_cauldron"), PersistentDataType.BOOLEAN)) continue;
             if (marker.getLocation().getBlock().equals(location.getBlock())) {
-                System.out.println("Found marker at location!");
                 return fromMarker(marker);
             }
         }
