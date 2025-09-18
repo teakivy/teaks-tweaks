@@ -206,6 +206,9 @@ packs:
     # Whether or not converting the mud takes a water level from the cauldron
     drops-water-level: true
 
+  cauldron-potions:
+    enabled: true
+
   # Chat Colors
   # Use Chat Colors to make your messages, signs, and items look better (Using '&' for color codes)
   #
