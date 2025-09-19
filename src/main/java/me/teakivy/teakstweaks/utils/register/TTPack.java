@@ -107,7 +107,7 @@ public enum TTPack {
     FAST_LEAF_DECAY("fast-leaf-decay", FastLeafDecay.class),
     FIXED_ITEM_FRAMES("fixed-item-frames", FixedItemFrames.class),
     GRAVES("graves", Graves.class),
-    HARDERENDPROGRESSION("harder-end-progression", HarderEndProgression.class),
+    HARDER_END_PROGRESSION("harder-end-progression", HarderEndProgression.class),
     HOMES("homes", Homes.class),
     HUSK_DROPS_SAND("husk-drops-sand", HuskDropsSand.class),
     INSTA_MINE("insta-mine", InstaMine.class),

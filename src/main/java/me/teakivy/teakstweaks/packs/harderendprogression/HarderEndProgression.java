@@ -11,13 +11,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.ShapelessRecipe;
 
 import java.util.Random;
 
 public class HarderEndProgression extends BasePack {
 
 	public HarderEndProgression() {
-        super(TTPack.HARDERENDPROGRESSION, Material.ENDER_EYE);
+        super(TTPack.HARDER_END_PROGRESSION, Material.ENDER_EYE);
 		newEyeOfEnderRecipe();
     }
 
@@ -31,53 +32,55 @@ public class HarderEndProgression extends BasePack {
 
 	public void newEyeOfEnderRecipe() {
 		int difficultyLevel = getConfig().getInt("difficulty-level");
-        switch (difficultyLevel) {
+        ShapelessRecipe recipe = switch (difficultyLevel) {
             case 3 -> levelThreeRecipe();
             case 2 -> levelTwoRecipe();
 			case 1 -> levelOneRecipe();
-        }
+			default -> null;
+        };
+		if (recipe == null) return;
+		addRecipe(recipe);
 
 	}
 
-	public ShapedRecipe generateNewEmptyRecipe(){
+	public ShapelessRecipe generateNewEmptyRecipe(){
 		Material eyeOfEnder = Material.ENDER_EYE;
 		Bukkit.removeRecipe(NamespacedKey.minecraft(eyeOfEnder.toString().toLowerCase()));
-        return new ShapedRecipe(Key.get(eyeOfEnder.name().toLowerCase()), new ItemStack(eyeOfEnder, 1));
+        return new ShapelessRecipe(Key.get(eyeOfEnder.name().toLowerCase()), new ItemStack(eyeOfEnder, 1));
 	}
 
-	public void levelOneRecipe(){
-		ShapedRecipe recipe = generateNewEmptyRecipe();
-		recipe.shape("   ", "def", "   ");
-		recipe.setIngredient('d', Material.WIND_CHARGE);
-		recipe.setIngredient('e', Material.ENDER_PEARL);
-		recipe.setIngredient('f', Material.BLAZE_POWDER);
-		addRecipe(recipe);
+	public ShapelessRecipe levelOneRecipe(){
+		ShapelessRecipe recipe = generateNewEmptyRecipe();
+		recipe.addIngredient(Material.WIND_CHARGE);
+		recipe.addIngredient(Material.ENDER_PEARL);
+		recipe.addIngredient(Material.BLAZE_POWDER);
+
+		return recipe;
 	}
 
-	public void levelTwoRecipe(){
-		ShapedRecipe recipe = generateNewEmptyRecipe();
-		recipe.shape(" b ", "def", " h ");
-		recipe.setIngredient('b', Material.PRISMARINE_SHARD);
-		recipe.setIngredient('d', Material.WIND_CHARGE);
-		recipe.setIngredient('e', Material.ENDER_PEARL);
-		recipe.setIngredient('f', Material.BLAZE_POWDER);
-		recipe.setIngredient('h', Material.AMETHYST_SHARD);
-		addRecipe(recipe);
+	public ShapelessRecipe levelTwoRecipe(){
+		ShapelessRecipe recipe = generateNewEmptyRecipe();
+		recipe.addIngredient(Material.PRISMARINE_SHARD);
+		recipe.addIngredient(Material.WIND_CHARGE);
+		recipe.addIngredient(Material.ENDER_PEARL);
+		recipe.addIngredient(Material.BLAZE_POWDER);
+		recipe.addIngredient(Material.AMETHYST_SHARD);
+
+		return recipe;
 	}
 
-	public void levelThreeRecipe(){
-		ShapedRecipe recipe = generateNewEmptyRecipe();
-		recipe.shape("abc", "def", "ghi");
-		recipe.setIngredient('a', Material.PRISMARINE_SHARD);
-		recipe.setIngredient('b', Material.PHANTOM_MEMBRANE);
-		recipe.setIngredient('c', Material.GHAST_TEAR);
-		recipe.setIngredient('d', Material.WIND_CHARGE);
-		recipe.setIngredient('e', Material.ENDER_PEARL);
-		recipe.setIngredient('f', Material.BLAZE_POWDER);
-		recipe.setIngredient('g', Material.RESIN_CLUMP);
-		recipe.setIngredient('i', Material.AMETHYST_SHARD);
-		recipe.setIngredient('i', Material.ECHO_SHARD);
+	public ShapelessRecipe levelThreeRecipe(){
+		ShapelessRecipe recipe = generateNewEmptyRecipe();
+		recipe.addIngredient(Material.PRISMARINE_SHARD);
+		recipe.addIngredient(Material.PHANTOM_MEMBRANE);
+		recipe.addIngredient(Material.GHAST_TEAR);
+		recipe.addIngredient(Material.WIND_CHARGE);
+		recipe.addIngredient(Material.ENDER_PEARL);
+		recipe.addIngredient(Material.BLAZE_POWDER);
+		recipe.addIngredient(Material.RESIN_CLUMP);
+		recipe.addIngredient(Material.AMETHYST_SHARD);
+		recipe.addIngredient(Material.ECHO_SHARD);
 
-		addRecipe(recipe);
+		return recipe;
 	}
 }
