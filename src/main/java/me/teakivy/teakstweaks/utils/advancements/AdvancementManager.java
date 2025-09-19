@@ -9,7 +9,6 @@ import com.fren_gor.ultimateAdvancementAPI.advancement.RootAdvancement;
 import com.fren_gor.ultimateAdvancementAPI.advancement.display.AdvancementDisplay;
 import com.fren_gor.ultimateAdvancementAPI.advancement.display.AdvancementFrameType;
 import com.fren_gor.ultimateAdvancementAPI.database.impl.SQLite;
-import com.fren_gor.ultimateAdvancementAPI.events.PlayerLoadingCompletedEvent;
 import com.fren_gor.ultimateAdvancementAPI.util.AdvancementKey;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.moremobheads.MoreMobHeads;
@@ -53,11 +52,6 @@ public class AdvancementManager {
         RootAdvancement root = new RootAdvancement(tab, "more_mob_heads_root", new AdvancementDisplay(icon, "More Mob Heads", AdvancementFrameType.CHALLENGE, true, true, 0, 0, "Gotta catch em' all!"), "textures/block/bricks.png");
         tabs.put("more_mob_heads", tab);
         roots.put("more_mob_heads", root);
-
-        tab.getEventManager().register(tab, PlayerLoadingCompletedEvent.class, event -> {
-            tab.showTab(event.getPlayer());
-            tab.grantRootAdvancement(event.getPlayer());
-        });
     }
 
     public MobHeadAdvancement getMobHeadAdvancement(TexturedHead entry, int index) {
@@ -81,6 +75,9 @@ public class AdvancementManager {
         MobHeadAdvancement[] advancementsArray = advancements.toArray(new MobHeadAdvancement[0]);
         RootAdvancement root = roots.get("more_mob_heads");
         tabs.get("more_mob_heads").registerAdvancements(root, advancementsArray);
+
+        tabs.get("more_mob_heads").automaticallyGrantRootAdvancement();
+        tabs.get("more_mob_heads").automaticallyShowToPlayers();
     }
 
     public void grant(Player player, AdvancementKey key) {
