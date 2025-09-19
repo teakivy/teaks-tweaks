@@ -509,7 +509,7 @@ packs:
     # Change the Eye will break when used from 0-100.
     #     0   - Will never break
     #     100 - will break every time
-    break-chance: 0
+    break-chance: 20
 
   # Homes
   # Allows you to set homes ('/home set <name>') and teleport back to them ('/home <name>')
