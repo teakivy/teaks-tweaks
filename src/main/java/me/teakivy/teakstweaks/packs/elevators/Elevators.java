@@ -17,16 +17,23 @@ import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.UUID;
 
 public class Elevators extends BasePack {
     private static final HashMap<UUID, Long> cooldown = new HashMap<>();
+    private final HashSet<Material> elevatorBlocks;
 
     public Elevators() {
         super(TTPack.ELEVATORS, Material.ENDER_PEARL);
+        elevatorBlocks = new HashSet<>();
+        for (String block : getConfig().getStringList("elevator-blocks")) {
+            Material item = Material.matchMaterial(block);
+            if (item != null && item.isBlock()) {
+                elevatorBlocks.add(item);
+            }
+        }
     }
 
     @EventHandler
@@ -40,7 +47,7 @@ public class Elevators extends BasePack {
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (!getElevatorMaterials().contains(event.getItemDrop().getLocation().add(0, -1, 0).getBlock().getType())) return;
+                if (!elevatorBlocks.contains(event.getItemDrop().getLocation().add(0, -1, 0).getBlock().getType())) return;
                 if (event.getItemDrop().getItemStack().getAmount() != 1) return;
 
                 event.getItemDrop().remove();
@@ -54,7 +61,7 @@ public class Elevators extends BasePack {
     @EventHandler
     public void onBreak(BlockBreakEvent event) {
         Block block = event.getBlock();
-        if (!getElevatorMaterials().contains(event.getBlock().getType())) return;
+        if (!elevatorBlocks.contains(event.getBlock().getType())) return;
         if (!isElevator(block)) return;
 
         for (Entity entity : block.getWorld().getNearbyEntities(block.getLocation().add(.5, 1, .5), .4, .8, .4)) {
@@ -154,15 +161,6 @@ public class Elevators extends BasePack {
             return next;
         }
         return next;
-    }
-
-    private List<Material> getElevatorMaterials() {
-        List<Material> elevatorMaterials = new ArrayList<>();
-        for (String block : getConfig().getStringList("elevator-blocks")) {
-            elevatorMaterials.add(Material.valueOf(block));
-        }
-
-        return elevatorMaterials;
     }
 
     private boolean checkBlock(Block b1, Block b2) {

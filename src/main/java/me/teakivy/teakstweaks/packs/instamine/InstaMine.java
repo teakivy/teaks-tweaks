@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.instamine;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import me.teakivy.teakstweaks.utils.register.TTPack;
+
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
@@ -13,10 +14,21 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.HashSet;
+
 public class InstaMine extends BasePack {
+
+    private final HashSet<Material> instaMineBlocks;
 
     public InstaMine() {
         super(TTPack.INSTA_MINE, Material.DEEPSLATE);
+        instaMineBlocks = new HashSet<>();
+        for (String block : getConfig().getStringList("blocks")) {
+            Material item = Material.matchMaterial(block);
+            if (item != null && item.isBlock()) {
+                instaMineBlocks.add(item);
+            }
+        }
     }
 
     @EventHandler
@@ -25,14 +37,7 @@ public class InstaMine extends BasePack {
         Player player = e.getPlayer();
         ItemStack item = e.getItemInHand();
         Block block = e.getBlock();
-        boolean isInstant = false;
-        for (String blocks : getConfig().getStringList("blocks")) {
-            if (blocks.equalsIgnoreCase(block.getType().name())) {
-                isInstant = true;
-                break;
-            }
-        }
-        if (!isInstant) return;
+        if (!instaMineBlocks.contains(block.getType())) return;
 
         if (item.getType().equals(Material.NETHERITE_PICKAXE) && hasHasteTwo(player) && isEfficiencyFive(item)) {
             e.setInstaBreak(true);

@@ -66,6 +66,7 @@ public enum Permission {
     BACK_TELEPORT("back.teleport"),
     CAULDRON_CONCRETE("cauldron-concrete"),
     CAULDRON_MUD("cauldron-mud"),
+    CAULDRON_POTIONS("cauldron-potions"),
     CHAT_COLORS_CHAT("chat-colors.chat"),
     CHAT_COLORS_ANVIL("chat-colors.anvil"),
     CHAT_COLORS_SIGNS("chat-colors.signs"),
