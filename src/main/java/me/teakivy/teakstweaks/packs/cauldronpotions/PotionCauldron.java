@@ -7,9 +7,9 @@ import org.bukkit.entity.Marker;
 import org.bukkit.entity.TextDisplay;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 import org.bukkit.util.Transformation;
+import org.bukkit.util.Vector;
 
 import java.util.UUID;
 
@@ -32,14 +32,14 @@ public class PotionCauldron {
         markerData.set(Key.get("potion_cauldron_level"), PersistentDataType.INTEGER, level);
         markerData.set(Key.get("potion_cauldron_type"), PersistentDataType.STRING, type.name());
 
-        TextDisplay overlay = location.getWorld().spawn(location.getBlock().getLocation().add(0.4, ((level * 3) + 6)/16f, 1), TextDisplay.class, display -> {
+        TextDisplay overlay = location.getWorld().spawn(location.getBlock().getLocation().add(getOffset(level)), TextDisplay.class, display -> {
             display.text(Component.text(" "));
             display.setTextOpacity((byte) 0);
             display.setBackgroundColor(type.getPotionEffects().getFirst().getType().getColor().setAlpha(150));
             display.setDefaultBackground(false);
             display.setRotation(0, -90);
             Transformation transformation = display.getTransformation();
-            transformation.getScale().set(6.8, 4, 7);
+            transformation.getScale().set(6.8, 3.9, 1);
             display.setTransformation(transformation);
         });
 
@@ -72,7 +72,7 @@ public class PotionCauldron {
 
         TextDisplay overlay = (TextDisplay) location.getWorld().getEntity(overlayId);
         if (overlay == null) return false;
-        overlay.teleport(location.getBlock().getLocation().add(0.4, ((level * 3) + 6)/16f, 1));
+        overlay.teleport(location.getBlock().getLocation().add(getOffset(level)));
         overlay.setRotation(0, -90);
         return true;
     }
@@ -110,7 +110,7 @@ public class PotionCauldron {
 
         TextDisplay overlay = (TextDisplay) location.getWorld().getEntity(overlayId);
         if (overlay == null) return false;
-        overlay.teleport(location.getBlock().getLocation().add(0.4, ((level * 3) + 6)/16f, 1));
+        overlay.teleport(location.getBlock().getLocation().add(getOffset(level)));
         overlay.setRotation(0, -90);
         return true;
     }
@@ -129,5 +129,10 @@ public class PotionCauldron {
 
     public UUID getMarkerId() {
         return markerId;
+    }
+
+    private Vector getOffset(int level) {
+        System.out.println("Level: " + level);
+        return new Vector(0.4, ((level * 3) + 6)/16f, .99);
     }
 }
