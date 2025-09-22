@@ -66,6 +66,7 @@ import me.teakivy.teakstweaks.packs.trackstatistics.TrackStatistics;
 import me.teakivy.teakstweaks.packs.transferablepets.TransferablePets;
 import me.teakivy.teakstweaks.packs.unlockallrecipes.UnlockAllRecipes;
 import me.teakivy.teakstweaks.packs.unstickypistons.UnstickyPistons;
+import me.teakivy.teakstweaks.packs.unwaxsigns.UnwaxSigns;
 import me.teakivy.teakstweaks.packs.villagerdeathmessages.VillagerDeathMessages;
 import me.teakivy.teakstweaks.packs.wanderingtraderannouncements.WanderingTraderAnnouncements;
 import me.teakivy.teakstweaks.packs.wanderingtrades.WanderingTrades;
@@ -143,6 +144,7 @@ public enum TTPack {
     TRANSFERABLE_PETS("transferable-pets", TransferablePets.class),
     UNLOCK_ALL_RECIPES("unlock-all-recipes", UnlockAllRecipes.class),
     UNSTICKY_PISTONS("unsticky-pistons", UnstickyPistons.class),
+    UNWAX_SIGNS("unwax-signs", UnwaxSigns.class),
     VILLAGER_DEATH_MESSAGES("villager-death-messages", VillagerDeathMessages.class),
     WANDERING_TRADER_ANNOUNCEMENTS("wandering-trader-announcements", WanderingTraderAnnouncements.class),
     WANDERING_TRADES("wandering-trades", WanderingTrades.class),

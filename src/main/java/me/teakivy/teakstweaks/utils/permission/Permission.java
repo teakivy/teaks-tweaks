@@ -90,6 +90,7 @@ public enum Permission {
     THUNDER_SHRINE_USE("thunder-shrine.use"),
     UNLOCK_ALL_RECIPES("unlock-all-recipes"),
     UNSTICKY_PISTONS("unsticky-pistons"),
+    UNWAX_SIGNS("unwax-signs"),
     XP_MANAGEMENT_BOTTLE("xp-management.bottle"),
 
     MANAGE("manage", PermissionType.OP),

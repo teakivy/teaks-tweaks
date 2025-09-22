@@ -930,6 +930,14 @@ packs:
   unsticky-pistons:
     enabled: false
 
+  # Unwax Signs
+  # Allow players to remove wax from waxed signs by right-clicking them with an axe while crouching/sneaking
+  #
+  # Permissions:
+  # teakstweaks.unwax-signs
+  unwax-signs:
+    enabled: true
+
   # Villager Death Messages
   # Notifies the server in chat when a villager dies. Displayes Coordinates and Dimension that it died in.
   villager-death-messages:
