@@ -11,6 +11,7 @@ import me.teakivy.teakstweaks.packs.armoredelytra.ArmoredElytra;
 import me.teakivy.teakstweaks.packs.back.Back;
 import me.teakivy.teakstweaks.packs.batmembranes.BatMembranes;
 import me.teakivy.teakstweaks.packs.cauldronconcrete.CauldronConcrete;
+import me.teakivy.teakstweaks.packs.cauldroncopper.CauldronCopper;
 import me.teakivy.teakstweaks.packs.cauldronmud.CauldronMud;
 import me.teakivy.teakstweaks.packs.cauldronpotions.CauldronPotions;
 import me.teakivy.teakstweaks.packs.chatcolors.ChatColors;
@@ -89,8 +90,9 @@ public enum TTPack {
     BACK("back", Back.class),
     BAT_MEMBRANES("bat-membranes", BatMembranes.class),
     CAULDRON_CONCRETE("cauldron-concrete", CauldronConcrete.class),
+    CAULDRON_COPPER("cauldron-copper", CauldronCopper.class),
     CAULDRON_MUD("cauldron-mud", CauldronMud.class),
-    CAULDRON_POTIONS("cauldron-potions", CauldronPotions.class), // Uses the same class as cauldron-mud
+    CAULDRON_POTIONS("cauldron-potions", CauldronPotions.class),
     CHAT_COLORS("chat-colors", ChatColors.class),
     CHUNK_LOADERS("chunk-loaders", ChunkLoaders.class),
     CLASSIC_FISHING_LOOT("classic-fishing-loot", ClassicFishingLoot.class),

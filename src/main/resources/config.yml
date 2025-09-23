@@ -196,6 +196,10 @@ packs:
     # Whether or not hardening takes a water level from the cauldron
     drops-water-level: true
 
+
+  cauldron-copper:
+    enabled: true
+
   # Cauldron Mud
   # Right click a water cauldron with dirt to turn it into mud.
   #

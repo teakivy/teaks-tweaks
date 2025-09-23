@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class CauldronPotions extends BasePack {
-    private HashMap<UUID, Long> lastInteract = new HashMap<>();
+    private final HashMap<UUID, Long> lastInteract = new HashMap<>();
 
     public CauldronPotions() {
         super(TTPack.CAULDRON_POTIONS, Material.POTION);
@@ -95,7 +95,7 @@ public class CauldronPotions extends BasePack {
             if (cauldron.getLevel() >= 3) return;
             cauldron.setLevel(cauldron.getLevel() + 1);
         }
-        player.getWorld().playSound(player.getLocation(), Sound.ITEM_BOTTLE_EMPTY, 1, 1);
+        player.getWorld().playSound(block.getLocation(), Sound.ITEM_BOTTLE_EMPTY, 1, 1);
         if (player.getGameMode() == GameMode.CREATIVE) {
             if (player.getInventory().contains(new ItemStack(Material.GLASS_BOTTLE))) return;
             player.getInventory().addItem(new ItemStack(Material.GLASS_BOTTLE));
@@ -119,7 +119,7 @@ public class CauldronPotions extends BasePack {
         PotionMeta meta = (PotionMeta) potion.getItemMeta();
         meta.setBasePotionType(cauldron.getType());
         potion.setItemMeta(meta);
-        player.getWorld().playSound(player.getLocation(), Sound.ITEM_BOTTLE_FILL, 1, 1);
+        player.getWorld().playSound(block.getLocation(), Sound.ITEM_BOTTLE_FILL, 1, 1);
         if (player.getGameMode() == GameMode.CREATIVE) {
             if (player.getInventory().contains(potion)) return;
             player.getInventory().addItem(potion);
@@ -143,7 +143,7 @@ public class CauldronPotions extends BasePack {
         PotionMeta meta = (PotionMeta) arrow.getItemMeta();
         meta.setBasePotionType(cauldron.getType());
         arrow.setItemMeta(meta);
-        player.getWorld().playSound(player.getLocation(), Sound.ENTITY_VILLAGER_WORK_FLETCHER, 1, 1);
+        player.getWorld().playSound(block.getLocation(), Sound.ENTITY_VILLAGER_WORK_FLETCHER, 1, 1);
         if (itemStack.getAmount() <= 8 && player.getGameMode() != GameMode.CREATIVE) {
             player.getInventory().setItem(slot, arrow);
             return;

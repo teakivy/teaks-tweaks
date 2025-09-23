@@ -13,6 +13,7 @@ import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.BlockDisplay;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TextDisplay;
 import org.bukkit.potion.PotionEffect;
@@ -41,14 +42,10 @@ public class TestCommand extends AbstractCommand {
         if (player == null) return Command.SINGLE_SUCCESS;
 
         player.getLocation().getBlock().setType(Material.CAULDRON);
-        player.getWorld().spawn(player.getLocation().getBlock().getLocation().add(0.4, 15f/16, 1), TextDisplay.class, display -> {
-            display.text(Component.text(" "));
-            display.setTextOpacity((byte) 0);
-            display.setBackgroundColor(PotionEffectType.STRENGTH.getColor().setAlpha(30));
-            display.setDefaultBackground(false);
-            display.setRotation(0, -90);
+        player.getWorld().spawn(player.getLocation().getBlock().getLocation().add(2/16f, 4/16f, 2/16f), BlockDisplay.class, display -> {
+            display.setBlock(Material.SLIME_BLOCK.createBlockData());
             Transformation transformation = display.getTransformation();
-            transformation.getScale().set(6.8, 4, 7);
+            transformation.getScale().set(12/16f, (11-3)/16f, 12/16f);
             display.setTransformation(transformation);
         });
         return Command.SINGLE_SUCCESS;

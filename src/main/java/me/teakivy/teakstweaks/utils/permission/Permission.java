@@ -65,6 +65,7 @@ public enum Permission {
     BACK_DEATH("back.death"),
     BACK_TELEPORT("back.teleport"),
     CAULDRON_CONCRETE("cauldron-concrete"),
+    CAULDRON_COPPER("cauldron-copper"),
     CAULDRON_MUD("cauldron-mud"),
     CAULDRON_POTIONS("cauldron-potions"),
     CHAT_COLORS_CHAT("chat-colors.chat"),
