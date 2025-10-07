@@ -90,7 +90,8 @@ public class StairChairs extends BasePack {
     @EventHandler
     public void onDismount(EntityDismountEvent event) {
         if (!(event.getEntity() instanceof Player)) return;
+        if (!(event.getDismounted() instanceof ItemDisplay)) return;
         if (event.getDismounted().getScoreboardTags().contains("chair-rider")) event.getDismounted().remove();
-        event.getEntity().teleportAsync(event.getEntity().getLocation().add(0, 1, 0));
+        event.getEntity().teleportAsync(event.getEntity().getLocation().add(0, 1.1, 0));
     }
 }
