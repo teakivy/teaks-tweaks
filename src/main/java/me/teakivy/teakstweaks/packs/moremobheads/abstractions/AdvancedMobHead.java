@@ -31,7 +31,6 @@ public abstract class AdvancedMobHead implements Listener {
         ItemStack head = getHead(key);
         if (head == null) return;
         event.getDrops().add(head);
-        MoreMobHeads.grant(killer, key);
     }
 
     protected ItemStack getHead(String key) {

@@ -45,10 +45,6 @@ repositories {
     }
 
     maven {
-        url = uri("https://nexus.frengor.com/repository/public/")
-    }
-
-    maven {
         name = "sonatype-oss-snapshots1"
         url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
     }
@@ -61,9 +57,8 @@ val libraries = listOf(
 
 dependencies {
     compileOnly("com.mojang:authlib:1.5.25")
-    compileOnly("io.papermc.paper:paper-api:1.21.8-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.21.10-R0.1-SNAPSHOT")
     compileOnly("me.clip:placeholderapi:2.11.6")
-    implementation("com.frengor:ultimateadvancementapi-shadeable:2.6.0:mojang-mapped")
 
     libraries.forEach { library ->
         compileOnly(library)

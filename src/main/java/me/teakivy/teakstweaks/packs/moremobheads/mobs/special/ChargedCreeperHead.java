@@ -21,7 +21,5 @@ public class ChargedCreeperHead extends SpecialMobHead {
         Creeper creeper = (Creeper) event.getEntity();
         if (!creeper.isPowered()) return;
         event.getDrops().add(MoreMobHeads.getHeadItem("charged_creeper", Sound.ENTITY_LIGHTNING_BOLT_IMPACT));
-
-        MoreMobHeads.grant(killer, "charged_creeper");
     }
 }

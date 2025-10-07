@@ -43,7 +43,6 @@ public class CreakingHead implements Listener {
             if (!MoreMobHeads.shouldDrop(event.getPlayer(), "creaking")) return;
             ItemStack headItem = MoreMobHeads.getHeadItem("creaking", Sound.BLOCK_CREAKING_HEART_SPAWN);
             finalCreaking.getWorld().dropItemNaturally(finalCreaking.getLocation(), headItem);
-            MoreMobHeads.grant(event.getPlayer(), "creaking");
         }, 50L);
     }
 }
