@@ -53,6 +53,11 @@ public class CopperAgeTier {
         tiers.add(new CopperAgeTier(Material.COPPER_DOOR, Material.EXPOSED_COPPER_DOOR, Material.WEATHERED_COPPER_DOOR, Material.OXIDIZED_COPPER_DOOR));
         tiers.add(new CopperAgeTier(Material.COPPER_TRAPDOOR, Material.EXPOSED_COPPER_TRAPDOOR, Material.WEATHERED_COPPER_TRAPDOOR, Material.OXIDIZED_COPPER_TRAPDOOR));
         tiers.add(new CopperAgeTier(Material.COPPER_BULB, Material.EXPOSED_COPPER_BULB, Material.WEATHERED_COPPER_BULB, Material.OXIDIZED_COPPER_BULB));
+        tiers.add(new CopperAgeTier(Material.COPPER_BARS, Material.EXPOSED_COPPER_BARS, Material.WEATHERED_COPPER_BARS, Material.OXIDIZED_COPPER_BARS));
+        tiers.add(new CopperAgeTier(Material.COPPER_CHAIN, Material.EXPOSED_COPPER_CHAIN, Material.WEATHERED_COPPER_CHAIN, Material.OXIDIZED_COPPER_CHAIN));
+        tiers.add(new CopperAgeTier(Material.COPPER_LANTERN, Material.EXPOSED_COPPER_LANTERN, Material.WEATHERED_COPPER_LANTERN, Material.OXIDIZED_COPPER_LANTERN));
+        tiers.add(new CopperAgeTier(Material.COPPER_CHEST, Material.EXPOSED_COPPER_CHEST, Material.WEATHERED_COPPER_CHEST, Material.OXIDIZED_COPPER_CHEST));
+        tiers.add(new CopperAgeTier(Material.COPPER_GOLEM_STATUE, Material.EXPOSED_COPPER_GOLEM_STATUE, Material.WEATHERED_COPPER_GOLEM_STATUE, Material.OXIDIZED_COPPER_GOLEM_STATUE));
 
         // waxed
         int size = tiers.size();

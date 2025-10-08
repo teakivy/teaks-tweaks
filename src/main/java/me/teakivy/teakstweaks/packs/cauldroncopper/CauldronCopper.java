@@ -5,12 +5,16 @@ import me.teakivy.teakstweaks.packs.cauldronpotions.PotionCauldron;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import me.teakivy.teakstweaks.utils.register.TTPack;
 import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPistonExtendEvent;
+import org.bukkit.event.block.BlockPistonRetractEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
@@ -166,5 +170,40 @@ public class CauldronCopper extends BasePack {
         event.setCancelled(true);
         if (player.getGameMode() == GameMode.CREATIVE) return;
         player.getInventory().getItem(event.getHand()).setAmount(item.getAmount() - 1);
+    }
+
+    @EventHandler
+    private void onBreak(BlockBreakEvent event) {
+        Block block = event.getBlock();
+        if (block.getType() != Material.CAULDRON) return;
+        CustomCopperCauldron cauldron = CustomCopperCauldron.getCauldronAt(block.getLocation());
+        if (cauldron == null) return;
+        cauldron.remove();
+    }
+
+
+
+    @EventHandler
+    public void onPiston(BlockPistonExtendEvent event) {
+        for (Block block : event.getBlocks()) {
+            if (block.getType() != Material.CAULDRON) continue;
+            CustomCopperCauldron cauldron = CustomCopperCauldron.getCauldronAt(block.getLocation());
+            if (cauldron == null) continue;
+
+            Location newLocation = block.getLocation().add(event.getDirection().getDirection());
+            cauldron.move(newLocation);
+        }
+    }
+
+    @EventHandler
+    public void onPiston(BlockPistonRetractEvent event) {
+        for (Block block : event.getBlocks()) {
+            if (block.getType() != Material.CAULDRON) continue;
+            CustomCopperCauldron cauldron = CustomCopperCauldron.getCauldronAt(block.getLocation());
+            if (cauldron == null) continue;
+
+            Location newLocation = block.getLocation().add(event.getDirection().getDirection());
+            cauldron.move(newLocation);
+        }
     }
 }

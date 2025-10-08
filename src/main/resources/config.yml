@@ -197,6 +197,10 @@ packs:
     drops-water-level: true
 
 
+  # Cauldron Copper
+  # Adds 2 new types of cauldrons.
+  # Slime Cauldron - Filled with Slime Blocks, can be used to age Copper items.
+  # Honey Cauldron - Filled with Honey Blocks, can be used to bulk wax Copper items.
   cauldron-copper:
     enabled: true
 
