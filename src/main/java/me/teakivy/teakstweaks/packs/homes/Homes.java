@@ -79,6 +79,12 @@ public class Homes extends BasePack {
         return null;
     }
 
+    public static Home getBedHome(Player player) {
+        Location bedLocation = player.getRespawnLocation(true);
+        if (bedLocation == null) return null;
+        return new Home("bed", player.getUniqueId(), bedLocation);
+    }
+
     public static List<Home> getHomes(Player player) {
         List<Home> playerHomes = new ArrayList<>();
 
@@ -144,6 +150,7 @@ public class Homes extends BasePack {
 
     private static boolean checkName(String name) {
         char[] allowedChars = "abcdefghijklmnopqrstuvwxyz1234567890_-".toCharArray();
+        if (name.equalsIgnoreCase("bed")) return false;
         for (char c : name.toCharArray()) {
             boolean allowed = false;
             for (char allowedChar : allowedChars) {

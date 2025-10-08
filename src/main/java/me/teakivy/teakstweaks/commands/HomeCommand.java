@@ -87,6 +87,16 @@ public class HomeCommand extends AbstractCommand {
 
     public void tpHome(Player player, String name) {
         if (name == null || name.isEmpty()) name = "home";
+        if (name.equalsIgnoreCase("bed")) {
+            Home bedHome = Homes.getBedHome(player);
+            if (bedHome == null) {
+                player.sendMessage(getError("no_bed_set"));
+                return;
+            }
+            bedHome.teleport();
+            return;
+        }
+
         Home home = Homes.getHome(player, name);
         if (home == null) {
             player.sendMessage(getError("home_dne", insert("name", name)));
@@ -98,6 +108,10 @@ public class HomeCommand extends AbstractCommand {
 
     public void setHome(Player player, String name) {
         if (name == null || name.isEmpty()) name = "home";
+        if (name.equalsIgnoreCase("bed")) {
+            player.sendMessage(getError("cant_set_bed_home"));
+            return;
+        }
         if (Homes.getHome(player, name) != null) {
             player.sendMessage(getError("home_already_exists", insert("name", name)));
             return;
@@ -120,6 +134,10 @@ public class HomeCommand extends AbstractCommand {
 
     public void deleteHome(Player player, String name) {
         if (name == null || name.isEmpty()) name = "home";
+        if (name.equalsIgnoreCase("bed")) {
+            player.sendMessage(getError("cant_delete_bed_home"));
+            return;
+        }
         Home home = Homes.getHome(player, name);
         if (home == null) {
             player.sendMessage(getError("home_dne", insert("name", name)));
@@ -139,6 +157,7 @@ public class HomeCommand extends AbstractCommand {
         for (Home home : Homes.getHomes(player)) {
             if (home.getName().toLowerCase().startsWith(builder.getRemainingLowerCase())) builder.suggest(home.getName());
         }
+        if ("bed".startsWith(builder.getRemainingLowerCase())) builder.suggest("bed");
         return builder.buildFuture();
     }
 }
