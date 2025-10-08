@@ -78,6 +78,50 @@ public class SilenceMobs extends BasePack {
         } catch (NoClassDefFoundError ignored) {
         }
     }
+
+    @EventHandler
+    public void onUnSilence(PlayerInteractAtEntityEvent event) {
+        if (!Permission.SILENCE_MOBS.check(event.getPlayer())) return;
+        Entity entity = event.getRightClicked();
+
+        if (minecartTypes.contains(entity.getType())) {
+            if (!getConfig().getBoolean("allow-minecarts")) return;
+            ItemStack nametag = event.getPlayer().getInventory().getItem(event.getHand());
+            if (nametag.getType() != Material.NAME_TAG) return;
+            if (!nametag.hasItemMeta()) return;
+            if (!Objects.requireNonNull(nametag.getItemMeta()).getDisplayName()
+                    .replaceAll("_", " ")
+                    .replaceAll("-", " ")
+                    .trim()
+                    .equalsIgnoreCase(getString("deactivation_name")))
+                return;
+            entity.setSilent(false);
+            entity.customName(null);
+            event.setCancelled(true);
+
+            if (event.getPlayer().getGameMode() != GameMode.CREATIVE) {
+                event.getPlayer().getInventory().getItem(event.getHand()).setAmount(nametag.getAmount() - 1);
+            }
+            return;
+        }
+
+        try {
+            Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
+                Entity entity1 = getEntityByUniqueId(entity.getUniqueId());
+                if (entity1 == null) return;
+                if (entity1.customName() == null) return;
+                if (entity1.getCustomName().replaceAll("_", " ")
+                        .replaceAll("-", " ")
+                        .trim()
+                        .equalsIgnoreCase(getString("deactivation_name"))) {
+                    entity.setSilent(false);
+                    entity.customName(null);
+                }
+            }, 10L);
+        } catch (NoClassDefFoundError ignored) {
+        }
+    }
+
     public Entity getEntityByUniqueId(UUID uniqueId) {
         for (World world : Bukkit.getWorlds()) {
             for (Entity entity : world.getEntities()) {
