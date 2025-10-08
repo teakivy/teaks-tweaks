@@ -34,6 +34,7 @@ import me.teakivy.teakstweaks.packs.graves.Graves;
 import me.teakivy.teakstweaks.packs.harderendprogression.HarderEndProgression;
 import me.teakivy.teakstweaks.packs.homes.Homes;
 import me.teakivy.teakstweaks.packs.huskdropssand.HuskDropsSand;
+import me.teakivy.teakstweaks.packs.infestedvillagers.InfestedVillagers;
 import me.teakivy.teakstweaks.packs.instamine.InstaMine;
 import me.teakivy.teakstweaks.packs.invisibleitemframes.InvisibleItemFrames;
 import me.teakivy.teakstweaks.packs.itemaverages.ItemAverages;
@@ -113,6 +114,7 @@ public enum TTPack {
     HARDER_END_PROGRESSION("harder-end-progression", HarderEndProgression.class),
     HOMES("homes", Homes.class),
     HUSK_DROPS_SAND("husk-drops-sand", HuskDropsSand.class),
+    INFESTED_VILLAGERS("infested-villagers", InfestedVillagers.class), // Deprecated
     INSTA_MINE("insta-mine", InstaMine.class),
     INVISIBLE_ITEM_FRAMES("invisible-item-frames", InvisibleItemFrames.class),
     ITEM_AVERAGES("item-averages", ItemAverages.class),

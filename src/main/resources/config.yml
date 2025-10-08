@@ -541,6 +541,11 @@ packs:
   husk-drops-sand:
     enabled: false
 
+  # Infested Villagers
+  # Villagers with the infested effect will transform into a zombie villager.
+  infested-villagers:
+    enabled: false
+
   # Insta Mine
   # Instantly mine certain blocks if you have a netherite tool with efficiency 5 or higher, and haste 2 or higher.
   #
