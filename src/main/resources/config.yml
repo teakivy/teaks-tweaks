@@ -542,9 +542,13 @@ packs:
     enabled: false
 
   # Infested Villagers
-  # Villagers with the infested effect will transform into a zombie villager.
+  # Villagers with the infested effect will transform into a zombie villager after 2-5 minutes.
   infested-villagers:
     enabled: false
+    # Minimum time (in seconds) for a villager to transform
+    min-time: 120
+    # Maximum time (in seconds) for a villager to transform
+    max-time: 300
 
   # Insta Mine
   # Instantly mine certain blocks if you have a netherite tool with efficiency 5 or higher, and haste 2 or higher.

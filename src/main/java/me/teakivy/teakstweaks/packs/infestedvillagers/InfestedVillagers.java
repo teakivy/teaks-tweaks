@@ -26,11 +26,10 @@ public class InfestedVillagers extends BasePack {
 
         Villager entity = (Villager) event.getEntity();
         long seed = Bukkit.getWorlds().getFirst().getSeed();
-        long max = 5 * 60 * 20;
-        long min = 2 * 60 * 20;
+        long max = getConfig().getLong("max-time") * 20; // Configured max time in ticks
+        long min = getConfig().getLong("min-time") * 20; // Configured min time in ticks
 
-//        long timer = new Random(seed).nextLong((max - min) + 1) + min;
-        long timer = 20 * 10;
+        long timer = new Random(seed).nextLong((max - min) + 1) + min;
         entity.shakeHead();
         shakeAfter(entity, timer);
     }
