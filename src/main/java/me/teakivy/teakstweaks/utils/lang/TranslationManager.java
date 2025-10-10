@@ -5,8 +5,8 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.TranslatableComponent;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.translation.MiniMessageTranslationStore;
 import net.kyori.adventure.translation.GlobalTranslator;
 import org.bukkit.entity.Player;
@@ -204,21 +204,18 @@ public class TranslationManager {
 
         // Translate it
         Component resolved = GlobalTranslator.translator().translate(translatable, locale);
-        TextComponent textComponent = (TextComponent) resolved;
         if (resolved == null) {
             return null;
         }
-        return textComponent.content();
+        return MiniMessage.miniMessage().serialize(resolved);
     }
 
     public static String getString(String localeName, String key) {
-        TeaksTweaks.getInstance();
         String str = TeaksTweaks.getTranslationManager().getTranslationString(localeName, key);
         return str == null ? key : str;
     }
 
     public static String getString(Player player, String key) {
-        TeaksTweaks.getInstance();
         String str = TeaksTweaks.getTranslationManager().getTranslationString(player.getClientOption(ClientOption.LOCALE), key);
         return str == null ? key : str;
     }
