@@ -53,7 +53,7 @@ public class PaintingPicker extends BasePack {
 
         for (Art art : registry) {
             String name = art.toString();
-            if (name.contains(":")) name = name.substring(name.indexOf(":") + 1);
+            if (name.contains(":")) name = name.split("ResourceKey")[1].split(" / ")[1].split("]")[0].replaceAll(":", "_");
             ItemStack item = ItemStack.of(Material.PAINTING);
             item.setData(DataComponentTypes.PAINTING_VARIANT, art);
 
