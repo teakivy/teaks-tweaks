@@ -20,6 +20,6 @@ public class GoatHead extends AdvancedMobHead {
 
     @Override
     protected Sound getSound(String key) {
-        return key == "screaming_goat" ? Sound.ENTITY_GOAT_SCREAMING_AMBIENT : Sound.ENTITY_GOAT_AMBIENT;
+        return key.equalsIgnoreCase("screaming_goat") ? Sound.ENTITY_GOAT_SCREAMING_AMBIENT : Sound.ENTITY_GOAT_AMBIENT;
     }
 }
