@@ -132,7 +132,6 @@ public class PotionCauldron {
     }
 
     private Vector getOffset(int level) {
-        System.out.println("Level: " + level);
         return new Vector(0.4, ((level * 3) + 6)/16f, .99);
     }
 }
