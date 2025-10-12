@@ -60,6 +60,7 @@ import me.teakivy.teakstweaks.packs.spectatoralts.SpectatorAlts;
 import me.teakivy.teakstweaks.packs.spectatorconduitpower.SpectatorConduitPower;
 import me.teakivy.teakstweaks.packs.spectatornightvision.SpectatorNightVision;
 import me.teakivy.teakstweaks.packs.stairchairs.StairChairs;
+import me.teakivy.teakstweaks.packs.stormchanneling.StormChanneling;
 import me.teakivy.teakstweaks.packs.sudoku.Sudoku;
 import me.teakivy.teakstweaks.packs.thundershrine.ThunderShrine;
 import me.teakivy.teakstweaks.packs.tpa.TPA;
@@ -114,7 +115,7 @@ public enum TTPack {
     HARDER_END_PROGRESSION("harder-end-progression", HarderEndProgression.class),
     HOMES("homes", Homes.class),
     HUSK_DROPS_SAND("husk-drops-sand", HuskDropsSand.class),
-    INFESTED_VILLAGERS("infested-villagers", InfestedVillagers.class), // Deprecated
+    INFESTED_VILLAGERS("infested-villagers", InfestedVillagers.class),
     INSTA_MINE("insta-mine", InstaMine.class),
     INVISIBLE_ITEM_FRAMES("invisible-item-frames", InvisibleItemFrames.class),
     ITEM_AVERAGES("item-averages", ItemAverages.class),
@@ -140,6 +141,7 @@ public enum TTPack {
     SPECTATOR_CONDUIT_POWER("spectator-conduit-power", SpectatorConduitPower.class),
     SPECTATOR_NIGHT_VISION("spectator-night-vision", SpectatorNightVision.class),
     STAIR_CHAIRS("stair-chairs", StairChairs.class),
+    STORM_CHANNELING("storm-channeling", StormChanneling.class),
     SUDOKU("sudoku", Sudoku.class),
     THUNDER_SHRINE("thunder-shrine", ThunderShrine.class),
     TPA("tpa", TPA.class),

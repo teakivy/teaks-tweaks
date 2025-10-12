@@ -869,6 +869,9 @@ packs:
   stair-chairs:
     enabled: false
 
+  storm-channeling:
+    enabled: false
+
   # Sudoku
   # Allow players to commit sudoku
   #
