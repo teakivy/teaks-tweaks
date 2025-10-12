@@ -17,6 +17,7 @@ public class CraftableHorseArmor extends AbstractCraftingTweak {
     @Override
     public void registerRecipes() {
         newHorseArmor(Material.IRON_INGOT, Material.IRON_HORSE_ARMOR);
+        newHorseArmor(Material.COPPER_INGOT, Material.COPPER_HORSE_ARMOR);
         newHorseArmor(Material.GOLD_INGOT, Material.GOLDEN_HORSE_ARMOR);
         newHorseArmor(Material.DIAMOND, Material.DIAMOND_HORSE_ARMOR);
     }
