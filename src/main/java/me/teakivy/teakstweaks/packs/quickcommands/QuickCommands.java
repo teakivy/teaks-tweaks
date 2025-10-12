@@ -50,12 +50,13 @@ public class QuickCommands extends BasePack {
         });
 
         registerMenuCommands(Map.of(
-                "craftingtable", new MenuMeta(List.of("craft", "workbench", "wb"), Permission.COMMAND_CRAFTINGTABLE, MenuType.CRAFTING),
-                "anvil",         new MenuMeta(List.of(), Permission.COMMAND_ANVIL, MenuType.ANVIL),
+                "craftingtable",    new MenuMeta(List.of("craft", "workbench", "wb"), Permission.COMMAND_CRAFTINGTABLE, MenuType.CRAFTING),
+                "anvil",            new MenuMeta(List.of(), Permission.COMMAND_ANVIL, MenuType.ANVIL),
                 "cartographytable", new MenuMeta(List.of("cartography"), Permission.COMMAND_CARTOGRAPHYTABLE, MenuType.CARTOGRAPHY_TABLE),
-                "grindstone",    new MenuMeta(List.of(), Permission.COMMAND_GRINDSTONE, MenuType.GRINDSTONE),
-                "loom",          new MenuMeta(List.of(), Permission.COMMAND_LOOM, MenuType.LOOM),
-                "smithingtable", new MenuMeta(List.of("smithing"), Permission.COMMAND_SMITHINGTABLE, MenuType.SMITHING)
+                "grindstone",       new MenuMeta(List.of(), Permission.COMMAND_GRINDSTONE, MenuType.GRINDSTONE),
+                "loom",             new MenuMeta(List.of(), Permission.COMMAND_LOOM, MenuType.LOOM),
+                "smithingtable",    new MenuMeta(List.of("smithing"), Permission.COMMAND_SMITHINGTABLE, MenuType.SMITHING),
+                "stonecutter",      new MenuMeta(List.of(), Permission.COMMAND_STONECUTTER, MenuType.STONECUTTER)
         ));
     }
 

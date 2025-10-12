@@ -743,6 +743,12 @@ packs:
     # Commands:
     # /smithingtable (Permission: teakstweaks.command.smithingtable)
     smithingtable: true
+    # Stonecutter command
+    # Opens a Stonecutter
+    #
+    # Commands:
+    # /stonecutter (Permission: teakstweaks.command.stonecutter)
+    stonecutter: true
 
 
   # Real Time Clock
