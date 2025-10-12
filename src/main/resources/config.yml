@@ -869,6 +869,10 @@ packs:
   stair-chairs:
     enabled: false
 
+  # Storm Channeling
+  # Throw a channeling Trident to the skies to summon a thunderstorm.
+  # Doing this takes 150 durability from the Trident.
+  # This effect is immune to unbreaking.
   storm-channeling:
     enabled: false
 
