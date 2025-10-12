@@ -45,7 +45,7 @@ public class InfestedVillagers extends BasePack {
             villager.shakeHead();
             villager.removePotionEffect(PotionEffectType.INFESTED);
 
-            shakeAfter(villager, delay - 10);
-        }, 10L);
+            shakeAfter(villager, delay - 20);
+        }, 20L);
     }
 }
