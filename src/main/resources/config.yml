@@ -181,6 +181,19 @@ packs:
     # Enter the number of seconds required to wait before teleporting
     teleport-delay: 0
 
+  # Back To Bed
+  # Enter '/bed' to teleport to your most recent respawn point.
+  back-to-bed:
+    enabled: true
+    # Whether or not the player will be teleported to the world spawn if they have no spawn point.
+    to-spawn: true
+    # Name of the world to teleport to the spawn of (ex: 'world', 'world_nether', 'world_the_end', etc)
+    world: world
+    # Enter the number of seconds required to wait between uses of the bed command
+    teleport-cooldown: 0
+    # Enter the number of seconds required to wait before teleporting
+    teleport-delay: 0
+
   # Bat Membranes
   # Disable Phantoms to get membranes from Bats instead.
   bat-membranes:

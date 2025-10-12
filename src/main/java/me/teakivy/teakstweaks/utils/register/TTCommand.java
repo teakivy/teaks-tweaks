@@ -9,6 +9,7 @@ public enum TTCommand {
     AFK("afk", AFKCommand.class, TTPack.AFK_DISPLAY),
     ALTS("alts", AltsCommand.class, TTPack.SPECTATOR_ALTS),
     BACK("back", BackCommand.class, TTPack.BACK),
+    BED("bed", BedCommand.class, TTPack.BACK_TO_BED),
     CONDUITPOWER("conduitpower", ConduitPowerCommand.class, TTPack.SPECTATOR_CONDUIT_POWER),
     COORDSHUD("coordshud", CoordsHudCommand.class, TTPack.COORDS_HUD),
     DELETEHOME("deletehome", DeleteHomeCommand.class, TTPack.HOMES),

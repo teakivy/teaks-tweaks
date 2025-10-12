@@ -8,6 +8,7 @@ public enum Permission {
     COMMAND_ALTS("command.alts"),
     COMMAND_ALTS_MANAGE("command.alts.manage", PermissionType.OP),
     COMMAND_BACK("command.back"),
+    COMMAND_BED("command.bed"),
     COMMAND_CONDUITPOWER("command.conduitpower"),
     COMMAND_COORDSHUD("command.coordshud"),
     COMMAND_HOME("command.home"),

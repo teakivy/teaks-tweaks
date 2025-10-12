@@ -9,6 +9,7 @@ import me.teakivy.teakstweaks.packs.antiendermangrief.AntiEndermanGrief;
 import me.teakivy.teakstweaks.packs.antighastgrief.AntiGhastGrief;
 import me.teakivy.teakstweaks.packs.armoredelytra.ArmoredElytra;
 import me.teakivy.teakstweaks.packs.back.Back;
+import me.teakivy.teakstweaks.packs.backtobed.BackToBed;
 import me.teakivy.teakstweaks.packs.batmembranes.BatMembranes;
 import me.teakivy.teakstweaks.packs.cauldronconcrete.CauldronConcrete;
 import me.teakivy.teakstweaks.packs.cauldroncopper.CauldronCopper;
@@ -90,6 +91,7 @@ public enum TTPack {
     ANTI_GHAST_GRIEF("anti-ghast-grief", AntiGhastGrief.class),
     ARMORED_ELYTRA("armored-elytra", ArmoredElytra.class),
     BACK("back", Back.class),
+    BACK_TO_BED("back-to-bed", BackToBed.class),
     BAT_MEMBRANES("bat-membranes", BatMembranes.class),
     CAULDRON_CONCRETE("cauldron-concrete", CauldronConcrete.class),
     CAULDRON_COPPER("cauldron-copper", CauldronCopper.class),

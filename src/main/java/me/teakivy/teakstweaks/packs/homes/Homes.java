@@ -79,12 +79,6 @@ public class Homes extends BasePack {
         return null;
     }
 
-    public static Home getBedHome(Player player) {
-        Location bedLocation = player.getRespawnLocation(true);
-        if (bedLocation == null) return null;
-        return new Home("bed", player.getUniqueId(), bedLocation);
-    }
-
     public static List<Home> getHomes(Player player) {
         List<Home> playerHomes = new ArrayList<>();
 
