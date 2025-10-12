@@ -136,7 +136,7 @@ public class DurabilityPing extends BasePack {
                     GOLDEN_HELMET, GOLDEN_CHESTPLATE, GOLDEN_LEGGINGS, GOLDEN_BOOTS,
                     DIAMOND_HELMET, DIAMOND_CHESTPLATE, DIAMOND_LEGGINGS, DIAMOND_BOOTS,
                     NETHERITE_HELMET, NETHERITE_CHESTPLATE, NETHERITE_LEGGINGS, NETHERITE_BOOTS,
-                    ELYTRA, TURTLE_HELMET
+                    ELYTRA, TURTLE_HELMET, COPPER_HELMET, COPPER_CHESTPLATE, COPPER_LEGGINGS, COPPER_BOOTS
                     -> true;
             default -> false;
         };
