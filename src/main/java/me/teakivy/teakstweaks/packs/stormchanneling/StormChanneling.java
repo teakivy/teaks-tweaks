@@ -39,7 +39,7 @@ public class StormChanneling extends BasePack {
         World world = trident.getWorld();
         if (world.getEnvironment() != World.Environment.NORMAL) return;
         if (world.isThundering()) return;
-        if (trident.getLocation().getY() > 1) {
+        if (trident.getLocation().getY() > trident.getWorld().getMaxHeight()) {
             world.setWeatherDuration(6000);
             world.setThunderDuration(6000);
             world.setStorm(true);
