@@ -72,7 +72,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
 
         // Plugin startup logic
         Logger.info(newText(" "));
-        Logger.info(Component.translatable("startup.plugin.started", Argument.string("version", this.getDescription().getVersion())));
+        Logger.info(Component.text(TranslationManager.getString(Config.getLanguage(), "startup.plugin.started").replace("\\<version>", this.getPluginMeta().getVersion())));
         Logger.info(newText(" "));
 
 

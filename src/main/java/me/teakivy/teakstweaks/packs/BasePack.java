@@ -109,7 +109,7 @@ public class BasePack implements Listener {
 		}
 
 		getPlugin().addPack(name);
-		Logger.info(Component.text(TranslationManager.getString(Config.getLanguage(), "startup.register.pack").replace("<name>", name)));
+		Logger.info(Component.text(TranslationManager.getString(Config.getLanguage(), "startup.register.pack").replace("\\<name>", name)));
 
 		CustomMetrics.addPackEnabled(name);
 	}

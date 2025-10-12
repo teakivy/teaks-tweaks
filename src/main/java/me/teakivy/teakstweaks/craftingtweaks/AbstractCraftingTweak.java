@@ -47,7 +47,7 @@ public abstract class AbstractCraftingTweak {
      * Initialize all recipes for the pack
      */
     public void init() {
-        Logger.info(Component.text(TranslationManager.getString(Config.getLanguage(), "startup.register.crafting_tweak").replace("<name>", name)));
+        Logger.info(Component.text(TranslationManager.getString(Config.getLanguage(), "startup.register.crafting_tweak").replace("\\<name>", name)));
         TeaksTweaks.getInstance().addCraftingTweaks(this.name);
         this.registerRecipes();
 
