@@ -74,7 +74,7 @@ public class TPAHandler {
         Component targetMessage = MiniMessage.miniMessage().deserialize(text, Placeholder.parsed("player", sender.getName()));
         target.sendMessage(targetMessage);
 
-        Component senderMessage = MiniMessage.miniMessage().deserialize(getString(request.getType().getKey() + ".request_sent"), Placeholder.parsed("player", target.getName()));
+        Component senderMessage = MiniMessage.miniMessage().deserialize(getString(request.getType().getKey() + ".request_sent"), Placeholder.unparsed("player", target.getName()));
         sender.sendMessage(senderMessage);
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(TeaksTweaks.getInstance(), () -> {
@@ -91,7 +91,7 @@ public class TPAHandler {
     }
 
     private static String getString(String key) {
-        return TranslationManager.getString(Config.getLanguage(), "tpa." + key);
+        return TranslationManager.getString(Config.getLanguage(), "tpa." + key).replace("\\<", "<");
     }
 
     public static void expireRequest(TPARequest request) {
