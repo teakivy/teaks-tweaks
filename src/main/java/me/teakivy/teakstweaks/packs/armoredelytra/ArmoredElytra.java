@@ -196,6 +196,7 @@ public class ArmoredElytra extends BasePack {
         double knockbackResistance = 0;
 
         if (chestplate.getType() == Material.LEATHER_CHESTPLATE) armor = 3;
+        if (chestplate.getType() == Material.COPPER_CHESTPLATE) armor = 4;
         if (chestplate.getType() == Material.CHAINMAIL_CHESTPLATE) armor = 5;
         if (chestplate.getType() == Material.IRON_CHESTPLATE) armor = 6;
         if (chestplate.getType() == Material.GOLDEN_CHESTPLATE) armor = 5;
