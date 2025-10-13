@@ -17,6 +17,7 @@ public enum TTCraftingTweak {
     COPPER_POWERED_RAILS("copper-powered-rails", CopperPoweredRails.class),
     CRAFTABLE_BLACKSTONE("craftable-blackstone", CraftableBlackstone.class),
     CRAFTABLE_CHAINMAIL("craftable-chainmail", CraftableChainmail.class),
+    CRAFTABLE_COPPER_GOLEM_STATUES("craftable-copper-golem-statues", CraftableCopperGolemStatues.class),
     CRAFTABLE_CORAL_BLOCKS_2X2("craftable-coral-blocks-2x2", CraftableCoralBlocks2x2.class),
     CRAFTABLE_CORAL_BLOCKS_3X3("craftable-coral-blocks-3x3", CraftableCoralBlocks3x3.class),
     CRAFTABLE_ENCHANTED_GOLDEN_APPLES("craftable-enchanted-golden-apples", CraftableEnchantedGoldenApples.class),

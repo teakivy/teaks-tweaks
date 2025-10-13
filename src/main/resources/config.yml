@@ -1127,6 +1127,11 @@ crafting-tweaks:
   craftable-chainmail:
     enabled: false
 
+  # Craftable Copper Golem Statues
+  # Allows you to craft a copper golem with a carved pumpkin and a copper ingot.
+  craftable-copper-golem-statues:
+    enabled: true
+
   # Craftable Coral Blocks (2x2)
   # Allows you to craft Coral Blocks from their Coral Plant in a 2x2. Both Tubes and Fans may be used interchangeably.
   craftable-coral-blocks-2x2:
