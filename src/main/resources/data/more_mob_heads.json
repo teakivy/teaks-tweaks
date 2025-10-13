@@ -232,6 +232,34 @@
 			"looting_bonus": 0.01
 		},
 		{
+			"key": "copper_golem",
+			"name": "Copper Golem Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWY0MGMxYmVjMTIyMjY1ZTk3OWU0Mzc4ZGM4ZDhiMTNiZDkyNmVkMmFkODk4NGY0OTNlYjQ2Zjc1NDQ3NDcxNyJ9fX0",
+			"chance": 0.05,
+			"looting_bonus": 0.03
+		},
+		{
+			"key": "exposed_copper_golem",
+			"name": "Exposed Copper Golem Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWFjMjg0NGMzMDA5N2M5NjQ2MmQ0OGFkYTA2NGNmOWFhZTM2NmFhMTFmZGMxNTY5ZWNlODYwZjcyMGQxYzllMCJ9fX0",
+			"chance": 0.05,
+			"looting_bonus": 0.03
+		},
+		{
+			"key": "weathered_copper_golem",
+			"name": "Weathered Copper Golem Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDUxNzk1YzQzOWY1ZTJjNGIwOGQ5MDI3MjEyN2YyOWNiNGUwYjFhN2Q0ZWViNjg3NTkxYWE1ODAwMzgwMmExYSJ9fX0",
+			"chance": 0.05,
+			"looting_bonus": 0.03
+		},
+		{
+			"key": "oxidized_copper_golem",
+			"name": "Oxidized Copper Golem Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjZhNDU5ODQyMGMzZjIwNDk5NjJkZTQ5MzYzMTdhMzZkMjUwZDEzZDY1MDJhYzdjY2M2MmY1NWExMzdiZGUzNyJ9fX0",
+			"chance": 0.05,
+			"looting_bonus": 0.03
+		},
+		{
 			"key": "warm_cow",
 			"name": "Warm Cow Head",
 			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmYzNDRjOTk0MmFjMzU3ODlmYTZjMWQ2MDI4NzZjOWY1NmY2OGYwMmU2NzBkZTBmZjgxYjdjODMxNjEwZmY1YSJ9fX0",

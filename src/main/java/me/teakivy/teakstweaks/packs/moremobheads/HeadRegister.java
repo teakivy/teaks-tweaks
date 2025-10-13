@@ -83,6 +83,7 @@ public class HeadRegister {
         new CatHead();
         new ChickenHead();
         new CowHead();
+        new CopperGolemHead();
         new FoxHead();
         new FrogHead();
         new GoatHead();
