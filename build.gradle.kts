@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "me.teakivy"
-version = "2.1.0"
+version = "2.1.1"
 description = "150+ Toggleable Tweaks & Features including Vanilla Tweaks as a plugin, and more!"
 java.sourceCompatibility = JavaVersion.VERSION_21
 
