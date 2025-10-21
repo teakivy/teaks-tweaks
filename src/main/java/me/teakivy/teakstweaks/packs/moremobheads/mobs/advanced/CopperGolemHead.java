@@ -4,7 +4,6 @@ import me.teakivy.teakstweaks.packs.moremobheads.abstractions.AdvancedMobHead;
 import org.bukkit.Sound;
 import org.bukkit.entity.CopperGolem;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Panda;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 public class CopperGolemHead extends AdvancedMobHead {

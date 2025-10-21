@@ -94,49 +94,6 @@ packs:
   always-active-beacons:
     enabled: false
 
-  # Always Drop
-  # Allows you to set blocks that will always drop when broken, regardless of the tool or enchantments used.
-  always-drop:
-    enabled: false
-    # Blocks that will always drop when broken
-    blocks:
-      - ender_chest
-      - glass
-      - tinted_glass
-      - white_stained_glass
-      - light_gray_stained_glass
-      - gray_stained_glass
-      - black_stained_glass
-      - brown_stained_glass
-      - red_stained_glass
-      - orange_stained_glass
-      - yellow_stained_glass
-      - lime_stained_glass
-      - green_stained_glass
-      - cyan_stained_glass
-      - light_blue_stained_glass
-      - blue_stained_glass
-      - purple_stained_glass
-      - magenta_stained_glass
-      - pink_stained_glass
-      - glass_pane
-      - white_stained_glass_pane
-      - light_gray_stained_glass_pane
-      - gray_stained_glass_pane
-      - black_stained_glass_pane
-      - brown_stained_glass_pane
-      - red_stained_glass_pane
-      - orange_stained_glass_pane
-      - yellow_stained_glass_pane
-      - lime_stained_glass_pane
-      - green_stained_glass_pane
-      - cyan_stained_glass_pane
-      - light_blue_stained_glass_pane
-      - blue_stained_glass_pane
-      - purple_stained_glass_pane
-      - magenta_stained_glass_pane
-      - pink_stained_glass_pane
-
   # Anti Creeper Grief
   # Prevents creepers from blowing up, blocks and players do not take damage.
   anti-creeper-grief:
@@ -184,7 +141,7 @@ packs:
   # Back To Bed
   # Enter '/bed' to teleport to your most recent respawn point.
   back-to-bed:
-    enabled: true
+    enabled: false
     # Whether or not the player will be teleported to the world spawn if they have no spawn point.
     to-spawn: true
     # Name of the world to teleport to the spawn of (ex: 'world', 'world_nether', 'world_the_end', etc)
@@ -215,7 +172,7 @@ packs:
   # Slime Cauldron - Filled with Slime Blocks, can be used to age Copper items.
   # Honey Cauldron - Filled with Honey Blocks, can be used to bulk wax Copper items.
   cauldron-copper:
-    enabled: true
+    enabled: false
 
   # Cauldron Mud
   # Right click a water cauldron with dirt to turn it into mud.
@@ -267,12 +224,55 @@ packs:
   classic-fishing-loot:
     enabled: false
 
-  # Collectible Budding Amethyst
-  # Allows you to collect budding amethyst blocks to get the block itself.
-  collectible-budding-amethyst:
+  # Collectible Blocks
+  # Allows you to configure blocks that can be collected in ways they normally can't be in vanilla Minecraft.
+  collectible-blocks:
     enabled: false
-    # Whether or not silk touch is required to collect budding amethyst blocks
-    require-silk-touch: true
+    # Makes specified blocks always drop when broken, regardless of the tool used.
+    always-drop:
+      enabled: false
+      blocks:
+        - ender_chest
+        - glass
+        - tinted_glass
+        - white_stained_glass
+        - light_gray_stained_glass
+        - gray_stained_glass
+        - black_stained_glass
+        - brown_stained_glass
+        - red_stained_glass
+        - orange_stained_glass
+        - yellow_stained_glass
+        - lime_stained_glass
+        - green_stained_glass
+        - cyan_stained_glass
+        - light_blue_stained_glass
+        - blue_stained_glass
+        - purple_stained_glass
+        - magenta_stained_glass
+        - pink_stained_glass
+        - glass_pane
+        - white_stained_glass_pane
+        - light_gray_stained_glass_pane
+        - gray_stained_glass_pane
+        - black_stained_glass_pane
+        - brown_stained_glass_pane
+        - red_stained_glass_pane
+        - orange_stained_glass_pane
+        - yellow_stained_glass_pane
+        - lime_stained_glass_pane
+        - green_stained_glass_pane
+        - cyan_stained_glass_pane
+        - light_blue_stained_glass_pane
+        - blue_stained_glass_pane
+        - purple_stained_glass_pane
+        - magenta_stained_glass_pane
+        - pink_stained_glass_pane
+    # Makes specified blocks drop only when broken with a tool that has the Silk Touch enchantment.
+    silk-touch-drop:
+      enabled: false
+      blocks:
+        - budding_amethyst
 
   # Confetti Creepers
   # There is a chance each creeper will explode into confetti and do no damage to blocks.
@@ -979,7 +979,7 @@ packs:
   # Permissions:
   # teakstweaks.unwax-signs
   unwax-signs:
-    enabled: true
+    enabled: false
 
   # Villager Death Messages
   # Notifies the server in chat when a villager dies. Displayes Coordinates and Dimension that it died in.
@@ -1130,7 +1130,7 @@ crafting-tweaks:
   # Craftable Copper Golem Statues
   # Allows you to craft a copper golem with a carved pumpkin and a copper ingot.
   craftable-copper-golem-statues:
-    enabled: true
+    enabled: false
 
   # Craftable Coral Blocks (2x2)
   # Allows you to craft Coral Blocks from their Coral Plant in a 2x2. Both Tubes and Fans may be used interchangeably.

@@ -3,7 +3,6 @@ package me.teakivy.teakstweaks.utils.register;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.packs.afkdisplay.AFKDisplay;
 import me.teakivy.teakstweaks.packs.alwaysactivebeacons.AlwaysActiveBeacons;
-import me.teakivy.teakstweaks.packs.alwaysdrop.AlwaysDrop;
 import me.teakivy.teakstweaks.packs.anticreepergrief.AntiCreeperGrief;
 import me.teakivy.teakstweaks.packs.antiendermangrief.AntiEndermanGrief;
 import me.teakivy.teakstweaks.packs.antighastgrief.AntiGhastGrief;
@@ -18,7 +17,7 @@ import me.teakivy.teakstweaks.packs.cauldronpotions.CauldronPotions;
 import me.teakivy.teakstweaks.packs.chatcolors.ChatColors;
 import me.teakivy.teakstweaks.packs.chunkloaders.ChunkLoaders;
 import me.teakivy.teakstweaks.packs.classicfishingloot.ClassicFishingLoot;
-import me.teakivy.teakstweaks.packs.collectiblebuddingamethyst.CollectibleBuddingAmethyst;
+import me.teakivy.teakstweaks.packs.collectibleblocks.CollectibleBlocks;
 import me.teakivy.teakstweaks.packs.confetticreepers.ConfettiCreepers;
 import me.teakivy.teakstweaks.packs.coordshud.CoordsHud;
 import me.teakivy.teakstweaks.packs.countmobdeaths.CountMobDeaths;
@@ -85,7 +84,6 @@ import java.lang.reflect.Constructor;
 public enum TTPack {
     AFK_DISPLAY("afk-display", AFKDisplay.class),
     ALWAYS_ACTIVE_BEACONS("always-active-beacons", AlwaysActiveBeacons.class),
-    ALWAYS_DROP("always-drop", AlwaysDrop.class),
     ANTI_CREEPER_GRIEF("anti-creeper-grief", AntiCreeperGrief.class),
     ANTI_ENDERMAN_GRIEF("anti-enderman-grief", AntiEndermanGrief.class),
     ANTI_GHAST_GRIEF("anti-ghast-grief", AntiGhastGrief.class),
@@ -100,7 +98,7 @@ public enum TTPack {
     CHAT_COLORS("chat-colors", ChatColors.class),
     CHUNK_LOADERS("chunk-loaders", ChunkLoaders.class),
     CLASSIC_FISHING_LOOT("classic-fishing-loot", ClassicFishingLoot.class),
-    COLLECTIBLE_BUDDING_AMETHYST("collectible-budding-amethyst", CollectibleBuddingAmethyst.class),
+    COLLECTIBLE_BLOCKS("collectible-blocks", CollectibleBlocks.class),
     CONFETTI_CREEPERS("confetti-creepers", ConfettiCreepers.class),
     COORDS_HUD("coords-hud", CoordsHud.class),
     COUNT_MOB_DEATHS("count-mob-deaths", CountMobDeaths.class),
