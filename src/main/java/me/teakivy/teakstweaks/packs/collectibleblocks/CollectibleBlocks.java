@@ -51,6 +51,7 @@ public class CollectibleBlocks extends BasePack {
         if (includeAlwaysDropBlocks && alwaysDropBlocks.contains(event.getBlock().getType())) {
             event.setDropItems(false);
             event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(event.getBlock().getType()));
+            return;
         }
 
         ItemStack handItem = event.getPlayer().getInventory().getItemInMainHand();
