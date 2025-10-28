@@ -124,8 +124,8 @@ public class XPManagement extends BasePack {
         }
 
         PersistentDataContainer data = xpMeta.getPersistentDataContainer();
-        data.set(Key.get("xp_amount"), PersistentDataType.INTEGER, getConfig().getInt("packs.xp-management.return-xp-amount"));
-        data.set(Key.get("xp_smelt_amount"), PersistentDataType.INTEGER, getConfig().getInt("packs.xp-management.take-xp-amount"));
+        data.set(Key.get("xp_amount"), PersistentDataType.INTEGER, getConfig().getInt("return-xp-amount"));
+        data.set(Key.get("xp_smelt_amount"), PersistentDataType.INTEGER, getConfig().getInt("take-xp-amount"));
         xpBottle.setItemMeta(xpMeta);
 
         if (getConfig().getBoolean("sneak-to-bottle-all") && player.isSneaking()) {
