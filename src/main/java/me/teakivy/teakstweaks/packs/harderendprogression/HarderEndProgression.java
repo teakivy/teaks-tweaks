@@ -19,8 +19,12 @@ public class HarderEndProgression extends BasePack {
 
 	public HarderEndProgression() {
         super(TTPack.HARDER_END_PROGRESSION, Material.ENDER_EYE);
-		newEyeOfEnderRecipe();
     }
+
+	public void init() {
+		super.init();
+		setEyeOfEnderRecipe();
+	}
 
 	@EventHandler
 	public void changeEyePosition(EntitySpawnEvent event) {
@@ -30,7 +34,7 @@ public class HarderEndProgression extends BasePack {
 		}
 	}
 
-	public void newEyeOfEnderRecipe() {
+	public void setEyeOfEnderRecipe() {
 		int difficultyLevel = getConfig().getInt("difficulty-level");
         ShapelessRecipe recipe = switch (difficultyLevel) {
             case 3 -> levelThreeRecipe();
