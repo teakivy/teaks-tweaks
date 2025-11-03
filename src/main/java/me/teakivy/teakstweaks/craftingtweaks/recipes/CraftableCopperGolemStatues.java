@@ -15,9 +15,21 @@ public class CraftableCopperGolemStatues extends AbstractCraftingTweak {
 
     @Override
     public void registerRecipes() {
-        ShapelessRecipe recipe = new ShapelessRecipe(Key.get("craftable_copper_golem_statues"), new ItemStack(Material.COPPER_GOLEM_STATUE));
+        registerGolemRecipe(Material.COPPER_BLOCK, Material.COPPER_GOLEM_STATUE);
+        registerGolemRecipe(Material.EXPOSED_COPPER, Material.EXPOSED_COPPER_GOLEM_STATUE);
+        registerGolemRecipe(Material.WEATHERED_COPPER, Material.WEATHERED_COPPER_GOLEM_STATUE);
+        registerGolemRecipe(Material.OXIDIZED_COPPER, Material.OXIDIZED_COPPER_GOLEM_STATUE);
+
+        registerGolemRecipe(Material.WAXED_COPPER_BLOCK, Material.WAXED_COPPER_GOLEM_STATUE);
+        registerGolemRecipe(Material.WAXED_EXPOSED_COPPER, Material.WAXED_EXPOSED_COPPER_GOLEM_STATUE);
+        registerGolemRecipe(Material.WAXED_WEATHERED_COPPER, Material.WAXED_WEATHERED_COPPER_GOLEM_STATUE);
+        registerGolemRecipe(Material.WAXED_OXIDIZED_COPPER, Material.WAXED_OXIDIZED_COPPER_GOLEM_STATUE);
+    }
+
+    public void registerGolemRecipe(Material input, Material output) {
+        ShapelessRecipe recipe = new ShapelessRecipe(Key.get("craftable_copper_golem_statues_" + input.toString().toLowerCase()), new ItemStack(Material.COPPER_GOLEM_STATUE));
         recipe.addIngredient(Material.CARVED_PUMPKIN);
-        recipe.addIngredient(Material.COPPER_INGOT);
+        recipe.addIngredient(input);
         addRecipe(recipe);
     }
 }
