@@ -27,7 +27,7 @@ public class CraftableCopperGolemStatues extends AbstractCraftingTweak {
     }
 
     public void registerGolemRecipe(Material input, Material output) {
-        ShapelessRecipe recipe = new ShapelessRecipe(Key.get("craftable_copper_golem_statues_" + input.toString().toLowerCase()), new ItemStack(Material.COPPER_GOLEM_STATUE));
+        ShapelessRecipe recipe = new ShapelessRecipe(Key.get("craftable_copper_golem_statues_" + input.toString().toLowerCase()), new ItemStack(output));
         recipe.addIngredient(Material.CARVED_PUMPKIN);
         recipe.addIngredient(input);
         addRecipe(recipe);
