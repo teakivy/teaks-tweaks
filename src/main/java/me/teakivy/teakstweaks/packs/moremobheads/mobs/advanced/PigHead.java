@@ -1,11 +1,13 @@
 package me.teakivy.teakstweaks.packs.moremobheads.mobs.advanced;
 
 import me.teakivy.teakstweaks.packs.moremobheads.abstractions.AdvancedMobHead;
+import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Pig;
 import org.bukkit.event.entity.EntityDeathEvent;
 
+import java.util.List;
 import java.util.Objects;
 
 public class PigHead extends AdvancedMobHead {
@@ -32,8 +34,8 @@ public class PigHead extends AdvancedMobHead {
 
         private final Pig.Variant variant;
 
-        PigVariant(Pig.Variant profession) {
-            this.variant = profession;
+        PigVariant(Pig.Variant variant) {
+            this.variant = variant;
         }
 
         public Pig.Variant getVariant() {
@@ -45,6 +47,14 @@ public class PigHead extends AdvancedMobHead {
                 if (value.variant == variant) return value;
             }
             return null;
+        }
+    }
+
+    protected void register() {
+        super.register();
+        List<String> keys = List.of("warm", "temperate", "cold");
+        for (String key : keys) {
+            new CustomItem(key + "_pig_head", getHead(key + "_pig")).register();
         }
     }
 }

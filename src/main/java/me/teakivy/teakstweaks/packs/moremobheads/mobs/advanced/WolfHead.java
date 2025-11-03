@@ -1,11 +1,13 @@
 package me.teakivy.teakstweaks.packs.moremobheads.mobs.advanced;
 
 import me.teakivy.teakstweaks.packs.moremobheads.abstractions.AdvancedMobHead;
+import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Wolf;
 import org.bukkit.event.entity.EntityDeathEvent;
 
+import java.util.List;
 import java.util.Objects;
 
 public class WolfHead extends AdvancedMobHead {
@@ -50,8 +52,8 @@ public class WolfHead extends AdvancedMobHead {
 
         private final Wolf.Variant variant;
 
-        WolfVariant(Wolf.Variant profession) {
-            this.variant = profession;
+        WolfVariant(Wolf.Variant variant) {
+            this.variant = variant;
         }
 
         public Wolf.Variant getVariant() {
@@ -63,6 +65,15 @@ public class WolfHead extends AdvancedMobHead {
                 if (value.variant == variant) return value;
             }
             return null;
+        }
+    }
+
+    protected void register() {
+        super.register();
+        List<String> keys = List.of("ashen", "black", "chestnut", "pale", "rusty", "snowy", "spotted", "striped", "woods");
+        for (String key : keys) {
+            new CustomItem(key + "_wolf_head", getHead(key + "_wolf")).register();
+            new CustomItem("angry_" + key + "_wolf_head", getHead("angry_" + key + "_wolf")).register();
         }
     }
 }

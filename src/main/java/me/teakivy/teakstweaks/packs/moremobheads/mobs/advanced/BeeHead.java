@@ -1,10 +1,13 @@
 package me.teakivy.teakstweaks.packs.moremobheads.mobs.advanced;
 
 import me.teakivy.teakstweaks.packs.moremobheads.abstractions.AdvancedMobHead;
+import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import org.bukkit.Sound;
 import org.bukkit.entity.Bee;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.entity.EntityDeathEvent;
+
+import java.util.List;
 
 public class BeeHead extends AdvancedMobHead {
 
@@ -19,5 +22,13 @@ public class BeeHead extends AdvancedMobHead {
             return bee.hasNectar() ? "angry_pollinated_bee" : "angry_bee";
         }
         return bee.hasNectar() ? "pollinated_bee" : "bee";
+    }
+
+    protected void register() {
+        super.register();
+        List<String> keys = List.of("angry_pollinated_bee", "angry_bee", "pollinated_bee", "bee");
+        for (String key : keys) {
+            new CustomItem(key + "_head", getHead(key)).register();
+        }
     }
 }

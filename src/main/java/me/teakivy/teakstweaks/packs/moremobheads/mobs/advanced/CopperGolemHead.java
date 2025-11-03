@@ -1,10 +1,13 @@
 package me.teakivy.teakstweaks.packs.moremobheads.mobs.advanced;
 
 import me.teakivy.teakstweaks.packs.moremobheads.abstractions.AdvancedMobHead;
+import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import org.bukkit.Sound;
 import org.bukkit.entity.CopperGolem;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.entity.EntityDeathEvent;
+
+import java.util.List;
 
 public class CopperGolemHead extends AdvancedMobHead {
 
@@ -30,5 +33,13 @@ public class CopperGolemHead extends AdvancedMobHead {
             case "oxidized_copper_golem" -> Sound.ENTITY_COPPER_GOLEM_OXIDIZED_SPIN;
             default -> Sound.ENTITY_COPPER_GOLEM_SPIN;
         };
+    }
+
+    protected void register() {
+        super.register();
+        List<String> keys = List.of("copper_golem", "exposed_copper_golem", "weathered_copper_golem", "oxidized_copper_golem");
+        for (String key : keys) {
+            new CustomItem(key + "_head", getHead(key)).register();
+        }
     }
 }

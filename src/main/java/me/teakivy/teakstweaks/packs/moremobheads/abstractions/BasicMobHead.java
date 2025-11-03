@@ -4,6 +4,7 @@ import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.moremobheads.MoreMobHeads;
 import me.teakivy.teakstweaks.packs.moremobheads.types.HeadEntry;
 import me.teakivy.teakstweaks.packs.moremobheads.types.TexturedHead;
+import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -54,5 +55,6 @@ public class BasicMobHead implements Listener {
 
     protected void register() {
         TeaksTweaks.getInstance().getServer().getPluginManager().registerEvents(this, TeaksTweaks.getInstance());
+        new CustomItem(key + "_head", getHead()).register();
     }
 }

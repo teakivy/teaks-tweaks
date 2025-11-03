@@ -3,6 +3,7 @@ package me.teakivy.teakstweaks.packs.moremobheads.mobs.special;
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.moremobheads.MoreMobHeads;
 import me.teakivy.teakstweaks.packs.moremobheads.abstractions.SpecialMobHead;
+import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -31,5 +32,12 @@ public class WitherHead extends SpecialMobHead {
                 event.getDrops().add(MoreMobHeads.getHeadItem("blue_wither_projectile", Sound.ENTITY_WITHER_SHOOT));
                 break;
         }
+    }
+
+    protected void register() {
+        super.register();
+        new CustomItem("wither_head", MoreMobHeads.getHeadItem("wither", Sound.ENTITY_WITHER_SPAWN)).register();
+        new CustomItem("wither_projectile_head", MoreMobHeads.getHeadItem("wither_projectile", Sound.ENTITY_WITHER_SHOOT)).register();
+        new CustomItem("blue_wither_projectile_head", MoreMobHeads.getHeadItem("blue_wither_projectile", Sound.ENTITY_WITHER_SHOOT)).register();
     }
 }

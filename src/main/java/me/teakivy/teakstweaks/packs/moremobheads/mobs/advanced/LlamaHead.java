@@ -1,10 +1,13 @@
 package me.teakivy.teakstweaks.packs.moremobheads.mobs.advanced;
 
 import me.teakivy.teakstweaks.packs.moremobheads.abstractions.AdvancedMobHead;
+import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Llama;
 import org.bukkit.event.entity.EntityDeathEvent;
+
+import java.util.List;
 
 public class LlamaHead extends AdvancedMobHead {
 
@@ -21,5 +24,13 @@ public class LlamaHead extends AdvancedMobHead {
             case BROWN -> "brown_llama";
             case GRAY -> "gray_llama";
         };
+    }
+
+    protected void register() {
+        super.register();
+        List<String> keys = List.of("white_llama", "creamy_llama", "brown_llama", "gray_llama");
+        for (String key : keys) {
+            new CustomItem(key + "_head", getHead(key)).register();
+        }
     }
 }

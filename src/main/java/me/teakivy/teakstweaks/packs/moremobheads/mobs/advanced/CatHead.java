@@ -1,11 +1,13 @@
 package me.teakivy.teakstweaks.packs.moremobheads.mobs.advanced;
 
 import me.teakivy.teakstweaks.packs.moremobheads.abstractions.AdvancedMobHead;
+import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import org.bukkit.Sound;
 import org.bukkit.entity.Cat;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.entity.EntityDeathEvent;
 
+import java.util.List;
 import java.util.Objects;
 
 public class CatHead extends AdvancedMobHead {
@@ -61,6 +63,14 @@ public class CatHead extends AdvancedMobHead {
                 if (value.type == type) return value;
             }
             return null;
+        }
+    }
+
+    protected void register() {
+        super.register();
+        List<String> keys = List.of("calico", "jellie", "siamese", "persian", "british_shorthair", "tabby", "black", "red", "ragdoll", "white", "all_black");
+        for (String key : keys) {
+            new CustomItem(key + "_cat_head", getHead(key + "_cat")).register();
         }
     }
 }

@@ -1,11 +1,13 @@
 package me.teakivy.teakstweaks.packs.moremobheads.mobs.advanced;
 
 import me.teakivy.teakstweaks.packs.moremobheads.abstractions.AdvancedMobHead;
+import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.entity.EntityDeathEvent;
 
+import java.util.List;
 import java.util.Objects;
 
 public class VillagerHead extends AdvancedMobHead {
@@ -69,6 +71,14 @@ public class VillagerHead extends AdvancedMobHead {
                 if (value.profession == profession) return value;
             }
             return null;
+        }
+    }
+
+    protected void register() {
+        super.register();
+        List<String> keys = List.of("armorer", "butcher", "cartographer", "cleric", "farmer", "fisherman", "fletcher", "leatherworker", "librarian", "mason", "nitwit", "shepherd", "toolsmith", "weaponsmith", "unemployed");
+        for (String key : keys) {
+            new CustomItem(key + "_villager_head", getHead(key + "_villager")).register();
         }
     }
 }

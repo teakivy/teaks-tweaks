@@ -1,11 +1,13 @@
 package me.teakivy.teakstweaks.packs.moremobheads.mobs.advanced;
 
 import me.teakivy.teakstweaks.packs.moremobheads.abstractions.AdvancedMobHead;
+import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import org.bukkit.Sound;
 import org.bukkit.entity.Cow;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.entity.EntityDeathEvent;
 
+import java.util.List;
 import java.util.Objects;
 
 public class CowHead extends AdvancedMobHead {
@@ -32,8 +34,8 @@ public class CowHead extends AdvancedMobHead {
 
         private final Cow.Variant variant;
 
-        CowVariant(Cow.Variant profession) {
-            this.variant = profession;
+        CowVariant(Cow.Variant variant) {
+            this.variant = variant;
         }
 
         public Cow.Variant getVariant() {
@@ -45,6 +47,14 @@ public class CowHead extends AdvancedMobHead {
                 if (value.variant == variant) return value;
             }
             return null;
+        }
+    }
+
+    protected void register() {
+        super.register();
+        List<String> keys = List.of("warm", "temperate", "cold");
+        for (String key : keys) {
+            new CustomItem(key + "_cow_head", getHead(key + "_cow")).register();
         }
     }
 }
