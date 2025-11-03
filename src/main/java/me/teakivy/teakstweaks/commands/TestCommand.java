@@ -29,7 +29,7 @@ public class TestCommand extends AbstractCommand {
     @Override
     public LiteralCommandNode<CommandSourceStack> getCommand() {
         return Commands.literal("test")
-//                .requires(perm(Permission.TEST))
+                .requires(perm(Permission.TEST))
                 .executes(this::test)
                 .build();
     }
@@ -37,17 +37,6 @@ public class TestCommand extends AbstractCommand {
     private int test(CommandContext<CommandSourceStack> context) {
         CommandSender sender = context.getSource().getSender();
         sender.sendMessage(getText("test", insert("name", (sender instanceof Player p ? p.getName() : "Console"))));
-
-        Player player = (sender instanceof Player p) ? p : null;
-        if (player == null) return Command.SINGLE_SUCCESS;
-
-        player.getLocation().getBlock().setType(Material.CAULDRON);
-        player.getWorld().spawn(player.getLocation().getBlock().getLocation().add(2/16f, 4/16f, 2/16f), BlockDisplay.class, display -> {
-            display.setBlock(Material.SLIME_BLOCK.createBlockData());
-            Transformation transformation = display.getTransformation();
-            transformation.getScale().set(12/16f, (11-3)/16f, 12/16f);
-            display.setTransformation(transformation);
-        });
         return Command.SINGLE_SUCCESS;
     }
 }
