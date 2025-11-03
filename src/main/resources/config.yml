@@ -350,6 +350,9 @@ packs:
   # /disposal (Permission: teakstweaks.command.disposal)
   disposal:
     enabled: false
+    # Amount of rows in the disposal screen
+    # Must be between [1, 6]
+    size: 1
 
   # Double Shulker Shells
   # Makes all shulkers drop 2 shells.

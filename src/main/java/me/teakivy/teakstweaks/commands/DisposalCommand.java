@@ -30,7 +30,7 @@ public class DisposalCommand extends AbstractCommand {
 
     private int disposal(CommandContext<CommandSourceStack> context) {
         Player player = (Player) context.getSource().getSender();
-        player.openInventory(Bukkit.createInventory(null, 27, Component.text("Disposal")));
+        player.openInventory(Bukkit.createInventory(null, Math.min(Math.max(9 * getPackConfig().getInt("size", 1), 9), 54), Component.text("Disposal")));
         return Command.SINGLE_SUCCESS;
     }
 }
