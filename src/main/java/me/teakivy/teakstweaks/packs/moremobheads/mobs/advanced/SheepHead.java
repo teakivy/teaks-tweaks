@@ -20,7 +20,7 @@ public class SheepHead extends AdvancedMobHead {
     protected String getKey(EntityDeathEvent event) {
         Sheep sheep = (Sheep) event.getEntity();
         if (sheep.customName() != null &&
-                Objects.requireNonNull(sheep.customName()).toString().toLowerCase().contains("_jeb")) {
+                Objects.requireNonNull(sheep.customName()).toString().toLowerCase().contains("jeb_")) {
             return "jeb_sheep";
         }
 
