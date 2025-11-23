@@ -3,9 +3,11 @@ package me.teakivy.teakstweaks.packs.graves;
 import me.teakivy.teakstweaks.packs.armoredelytra.ArmoredElytra;
 import me.teakivy.teakstweaks.utils.Base64Serializer;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.lang.TranslationManager;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.config.Config;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.translation.Argument;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
@@ -77,6 +79,8 @@ public class GraveCreator {
         NamespacedKey key = Key.get("grave_owner_uuid");
         data.set(key, PersistentDataType.STRING, player.getUniqueId().toString());
 
+        MiniMessage mm = MiniMessage.miniMessage();
+
         if (!Boolean.TRUE.equals(location.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY))) {
             NamespacedKey key2 = Key.get("grave_owner_items");
             data.set(key2, PersistentDataType.STRING, serializeItems(player));
@@ -87,20 +91,22 @@ public class GraveCreator {
 
         if (!config.getBoolean("console-info")) return;
 
-        Logger.info(Component.translatable("graves.log.created",
-                Argument.string("player", player.getName()),
-                Argument.numeric("x", loc.getBlockX()),
-                Argument.numeric("y", loc.getBlockY()),
-                Argument.numeric("z", loc.getBlockZ()),
-                Argument.string("world", loc.getWorld().getName())));
+        Logger.info(mm.deserialize(TranslationManager.getString(Config.getLanguage(), "graves.log.created")
+                .replace("\\<player>", player.getName())
+                .replace("\\<x>", loc.getBlockX() + "")
+                .replace("\\<y>", loc.getBlockY() + "")
+                .replace("\\<z>", loc.getBlockZ() + "")
+                .replace("\\<world>", loc.getWorld().getName())
+        ));
         int items = 0;
         for (ItemStack item : player.getInventory().getContents()) {
             if (item == null) continue;
             items += item.getAmount();
         }
-        Logger.info(Component.translatable("graves.log.contains",
-                Argument.numeric("item_count", items),
-                Argument.numeric("xp_count", xp)));
+        Logger.info(mm.deserialize(TranslationManager.getString(Config.getLanguage(), "graves.log.contains")
+                .replace("\\<item_count>", items + "")
+                .replace("\\<xp_count>", xp + "")
+        ));
         for (ItemStack item : player.getInventory().getContents()) {
             if (item == null) continue;
             String enchantString = "";
@@ -114,10 +120,11 @@ public class GraveCreator {
                     enchantString = " [ " + enchantStringBuilder.substring(0, enchantStringBuilder.length() - 2) + " ]";
                 }
             }
-            Logger.info(Component.translatable("graves.log.item",
-                    Argument.string("item", item.getType().toString()),
-                    Argument.numeric("amount", item.getAmount()),
-                    Argument.string("enchantments", enchantString)));
+            Logger.info(mm.deserialize(TranslationManager.getString(Config.getLanguage(), "graves.log.item")
+                    .replace("\\<item>", item.getType().toString())
+                    .replace("\\<amount>", item.getAmount() + "")
+                    .replace("\\<enchantments>", enchantString)
+            ));
         }
     }
 
@@ -203,17 +210,20 @@ public class GraveCreator {
 
         ArrayList<ItemStack> toRemove = new ArrayList<>();
 
-        for (ItemStack item : items) {
-            if (item == null) continue;
-            if (!item.getType().equals(Material.ELYTRA)) continue;
+        if (config.getBoolean("split-armored-elytra")) {
+            for (ItemStack item : items) {
+                if (item == null) continue;
+                if (!item.getType().equals(Material.ELYTRA)) continue;
 
-            if (!item.hasItemMeta()) continue;
-            if (!item.getItemMeta().getPersistentDataContainer().has(Key.get("armored_elytra"), PersistentDataType.STRING)) continue;
+                if (!item.hasItemMeta()) continue;
+                if (!item.getItemMeta().getPersistentDataContainer().has(Key.get("armored_elytra"), PersistentDataType.STRING))
+                    continue;
 
-            items2.add(ArmoredElytra.getB64ChestplateFromArmoredElytra(item));
-            items2.add(ArmoredElytra.getB64ElytraFromArmoredElytra(item));
+                items2.add(ArmoredElytra.getB64ChestplateFromArmoredElytra(item));
+                items2.add(ArmoredElytra.getB64ElytraFromArmoredElytra(item));
 
-            toRemove.add(item);
+                toRemove.add(item);
+            }
         }
 
         items.addAll(items2);
