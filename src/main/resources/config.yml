@@ -499,6 +499,8 @@ packs:
     level-threshold: 0
     # Whether or not to allow graves to be placed in water, if false, graves will generate on the surface of the water (or the next clear space above the water)
     allow-water-graves: true
+    # Whether or not to split the armored elytra item when a grave generates
+    split-armored-elytra: true
 
   # Harder End Progression
   # Changes the crafting recipe for Eyes of Ender to make progression harder and slower.
