@@ -10,6 +10,7 @@ import me.teakivy.teakstweaks.utils.lang.TranslationManager;
 import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
@@ -188,7 +189,7 @@ public class Graves extends BasePack {
                             insert("world", loc.getWorld().getName()));
             player.sendMessage(lastGrave);
             PersistentDataContainer playerData = player.getPersistentDataContainer();
-            playerData.set(Key.get("graves_last"), PersistentDataType.STRING, MiniMessage.miniMessage().serialize(lastGrave));
+            playerData.set(Key.get("graves_last"), PersistentDataType.STRING, (int) Math.floor(loc.getX()) + "," + (int) Math.floor(loc.getY()) + "," + (int) Math.floor(loc.getZ()) + "," + loc.getWorld().getName());
         }
         if (getConfig().getBoolean("hold-xp")) {
             event.setDroppedExp(0);

@@ -13,8 +13,11 @@ import me.teakivy.teakstweaks.utils.ErrorType;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
 import me.teakivy.teakstweaks.utils.customitems.TItem;
+import me.teakivy.teakstweaks.utils.lang.TranslationManager;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import me.teakivy.teakstweaks.utils.register.TTCommand;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -59,7 +62,12 @@ public class GraveCommand extends AbstractCommand {
             return Command.SINGLE_SUCCESS;
         }
 
-        player.sendMessage(data.get(Key.get("graves_last"), PersistentDataType.STRING));
+        String lastGraveRaw = data.get(Key.get("graves_last"), PersistentDataType.STRING);
+        assert lastGraveRaw != null;
+        String[] graveResult = lastGraveRaw.split(",");
+        Component text = Component.translatable("graves.last_grave", insert("x", graveResult[0]), insert("y", graveResult[1]), insert("z", graveResult[2]), insert("world", graveResult[3]));
+
+        player.sendMessage(text);
         return Command.SINGLE_SUCCESS;
     }
 
