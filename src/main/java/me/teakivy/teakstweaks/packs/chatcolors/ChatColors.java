@@ -38,7 +38,8 @@ public class ChatColors extends BasePack {
         if (meta == null) return;
         if (!meta.hasDisplayName()) return;
 
-        meta.displayName(legacyToMiniMessage(meta.displayName()));
+        MiniMessage mm = MiniMessage.miniMessage();
+        meta.displayName(mm.deserialize(mm.serialize(legacyToMiniMessage(meta.displayName())).replaceAll("\\\\<", "<")));
         result.setItemMeta(meta);
         event.setResult(result);
     }
@@ -46,39 +47,39 @@ public class ChatColors extends BasePack {
     @EventHandler
     public void onSign(SignChangeEvent event) {
         if (!Permission.CHAT_COLORS_SIGNS.check(event.getPlayer())) return;
+        MiniMessage mm = MiniMessage.miniMessage();
 
         for (int i = 0; i < event.lines().size(); i++) {
             if (event.line(i) == null) continue;
-            event.line(i, legacyToMiniMessage(event.line(i)));
+            event.line(i, mm.deserialize(mm.serialize(legacyToMiniMessage(event.line(i))).replaceAll("\\\\<", "<")));
         }
     }
 
     private Component legacyToMiniMessage(Component legacy) {
-        legacy = legacy.replaceText(builder -> builder.matchLiteral("&a").replacement("<green>"));
-//        String text = MiniMessage.miniMessage().serialize(legacy);
-//        text = text.replaceAll("&a", "<green>");
-//        text = text.replaceAll("&b", "<aqua>");
-//        text = text.replaceAll("&c", "<red>");
-//        text = text.replaceAll("&d", "<light_purple>");
-//        text = text.replaceAll("&e", "<yellow>");
-//        text = text.replaceAll("&f", "<white>");
-//        text = text.replaceAll("&0", "<black>");
-//        text = text.replaceAll("&1", "<dark_blue>");
-//        text = text.replaceAll("&2", "<dark_green>");
-//        text = text.replaceAll("&3", "<dark_aqua>");
-//        text = text.replaceAll("&4", "<dark_red>");
-//        text = text.replaceAll("&5", "<dark_purple>");
-//        text = text.replaceAll("&6", "<gold>");
-//        text = text.replaceAll("&7", "<gray>");
-//        text = text.replaceAll("&8", "<dark_gray>");
-//        text = text.replaceAll("&9", "<blue>");
-//        text = text.replaceAll("&k", "<obfuscated>");
-//        text = text.replaceAll("&l", "<bold>");
-//        text = text.replaceAll("&m", "<strikethrough>");
-//        text = text.replaceAll("&n", "<underlined>");
-//        text = text.replaceAll("&o", "<italic>");
-//        text = text.replaceAll("&r", "<reset>");
-//        return newText(text);
+        legacy = legacy.replaceText(b -> b.matchLiteral("&a").replacement("<green>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&b").replacement("<aqua>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&c").replacement("<red>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&d").replacement("<light_purple>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&e").replacement("<yellow>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&f").replacement("<white>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&0").replacement("<black>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&1").replacement("<dark_blue>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&2").replacement("<dark_green>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&3").replacement("<dark_aqua>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&4").replacement("<dark_red>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&5").replacement("<dark_purple>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&6").replacement("<gold>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&7").replacement("<gray>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&8").replacement("<dark_gray>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&9").replacement("<blue>"));
+
+        legacy = legacy.replaceText(b -> b.matchLiteral("&k").replacement("<obfuscated>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&l").replacement("<bold>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&m").replacement("<strikethrough>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&n").replacement("<underlined>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&o").replacement("<italic>"));
+        legacy = legacy.replaceText(b -> b.matchLiteral("&r").replacement("<reset>"));
+
         return legacy;
     }
 
