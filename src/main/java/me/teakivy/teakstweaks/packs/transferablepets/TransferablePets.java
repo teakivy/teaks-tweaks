@@ -37,6 +37,7 @@ public class TransferablePets extends BasePack implements Listener {
             }
         }
 
+        if (pets.isEmpty()) return;
         DialogUtils.showConfirmation(player, Component.text("You’re about to share the lead and pass ownership of your animal to " + target.getName() + ". Are you sure you want to do this?"), (r, aud) -> {
             for (LivingEntity pet : pets) {
                 if (!pet.isLeashed()) continue;
