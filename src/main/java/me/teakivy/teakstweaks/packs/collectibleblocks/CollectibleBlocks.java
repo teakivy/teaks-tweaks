@@ -1,7 +1,9 @@
 package me.teakivy.teakstweaks.packs.collectibleblocks;
 
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.register.TTPack;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -48,17 +50,24 @@ public class CollectibleBlocks extends BasePack {
     public void onBlockBreak(BlockBreakEvent event) {
         if (event.isCancelled()) return;
         if (event.getPlayer().getGameMode() == GameMode.CREATIVE) return;
+        Material blockType = event.getBlock().getType();
         if (includeAlwaysDropBlocks && alwaysDropBlocks.contains(event.getBlock().getType())) {
-            event.setDropItems(false);
-            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(event.getBlock().getType()));
+            event.setCancelled(true);
+            event.getBlock().setType(Material.AIR);
+            Bukkit.getScheduler().runTaskLater(TeaksTweaks.getInstance(), () -> {
+                event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation().add(0.5, 0.5, 0.5), new ItemStack(blockType));
+            }, 1L);
             return;
         }
 
         ItemStack handItem = event.getPlayer().getInventory().getItemInMainHand();
         if (includeSilkTouchBlocks && silkTouchBlocks.contains(event.getBlock().getType())) {
-            if (handItem != null && handItem.containsEnchantment(Enchantment.SILK_TOUCH)) {
-                event.setDropItems(false);
-                event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(event.getBlock().getType()));
+            if (handItem.containsEnchantment(Enchantment.SILK_TOUCH)) {
+                event.setCancelled(true);
+                event.getBlock().setType(Material.AIR);
+                Bukkit.getScheduler().runTaskLater(TeaksTweaks.getInstance(), () -> {
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation().add(0.5, 0.5, 0.5), new ItemStack(blockType));
+                }, 1L);
             }
         }
     }
