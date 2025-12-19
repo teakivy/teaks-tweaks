@@ -431,7 +431,7 @@ packs:
       - BLACK_WOOL
 
   # Entity Scale
-  # Adds an admin command to rescale living entities while looking at them.
+  # Adds a command that enables the user to rescale living entities while looking at them.
   #
   # Commands:
   # /entityscale (Permission: teakstweaks.command.entityscale)
