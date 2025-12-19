@@ -54,7 +54,7 @@ public class EntityScaleCommand extends AbstractCommand {
         } else {
             Entity hitEntity = result.getHitEntity();
             if (!(hitEntity instanceof LivingEntity)) {
-                player.sendMessage(getText("entity_scale.not_living_entity"));
+                player.sendMessage(getText("not_living_entity"));
                 return Command.SINGLE_SUCCESS;
             }
             target = (LivingEntity) hitEntity;
@@ -62,11 +62,11 @@ public class EntityScaleCommand extends AbstractCommand {
         double scaleVal = context.getArgument("scale", Double.class);
         AttributeInstance scale = target.getAttribute(Attribute.SCALE);
         if (scale == null) {
-            player.sendMessage(getText("entity_scale.no_scale_attribute"));
+            player.sendMessage(getText("no_scale_attribute"));
             return Command.SINGLE_SUCCESS;
         }
         animateScale(target, scale, scaleVal);
-        player.sendMessage(getText("entity_scale.success",
+        player.sendMessage(getText("success",
                 insert("entity", target.getType().name()),
                 insert("scale", scaleVal)));
         return Command.SINGLE_SUCCESS;
@@ -76,7 +76,6 @@ public class EntityScaleCommand extends AbstractCommand {
         double currentScale = scale.getBaseValue();
         double difference = targetScale - currentScale;
 
-        // Animation settings
         int durationTicks = getPackConfig().getInt("animation-duration");
         int steps = getPackConfig().getInt("animation-steps");
         double stepSize = difference / steps;
