@@ -67,7 +67,7 @@ public class EntityScaleCommand extends AbstractCommand {
         }
         animateScale(target, scale, scaleVal);
         player.sendMessage(getText("success",
-                insert("entity", target.getType().name()),
+                insert("entity", getName(target)),
                 insert("scale", scaleVal)));
         return Command.SINGLE_SUCCESS;
     }
@@ -76,8 +76,8 @@ public class EntityScaleCommand extends AbstractCommand {
         double currentScale = scale.getBaseValue();
         double difference = targetScale - currentScale;
 
-        int durationTicks = getPackConfig().getInt("animation-duration");
-        int steps = getPackConfig().getInt("animation-steps");
+        int durationTicks = Math.max(1, getPackConfig().getInt("animation-duration"));
+        int steps = Math.max(1, getPackConfig().getInt("animation-steps"));
         double stepSize = difference / steps;
 
         new BukkitRunnable() {
@@ -92,6 +92,11 @@ public class EntityScaleCommand extends AbstractCommand {
                 }
                 scale.setBaseValue(currentScale + stepSize * ++currentStep);
             }
-        }.runTaskTimer(TeaksTweaks.getInstance(), 0L, durationTicks / steps);
+        }.runTaskTimer(TeaksTweaks.getInstance(), 0L, Math.max(1, durationTicks / steps));
+    }
+
+    private String getName(LivingEntity target) {
+        if (target instanceof Player) return ((Player) target).getName();
+        else return target.getType().name();
     }
 }
