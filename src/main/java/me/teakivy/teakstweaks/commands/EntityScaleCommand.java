@@ -5,6 +5,7 @@ import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.RayTraceResult;
 
 import com.mojang.brigadier.Command;
@@ -14,13 +15,10 @@ import com.mojang.brigadier.tree.LiteralCommandNode;
 
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
+import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
-import me.teakivy.teakstweaks.utils.config.Config;
-import me.teakivy.teakstweaks.utils.lang.TranslationManager;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import me.teakivy.teakstweaks.utils.register.TTCommand;
-import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 
 public class EntityScaleCommand extends AbstractCommand {
 
@@ -40,14 +38,10 @@ public class EntityScaleCommand extends AbstractCommand {
                 .build();
     }
 
-    private static final MiniMessage MM = MiniMessage.miniMessage();
-
     private int entityscale(CommandContext<CommandSourceStack> context) {
         Player player = (Player) context.getSource().getSender();
-
         var eye = player.getEyeLocation();
         double reach = Math.max(0.1, Math.min(64.0, getPackConfig().getDouble("reach-distance")));
-
         RayTraceResult result = player.getWorld().rayTraceEntities(
                 eye,
                 eye.getDirection(),
@@ -65,21 +59,40 @@ public class EntityScaleCommand extends AbstractCommand {
             }
             target = (LivingEntity) hitEntity;
         }
-
         double scaleVal = context.getArgument("scale", Double.class);
         AttributeInstance scale = target.getAttribute(Attribute.SCALE);
-
         if (scale == null) {
             player.sendMessage(getText("entity_scale.no_scale_attribute"));
             return Command.SINGLE_SUCCESS;
         }
-
-        scale.setBaseValue(scaleVal);
-        player.sendMessage(MM.deserialize(
-                TranslationManager.getString(Config.getLanguage(), "entity_scale.success"),
-                Placeholder.unparsed("entity", target.getType().name()),
-                Placeholder.unparsed("scale", String.valueOf(scaleVal))));
-
+        animateScale(target, scale, scaleVal);
+        player.sendMessage(getText("entity_scale.success",
+                insert("entity", target.getType().name()),
+                insert("scale", scaleVal)));
         return Command.SINGLE_SUCCESS;
+    }
+
+    private void animateScale(LivingEntity entity, AttributeInstance scale, double targetScale) {
+        double currentScale = scale.getBaseValue();
+        double difference = targetScale - currentScale;
+
+        // Animation settings
+        int durationTicks = getPackConfig().getInt("animation-duration");
+        int steps = getPackConfig().getInt("animation-steps");
+        double stepSize = difference / steps;
+
+        new BukkitRunnable() {
+            int currentStep = 0;
+
+            @Override
+            public void run() {
+                if (currentStep >= steps || !entity.isValid()) {
+                    scale.setBaseValue(targetScale);
+                    this.cancel();
+                    return;
+                }
+                scale.setBaseValue(currentScale + stepSize * ++currentStep);
+            }
+        }.runTaskTimer(TeaksTweaks.getInstance(), 0L, durationTicks / steps);
     }
 }

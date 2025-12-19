@@ -442,7 +442,12 @@ packs:
     # Maximum scale multiplier
     max-scale: 16.0
     # Maximum reach for selecting entities
+    # Accepted value is between 1 to 64 blocks
     reach-distance: 10.0
+    # Animation duration in ticks when scaling an entity (20 ticks = 1 second)
+    animation-duration: 20
+    # Number of steps in the animation (more steps = smoother animation, but more calculations)
+    animation-steps: 10
 
   # Fast Leaf Decay
   # Leaves Decay much faster when trees are mined in survival mode.
