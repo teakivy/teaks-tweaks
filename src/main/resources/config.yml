@@ -430,6 +430,20 @@ packs:
       - RED_WOOL
       - BLACK_WOOL
 
+  # Entity Scale
+  # Adds an admin command to rescale living entities while looking at them.
+  #
+  # Commands:
+  # /entityscale (Permission: teakstweaks.command.entityscale)
+  entity-scale:
+    enabled: false
+    # Minimum scale multiplier
+    min-scale: 0.0625
+    # Maximum scale multiplier
+    max-scale: 16.0
+    # Maximum reach for selecting entities
+    reach-distance: 10.0
+
   # Fast Leaf Decay
   # Leaves Decay much faster when trees are mined in survival mode.
   fast-leaf-decay:

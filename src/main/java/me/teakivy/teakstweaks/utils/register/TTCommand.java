@@ -15,6 +15,7 @@ public enum TTCommand {
     DELETEHOME("deletehome", DeleteHomeCommand.class, TTPack.HOMES),
     DISPOSAL("disposal", DisposalCommand.class, TTPack.DISPOSAL),
     DURABILITYPING("durabilityping", DurabilityPingCommand.class, TTPack.DURABILITY_PING),
+    ENTITYSCALE("entityscale", EntityScaleCommand.class, TTPack.ENTITY_SCALE),
     GRAVE("grave", GraveCommand.class, TTPack.GRAVES),
     HOME("home", HomeCommand.class, TTPack.HOMES),
     ITEMAVERAGES("itemaverages", ItemAveragesCommand.class, TTPack.ITEM_AVERAGES),

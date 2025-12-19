@@ -28,6 +28,7 @@ import me.teakivy.teakstweaks.packs.doubleshulkershells.DoubleShulkerShells;
 import me.teakivy.teakstweaks.packs.dragondrops.DragonDrops;
 import me.teakivy.teakstweaks.packs.durabilityping.DurabilityPing;
 import me.teakivy.teakstweaks.packs.elevators.Elevators;
+import me.teakivy.teakstweaks.packs.entityscale.EntityScale;
 import me.teakivy.teakstweaks.packs.fastleafdecay.FastLeafDecay;
 import me.teakivy.teakstweaks.packs.fixeditemframes.FixedItemFrames;
 import me.teakivy.teakstweaks.packs.graves.Graves;
@@ -109,6 +110,7 @@ public enum TTPack {
     DRAGON_DROPS("dragon-drops", DragonDrops.class),
     DURABILITY_PING("durability-ping", DurabilityPing.class),
     ELEVATORS("elevators", Elevators.class),
+    ENTITY_SCALE("entity-scale", EntityScale.class),
     FAST_LEAF_DECAY("fast-leaf-decay", FastLeafDecay.class),
     FIXED_ITEM_FRAMES("fixed-item-frames", FixedItemFrames.class),
     GRAVES("graves", Graves.class),

@@ -17,6 +17,7 @@ public enum Permission {
     COMMAND_DURABILITYPING("command.durabilityping"),
     COMMAND_DURABILITYPING_PREVIEW("command.durabilityping.preview"),
     COMMAND_DURABILITYPING_SET("command.durabilityping.set"),
+    COMMAND_ENTITYSCALE("command.entityscale", PermissionType.OP),
     COMMAND_GRAVE("command.grave"),
     COMMAND_GRAVE_LOCATE("command.grave.locate"),
     COMMAND_GRAVE_KEY("command.grave.key", PermissionType.OP),
