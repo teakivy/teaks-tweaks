@@ -403,6 +403,13 @@ packs:
       # Where to display durability pings (default: subtitle) [hidden, subtitle, title, chat, actionbar]
       display: subtitle
 
+  # Easier Axolotl Breeding
+  # Breed axolotls using Tropical Fish instead of Buckets of Tropical Fish.
+  easier-axolotl-breeding:
+    enabled: false
+    # Whether or not to allow the vanilla method with buckets of tropical fish
+    allow-buckets: true
+
   # Elevators
   # Drop an ender pearl above a wool block to make it into an elevator.
   # Jump on it to warp onto an elevator of the same color directly above.
