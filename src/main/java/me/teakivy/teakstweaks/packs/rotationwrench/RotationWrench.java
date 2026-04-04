@@ -157,7 +157,8 @@ public class RotationWrench extends BasePack {
              DISPENSER,
              COMPARATOR,
              REPEATER,
-             OBSERVER
+             OBSERVER,
+             CRAFTER
                 -> rtn = true;
         }
         return rtn;
