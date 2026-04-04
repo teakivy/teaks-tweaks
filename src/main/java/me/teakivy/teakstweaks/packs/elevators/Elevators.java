@@ -12,10 +12,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import com.destroystokyo.paper.event.player.PlayerJumpEvent;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -24,10 +25,12 @@ import java.util.UUID;
 public class Elevators extends BasePack {
     private static final HashMap<UUID, Long> cooldown = new HashMap<>();
     private final HashSet<Material> elevatorBlocks;
+    private Material activatorMaterial;
 
     public Elevators() {
         super(TTPack.ELEVATORS, Material.ENDER_PEARL);
         elevatorBlocks = new HashSet<>();
+        this.activatorMaterial = Material.matchMaterial(getConfig().getString("activator"));
         for (String block : getConfig().getStringList("elevator-blocks")) {
             Material item = Material.matchMaterial(block);
             if (item != null && item.isBlock()) {
@@ -40,7 +43,7 @@ public class Elevators extends BasePack {
     public void onDrop(PlayerDropItemEvent event) {
         if (!Permission.ELEVATOR_CREATE.check(event.getPlayer())) return;
 
-        if (!event.getItemDrop().getItemStack().getType().toString().equalsIgnoreCase(getConfig().getString("activator"))) return;
+        if (event.getItemDrop().getItemStack().getType() != activatorMaterial) return;
         if (event.getItemDrop().getItemStack().getAmount() != 1) return;
         if (isElevator(event.getItemDrop().getLocation().add(0, -1, 0).getBlock())) return;
 
@@ -98,12 +101,10 @@ public class Elevators extends BasePack {
     }
 
     @EventHandler
-    public void onJump(PlayerMoveEvent e) {
+    public void onJump(PlayerJumpEvent e) {
         if (!Permission.ELEVATOR_USE.check(e.getPlayer())) return;
         Player player = e.getPlayer();
         if (isOnCooldown(player)) return;
-        if (e.getPlayer().getVelocity().getY() < .1) return;
-        e.getPlayer().getVelocity().getY();
 
         Location loc = player.getLocation();
         Block standingBlock = loc.add(0, -0.6, 0).getBlock();
