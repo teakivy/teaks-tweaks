@@ -1107,6 +1107,11 @@ crafting-tweaks:
   blackstone-cobblestone:
     enabled: false
 
+  # Carpet to Blocks
+  # Allows you to craft full blocks from carpet.
+  carpet-to-blocks:
+    enabled: false
+
   # Charcoal to Black Dye
   # Allows you to craft Charcoal into Black Dye.
   charcoal-to-black-dye:

@@ -10,6 +10,7 @@ import java.lang.reflect.Constructor;
 public enum TTCraftingTweak {
     BACK_TO_BLOCKS("back-to-blocks", BackToBlocks.class),
     BLACKSTONE_COBBLESTONE("blackstone-cobblestone", BlackstoneCobblestone.class),
+    CARPET_TO_BLOCKS("carpet-to-blocks", CarpetToBlocks.class),
     CHARCOAL_TO_BLACK_DYE("charcoal-to-black-dye", CharcoalToBlackDye.class),
     CHEAPER_ARMOR_TRIM_TEMPLATES("cheaper-armor-trim-templates", CheaperArmorTrimTemplates.class),
     CHEAPER_RESIN_BLOCKS("cheaper-resin-blocks", CheaperResinBlocks.class),
