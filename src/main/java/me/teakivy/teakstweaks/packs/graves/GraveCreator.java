@@ -81,7 +81,7 @@ public class GraveCreator {
 
         MiniMessage mm = MiniMessage.miniMessage();
 
-        if (!Boolean.TRUE.equals(location.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY))) {
+        if (!Boolean.TRUE.equals(location.getWorld().getGameRuleValue(GameRules.KEEP_INVENTORY))) {
             NamespacedKey key2 = Key.get("grave_owner_items");
             data.set(key2, PersistentDataType.STRING, serializeItems(player));
 

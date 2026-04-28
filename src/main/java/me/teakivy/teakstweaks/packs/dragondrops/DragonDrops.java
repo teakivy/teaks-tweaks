@@ -20,12 +20,17 @@ public class DragonDrops extends BasePack {
         Entity entity = event.getEntity();
         if (entity.getType() == EntityType.ENDER_DRAGON) {
             event.getDrops().clear();
-            if (getConfig().getBoolean("drop-egg")) {
-                event.getDrops().add(new ItemStack(Material.DRAGON_EGG));
-            }
-            if (getConfig().getBoolean("drop-elytra")) {
+            if (getConfig().getBoolean("elytra.drop") && shouldDrop(getConfig().getInt("elytra.chance"))) {
                 event.getDrops().add(new ItemStack(Material.ELYTRA));
             }
+            if (getConfig().getBoolean("dragon-egg.drop") && shouldDrop(getConfig().getInt("dragon-egg.chance"))) {
+                event.getDrops().add(new ItemStack(Material.DRAGON_EGG));
+            }
         }
+    }
+
+    public boolean shouldDrop(int chance) {
+        int random = (int) (Math.random() * 100) + 1;
+        return random <= chance;
     }
 }

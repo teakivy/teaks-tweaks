@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.ShapelessRecipe;
 
 public class CheaperResinBlocks extends AbstractCraftingTweak {
 
@@ -18,9 +19,14 @@ public class CheaperResinBlocks extends AbstractCraftingTweak {
     @Override
     public void registerRecipes() {
         Bukkit.removeRecipe(NamespacedKey.minecraft("resin_block"));
-        ShapedRecipe recipe = new ShapedRecipe(Key.get("resin_block"), new ItemStack(Material.RESIN_BLOCK, 1));
-        recipe.shape("##", "##");
-        recipe.setIngredient('#', Material.RESIN_CLUMP);
-        addRecipe(recipe);
+        ShapedRecipe blockRecipe = new ShapedRecipe(Key.get("resin_block"), new ItemStack(Material.RESIN_BLOCK, 1));
+        blockRecipe.shape("##", "##");
+        blockRecipe.setIngredient('#', Material.RESIN_CLUMP);
+        addRecipe(blockRecipe);
+
+        Bukkit.removeRecipe(NamespacedKey.minecraft("resin_clump"));
+        ShapelessRecipe clumpRecipe = new ShapelessRecipe(Key.get("resin_clump"), new ItemStack(Material.RESIN_CLUMP, 4));
+        clumpRecipe.addIngredient(Material.RESIN_BLOCK);
+        addRecipe(clumpRecipe);
     }
 }

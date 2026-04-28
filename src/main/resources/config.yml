@@ -363,8 +363,16 @@ packs:
   # Makes the Ender Dragon drop a dragon egg and elytra on death.
   dragon-drops:
     enabled: false
-    drop-elytra: true
-    drop-egg: true
+    elytra:
+      # Whether or not the dragon can drop an Elytra
+      drop: true
+      # The chance (0-100) that the dragon will drop an Elytra
+      chance: 100
+    dragon-egg:
+      # Whether or not the dragon can drop a Dragon Egg
+      drop: true
+      # The chance (0-100) that the dragon will drop a Dragon Egg
+      chance: 100
 
   # Durability Ping
   # Get notified when you damage an item with 10% less durability.
@@ -394,6 +402,13 @@ packs:
       ping-with-sound: true
       # Where to display durability pings (default: subtitle) [hidden, subtitle, title, chat, actionbar]
       display: subtitle
+
+  # Easier Axolotl Breeding
+  # Breed axolotls using Tropical Fish instead of Buckets of Tropical Fish.
+  easier-axolotl-breeding:
+    enabled: false
+    # Whether or not to allow the vanilla method with buckets of tropical fish
+    allow-buckets: true
 
   # Elevators
   # Drop an ender pearl above a wool block to make it into an elevator.
@@ -668,11 +683,6 @@ packs:
     enabled: false
     # Allow creepers, skeletons, and zombies to drop their heads & skulls
     use-base-heads: false
-    # Adds an advancement screen that shows all the mob heads you have collected
-    advancements:
-      enabled: true
-      # Whether or not to display the mob head advancements in chat
-      announce-in-chat: true
 
   # Music Disc Engraver
   # Craft an Empty Music Disc with 8 Iron Ingots and a Diamond.
@@ -1114,6 +1124,11 @@ crafting-tweaks:
   # Blackstone Cobblestone
   # Craft all items that require Cobblestone, using Blackstone.
   blackstone-cobblestone:
+    enabled: false
+
+  # Carpet to Blocks
+  # Allows you to craft full blocks from carpet.
+  carpet-to-blocks:
     enabled: false
 
   # Charcoal to Black Dye

@@ -27,6 +27,7 @@ import me.teakivy.teakstweaks.packs.disposal.Disposal;
 import me.teakivy.teakstweaks.packs.doubleshulkershells.DoubleShulkerShells;
 import me.teakivy.teakstweaks.packs.dragondrops.DragonDrops;
 import me.teakivy.teakstweaks.packs.durabilityping.DurabilityPing;
+import me.teakivy.teakstweaks.packs.easieraxolotlbreeding.EasierAxolotlBreeding;
 import me.teakivy.teakstweaks.packs.elevators.Elevators;
 import me.teakivy.teakstweaks.packs.entityscale.EntityScale;
 import me.teakivy.teakstweaks.packs.fastleafdecay.FastLeafDecay;
@@ -109,6 +110,7 @@ public enum TTPack {
     DOUBLE_SHULKER_SHELLS("double-shulker-shells", DoubleShulkerShells.class),
     DRAGON_DROPS("dragon-drops", DragonDrops.class),
     DURABILITY_PING("durability-ping", DurabilityPing.class),
+    EASIER_AXOLOTL_BREEDING("easier-axolotl-breeding", EasierAxolotlBreeding.class),
     ELEVATORS("elevators", Elevators.class),
     ENTITY_SCALE("entity-scale", EntityScale.class),
     FAST_LEAF_DECAY("fast-leaf-decay", FastLeafDecay.class),
