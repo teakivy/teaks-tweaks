@@ -6,13 +6,13 @@ plugins {
 group = "me.teakivy"
 version = "2.1.2"
 description = "150+ Toggleable Tweaks & Features including Vanilla Tweaks as a plugin, and more!"
-java.sourceCompatibility = JavaVersion.VERSION_21
+java.sourceCompatibility = JavaVersion.VERSION_25
 
 val outputDir: String? by project
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(21))
+        languageVersion.set(JavaLanguageVersion.of(25))
     }
 }
 
@@ -57,7 +57,7 @@ val libraries = listOf(
 
 dependencies {
     compileOnly("com.mojang:authlib:1.5.25")
-    compileOnly("io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:26.1.2.build.+")
     compileOnly("me.clip:placeholderapi:2.11.6")
 
     libraries.forEach { library ->
