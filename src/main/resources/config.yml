@@ -410,6 +410,11 @@ packs:
     # Whether or not to allow the vanilla method with buckets of tropical fish
     allow-buckets: true
 
+  # Easier Name Tags
+  # Shift-right-click a Name Tag to open a UI to rename the name tag without an anvil.
+  easier-nametags:
+    enabled: false
+
   # Elevators
   # Drop an ender pearl above a wool block to make it into an elevator.
   # Jump on it to warp onto an elevator of the same color directly above.
