@@ -3,9 +3,13 @@ package me.teakivy.teakstweaks.packs.xpmanagement;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.XPUtils;
+import me.teakivy.teakstweaks.utils.config.Config;
+import me.teakivy.teakstweaks.utils.lang.TranslationManager;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.Style;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Material;
 import org.bukkit.block.Furnace;
 import org.bukkit.entity.Player;
@@ -119,7 +123,11 @@ public class XPManagement extends BasePack {
 
         if (getConfig().getBoolean("display-amount")) {
             List<Component> lore = new ArrayList<>();
-            lore.add(getText("bottle_contains", insert("return_amount", getConfig().getInt("return-xp-amount"))));
+            Component xpAmountText = Component.text(getString("bottle_contains")
+                            .replace("\\<return_amount>", String.valueOf(getConfig().getInt("return-xp-amount")))
+                            .replace("<gold>", ""))
+                    .color(TextColor.fromHexString("#FFAA00"));
+            lore.add(xpAmountText);
             xpMeta.lore(lore);
         }
 
