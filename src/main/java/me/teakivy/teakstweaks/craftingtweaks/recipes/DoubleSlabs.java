@@ -4,16 +4,16 @@ import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
 import me.teakivy.teakstweaks.utils.ItemUtils;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.register.TTCraftingTweak;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Tag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapelessRecipe;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class DoubleSlabs extends AbstractCraftingTweak {
-    private static final ArrayList<Material> buttonMaterials = new ArrayList<>();
+    private static final Set<Material> buttonMaterials = new HashSet<>();
 
     public DoubleSlabs() {
         super(TTCraftingTweak.DOUBLE_SLABS, Material.DARK_PRISMARINE_SLAB);
