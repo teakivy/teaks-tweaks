@@ -28,6 +28,7 @@ public class HeadRegister {
         new BasicMobHead("bogged", EntityType.BOGGED, Sound.ENTITY_BOGGED_AMBIENT);
         new BasicMobHead("breeze", EntityType.BREEZE, Sound.ENTITY_BREEZE_CHARGE);
         new BasicMobHead("camel", EntityType.CAMEL, Sound.ENTITY_CAMEL_AMBIENT);
+        new BasicMobHead("camel_husk", EntityType.CAMEL_HUSK, Sound.ENTITY_CAMEL_HUSK_AMBIENT);
         new BasicMobHead("cave_spider", EntityType.CAVE_SPIDER, Sound.ENTITY_SPIDER_AMBIENT);
         new BasicMobHead("cod", EntityType.COD, Sound.ENTITY_COD_FLOP);
         new BasicMobHead("dolphin", EntityType.DOLPHIN, Sound.ENTITY_DOLPHIN_PLAY);
@@ -48,6 +49,7 @@ public class HeadRegister {
         new BasicMobHead("magma_cube", EntityType.MAGMA_CUBE, Sound.ENTITY_MAGMA_CUBE_SQUISH);
         new BasicMobHead("mule", EntityType.MULE, Sound.ENTITY_MULE_AMBIENT);
         new BasicMobHead("ocelot", EntityType.OCELOT, Sound.ENTITY_OCELOT_AMBIENT);
+        new BasicMobHead("parched", EntityType.PARCHED, Sound.ENTITY_PARCHED_AMBIENT);
         new BasicMobHead("phantom", EntityType.PHANTOM, Sound.ENTITY_PHANTOM_BITE);
         new BasicMobHead("piglin_brute", EntityType.PIGLIN_BRUTE, Sound.ENTITY_PIGLIN_BRUTE_AMBIENT);
         new BasicMobHead("pillager", EntityType.PILLAGER, Sound.ENTITY_PILLAGER_CELEBRATE);
@@ -64,6 +66,7 @@ public class HeadRegister {
         new BasicMobHead("spider", EntityType.SPIDER, Sound.ENTITY_SPIDER_AMBIENT);
         new BasicMobHead("squid", EntityType.SQUID, Sound.ENTITY_SQUID_SQUIRT);
         new BasicMobHead("stray", EntityType.STRAY, Sound.ENTITY_STRAY_AMBIENT);
+        new BasicMobHead("sulfur_cube", EntityType.SULFUR_CUBE, Sound.ENTITY_SULFUR_CUBE_ABSORB);
         new BasicMobHead("tadpole", EntityType.TADPOLE, Sound.ENTITY_TADPOLE_FLOP);
         new BasicMobHead("tropical_fish", EntityType.TROPICAL_FISH, Sound.ENTITY_TROPICAL_FISH_AMBIENT);
         new BasicMobHead("turtle", EntityType.TURTLE, Sound.ENTITY_TURTLE_LAY_EGG);
@@ -75,6 +78,7 @@ public class HeadRegister {
         new BasicMobHead("zoglin", EntityType.ZOGLIN, Sound.ENTITY_ZOGLIN_AMBIENT);
         new BasicMobHead("zombie_horse", EntityType.ZOMBIE_HORSE, Sound.ENTITY_ZOMBIE_HORSE_AMBIENT);
         new BasicMobHead("zombified_piglin", EntityType.ZOMBIFIED_PIGLIN, Sound.ENTITY_ZOMBIFIED_PIGLIN_ANGRY);
+        new BasicMobHead("nautilus", EntityType.NAUTILUS, Sound.ENTITY_NAUTILUS_AMBIENT);
     }
 
     private static void registerAdvancedHeads() {
@@ -99,6 +103,7 @@ public class HeadRegister {
         new TraderLlamaHead();
         new VillagerHead();
         new WolfHead();
+        new ZombieNautilusShell();
         new ZombieVillagerHead();
     }
 

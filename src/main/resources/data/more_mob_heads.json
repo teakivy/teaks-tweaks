@@ -113,6 +113,13 @@
 			"looting_bonus": 0
 		},
 		{
+			"key": "camel_husk",
+			"name": "Camel Husk Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzdkNDM0NjNkODQ4OTQxMTU5NDMwYTIzMmI0ZDVjMTdiM2I4NDJmODY2YjU0YTMzZTc0ODQ3NmU0MDg3NDc0NyJ9fX0",
+			"chance": 1,
+			"looting_bonus": 0
+		},
+		{
 			"key": "calico_cat",
 			"name": "Calico Cat Head",
 			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzQwMDk3MjcxYmI2ODBmZTk4MWU4NTllOGJhOTNmZWEyOGI4MTNiMTA0MmJkMjc3ZWEzMzI5YmVjNDkzZWVmMyJ9fX0",
@@ -559,6 +566,13 @@
 			"looting_bonus": 0.05
 		},
 		{
+			"key": "nautilus",
+			"name": "Nautilus Shell",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjcwOGNmOTkwMDM5OTA2MGM5MjgwYzZiM2I4OGNiZTUzNmU3MjJjMGVlYmM5MzJhOWM1ZmEwMTQwZDAzNjJmYyJ9fX0",
+			"chance": 0.1,
+			"looting_bonus": 0.01
+		},
+		{
 			"key": "ocelot",
 			"name": "Ocelot Head",
 			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTE3NWNjNDNlYThhZTIwMTY4YTFmMTcwODEwYjRkYTRkOWI0ZWJkM2M5OTc2ZTlmYzIyZTlmOTk1YzNjYmMzYyJ9fX0",
@@ -613,6 +627,13 @@
 			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTlkZjQ3ZTAxNWQ1YzFjNjhkNzJiZTExYmI2NTYzODBmYzZkYjUzM2FhYjM4OTQxYTkxYjFkM2Q1ZTM5NjQ5NyJ9fX0",
 			"chance": 0.27,
 			"looting_bonus": 0.004
+		},
+		{
+			"key": "parched",
+			"name": "Parched Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjRhZWNlZmY1ZjI2ZGQ4NDEzYzVjMDM1NDdjMjM0YWMwMzEwOGQxODdhZjBiOWNkODM0YThjZTEyNTk4NTkxYyJ9fX0",
+			"chance": 0.06,
+			"looting_bonus": 0.05
 		},
 		{
 			"key": "red_parrot",
@@ -984,6 +1005,13 @@
 			"looting_bonus": 0.05
 		},
 		{
+			"key": "sulfur_cube",
+			"name": "Sulfur Cube Head",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTVjYTUwNmJmYzM0YjlhOGQwYmVkMDUzMGUxMzY1MWIyOGMyYjAxYzM1YzQxNDA1YTc4ZGNlOWY3ZGJkN2NkYiJ9fX0",
+			"chance": 0.01,
+			"looting_bonus": 0.005
+		},
+		{
 			"key": "tadpole",
 			"name": "Tadpole Head",
 			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2RhZjE2NTNiNWY1OWI1ZWM1YTNmNzk2MDljYjQyMzM1NzlmZWYwN2U2OTNiNjE3NDllMDkwMDE0OWVkZjU2MyJ9fX0",
@@ -1331,6 +1359,20 @@
 			"material": "ZOMBIE_HEAD",
 			"chance": 0.005,
 			"looting_bonus": 0.001
+		},
+		{
+			"key": "temperate_zombie_nautilus",
+			"name": "Temperate Zombie Nautilus Shell",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWI2ZDE2YmNiYzg1ODMyMGU0ZWVjYjgxOGFiZjI5YWY4MjViY2Y5MWZhYzc5ODlhYmE1NTM2YWI4YmE0MGMwZiJ9fX0",
+			"chance": 0.1,
+			"looting_bonus": 0.01
+		},
+		{
+			"key": "coral_zombie_nautilus",
+			"name": "Coral Zombie Nautilus Shell",
+			"texture": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTUyYWMyYWNjNWU5Y2EyMzcyN2Y0NDg3OTI0MmIxMDRmZGQ2ZTA0NGY3ZmIyZDI5ZmVmY2E0YmMyZjRkNGMzIn19fQ",
+			"chance": 0.1,
+			"looting_bonus": 0.01
 		},
 		{
 			"key": "zombie_horse",

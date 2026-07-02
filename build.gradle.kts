@@ -57,7 +57,7 @@ val libraries = listOf(
 
 dependencies {
     compileOnly("com.mojang:authlib:1.5.25")
-    compileOnly("io.papermc.paper:paper-api:26.1.2.build.+")
+    compileOnly("io.papermc.paper:paper-api:26.2-rc-2.build.+")
     compileOnly("me.clip:placeholderapi:2.11.6")
 
     libraries.forEach { library ->
