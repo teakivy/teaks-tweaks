@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
+import me.teakivy.teakstweaks.utils.ItemUtils;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.register.TTCraftingTweak;
@@ -11,13 +12,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapelessRecipe;
 
 public class BackToBlocks extends AbstractCraftingTweak {
-
-    private static final String[] BASE_SUFFIXES = {
-            "",
-            "S",
-            "_PLANKS",
-            "_BLOCK"
-    };
 
     public BackToBlocks() {
         super(TTCraftingTweak.BACK_TO_BLOCKS, Material.BRICK_SLAB);
@@ -30,7 +24,7 @@ public class BackToBlocks extends AbstractCraftingTweak {
     }
 
     private void registerBackToBlocksRecipe(Material ingredient, String suffix, int inputAmount, int outputAmount) {
-        Material result = getBaseBlock(ingredient, suffix);
+        Material result = ItemUtils.getBaseBlock(ingredient, suffix);
 
         if (result == null) {
             Logger.warning("[Back to Blocks] Could not find a base block for: " + ingredient.name() + ", Please report this to the plugin author.");
@@ -43,20 +37,5 @@ public class BackToBlocks extends AbstractCraftingTweak {
         recipe.addIngredient(inputAmount, ingredient);
 
         addRecipe(recipe);
-    }
-
-    private Material getBaseBlock(Material material, String toStrip) {
-        if (material == Material.PETRIFIED_OAK_SLAB) return Material.OAK_PLANKS;
-        String baseName = material.name().replace(toStrip, "");
-
-        for (String suffix : BASE_SUFFIXES) {
-            Material result = Material.getMaterial(baseName + suffix);
-
-            if (result != null && result.isBlock()) {
-                return result;
-            }
-        }
-
-        return null;
     }
 }
