@@ -1192,16 +1192,6 @@ crafting-tweaks:
   craftable-horse-armor:
     enabled: false
 
-  # Craftable Name Tags
-  # Allows you to craft Name Tags.
-  craftable-name-tags:
-    enabled: false
-
-  # Craftable Saddles
-  # Allows you to craft Saddles.
-  craftable-saddles:
-    enabled: false
-
   # Craftable Small Dripleaf
   # Allows you to craft Small dripleaves from a large dripleaf.
   craftable-small-dripleaf:

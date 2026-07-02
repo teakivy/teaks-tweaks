@@ -51,8 +51,6 @@ public class EasierMending extends BasePack {
             itemName = Component.text(StringUtils.toTitleCase(item.getType().name().replace("_", " ")));
         }
 
-
-
         if (xp > durability / 2) {
             meta.setDamage(0);
             item.setItemMeta(meta);

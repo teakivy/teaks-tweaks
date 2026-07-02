@@ -25,8 +25,6 @@ public enum TTCraftingTweak {
     CRAFTABLE_GILDED_BLACKSTONE("craftable-gilded-blackstone", CraftableGildedBlackstone.class),
     CRAFTABLE_GRAVEL("craftable-gravel", CraftableGravel.class),
     CRAFTABLE_HORSE_ARMOR("craftable-horse-armor", CraftableHorseArmor.class),
-    CRAFTABLE_NAME_TAGS("craftable-name-tags", CraftableNameTags.class),
-    CRAFTABLE_SADDLES("craftable-saddles", CraftableSaddles.class),
     CRAFTABLE_SMALL_DRIPLEAF("craftable-small-dripleaf", CraftableSmallDripleaf.class),
     CRAFTABLE_SPORE_BLOSSOMS("craftable-spore-blossoms", CraftableSporeBlossoms.class),
     DOUBLE_SLABS("double-slabs", DoubleSlabs.class),
