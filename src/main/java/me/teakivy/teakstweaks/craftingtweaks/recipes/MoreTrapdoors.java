@@ -1,11 +1,13 @@
 package me.teakivy.teakstweaks.craftingtweaks.recipes;
 
 import me.teakivy.teakstweaks.craftingtweaks.AbstractCraftingTweak;
+import me.teakivy.teakstweaks.utils.ItemUtils;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.register.TTCraftingTweak;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Tag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 
@@ -17,26 +19,20 @@ public class MoreTrapdoors extends AbstractCraftingTweak {
 
     @Override
     public void registerRecipes() {
-        newTrapdoorRecipe("OAK");
-        newTrapdoorRecipe("DARK_OAK");
-        newTrapdoorRecipe("BIRCH");
-        newTrapdoorRecipe("SPRUCE");
-        newTrapdoorRecipe("JUNGLE");
-        newTrapdoorRecipe("ACACIA");
-        newTrapdoorRecipe("CRIMSON");
-        newTrapdoorRecipe("WARPED");
-        newTrapdoorRecipe("MANGROVE");
-        newTrapdoorRecipe("CHERRY");
-        newTrapdoorRecipe("BAMBOO");
-        newTrapdoorRecipe("PALE_OAK");
+        Tag.WOODEN_TRAPDOORS.getValues().forEach(trapdoor -> {
+            Material base = ItemUtils.getBaseBlock(trapdoor, "_TRAPDOOR");
+            if (base != null) {
+                newTrapdoorRecipe(base, trapdoor);
+            }
+        });
     }
 
-    public void newTrapdoorRecipe(String type) {
-        Bukkit.removeRecipe(NamespacedKey.minecraft(type.toLowerCase() + "_trapdoor"));
-        ShapedRecipe recipe = new ShapedRecipe(Key.get(type.toLowerCase() + "_trapdoors"),
-                new ItemStack(Material.matchMaterial(type + "_TRAPDOOR"), 12));
+    public void newTrapdoorRecipe(Material input, Material output) {
+        Bukkit.removeRecipe(NamespacedKey.minecraft(output.name()));
+        ShapedRecipe recipe = new ShapedRecipe(Key.get(output.name()),
+                new ItemStack(output, 12));
         recipe.shape("xxx", "xxx");
-        recipe.setIngredient('x', Material.matchMaterial(type + "_PLANKS"));
+        recipe.setIngredient('x', input);
         addRecipe(recipe);
     }
 
