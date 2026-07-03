@@ -49,7 +49,6 @@ public class LapisLock extends BasePack {
 
         PersistentDataContainer data = enchantingTable.getPersistentDataContainer();
         int lapisCount = data.getOrDefault(Key.get("lapis_count"), PersistentDataType.INTEGER, 0);
-        System.out.println("Restoring lapis count: " + lapisCount);
         if (lapisCount > 0) {
             inventory.setSecondary(new ItemStack(Material.LAPIS_LAZULI, lapisCount));
         }
