@@ -653,7 +653,7 @@ packs:
   # Lapis Lock
   # Keep Lapis Lazuli in the Enchanting Table when the gui is closed.
   lapis-lock:
-    enabled: true
+    enabled: false
 
   # Larger Phantoms
   # Makes the naturally spawning phantoms larger the longer you do not sleep.
