@@ -650,6 +650,9 @@ packs:
   kill-boats:
     enabled: false
 
+  lapis-lock:
+    enabled: true
+
   # Larger Phantoms
   # Makes the naturally spawning phantoms larger the longer you do not sleep.
   larger-phantoms:
@@ -1152,6 +1155,11 @@ crafting-tweaks:
   craftable-blackstone:
     enabled: false
 
+  # Craftable Calcite
+  # Allows you to craft Calcite using 2 Diorite & 2 Bone Meal
+  craftable-calcite:
+    enabled: false
+
   # Craftable Chainmail
   # Allows you to craft Chainmail Armor using Chains.
   craftable-chainmail:
@@ -1200,6 +1208,11 @@ crafting-tweaks:
   # Craftable Spore Blossoms
   # Allows you to craft Spore Blossoms using Lilacs, Azalea Leaves, and Honeycombs.
   craftable-spore-blossoms:
+    enabled: false
+
+  # Craftable Tuff
+  # Allows you to craft Tuff using 2 Blackstone and 2 Quartz.
+  craftable-tuff:
     enabled: false
 
   # Double Slabs

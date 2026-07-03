@@ -43,6 +43,7 @@ import me.teakivy.teakstweaks.packs.invisibleitemframes.InvisibleItemFrames;
 import me.teakivy.teakstweaks.packs.itemaverages.ItemAverages;
 import me.teakivy.teakstweaks.packs.keepsmall.KeepSmall;
 import me.teakivy.teakstweaks.packs.killboats.KillBoats;
+import me.teakivy.teakstweaks.packs.lapislock.LapisLock;
 import me.teakivy.teakstweaks.packs.largerphantoms.LargerPhantoms;
 import me.teakivy.teakstweaks.packs.lecternreset.LecternReset;
 import me.teakivy.teakstweaks.packs.miniblocks.MiniBlocks;
@@ -127,6 +128,7 @@ public enum TTPack {
     ITEM_AVERAGES("item-averages", ItemAverages.class),
     KEEP_SMALL("keep-small", KeepSmall.class),
     KILL_BOATS("kill-boats", KillBoats.class),
+    LAPIS_LOCK("lapis-lock", LapisLock.class),
     LARGER_PHANTOMS("larger-phantoms", LargerPhantoms.class),
     LECTERN_RESET("lectern-reset", LecternReset.class),
     MINI_BLOCKS("mini-blocks", MiniBlocks.class),
