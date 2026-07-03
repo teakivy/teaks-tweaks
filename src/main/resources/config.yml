@@ -156,6 +156,18 @@ packs:
   bat-membranes:
     enabled: false
 
+  # Better Golden Dandelion
+  # Enhances the Golden Dandelion to be more useful.
+  # Shrink adult mobs back to baby mobs by right-clicking them with a Golden Dandelion.
+  # Grow baby mobs into adult mobs by right-clicking them with a Golden Dandelion.
+  # Also works on villagers, and all zombie variants.
+  better-golden-dandelion:
+    enabled: true
+    # Whether or not to allow shrinking adult mobs back into baby mobs
+    allow-shrinking: true
+    # Whether or not to allow growing baby mobs into adult mobs
+    allow-growing: true
+
   # Cauldron Concrete
   # Right click a water cauldron with concrete powder to harden it.
   #

@@ -10,6 +10,7 @@ import me.teakivy.teakstweaks.packs.armoredelytra.ArmoredElytra;
 import me.teakivy.teakstweaks.packs.back.Back;
 import me.teakivy.teakstweaks.packs.backtobed.BackToBed;
 import me.teakivy.teakstweaks.packs.batmembranes.BatMembranes;
+import me.teakivy.teakstweaks.packs.bettergoldendandelion.BetterGoldenDandelion;
 import me.teakivy.teakstweaks.packs.cauldronconcrete.CauldronConcrete;
 import me.teakivy.teakstweaks.packs.cauldroncopper.CauldronCopper;
 import me.teakivy.teakstweaks.packs.cauldronmud.CauldronMud;
@@ -95,6 +96,7 @@ public enum TTPack {
     BACK("back", Back.class),
     BACK_TO_BED("back-to-bed", BackToBed.class),
     BAT_MEMBRANES("bat-membranes", BatMembranes.class),
+    BETTER_GOLDEN_DANDELION("better-golden-dandelion", BetterGoldenDandelion.class),
     CAULDRON_CONCRETE("cauldron-concrete", CauldronConcrete.class),
     CAULDRON_COPPER("cauldron-copper", CauldronCopper.class),
     CAULDRON_MUD("cauldron-mud", CauldronMud.class),
