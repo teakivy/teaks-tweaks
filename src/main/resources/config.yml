@@ -650,6 +650,8 @@ packs:
   kill-boats:
     enabled: false
 
+  # Lapis Lock
+  # Keep Lapis Lazuli in the Enchanting Table when the gui is closed.
   lapis-lock:
     enabled: true
 
@@ -1156,7 +1158,7 @@ crafting-tweaks:
     enabled: false
 
   # Craftable Calcite
-  # Allows you to craft Calcite using 2 Diorite & 2 Bone Meal
+  # Allows you to craft Calcite using 2 Diorite & 2 Bone Meal.
   craftable-calcite:
     enabled: false
 
