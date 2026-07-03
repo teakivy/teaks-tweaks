@@ -69,6 +69,7 @@ public class TeaksTweaksCommand extends AbstractCommand {
                         .then(Commands.argument("targets", ArgumentTypes.players())
                                 .then(Commands.argument("item", StringArgumentType.word())
                                         .suggests(this::getGiveItemSuggestions)
+                                        .executes(this::give)
                                         .then(Commands.argument("amount", IntegerArgumentType.integer(1, 64 * 9 * 4))
                                                 .executes(this::give))))
 
@@ -166,7 +167,10 @@ public class TeaksTweaksCommand extends AbstractCommand {
         try {
             final List<Player> targets = targetResolver.resolve(ctx.getSource());
             String itemName = ctx.getArgument("item", String.class);
-            int amount = ctx.getArgument("amount", Integer.class);
+            int amount = 1;
+            try {
+                amount = IntegerArgumentType.getInteger(ctx, "amount");
+            } catch (IllegalArgumentException ignored) {}
 
             ItemStack item = ItemHandler.getItem(itemName);
             if (item == null) {
