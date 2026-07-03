@@ -82,7 +82,6 @@ public enum Permission {
     FIXED_ITEM_FRAMES("fixed-item-frames"),
     INSTA_MINE("insta-mine"),
     INVISIBLE_ITEM_FRAMES("invisible-item-frames"),
-    KEEP_SMALL("keep-small"),
     ROTATION_WRENCH_REDSTONE("rotation-wrench.redstone"),
     ROTATION_WRENCH_TERRACOTTA("rotation-wrench.terracotta"),
     SILENCE_MOBS("silence-mobs"),

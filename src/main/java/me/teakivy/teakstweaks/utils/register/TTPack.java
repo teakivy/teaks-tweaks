@@ -42,7 +42,6 @@ import me.teakivy.teakstweaks.packs.infestedvillagers.InfestedVillagers;
 import me.teakivy.teakstweaks.packs.instamine.InstaMine;
 import me.teakivy.teakstweaks.packs.invisibleitemframes.InvisibleItemFrames;
 import me.teakivy.teakstweaks.packs.itemaverages.ItemAverages;
-import me.teakivy.teakstweaks.packs.keepsmall.KeepSmall;
 import me.teakivy.teakstweaks.packs.killboats.KillBoats;
 import me.teakivy.teakstweaks.packs.lapislock.LapisLock;
 import me.teakivy.teakstweaks.packs.largerphantoms.LargerPhantoms;
@@ -128,7 +127,6 @@ public enum TTPack {
     INSTA_MINE("insta-mine", InstaMine.class),
     INVISIBLE_ITEM_FRAMES("invisible-item-frames", InvisibleItemFrames.class),
     ITEM_AVERAGES("item-averages", ItemAverages.class),
-    KEEP_SMALL("keep-small", KeepSmall.class),
     KILL_BOATS("kill-boats", KillBoats.class),
     LAPIS_LOCK("lapis-lock", LapisLock.class),
     LARGER_PHANTOMS("larger-phantoms", LargerPhantoms.class),
