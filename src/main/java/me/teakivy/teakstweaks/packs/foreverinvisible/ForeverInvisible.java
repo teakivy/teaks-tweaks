@@ -16,7 +16,7 @@ import java.util.List;
 public class ForeverInvisible extends BasePack {
 
     public ForeverInvisible() {
-        super(TTPack.FOREVER_INVISIBLE, Material.SULFUR);
+        super(TTPack.FOREVER_INVISIBLE, Material.MILK_BUCKET);
     }
 
     @EventHandler
@@ -25,8 +25,10 @@ public class ForeverInvisible extends BasePack {
         switch (item.getType()) {
             case POTION:
                 handlePotionClick(event);
+                break;
             case MILK_BUCKET:
                 handleMilkClick(event);
+                break;
         }
     }
 
