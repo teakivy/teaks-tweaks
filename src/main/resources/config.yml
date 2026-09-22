@@ -492,6 +492,12 @@ packs:
     # (If the item is a tool, one durability will be used, else the item will be consumed)
     item-to-use: SHEARS
 
+  # Forever Invisible
+  # Right-click an entity with a potion of invisibility to make it permanently invisible.
+  # Right-click an invisible entity with a milk bucket to make it visible again.
+  forever-invisible:
+    enabled: false
+
   # Graves
   # When a player dies, a grave is made at their location containing all their items. Right-click the grave to receive your items,
   # and crouch to make it so only you can pick them up.
