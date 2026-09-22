@@ -483,8 +483,7 @@ packs:
     play-sounds: true
 
   # Fixed Item Frames
-  # Shift right-click an item frame with iron bars to make it fixed
-  # Shift right-click an item frame with shears to make it not fixed
+  # Shift right-click an item frame with shears to lock/unlock it
   # Permissions:
   # teakstweaks.fixed-item-frames
   fixed-item-frames:
