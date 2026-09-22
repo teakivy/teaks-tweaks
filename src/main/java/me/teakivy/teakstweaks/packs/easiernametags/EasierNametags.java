@@ -4,10 +4,14 @@ import io.papermc.paper.connection.PlayerGameConnection;
 import io.papermc.paper.dialog.DialogResponseView;
 import io.papermc.paper.event.player.PlayerCustomClickEvent;
 import me.teakivy.teakstweaks.packs.BasePack;
+import me.teakivy.teakstweaks.packs.chatcolors.ChatColors;
+import me.teakivy.teakstweaks.utils.StringUtils;
 import me.teakivy.teakstweaks.utils.dialog.DialogUtils;
+import me.teakivy.teakstweaks.utils.permission.Permission;
 import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -38,7 +42,9 @@ public class EasierNametags extends BasePack {
         DialogResponseView view = event.getDialogResponseView();
         if (view == null) return;
 
-        String input = view.getText("input");
+        var ref = new Object() {
+            Component input = Component.text(view.getText("input"));
+        };
 
         if (event.getCommonConnection() instanceof PlayerGameConnection conn) {
             Player player = conn.getPlayer();
@@ -47,7 +53,12 @@ public class EasierNametags extends BasePack {
             if (item.getType() != Material.NAME_TAG) item = player.getInventory().getItemInOffHand();
             if (item.getType() != Material.NAME_TAG) return;
 
-            item.editMeta(meta -> meta.displayName(Component.text(input)));
+            if (TTPack.CHAT_COLORS.isEnabled() && Permission.CHAT_COLORS_ANVIL.check(player)) {
+                MiniMessage mm = MiniMessage.miniMessage();
+                ref.input = mm.deserialize(mm.serialize(StringUtils.parseLegacyChatColors(ref.input)).replaceAll("\\\\<", "<"));
+            }
+
+            item.editMeta(meta -> meta.displayName(ref.input));
         }
     }
 
