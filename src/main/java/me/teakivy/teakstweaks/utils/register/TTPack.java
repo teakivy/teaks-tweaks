@@ -46,6 +46,7 @@ import me.teakivy.teakstweaks.packs.itemaverages.ItemAverages;
 import me.teakivy.teakstweaks.packs.killboats.KillBoats;
 import me.teakivy.teakstweaks.packs.lapislock.LapisLock;
 import me.teakivy.teakstweaks.packs.largerphantoms.LargerPhantoms;
+import me.teakivy.teakstweaks.packs.leadanything.LeadAnything;
 import me.teakivy.teakstweaks.packs.lecternreset.LecternReset;
 import me.teakivy.teakstweaks.packs.miniblocks.MiniBlocks;
 import me.teakivy.teakstweaks.packs.moremobheads.MoreMobHeads;
@@ -132,6 +133,7 @@ public enum TTPack {
     KILL_BOATS("kill-boats", KillBoats.class),
     LAPIS_LOCK("lapis-lock", LapisLock.class),
     LARGER_PHANTOMS("larger-phantoms", LargerPhantoms.class),
+    LEAD_ANYTHING("lead-anything", LeadAnything.class),
     LECTERN_RESET("lectern-reset", LecternReset.class),
     MINI_BLOCKS("mini-blocks", MiniBlocks.class),
     MORE_MOB_HEADS("more-mob-heads", MoreMobHeads.class),

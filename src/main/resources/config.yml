@@ -665,6 +665,19 @@ packs:
   larger-phantoms:
     enabled: false
 
+  lead-anything:
+    enabled: false
+    # Allow bosses (elder guardians, ender dragons, wardens, withers) to be leashed
+    allow-bosses: false
+    # Allow non-leashable aquatic mobs (fish, tadpoles, turtles) to be leashed
+    allow-aquatic: true
+    # Allow hostile mobs to be leashed
+    allow-hostile: true
+    # Allow non-leashable passive mobs (bats, pandas) to be leashed
+    allow-passive: true
+    # Allow villagers & wandering traders to be leashed
+    allow-villagers: true
+
   # Lectern Reset
   # Reset a lectern's book to the first page after closing it
   lectern-reset:
