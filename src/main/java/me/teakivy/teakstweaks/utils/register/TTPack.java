@@ -53,6 +53,7 @@ import me.teakivy.teakstweaks.packs.moremobheads.MoreMobHeads;
 import me.teakivy.teakstweaks.packs.musicdiscengraver.MusicDiscEngraver;
 import me.teakivy.teakstweaks.packs.netherportalcoords.NetherPortalCoords;
 import me.teakivy.teakstweaks.packs.paintingpicker.PaintingPicker;
+import me.teakivy.teakstweaks.packs.peacefulbees.PeacefulBees;
 import me.teakivy.teakstweaks.packs.playerheaddrops.PlayerHeadDrops;
 import me.teakivy.teakstweaks.packs.quickcommands.QuickCommands;
 import me.teakivy.teakstweaks.packs.realtimeclock.RealTimeClock;
@@ -140,6 +141,7 @@ public enum TTPack {
     MUSIC_DISC_ENGRAVER("music-disc-engraver", MusicDiscEngraver.class),
     NETHER_PORTAL_COORDS("nether-portal-coords", NetherPortalCoords.class),
     PAINTING_PICKER("painting-picker", PaintingPicker.class),
+    PEACEFUL_BEES("peaceful-bees", PeacefulBees.class),
     PLAYER_HEAD_DROPS("player-head-drops", PlayerHeadDrops.class),
     QUICK_COMMANDS("quick-commands", QuickCommands.class),
     REAL_TIME_CLOCK("real-time-clock", RealTimeClock.class),

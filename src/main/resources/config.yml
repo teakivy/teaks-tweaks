@@ -719,6 +719,11 @@ packs:
     # Whether or not to suggest the Unique Painting Items Resource pack (from Vanilla Tweaks)
     suggest-pack: true
 
+  # Peaceful Bees
+  # Bees will not attack players, and will not be aggressive when their hive is broken, or when hit.
+  peaceful-bees:
+    enabled: true
+
   # Player Head Drops
   # A player will drop their head when killed by another player. The item displays who the killer is.
   player-head-drops:
