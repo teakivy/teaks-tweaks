@@ -20,6 +20,25 @@ import java.util.*;
 
 public class BetterBoneMeal extends BasePack {
 
+    private static final Set<Material> SMALL_FLOWERS = EnumSet.of(
+            Material.DANDELION,
+            Material.POPPY,
+            Material.BLUE_ORCHID,
+            Material.ALLIUM,
+            Material.AZURE_BLUET,
+            Material.RED_TULIP,
+            Material.ORANGE_TULIP,
+            Material.WHITE_TULIP,
+            Material.PINK_TULIP,
+            Material.OXEYE_DAISY,
+            Material.CORNFLOWER,
+            Material.LILY_OF_THE_VALLEY,
+            Material.CLOSED_EYEBLOSSOM,
+            Material.OPEN_EYEBLOSSOM,
+            Material.WITHER_ROSE,
+            Material.GOLDEN_DANDELION
+    );
+
     public BetterBoneMeal() {
         super(TTPack.BETTER_BONE_MEAL, Material.BONE_MEAL);
     }
@@ -41,6 +60,80 @@ public class BetterBoneMeal extends BasePack {
             doBoneMealAnimation(block);
         }
 
+    }
+
+    @EventHandler
+    public void onDispense(BlockDispenseEvent event) {
+        ItemStack item = event.getItem();
+        if (item.getType() != Material.BONE_MEAL) return;
+        Block dispenser = event.getBlock();
+        Dispenser dispenserBlock = (Dispenser) dispenser.getState();
+
+        Directional directional = (Directional) dispenser.getBlockData();
+        Block block = dispenser.getRelative(directional.getFacing());
+
+        boolean success = tryBoneMeal(block);
+
+        if (success) {
+            event.setCancelled(true);
+            doBoneMealAnimation(block);
+
+            Bukkit.getScheduler().runTaskLater(getPlugin(), () -> {
+                removeBoneMealFromDispenser(dispenserBlock);
+            }, 1L);
+        }
+    }
+
+    private boolean tryBoneMeal(Block block) {
+        Material type = block.getType();
+
+        if (SMALL_FLOWERS.contains(type)) {
+            return handleSmallFlower(block, "allow-small-flowers");
+        }
+
+        return switch (type) {
+            case PITCHER_PLANT -> handlePitcherPlant(block);
+            case SUGAR_CANE -> handleSugarCane(block);
+            case LEAF_LITTER -> handleLeafLitter(block);
+            case TORCHFLOWER -> handleSmallFlower(block, "allow-torchflowers");
+            case CACTUS -> handleCactus(block);
+            default -> false;
+        };
+    }
+
+    private void doBoneMealAnimation(Block block) {
+        ParticleHelper.spawnBoneMealParticles(block);
+
+        block.getWorld().playSound(
+                block.getLocation().add(0.5, 0.5, 0.5),
+                Sound.ITEM_BONE_MEAL_USE,
+                1.0f,
+                1.0f
+        );
+    }
+
+    private void removeBoneMealFromDispenser(Dispenser dispenser) {
+        List<Integer> possibleSlots = new ArrayList<>();
+
+        for (int i = 0; i < dispenser.getInventory().getSize(); i++) {
+            ItemStack item = dispenser.getInventory().getItem(i);
+
+            if (item != null && item.getType() == Material.BONE_MEAL) possibleSlots.add(i);
+        }
+
+        if (possibleSlots.isEmpty()) return;
+
+        Collections.shuffle(possibleSlots);
+
+        int slot = possibleSlots.getFirst();
+        ItemStack item = dispenser.getInventory().getItem(slot);
+
+        if (item == null) return;
+        if (item.getAmount() <= 1) {
+            dispenser.getInventory().setItem(slot, null);
+            return;
+        }
+        item.setAmount(item.getAmount() - 1);
     }
 
     /**
@@ -94,6 +187,11 @@ public class BetterBoneMeal extends BasePack {
         return changed;
     }
 
+    /**
+     * Handle the bone mealing of leaf litter. If it is a full block, it will drop 1 leaf litter, else it will add 1 segment.
+     * @param block The clicked leaf litter block
+     * @return True if it was successful
+     */
     private boolean handleLeafLitter(Block block) {
         if (!getConfig().getBoolean("allow-leaf-litter")) return false;
 
@@ -108,6 +206,12 @@ public class BetterBoneMeal extends BasePack {
         return true;
     }
 
+    /**
+     * Handle the bone mealing of small flowers. If an empty space upon a grass block is directly adjacent, spread the flower (randomly)
+     * @param block The clicked block
+     * @param configKey The config key to check if this is allowed
+     * @return True if anything changed
+     */
     private boolean handleSmallFlower(Block block, String configKey) {
         if (!getConfig().getBoolean(configKey)) return false;
 
@@ -130,76 +234,13 @@ public class BetterBoneMeal extends BasePack {
         return false;
     }
 
+    /**
+     * Handle the bone mealing of cactus. If a cactus can grow, it will generate either 1 cactus, or 1 cactus flower.
+     * @param block The clicked cactus block
+     * @return True if anything changed
+     */
     private boolean handleCactus(Block block) {
+        // TODO
         return false;
-    }
-
-    @EventHandler
-    public void onDispense(BlockDispenseEvent event) {
-        ItemStack item = event.getItem();
-        if (item.getType() != Material.BONE_MEAL) return;
-        Block dispenser = event.getBlock();
-        Dispenser dispenserBlock = (Dispenser) dispenser.getState();
-
-        Directional directional = (Directional) dispenser.getBlockData();
-        Block block = dispenser.getRelative(directional.getFacing());
-
-        boolean success = tryBoneMeal(block);
-
-        if (success) {
-            event.setCancelled(true);
-            doBoneMealAnimation(block);
-
-            Bukkit.getScheduler().runTaskLater(getPlugin(), () -> {
-                removeBoneMealFromDispenser(dispenserBlock);
-            }, 1L);
-        }
-    }
-
-    private boolean tryBoneMeal(Block block) {
-        return switch (block.getType()) {
-            case PITCHER_PLANT -> handlePitcherPlant(block);
-            case SUGAR_CANE -> handleSugarCane(block);
-            case LEAF_LITTER -> handleLeafLitter(block);
-            case DANDELION, POPPY, BLUE_ORCHID, ALLIUM, AZURE_BLUET, RED_TULIP, ORANGE_TULIP, WHITE_TULIP, PINK_TULIP, OXEYE_DAISY, CORNFLOWER, LILY_OF_THE_VALLEY, CLOSED_EYEBLOSSOM, OPEN_EYEBLOSSOM, WITHER_ROSE, GOLDEN_DANDELION -> handleSmallFlower(block, "allow-small-flowers");
-            case TORCHFLOWER -> handleSmallFlower(block, "allow-torchflowers");
-            case CACTUS -> handleCactus(block);
-            default -> false;
-        };
-    }
-
-    private void removeBoneMealFromDispenser(Dispenser dispenser) {
-        List<Integer> possibleSlots = new ArrayList<>();
-
-        for (int i = 0; i < dispenser.getInventory().getSize(); i++) {
-            ItemStack item = dispenser.getInventory().getItem(i);
-
-            if (item != null && item.getType() == Material.BONE_MEAL) possibleSlots.add(i);
-        }
-
-        if (possibleSlots.isEmpty()) return;
-
-        Collections.shuffle(possibleSlots);
-
-        int slot = possibleSlots.getFirst();
-        ItemStack item = dispenser.getInventory().getItem(slot);
-
-        if (item == null) return;
-        if (item.getAmount() <= 1) {
-            dispenser.getInventory().setItem(slot, null);
-            return;
-        }
-        item.setAmount(item.getAmount() - 1);
-    }
-
-    private void doBoneMealAnimation(Block block) {
-        ParticleHelper.spawnBoneMealParticles(block);
-
-        block.getWorld().playSound(
-                block.getLocation().add(0.5, 0.5, 0.5),
-                Sound.ITEM_BONE_MEAL_USE,
-                1.0f,
-                1.0f
-        );
     }
 }
