@@ -156,6 +156,23 @@ packs:
   bat-membranes:
     enabled: false
 
+  # Better Bone Meal
+  # Bone Meal can now be used on small flowers, sugar cane, cactus, and leaf litter.
+  better-bone-meal:
+    enabled: true
+    # Using bone meal on small flowers will spread them to nearby grass blocks
+    allow-small-flowers: true
+    # Using bone meal on sugar cane will grow it to its maximum height
+    allow-sugar-cane: true
+    # Using bone meal on cactus will grow it one block (up to its maximum height) or generate a cactus flower
+    allow-cactus: true
+    # Using bone meal on leaf litter generate one new leaf litter on the block, or drop a new leaf litter item
+    allow-leaf-litter: true
+    # Using bone meal on a torch flower will spread it to nearby grass blocks
+    allow-torchflowers: true
+    # Using bone meal on a pitcher plant will drop a new pitcher plant item
+    allow-pitcher-plant: true
+
   # Better Golden Dandelion
   # Enhances the Golden Dandelion to be more useful.
   # Shrink adult mobs back to baby mobs by right-clicking them with a Golden Dandelion.
