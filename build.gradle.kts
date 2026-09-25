@@ -1,6 +1,7 @@
 plugins {
     `java-library`
     id("com.gradleup.shadow") version "9.0.0-rc2"
+    id("xyz.jpenilla.run-paper") version "3.1.0"
 }
 
 group = "me.teakivy"
@@ -94,11 +95,21 @@ tasks.processResources {
 
 }
 
-tasks.named<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJar") {
-    relocate("com.fren_gor.ultimateAdvancementAPI", "me.teakivy.libs.ultimateAdvancementAPI")
-    archiveClassifier.set("") // Removes the `-all` suffix
+tasks.shadowJar {
+    relocate(
+        "com.fren_gor.ultimateAdvancementAPI",
+        "me.teakivy.libs.ultimateAdvancementAPI"
+    )
+
+    archiveClassifier.set("")
     mergeServiceFiles()
 
     val customDir = outputDir ?: layout.buildDirectory.dir("libs")
     destinationDirectory.set(file(customDir))
+}
+
+tasks {
+    runServer {
+        minecraftVersion("26.2")
+    }
 }

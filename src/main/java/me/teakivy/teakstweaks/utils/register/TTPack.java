@@ -219,7 +219,7 @@ public enum TTPack {
     }
 
     public boolean isEnabled() {
-        return getConfig().getBoolean("enabled", false);
+        return getConfig().getBoolean("enabled", false) || Config.isDevMode();
     }
 
     public ItemStack getItem() {
