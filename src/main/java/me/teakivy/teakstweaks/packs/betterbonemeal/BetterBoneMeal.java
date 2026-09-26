@@ -17,6 +17,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class BetterBoneMeal extends BasePack {
 
@@ -39,6 +40,8 @@ public class BetterBoneMeal extends BasePack {
             Material.GOLDEN_DANDELION
     );
 
+    private final Set<UUID> boneMealInteractions = new HashSet<>();
+
     public BetterBoneMeal() {
         super(TTPack.BETTER_BONE_MEAL, Material.BONE_MEAL);
     }
@@ -51,13 +54,26 @@ public class BetterBoneMeal extends BasePack {
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (block == null) return;
         if (event.getHand() == null) return;
-        if (player.getInventory().getItem(event.getHand()).getType() != Material.BONE_MEAL) return;
+
+        ItemStack item = player.getInventory().getItem(event.getHand());
+        if (item.getType() != Material.BONE_MEAL) return;
+
+        if (boneMealInteractions.contains(player.getUniqueId())) {
+            event.setCancelled(true);
+            return;
+        }
 
         boolean success = tryBoneMeal(block);
 
         if (success) {
+            event.setCancelled(true);
             player.swingHand(event.getHand());
             doBoneMealAnimation(block);
+
+            item.subtract(player.getGameMode() != GameMode.CREATIVE ? 1 : 0);
+            boneMealInteractions.add(player.getUniqueId());
+
+            Bukkit.getScheduler().runTaskLater(getPlugin(), () -> boneMealInteractions.remove(player.getUniqueId()), 1L);
         }
 
     }
@@ -67,7 +83,7 @@ public class BetterBoneMeal extends BasePack {
         ItemStack item = event.getItem();
         if (item.getType() != Material.BONE_MEAL) return;
         Block dispenser = event.getBlock();
-        Dispenser dispenserBlock = (Dispenser) dispenser.getState();
+        if (!(dispenser.getState() instanceof Dispenser dispenserBlock)) return;
 
         Directional directional = (Directional) dispenser.getBlockData();
         Block block = dispenser.getRelative(directional.getFacing());
@@ -157,25 +173,25 @@ public class BetterBoneMeal extends BasePack {
         if (!getConfig().getBoolean("allow-sugar-cane")) return false;
 
         Block bottom = block;
-        int stacksize = 0;
-        while (stacksize < 3 && bottom.getType() == Material.SUGAR_CANE) {
+        int stackSize = 0;
+        while (stackSize < 3 && bottom.getType() == Material.SUGAR_CANE) {
             bottom = bottom.getRelative(BlockFace.DOWN);
-            stacksize++;
+            stackSize++;
         }
-        if (stacksize >= 3) return false;
+        if (stackSize >= 3) return false;
 
-        stacksize = 0;
+        stackSize = 0;
         Block current = bottom.getRelative(BlockFace.UP);
 
-        while (current.getType() == Material.SUGAR_CANE && stacksize < 3) {
+        while (current.getType() == Material.SUGAR_CANE && stackSize < 3) {
             current = current.getRelative(BlockFace.UP);
-            stacksize++;
+            stackSize++;
         }
-        if (stacksize >= 3) return false;
+        if (stackSize >= 3) return false;
 
         boolean changed = false;
-        while (stacksize <= 2) {
-            stacksize++;
+        while (stackSize <= 2) {
+            stackSize++;
             if (current.getType() == Material.AIR) {
                 current.setType(Material.SUGAR_CANE);
                 current = current.getRelative(BlockFace.UP);
@@ -240,7 +256,43 @@ public class BetterBoneMeal extends BasePack {
      * @return True if anything changed
      */
     private boolean handleCactus(Block block) {
-        // TODO
+        if (!getConfig().getBoolean("allow-cactus")) return false;
+
+        Block bottom = block;
+        while (bottom.getType() == Material.CACTUS) {
+            bottom = bottom.getRelative(BlockFace.DOWN);
+        }
+
+        int stackSize = 0;
+        Block current = bottom.getRelative(BlockFace.UP);
+
+        while (current.getType() == Material.CACTUS) {
+            current = current.getRelative(BlockFace.UP);
+            stackSize++;
+        }
+
+        if (current.getType() != Material.AIR) return false;
+
+        if (stackSize < 3) {
+            boolean growFlower = ThreadLocalRandom.current().nextInt(10) == 0 && canGrowCactusFlower(current);
+            current.setType(growFlower ? Material.CACTUS_FLOWER : Material.CACTUS);
+            current.tick();
+            return true;
+        }
+
+        if (stackSize == 3 && canGrowCactusFlower(current)) {
+            current.setType(Material.CACTUS_FLOWER);
+            return true;
+        }
+
         return false;
+    }
+
+    private boolean canGrowCactusFlower(Block block) {
+        for (BlockFace face : List.of(BlockFace.NORTH, BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST)) {
+            if (block.getRelative(face).getType() != Material.AIR) return false;
+        }
+
+        return true;
     }
 }
