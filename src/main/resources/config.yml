@@ -159,7 +159,7 @@ packs:
   # Better Bone Meal
   # Bone Meal can now be used on small flowers, sugar cane, cactus, and leaf litter.
   better-bone-meal:
-    enabled: true
+    enabled: false
     # Using bone meal on small flowers will spread them to nearby grass blocks
     allow-small-flowers: true
     # Using bone meal on sugar cane will grow it to its maximum height
@@ -179,7 +179,7 @@ packs:
   # Grow baby mobs into adult mobs by right-clicking them with a Golden Dandelion.
   # Also works on villagers, and all zombie variants.
   better-golden-dandelion:
-    enabled: true
+    enabled: false
     # Whether or not to allow shrinking adult mobs back into baby mobs
     allow-shrinking: true
     # Whether or not to allow growing baby mobs into adult mobs
@@ -682,6 +682,8 @@ packs:
   larger-phantoms:
     enabled: false
 
+  # Lead Anything
+  # Makes it possible to lead any mod, including the pesky villagers!
   lead-anything:
     enabled: false
     # Allow bosses (elder guardians, ender dragons, wardens, withers) to be leashed
@@ -739,7 +741,7 @@ packs:
   # Peaceful Bees
   # Bees will not attack players, and will not be aggressive when their hive is broken, or when hit.
   peaceful-bees:
-    enabled: true
+    enabled: false
 
   # Player Head Drops
   # A player will drop their head when killed by another player. The item displays who the killer is.
