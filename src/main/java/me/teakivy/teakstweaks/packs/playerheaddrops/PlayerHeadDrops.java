@@ -2,7 +2,7 @@ package me.teakivy.teakstweaks.packs.playerheaddrops;
 
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.config.Config;
-import me.teakivy.teakstweaks.utils.lang.TranslationManager;
+import me.teakivy.teakstweaks.utils.lang.OldTranslationManager;
 import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -42,7 +42,7 @@ public class PlayerHeadDrops extends BasePack {
 
         List<Component> lore = new ArrayList<>();
         if (getConfig().getBoolean("display-killer"))
-            lore.add(MiniMessage.miniMessage().deserialize(TranslationManager.getString(Config.getLanguage(), "player_head_drops.lore").replace("\\<player>", killer)));
+            lore.add(MiniMessage.miniMessage().deserialize(OldTranslationManager.getString(Config.getLanguage(), "player_head_drops.lore").replace("\\<player>", killer)));
         skull.lore(lore);
         skull.setOwningPlayer(player);
         item.setItemMeta(skull);

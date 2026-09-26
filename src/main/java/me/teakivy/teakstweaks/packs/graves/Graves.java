@@ -6,11 +6,10 @@ import me.teakivy.teakstweaks.utils.XPUtils;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import me.teakivy.teakstweaks.utils.customitems.TItem;
-import me.teakivy.teakstweaks.utils.lang.TranslationManager;
+import me.teakivy.teakstweaks.utils.lang.OldTranslationManager;
 import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
@@ -46,11 +45,11 @@ public class Graves extends BasePack {
         ItemStack graveKey = new ItemStack(Material.TRIPWIRE_HOOK);
         ItemMeta keyMeta = graveKey.getItemMeta();
         MiniMessage mm = MiniMessage.miniMessage();
-        keyMeta.displayName(mm.deserialize(TranslationManager.getString(Config.getLanguage(), "graves.key.item_name")));
+        keyMeta.displayName(mm.deserialize(OldTranslationManager.getString(Config.getLanguage(), "graves.key.item_name")));
         graveKey.addUnsafeEnchantment(Enchantment.CHANNELING, 1);
         keyMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         List<Component> lore = new ArrayList<>();
-        lore.add(mm.deserialize(TranslationManager.getString(Config.getLanguage(), "graves.key.item_lore")));
+        lore.add(mm.deserialize(OldTranslationManager.getString(Config.getLanguage(), "graves.key.item_lore")));
         keyMeta.lore(lore);
         graveKey.setItemMeta(keyMeta);
 

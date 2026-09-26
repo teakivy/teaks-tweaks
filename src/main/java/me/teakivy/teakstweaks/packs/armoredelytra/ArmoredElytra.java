@@ -6,7 +6,7 @@ import me.teakivy.teakstweaks.utils.Base64Serializer;
 import me.teakivy.teakstweaks.utils.ItemSerializer;
 import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.config.Config;
-import me.teakivy.teakstweaks.utils.lang.TranslationManager;
+import me.teakivy.teakstweaks.utils.lang.OldTranslationManager;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
@@ -142,7 +142,7 @@ public class ArmoredElytra extends BasePack {
 
         HashMap<Enchantment, Integer> enchantmentStorage = new HashMap<>();
 
-        Component name = MiniMessage.miniMessage().deserialize(TranslationManager.getString(Config.getLanguage(), "armored_elytra.item_name"));
+        Component name = MiniMessage.miniMessage().deserialize(OldTranslationManager.getString(Config.getLanguage(), "armored_elytra.item_name"));
         if (chestplate.hasItemMeta()) {
             if (chestplate.getItemMeta().hasDisplayName()) {
                 name = chestplate.getItemMeta().displayName();

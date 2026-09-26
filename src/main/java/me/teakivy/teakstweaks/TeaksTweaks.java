@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import me.teakivy.teakstweaks.utils.*;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.gui.GUIListener;
-import me.teakivy.teakstweaks.utils.lang.TranslationManager;
+import me.teakivy.teakstweaks.utils.lang.OldTranslationManager;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.metrics.Metrics;
 import me.teakivy.teakstweaks.utils.papi.PAPIExpansion;
@@ -16,7 +16,6 @@ import me.teakivy.teakstweaks.utils.update.UpdateJoinAlert;
 import me.teakivy.teakstweaks.utils.update.VersionManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.minimessage.translation.Argument;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -31,7 +30,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
     private final ArrayList<String> activePacks = new ArrayList<>();
     private final ArrayList<String> activeCraftingTweaks = new ArrayList<>();
 
-    private TranslationManager translationManager;
+    private OldTranslationManager translationManager;
 
     /**
      * Called when the plugin is enabled
@@ -51,7 +50,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         // Initialize & Update Config
         Config.init();
 
-        translationManager = new TranslationManager(getDataFolder());
+        translationManager = new OldTranslationManager(getDataFolder());
         translationManager.initialize();
 
         // Update Checker
@@ -72,7 +71,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
 
         // Plugin startup logic
         Logger.info(newText(" "));
-        Logger.info(Component.text(TranslationManager.getString(Config.getLanguage(), "startup.plugin.started").replace("\\<version>", this.getPluginMeta().getVersion())));
+        Logger.info(Component.text(OldTranslationManager.getString(Config.getLanguage(), "startup.plugin.started").replace("\\<version>", this.getPluginMeta().getVersion())));
         Logger.info(newText(" "));
 
 
@@ -150,7 +149,7 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
      * Get the TranslationManager instance
      * @return TranslationManager instance
      */
-    public static TranslationManager getTranslationManager() {
+    public static OldTranslationManager getTranslationManager() {
         return getInstance().translationManager;
     }
 

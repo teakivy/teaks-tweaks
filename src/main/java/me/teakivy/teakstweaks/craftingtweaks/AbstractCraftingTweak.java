@@ -1,7 +1,7 @@
 package me.teakivy.teakstweaks.craftingtweaks;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
-import me.teakivy.teakstweaks.utils.lang.TranslationManager;
+import me.teakivy.teakstweaks.utils.lang.OldTranslationManager;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.metrics.CustomMetrics;
@@ -37,17 +37,17 @@ public abstract class AbstractCraftingTweak {
         this.craftingTweak = craftingTweak;
         this.path = craftingTweak.getKey();
         String langKey = path.replaceAll("-", "_");
-        this.name = TranslationManager.getString(Config.getLanguage(), langKey + ".name");
+        this.name = OldTranslationManager.getString(Config.getLanguage(), langKey + ".name");
 
         this.material = material;
-        this.description = TranslationManager.getString(Config.getLanguage(), langKey + ".description");
+        this.description = OldTranslationManager.getString(Config.getLanguage(), langKey + ".description");
     }
 
     /**
      * Initialize all recipes for the pack
      */
     public void init() {
-        Logger.info(Component.text(TranslationManager.getString(Config.getLanguage(), "startup.register.crafting_tweak").replace("\\<name>", name)));
+        Logger.info(Component.text(OldTranslationManager.getString(Config.getLanguage(), "startup.register.crafting_tweak").replace("\\<name>", name)));
         TeaksTweaks.getInstance().addCraftingTweaks(this.name);
         this.registerRecipes();
 

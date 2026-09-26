@@ -11,7 +11,7 @@ import io.papermc.paper.command.brigadier.Commands;
 import me.teakivy.teakstweaks.packs.durabilityping.DurabilityPing;
 import me.teakivy.teakstweaks.packs.durabilityping.DuraPingOption;
 import me.teakivy.teakstweaks.utils.command.AbstractCommand;
-import me.teakivy.teakstweaks.utils.lang.TranslationManager;
+import me.teakivy.teakstweaks.utils.lang.OldTranslationManager;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import me.teakivy.teakstweaks.utils.register.TTCommand;
 import org.bukkit.Material;
@@ -132,7 +132,7 @@ public class DurabilityPingCommand extends AbstractCommand {
 
     public String newPreviewPanel(Player player, String command, String name) {
         return "<hover:show_text:\""
-                + TranslationManager.getString(player, "durabilityping.preview_panel.hover").replace("<name>", name)
+                + OldTranslationManager.getString(player, "durabilityping.preview_panel.hover").replace("<name>", name)
                 + "\"><click:run_command:"
                 + command
                 + "><gray>[ ℹ ]</click></hover><reset> ";
@@ -141,7 +141,7 @@ public class DurabilityPingCommand extends AbstractCommand {
     public String createCheckBox(Player player, boolean checked, String command, String loreName, String loreDescription) {
         String replacement = loreName + (loreDescription != null && loreDescription.contains("durabilityping.") ? "" : "<newline><gray>" + loreDescription);
 
-        String hover = "<hover:show_text:\"" + TranslationManager.getString(player, "durabilityping.checkbox." + (checked ? "yes" : "no") + ".hover") + "\">";
+        String hover = "<hover:show_text:\"" + OldTranslationManager.getString(player, "durabilityping.checkbox." + (checked ? "yes" : "no") + ".hover") + "\">";
 
         String click = "<click:run_command:" + command + ">";
         return (hover + click + (checked ? "<green>[ ✔ ]" : "<red>[ ❌ ]")).replace("<name>", replacement) + "</click></hover><reset> ";
@@ -177,15 +177,15 @@ public class DurabilityPingCommand extends AbstractCommand {
         }
 
         String message = createCheckBox(player, tags.contains("dp_" + option), setCommand,
-                TranslationManager.getString(player, "durabilityping.config." + option + ".name"),
-                TranslationManager.getString(player, "durabilityping.config." + option + ".description"));
+                OldTranslationManager.getString(player, "durabilityping.config." + option + ".name"),
+                OldTranslationManager.getString(player, "durabilityping.config." + option + ".description"));
 
         if (preview) {
             message += newPreviewPanel(player, "/duraping preview " + option,
-                    TranslationManager.getString(player, "durabilityping.config." + option + ".name"));
+                    OldTranslationManager.getString(player, "durabilityping.config." + option + ".name"));
         }
 
-        message += TranslationManager.getString(player, "durabilityping.config." + option + ".name");
+        message += OldTranslationManager.getString(player, "durabilityping.config." + option + ".name");
 
         player.sendRichMessage(message);
     }

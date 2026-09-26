@@ -1,0 +1,6 @@
+name: Armored Elytra
+description: >
+  Drop an elytra and a chestplate above an anvil to merge them into one item. Drop the item above a grindstone to separate them again.
+  Enchantments are kept safely between merging and separating. Burning netherite armored elytra will separate the items.
+
+item-name: <gold>Armored Elytra

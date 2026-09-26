@@ -15,14 +15,15 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-public class TranslationManager {
+@Deprecated
+public class OldTranslationManager {
 
     private final File dataFolder;
     private final List<String> supportedLanguages = List.of(
             "en_US", "de_DE", "fi_FI", "fr_FR", "nl_NL", "pl_PL", "ru_RU"
     );
 
-    public TranslationManager(File dataFolder) {
+    public OldTranslationManager(File dataFolder) {
         this.dataFolder = dataFolder;
     }
 

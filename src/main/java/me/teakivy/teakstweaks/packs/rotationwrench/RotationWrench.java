@@ -6,10 +6,9 @@ import me.teakivy.teakstweaks.utils.Key;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.customitems.CustomItem;
 import me.teakivy.teakstweaks.utils.customitems.TItem;
-import me.teakivy.teakstweaks.utils.lang.TranslationManager;
+import me.teakivy.teakstweaks.utils.lang.OldTranslationManager;
 import me.teakivy.teakstweaks.utils.permission.Permission;
 import me.teakivy.teakstweaks.utils.register.TTPack;
-import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -60,7 +59,7 @@ public class RotationWrench extends BasePack {
         meta.setUnbreakable(true);
         meta.setCustomModelData(4321);
         item.setDurability((short) 1);
-        meta.displayName(MiniMessage.miniMessage().deserialize(TranslationManager.getString(Config.getLanguage(), "rotation_wrench.item_name")));
+        meta.displayName(MiniMessage.miniMessage().deserialize(OldTranslationManager.getString(Config.getLanguage(), "rotation_wrench.item_name")));
         item.setItemMeta(meta);
 
         CustomItem wrench = new CustomItem("rotation_wrench", item);

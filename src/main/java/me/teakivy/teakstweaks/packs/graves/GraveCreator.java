@@ -3,12 +3,10 @@ package me.teakivy.teakstweaks.packs.graves;
 import me.teakivy.teakstweaks.packs.armoredelytra.ArmoredElytra;
 import me.teakivy.teakstweaks.utils.Base64Serializer;
 import me.teakivy.teakstweaks.utils.Key;
-import me.teakivy.teakstweaks.utils.lang.TranslationManager;
+import me.teakivy.teakstweaks.utils.lang.OldTranslationManager;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.config.Config;
-import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.minimessage.translation.Argument;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.enchantments.Enchantment;
@@ -91,7 +89,7 @@ public class GraveCreator {
 
         if (!config.getBoolean("console-info")) return;
 
-        Logger.info(mm.deserialize(TranslationManager.getString(Config.getLanguage(), "graves.log.created")
+        Logger.info(mm.deserialize(OldTranslationManager.getString(Config.getLanguage(), "graves.log.created")
                 .replace("\\<player>", player.getName())
                 .replace("\\<x>", loc.getBlockX() + "")
                 .replace("\\<y>", loc.getBlockY() + "")
@@ -103,7 +101,7 @@ public class GraveCreator {
             if (item == null) continue;
             items += item.getAmount();
         }
-        Logger.info(mm.deserialize(TranslationManager.getString(Config.getLanguage(), "graves.log.contains")
+        Logger.info(mm.deserialize(OldTranslationManager.getString(Config.getLanguage(), "graves.log.contains")
                 .replace("\\<item_count>", items + "")
                 .replace("\\<xp_count>", xp + "")
         ));
@@ -120,7 +118,7 @@ public class GraveCreator {
                     enchantString = " [ " + enchantStringBuilder.substring(0, enchantStringBuilder.length() - 2) + " ]";
                 }
             }
-            Logger.info(mm.deserialize(TranslationManager.getString(Config.getLanguage(), "graves.log.item")
+            Logger.info(mm.deserialize(OldTranslationManager.getString(Config.getLanguage(), "graves.log.item")
                     .replace("\\<item>", item.getType().toString())
                     .replace("\\<amount>", item.getAmount() + "")
                     .replace("\\<enchantments>", enchantString)

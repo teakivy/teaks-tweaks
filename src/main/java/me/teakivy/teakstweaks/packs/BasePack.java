@@ -2,7 +2,7 @@ package me.teakivy.teakstweaks.packs;
 
 import me.teakivy.teakstweaks.TeaksTweaks;
 import me.teakivy.teakstweaks.utils.customitems.CustomItem;
-import me.teakivy.teakstweaks.utils.lang.TranslationManager;
+import me.teakivy.teakstweaks.utils.lang.OldTranslationManager;
 import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.metrics.CustomMetrics;
@@ -45,9 +45,9 @@ public class BasePack implements Listener {
 		this.pack = pack;
 		this.path = pack.getKey();
 		this.translatableKey = this.path.replaceAll("-", "_");
-        this.name = TranslationManager.getString(Config.getLanguage(), this.translatableKey + ".name");
+        this.name = OldTranslationManager.getString(Config.getLanguage(), this.translatableKey + ".name");
 
-		String[] description = TranslationManager.getString(Config.getLanguage(), this.translatableKey + ".description").split("<newline>");
+		String[] description = OldTranslationManager.getString(Config.getLanguage(), this.translatableKey + ".description").split("<newline>");
 
 		item = new ItemStack(material);
 
@@ -109,7 +109,7 @@ public class BasePack implements Listener {
 		}
 
 		getPlugin().addPack(name);
-		Logger.info(Component.text(TranslationManager.getString(Config.getLanguage(), "startup.register.pack").replace("\\<name>", name)));
+		Logger.info(Component.text(OldTranslationManager.getString(Config.getLanguage(), "startup.register.pack").replace("\\<name>", name)));
 
 		CustomMetrics.addPackEnabled(name);
 	}
@@ -210,7 +210,7 @@ public class BasePack implements Listener {
 	 * @return Translated & colored string
 	 */
 	protected String getString(String key) {
-		return TranslationManager.getString(Config.getLanguage(), translatableKey + "." + key);
+		return OldTranslationManager.getString(Config.getLanguage(), translatableKey + "." + key);
 	}
 
 	protected Component getText(String key, ComponentLike... resolvers) {

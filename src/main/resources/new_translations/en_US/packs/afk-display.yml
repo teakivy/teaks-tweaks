@@ -1,0 +1,14 @@
+name: AFK Display
+description: Gray out a player's name that is not moving for 5 minutes.
+
+self:
+  now-afk: <yellow>You are now AFK.
+  not-afk: <yellow>You are no longer AFK.
+
+other:
+  now-afk: <gold><player><yellow> is now AFK.
+  not-afk: <gold><player><yellow> is no longer AFK.
+
+placeholder:
+  afk: AFK
+  not-afk: Active
