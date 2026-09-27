@@ -103,41 +103,41 @@ public class OldTranslationManager {
      * Loads all translations from the plugin's data folder and registers them with Adventure.
      */
     private void loadTranslations() {
-        MiniMessageTranslationStore store = MiniMessageTranslationStore.create(Key.get("translations"));
-        File translationsFolder = new File(dataFolder, "translations");
-
-        for (String lang : supportedLanguages) {
-            String[] parts = lang.split("_");
-            String language = parts[0];
-            String country = parts[1];
-            Locale locale = new Locale(language, country);
-
-            File translationFile = new File(translationsFolder, lang + ".properties");
-            if (!translationFile.exists()) {
-                Logger.error(Component.text("Translation file not found on disk: " + translationFile.getAbsolutePath()));
-                continue;
-            }
-
-            Properties properties = new Properties();
-            try (InputStreamReader reader = new InputStreamReader(new FileInputStream(translationFile), StandardCharsets.UTF_8)) {
-                properties.load(reader);
-            } catch (IOException e) {
-                Logger.error(Component.text("Error reading translation file: " + translationFile.getAbsolutePath()));
-                e.printStackTrace();
-                continue;
-            }
-
-            Map<String, String> map = new HashMap<>();
-            for (String key : properties.stringPropertyNames()) {
-                map.put(key, properties.getProperty(key));
-            }
-
-            store.registerAll(locale, map);
-            Logger.info(Component.text("Loaded translations for " + lang));
-        }
-
-        GlobalTranslator.translator().addSource(store);
-        Logger.info(Component.text("All translations registered with GlobalTranslator."));
+//        MiniMessageTranslationStore store = MiniMessageTranslationStore.create(Key.get("translations"));
+//        File translationsFolder = new File(dataFolder, "translations");
+//
+//        for (String lang : supportedLanguages) {
+//            String[] parts = lang.split("_");
+//            String language = parts[0];
+//            String country = parts[1];
+//            Locale locale = new Locale(language, country);
+//
+//            File translationFile = new File(translationsFolder, lang + ".properties");
+//            if (!translationFile.exists()) {
+//                Logger.error(Component.text("Translation file not found on disk: " + translationFile.getAbsolutePath()));
+//                continue;
+//            }
+//
+//            Properties properties = new Properties();
+//            try (InputStreamReader reader = new InputStreamReader(new FileInputStream(translationFile), StandardCharsets.UTF_8)) {
+//                properties.load(reader);
+//            } catch (IOException e) {
+//                Logger.error(Component.text("Error reading translation file: " + translationFile.getAbsolutePath()));
+//                e.printStackTrace();
+//                continue;
+//            }
+//
+//            Map<String, String> map = new HashMap<>();
+//            for (String key : properties.stringPropertyNames()) {
+//                map.put(key, properties.getProperty(key));
+//            }
+//
+//            store.registerAll(locale, map);
+//            Logger.info(Component.text("Loaded translations for " + lang));
+//        }
+//
+//        GlobalTranslator.translator().addSource(store);
+//        Logger.info(Component.text("All translations registered with GlobalTranslator."));
     }
 
     private Properties loadPropertiesFromJar(String resourcePath) {
