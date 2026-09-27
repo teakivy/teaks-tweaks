@@ -1,6 +1,7 @@
 package me.teakivy.teakstweaks;
 
 import com.google.gson.Gson;
+import me.teakivy.teakstweaks.generated.Translations;
 import me.teakivy.teakstweaks.utils.*;
 import me.teakivy.teakstweaks.utils.config.Config;
 import me.teakivy.teakstweaks.utils.gui.GUIListener;
@@ -73,7 +74,6 @@ public final class TeaksTweaks extends JavaPlugin implements Listener {
         Logger.info(newText(" "));
         Logger.info(Component.text(OldTranslationManager.getString(Config.getLanguage(), "startup.plugin.started").replace("\\<version>", this.getPluginMeta().getVersion())));
         Logger.info(newText(" "));
-
 
         // Remove legacy data.yml file
         removeDataFile();

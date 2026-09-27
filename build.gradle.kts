@@ -1,3 +1,5 @@
+import me.teakivy.build.GenerateTranslationsTask
+
 plugins {
     `java-library`
     id("com.gradleup.shadow") version "9.0.0-rc2"
@@ -14,6 +16,28 @@ val outputDir: String? by project
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(25))
+    }
+}
+
+val generateTranslations by tasks.registering(GenerateTranslationsTask::class) {
+    translationsDirectory.set(
+        layout.projectDirectory.dir("src/main/resources/new_translations")
+    )
+
+    outputDirectory.set(
+        layout.buildDirectory.dir("generated/sources/translations/java")
+    )
+}
+
+tasks.compileJava {
+    dependsOn(generateTranslations)
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir(layout.buildDirectory.dir("generated/sources/translations/java"))
+        }
     }
 }
 
