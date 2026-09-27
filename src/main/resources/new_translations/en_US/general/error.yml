@@ -1,0 +1,10 @@
+unknown: <red>An unknown error has occurred!
+pack-not-enabled: <red>This pack is not enabled!
+not-player: <red>You must be a player to use this command!
+not-op: <red>You must be an operator to use this command!
+missing-command-permission: <red>You do not have permission to use this command!
+missing-permission: <red>You do not have permission to do that!
+cant-get-latest-version: <red>Could not get the latest version of Teak's Tweaks!
+command-disabled: <red>This command has been disabled by a server administrator!
+missing-action: <red>Please specify an action!
+player-dne: <red>That player does not exist!

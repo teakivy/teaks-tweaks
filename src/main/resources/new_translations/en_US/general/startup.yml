@@ -1,0 +1,16 @@
+plugin:
+  started: Teak's Tweaks v<version> has started!
+  shutting-down: Teak's Tweaks Shutting Down...
+
+update:
+  version-available: A new version of Teak's Tweaks is available! v<version>
+  download: Visit <url> to download the latest version!
+  join-alert: >
+    <yellow>There is a new version of Teak's Tweaks available!
+    Click here to download <gold>Teak's Tweaks v<version></gold>!
+  join-alert-hover: <gold>Click to download Teak's Tweaks v<version>!
+
+register:
+  pack: "Registered Pack: <name>"
+  crafting-tweak: "Registered Crafting Tweak: <name>"
+  command: "Registered Command: /<command>"
