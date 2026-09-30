@@ -2,6 +2,7 @@ plugins {
     `java-library`
     id("com.gradleup.shadow") version "9.0.0-rc2"
     id("xyz.jpenilla.run-paper") version "3.1.0"
+    id("io.papermc.paperweight.userdev") version "2.0.0-beta.24"
 }
 
 group = "me.teakivy"
@@ -58,12 +59,13 @@ val libraries = listOf(
 
 dependencies {
     compileOnly("com.mojang:authlib:1.5.25")
-    compileOnly("io.papermc.paper:paper-api:26.2-rc-2.build.+")
     compileOnly("me.clip:placeholderapi:2.11.6")
 
     libraries.forEach { library ->
         compileOnly(library)
     }
+
+    paperweight.paperDevBundle("26.2.build.+")
 }
 
 artifacts {
