@@ -5,6 +5,7 @@ import me.teakivy.teakstweaks.utils.log.Logger;
 import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
 import org.bukkit.*;
+import org.bukkit.craftbukkit.entity.CraftLivingEntity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,20 +20,24 @@ public class VillagerDeathMessages extends BasePack {
     @EventHandler
     public void onMobDeath(EntityDeathEvent event) {
         if (event.getEntity().getType() == EntityType.VILLAGER) {
-            Location loc = event.getEntity().getLocation();
-            Component deathMessage = getText("death_message",
-                    insert("x", loc.getBlockX()),
-                    insert("y", loc.getBlockY()),
-                    insert("z", loc.getBlockZ()),
-                    insert("world", getWorldName(loc)));
+            Runnable deathMessageTask = () -> {
+                Location loc = event.getEntity().getLocation();
+                Component deathMessage = getText("death_message",
+                        insert("x", loc.getBlockX()),
+                        insert("y", loc.getBlockY()),
+                        insert("z", loc.getBlockZ()),
+                        insert("world", getWorldName(loc)));
 
-            if (getConfig().getBoolean("show-in-chat")) {
-                for (Player player : Bukkit.getOnlinePlayers()) {
-                    player.sendMessage(deathMessage);
+                if (getConfig().getBoolean("show-in-chat")) {
+                    for (Player player : Bukkit.getOnlinePlayers()) {
+                        player.sendMessage(deathMessage);
+                    }
                 }
-                return;
-            }
-            Logger.info(deathMessage);
+                Logger.info(deathMessage);
+            };
+            if (event.getEntity() instanceof CraftLivingEntity livingEntity)
+                livingEntity.getHandle().postDeathEventTasks.add(deathMessageTask);
+            else deathMessageTask.run();
         }
     }
 
