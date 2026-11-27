@@ -1,16 +1,24 @@
 package me.teakivy.teakstweaks.packs.musicdiscengraver;
 
+import io.papermc.paper.datacomponent.DataComponentType;
+import io.papermc.paper.datacomponent.DataComponentTypes;
+import io.papermc.paper.registry.tag.Tag;
 import me.teakivy.teakstweaks.packs.BasePack;
 import me.teakivy.teakstweaks.utils.Key;
+import me.teakivy.teakstweaks.utils.customitems.CustomItem;
+import me.teakivy.teakstweaks.utils.customitems.ItemHandler;
 import me.teakivy.teakstweaks.utils.register.TTPack;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
+import java.util.Objects;
 
 public class MusicDiscEngraver extends BasePack {
 
@@ -21,30 +29,13 @@ public class MusicDiscEngraver extends BasePack {
     @Override
     public void init() {
         super.init();
-        List<Material> discTypes = List.of(
-                Material.MUSIC_DISC_11,
-                Material.MUSIC_DISC_13,
-                Material.MUSIC_DISC_5,
-                Material.MUSIC_DISC_BLOCKS,
-                Material.MUSIC_DISC_CAT,
-                Material.MUSIC_DISC_CHIRP,
-                Material.MUSIC_DISC_FAR,
-                Material.MUSIC_DISC_MALL,
-                Material.MUSIC_DISC_MELLOHI,
-                Material.MUSIC_DISC_OTHERSIDE,
-                Material.MUSIC_DISC_PIGSTEP,
-                Material.MUSIC_DISC_RELIC,
-                Material.MUSIC_DISC_STAL,
-                Material.MUSIC_DISC_STRAD,
-                Material.MUSIC_DISC_WAIT,
-                Material.MUSIC_DISC_WARD,
-                Material.MUSIC_DISC_RELIC,
-                Material.MUSIC_DISC_CREATOR,
-                Material.MUSIC_DISC_CREATOR_MUSIC_BOX,
-                Material.MUSIC_DISC_PRECIPICE,
-                Material.MUSIC_DISC_LAVA_CHICKEN,
-                Material.MUSIC_DISC_TEARS
-        );
+        List<Material> discTypes = new java.util.ArrayList<>();
+
+        for (Material material : Material.values()) {
+            if (material.toString().startsWith("MUSIC_DISC_") && !discTypes.contains(material)) {
+                discTypes.add(material);
+            }
+        }
 
         ItemStack emptyDisc = getEmptyDisc();
 
@@ -66,6 +57,9 @@ public class MusicDiscEngraver extends BasePack {
         for (Material input : discTypes) {
             registerDiscs(input, discTypes);
         }
+
+
+        ItemHandler.addCustomItem(new CustomItem("empty_music_disc", emptyDisc));
     }
 
     private void registerDiscs(Material input, List<Material> outputs) {
@@ -80,7 +74,8 @@ public class MusicDiscEngraver extends BasePack {
     }
 
     private ItemStack getEmptyDisc() {
-        ItemStack emptyDisc = ItemStack.of(Material.KNOWLEDGE_BOOK);
+        ItemStack emptyDisc = ItemStack.of(Material.POISONOUS_POTATO);
+        emptyDisc.unsetData(DataComponentTypes.CONSUMABLE);
         ItemMeta meta = emptyDisc.getItemMeta();
         meta.setItemModel(Material.MUSIC_DISC_STRAD.getKey());
         meta.displayName(Component.text("Empty Music Disc").decoration(TextDecoration.ITALIC, false));
