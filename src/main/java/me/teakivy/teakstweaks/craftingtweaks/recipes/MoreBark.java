@@ -22,7 +22,7 @@ public class MoreBark extends AbstractCraftingTweak {
             if (log.name().endsWith("_WOOD") || log.name().endsWith("_HYPHAE")) return;
 
             Material wood = Material.getMaterial(log.name().replace("_LOG", "_WOOD"));
-            if (wood == null) wood = Material.getMaterial(log.name().replace("_LOG", "_HYPHAE"));
+            if (wood == log) wood = Material.getMaterial(log.name().replace("_STEM", "_HYPHAE"));
             if (wood == null) return;
 
             newBarkedRecipe(log, wood);
